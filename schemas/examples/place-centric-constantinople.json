@@ -1,0 +1,74 @@
+{
+  "$schema": "http://pelagios.org/ontology/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+
+  "gazetteer": {
+    "title": "Byzantine Cities Gazetteer",
+    "description": "Historical cities of the Byzantine Empire and their predecessors.",
+    "contributor": "https://orcid.org/0000-0000-0000-0001",
+    "licence": "https://creativecommons.org/licenses/by/4.0/"
+  },
+
+  "things": [
+    {
+      "@id": "https://whgazetteer.org/place/12345",
+      "label": "Constantinople / İstanbul",
+      "attestations": [
+        {
+          "names": [
+            { "toponym": "Βυζάντιον", "language": "grc", "script": "Grek", "romanisation": "Byzantion" }
+          ],
+          "geometries": [
+            {
+              "geojson": { "type": "Point", "coordinates": [28.9784, 41.0082] },
+              "reprPoint": [28.9784, 41.0082]
+            }
+          ],
+          "timespans": [
+            { "start": "-0667", "end": "0330", "startPrecision": "approximate", "endPrecision": "year" }
+          ],
+          "types": [
+            { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" }
+          ],
+          "sources": [
+            { "title": "Herodotus, Histories IV.144", "citation": "Hdt. 4.144" }
+          ],
+          "certainty": 0.9,
+          "notes": "Founded as Byzantion by Megarian colonists."
+        },
+        {
+          "names": [
+            { "toponym": "Κωνσταντινούπολις", "language": "grc", "script": "Grek", "romanisation": "Konstantinoupolis" },
+            { "toponym": "Constantinople", "language": "en" }
+          ],
+          "timespans": [
+            { "start": "0330", "end": "1453", "startPrecision": "year", "endPrecision": "year" }
+          ],
+          "types": [
+            { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" },
+            { "identifier": "http://vocab.getty.edu/aat/300387068", "label": "capital city" }
+          ],
+          "sources": [
+            { "title": "Notitia Urbis Constantinopolitanae", "uri": "https://www.example.org/notitia" }
+          ],
+          "certainty": 1.0
+        },
+        {
+          "names": [
+            { "toponym": "İstanbul", "language": "tr" }
+          ],
+          "timespans": [
+            { "start": "1453", "startPrecision": "year" }
+          ],
+          "types": [
+            { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" }
+          ],
+          "sources": [
+            { "title": "GeoNames", "uri": "https://www.geonames.org/745044/" }
+          ],
+          "certainty": 1.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+@prefix plato: <http://pelagios.org/ontology/plato#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/> .
+
+
+# =============================================================================
+# A simple attestation: a scholar's source mentions a known place
+#
+# Scenario: A historian working on 15th-century English trade finds a
+# reference to "Bristowe" in a customs account dated 1480. The place is
+# clearly Bristol, which already exists in the WHG index via GeoNames.
+#
+# The scholar does not need to define Bristol from scratch. They attest
+# that their source references the existing Thing, with the name form
+# and date found in their source.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# The Thing already exists — it was created from GeoNames authority data.
+# The scholar references it by its stable identifier.
+# -----------------------------------------------------------------------------
+
+ex:thing-bristol
+    a plato:Thing ;
+    plato:thing_identifier "geonames:2654675" ;
+    plato:namespace "geonames" .
+
+
+# -----------------------------------------------------------------------------
+# The Name as found in the scholar's source
+# -----------------------------------------------------------------------------
+
+ex:name-bristowe
+    a plato:Name ;
+    plato:toponym "Bristowe"@enm ;
+    plato:language "enm" ;
+    plato:script "Latn" .
+
+
+# -----------------------------------------------------------------------------
+# Timespan: the date of the source document
+# -----------------------------------------------------------------------------
+
+ex:ts-1480
+    a plato:Timespan ;
+    plato:start "1480" ;
+    plato:end "1480" ;
+    plato:start_precision "year" ;
+    plato:end_precision "year" .
+
+
+# -----------------------------------------------------------------------------
+# Source: the customs account
+# -----------------------------------------------------------------------------
+
+ex:source-customs-1480
+    a plato:Source ;
+    plato:authority_title "London customs account, 1480" ;
+    plato:bibliographic_string "TNA E122/73/12, London petty custom account, Mich. 1480 – Mich. 1481" ;
+    plato:authority_uri <https://discovery.nationalarchives.gov.uk/details/r/C5738289> ;
+    plato:partOf ex:dataset-london-customs .
+
+ex:dataset-london-customs
+    a plato:Dataset ;
+    plato:authority_title "London Customs Accounts Project" ;
+    plato:authority_uri <https://example.org/london-customs> ;
+    plato:publisher "University of Pittsburgh" ;
+    plato:licence <https://creativecommons.org/licenses/by/4.0/> .
+
+
+# -----------------------------------------------------------------------------
+# The scholar
+# -----------------------------------------------------------------------------
+
+ex:contributor-trade-historian
+    a plato:Contributor .
+
+
+# -----------------------------------------------------------------------------
+# The Gazetteer this attestation belongs to
+# -----------------------------------------------------------------------------
+
+ex:gazetteer-english-trade
+    a plato:Gazetteer ;
+    plato:authority_title "Ports in 15th-Century English Trade" ;
+    plato:gazetteer_owner ex:contributor-trade-historian ;
+    plato:gazetteer_status "draft" ;
+    plato:contains_thing ex:thing-bristol ;
+    plato:contains_attestation ex:att-bristowe .
+
+
+# -----------------------------------------------------------------------------
+# The Attestation itself
+#
+# Note what is happening here: the scholar is NOT creating a new place.
+# They are attesting that their source (TNA E122/73/12) references an
+# existing Thing (GeoNames Bristol) using the name form "Bristowe" at
+# a specific date. This is the attestation-first model in action.
+# -----------------------------------------------------------------------------
+
+ex:att-bristowe
+    a plato:Attestation ;
+    plato:attests_about ex:thing-bristol ;
+    plato:attests_name ex:name-bristowe ;
+    plato:attests_timespan ex:ts-1480 ;
+    plato:sourced_by ex:source-customs-1480 ;
+    plato:contributed_by ex:contributor-trade-historian ;
+    plato:certainty 1.0 ;
+    plato:certainty_note "Unambiguous identification; Bristol is the only plausible referent." ;
+    plato:created "2026-02-15T12:00:00Z"^^xsd:dateTime .
+
+
+# =============================================================================
+# Observations
+#
+# 1. No Geometry is attested. The scholar's source doesn't provide spatial
+#    information — that comes from the GeoNames authority data already
+#    associated with the Thing. Not every attestation needs to assert
+#    every property.
+#
+# 2. No Type is attested. The scholar might add one later (e.g. AAT "port"),
+#    or leave it to the existing authority classification.
+#
+# 3. The name "Bristowe" is a Middle English form not present in GeoNames.
+#    By attesting it, the scholar enriches the Thing with a historical
+#    name variant that benefits all users of the WHG index.
+#
+# 4. This is what a typical scholarly contribution looks like: minimal,
+#    focused, evidence-based. The system should make it easy, not force
+#    the contributor through a full place-definition workflow.
+# =============================================================================

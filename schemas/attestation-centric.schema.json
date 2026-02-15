@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://pelagios.org/ontology/plato/schemas/attestation-centric.schema.json",
+  "title": "PLATO Attestation-Centric Submission Profile",
+  "description": "Submit one or more attestations referencing existing Things by URI. This profile is for incremental scholarly contribution: attesting evidence about places that already exist in the system without redefining them. Each attestation must specify its 'about' field.",
+
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "http://pelagios.org/ontology/plato/schemas/attestation-centric.schema.json"
+    },
+    "profile": {
+      "type": "string",
+      "const": "attestation-centric",
+      "description": "Identifies this as an attestation-centric submission."
+    },
+
+    "gazetteer": {
+      "type": "object",
+      "description": "Metadata about the contributing gazetteer.",
+      "properties": {
+        "@id": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "URI of the gazetteer. In attestation-centric mode, this should typically reference an existing gazetteer."
+        },
+        "title": { "type": "string", "description": "Gazetteer title." },
+        "description": { "type": "string" },
+        "contributor": { "type": "string", "description": "Contributor name or URI." },
+        "licence": { "$ref": "plato.schema.json#/$defs/uri" }
+      },
+      "required": ["title"],
+      "additionalProperties": false
+    },
+
+    "attestations": {
+      "type": "array",
+      "description": "Attestations referencing existing Things.",
+      "items": {
+        "allOf": [
+          { "$ref": "plato.schema.json#/$defs/attestation" },
+          {
+            "type": "object",
+            "description": "In attestation-centric mode, 'about' is required — it identifies the existing Thing being attested.",
+            "required": ["about"]
+          }
+        ]
+      },
+      "minItems": 1
+    },
+
+    "newThings": {
+      "type": "array",
+      "description": "Optional: new Things that do not yet exist in the system. Use sparingly — only when no existing Thing matches. These follow the place-centric pattern (Thing with nested attestations) but are submitted alongside attestation-centric contributions.",
+      "items": {
+        "allOf": [
+          { "$ref": "plato.schema.json#/$defs/thing" },
+          {
+            "type": "object",
+            "required": ["attestations"]
+          }
+        ]
+      }
+    },
+
+    "identityRelations": {
+      "type": "array",
+      "description": "Identity assertions between Things.",
+      "items": { "$ref": "plato.schema.json#/$defs/identityRelation" }
+    }
+  },
+
+  "required": ["profile", "attestations"],
+  "additionalProperties": false
+}

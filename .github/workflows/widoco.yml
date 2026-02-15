@@ -1,0 +1,42 @@
+name: Generate PLATO Documentation
+
+on:
+  push:
+    branches:
+      - main  # Trigger whenever you push to the main branch
+    paths:
+      - 'plato-ontology.ttl' # Only run when the ontology file changes
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Download Widoco
+        run: |
+          wget https://github.com/dgarijo/Widoco/releases/download/v1.4.25/widoco-1.4.25-jar-with-dependencies.jar -O widoco.jar
+
+      - name: Run Widoco
+        run: |
+          java -jar widoco.jar \
+            -ontFile plato-ontology.ttl \
+            -outFolder ./docs \
+            -rewriteAll \
+            -webVowl \
+            -includeImported \
+            -licensText "CC BY 4.0" \
+            -licensURI "https://creativecommons.org/licenses/by/4.0/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs

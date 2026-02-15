@@ -1,0 +1,183 @@
+@prefix plato: <http://pelagios.org/ontology/plato#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/> .
+
+
+# =============================================================================
+# Thing-to-Thing relation with meta-attestation
+#
+# Scenario: A scholar attests that Karakorum was the capital of the Mongol
+# Empire during a particular period, based on Rashid al-Din's Compendium
+# of Chronicles. A second scholar creates a meta-attestation noting that
+# this is disputed — some sources suggest the capital function moved to
+# Shangdu (Xanadu) earlier than conventionally dated.
+#
+# This demonstrates:
+#   1. Thing-to-Thing relations via RelationType authorities
+#   2. Meta-attestations modelling scholarly disagreement
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# Things
+# -----------------------------------------------------------------------------
+
+ex:thing-karakorum
+    a plato:Thing ;
+    plato:thing_identifier "whg:karakorum" ;
+    plato:namespace "whg" ;
+    plato:ccodes "MN" .
+
+ex:thing-mongol-empire
+    a plato:Thing ;
+    plato:thing_identifier "whg:mongol-empire" ;
+    plato:namespace "whg" .
+
+
+# -----------------------------------------------------------------------------
+# RelationType: capital_of
+# -----------------------------------------------------------------------------
+
+ex:reltype-capital-of
+    a plato:RelationType ;
+    plato:authority_title "capital of" ;
+    plato:relation_label "capital_of" ;
+    plato:inverse_label "has_capital" ;
+    plato:relation_domain "settlement" ;
+    plato:relation_range "polity" .
+
+
+# -----------------------------------------------------------------------------
+# Names (for context — each would have its own attestations elsewhere,
+# but included here to make the example readable)
+# -----------------------------------------------------------------------------
+
+ex:name-karakorum
+    a plato:Name ;
+    plato:toponym "Karakorum"@mn ;
+    plato:language "mn" .
+
+ex:name-mongol-empire
+    a plato:Name ;
+    plato:toponym "Mongol Empire"@en ;
+    plato:language "en" .
+
+
+# -----------------------------------------------------------------------------
+# Timespan
+# -----------------------------------------------------------------------------
+
+ex:ts-karakorum-capital
+    a plato:Timespan ;
+    plato:start "1235" ;
+    plato:end "1260" ;
+    plato:start_precision "approximate" ;
+    plato:end_precision "approximate" .
+
+
+# -----------------------------------------------------------------------------
+# Sources
+# -----------------------------------------------------------------------------
+
+ex:source-rashid-al-din
+    a plato:Source ;
+    plato:authority_title "Jami' al-tawarikh (Compendium of Chronicles)" ;
+    plato:bibliographic_string "Rashid al-Din, Jami' al-tawarikh, c. 1307. Ed. and trans. W.M. Thackston, 1998." ;
+    plato:partOf ex:dataset-mongol-sources .
+
+ex:source-allsen-2001
+    a plato:Source ;
+    plato:authority_title "Culture and Conquest in Mongol Eurasia" ;
+    plato:bibliographic_string "Allsen, T.T. (2001). Culture and Conquest in Mongol Eurasia. Cambridge University Press." ;
+    plato:partOf ex:dataset-mongol-secondary .
+
+ex:dataset-mongol-sources
+    a plato:Dataset ;
+    plato:authority_title "Primary Sources for the Mongol Empire" .
+
+ex:dataset-mongol-secondary
+    a plato:Dataset ;
+    plato:authority_title "Secondary Literature on the Mongol Empire" .
+
+
+# -----------------------------------------------------------------------------
+# Contributors
+# -----------------------------------------------------------------------------
+
+ex:contributor-scholar-a
+    a plato:Contributor .
+
+ex:contributor-scholar-b
+    a plato:Contributor .
+
+
+# -----------------------------------------------------------------------------
+# Attestation: Karakorum was capital of the Mongol Empire, 1235–1260
+#
+# This attestation uses both plato:attests_about (the subject Thing) and
+# plato:relates_to (the target Thing), with plato:has_relation_type
+# specifying the nature of the relationship.
+# -----------------------------------------------------------------------------
+
+ex:att-karakorum-capital
+    a plato:Attestation ;
+    plato:attests_about ex:thing-karakorum ;
+    plato:relates_to ex:thing-mongol-empire ;
+    plato:has_relation_type ex:reltype-capital-of ;
+    plato:attests_timespan ex:ts-karakorum-capital ;
+    plato:sourced_by ex:source-rashid-al-din ;
+    plato:contributed_by ex:contributor-scholar-a ;
+    plato:certainty 0.85 ;
+    plato:certainty_note "Well attested in Rashid al-Din, though exact dates of capital status are debated." ;
+    plato:created "2026-02-15T14:00:00Z"^^xsd:dateTime .
+
+
+# -----------------------------------------------------------------------------
+# Meta-attestation: Scholar B disputes the end date
+#
+# This is an Attestation whose plato:meta_attestation_about points to the
+# original attestation. It does not replace or delete the original —
+# both coexist, representing the state of scholarly debate.
+# -----------------------------------------------------------------------------
+
+ex:att-karakorum-dispute
+    a plato:Attestation ;
+    plato:meta_attestation_about ex:att-karakorum-capital ;
+    plato:has_meta_type "refines" ;
+    plato:sourced_by ex:source-allsen-2001 ;
+    plato:contributed_by ex:contributor-scholar-b ;
+    plato:certainty 0.7 ;
+    plato:notes """
+        Allsen argues that the capital function began shifting to Shangdu
+        as early as 1256, before Kublai Khan's formal establishment there
+        in 1263. The end date of 1260 for Karakorum's capital status may
+        therefore be too late — the transition was gradual rather than a
+        discrete event.
+    """ ;
+    plato:created "2026-02-15T16:00:00Z"^^xsd:dateTime .
+
+
+# =============================================================================
+# Observations
+#
+# 1. The relation "capital_of" is not hard-coded in the ontology. It is a
+#    RelationType authority that can be created by any project. The ontology
+#    provides the mechanism (plato:relates_to + plato:has_relation_type);
+#    the vocabulary grows organically.
+#
+# 2. The meta-attestation does not delete or replace the original. Both
+#    attestations are visible. A query for "what was the capital of the
+#    Mongol Empire?" returns both, with their respective certainty values,
+#    sources, and notes. The system preserves scholarly disagreement rather
+#    than forcing a single answer.
+#
+# 3. Scholar B's meta-attestation has type "refines" rather than
+#    "contradicts" — the dispute is about dating, not about whether
+#    Karakorum was ever a capital. The meta-type vocabulary allows
+#    this nuance.
+#
+# 4. If Scholar B wanted to propose an alternative end date, they could
+#    create a separate attestation for the same relation with a different
+#    Timespan (e.g. 1235–1256), rather than modifying Scholar A's
+#    attestation. Both would coexist.
+# =============================================================================

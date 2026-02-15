@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://pelagios.org/ontology/plato/schemas/place-centric.schema.json",
+  "title": "PLATO Place-Centric Submission Profile",
+  "description": "Submit one or more Things with their attestations nested under them. This is the successor to LPF for dataset ingestion and legacy gazetteer contributions. Each Thing carries its own attestations, which do not need to specify an 'about' field (it is implicit from the nesting).",
+
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "http://pelagios.org/ontology/plato/schemas/place-centric.schema.json"
+    },
+    "profile": {
+      "type": "string",
+      "const": "place-centric",
+      "description": "Identifies this as a place-centric submission."
+    },
+
+    "gazetteer": {
+      "type": "object",
+      "description": "Metadata about the contributing gazetteer.",
+      "properties": {
+        "@id": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "URI of the gazetteer, if it already exists in the system."
+        },
+        "title": { "type": "string", "description": "Gazetteer title." },
+        "description": { "type": "string" },
+        "contributor": { "type": "string", "description": "Contributor name or URI." },
+        "licence": { "$ref": "plato.schema.json#/$defs/uri" }
+      },
+      "required": ["title"],
+      "additionalProperties": false
+    },
+
+    "things": {
+      "type": "array",
+      "description": "The Things being submitted, each with nested attestations.",
+      "items": {
+        "allOf": [
+          { "$ref": "plato.schema.json#/$defs/thing" },
+          {
+            "type": "object",
+            "properties": {
+              "attestations": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "allOf": [
+                    { "$ref": "plato.schema.json#/$defs/attestation" },
+                    {
+                      "type": "object",
+                      "description": "In place-centric mode, 'about' is implicit (the enclosing Thing) and should be omitted.",
+                      "not": {
+                        "required": ["about"]
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "required": ["attestations"]
+          }
+        ]
+      },
+      "minItems": 1
+    },
+
+    "identityRelations": {
+      "type": "array",
+      "description": "Identity assertions between Things in this submission or between submitted Things and existing ones.",
+      "items": { "$ref": "plato.schema.json#/$defs/identityRelation" }
+    }
+  },
+
+  "required": ["profile", "gazetteer", "things"],
+  "additionalProperties": false
+}

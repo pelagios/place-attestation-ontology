@@ -1,0 +1,399 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://pelagios.org/ontology/plato/schemas/plato.schema.json",
+  "title": "PLATO — Place Attestation Ontology: Core Definitions",
+  "description": "Shared object-type definitions for the PLATO data model. These definitions are composed by the place-centric and attestation-centric submission profiles.",
+
+  "$defs": {
+
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "A URI identifying an entity."
+    },
+
+    "isoOrYear": {
+      "type": "string",
+      "description": "ISO 8601 date/time or a signed integer year (e.g. '-0500' for 500 BCE).",
+      "pattern": "^-?\\d{4}(-\\d{2}(-\\d{2}(T\\d{2}:\\d{2}(:\\d{2})?Z?)?)?)?$"
+    },
+
+    "precision": {
+      "type": "string",
+      "enum": ["day", "month", "year", "decade", "century", "millennium", "approximate"],
+      "description": "Precision of a temporal bound."
+    },
+
+    "unitFloat01": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "A value on the unit interval [0, 1]."
+    },
+
+    "languageTag": {
+      "type": "string",
+      "description": "BCP 47 language tag (e.g. 'en', 'zh-Hant', 'grc').",
+      "pattern": "^[a-zA-Z]{2,8}(-[a-zA-Z0-9]{1,8})*$"
+    },
+
+
+    "qualification": {
+      "type": "object",
+      "description": "Qualification properties applicable to any facet node: epistemic uncertainty, ontological fuzziness, or relativity to an anchor entity. All properties are optional.",
+      "properties": {
+        "uncertainty": {
+          "$ref": "#/$defs/unitFloat01",
+          "description": "Epistemic uncertainty: 0.0 = completely unknown, 1.0 = no uncertainty."
+        },
+        "uncertaintyNote": {
+          "type": "string",
+          "description": "Explanation of the nature and source of epistemic uncertainty."
+        },
+        "fuzziness": {
+          "$ref": "#/$defs/unitFloat01",
+          "description": "Ontological fuzziness: 0.0 = crisp, 1.0 = maximally vague."
+        },
+        "fuzzinessNote": {
+          "type": "string",
+          "description": "Explanation of the nature of ontological fuzziness."
+        },
+        "relativeTo": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of the anchor entity (Thing, Name, Period, etc.) to which this facet is defined relatively."
+        },
+        "relativeBearing": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 360,
+          "description": "Compass bearing from the anchor, in degrees."
+        },
+        "relativeDistance": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Distance from the anchor, in metres."
+        },
+        "relativeQualifier": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of a controlled-vocabulary term describing the relative relationship (e.g. plato:Near, plato:Within, plato:UpstreamOf)."
+        }
+      },
+      "additionalProperties": false
+    },
+
+
+    "name": {
+      "type": "object",
+      "description": "A toponym or appellation. Reusable across attestations and Things.",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri", "description": "Stable URI for this Name node, if it has one." },
+        "toponym": { "type": "string", "description": "The name string." },
+        "language": { "$ref": "#/$defs/languageTag" },
+        "script": {
+          "type": "string",
+          "description": "ISO 15924 script code (e.g. 'Latn', 'Arab', 'Grek')."
+        },
+        "romanisation": {
+          "type": "string",
+          "description": "Romanised form if the toponym is in a non-Latin script."
+        },
+        "qualification": { "$ref": "#/$defs/qualification" }
+      },
+      "required": ["toponym"],
+      "additionalProperties": false
+    },
+
+
+    "geometry": {
+      "type": "object",
+      "description": "A spatial representation. May be absolute (WKT or GeoJSON) or relative (via qualification.relativeTo).",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri" },
+        "wkt": {
+          "type": "string",
+          "description": "Well-Known Text representation of the geometry."
+        },
+        "geojson": {
+          "type": "object",
+          "description": "GeoJSON Geometry object (Point, Polygon, LineString, etc.).",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["Point", "MultiPoint", "LineString", "MultiLineString", "Polygon", "MultiPolygon", "GeometryCollection"]
+            },
+            "coordinates": {}
+          },
+          "required": ["type", "coordinates"]
+        },
+        "reprPoint": {
+          "type": "array",
+          "description": "Representative point as [longitude, latitude].",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "qualification": { "$ref": "#/$defs/qualification" }
+      },
+      "additionalProperties": false
+    },
+
+
+    "timespan": {
+      "type": "object",
+      "description": "A temporal interval with start/end bounds and precision metadata.",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri" },
+        "start": { "$ref": "#/$defs/isoOrYear", "description": "Earliest bound." },
+        "end": { "$ref": "#/$defs/isoOrYear", "description": "Latest bound." },
+        "startPrecision": { "$ref": "#/$defs/precision" },
+        "endPrecision": { "$ref": "#/$defs/precision" },
+        "qualification": { "$ref": "#/$defs/qualification" }
+      },
+      "additionalProperties": false
+    },
+
+
+    "type": {
+      "type": "object",
+      "description": "A classification from a controlled vocabulary (typically AAT).",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri" },
+        "identifier": {
+          "$ref": "#/$defs/uri",
+          "description": "URI in the controlled vocabulary (e.g. an AAT concept URI)."
+        },
+        "label": { "type": "string", "description": "Human-readable label." },
+        "sourceLabel": {
+          "type": "string",
+          "description": "Original label as given in the contributing source, before vocabulary mapping."
+        },
+        "qualification": { "$ref": "#/$defs/qualification" }
+      },
+      "required": ["identifier", "label"],
+      "additionalProperties": false
+    },
+
+
+    "source": {
+      "type": "object",
+      "description": "A citable document or authority that grounds an attestation.",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri" },
+        "title": { "type": "string" },
+        "uri": { "$ref": "#/$defs/uri", "description": "Resolvable URI for the source." },
+        "citation": { "type": "string", "description": "Bibliographic citation string." },
+        "authorityType": {
+          "type": "string",
+          "enum": ["source", "dataset", "period", "relationType", "certaintyLevel"],
+          "default": "source",
+          "description": "Which Authority subclass this represents."
+        }
+      },
+      "required": ["title"],
+      "additionalProperties": false
+    },
+
+
+    "relation": {
+      "type": "object",
+      "description": "A Thing-to-Thing relation attested by an attestation (e.g. capital_of, successor_to).",
+      "properties": {
+        "relatesTo": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of the target Thing."
+        },
+        "relationType": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of the RelationType authority (e.g. a vocabulary term for 'capital_of')."
+        },
+        "relationLabel": {
+          "type": "string",
+          "description": "Human-readable label for the relation type."
+        }
+      },
+      "required": ["relatesTo", "relationType"],
+      "additionalProperties": false
+    },
+
+
+    "metaAttestation": {
+      "type": "object",
+      "description": "A reference to a target attestation and the nature of the commentary.",
+      "properties": {
+        "targetAttestation": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of the attestation being commented on."
+        },
+        "metaType": {
+          "type": "string",
+          "enum": ["contradicts", "supports", "supersedes", "refines", "bundles"],
+          "description": "Nature of the meta-attestation."
+        }
+      },
+      "required": ["targetAttestation", "metaType"],
+      "additionalProperties": false
+    },
+
+
+    "attestation": {
+      "type": "object",
+      "description": "A bundle of evidence linking a Thing to Names, Geometries, Timespans, Types, and Sources. The core unit of contributed knowledge in PLATO.",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri", "description": "Stable URI for this attestation." },
+        "about": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of the Thing this attestation is about. Required in attestation-centric submissions; implicit in place-centric submissions where the attestation is nested under its Thing."
+        },
+
+        "names": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/name" },
+          "description": "Names attested."
+        },
+        "geometries": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/geometry" },
+          "description": "Geometries attested."
+        },
+        "timespans": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/timespan" },
+          "description": "Timespans attested."
+        },
+        "types": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/type" },
+          "description": "Type classifications attested."
+        },
+
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/source" },
+          "description": "Sources grounding this attestation."
+        },
+
+        "relations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/relation" },
+          "description": "Thing-to-Thing relations asserted by this attestation."
+        },
+
+        "meta": {
+          "$ref": "#/$defs/metaAttestation",
+          "description": "If this attestation is a meta-attestation commenting on another."
+        },
+
+        "certainty": {
+          "$ref": "#/$defs/unitFloat01",
+          "description": "Overall certainty of this attestation, from 0.0 to 1.0."
+        },
+        "certaintyNote": {
+          "type": "string",
+          "description": "Explanation of the certainty assessment."
+        },
+
+        "sequence": {
+          "type": "integer",
+          "description": "Ordering index for attestations in routes or itineraries."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Free-text notes providing additional context."
+        },
+
+        "contributedBy": {
+          "type": "string",
+          "description": "Identifier or URI of the contributor."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this attestation was created."
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this attestation was last modified."
+        }
+      },
+      "additionalProperties": false
+    },
+
+
+    "identityRelation": {
+      "type": "object",
+      "description": "An assertion that two Things refer to the same real-world entity. Distinct from scholarly Thing-to-Thing relations and from algorithm-generated SoftLinks.",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri" },
+        "subject": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of the first Thing."
+        },
+        "object": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of the second Thing."
+        },
+        "identityType": {
+          "type": "string",
+          "enum": ["exactMatch", "closeMatch", "related"],
+          "description": "Semantic strength of the identity assertion."
+        },
+        "certainty": {
+          "$ref": "#/$defs/unitFloat01",
+          "description": "Confidence in the identity assertion."
+        },
+        "basis": {
+          "type": "string",
+          "description": "Evidence or reasoning supporting this identity assertion."
+        },
+        "assertedBy": {
+          "type": "string",
+          "description": "Identifier or URI of the agent who made this assertion."
+        },
+        "assertedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "$ref": "#/$defs/source",
+          "description": "Authority providing evidence for this assertion."
+        },
+        "promotedFrom": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of the SoftLink from which this was promoted, if any."
+        }
+      },
+      "required": ["subject", "object", "identityType"],
+      "additionalProperties": false
+    },
+
+
+    "thing": {
+      "type": "object",
+      "description": "A stable, persistent identity — typically a place, but generalised to routes, networks, administrative units, and other historical entities.",
+      "properties": {
+        "@id": {
+          "$ref": "#/$defs/uri",
+          "description": "Stable URI for this Thing. For new Things not yet in the system, omit or use a local identifier."
+        },
+        "label": {
+          "type": "string",
+          "description": "A preferred display label (convenience field; canonical names come via attestations)."
+        },
+        "attestations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/attestation" },
+          "description": "Attestations about this Thing (used in place-centric submissions)."
+        },
+        "identityRelations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/identityRelation" },
+          "description": "Identity assertions linking this Thing to others."
+        }
+      },
+      "required": ["label"],
+      "additionalProperties": false
+    }
+
+  }
+}

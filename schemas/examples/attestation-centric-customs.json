@@ -1,0 +1,82 @@
+{
+  "$schema": "http://pelagios.org/ontology/plato/schemas/attestation-centric.schema.json",
+  "profile": "attestation-centric",
+
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/gazetteer/678",
+    "title": "London Customs Accounts 1480–1485",
+    "contributor": "https://orcid.org/0000-0001-9054-4803"
+  },
+
+  "attestations": [
+    {
+      "about": "https://www.geonames.org/2654675/",
+      "names": [
+        { "toponym": "Bristowe", "language": "enm", "script": "Latn" }
+      ],
+      "timespans": [
+        { "start": "1480", "end": "1485", "startPrecision": "year", "endPrecision": "year" }
+      ],
+      "types": [
+        { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" },
+        { "identifier": "http://vocab.getty.edu/aat/300000745", "label": "port" }
+      ],
+      "sources": [
+        {
+          "title": "TNA E 122/19/10",
+          "citation": "The National Archives, Exchequer: King's Remembrancer, E 122/19/10",
+          "uri": "https://discovery.nationalarchives.gov.uk/details/r/C5846832"
+        }
+      ],
+      "certainty": 0.95,
+      "certaintyNote": "Clear manuscript hand; place identification confirmed by commodity context.",
+      "contributedBy": "https://orcid.org/0000-0001-9054-4803",
+      "created": "2026-02-15T14:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/place/99001",
+      "names": [
+        {
+          "toponym": "Deptford Strand",
+          "language": "en",
+          "qualification": {
+            "uncertainty": 0.7,
+            "uncertaintyNote": "Manuscript partially damaged; reading probable but not certain."
+          }
+        }
+      ],
+      "geometries": [
+        {
+          "qualification": {
+            "relativeTo": "https://www.geonames.org/2651048/",
+            "relativeQualifier": "http://pelagios.org/ontology/plato/vocab#Near",
+            "relativeDistance": 500,
+            "fuzziness": 0.6,
+            "fuzzinessNote": "Strand location was not precisely bounded; refers to a general waterfront area."
+          }
+        }
+      ],
+      "timespans": [
+        { "start": "1481", "startPrecision": "year" }
+      ],
+      "sources": [
+        { "title": "TNA E 122/19/10" }
+      ],
+      "certainty": 0.6,
+      "certaintyNote": "Location inferred from cargo descriptions and known anchorages."
+    }
+  ],
+
+  "identityRelations": [
+    {
+      "subject": "https://whgazetteer.org/place/99001",
+      "object": "https://www.geonames.org/2651048/",
+      "identityType": "closeMatch",
+      "certainty": 0.7,
+      "basis": "Deptford Strand is likely a waterfront area within modern Deptford, but the historical extent is uncertain.",
+      "assertedBy": "https://orcid.org/0000-0001-9054-4803",
+      "assertedAt": "2026-02-15T14:00:00Z"
+    }
+  ]
+}
