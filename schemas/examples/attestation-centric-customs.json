@@ -1,5 +1,5 @@
 {
-  "$schema": "http://pelagios.org/ontology/plato/schemas/attestation-centric.schema.json",
+  "$schema": "http://w3id.org/plato/schemas/attestation-centric.schema.json",
   "profile": "attestation-centric",
 
   "gazetteer": {
@@ -50,7 +50,7 @@
         {
           "qualification": {
             "relativeTo": "https://www.geonames.org/2651048/",
-            "relativeQualifier": "http://pelagios.org/ontology/plato/vocab#Near",
+            "relativeQualifier": "http://w3id.org/plato/vocab#Near",
             "relativeDistance": 500,
             "fuzziness": 0.6,
             "fuzzinessNote": "Strand location was not precisely bounded; refers to a general waterfront area."

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://pelagios.org/ontology/plato/schemas/plato.schema.json",
+  "$id": "http://w3id.org/plato/schemas/plato.schema.json",
   "title": "PLATO — Place Attestation Ontology: Core Definitions",
   "description": "Shared object-type definitions for the PLATO data model. These definitions are composed by the place-centric and attestation-centric submission profiles.",
 

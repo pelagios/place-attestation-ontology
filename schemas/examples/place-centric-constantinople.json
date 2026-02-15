@@ -1,5 +1,5 @@
 {
-  "$schema": "http://pelagios.org/ontology/plato/schemas/place-centric.schema.json",
+  "$schema": "http://w3id.org/plato/schemas/place-centric.schema.json",
   "profile": "place-centric",
 
   "gazetteer": {

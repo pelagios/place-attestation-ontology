@@ -1,4 +1,4 @@
-@prefix plato: <http://pelagios.org/ontology/plato#> .
+@prefix plato: <http://w3id.org/plato#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex: <http://example.org/> .
 

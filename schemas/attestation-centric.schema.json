@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://pelagios.org/ontology/plato/schemas/attestation-centric.schema.json",
+  "$id": "http://w3id.org/plato/schemas/attestation-centric.schema.json",
   "title": "PLATO Attestation-Centric Submission Profile",
   "description": "Submit one or more attestations referencing existing Things by URI. This profile is for incremental scholarly contribution: attesting evidence about places that already exist in the system without redefining them. Each attestation must specify its 'about' field.",
 
@@ -8,7 +8,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "const": "http://pelagios.org/ontology/plato/schemas/attestation-centric.schema.json"
+      "const": "http://w3id.org/plato/schemas/attestation-centric.schema.json"
     },
     "profile": {
       "type": "string",
