@@ -28,13 +28,17 @@ jobs:
 
       - name: Download Latest Widoco
         run: |
-          LATEST_URL=$(curl -s https://api.github.com/repos/dgarijo/Widoco/releases/latest | jq -r '.assets[] | select(.name | contains("jar-with-dependencies.jar")) | .browser_download_url')
-          
-          if [ -z "$LATEST_URL" ] || [ "$LATEST_URL" == "null" ]; then
-            echo "Error: Could not find the Widoco JAR URL."
+          sudo apt-get update && sudo apt-get install -y jq
+    
+          LATEST_URL=$(curl -s https://api.github.com/repos/dgarijo/Widoco/releases/latest \
+            | jq -r '.assets[] | select(.name | endswith(".jar")) | .browser_download_url' \
+            | head -n 1)
+      
+          if [ -z "$LATEST_URL" ] || [ "$LATEST_URL" = "null" ]; then
+            echo "Error: Could not find Widoco JAR."
             exit 1
           fi
-          
+      
           echo "Downloading from: $LATEST_URL"
           curl -L "$LATEST_URL" -o widoco.jar
 
