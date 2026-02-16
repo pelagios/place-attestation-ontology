@@ -86,11 +86,15 @@ whgx:dataset/london-customs
 # The scholar — identified by ORCID
 # -----------------------------------------------------------------------------
 
+whgx:org/uofpitt
+    a plato:Organization ;
+    rdfs:label "University of Pittsburgh" .
+
 whgx:contributor/trade-historian
     a plato:Contributor ;
     plato:contributor_name "Jane Smith" ;
     plato:contributor_orcid "https://orcid.org/0000-0002-1234-5678" ;
-    plato:contributor_affiliation_string "University of Pittsburgh" ;
+    plato:contributor_affiliation whgx:org/uofpitt ;
     plato:contributor_role "principal_investigator" .
 
 

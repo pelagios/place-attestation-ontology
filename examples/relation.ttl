@@ -118,18 +118,26 @@ whgx:dataset/mongol-secondary
 # Contributors
 # -----------------------------------------------------------------------------
 
+whgx:org/central-asian-studies
+    a plato:Organization ;
+    rdfs:label "Central Asian Studies Program" .
+
+whgx:org/tcnj
+    a plato:Organization ;
+    rdfs:label "College of New Jersey" .
+
 whgx:contributor/scholar-a
     a plato:Contributor ;
     plato:contributor_name "David Morgan" ;
     plato:contributor_orcid "https://orcid.org/0000-0001-2345-6789" ;
-    plato:contributor_affiliation_string "Central Asian Studies Program" ;
+    plato:contributor_affiliation whgx:org/central-asian-studies ;
     plato:contributor_role "principal_investigator" .
 
 whgx:contributor/scholar-b
     a plato:Contributor ;
     plato:contributor_name "Thomas Allsen" ;
     plato:contributor_orcid "https://orcid.org/0000-0002-3456-7890" ;
-    plato:contributor_affiliation_string "College of New Jersey" ;
+    plato:contributor_affiliation whgx:org/tcnj ;
     plato:contributor_role "external_contributor" .
 
 

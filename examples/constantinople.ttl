@@ -186,11 +186,15 @@ whgx:dataset/ottoman-admin
 # A contributor
 # -----------------------------------------------------------------------------
 
+whgx:org/byzantine-institute
+    a plato:Organization ;
+    rdfs:label "Byzantine Studies Institute" .
+
 whgx:contributor/historian
     a plato:Contributor ;
     plato:contributor_name "Maria Komnena" ;
     plato:contributor_orcid "https://orcid.org/0000-0003-9876-5432" ;
-    plato:contributor_affiliation_string "Byzantine Studies Institute" ;
+    plato:contributor_affiliation whgx:org/byzantine-institute ;
     plato:contributor_role "data_curator" .
 
 

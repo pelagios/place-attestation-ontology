@@ -34,7 +34,13 @@
         the fundamental unit of contributed knowledge. It unifies and supersedes
         the Linked Places Format (LPF) and Linked Traces.
     """@en ;
-    dcterms:creator "Pelagios Network Place Working Group" ;
+    dcterms:creator [
+        a foaf:Person ;
+        foaf:name "Stephen Gadd" ;
+        foaf:account <https://github.com/stephengadd> ;
+        foaf:mbox <mailto:stephen.gadd@pitt.edu>
+    ] ;
+    dcterms:contributor "Pelagios Network Place Working Group" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:created "2026-02-16"^^xsd:date ;
     rdfs:seeAlso <https://pelagios.org/place-attestation-ontology/index-en.html> ;
@@ -304,6 +310,29 @@ plato:Contributor
         For organizations, ROR (https://ror.org/) or ISNI identifiers are
         recommended. Proper identification ensures accurate attribution,
         enables citation, and supports research assessment.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Organization
+# -----------------------------------------------------------------------------
+# A lightweight class for organizational affiliations. PLATO defines this
+# minimally to avoid confusion with owl:Thing in visualizations. Implementations
+# can use this class directly or align with FOAF, schema.org, or other ontologies.
+
+plato:Organization
+    a owl:Class ;
+    rdfs:label "Organization"@en ;
+    rdfs:comment """
+        An organization to which a Contributor is affiliated. This is a
+        lightweight class defined primarily to avoid ambiguity in ontology
+        visualizations. Organizations can be further described using properties
+        from FOAF, schema.org, or other ontologies.
+
+        Organizations should use persistent identifiers where possible:
+        - ROR (Research Organization Registry): https://ror.org/
+        - ISNI (International Standard Name Identifier)
+        - Wikidata QIDs
     """@en .
 
 
@@ -687,15 +716,21 @@ plato:relative_to
     rdfs:comment """
         Links a facet node to its anchor entity, indicating that this
         facet is defined relationally rather than absolutely. The anchor
-        may be a Thing, a Name, a Timespan, a Period, or any other node
-        in the graph. For spatial relativity, the anchor is typically a
-        Thing whose geometry provides the reference point.
+        is typically a Thing, Period, or another facet (Name, Timespan, etc.).
+
+        Common patterns:
+        - Spatial relativity: "20km east of Nanjing" (anchor is a Thing)
+        - Temporal relativity: "during the reign of Justinian" (anchor is a Period)
+        - Name relativity: "also known as Rome" (anchor is another Name)
     """@en ;
     rdfs:domain [
         a owl:Class ;
         owl:unionOf (plato:Name plato:Geometry plato:Timespan plato:Type)
     ] ;
-    rdfs:range owl:Thing .
+    rdfs:range [
+        a owl:Class ;
+        owl:unionOf (plato:Thing plato:Name plato:Timespan plato:Type plato:Period)
+    ] .
 
 plato:relative_bearing
     a owl:DatatypeProperty ;
@@ -728,6 +763,10 @@ plato:relative_qualifier
         Using URIs rather than free text enables machine reconciliation
         across gazetteers that describe relativity differently.
     """@en ;
+    rdfs:domain [
+        a owl:Class ;
+        owl:unionOf (plato:Name plato:Geometry plato:Timespan plato:Type)
+    ] ;
     rdfs:range skos:Concept .
 
 
@@ -1420,12 +1459,16 @@ plato:contributor_affiliation
     a owl:ObjectProperty ;
     rdfs:label "affiliation"@en ;
     rdfs:comment """
-        Organizational affiliation of the contributor. Can link to an
-        Organization entity or use a free-text string via
-        contributor_affiliation_string. Organizations should ideally use
-        persistent identifiers (ROR, ISNI, etc.).
+        Organizational affiliation of the contributor. Links to a
+        plato:Organization entity, which can be further described using
+        FOAF, schema.org, or other ontology properties. Organizations
+        should ideally use persistent identifiers (ROR, ISNI, etc.).
+
+        For simple cases, use contributor_affiliation_string for free-text
+        affiliation names.
     """@en ;
-    rdfs:domain plato:Contributor .
+    rdfs:domain plato:Contributor ;
+    rdfs:range plato:Organization .
 
 plato:contributor_affiliation_string
     a owl:DatatypeProperty ;

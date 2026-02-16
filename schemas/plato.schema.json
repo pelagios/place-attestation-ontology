@@ -402,8 +402,12 @@
           "description": "Contact email address."
         },
         "affiliation": {
-          "type": "string",
-          "description": "Organizational affiliation (free text or URI to Organization)."
+          "oneOf": [
+            { "$ref": "#/$defs/uri", "description": "URI reference to an Organization." },
+            { "$ref": "#/$defs/organization" },
+            { "type": "string", "description": "Free-text affiliation name." }
+          ],
+          "description": "Organizational affiliation (Organization object, URI, or free text)."
         },
         "role": {
           "type": "string",
@@ -418,6 +422,29 @@
           "type": "array",
           "items": { "type": "string" },
           "description": "Additional persistent identifiers (ISNI, VIAF, Wikidata QID, etc.). Format: 'TYPE:value' (e.g., 'VIAF:12345678')."
+        }
+      },
+      "required": ["name"],
+      "additionalProperties": false
+    },
+
+    "organization": {
+      "type": "object",
+      "description": "An organization to which a Contributor is affiliated. Lightweight class for organizational references.",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri", "description": "URI for this organization (preferably ROR, ISNI, or Wikidata)." },
+        "name": {
+          "type": "string",
+          "description": "Name of the organization."
+        },
+        "identifier": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Persistent identifiers: ROR, ISNI, Wikidata QID, etc. Format: 'TYPE:value'."
+        },
+        "url": {
+          "$ref": "#/$defs/uri",
+          "description": "Organization website or homepage."
         }
       },
       "required": ["name"],

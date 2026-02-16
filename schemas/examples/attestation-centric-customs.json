@@ -9,7 +9,11 @@
       "@id": "https://orcid.org/0000-0002-1234-5678",
       "name": "Jane Smith",
       "orcid": "https://orcid.org/0000-0002-1234-5678",
-      "affiliation": "University of Pittsburgh",
+      "affiliation": {
+        "@id": "https://ror.org/01an3r305",
+        "name": "University of Pittsburgh",
+        "identifier": ["ROR:01an3r305"]
+      },
       "role": "principal_investigator"
     }
   },
