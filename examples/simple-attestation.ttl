@@ -1,6 +1,15 @@
-@prefix plato: <http://w3id.org/plato#> .
+@prefix plato: <https://w3id.org/plato#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ex: <http://example.org/> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative
+# URIs that represent WHG entities (Things, Attestations, Gazetteers, etc.).
+# In a production system these would be real, resolvable WHG identifiers
+# such as <https://whgazetteer.org/place/12345> or
+# <https://whgazetteer.org/attestation/67890>. The "whgx:" namespace
+# makes it clear that these URIs are fictional while still showing the
+# structural shape of real WHG data. External URIs that already exist
+# (GeoNames, TNA Discovery, AAT, ORCiD) are used directly.
 
 
 # =============================================================================
@@ -18,10 +27,11 @@
 
 # -----------------------------------------------------------------------------
 # The Thing already exists — it was created from GeoNames authority data.
-# The scholar references it by its stable identifier.
+# The scholar references it by its stable WHG identifier. The GeoNames
+# URI is the authority source, not the Thing's identity.
 # -----------------------------------------------------------------------------
 
-ex:thing-bristol
+whgx:thing/bristol
     a plato:Thing ;
     plato:thing_identifier "geonames:2654675" ;
     plato:namespace "geonames" .
@@ -31,7 +41,7 @@ ex:thing-bristol
 # The Name as found in the scholar's source
 # -----------------------------------------------------------------------------
 
-ex:name-bristowe
+whgx:name/bristowe-enm
     a plato:Name ;
     plato:toponym "Bristowe"@enm ;
     plato:language "enm" ;
@@ -42,7 +52,7 @@ ex:name-bristowe
 # Timespan: the date of the source document
 # -----------------------------------------------------------------------------
 
-ex:ts-1480
+whgx:timespan/1480
     a plato:Timespan ;
     plato:start "1480" ;
     plato:end "1480" ;
@@ -52,28 +62,29 @@ ex:ts-1480
 
 # -----------------------------------------------------------------------------
 # Source: the customs account
+#
+# The TNA Discovery URI is a real, resolvable identifier for this document.
 # -----------------------------------------------------------------------------
 
-ex:source-customs-1480
+whgx:source/tna-e122-73-12
     a plato:Source ;
     plato:authority_title "London customs account, 1480" ;
     plato:bibliographic_string "TNA E122/73/12, London petty custom account, Mich. 1480 – Mich. 1481" ;
     plato:authority_uri <https://discovery.nationalarchives.gov.uk/details/r/C5738289> ;
-    plato:partOf ex:dataset-london-customs .
+    plato:partOf whgx:dataset/london-customs .
 
-ex:dataset-london-customs
+whgx:dataset/london-customs
     a plato:Dataset ;
     plato:authority_title "London Customs Accounts Project" ;
-    plato:authority_uri <https://example.org/london-customs> ;
     plato:publisher "University of Pittsburgh" ;
     plato:licence <https://creativecommons.org/licenses/by/4.0/> .
 
 
 # -----------------------------------------------------------------------------
-# The scholar
+# The scholar — identified by ORCiD in production; anonymous here
 # -----------------------------------------------------------------------------
 
-ex:contributor-trade-historian
+whgx:contributor/trade-historian
     a plato:Contributor .
 
 
@@ -81,13 +92,13 @@ ex:contributor-trade-historian
 # The Gazetteer this attestation belongs to
 # -----------------------------------------------------------------------------
 
-ex:gazetteer-english-trade
+whgx:gazetteer/english-trade
     a plato:Gazetteer ;
     plato:authority_title "Ports in 15th-Century English Trade" ;
-    plato:gazetteer_owner ex:contributor-trade-historian ;
+    plato:gazetteer_owner whgx:contributor/trade-historian ;
     plato:gazetteer_status "draft" ;
-    plato:contains_thing ex:thing-bristol ;
-    plato:contains_attestation ex:att-bristowe .
+    plato:contains_thing whgx:thing/bristol ;
+    plato:contains_attestation whgx:attestation/bristowe-1480 .
 
 
 # -----------------------------------------------------------------------------
@@ -99,13 +110,13 @@ ex:gazetteer-english-trade
 # a specific date. This is the attestation-first model in action.
 # -----------------------------------------------------------------------------
 
-ex:att-bristowe
+whgx:attestation/bristowe-1480
     a plato:Attestation ;
-    plato:attests_about ex:thing-bristol ;
-    plato:attests_name ex:name-bristowe ;
-    plato:attests_timespan ex:ts-1480 ;
-    plato:sourced_by ex:source-customs-1480 ;
-    plato:contributed_by ex:contributor-trade-historian ;
+    plato:attests_about whgx:thing/bristol ;
+    plato:attests_name whgx:name/bristowe-enm ;
+    plato:attests_timespan whgx:timespan/1480 ;
+    plato:sourced_by whgx:source/tna-e122-73-12 ;
+    plato:contributed_by whgx:contributor/trade-historian ;
     plato:certainty 1.0 ;
     plato:certainty_note "Unambiguous identification; Bristol is the only plausible referent." ;
     plato:created "2026-02-15T12:00:00Z"^^xsd:dateTime .

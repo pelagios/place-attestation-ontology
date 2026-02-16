@@ -1,9 +1,9 @@
 {
-  "$schema": "http://w3id.org/plato/schemas/attestation-centric.schema.json",
+  "$schema": "https://w3id.org/plato/schemas/attestation-centric.schema.json",
   "profile": "attestation-centric",
 
   "gazetteer": {
-    "@id": "https://whgazetteer.org/gazetteer/678",
+    "@id": "http://whgazetteer.org/gazetteer/678",
     "title": "London Customs Accounts 1480–1485",
     "contributor": "https://orcid.org/0000-0001-9054-4803"
   },

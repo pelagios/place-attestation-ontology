@@ -63,11 +63,16 @@ Relationships like "capital_of", "successor_to", or "connected_by_trade_route_to
 
 ## Examples
 
-The `examples/` directory contains worked examples in Turtle format:
+The `examples/` directory contains worked examples in Turtle (RDF) format:
 
 - **[constantinople.ttl](examples/constantinople.ttl)** — Constantinople/Istanbul through three historical periods, demonstrating how multiple attestations with different names, geometries, and timespans converge on a single Thing.
 - **[simple-attestation.ttl](examples/simple-attestation.ttl)** — A minimal example: a scholar attesting that a known place appears in their source with a particular name and date.
 - **[relation.ttl](examples/relation.ttl)** — A Thing-to-Thing relationship: attesting that a city was the capital of a political entity during a particular period.
+
+The `schemas/examples/` directory contains corresponding examples in JSON format, following the JSON Schema submission profiles:
+
+- **[place-centric-constantinople.json](schemas/examples/place-centric-constantinople.json)** — Constantinople/Istanbul in place-centric JSON format, with three attestations nested under a single Thing.
+- **[attestation-centric-customs.json](schemas/examples/attestation-centric-customs.json)** — Two attestations from London customs accounts in attestation-centric JSON format, demonstrating the flexible model for contributing evidence about existing places.
 
 ## Relationship to the WHG v4 data model
 

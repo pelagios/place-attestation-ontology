@@ -1,6 +1,11 @@
-@prefix plato: <http://w3id.org/plato#> .
+@prefix plato: <https://w3id.org/plato#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ex: <http://example.org/> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative
+# URIs that represent WHG entities (Things, Attestations, Sources, etc.).
+# In a production system these would be real, resolvable WHG identifiers.
+# External URIs that already exist are used directly.
 
 
 # =============================================================================
@@ -22,13 +27,13 @@
 # Things
 # -----------------------------------------------------------------------------
 
-ex:thing-karakorum
+whgx:thing/karakorum
     a plato:Thing ;
     plato:thing_identifier "whg:karakorum" ;
     plato:namespace "whg" ;
     plato:ccodes "MN" .
 
-ex:thing-mongol-empire
+whgx:thing/mongol-empire
     a plato:Thing ;
     plato:thing_identifier "whg:mongol-empire" ;
     plato:namespace "whg" .
@@ -38,7 +43,7 @@ ex:thing-mongol-empire
 # RelationType: capital_of
 # -----------------------------------------------------------------------------
 
-ex:reltype-capital-of
+whgx:reltype/capital-of
     a plato:RelationType ;
     plato:authority_title "capital of" ;
     plato:relation_label "capital_of" ;
@@ -52,12 +57,12 @@ ex:reltype-capital-of
 # but included here to make the example readable)
 # -----------------------------------------------------------------------------
 
-ex:name-karakorum
+whgx:name/karakorum-mn
     a plato:Name ;
     plato:toponym "Karakorum"@mn ;
     plato:language "mn" .
 
-ex:name-mongol-empire
+whgx:name/mongol-empire-en
     a plato:Name ;
     plato:toponym "Mongol Empire"@en ;
     plato:language "en" .
@@ -67,7 +72,7 @@ ex:name-mongol-empire
 # Timespan
 # -----------------------------------------------------------------------------
 
-ex:ts-karakorum-capital
+whgx:timespan/karakorum-capital
     a plato:Timespan ;
     plato:start "1235" ;
     plato:end "1260" ;
@@ -79,23 +84,23 @@ ex:ts-karakorum-capital
 # Sources
 # -----------------------------------------------------------------------------
 
-ex:source-rashid-al-din
+whgx:source/rashid-al-din
     a plato:Source ;
     plato:authority_title "Jami' al-tawarikh (Compendium of Chronicles)" ;
     plato:bibliographic_string "Rashid al-Din, Jami' al-tawarikh, c. 1307. Ed. and trans. W.M. Thackston, 1998." ;
-    plato:partOf ex:dataset-mongol-sources .
+    plato:partOf whgx:dataset/mongol-sources .
 
-ex:source-allsen-2001
+whgx:source/allsen-2001
     a plato:Source ;
     plato:authority_title "Culture and Conquest in Mongol Eurasia" ;
     plato:bibliographic_string "Allsen, T.T. (2001). Culture and Conquest in Mongol Eurasia. Cambridge University Press." ;
-    plato:partOf ex:dataset-mongol-secondary .
+    plato:partOf whgx:dataset/mongol-secondary .
 
-ex:dataset-mongol-sources
+whgx:dataset/mongol-sources
     a plato:Dataset ;
     plato:authority_title "Primary Sources for the Mongol Empire" .
 
-ex:dataset-mongol-secondary
+whgx:dataset/mongol-secondary
     a plato:Dataset ;
     plato:authority_title "Secondary Literature on the Mongol Empire" .
 
@@ -104,10 +109,10 @@ ex:dataset-mongol-secondary
 # Contributors
 # -----------------------------------------------------------------------------
 
-ex:contributor-scholar-a
+whgx:contributor/scholar-a
     a plato:Contributor .
 
-ex:contributor-scholar-b
+whgx:contributor/scholar-b
     a plato:Contributor .
 
 
@@ -119,14 +124,14 @@ ex:contributor-scholar-b
 # specifying the nature of the relationship.
 # -----------------------------------------------------------------------------
 
-ex:att-karakorum-capital
+whgx:attestation/karakorum-capital
     a plato:Attestation ;
-    plato:attests_about ex:thing-karakorum ;
-    plato:relates_to ex:thing-mongol-empire ;
-    plato:has_relation_type ex:reltype-capital-of ;
-    plato:attests_timespan ex:ts-karakorum-capital ;
-    plato:sourced_by ex:source-rashid-al-din ;
-    plato:contributed_by ex:contributor-scholar-a ;
+    plato:attests_about whgx:thing/karakorum ;
+    plato:relates_to whgx:thing/mongol-empire ;
+    plato:has_relation_type whgx:reltype/capital-of ;
+    plato:attests_timespan whgx:timespan/karakorum-capital ;
+    plato:sourced_by whgx:source/rashid-al-din ;
+    plato:contributed_by whgx:contributor/scholar-a ;
     plato:certainty 0.85 ;
     plato:certainty_note "Well attested in Rashid al-Din, though exact dates of capital status are debated." ;
     plato:created "2026-02-15T14:00:00Z"^^xsd:dateTime .
@@ -140,12 +145,12 @@ ex:att-karakorum-capital
 # both coexist, representing the state of scholarly debate.
 # -----------------------------------------------------------------------------
 
-ex:att-karakorum-dispute
+whgx:attestation/karakorum-dispute
     a plato:Attestation ;
-    plato:meta_attestation_about ex:att-karakorum-capital ;
+    plato:meta_attestation_about whgx:attestation/karakorum-capital ;
     plato:has_meta_type "refines" ;
-    plato:sourced_by ex:source-allsen-2001 ;
-    plato:contributed_by ex:contributor-scholar-b ;
+    plato:sourced_by whgx:source/allsen-2001 ;
+    plato:contributed_by whgx:contributor/scholar-b ;
     plato:certainty 0.7 ;
     plato:notes """
         Allsen argues that the capital function began shifting to Shangdu

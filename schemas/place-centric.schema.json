@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://w3id.org/plato/schemas/place-centric.schema.json",
+  "$id": "https://w3id.org/plato/schemas/place-centric.schema.json",
   "title": "PLATO Place-Centric Submission Profile",
   "description": "Submit one or more Things with their attestations nested under them. This is the successor to LPF for dataset ingestion and legacy gazetteer contributions. Each Thing carries its own attestations, which do not need to specify an 'about' field (it is implicit from the nesting).",
 
@@ -8,7 +8,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "const": "http://w3id.org/plato/schemas/place-centric.schema.json"
+      "const": "https://w3id.org/plato/schemas/place-centric.schema.json"
     },
     "profile": {
       "type": "string",
