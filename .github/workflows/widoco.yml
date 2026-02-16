@@ -1,11 +1,19 @@
 name: Generate PLATO Documentation
 
+# This workflow generates Widoco documentation and deploys it to the gh-pages branch.
+# GitHub's automatic "pages-build-deployment" action will then publish the gh-pages
+# branch to GitHub Pages. This two-step process is normal and expected.
+
 on:
   push:
     branches:
       - main
     paths:
       - 'ontology.ttl'
+      - 'README.md'
+      - 'examples/**'
+      - 'schemas/**'
+      - '.github/workflows/widoco.yml'
   workflow_dispatch:
     inputs:
       reason:
