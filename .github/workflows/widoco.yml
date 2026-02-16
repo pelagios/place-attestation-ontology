@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'plato-ontology.ttl'
+      - 'ontology.ttl'
   workflow_dispatch:
     inputs:
       reason:
