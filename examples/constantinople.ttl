@@ -4,7 +4,7 @@
 @prefix whgx: <https://whgazetteer.org/example/> .
 
 # The "whgx:" prefix is used throughout these examples for illustrative
-# URIs that represent WHG entities (Things, Attestations, Names, etc.).
+# URIs that represent WHG entities (SpatialEntities, Attestations, Names, etc.).
 # In a production system these would be real, resolvable WHG identifiers.
 # External URIs that already exist (AAT, GeoNames) are used directly.
 
@@ -13,11 +13,11 @@
 # Constantinople / Istanbul through three historical periods
 #
 # This example demonstrates the core attestation-as-bundle pattern:
-# a single Thing with multiple Attestations, each bundling a different
+# a single SpatialEntity with multiple Attestations, each bundling a different
 # Name, Geometry, and Timespan, sourced from different authorities.
 #
 # The key properties to observe:
-#   - One Thing, three Attestations.
+#   - One SpatialEntity, three Attestations.
 #   - Names, Geometries, and Timespans are independent, reusable nodes.
 #   - Each Attestation bundles a specific combination with provenance.
 #   - No data is overwritten when a new period is added.
@@ -25,12 +25,12 @@
 
 
 # -----------------------------------------------------------------------------
-# The Thing: a single, stable identity
+# The SpatialEntity: a single, stable identity
 # -----------------------------------------------------------------------------
 
-whgx:thing\/constantinople
-    a plato:Thing ;
-    plato:thing_identifier "constantinople" ;
+whgx:entity\/constantinople
+    a plato:SpatialEntity ;
+    plato:entity_identifier "constantinople" ;
     plato:namespace "whg" ;
     plato:ccodes "TR" .
 
@@ -205,7 +205,7 @@ whgx:contributor\/historian
 
 whgx:attestation\/byzantion-ancient
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/constantinople ;
+    plato:attests_about whgx:entity\/constantinople ;
     plato:attests_name whgx:name\/byzantion-grc ;
     plato:attests_geometry whgx:geometry\/ancient-settlement ;
     plato:attests_timespan whgx:timespan\/ancient-greek ;
@@ -223,7 +223,7 @@ whgx:attestation\/byzantion-ancient
 
 whgx:attestation\/konstantinoupolis-byzantine
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/constantinople ;
+    plato:attests_about whgx:entity\/constantinople ;
     plato:attests_name whgx:name\/konstantinoupolis-grc ;
     plato:attests_geometry whgx:geometry\/byzantine-walls ;
     plato:attests_timespan whgx:timespan\/byzantine ;
@@ -241,7 +241,7 @@ whgx:attestation\/konstantinoupolis-byzantine
 
 whgx:attestation\/istanbul-ottoman
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/constantinople ;
+    plato:attests_about whgx:entity\/constantinople ;
     plato:attests_name whgx:name\/istanbul-tr ;
     plato:attests_geometry whgx:geometry\/ottoman-expanded ;
     plato:attests_timespan whgx:timespan\/ottoman ;
@@ -256,11 +256,11 @@ whgx:attestation\/istanbul-ottoman
 # =============================================================================
 # Observations
 #
-# 1. All three attestations point to the same Thing. The identity persists;
+# 1. All three attestations point to the same SpatialEntity. The identity persists;
 #    the evidence is layered.
 #
 # 2. Each Name is an independent node. "İstanbul" could also appear in
-#    attestations for other Things if needed.
+#    attestations for other SpatialEntities if needed.
 #
 # 3. Adding a fourth period (e.g. modern Republic of Turkey) means adding
 #    a new Attestation, Name, Geometry, and Timespan — nothing is overwritten.

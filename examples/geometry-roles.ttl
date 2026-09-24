@@ -11,7 +11,7 @@
 
 
 # =============================================================================
-# Geometry roles: several geometries for one Thing, each depicting
+# Geometry roles: several geometries for one SpatialEntity, each depicting
 # something different
 #
 # Scenario: an English market town is attested with four geometries drawn
@@ -31,21 +31,21 @@ whgx:role\/extent
     a skos:Concept ;
     skos:inScheme whgx:scheme\/geometry-roles ;
     skos:prefLabel "extent"@en ;
-    skos:definition "The spatial extent of the Thing itself."@en .
+    skos:definition "The spatial extent of the SpatialEntity itself."@en .
 
 whgx:role\/feature-point
     a skos:Concept ;
     skos:inScheme whgx:scheme\/geometry-roles ;
     skos:prefLabel "feature point"@en ;
-    skos:definition "The location of a specific named feature of the Thing."@en .
+    skos:definition "The location of a specific named feature of the SpatialEntity."@en .
 
 whgx:role\/representative-point
     a skos:Concept ;
     skos:inScheme whgx:scheme\/geometry-roles ;
     skos:prefLabel "representative point"@en ;
     skos:definition """
-        A point standing in for the Thing as a whole, which may be derived
-        from a proxy feature rather than depicting the Thing directly.
+        A point standing in for the SpatialEntity as a whole, which may be derived
+        from a proxy feature rather than depicting the SpatialEntity directly.
     """@en .
 
 whgx:role\/label-anchor
@@ -131,7 +131,7 @@ whgx:geometry\/chipping-sodbury-gb1900-label
 
 whgx:attestation\/chipping-sodbury-gis
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/chipping-sodbury ;
+    plato:attests_about whgx:entity\/chipping-sodbury ;
     plato:attests_geometry whgx:geometry\/chipping-sodbury-footprint ,
                            whgx:geometry\/chipping-sodbury-market-place ;
     plato:sourced_by whgx:source\/candidate-towns-gis ;
@@ -139,12 +139,12 @@ whgx:attestation\/chipping-sodbury-gis
 
 whgx:attestation\/chipping-sodbury-gb1900
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/chipping-sodbury ;
+    plato:attests_about whgx:entity\/chipping-sodbury ;
     plato:attests_geometry whgx:geometry\/chipping-sodbury-gb1900-label ;
     plato:sourced_by whgx:source\/gb1900 .
 
-whgx:thing\/chipping-sodbury
-    a plato:Thing ;
+whgx:entity\/chipping-sodbury
+    a plato:SpatialEntity ;
     rdfs:label "Chipping Sodbury"@en .
 
 whgx:source\/candidate-towns-gis

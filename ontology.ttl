@@ -19,11 +19,11 @@
 
 <https://w3id.org/plato>
     a owl:Ontology ;
-    owl:versionInfo "0.2.0" ;
+    owl:versionInfo "0.3.0" ;
     dcterms:title "PLATO — Place Attestation Ontology"@en ;
     dcterms:description """
         An ontology for representing historical place knowledge as attestations:
-        bundles of evidence linking Things (places, routes, networks, and other
+        bundles of evidence linking SpatialEntities (places, routes, networks, and other
         entities related to place) to Names, Geometries, Timespans, Types, and
         Authorities with full provenance.
 
@@ -59,23 +59,31 @@
 # =============================================================================
 
 # -----------------------------------------------------------------------------
-# Thing
+# SpatialEntity
 # -----------------------------------------------------------------------------
 # The stable identity to which attestations refer. Typically a place, but
 # generalised to accommodate routes, networks, administrative units, and
-# other historical entities related to place. A Thing persists regardless
+# other historical entities related to place. A SpatialEntity persists regardless
 # of how many attestations reference it.
 
-plato:Thing
+plato:SpatialEntity
     a owl:Class ;
     rdfs:subClassOf prov:Entity ;
-    rdfs:label "Thing"@en ;
+    rdfs:label "Spatial Entity"@en ;
     rdfs:comment """
-        A stable, persistent identity representing a place or other historical
-        entity related to place (routes, networks, administrative units, etc.).
-        Things are not defined by any single attestation; they are the point of
-        convergence for multiple attestations from different sources, periods,
-        and contributors.
+        An entity whose identity is bound up with space, whether its spatial
+        extent is attested directly, applies notionally (as with the region to
+        which a period applies), or is derived from its constituents (as with a
+        collection). A SpatialEntity need not have any attested geometry: lost,
+        imagined and unlocated entities are admissible.
+
+        What kind of entity it is (settlement, route, region, administrative
+        unit, period and so on) is not fixed by the class. It is established by
+        Type attestations, so a classification is a claim rather than an axiom.
+
+        SpatialEntities are not defined by any single attestation. They are the
+        point of convergence for many attestations from different sources,
+        periods and contributors.
     """@en .
 
 
@@ -83,7 +91,7 @@ plato:Thing
 # Attestation
 # -----------------------------------------------------------------------------
 # The central innovation of this model. An Attestation is a lightweight node
-# that bundles together a Thing, a Name, a Geometry, a Timespan, a Type,
+# that bundles together a SpatialEntity, a Name, a Geometry, a Timespan, a Type,
 # and an Authority (source) through outgoing relationships. The Attestation
 # itself carries only metadata (certainty, contributor, notes). The bundling
 # happens through the relationships, not through fields on the Attestation.
@@ -96,7 +104,7 @@ plato:Attestation
     rdfs:subClassOf prov:Entity ;
     rdfs:label "Attestation"@en ;
     rdfs:comment """
-        A bundle of evidence asserting that a particular Thing had a particular
+        A bundle of evidence asserting that a particular SpatialEntity had a particular
         Name, Geometry, Type, or combination thereof, during a particular
         Timespan, according to a particular Authority. The Attestation node
         carries only metadata; its semantic content is defined entirely by its
@@ -113,15 +121,15 @@ plato:Attestation
 # Name
 # -----------------------------------------------------------------------------
 # A toponym or appellation. Names are reusable nodes: the same Name can appear
-# in attestations for multiple Things (e.g. "Alexandria" for several cities),
-# and the same Thing can have multiple Names via different attestations.
+# in attestations for multiple SpatialEntities (e.g. "Alexandria" for several cities),
+# and the same SpatialEntity can have multiple Names via different attestations.
 
 plato:Name
     a owl:Class ;
     rdfs:label "Name"@en ;
     rdfs:comment """
-        A toponym or appellation for a Thing. Names are independent, reusable
-        entities. The association between a Name and a Thing is always mediated
+        A toponym or appellation for a SpatialEntity. Names are independent, reusable
+        entities. The association between a Name and a SpatialEntity is always mediated
         by an Attestation, which provides temporal scope and provenance.
     """@en .
 
@@ -131,16 +139,16 @@ plato:Name
 # -----------------------------------------------------------------------------
 # A spatial representation: point, polygon, line, or other GeoSPARQL geometry.
 # Like Names, Geometries are reusable: the same boundary polygon might apply
-# to different Things or different periods.
+# to different SpatialEntities or different periods.
 
 plato:Geometry
     a owl:Class ;
     rdfs:subClassOf geo:Geometry ;
     rdfs:label "Geometry"@en ;
     rdfs:comment """
-        A spatial representation of a Thing's extent or location. Geometries
+        A spatial representation of a SpatialEntity's extent or location. Geometries
         are independent, reusable entities. The same Geometry may be referenced
-        by multiple Attestations across different Things or time periods.
+        by multiple Attestations across different SpatialEntities or time periods.
 
         Note: GeometryCollection is not supported in some graph database
         implementations. For heterogeneous geometry sets (e.g., both point and
@@ -174,14 +182,14 @@ plato:Timespan
 # -----------------------------------------------------------------------------
 # A classification drawn from a controlled vocabulary (typically AAT).
 # Types are reusable: "inhabited place" can be referenced by attestations
-# for many different Things.
+# for many different SpatialEntities.
 
 plato:Type
     a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Type"@en ;
     rdfs:comment """
-        A classification or category for a Thing, typically drawn from a
+        A classification or category for a SpatialEntity, typically drawn from a
         controlled vocabulary such as the Getty Art & Architecture Thesaurus
         (AAT). Types are independent, reusable entities.
     """@en .
@@ -190,16 +198,16 @@ plato:Type
 # -----------------------------------------------------------------------------
 # PropertyValue
 # -----------------------------------------------------------------------------
-# An attribute of a Thing that is not a Name, Geometry, Timespan or Type:
+# An attribute of a SpatialEntity that is not a Name, Geometry, Timespan or Type:
 # a population count, an elevation, a taxable valuation, a market day.
 # Like the other facets, PropertyValues are reusable nodes — one census
-# figure may be attested for several Things from a single table.
+# figure may be attested for several SpatialEntities from a single table.
 
 plato:PropertyValue
     a owl:Class ;
     rdfs:label "Property Value"@en ;
     rdfs:comment """
-        A quantitative or descriptive attribute of a Thing, expressed as a
+        A quantitative or descriptive attribute of a SpatialEntity, expressed as a
         property drawn from an external vocabulary together with its value.
         Covers the many things a historical source says that are neither a
         name, a location, a period nor a classification — populations,
@@ -215,7 +223,7 @@ plato:PropertyValue
         facet node, a PropertyValue may carry the qualification properties
         (certainty, fuzziness) like any other.
 
-        Where the value is itself an entity, use a Thing-to-Thing relation
+        Where the value is itself an entity, use a entity-to-entity relation
         instead; this class is for attributes, not relationships.
     """@en .
 
@@ -281,7 +289,7 @@ plato:RelationType
     rdfs:subClassOf plato:Authority ;
     rdfs:label "Relation Type"@en ;
     rdfs:comment """
-        A vocabulary entry defining a semantic relationship between Things:
+        A vocabulary entry defining a semantic relationship between SpatialEntities:
         'capital_of', 'successor_to', 'connected_by_trade_route_to', etc.
         Carries a label, an inverse label, and domain/range constraints.
         This allows the vocabulary of historical relationships to grow
@@ -310,7 +318,7 @@ plato:Gazetteer
     rdfs:subClassOf dcat:Dataset ;
     rdfs:label "Gazetteer"@en ;
     rdfs:comment """
-        A mutable, versioned workspace of Things and their associated
+        A mutable, versioned workspace of SpatialEntities and their associated
         Attestations, owned by a contributor or team. Replaces the WHG v3
         concepts of Dataset, Dataset Collection, and Place Collection.
         A Gazetteer can be incrementally edited, enriched, and corrected
@@ -390,20 +398,20 @@ plato:attests_about
     a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "attests about"@en ;
     rdfs:comment """
-        Links an Attestation to the Thing it is about. Every attestation must
-        have exactly one subject Thing. This is the primary entity being
+        Links an Attestation to the SpatialEntity it is about. Every attestation must
+        have exactly one subject entity. This is the primary entity being
         described by the bundled name, geometry, timespan, and type assertions.
 
-        Functional property: each attestation has exactly one subject Thing.
+        Functional property: each attestation has exactly one subject entity.
     """@en ;
     rdfs:domain plato:Attestation ;
-    rdfs:range plato:Thing .
+    rdfs:range plato:SpatialEntity .
 
 plato:attests_name
     a owl:ObjectProperty ;
     rdfs:label "attests name"@en ;
     rdfs:comment """
-        Links an Attestation to a Name it asserts for the Thing. An attestation
+        Links an Attestation to a Name it asserts for the SpatialEntity. An attestation
         may assert multiple names (e.g., primary name and variants) or no name
         at all (e.g., geometry-only attestations).
     """@en ;
@@ -414,7 +422,7 @@ plato:attests_geometry
     a owl:ObjectProperty ;
     rdfs:label "attests geometry"@en ;
     rdfs:comment """
-        Links an Attestation to a Geometry it asserts for the Thing. An
+        Links an Attestation to a Geometry it asserts for the SpatialEntity. An
         attestation may assert multiple geometries (e.g., point and polygon)
         or no geometry at all (e.g., name-only attestations from textual sources).
     """@en ;
@@ -437,7 +445,7 @@ plato:attests_type
     a owl:ObjectProperty ;
     rdfs:label "attests type"@en ;
     rdfs:comment """
-        Links an Attestation to a Type classification it assigns to the Thing.
+        Links an Attestation to a Type classification it assigns to the SpatialEntity.
         An attestation may assert multiple types or no type at all.
     """@en ;
     rdfs:domain plato:Attestation ;
@@ -447,14 +455,14 @@ plato:attests_property
     a owl:ObjectProperty ;
     rdfs:label "attests property"@en ;
     rdfs:comment """
-        Links an Attestation to a PropertyValue it asserts of the Thing — a
+        Links an Attestation to a PropertyValue it asserts of the SpatialEntity — a
         population, a valuation, an elevation, a market's trading day. An
         attestation may assert several properties or none.
 
         These are among the commonest things a source says about a place, and
         they carry exactly the provenance and temporal scoping the attestation
         pattern exists to handle: a population figure is a claim, by a named
-        source, about one Thing, over a Timespan, with a certainty. The
+        source, about one SpatialEntity, over a Timespan, with a certainty. The
         attestation's own timespans scope the property as they scope every
         other facet in the bundle.
     """@en ;
@@ -478,12 +486,12 @@ plato:sourced_by
 
 
 # =============================================================================
-# Thing-to-Thing Relations
+# entity-to-entity Relations
 # =============================================================================
 # Mediated by Attestations using a RelationType authority. This handles
 # scholarly relationships like "capital_of", "successor_to",
 # "connected_by_trade_route_to". The pattern is:
-#   Thing1 <- [attests_about] - Attestation - [relates_to] -> Thing2
+#   Entity1 <- [attests_about] - Attestation - [relates_to] -> Entity2
 #                                      |
 #                              [has_relation_type]
 #                                      ↓
@@ -496,9 +504,9 @@ plato:relates_to
     a owl:ObjectProperty ;
     rdfs:label "relates to"@en ;
     rdfs:comment """
-        Links an Attestation to a second Thing, asserting a relationship
-        between the Attestation's subject Thing (via attests_about) and this
-        target Thing. The semantic nature of the relationship is specified by
+        Links an Attestation to a second SpatialEntity, asserting a relationship
+        between the Attestation's subject entity (via attests_about) and this
+        target entity. The semantic nature of the relationship is specified by
         plato:has_relation_type, which references a RelationType authority.
 
         Example: An attestation about Constantinople that relates_to the
@@ -506,13 +514,13 @@ plato:relates_to
         "Constantinople was the capital of the Byzantine Empire".
     """@en ;
     rdfs:domain plato:Attestation ;
-    rdfs:range plato:Thing .
+    rdfs:range plato:SpatialEntity .
 
 plato:has_relation_type
     a owl:ObjectProperty ;
     rdfs:label "has relation type"@en ;
     rdfs:comment """
-        Specifies the semantic type of a Thing-to-Thing relationship
+        Specifies the semantic type of a entity-to-entity relationship
         attested by an Attestation. References a RelationType authority
         which defines the relationship's label, inverse, and domain/range
         constraints. Examples: 'capital_of', 'successor_to',
@@ -547,7 +555,7 @@ plato:meta_attestation_about
 
         Example: A meta-attestation might assert that one source's geometry
         attestation contradicts another source's geometry attestation for the
-        same Thing.
+        same SpatialEntity.
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range plato:Attestation .
@@ -614,7 +622,7 @@ plato:sequence
     rdfs:comment """
         Ordering index for attestations in routes or itineraries. Defines
         the position of this attestation in an ordered sequence. Used when
-        the Thing being attested (via attests_about) is a Route or Itinerary.
+        the SpatialEntity being attested (via attests_about) is a Route or Itinerary.
         Lower numbers come first in the sequence.
     """@en ;
     rdfs:domain plato:Attestation ;
@@ -706,7 +714,7 @@ plato:modified
 #   to an anchor entity. "20km east of Nanjing" is a relative geometry.
 #   "During the reign of Justinian" is a relative timespan. "Also known as
 #   Rum" (i.e. relative to the name "Rome") is a relative name. The anchor
-#   may be a Thing or another facet node.
+#   may be a SpatialEntity or another facet node.
 #
 # These three concepts are orthogonal. A relative geometry can also be
 # of low certainty ("roughly 20km east") or fuzzy ("in the hinterland of
@@ -777,7 +785,7 @@ plato:fuzziness_note
 # Relativity properties (applicable to any facet node)
 # -----------------------------------------------------------------------------
 # A relative facet is defined in terms of an anchor entity rather than in
-# absolute terms. The anchor may be a Thing (most commonly for geometry:
+# absolute terms. The anchor may be a SpatialEntity (most commonly for geometry:
 # "20km east of Nanjing") or another facet node (a Name defined relative
 # to another Name, a Timespan defined relative to a Period).
 
@@ -787,10 +795,10 @@ plato:relative_to
     rdfs:comment """
         Links a facet node to its anchor entity, indicating that this
         facet is defined relationally rather than absolutely. The anchor
-        is typically a Thing, Period, or another facet (Name, Timespan, etc.).
+        is typically a SpatialEntity, Period, or another facet (Name, Timespan, etc.).
 
         Common patterns:
-        - Spatial relativity: "20km east of Nanjing" (anchor is a Thing)
+        - Spatial relativity: "20km east of Nanjing" (anchor is a SpatialEntity)
         - Temporal relativity: "during the reign of Justinian" (anchor is a Period)
         - Name relativity: "also known as Rome" (anchor is another Name)
     """@en ;
@@ -800,7 +808,7 @@ plato:relative_to
     ] ;
     rdfs:range [
         a owl:Class ;
-        owl:unionOf (plato:Thing plato:Name plato:Timespan plato:Type plato:Period)
+        owl:unionOf (plato:SpatialEntity plato:Name plato:Timespan plato:Type plato:Period)
     ] .
 
 plato:relative_bearing
@@ -844,8 +852,8 @@ plato:relative_qualifier
 # =============================================================================
 # Identity Relations
 # =============================================================================
-# A dedicated mechanism for asserting that two Things are (or may be) the
-# same entity. This is fundamentally different from scholarly Thing-to-Thing
+# A dedicated mechanism for asserting that two SpatialEntities are (or may be) the
+# same entity. This is fundamentally different from scholarly entity-to-entity
 # relations (capital_of, successor_to, etc.) which assert substantive
 # historical relationships between distinct entities. Identity relations
 # assert that two identifiers, potentially from different authority systems
@@ -864,12 +872,12 @@ plato:IdentityRelation
     a owl:Class ;
     rdfs:label "Identity Relation"@en ;
     rdfs:comment """
-        An assertion that two Things refer to the same real-world entity.
+        An assertion that two SpatialEntities refer to the same real-world entity.
         Carries its own provenance (who asserted it, on what basis),
         certainty (how confident the assertion is), and identity semantics
         (exactMatch, closeMatch, related).
 
-        Identity relations are distinct from scholarly Thing-to-Thing
+        Identity relations are distinct from scholarly entity-to-entity
         relations, which describe substantive historical relationships
         between different entities. They are also distinct from Candidates,
         which are algorithm-generated candidates not yet confirmed by
@@ -879,27 +887,27 @@ plato:IdentityRelation
 plato:identity_subject
     a owl:ObjectProperty ;
     rdfs:label "identity subject"@en ;
-    rdfs:comment "The first Thing in an identity assertion."@en ;
+    rdfs:comment "The first SpatialEntity in an identity assertion."@en ;
     rdfs:domain plato:IdentityRelation ;
-    rdfs:range plato:Thing .
+    rdfs:range plato:SpatialEntity .
 
 plato:identity_object
     a owl:ObjectProperty ;
     rdfs:label "identity object"@en ;
-    rdfs:comment "The second Thing in an identity assertion."@en ;
+    rdfs:comment "The second SpatialEntity in an identity assertion."@en ;
     rdfs:domain plato:IdentityRelation ;
-    rdfs:range plato:Thing .
+    rdfs:range plato:SpatialEntity .
 
 plato:identity_type
     a owl:DatatypeProperty ;
     rdfs:label "identity type"@en ;
     rdfs:comment """
         The semantic strength of the identity assertion:
-        'exactMatch'  — the two Things are unambiguously the same entity.
-        'closeMatch'  — the two Things are believed to be the same entity
+        'exactMatch'  — the two SpatialEntities are unambiguously the same entity.
+        'closeMatch'  — the two SpatialEntities are believed to be the same entity
                         but with some residual ambiguity (e.g. differing
                         granularity, overlapping but not identical scope).
-        'related'     — the two Things are closely associated but may not
+        'related'     — the two SpatialEntities are closely associated but may not
                         be strictly identical (e.g. a settlement and its
                         administrative district, or successive phases of
                         a site that might or might not constitute continuity).
@@ -973,7 +981,7 @@ plato:promoted_from
 # Name Properties
 # =============================================================================
 # Properties for Name entities, which represent linguistic forms (toponyms,
-# chrononyms, ethnonyms) by which Things are known.
+# chrononyms, ethnonyms) by which SpatialEntities are known.
 
 plato:toponym
     a owl:DatatypeProperty, owl:FunctionalProperty ;
@@ -1115,7 +1123,7 @@ plato:geometry_role
     rdfs:comment """
         What this geometry depicts, as distinct from how precisely it is known
         (plato:spatial_precision) or where its indexing point falls
-        (plato:repr_point). A Thing may be attested with several geometries at
+        (plato:repr_point). A SpatialEntity may be attested with several geometries at
         once — a built extent, the location of a specific central feature, a
         proxy standing in for the whole, the anchor of a map label — and without
         a declared role a consumer cannot tell them apart, nor state which one
@@ -1127,7 +1135,7 @@ plato:geometry_role
         record geometry differently be compared.
 
         Note that role is orthogonal to precision: a proxy locator may be
-        surveyed to the metre and still not depict the Thing it stands for. A
+        surveyed to the metre and still not depict the SpatialEntity it stands for. A
         parish church's coordinates contributed as a locator for a town are a
         representative point of high precision, not an imprecise feature point.
     """@en ;
@@ -1711,33 +1719,33 @@ plato:contributor_identifier
 
 
 # =============================================================================
-# Thing Properties
+# SpatialEntity Properties
 # =============================================================================
 
-plato:thing_identifier
+plato:entity_identifier
     a owl:DatatypeProperty ;
     rdfs:label "identifier"@en ;
-    rdfs:comment "The stable, persistent identifier for this Thing."@en ;
-    rdfs:domain plato:Thing ;
+    rdfs:comment "The stable, persistent identifier for this SpatialEntity."@en ;
+    rdfs:domain plato:SpatialEntity ;
     rdfs:range xsd:string .
 
 plato:namespace
     a owl:DatatypeProperty ;
     rdfs:label "namespace"@en ;
     rdfs:comment """
-        The authority namespace for this Thing (e.g. 'geonames', 'wikidata',
-        'tgn', 'osm', 'pleiades', 'whg'). Authority-sourced Things carry
-        their origin namespace; contributed Things that cannot be linked to
+        The authority namespace for this SpatialEntity (e.g. 'geonames', 'wikidata',
+        'tgn', 'osm', 'pleiades', 'whg'). Authority-sourced SpatialEntities carry
+        their origin namespace; contributed SpatialEntities that cannot be linked to
         any authority receive the 'whg' namespace.
     """@en ;
-    rdfs:domain plato:Thing ;
+    rdfs:domain plato:SpatialEntity ;
     rdfs:range xsd:string .
 
 plato:ccodes
     a owl:DatatypeProperty ;
     rdfs:label "country codes"@en ;
-    rdfs:comment "ISO 3166-1 alpha-2 country codes associated with this Thing."@en ;
-    rdfs:domain plato:Thing ;
+    rdfs:comment "ISO 3166-1 alpha-2 country codes associated with this SpatialEntity."@en ;
+    rdfs:domain plato:SpatialEntity ;
     rdfs:range xsd:string .
 
 
@@ -1745,12 +1753,12 @@ plato:ccodes
 # Gazetteer Properties
 # =============================================================================
 
-plato:contains_thing
+plato:contains_entity
     a owl:ObjectProperty ;
-    rdfs:label "contains thing"@en ;
-    rdfs:comment "Links a Gazetteer to a Thing it contains."@en ;
+    rdfs:label "contains entity"@en ;
+    rdfs:comment "Links a Gazetteer to a SpatialEntity it contains."@en ;
     rdfs:domain plato:Gazetteer ;
-    rdfs:range plato:Thing .
+    rdfs:range plato:SpatialEntity .
 
 plato:contains_attestation
     a owl:ObjectProperty ;
@@ -1793,7 +1801,7 @@ plato:Candidate
     a owl:Class ;
     rdfs:label "Candidate"@en ;
     rdfs:comment """
-        An algorithm-generated match candidate between two Things, produced
+        An algorithm-generated match candidate between two SpatialEntities, produced
         by the PLACE clustering engine. Candidates carry a similarity score,
         algorithm version, and review status. They are explicitly not
         IdentityRelations — they become IdentityRelations only when confirmed
@@ -1802,15 +1810,15 @@ plato:Candidate
 
 plato:candidate_source
     a owl:ObjectProperty ;
-    rdfs:label "source thing"@en ;
+    rdfs:label "source entity"@en ;
     rdfs:domain plato:Candidate ;
-    rdfs:range plato:Thing .
+    rdfs:range plato:SpatialEntity .
 
 plato:candidate_candidate
     a owl:ObjectProperty ;
-    rdfs:label "candidate thing"@en ;
+    rdfs:label "candidate entity"@en ;
     rdfs:domain plato:Candidate ;
-    rdfs:range plato:Thing .
+    rdfs:range plato:SpatialEntity .
 
 plato:similarity_score
     a owl:DatatypeProperty ;
@@ -1836,3 +1844,36 @@ plato:generated_at
     rdfs:label "generated at"@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range xsd:dateTime .
+
+
+# =============================================================================
+# Deprecated terms (renamed in 0.3.0)
+# =============================================================================
+# The namespace is published, so the previous names are retained as deprecated
+# equivalents rather than removed. They carry the same meaning and may be used
+# by existing data, but new data should use the current terms.
+
+plato:Thing
+    a owl:Class ;
+    owl:deprecated true ;
+    owl:equivalentClass plato:SpatialEntity ;
+    rdfs:label "Thing (deprecated)"@en ;
+    rdfs:comment """
+        Deprecated in 0.3.0. Renamed to plato:SpatialEntity, which states the
+        actual scope of the class rather than leaving it open. Use
+        plato:SpatialEntity.
+    """@en .
+
+plato:thing_identifier
+    a owl:DatatypeProperty ;
+    owl:deprecated true ;
+    owl:equivalentProperty plato:entity_identifier ;
+    rdfs:label "thing identifier (deprecated)"@en ;
+    rdfs:comment "Deprecated in 0.3.0. Use plato:entity_identifier."@en .
+
+plato:contains_thing
+    a owl:ObjectProperty ;
+    owl:deprecated true ;
+    owl:equivalentProperty plato:contains_entity ;
+    rdfs:label "contains thing (deprecated)"@en ;
+    rdfs:comment "Deprecated in 0.3.0. Use plato:contains_entity."@en .

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://w3id.org/plato/schemas/attestation-centric.schema.json",
   "title": "PLATO Attestation-Centric Submission Profile",
-  "description": "Submit one or more attestations referencing existing Things by URI. This profile is for incremental scholarly contribution: attesting evidence about places that already exist in the system without redefining them. Each attestation must specify its 'about' field.",
+  "description": "Submit one or more attestations referencing existing SpatialEntities by URI. This profile is for incremental scholarly contribution: attesting evidence about places that already exist in the system without redefining them. Each attestation must specify its 'about' field.",
 
   "type": "object",
   "properties": {
@@ -35,13 +35,13 @@
 
     "attestations": {
       "type": "array",
-      "description": "Attestations referencing existing Things.",
+      "description": "Attestations referencing existing SpatialEntities.",
       "items": {
         "allOf": [
           { "$ref": "plato.schema.json#/$defs/attestation" },
           {
             "type": "object",
-            "description": "In attestation-centric mode, 'about' is required — it identifies the existing Thing being attested.",
+            "description": "In attestation-centric mode, 'about' is required — it identifies the existing SpatialEntity being attested.",
             "required": ["about"]
           }
         ]
@@ -49,12 +49,12 @@
       "minItems": 1
     },
 
-    "newThings": {
+    "newSpatialEntities": {
       "type": "array",
-      "description": "Optional: new Things that do not yet exist in the system. Use sparingly — only when no existing Thing matches. These follow the place-centric pattern (Thing with nested attestations) but are submitted alongside attestation-centric contributions.",
+      "description": "Optional: new SpatialEntities that do not yet exist in the system. Use sparingly — only when no existing SpatialEntity matches. These follow the place-centric pattern (SpatialEntity with nested attestations) but are submitted alongside attestation-centric contributions.",
       "items": {
         "allOf": [
-          { "$ref": "plato.schema.json#/$defs/thing" },
+          { "$ref": "plato.schema.json#/$defs/spatialEntity" },
           {
             "type": "object",
             "required": ["attestations"]
@@ -65,7 +65,7 @@
 
     "identityRelations": {
       "type": "array",
-      "description": "Identity assertions between Things.",
+      "description": "Identity assertions between SpatialEntities.",
       "items": { "$ref": "plato.schema.json#/$defs/identityRelation" }
     }
   },

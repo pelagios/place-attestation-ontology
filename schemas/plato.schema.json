@@ -70,7 +70,7 @@
         },
         "relativeTo": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the anchor entity (Thing, Name, Period, etc.) to which this facet is defined relatively."
+          "description": "URI of the anchor entity (SpatialEntity, Name, Period, etc.) to which this facet is defined relatively."
         },
         "relativeBearing": {
           "type": "number",
@@ -94,7 +94,7 @@
 
     "name": {
       "type": "object",
-      "description": "A toponym or appellation. Reusable across attestations and Things.",
+      "description": "A toponym or appellation. Reusable across attestations and SpatialEntities.",
       "properties": {
         "@id": { "$ref": "#/$defs/uri", "description": "Stable URI for this Name node, if it has one." },
         "toponym": { "type": "string", "description": "The name string in its original script." },
@@ -164,7 +164,7 @@
         },
         "role": {
           "$ref": "#/$defs/uri",
-          "description": "URI of a controlled-vocabulary concept stating what this geometry depicts: an extent, a feature point, a representative point standing in for the Thing, a label anchor. Orthogonal to spatialPrecision, which states how well the location is known rather than what it locates."
+          "description": "URI of a controlled-vocabulary concept stating what this geometry depicts: an extent, a feature point, a representative point standing in for the SpatialEntity, a label anchor. Orthogonal to spatialPrecision, which states how well the location is known rather than what it locates."
         },
         "bbox": {
           "type": "array",
@@ -202,7 +202,7 @@
 
     "propertyValue": {
       "type": "object",
-      "description": "An attribute of a Thing that is not a Name, Geometry, Timespan or Type: a population, a valuation, an elevation, a market's trading day. The property is identified by URI in an external vocabulary; the value is either a literal or a structured object whose shape is declared by valueType.",
+      "description": "An attribute of a SpatialEntity that is not a Name, Geometry, Timespan or Type: a population, a valuation, an elevation, a market's trading day. The property is identified by URI in an external vocabulary; the value is either a literal or a structured object whose shape is declared by valueType.",
       "properties": {
         "@id": { "$ref": "#/$defs/uri" },
         "property": {
@@ -306,11 +306,11 @@
 
     "relation": {
       "type": "object",
-      "description": "A Thing-to-Thing relation attested by an attestation (e.g. capital_of, successor_to).",
+      "description": "A entity-to-entity relation attested by an attestation (e.g. capital_of, successor_to).",
       "properties": {
         "relatesTo": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the target Thing."
+          "description": "URI of the target SpatialEntity."
         },
         "relationType": {
           "$ref": "#/$defs/uri",
@@ -350,12 +350,12 @@
 
     "attestation": {
       "type": "object",
-      "description": "A bundle of evidence linking a Thing to Names, Geometries, Timespans, Types, and Sources. The core unit of contributed knowledge in PLATO.",
+      "description": "A bundle of evidence linking a SpatialEntity to Names, Geometries, Timespans, Types, and Sources. The core unit of contributed knowledge in PLATO.",
       "properties": {
         "@id": { "$ref": "#/$defs/uri", "description": "Stable URI for this attestation." },
         "about": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the Thing this attestation is about. Required in attestation-centric submissions; implicit in place-centric submissions where the attestation is nested under its Thing."
+          "description": "URI of the SpatialEntity this attestation is about. Required in attestation-centric submissions; implicit in place-centric submissions where the attestation is nested under its SpatialEntity."
         },
 
         "names": {
@@ -393,7 +393,7 @@
         "relations": {
           "type": "array",
           "items": { "$ref": "#/$defs/relation" },
-          "description": "Thing-to-Thing relations asserted by this attestation."
+          "description": "entity-to-entity relations asserted by this attestation."
         },
 
         "meta": {
@@ -513,16 +513,16 @@
 
     "identityRelation": {
       "type": "object",
-      "description": "An assertion that two Things refer to the same real-world entity. Distinct from scholarly Thing-to-Thing relations and from algorithm-generated Candidates.",
+      "description": "An assertion that two SpatialEntities refer to the same real-world entity. Distinct from scholarly entity-to-entity relations and from algorithm-generated Candidates.",
       "properties": {
         "@id": { "$ref": "#/$defs/uri" },
         "subject": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the first Thing."
+          "description": "URI of the first SpatialEntity."
         },
         "object": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the second Thing."
+          "description": "URI of the second SpatialEntity."
         },
         "identityType": {
           "type": "string",
@@ -559,13 +559,13 @@
     },
 
 
-    "thing": {
+    "spatialEntity": {
       "type": "object",
       "description": "A stable, persistent identity — typically a place, but generalised to routes, networks, administrative units, and other historical entities.",
       "properties": {
         "@id": {
           "$ref": "#/$defs/uri",
-          "description": "Stable URI for this Thing. For new Things not yet in the system, omit or use a local identifier."
+          "description": "Stable URI for this SpatialEntity. For new SpatialEntities not yet in the system, omit or use a local identifier."
         },
         "label": {
           "type": "string",
@@ -574,12 +574,12 @@
         "attestations": {
           "type": "array",
           "items": { "$ref": "#/$defs/attestation" },
-          "description": "Attestations about this Thing (used in place-centric submissions)."
+          "description": "Attestations about this SpatialEntity (used in place-centric submissions)."
         },
         "identityRelations": {
           "type": "array",
           "items": { "$ref": "#/$defs/identityRelation" },
-          "description": "Identity assertions linking this Thing to others."
+          "description": "Identity assertions linking this SpatialEntity to others."
         }
       },
       "required": ["label"],

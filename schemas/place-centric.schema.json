@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://w3id.org/plato/schemas/place-centric.schema.json",
   "title": "PLATO Place-Centric Submission Profile",
-  "description": "Submit one or more Things with their attestations nested under them. This is the successor to LPF for dataset ingestion and legacy gazetteer contributions. Each Thing carries its own attestations, which do not need to specify an 'about' field (it is implicit from the nesting).",
+  "description": "Submit one or more SpatialEntities with their attestations nested under them. This is the successor to LPF for dataset ingestion and legacy gazetteer contributions. Each SpatialEntity carries its own attestations, which do not need to specify an 'about' field (it is implicit from the nesting).",
 
   "type": "object",
   "properties": {
@@ -33,12 +33,12 @@
       "additionalProperties": false
     },
 
-    "things": {
+    "spatialEntities": {
       "type": "array",
-      "description": "The Things being submitted, each with nested attestations.",
+      "description": "The SpatialEntitys being submitted, each with nested attestations.",
       "items": {
         "allOf": [
-          { "$ref": "plato.schema.json#/$defs/thing" },
+          { "$ref": "plato.schema.json#/$defs/spatialEntity" },
           {
             "type": "object",
             "properties": {
@@ -50,7 +50,7 @@
                     { "$ref": "plato.schema.json#/$defs/attestation" },
                     {
                       "type": "object",
-                      "description": "In place-centric mode, 'about' is implicit (the enclosing Thing) and should be omitted.",
+                      "description": "In place-centric mode, 'about' is implicit (the enclosing SpatialEntity) and should be omitted.",
                       "not": {
                         "required": ["about"]
                       }
@@ -68,11 +68,11 @@
 
     "identityRelations": {
       "type": "array",
-      "description": "Identity assertions between Things in this submission or between submitted Things and existing ones.",
+      "description": "Identity assertions between SpatialEntities in this submission or between submitted SpatialEntities and existing ones.",
       "items": { "$ref": "plato.schema.json#/$defs/identityRelation" }
     }
   },
 
-  "required": ["profile", "gazetteer", "things"],
+  "required": ["profile", "gazetteer", "spatialEntities"],
   "additionalProperties": false
 }

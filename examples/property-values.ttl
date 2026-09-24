@@ -20,7 +20,7 @@
 # 1. A scalar attribute: a population figure
 #
 # A textbook attestation in every respect — a claim, by a named source,
-# about one Thing, over a Timespan, with a certainty — except that until
+# about one SpatialEntity, over a Timespan, with a certainty — except that until
 # now there was nowhere to put the number.
 # -----------------------------------------------------------------------------
 
@@ -39,7 +39,7 @@ whgx:timespan\/1801
 
 whgx:attestation\/andover-census-1801
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/andover ;
+    plato:attests_about whgx:entity\/andover ;
     plato:attests_property whgx:property\/andover-population-1801 ;
     plato:attests_timespan whgx:timespan\/1801 ;
     plato:sourced_by whgx:source\/census-1801 ;
@@ -85,27 +85,27 @@ whgx:timespan\/from-1515
 
 whgx:attestation\/westbury-fair-grant-1515
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/westbury-whitsun-fair ;
+    plato:attests_about whgx:entity\/westbury-whitsun-fair ;
     plato:attests_property whgx:property\/westbury-fair-whitsun ;
     plato:attests_timespan whgx:timespan\/from-1515 ;
     plato:sourced_by whgx:source\/patent-roll-7-hen-viii ;
     plato:notes """
         One of four fairs established by the same grant. Each is modelled as
-        its own Thing related to the town, so that four recurrence rules do
+        its own SpatialEntity related to the town, so that four recurrence rules do
         not have to share one record.
     """@en .
 
 
 # -----------------------------------------------------------------------------
-# Things and sources referenced above
+# SpatialEntities and sources referenced above
 # -----------------------------------------------------------------------------
 
-whgx:thing\/andover
-    a plato:Thing ;
+whgx:entity\/andover
+    a plato:SpatialEntity ;
     rdfs:label "Andover"@en .
 
-whgx:thing\/westbury-whitsun-fair
-    a plato:Thing ;
+whgx:entity\/westbury-whitsun-fair
+    a plato:SpatialEntity ;
     rdfs:label "Westbury Whitsun fair"@en .
 
 whgx:source\/census-1801

@@ -5,13 +5,13 @@
 @prefix whgx: <https://whgazetteer.org/example/> .
 
 # The "whgx:" prefix is used throughout these examples for illustrative
-# URIs that represent WHG entities (Things, Attestations, Sources, etc.).
+# URIs that represent WHG entities (SpatialEntities, Attestations, Sources, etc.).
 # In a production system these would be real, resolvable WHG identifiers.
 # External URIs that already exist are used directly.
 
 
 # =============================================================================
-# Thing-to-Thing relation with meta-attestation
+# entity-to-entity relation with meta-attestation
 #
 # Scenario: A scholar attests that Karakorum was the capital of the Mongol
 # Empire during a particular period, based on Rashid al-Din's Compendium
@@ -20,24 +20,24 @@
 # Shangdu (Xanadu) earlier than conventionally dated.
 #
 # This demonstrates:
-#   1. Thing-to-Thing relations via RelationType authorities
+#   1. entity-to-entity relations via RelationType authorities
 #   2. Meta-attestations modelling scholarly disagreement
 # =============================================================================
 
 
 # -----------------------------------------------------------------------------
-# Things
+# SpatialEntities
 # -----------------------------------------------------------------------------
 
-whgx:thing\/karakorum
-    a plato:Thing ;
-    plato:thing_identifier "whg:karakorum" ;
+whgx:entity\/karakorum
+    a plato:SpatialEntity ;
+    plato:entity_identifier "whg:karakorum" ;
     plato:namespace "whg" ;
     plato:ccodes "MN" .
 
-whgx:thing\/mongol-empire
-    a plato:Thing ;
-    plato:thing_identifier "whg:mongol-empire" ;
+whgx:entity\/mongol-empire
+    a plato:SpatialEntity ;
+    plato:entity_identifier "whg:mongol-empire" ;
     plato:namespace "whg" .
 
 
@@ -145,15 +145,15 @@ whgx:contributor\/scholar-b
 # -----------------------------------------------------------------------------
 # Attestation: Karakorum was capital of the Mongol Empire, 1235–1260
 #
-# This attestation uses both plato:attests_about (the subject Thing) and
-# plato:relates_to (the target Thing), with plato:has_relation_type
+# This attestation uses both plato:attests_about (the subject SpatialEntity) and
+# plato:relates_to (the target SpatialEntity), with plato:has_relation_type
 # specifying the nature of the relationship.
 # -----------------------------------------------------------------------------
 
 whgx:attestation\/karakorum-capital
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/karakorum ;
-    plato:relates_to whgx:thing\/mongol-empire ;
+    plato:attests_about whgx:entity\/karakorum ;
+    plato:relates_to whgx:entity\/mongol-empire ;
     plato:has_relation_type whgx:reltype\/capital-of ;
     plato:attests_timespan whgx:timespan\/karakorum-capital ;
     plato:sourced_by whgx:source\/rashid-al-din ;

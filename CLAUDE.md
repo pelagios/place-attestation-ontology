@@ -20,7 +20,7 @@ python3 -c "from rdflib import Graph; g=Graph(); g.parse('ontology.ttl', format=
 jq empty schemas/*.json schemas/examples/*.json
 ```
 
-CI never parses `examples/*.ttl`, so nothing but a local check catches syntax errors there. Two traps those files hit before: `/` is illegal unescaped in a Turtle local name, so the illustrative URIs are written `whgx:thing\/bristol` (resolving to `https://whgazetteer.org/example/thing/bristol`) — keep the backslash when adding terms; and each example must declare every prefix it uses, `rdfs:` included.
+CI never parses `examples/*.ttl`, so nothing but a local check catches syntax errors there. Two traps those files hit before: `/` is illegal unescaped in a Turtle local name, so the illustrative URIs are written `whgx:entity\/bristol` (resolving to `https://whgazetteer.org/example/thing/bristol`) — keep the backslash when adding terms; and each example must declare every prefix it uses, `rdfs:` included.
 
 ## Documentation build (CI)
 
@@ -46,7 +46,7 @@ Zenodo archives the repository as it stands at the tag, so **never put a per-ver
 The unit of contributed knowledge is the **Attestation**, not the place record. An `Attestation` is a lightweight node with no substantive content of its own — its meaning comes entirely from its outgoing relationships:
 
 ```
-Attestation ──attests_about──▶ Thing        (the stable identity)
+Attestation ──attests_about──▶ SpatialEntity        (the stable identity)
             ──attests_name───▶ Name
             ──attests_geometry▶ Geometry
             ──attests_timespan▶ Timespan
@@ -54,18 +54,18 @@ Attestation ──attests_about──▶ Thing        (the stable identity)
             ──sourced_by──────▶ Authority   (Source / Dataset / Period / …)
 ```
 
-Everything on the right is a **reusable node**: one `Name` or `Geometry` can be referenced by attestations about many different Things. This is the structural difference from LPF, where names and geometries are properties of a place record. Any subset of these relationships is valid — contributors attest only what their source supports.
+Everything on the right is a **reusable node**: one `Name` or `Geometry` can be referenced by attestations about many different SpatialEntities. This is the structural difference from LPF, where names and geometries are properties of a place record. Any subset of these relationships is valid — contributors attest only what their source supports.
 
 Two consequences shape the rest of the model, and new work should preserve them:
 
 - **Attestations are first-class**, so they can be the subject of *meta-attestations* (`meta_attestation_about`, `has_meta_type`) — one scholar recording that an attestation contradicts, supports, or supersedes another.
-- **The core stays small while vocabulary grows.** Thing-to-Thing relationships (`capital_of`, `successor_to`, …) are Attestations linking two Things via `attests_about` + `relates_to`, with semantics carried by a `RelationType` authority instance. Do not add new predicates for new relationship kinds; add vocabulary entries.
+- **The core stays small while vocabulary grows.** entity-to-entity relationships (`capital_of`, `successor_to`, …) are Attestations linking two SpatialEntities via `attests_about` + `relates_to`, with semantics carried by a `RelationType` authority instance. Do not add new predicates for new relationship kinds; add vocabulary entries.
 
 ### Distinctions that are easy to collapse but must not be
 
-- **Attestation vs IdentityRelation vs Candidate.** An `Attestation` claims evidence about a Thing. An `IdentityRelation` claims two Things are the same real-world entity — a separate class with its own provenance, certainty, and basis. A `Candidate` is an *algorithm-generated* match suggestion and is explicitly not an assertion. The lifecycle is: Candidate → human review → IdentityRelation (linked back via `promoted_from`) or rejection.
+- **Attestation vs IdentityRelation vs Candidate.** An `Attestation` claims evidence about a SpatialEntity. An `IdentityRelation` claims two SpatialEntities are the same real-world entity — a separate class with its own provenance, certainty, and basis. A `Candidate` is an *algorithm-generated* match suggestion and is explicitly not an assertion. The lifecycle is: Candidate → human review → IdentityRelation (linked back via `promoted_from`) or rejection.
 - **Certainty vs fuzziness vs relativity.** These are orthogonal, not degrees of the same thing. `certainty` is epistemic (better evidence could raise it; 0.0 uncertain, 1.0 certain; `uncertainty` is its deprecated alias on the same scale); `fuzziness` is ontological (the referent genuinely has no sharp boundary); `relative_to` + `relative_bearing`/`relative_distance`/`relative_qualifier` means the facet is defined against an anchor rather than absolutely. The qualification properties deliberately carry **no `rdfs:domain`** so they can be applied to any facet node or to an Attestation as a whole — keep it that way.
-- **`Thing` is not `Place`.** It is deliberately generalised to cover routes, networks, administrative units, and other entities related to place, so that Linked Traces use cases fit the same framework.
+- **`SpatialEntity` is not `Place`.** It is deliberately generalised to cover routes, networks, administrative units, and other entities related to place, so that Linked Traces use cases fit the same framework.
 
 ### Three representations that must stay in sync
 
@@ -79,7 +79,7 @@ Adding or renaming a term means touching the ontology, the JSON `$defs`, and usu
 
 Naming conventions differ by layer and are not accidental: RDF uses `snake_case` (`attests_name`, `start_earliest`, `name_type`), JSON uses `camelCase` (`startEarliest`, `nameType`). The JSON schemas also *nest* the qualification properties under a `qualification` object on each facet, whereas in RDF they are applied directly to the facet node.
 
-The two profiles differ only in where the subject lives, and the schemas enforce this: **place-centric** nests attestations under each Thing and forbids `about` on them (`"not": {"required": ["about"]}`); **attestation-centric** references existing Things by URI and requires `about`. Profiles `$ref` the core schema by relative path (`plato.schema.json#/$defs/…`), so the three schema files must remain siblings in `schemas/`.
+The two profiles differ only in where the subject lives, and the schemas enforce this: **place-centric** nests attestations under each SpatialEntity and forbids `about` on them (`"not": {"required": ["about"]}`); **attestation-centric** references existing SpatialEntities by URI and requires `about`. Profiles `$ref` the core schema by relative path (`plato.schema.json#/$defs/…`), so the three schema files must remain siblings in `schemas/`.
 
 ## Editing conventions
 

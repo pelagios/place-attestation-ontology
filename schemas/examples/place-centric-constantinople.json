@@ -18,7 +18,7 @@
     "licence": "https://creativecommons.org/licenses/by/4.0/"
   },
 
-  "things": [
+  "spatialEntities": [
     {
       "@id": "https://whgazetteer.org/place/12345",
       "label": "Constantinople / İstanbul",

@@ -32,23 +32,23 @@ The ontology defines a small number of classes and a bundling mechanism that con
 
 | Class | Description |
 |-------|-------------|
-| **Thing** | A stable, persistent identity — typically a place, but generalised to accommodate routes, networks, administrative units, and other historical entities related to place. |
-| **Attestation** | A lightweight bundle node linking a Thing to a Name, Geometry, Timespan, Type, and/or Source. Carries metadata (certainty, contributor, notes) but no substantive content of its own — its meaning is defined entirely by its outgoing relationships. |
-| **Name** | A toponym or appellation. Reusable: the same Name can appear in attestations for different Things. |
-| **Geometry** | A spatial representation (point, polygon, line). Reusable across attestations and Things. |
+| **SpatialEntity** | A stable, persistent identity — typically a place, but generalised to accommodate routes, networks, administrative units, and other historical entities related to place. |
+| **Attestation** | A lightweight bundle node linking a SpatialEntity to a Name, Geometry, Timespan, Type, and/or Source. Carries metadata (certainty, contributor, notes) but no substantive content of its own — its meaning is defined entirely by its outgoing relationships. |
+| **Name** | A toponym or appellation. Reusable: the same Name can appear in attestations for different SpatialEntities. |
+| **Geometry** | A spatial representation (point, polygon, line). Reusable across attestations and SpatialEntities. |
 | **Timespan** | A temporal interval with start/end bounds and precision metadata. Reusable. |
 | **Type** | A classification from a controlled vocabulary (typically AAT). Reusable. |
 | **PropertyValue** | An attribute that is none of the above — a population, a valuation, a market day. The property is identified by URI in an external vocabulary; the value may be a literal or a structured object. Reusable. |
-| **Authority** | Abstract superclass for provenance entities, with subtypes: **Source** (a citable document), **Dataset** (a collection-level authority), **Period** (a named historical period), **RelationType** (a vocabulary entry for Thing-to-Thing relationships), and **CertaintyLevel**. |
-| **Gazetteer** | A mutable workspace of Things and Attestations, owned by a contributor or team. |
-| **Candidate** | An algorithm-generated match candidate between two Things — explicitly *not* an Attestation until confirmed by a human reviewer. |
+| **Authority** | Abstract superclass for provenance entities, with subtypes: **Source** (a citable document), **Dataset** (a collection-level authority), **Period** (a named historical period), **RelationType** (a vocabulary entry for entity-to-entity relationships), and **CertaintyLevel**. |
+| **Gazetteer** | A mutable workspace of SpatialEntities and Attestations, owned by a contributor or team. |
+| **Candidate** | An algorithm-generated match candidate between two SpatialEntities — explicitly *not* an Attestation until confirmed by a human reviewer. |
 
 ### The bundling mechanism
 
 An Attestation bundles entities together through outgoing relationships:
 
 ```
-Attestation ──attests_about──▶ Thing
+Attestation ──attests_about──▶ SpatialEntity
             ──attests_name───▶ Name
             ──attests_geometry▶ Geometry
             ──attests_timespan▶ Timespan
@@ -63,23 +63,23 @@ Not every relationship is required in every attestation. A contributor might att
 
 Because Attestations are first-class entities, they can themselves be the subject of other Attestations. This allows scholars to record that one attestation contradicts, supports, or supersedes another — modelling scholarly discourse and the evolution of historical understanding without special-case logic.
 
-### Thing-to-Thing relations
+### entity-to-entity relations
 
-Relationships like "capital_of", "successor_to", or "connected_by_trade_route_to" are modelled as Attestations that link two Things via `attests_about` and `relates_to`, with the semantic type specified by a RelationType authority. This keeps the core ontology stable while allowing the vocabulary of historical relationships to grow.
+Relationships like "capital_of", "successor_to", or "connected_by_trade_route_to" are modelled as Attestations that link two SpatialEntities via `attests_about` and `relates_to`, with the semantic type specified by a RelationType authority. This keeps the core ontology stable while allowing the vocabulary of historical relationships to grow.
 
 ## Examples
 
 The `examples/` directory contains worked examples in Turtle (RDF) format:
 
-- **[constantinople.ttl](examples/constantinople.ttl)** — Constantinople/Istanbul through three historical periods, demonstrating how multiple attestations with different names, geometries, and timespans converge on a single Thing.
+- **[constantinople.ttl](examples/constantinople.ttl)** — Constantinople/Istanbul through three historical periods, demonstrating how multiple attestations with different names, geometries, and timespans converge on a single SpatialEntity.
 - **[simple-attestation.ttl](examples/simple-attestation.ttl)** — A minimal example: a scholar attesting that a known place appears in their source with a particular name and date.
-- **[relation.ttl](examples/relation.ttl)** — A Thing-to-Thing relationship: attesting that a city was the capital of a political entity during a particular period.
-- **[geometry-roles.ttl](examples/geometry-roles.ttl)** — Four geometries for one Thing — a built extent, a market-place feature point, a proxy locator and a map label anchor — distinguished by `plato:geometry_role`.
+- **[relation.ttl](examples/relation.ttl)** — A entity-to-entity relationship: attesting that a city was the capital of a political entity during a particular period.
+- **[geometry-roles.ttl](examples/geometry-roles.ttl)** — Four geometries for one SpatialEntity — a built extent, a market-place feature point, a proxy locator and a map label anchor — distinguished by `plato:geometry_role`.
 - **[property-values.ttl](examples/property-values.ttl)** — Attributes that are neither name, geometry, timespan nor type: a census population, and a fair's trading days as a structured recurrence rule anchored to a moveable feast.
 
 The `schemas/examples/` directory contains corresponding examples in JSON format, following the JSON Schema submission profiles:
 
-- **[place-centric-constantinople.json](schemas/examples/place-centric-constantinople.json)** — Constantinople/Istanbul in place-centric JSON format, with three attestations nested under a single Thing.
+- **[place-centric-constantinople.json](schemas/examples/place-centric-constantinople.json)** — Constantinople/Istanbul in place-centric JSON format, with three attestations nested under a single SpatialEntity.
 - **[attestation-centric-customs.json](schemas/examples/attestation-centric-customs.json)** — Two attestations from London customs accounts in attestation-centric JSON format, demonstrating the flexible model for contributing evidence about existing places.
 
 ## Relationship to the WHG v4 data model

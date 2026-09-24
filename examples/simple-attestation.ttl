@@ -4,7 +4,7 @@
 @prefix whgx: <https://whgazetteer.org/example/> .
 
 # The "whgx:" prefix is used throughout these examples for illustrative
-# URIs that represent WHG entities (Things, Attestations, Gazetteers, etc.).
+# URIs that represent WHG entities (SpatialEntities, Attestations, Gazetteers, etc.).
 # In a production system these would be real, resolvable WHG identifiers
 # such as <https://whgazetteer.org/place/12345> or
 # <https://whgazetteer.org/attestation/67890>. The "whgx:" namespace
@@ -21,20 +21,20 @@
 # clearly Bristol, which already exists in the WHG index via GeoNames.
 #
 # The scholar does not need to define Bristol from scratch. They attest
-# that their source references the existing Thing, with the name form
+# that their source references the existing SpatialEntity, with the name form
 # and date found in their source.
 # =============================================================================
 
 
 # -----------------------------------------------------------------------------
-# The Thing already exists — it was created from GeoNames authority data.
+# The SpatialEntity already exists — it was created from GeoNames authority data.
 # The scholar references it by its stable WHG identifier. The GeoNames
-# URI is the authority source, not the Thing's identity.
+# URI is the authority source, not the SpatialEntity's identity.
 # -----------------------------------------------------------------------------
 
-whgx:thing\/bristol
-    a plato:Thing ;
-    plato:thing_identifier "geonames:2654675" ;
+whgx:entity\/bristol
+    a plato:SpatialEntity ;
+    plato:entity_identifier "geonames:2654675" ;
     plato:namespace "geonames" .
 
 
@@ -108,7 +108,7 @@ whgx:gazetteer\/english-trade
     plato:authority_title "Ports in 15th-Century English Trade" ;
     plato:gazetteer_owner whgx:contributor\/trade-historian ;
     plato:gazetteer_status "draft" ;
-    plato:contains_thing whgx:thing\/bristol ;
+    plato:contains_entity whgx:entity\/bristol ;
     plato:contains_attestation whgx:attestation\/bristowe-1480 .
 
 
@@ -117,13 +117,13 @@ whgx:gazetteer\/english-trade
 #
 # Note what is happening here: the scholar is NOT creating a new place.
 # They are attesting that their source (TNA E122/73/12) references an
-# existing Thing (GeoNames Bristol) using the name form "Bristowe" at
+# existing SpatialEntity (GeoNames Bristol) using the name form "Bristowe" at
 # a specific date. This is the attestation-first model in action.
 # -----------------------------------------------------------------------------
 
 whgx:attestation\/bristowe-1480
     a plato:Attestation ;
-    plato:attests_about whgx:thing\/bristol ;
+    plato:attests_about whgx:entity\/bristol ;
     plato:attests_name whgx:name\/bristowe-enm ;
     plato:attests_timespan whgx:timespan\/1480 ;
     plato:sourced_by whgx:source\/tna-e122-73-12 ;
@@ -138,14 +138,14 @@ whgx:attestation\/bristowe-1480
 #
 # 1. No Geometry is attested. The scholar's source doesn't provide spatial
 #    information — that comes from the GeoNames authority data already
-#    associated with the Thing. Not every attestation needs to assert
+#    associated with the SpatialEntity. Not every attestation needs to assert
 #    every property.
 #
 # 2. No Type is attested. The scholar might add one later (e.g. AAT "port"),
 #    or leave it to the existing authority classification.
 #
 # 3. The name "Bristowe" is a Middle English form not present in GeoNames.
-#    By attesting it, the scholar enriches the Thing with a historical
+#    By attesting it, the scholar enriches the SpatialEntity with a historical
 #    name variant that benefits all users of the WHG index.
 #
 # 4. This is what a typical scholarly contribution looks like: minimal,
