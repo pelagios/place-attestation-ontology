@@ -17,8 +17,8 @@ authors:
     email: stephen.gadd@pitt.edu
     affiliation: "Institute for Spatial History Innovation (ISHI), University of Pittsburgh"
   - name: "Pelagios Network Place Working Group"
-version: 0.2.0
-date-released: 2026-08-17
+version: 0.3.0
+date-released: 2026-09-24
 license: CC-BY-4.0
 identifiers:
   - type: doi
