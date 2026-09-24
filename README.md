@@ -10,6 +10,8 @@ An OWL ontology for representing historical place knowledge as **attestations**:
 
 The central idea is that the fundamental unit of contributed knowledge is not a *place record* but an *attestation* — a claim that a particular place had a particular name, geometry, or classification, during a particular period, according to a particular source. Places are stable identities; everything we know about them is layered on through attestations from different contributors, sources, and periods.
 
+➤ **[Read the full ontology documentation](https://pelagios.org/place-attestation-ontology/)**, a generated reference for every class and property.
+
 ## Why a new ontology?
 
 This work grows out of the [World Historical Gazetteer](https://whgazetteer.org) project's experience building and maintaining a collaborative historical gazetteer platform. Two earlier formats developed within the [Pelagios Network](https://pelagios.org) — **Linked Places Format (LPF)** and **Linked Traces** — have served the community well but face structural limitations:
