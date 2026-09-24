@@ -694,8 +694,17 @@ plato:modified
 # =============================================================================
 # Qualification: Certainty, Fuzziness, and Relativity
 # =============================================================================
-# Three distinct concepts that can apply to any facet node (Name, Geometry,
-# Timespan, Type) or to an Attestation as a whole:
+# Three distinct concepts. Their scopes differ, and plato.schema.json is
+# normative on this:
+#
+#   Certainty applies to a facet node (Name, Geometry, Timespan, Type,
+#   PropertyValue) AND to an Attestation as a whole. An attestation may be
+#   doubtful even where each facet it bundles is not.
+#
+#   Fuzziness and the relativity properties apply to a facet node only.
+#   Fuzziness describes the referent of a facet, so it belongs on the
+#   Geometry or Timespan whose referent has no sharp edge, never on the
+#   attestation that bundles it.
 #
 #   Certainty — epistemic: there is a fact of the matter, but the evidence
 #   is insufficient to determine it precisely. "The battle was somewhere near
@@ -704,7 +713,7 @@ plato:modified
 #   above with the attestation metadata; it carries no domain.
 #
 #   Fuzziness — ontological: the referent itself has no sharp boundary.
-#   "The region of Burgundy" has genuinely vague spatial extent; no amount of
+#   "The Weald" or "the Levant" has genuinely vague spatial extent; no amount of
 #   evidence will resolve it to a crisp polygon. A name used inconsistently
 #   across sources is fuzzy, not uncertain. A gradual political transition
 #   is a fuzzy timespan. Fuzziness is a property of the thing being described,
@@ -721,10 +730,15 @@ plato:modified
 # Nanjing").
 
 # -----------------------------------------------------------------------------
-# Qualification properties (applicable to any facet node)
+# Qualification properties
 # -----------------------------------------------------------------------------
-# These properties have no rdfs:domain constraint, so they can be applied
-# to Geometry, Timespan, Name, Type, or any other node that needs qualifying.
+# These properties carry no rdfs:domain. In OWL a domain licenses inference
+# rather than constraining use, so declaring one here would assert that
+# anything bearing the property IS a facet, which is not intended. The
+# scope is therefore documented rather than axiomatised, and enforced by
+# plato.schema.json, which places the qualification object on Name,
+# Geometry, Timespan, Type and PropertyValue, and places certainty (with
+# certainty_note) on Attestation as well.
 
 # plato:uncertainty and plato:uncertainty_note were the facet-level form of
 # certainty until 0.2.0. Their scale already ran 0.0 (completely uncertain)
