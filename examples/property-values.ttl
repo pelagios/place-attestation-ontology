@@ -31,7 +31,7 @@ whgx:property\/andover-population-1801
     plato:source_label "Inhabitants" ;
     plato:value_literal 3304 ;
     plato:value_datatype "http://www.w3.org/2001/XMLSchema#integer"^^xsd:anyURI ;
-    plato:uncertainty 0.9 .
+    plato:certainty 0.9 .
 
 whgx:timespan\/1801
     a plato:Timespan ;

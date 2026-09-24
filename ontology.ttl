@@ -31,8 +31,12 @@
         Institute for Spatial History Innovation (ISHI), University of Pittsburgh.
 
         PLATO formalises the WHG v4 data model, in which the Attestation is
-        the fundamental unit of contributed knowledge. It unifies and supersedes
-        the Linked Places Format (LPF) and Linked Traces.
+        the fundamental unit of contributed knowledge. The Linked Places
+        Format (LPF) is defined as its single-object-attestation profile:
+        every LPF element corresponds to one attestation linking one entity
+        to one name, type, geometry or related entity, so existing LPF files
+        remain valid. The use cases of Linked Traces are accommodated within
+        the same model.
     """@en ;
     dcterms:creator <https://orcid.org/0000-0003-3060-0181> ;
     dcterms:contributor "Pelagios Network Place Working Group" ;
@@ -209,7 +213,7 @@ plato:PropertyValue
         Values may be literals (with a datatype and optional unit) or
         structured objects whose shape is declared by plato:value_type. As a
         facet node, a PropertyValue may carry the qualification properties
-        (uncertainty, fuzziness) like any other.
+        (certainty, fuzziness) like any other.
 
         Where the value is itself an entity, use a Thing-to-Thing relation
         instead; this class is for attributes, not relationships.
@@ -581,24 +585,27 @@ plato:certainty
     a owl:DatatypeProperty ;
     rdfs:label "certainty"@en ;
     rdfs:comment """
-        Overall certainty of this attestation, from 0.0 (completely uncertain)
-        to 1.0 (completely certain). This represents the contributor's
-        confidence in the bundle as a whole. Individual facets (Name, Geometry,
-        Timespan) can have their own uncertainty values that may differ from
-        the attestation's overall certainty.
+        Epistemic certainty, from 0.0 (completely uncertain) to 1.0
+        (completely certain). On an Attestation it is the contributor's
+        confidence in the bundle as a whole. On a facet node (Name, Geometry,
+        Timespan, Type, PropertyValue) it is the confidence in that value
+        alone, and may differ from the attestation's overall certainty.
+        Certainty reflects the limits of evidence: better evidence could in
+        principle raise it. Distinct from fuzziness (the referent has no
+        sharp boundary) and from spatial_precision (how finely a location
+        is specified). No rdfs:domain, so it can qualify any node.
     """@en ;
-    rdfs:domain plato:Attestation ;
     rdfs:range xsd:float .
 
 plato:certainty_note
     a owl:DatatypeProperty ;
     rdfs:label "certainty note"@en ;
     rdfs:comment """
-        Free-text explanation of the certainty assessment. Should describe
-        the basis for the certainty value: quality of evidence, degree of
-        scholarly consensus, reliability of source, etc.
+        Free-text explanation of the certainty assessment: quality of
+        evidence, degree of scholarly consensus, reliability of source
+        (e.g. 'manuscript partially illegible', 'coordinates extrapolated
+        from itinerary distances'). Applies wherever certainty does.
     """@en ;
-    rdfs:domain plato:Attestation ;
     rdfs:range xsd:string .
 
 plato:sequence
@@ -677,15 +684,16 @@ plato:modified
 
 
 # =============================================================================
-# Qualification: Uncertainty, Fuzziness, and Relativity
+# Qualification: Certainty, Fuzziness, and Relativity
 # =============================================================================
 # Three distinct concepts that can apply to any facet node (Name, Geometry,
 # Timespan, Type) or to an Attestation as a whole:
 #
-#   Uncertainty — epistemic: there is a fact of the matter, but the evidence
+#   Certainty — epistemic: there is a fact of the matter, but the evidence
 #   is insufficient to determine it precisely. "The battle was somewhere near
-#   here, but we're not sure exactly where." Uncertainty can in principle be
-#   resolved by better evidence.
+#   here, but we're not sure exactly where." Low certainty can in principle be
+#   resolved by better evidence. The property is plato:certainty, defined
+#   above with the attestation metadata; it carries no domain.
 #
 #   Fuzziness — ontological: the referent itself has no sharp boundary.
 #   "The region of Burgundy" has genuinely vague spatial extent; no amount of
@@ -701,7 +709,8 @@ plato:modified
 #   may be a Thing or another facet node.
 #
 # These three concepts are orthogonal. A relative geometry can also be
-# uncertain ("roughly 20km east") or fuzzy ("in the hinterland of Nanjing").
+# of low certainty ("roughly 20km east") or fuzzy ("in the hinterland of
+# Nanjing").
 
 # -----------------------------------------------------------------------------
 # Qualification properties (applicable to any facet node)
@@ -709,24 +718,33 @@ plato:modified
 # These properties have no rdfs:domain constraint, so they can be applied
 # to Geometry, Timespan, Name, Type, or any other node that needs qualifying.
 
+# plato:uncertainty and plato:uncertainty_note were the facet-level form of
+# certainty until 0.2.0. Their scale already ran 0.0 (completely uncertain)
+# to 1.0 (certain), so a property named "uncertainty" whose value 1.0 meant
+# "certain" was misread by anyone who did not open the definition. They are
+# retained as deprecated equivalents of plato:certainty and
+# plato:certainty_note, which now apply to any node. Values need no
+# conversion.
+
 plato:uncertainty
     a owl:DatatypeProperty ;
-    rdfs:label "uncertainty"@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty plato:certainty ;
+    rdfs:label "uncertainty (deprecated)"@en ;
     rdfs:comment """
-        Epistemic uncertainty: a measure of how precisely the facet value
-        is known, from 0.0 (completely unknown) to 1.0 (no uncertainty).
-        Distinct from fuzziness: uncertainty reflects the limits of evidence,
-        not the inherent vagueness of the referent.
+        Deprecated: use plato:certainty. Same scale, 0.0 (completely
+        uncertain) to 1.0 (completely certain), so existing values carry
+        over unchanged.
     """@en ;
     rdfs:range xsd:float .
 
 plato:uncertainty_note
     a owl:DatatypeProperty ;
-    rdfs:label "uncertainty note"@en ;
+    owl:deprecated true ;
+    owl:equivalentProperty plato:certainty_note ;
+    rdfs:label "uncertainty note (deprecated)"@en ;
     rdfs:comment """
-        Free-text explanation of the nature and source of epistemic
-        uncertainty (e.g. 'manuscript partially illegible', 'coordinates
-        extrapolated from itinerary distances').
+        Deprecated: use plato:certainty_note.
     """@en ;
     rdfs:range xsd:string .
 
@@ -736,7 +754,7 @@ plato:fuzziness
     rdfs:comment """
         Ontological fuzziness: a measure of how inherently vague or
         indeterminate the facet's referent is, from 0.0 (crisp, sharply
-        bounded) to 1.0 (maximally vague). Distinct from uncertainty:
+        bounded) to 1.0 (maximally vague). Distinct from certainty:
         fuzziness is a property of the thing itself, not of our knowledge
         of it. A regional boundary that was never precisely defined has
         high fuzziness regardless of how much evidence we have.
@@ -791,7 +809,7 @@ plato:relative_bearing
     rdfs:comment """
         Compass bearing from the anchor, in degrees (0–360).
         Primarily used for relative geometries: '90' means east of
-        the anchor. May carry its own uncertainty or fuzziness.
+        the anchor. May carry its own certainty or fuzziness.
     """@en ;
     rdfs:range xsd:float .
 
@@ -800,7 +818,7 @@ plato:relative_distance
     rdfs:label "distance"@en ;
     rdfs:comment """
         Distance from the anchor, in metres. Primarily used for
-        relative geometries. May carry its own uncertainty or fuzziness.
+        relative geometries. May carry its own certainty or fuzziness.
     """@en ;
     rdfs:range xsd:float .
 
@@ -1244,7 +1262,7 @@ plato:start_precision
     rdfs:comment """
         Temporal granularity of the start bound. Values: 'year', 'decade',
         'century', 'era', 'geological_period'. This describes the resolution
-        of the date specification, distinct from uncertainty (which describes
+        of the date specification, distinct from certainty (which describes
         the confidence in that specification).
     """@en ;
     rdfs:domain plato:Timespan ;

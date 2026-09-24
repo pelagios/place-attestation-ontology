@@ -18,7 +18,7 @@ This work grows out of the [World Historical Gazetteer](https://whgazetteer.org)
 
 - **Linked Traces** extended LPF to handle events, routes, and journeys — things that aren't places but involve places. Its use cases are real, but the attestation-based model proposed here accommodates them within a single unified framework rather than requiring a separate format.
 
-PLATO aims to **unify and supersede both LPF and Linked Traces** by grounding everything in the attestation-as-bundle pattern.
+PLATO grounds everything in the attestation-as-bundle pattern and defines LPF as its **single-object-attestation profile**: every LPF element corresponds to one attestation linking one entity to one name, type, geometry or related entity. Existing LPF files remain valid, and the simple interchange format and the richer model coexist without either superseding the other. The use cases of Linked Traces are accommodated within the same model. LPF development sits with the Pelagios Network's Place Working Group.
 
 For the broader discussion of the architectural and conceptual motivations, see [WHG Discussion #98](https://github.com/WorldHistoricalGazetteer/place/discussions/98).
 

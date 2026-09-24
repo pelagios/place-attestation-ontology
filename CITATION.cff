@@ -6,8 +6,9 @@ abstract: >-
   bundles of evidence linking Things (places, routes, networks, and other
   entities related to place) to Names, Geometries, Timespans, Types, and
   Authorities with full provenance. PLATO formalises the World Historical
-  Gazetteer v4 data model and is intended to unify and supersede the Linked
-  Places Format (LPF) and Linked Traces.
+  Gazetteer v4 data model. The Linked Places Format (LPF) is defined as its
+  single-object-attestation profile, so existing LPF files remain valid; the
+  use cases of Linked Traces are accommodated within the same model.
 type: software
 authors:
   - family-names: Gadd

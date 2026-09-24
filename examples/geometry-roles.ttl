@@ -99,7 +99,7 @@ whgx:geometry\/other-town-church-proxy
     plato:geo_wkt "POINT(-2.5121 51.4102)"^^geo:wktLiteral ;
     plato:repr_point "POINT(-2.5121 51.4102)"^^geo:wktLiteral ;
     plato:spatial_precision "exact" ;
-    plato:uncertainty_note """
+    plato:certainty_note """
         Surveyed position of the parish church, contributed as a locator for
         the town because no market feature is identifiable on the 1st-edition
         sheets. Precise, but a proxy.

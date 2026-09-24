@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-A specification repository, not a software project: there is no build system, no dependencies, and no test suite. Everything here is either normative (`ontology.ttl`, `schemas/*.json`) or illustrative (`examples/`, `schemas/examples/`). PLATO formalises the [WHG v4 data model](https://docs.whgazetteer.org/content/v4/data-model/introduction.html) and is intended to unify and supersede Linked Places Format (LPF) and Linked Traces.
+A specification repository, not a software project: there is no build system, no dependencies, and no test suite. Everything here is either normative (`ontology.ttl`, `schemas/*.json`) or illustrative (`examples/`, `schemas/examples/`). PLATO formalises the [WHG v4 data model](https://docs.whgazetteer.org/content/v4/data-model/introduction.html) and defines Linked Places Format (LPF) as its single-object-attestation profile; Linked Traces use cases fit within the same model. Do not describe PLATO as superseding LPF.
 
 The namespace is `https://w3id.org/plato#` (prefix `plato:`); published documentation lives at https://pelagios.org/place-attestation-ontology/.
 
@@ -64,7 +64,7 @@ Two consequences shape the rest of the model, and new work should preserve them:
 ### Distinctions that are easy to collapse but must not be
 
 - **Attestation vs IdentityRelation vs Candidate.** An `Attestation` claims evidence about a Thing. An `IdentityRelation` claims two Things are the same real-world entity — a separate class with its own provenance, certainty, and basis. A `Candidate` is an *algorithm-generated* match suggestion and is explicitly not an assertion. The lifecycle is: Candidate → human review → IdentityRelation (linked back via `promoted_from`) or rejection.
-- **Uncertainty vs fuzziness vs relativity.** These are orthogonal, not degrees of the same thing. `uncertainty` is epistemic (better evidence could resolve it); `fuzziness` is ontological (the referent genuinely has no sharp boundary); `relative_to` + `relative_bearing`/`relative_distance`/`relative_qualifier` means the facet is defined against an anchor rather than absolutely. The qualification properties deliberately carry **no `rdfs:domain`** so they can be applied to any facet node or to an Attestation as a whole — keep it that way.
+- **Certainty vs fuzziness vs relativity.** These are orthogonal, not degrees of the same thing. `certainty` is epistemic (better evidence could raise it; 0.0 uncertain, 1.0 certain; `uncertainty` is its deprecated alias on the same scale); `fuzziness` is ontological (the referent genuinely has no sharp boundary); `relative_to` + `relative_bearing`/`relative_distance`/`relative_qualifier` means the facet is defined against an anchor rather than absolutely. The qualification properties deliberately carry **no `rdfs:domain`** so they can be applied to any facet node or to an Attestation as a whole — keep it that way.
 - **`Thing` is not `Place`.** It is deliberately generalised to cover routes, networks, administrative units, and other entities related to place, so that Linked Traces use cases fit the same framework.
 
 ### Three representations that must stay in sync

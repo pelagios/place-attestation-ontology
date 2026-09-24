@@ -40,15 +40,25 @@
 
     "qualification": {
       "type": "object",
-      "description": "Qualification properties applicable to any facet node: epistemic uncertainty, ontological fuzziness, or relativity to an anchor entity. All properties are optional.",
+      "description": "Qualification properties applicable to any facet node: epistemic certainty, ontological fuzziness, or relativity to an anchor entity. All properties are optional.",
       "properties": {
+        "certainty": {
+          "$ref": "#/$defs/unitFloat01",
+          "description": "Epistemic certainty: 0.0 = completely uncertain, 1.0 = completely certain. Better evidence could raise it; distinct from fuzziness."
+        },
+        "certaintyNote": {
+          "type": "string",
+          "description": "Explanation of the basis for the certainty value: quality of evidence, reliability of source, scholarly consensus."
+        },
         "uncertainty": {
           "$ref": "#/$defs/unitFloat01",
-          "description": "Epistemic uncertainty: 0.0 = completely unknown, 1.0 = no uncertainty."
+          "deprecated": true,
+          "description": "Deprecated: use certainty. Same scale (0.0 = completely uncertain, 1.0 = completely certain), so values carry over unchanged."
         },
         "uncertaintyNote": {
           "type": "string",
-          "description": "Explanation of the nature and source of epistemic uncertainty."
+          "deprecated": true,
+          "description": "Deprecated: use certaintyNote."
         },
         "fuzziness": {
           "$ref": "#/$defs/unitFloat01",

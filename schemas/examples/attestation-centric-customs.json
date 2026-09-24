@@ -66,8 +66,8 @@
           "script": "Latn",
           "nameType": ["toponym", "odonym"],
           "qualification": {
-            "uncertainty": 0.7,
-            "uncertaintyNote": "Manuscript partially damaged; reading probable but not certain."
+            "certainty": 0.7,
+            "certaintyNote": "Manuscript partially damaged; reading probable but not certain."
           }
         }
       ],
