@@ -743,32 +743,9 @@ plato:modified
 # plato:uncertainty and plato:uncertainty_note were the facet-level form of
 # certainty until 0.2.0. Their scale already ran 0.0 (completely uncertain)
 # to 1.0 (certain), so a property named "uncertainty" whose value 1.0 meant
-# "certain" was misread by anyone who did not open the definition. They are
-# retained as deprecated equivalents of plato:certainty and
-# plato:certainty_note, which now apply to any node. Values need no
-# conversion.
-
-plato:uncertainty
-    a owl:DatatypeProperty ;
-    owl:deprecated true ;
-    owl:equivalentProperty plato:certainty ;
-    rdfs:label "uncertainty (deprecated)"@en ;
-    rdfs:comment """
-        Deprecated: use plato:certainty. Same scale, 0.0 (completely
-        uncertain) to 1.0 (completely certain), so existing values carry
-        over unchanged.
-    """@en ;
-    rdfs:range xsd:float .
-
-plato:uncertainty_note
-    a owl:DatatypeProperty ;
-    owl:deprecated true ;
-    owl:equivalentProperty plato:certainty_note ;
-    rdfs:label "uncertainty note (deprecated)"@en ;
-    rdfs:comment """
-        Deprecated: use plato:certainty_note.
-    """@en ;
-    rdfs:range xsd:string .
+# "certain" was misread by anyone who did not open the definition. They were
+# renamed in 0.3.0 and removed in the same release. Values need no conversion:
+# read plato:certainty and plato:certainty_note on the same scale.
 
 plato:fuzziness
     a owl:DatatypeProperty ;

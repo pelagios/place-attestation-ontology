@@ -40,7 +40,10 @@ attestation-centric key `newThings` is now `newSpatialEntities`.
 ### Removed
 
 `plato:Thing`, `plato:thing_identifier` and `plato:contains_thing` are gone
-outright. They were briefly kept as `owl:deprecated` equivalents on the
+outright, and so are `plato:uncertainty` and `plato:uncertainty_note`, the
+0.2.0 facet-level form of `plato:certainty` and `plato:certainty_note`. The
+JSON `uncertainty` and `uncertaintyNote` keys go with them. Values need no
+conversion: the scale was always 0.0 completely uncertain to 1.0 certain. They were briefly kept as `owl:deprecated` equivalents on the
 reasoning that the namespace is published, but nothing implements PLATO yet and
 no data anywhere uses them. Carrying two names for one class from the first
 week would have taught readers that the old name remains an option. There is

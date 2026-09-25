@@ -50,16 +50,6 @@
           "type": "string",
           "description": "Explanation of the basis for the certainty value: quality of evidence, reliability of source, scholarly consensus."
         },
-        "uncertainty": {
-          "$ref": "#/$defs/unitFloat01",
-          "deprecated": true,
-          "description": "Deprecated: use certainty. Same scale (0.0 = completely uncertain, 1.0 = completely certain), so values carry over unchanged."
-        },
-        "uncertaintyNote": {
-          "type": "string",
-          "deprecated": true,
-          "description": "Deprecated: use certaintyNote."
-        },
         "fuzziness": {
           "$ref": "#/$defs/unitFloat01",
           "description": "Ontological fuzziness: 0.0 = crisp, 1.0 = maximally vague."
