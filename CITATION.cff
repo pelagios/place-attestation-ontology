@@ -3,8 +3,9 @@ message: "If you use PLATO, please cite it as below."
 title: "PLATO — Place Attestation Ontology"
 abstract: >-
   An OWL ontology for representing historical place knowledge as attestations:
-  bundles of evidence linking Things (places, routes, networks, and other
-  entities related to place) to Names, Geometries, Timespans, Types, and
+  bundles of evidence linking Spatial Entities (settlements, routes, networks,
+  administrative units, regions and other entities whose identity is bound up
+  with space) to Names, Geometries, Timespans, Types, and
   Authorities with full provenance. PLATO formalises the World Historical
   Gazetteer v4 data model. The Linked Places Format (LPF) is defined as its
   single-object-attestation profile, so existing LPF files remain valid; the

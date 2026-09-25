@@ -1858,36 +1858,3 @@ plato:generated_at
     rdfs:label "generated at"@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range xsd:dateTime .
-
-
-# =============================================================================
-# Deprecated terms (renamed in 0.3.0)
-# =============================================================================
-# The namespace is published, so the previous names are retained as deprecated
-# equivalents rather than removed. They carry the same meaning and may be used
-# by existing data, but new data should use the current terms.
-
-plato:Thing
-    a owl:Class ;
-    owl:deprecated true ;
-    owl:equivalentClass plato:SpatialEntity ;
-    rdfs:label "Thing (deprecated)"@en ;
-    rdfs:comment """
-        Deprecated in 0.3.0. Renamed to plato:SpatialEntity, which states the
-        actual scope of the class rather than leaving it open. Use
-        plato:SpatialEntity.
-    """@en .
-
-plato:thing_identifier
-    a owl:DatatypeProperty ;
-    owl:deprecated true ;
-    owl:equivalentProperty plato:entity_identifier ;
-    rdfs:label "thing identifier (deprecated)"@en ;
-    rdfs:comment "Deprecated in 0.3.0. Use plato:entity_identifier."@en .
-
-plato:contains_thing
-    a owl:ObjectProperty ;
-    owl:deprecated true ;
-    owl:equivalentProperty plato:contains_entity ;
-    rdfs:label "contains thing (deprecated)"@en ;
-    rdfs:comment "Deprecated in 0.3.0. Use plato:contains_entity."@en .

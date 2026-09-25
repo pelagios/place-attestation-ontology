@@ -1,8 +1,9 @@
 # Changelog
 
 All notable changes to PLATO are recorded here. The ontology is an early draft
-and the namespace is published, so renamed terms are retained as deprecated
-equivalents rather than removed.
+with no implementations yet, so a renamed term is removed outright rather than
+retained as a deprecated equivalent. That policy will change once data in the
+wild uses the namespace.
 
 ## 0.3.0
 
@@ -36,15 +37,16 @@ The JSON serialisations follow: `$defs.thing` is now `$defs.spatialEntity`, the
 place-centric submission key `things` is now `spatialEntities`, and the
 attestation-centric key `newThings` is now `newSpatialEntities`.
 
-### Deprecated, not removed
+### Removed
 
-`plato:Thing`, `plato:thing_identifier` and `plato:contains_thing` are retained
-as `owl:deprecated` terms, declared `owl:equivalentClass` and
-`owl:equivalentProperty` of their replacements. Existing data continues to
-describe the same things. New data should use the current terms.
+`plato:Thing`, `plato:thing_identifier` and `plato:contains_thing` are gone
+outright. They were briefly kept as `owl:deprecated` equivalents on the
+reasoning that the namespace is published, but nothing implements PLATO yet and
+no data anywhere uses them. Carrying two names for one class from the first
+week would have taught readers that the old name remains an option. There is
+one name for the class and it is `plato:SpatialEntity`.
 
-The JSON submission keys are not aliased, because the submission profiles are
-not part of the published namespace and the format is still at draft status.
+The JSON submission keys are likewise not aliased.
 
 ### Unchanged
 

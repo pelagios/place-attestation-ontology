@@ -20,7 +20,7 @@ python3 -c "from rdflib import Graph; g=Graph(); g.parse('ontology.ttl', format=
 jq empty schemas/*.json schemas/examples/*.json
 ```
 
-CI never parses `examples/*.ttl`, so nothing but a local check catches syntax errors there. Two traps those files hit before: `/` is illegal unescaped in a Turtle local name, so the illustrative URIs are written `whgx:entity\/bristol` (resolving to `https://whgazetteer.org/example/thing/bristol`) — keep the backslash when adding terms; and each example must declare every prefix it uses, `rdfs:` included.
+CI never parses `examples/*.ttl`, so nothing but a local check catches syntax errors there. Two traps those files hit before: `/` is illegal unescaped in a Turtle local name, so the illustrative URIs are written `whgx:entity\/bristol` (resolving to `https://whgazetteer.org/example/entity/bristol`) — keep the backslash when adding terms; and each example must declare every prefix it uses, `rdfs:` included.
 
 ## Documentation build (CI)
 
