@@ -1,0 +1,194 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative URIs.
+# Page numbers, folio references and the medieval sources in this file are
+# illustrative: check the edition before citing any of them.
+
+
+# =============================================================================
+# Citations: locating evidence within a source
+#
+# plato:sourced_by says which work the evidence comes from. A plato:Citation
+# says where in it, and whether the attribution was stated or resolved by an
+# editor. Three cases:
+#
+#   1. One printed gazetteer, cited at a different page by each attestation.
+#   2. One claim resting on two sources, each with its own locator: the
+#      place-name surveys' "1252 Cl et passim to 1346 Harl".
+#   3. An attribution given as "ib." in the survey and resolved editorially.
+#
+# In every case sourced_by is asserted directly as well as through the
+# Citation. The ontology declares sourced_by as the chain has_citation o
+# cites, so a reasoner would derive it; asserting it keeps the data usable
+# by consumers that do not reason.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# 1. A printed gazetteer cited at different pages
+#
+# One Source for the whole volume. The page is a property of each citation of
+# it, not of the Source: a Source per page would multiply authority records
+# and lose the fact that the same work is cited throughout.
+# -----------------------------------------------------------------------------
+
+whgx:source\/bartholomew-1887
+    a plato:Source ;
+    plato:authority_title "Bartholomew, Gazetteer of the British Isles" ;
+    plato:bibliographic_string "J. Bartholomew, Gazetteer of the British Isles (Edinburgh, 1887)" ;
+    plato:source_timespan whgx:timespan\/1887 .
+
+whgx:timespan\/1887
+    a plato:Timespan ;
+    rdfs:label "1887"@en .
+
+whgx:name\/athlone
+    a plato:Name ;
+    plato:toponym "Athlone"@en ;
+    plato:language "en" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:citation\/athlone-bartholomew
+    a plato:Citation ;
+    plato:cites whgx:source\/bartholomew-1887 ;
+    plato:locator "p. 25, s.v. Athlone" .
+
+whgx:attestation\/athlone-1887
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/athlone ;
+    plato:attests_name whgx:name\/athlone ;
+    plato:attests_timespan whgx:timespan\/1887 ;
+    plato:sourced_by whgx:source\/bartholomew-1887 ;
+    plato:has_citation whgx:citation\/athlone-bartholomew .
+
+whgx:name\/abingdon
+    a plato:Name ;
+    plato:toponym "Abingdon"@en ;
+    plato:language "en" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:citation\/abingdon-bartholomew
+    a plato:Citation ;
+    plato:cites whgx:source\/bartholomew-1887 ;
+    plato:locator "p. 3, s.v. Abingdon" .
+
+whgx:attestation\/abingdon-1887
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/abingdon ;
+    plato:attests_name whgx:name\/abingdon ;
+    plato:attests_timespan whgx:timespan\/1887 ;
+    plato:sourced_by whgx:source\/bartholomew-1887 ;
+    plato:has_citation whgx:citation\/abingdon-bartholomew .
+
+
+# -----------------------------------------------------------------------------
+# 2. One claim, two sources, two locators
+#
+# The survey notation "1252 Cl et passim to 1346 Harl" means: this spelling is
+# attested continuously from the Close Rolls of 1252 to a Harley charter of
+# 1346. It is one claim, with one timespan, resting on two documents. A
+# locator on the attestation could not say which document it locates within;
+# two Citations can.
+# -----------------------------------------------------------------------------
+
+whgx:source\/close-rolls
+    a plato:Source ;
+    plato:authority_title "Cl" ;
+    plato:bibliographic_string "Calendar of the Close Rolls" .
+
+whgx:source\/harley-charters
+    a plato:Source ;
+    plato:authority_title "Harl" ;
+    plato:bibliographic_string "British Library, Harley Charters" .
+
+whgx:name\/bonestowe
+    a plato:Name ;
+    plato:toponym "Bonestowe" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:timespan\/1252-1346
+    a plato:Timespan ;
+    plato:start_earliest "1252" ;
+    plato:start_latest "1252" ;
+    plato:end_earliest "1346" ;
+    plato:end_latest "1346" ;
+    plato:start_precision "year" ;
+    plato:end_precision "year" .
+
+whgx:citation\/bonestowe-cl-1252
+    a plato:Citation ;
+    plato:cites whgx:source\/close-rolls ;
+    plato:locator "1251–53, p. 214" .
+
+whgx:citation\/bonestowe-harl-1346
+    a plato:Citation ;
+    plato:cites whgx:source\/harley-charters ;
+    plato:locator "Harl. Ch. 84 D 20" .
+
+whgx:attestation\/bonestowe-1252-1346
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/bunsty ;
+    plato:attests_name whgx:name\/bonestowe ;
+    plato:attests_timespan whgx:timespan\/1252-1346 ;
+    plato:sourced_by whgx:source\/close-rolls, whgx:source\/harley-charters ;
+    plato:has_citation whgx:citation\/bonestowe-cl-1252,
+                       whgx:citation\/bonestowe-harl-1346 ;
+    plato:notes "Survey notation: 1252 Cl et passim to 1346 Harl." .
+
+
+# -----------------------------------------------------------------------------
+# 3. An attribution resolved from "ibidem"
+#
+# The survey printed the source as "ib."; the editors of the digital corpus
+# resolved it to the Close Rolls. The attestation is certain and the form is
+# a direct occurrence. What is inferred is the attribution, so the marker
+# sits on the Citation, not on the attestation's certainty and not on its
+# occurrence_context.
+# -----------------------------------------------------------------------------
+
+whgx:name\/bonestou-1254
+    a plato:Name ;
+    plato:toponym "Bonestou" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:timespan\/1254
+    a plato:Timespan ;
+    rdfs:label "1254"@en .
+
+whgx:citation\/bonestou-cl-1254
+    a plato:Citation ;
+    plato:cites whgx:source\/close-rolls ;
+    plato:locator "1253–54, p. 31" ;
+    plato:attribution_status plato:AttributionInferred .
+
+whgx:attestation\/bonestou-1254
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/bunsty ;
+    plato:attests_name whgx:name\/bonestou-1254 ;
+    plato:attests_timespan whgx:timespan\/1254 ;
+    plato:sourced_by whgx:source\/close-rolls ;
+    plato:has_citation whgx:citation\/bonestou-cl-1254 ;
+    plato:certainty 1.0 ;
+    plato:notes "Source given as ib. in the survey; resolved editorially." .
+
+
+# =============================================================================
+# Observations
+#
+# 1. Bartholomew is one Source with two citations. A reader can go to the page;
+#    a query can still find every attestation drawn from the volume.
+#
+# 2. The Citation carries nothing that belongs elsewhere: the volume's date is
+#    on the Source (source_timespan), the claim's date on the Attestation's
+#    Timespan, the certainty on the Attestation.
+#
+# 3. Where there is nothing to say about the citation, sourced_by alone is
+#    enough; none of the earlier examples needs a Citation.
+# =============================================================================

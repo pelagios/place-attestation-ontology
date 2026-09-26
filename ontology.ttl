@@ -247,6 +247,44 @@ plato:PropertyValue
 
 
 # -----------------------------------------------------------------------------
+# Citation
+# -----------------------------------------------------------------------------
+# The reified link from an Attestation to the Authority it rests on: this
+# attestation, in that source, at this locator. plato:sourced_by is the direct
+# form and remains sufficient when there is nothing to say about the citation
+# itself. A Citation is needed as soon as there is: where in the work the
+# evidence sits (page, folio, column, cell, entry), or whether the attribution
+# was stated by the source or resolved editorially from an 'ibidem'.
+#
+# The locator cannot go on the Source without forcing a Source record per
+# page, and it cannot go on the Attestation because one attestation may rest
+# on several sources with a locator in each: the place-name surveys' "1252 Cl
+# et passim to 1346 Harl" is one claim (continuously attested between two
+# documents) resting on two citations. Reifying the citation is the only shape
+# in which "two sources, two locators, one claim" is expressible. The pattern
+# is PROV-O's qualified form (prov:used beside prov:qualifiedUsage), and
+# sourced_by is declared as the chain has_citation o cites, so that a reasoner
+# recovers the direct link from the qualified one.
+
+plato:Citation
+    a owl:Class ;
+    rdfs:label "Citation"@en ;
+    rdfs:comment """
+        One attestation's use of one Authority: the qualified form of
+        plato:sourced_by. Carries what is true of this citation rather than
+        of the source or of the attestation: the locator within the work
+        (page, folio, column, table cell, entry), and whether the attribution
+        was stated in the source or inferred editorially. It carries no date.
+        The date of a witness belongs on the Source (plato:source_timespan)
+        and the date of the claim on the Attestation's Timespan.
+
+        An attestation resting on several sources has several Citations,
+        each with its own locator. Where there is nothing to say about the
+        citation, plato:sourced_by alone is sufficient.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
 # Authority (abstract superclass)
 # -----------------------------------------------------------------------------
 # Uses a class hierarchy (mirroring v4's single table inheritance with
@@ -498,9 +536,88 @@ plato:sourced_by
         authority is the origin of the attested knowledge. We don't use formal
         rdfs:subPropertyOf to avoid importing PROV-O's domain/range constraints
         which conflict with PLATO's class structure.
+
+        This is the direct form. Where the citation itself has something to
+        say (a page or folio, an attribution resolved from 'ibidem'), use
+        plato:has_citation to a Citation node that cites the Authority.
+        sourced_by is declared as the property chain has_citation o cites, so
+        a reasoner derives it from a Citation; data intended for consumers
+        without a reasoner should assert it directly as well.
     """@en ;
+    owl:propertyChainAxiom ( plato:has_citation plato:cites ) ;
     rdfs:domain plato:Attestation ;
     rdfs:range plato:Authority .
+
+plato:has_citation
+    a owl:ObjectProperty ;
+    rdfs:label "has citation"@en ;
+    rdfs:comment """
+        Links an Attestation to a Citation: its qualified use of one
+        Authority, with a locator and an attribution status. An attestation
+        may have several, one per source it rests on.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Citation .
+
+
+# =============================================================================
+# Citation Properties
+# =============================================================================
+# What is true of one attestation's use of one source, as distinct from what
+# is true of the source (its date, its derivation) or of the attestation (its
+# certainty, the occurrence it records).
+
+plato:cites
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "cites"@en ;
+    rdfs:comment """
+        The Authority (a Source or a Dataset) this Citation uses. Exactly one
+        per Citation: an attestation resting on two sources has two
+        Citations.
+    """@en ;
+    rdfs:domain plato:Citation ;
+    rdfs:range plato:Authority .
+
+plato:locator
+    a owl:DatatypeProperty ;
+    rdfs:label "locator"@en ;
+    rdfs:comment """
+        Where in the cited work the evidence sits: 'p. 412', 'f. 12v', 'Table
+        VI, col. 3, row 88', 's.v. Athlone', 'no. xix'. An uninterpreted
+        string, deliberately: sources locate themselves inconsistently, and
+        normalising the value would destroy exactly the information it is
+        there to carry. The same position and shape as PeriodO's source
+        locator.
+
+        A property of this citation, not of the source: one Source for a
+        printed gazetteer, a different locator on each attestation drawn
+        from it. Not to be confused with the spatial sense of 'locator' in
+        the plato:geometry_role comment, a proxy point standing in for an
+        entity.
+    """@en ;
+    rdfs:domain plato:Citation ;
+    rdfs:range xsd:string .
+
+plato:attribution_status
+    a owl:ObjectProperty ;
+    rdfs:label "attribution status"@en ;
+    rdfs:comment """
+        Whether the attribution of the evidence to the cited source was
+        stated by the source or resolved editorially. Should point to a
+        concept in a SKOS concept scheme. The starter concepts are:
+
+        - plato:AttributionStated: the source is named where the form
+          occurs. The default, and usually omitted.
+        - plato:AttributionInferred: the source was given as 'ibidem' or
+          'idem' and resolved by an editor, so the attribution is inferred
+          rather than stated. Not marginal: about one attestation in twenty
+          in the English Place-Name Society corpus.
+
+        A statement about the citation, not about the form, which is why it
+        lives here and not in plato:occurrence_context.
+    """@en ;
+    rdfs:domain plato:Citation ;
+    rdfs:range skos:Concept .
 
 
 # =============================================================================
@@ -763,11 +880,10 @@ plato:occurrence_context
           distinguishes Bonestou the hundred from de Bonestou the man.
         - plato:InFieldName: the form survives only as an element of a later
           minor name, such as a field name.
-        - plato:AttributionInferred: the source attribution was resolved
-          editorially from 'ibidem' or 'idem' and is inferred rather than
-          stated. Strictly a statement about the sourced_by relationship
-          rather than about the form; kept here because sourced_by is not
-          reified.
+
+        The editorially resolved 'ibidem' of the surveys is not an occurrence
+        context. It is a statement about the citation, and belongs on the
+        Citation as plato:attribution_status.
 
         Not a certainty. A '(p)' attestation may be entirely certain as an
         attestation; what differs is the kind of evidence it constitutes, and

@@ -73,9 +73,10 @@ Attestation ──attests_about──▶ SpatialEntity        (the stable identi
             ──attests_timespan▶ Timespan
             ──attests_type────▶ Type
             ──sourced_by──────▶ Authority   (Source / Dataset / Period / …)
+            ──has_citation────▶ Citation ──cites──▶ Authority  (+ locator)
 ```
 
-Everything on the right is a **reusable node**: one `Name` or `Geometry` can be referenced by attestations about many different SpatialEntities. This is the structural difference from LPF, where names and geometries are properties of a place record. Any subset of these relationships is valid — contributors attest only what their source supports.
+Everything on the right except `Citation` is a **reusable node**: one `Name` or `Geometry` can be referenced by attestations about many different SpatialEntities. This is the structural difference from LPF, where names and geometries are properties of a place record. Any subset of these relationships is valid — contributors attest only what their source supports.
 
 Two consequences shape the rest of the model, and new work should preserve them:
 

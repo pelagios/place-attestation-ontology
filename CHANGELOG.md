@@ -40,7 +40,7 @@ section, closing
   occurs in the cited source, the surveys' "(3 X)".
 - `plato:occurrence_context` (range `skos:Concept`): the capacity in which the
   form occurs. Starter concepts `plato:Direct`, `plato:InPersonalName` (the
-  surveys' "(p)"), `plato:InFieldName`, `plato:AttributionInferred`.
+  surveys' "(p)"), `plato:InFieldName`.
 - `plato:form_status` (range `skos:Concept`): whether the form was read in the
   source, chosen by the cited authority, or derived by the project. Starter
   concepts `plato:Attested`, `plato:Headword`, `plato:Normalised`,
@@ -55,9 +55,28 @@ The JSON `$defs` follow: `source.timespan`, `source.derivedFrom` (a URI or an
 inline source object), `attestation.occurrenceCount`,
 `attestation.occurrenceContext` and `attestation.formStatus`.
 
-New examples: `examples/survey-attestations.ttl` and
-`schemas/examples/attestation-centric-survey.json`, built on place-name survey
-notation.
+A `plato:Citation` class, closing
+[#7](https://github.com/pelagios/place-attestation-ontology/issues/7): the
+qualified form of `plato:sourced_by`, reached from the Attestation by
+`plato:has_citation` and pointing at its Authority by `plato:cites`. It carries
+`plato:locator` (an uninterpreted string: 'p. 412', 'f. 12v', 'Table VI, col.
+3, row 88', as in PeriodO) and `plato:attribution_status` (starter concepts
+`plato:AttributionStated`, `plato:AttributionInferred` for an *ibidem* resolved
+by an editor). A locator on the Source would force a Source per page, and one
+on the Attestation could not say which of two sources it locates within; the
+surveys' "1252 Cl et passim to 1346 Harl" is one claim resting on two
+citations. `sourced_by` is declared as the property chain `has_citation o
+cites`, so it follows from a Citation; data for consumers without a reasoner
+should assert it directly as well. The *ibidem* concept was briefly a starter
+value of `occurrence_context` in this same unreleased batch; it is a statement
+about the citation, not the form, and now lives only on the Citation.
+
+The JSON `$defs` gain `citation` (`source` as URI or inline object, `locator`,
+`attributionStatus`) and `attestation.citations` beside `sources`.
+
+New examples: `examples/survey-attestations.ttl`,
+`schemas/examples/attestation-centric-survey.json`, `examples/citations.ttl`
+and `schemas/examples/attestation-centric-citations.json`.
 
 ### Changed
 

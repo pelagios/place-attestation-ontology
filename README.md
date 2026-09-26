@@ -40,6 +40,7 @@ The ontology defines a small number of classes and a bundling mechanism that con
 | **Type** | A classification from a controlled vocabulary (typically AAT). Reusable. |
 | **PropertyValue** | An attribute that is none of the above — a population, a valuation, a market day. The property is identified by URI in an external vocabulary; the value may be a literal or a structured object. Reusable. |
 | **Authority** | Abstract superclass for provenance entities, with subtypes: **Source** (a citable document), **Dataset** (a collection-level authority), **Period** (a named historical period), **RelationType** (a vocabulary entry for entity-to-entity relationships), and **CertaintyLevel**. |
+| **Citation** | One attestation's use of one source: the qualified form of `sourced_by`, carrying a locator (page, folio, cell) and whether the attribution was stated or inferred. An attestation resting on two sources has two Citations. |
 | **Gazetteer** | A mutable workspace of SpatialEntities and Attestations, owned by a contributor or team. |
 | **Candidate** | An algorithm-generated match candidate between two SpatialEntities — explicitly *not* an Attestation until confirmed by a human reviewer. |
 
@@ -55,6 +56,7 @@ Attestation ──attests_about──▶ SpatialEntity
             ──attests_type────▶ Type
             ──attests_property▶ PropertyValue
             ──sourced_by──────▶ Authority (Source)
+            ──has_citation────▶ Citation ──cites──▶ Authority, with locator
 ```
 
 Not every relationship is required in every attestation. A contributor might attest only a name and timespan, or only a geometry, depending on what their source provides.
@@ -76,12 +78,14 @@ The `examples/` directory contains worked examples in Turtle (RDF) format:
 - **[relation.ttl](examples/relation.ttl)** — A entity-to-entity relationship: attesting that a city was the capital of a political entity during a particular period.
 - **[geometry-roles.ttl](examples/geometry-roles.ttl)** — Four geometries for one SpatialEntity — a built extent, a market-place feature point, a proxy locator and a map label anchor — distinguished by `plato:geometry_role`.
 - **[property-values.ttl](examples/property-values.ttl)** — Attributes that are neither name, geometry, timespan nor type: a census population, and a fair's trading days as a structured recurrence rule anchored to a moveable feast.
+- **[citations.ttl](examples/citations.ttl)** — Reified citations: one printed gazetteer cited at different pages, one claim resting on two sources with a locator in each, and an attribution resolved editorially from an *ibidem* (`plato:Citation`, `plato:locator`, `plato:attribution_status`).
 - **[survey-attestations.ttl](examples/survey-attestations.ttl)** — Place-name survey data: a witness dated separately from the text it transmits (`plato:source_timespan`, `plato:derived_from`), a form found only inside a personal name (`plato:occurrence_context`, `plato:occurrence_count`), and an editorial headword and a derived search form distinguished from attested spellings (`plato:form_status`).
 
 The `schemas/examples/` directory contains corresponding examples in JSON format, following the JSON Schema submission profiles:
 
 - **[place-centric-constantinople.json](schemas/examples/place-centric-constantinople.json)** — Constantinople/Istanbul in place-centric JSON format, with three attestations nested under a single SpatialEntity.
 - **[attestation-centric-customs.json](schemas/examples/attestation-centric-customs.json)** — Two attestations from London customs accounts in attestation-centric JSON format, demonstrating the flexible model for contributing evidence about existing SpatialEntities.
+- **[attestation-centric-citations.json](schemas/examples/attestation-centric-citations.json)** — The citations example in attestation-centric JSON format: `citations` with `locator` and `attributionStatus`.
 - **[attestation-centric-survey.json](schemas/examples/attestation-centric-survey.json)** — The survey-attestations example in attestation-centric JSON format: a dated witness with `derivedFrom`, `occurrenceCount`, `occurrenceContext` and `formStatus`.
 
 ## Relationship to the WHG v4 data model

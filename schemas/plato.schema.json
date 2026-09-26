@@ -271,6 +271,31 @@
     },
 
 
+    "citation": {
+      "type": "object",
+      "description": "One attestation's use of one source: the qualified form of a source reference, carrying what is true of this citation rather than of the source (plato:Citation).",
+      "properties": {
+        "@id": { "$ref": "#/$defs/uri" },
+        "source": {
+          "oneOf": [
+            { "$ref": "#/$defs/uri", "description": "URI of the source cited." },
+            { "$ref": "#/$defs/source" }
+          ],
+          "description": "The source or dataset cited (plato:cites): a URI, or an inline source object."
+        },
+        "locator": {
+          "type": "string",
+          "description": "Where in the cited work the evidence sits (plato:locator): 'p. 412', 'f. 12v', 'Table VI, col. 3, row 88'. An uninterpreted string."
+        },
+        "attributionStatus": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of a concept saying whether the attribution was stated by the source or resolved editorially (plato:attribution_status): https://w3id.org/plato#AttributionInferred for an 'ibidem' resolved by an editor. Omit where the source is named where the form occurs."
+        }
+      },
+      "required": ["source"],
+      "additionalProperties": false
+    },
+
     "source": {
       "type": "object",
       "description": "A citable document or authority that grounds an attestation.",
@@ -385,7 +410,12 @@
         "sources": {
           "type": "array",
           "items": { "$ref": "#/$defs/source" },
-          "description": "Sources grounding this attestation."
+          "description": "Sources grounding this attestation: the direct form of plato:sourced_by. Use 'citations' to add a locator or an attribution status."
+        },
+        "citations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/citation" },
+          "description": "Qualified source references (plato:has_citation), each with its own locator or attribution status. An attestation resting on two sources has two citations. May appear alongside 'sources'."
         },
 
         "relations": {
@@ -441,7 +471,7 @@
         },
         "occurrenceContext": {
           "$ref": "#/$defs/uri",
-          "description": "URI of a concept giving the capacity in which the form occurs (plato:occurrence_context), e.g. https://w3id.org/plato#InPersonalName for a form found only as an element of a personal name, or https://w3id.org/plato#AttributionInferred where the source was resolved editorially from 'ibidem'. Omit for a direct occurrence."
+          "description": "URI of a concept giving the capacity in which the form occurs (plato:occurrence_context), e.g. https://w3id.org/plato#InPersonalName for a form found only as an element of a personal name. An 'ibidem' resolved by an editor is not an occurrence context; put it on the citation as attributionStatus. Omit for a direct occurrence."
         },
         "formStatus": {
           "$ref": "#/$defs/uri",

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/attestation-centric.schema.json",
+  "profile": "attestation-centric",
+
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/gazetteer/citations",
+    "title": "Citation examples (illustrative)",
+    "contributor": "https://orcid.org/0000-0002-1234-5678"
+  },
+
+  "attestations": [
+    {
+      "about": "https://whgazetteer.org/example/entity/athlone",
+      "names": [
+        { "toponym": "Athlone", "language": "en", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "timespans": [
+        { "startEarliest": "1887", "endLatest": "1887", "label": "1887" }
+      ],
+      "citations": [
+        {
+          "source": {
+            "@id": "https://whgazetteer.org/example/source/bartholomew-1887",
+            "title": "Bartholomew, Gazetteer of the British Isles",
+            "citation": "J. Bartholomew, Gazetteer of the British Isles (Edinburgh, 1887)",
+            "timespan": { "startEarliest": "1887", "endLatest": "1887", "label": "1887" }
+          },
+          "locator": "p. 25, s.v. Athlone"
+        }
+      ],
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T12:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/abingdon",
+      "names": [
+        { "toponym": "Abingdon", "language": "en", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "timespans": [
+        { "startEarliest": "1887", "endLatest": "1887", "label": "1887" }
+      ],
+      "citations": [
+        {
+          "source": "https://whgazetteer.org/example/source/bartholomew-1887",
+          "locator": "p. 3, s.v. Abingdon"
+        }
+      ],
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T12:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/bunsty",
+      "names": [
+        { "toponym": "Bonestowe", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "timespans": [
+        {
+          "startEarliest": "1252",
+          "startLatest": "1252",
+          "endEarliest": "1346",
+          "endLatest": "1346",
+          "startPrecision": "year",
+          "endPrecision": "year"
+        }
+      ],
+      "sources": [
+        { "@id": "https://whgazetteer.org/example/source/close-rolls", "title": "Cl", "citation": "Calendar of the Close Rolls" },
+        { "@id": "https://whgazetteer.org/example/source/harley-charters", "title": "Harl", "citation": "British Library, Harley Charters" }
+      ],
+      "citations": [
+        { "source": "https://whgazetteer.org/example/source/close-rolls", "locator": "1251–53, p. 214" },
+        { "source": "https://whgazetteer.org/example/source/harley-charters", "locator": "Harl. Ch. 84 D 20" }
+      ],
+      "notes": "Survey notation: 1252 Cl et passim to 1346 Harl. One claim resting on two sources, each located.",
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T12:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/bunsty",
+      "names": [
+        { "toponym": "Bonestou", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "timespans": [
+        { "startEarliest": "1254", "endLatest": "1254", "label": "1254" }
+      ],
+      "citations": [
+        {
+          "source": "https://whgazetteer.org/example/source/close-rolls",
+          "locator": "1253–54, p. 31",
+          "attributionStatus": "https://w3id.org/plato#AttributionInferred"
+        }
+      ],
+      "certainty": 1.0,
+      "notes": "Source given as ib. in the survey; resolved editorially. The attestation is certain; the attribution is inferred.",
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T12:00:00Z"
+    }
+  ]
+}
