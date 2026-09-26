@@ -1,0 +1,257 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative URIs.
+# The notation followed here is that of the English Place-Name Society (EPNS)
+# county surveys, but the individual sources, dates and readings are
+# illustrative: check the edition before citing any of them.
+
+
+# =============================================================================
+# Survey-derived attestations: dating the witness, describing the occurrence,
+# and saying what kind of form a name is
+#
+# Three things a place-name survey records as a matter of course, and which
+# until now had no home but plato:notes:
+#
+#   1. The date of the witness as distinct from the date of the text.
+#      "921 (c. 925) ASC (A)": an annal for 921, read in a manuscript
+#      written c. 925.            (plato:source_timespan, plato:derived_from)
+#
+#   2. The occurrence itself. "(3 X)": a form found three times in the
+#      source. "(p)": a form found only inside a personal name.
+#                                  (plato:occurrence_count,
+#                                   plato:occurrence_context)
+#
+#   3. Whether a form is an attested spelling, the editorial headword under
+#      which the entry is filed, or a search form the project derived.
+#                                  (plato:form_status)
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# 1. Text and witness: Cambridge in the Anglo-Saxon Chronicle
+#
+# The survey's notation "921 (c. 925) ASC (A)" carries three facts: the annal
+# is for 921; the manuscript in which the spelling is read (the A text) was
+# written c. 925; the sigil is "A". These are two Source nodes, one derived
+# from the other, each with its own date, and the attestation cites the one
+# the form was actually read in. The sigil is simply the witness's title.
+# -----------------------------------------------------------------------------
+
+whgx:entity\/cambridge
+    a plato:SpatialEntity ;
+    plato:entity_identifier "whg:cambridge" ;
+    plato:namespace "whg" .
+
+whgx:source\/asc-annal-921
+    a plato:Source ;
+    plato:authority_title "Anglo-Saxon Chronicle, annal for 921" ;
+    plato:bibliographic_string "ASC s.a. 921" .
+
+whgx:timespan\/c925
+    a plato:Timespan ;
+    plato:start_earliest "0915" ;
+    plato:end_latest "0935" ;
+    plato:timespan_label "c. 925" ;
+    plato:start_precision "year" ;
+    plato:end_precision "year" .
+
+whgx:source\/asc-ms-a
+    a plato:Source ;
+    plato:authority_title "A" ;
+    plato:bibliographic_string "ASC (A): Cambridge, Corpus Christi College, MS 173" ;
+    plato:derived_from whgx:source\/asc-annal-921 ;
+    plato:source_timespan whgx:timespan\/c925 .
+
+whgx:name\/grantanbrycg
+    a plato:Name ;
+    plato:toponym "Grantanbrycg"@ang ;
+    plato:language "ang" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:timespan\/921
+    a plato:Timespan ;
+    plato:start_earliest "0921" ;
+    plato:start_latest "0921" ;
+    plato:end_earliest "0921" ;
+    plato:end_latest "0921" ;
+    plato:start_precision "year" ;
+    plato:end_precision "year" .
+
+# The attested timespan is 921: the claim is that the name was in use in 921.
+# The witness date (c. 925) lives on the Source. A second attestation with a
+# timespan of c. 925 would assert something different, and unsupported.
+whgx:attestation\/cambridge-asc-921
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/cambridge ;
+    plato:attests_name whgx:name\/grantanbrycg ;
+    plato:attests_timespan whgx:timespan\/921 ;
+    plato:sourced_by whgx:source\/asc-ms-a ;
+    plato:certainty 1.0 .
+
+
+# -----------------------------------------------------------------------------
+# 2. The occurrence itself: Bunsty Hundred, Buckinghamshire
+#
+# "Bonestou 1086 DB" is a direct attestation: Domesday Book names the hundred.
+# "Willelmus de Bonestou" is not: the form occurs only as a man's by-name,
+# which the surveys mark "(p)". Both are entirely certain as attestations;
+# what differs is the kind of evidence, and that is recorded on the
+# attestation because the same string may be direct in one source and a
+# by-name element in another.
+# -----------------------------------------------------------------------------
+
+whgx:entity\/bunsty
+    a plato:SpatialEntity ;
+    plato:entity_identifier "whg:bunsty-hundred" ;
+    plato:namespace "whg" .
+
+whgx:name\/bonestou
+    a plato:Name ;
+    plato:toponym "Bonestou" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:source\/domesday-bucks
+    a plato:Source ;
+    plato:authority_title "DB" ;
+    plato:bibliographic_string "Domesday Book, Buckinghamshire" .
+
+whgx:timespan\/1086
+    a plato:Timespan ;
+    rdfs:label "1086"@en .
+
+# A direct occurrence: occurrence_context is omitted, plato:Direct being the
+# default. The form occurs three times in the folios cited, the survey's
+# "(3 X)".
+whgx:attestation\/bunsty-db-1086
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/bunsty ;
+    plato:attests_name whgx:name\/bonestou ;
+    plato:attests_timespan whgx:timespan\/1086 ;
+    plato:sourced_by whgx:source\/domesday-bucks ;
+    plato:occurrence_count 3 ;
+    plato:certainty 1.0 .
+
+# The same string as a by-name, in a later (fictional) deed: the hundred is
+# not named, a man from it is. Not a lower certainty. Nothing else in the
+# record would distinguish Bonestou the hundred from de Bonestou the man.
+whgx:source\/deed-c1200
+    a plato:Source ;
+    plato:authority_title "Deed, c. 1200 (illustrative)" .
+
+whgx:timespan\/c1200
+    a plato:Timespan ;
+    rdfs:label "c. 1200"@en .
+
+whgx:attestation\/bunsty-byname
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/bunsty ;
+    plato:attests_name whgx:name\/bonestou ;
+    plato:attests_timespan whgx:timespan\/c1200 ;
+    plato:sourced_by whgx:source\/deed-c1200 ;
+    plato:occurrence_context plato:InPersonalName ;
+    plato:notes "Willelmus de Bonestou, witness." ;
+    plato:certainty 1.0 .
+
+
+# -----------------------------------------------------------------------------
+# 3. What kind of form: attested spelling, headword, search form
+#
+# The survey volume files the entry under "Bunsty Hundred". That is a
+# scholarly decision, not a reading, and another edition may decide
+# otherwise; so it is a sourced attestation with form_status Headword, not a
+# label on the SpatialEntity. The project's search form "Bunstowe" is derived
+# from an attested "Bunstow(e)" and attested by nobody: it is Normalised, its
+# source is the project itself, and a meta-attestation records which
+# attestation it was derived from.
+# -----------------------------------------------------------------------------
+
+whgx:timespan\/1925
+    a plato:Timespan ;
+    rdfs:label "1925"@en .
+
+whgx:source\/pn-bk
+    a plato:Source ;
+    plato:authority_title "PN Bk" ;
+    plato:bibliographic_string "A. Mawer and F. M. Stenton, The Place-Names of Buckinghamshire (EPNS 2, 1925)" ;
+    plato:source_timespan whgx:timespan\/1925 .
+
+whgx:name\/bunsty-hundred
+    a plato:Name ;
+    plato:toponym "Bunsty Hundred"@en ;
+    plato:language "en" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:attestation\/bunsty-headword
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/bunsty ;
+    plato:attests_name whgx:name\/bunsty-hundred ;
+    plato:sourced_by whgx:source\/pn-bk ;
+    plato:form_status plato:Headword .
+
+# An attested reading with the edition's bracketing convention preserved.
+whgx:name\/bunstowe-bracketed
+    a plato:Name ;
+    plato:toponym "Bunstow(e)" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:source\/fine-c1240
+    a plato:Source ;
+    plato:authority_title "Fine, c. 1240 (illustrative)" .
+
+whgx:timespan\/c1240
+    a plato:Timespan ;
+    rdfs:label "c. 1240"@en .
+
+whgx:attestation\/bunsty-bunstowe-attested
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/bunsty ;
+    plato:attests_name whgx:name\/bunstowe-bracketed ;
+    plato:attests_timespan whgx:timespan\/c1240 ;
+    plato:sourced_by whgx:source\/fine-c1240 .
+
+# The derived search form. Its authority is the project's own Dataset, and
+# has_meta_type extends the documented list (which is open) with a concept
+# for derivation.
+whgx:dataset\/deep
+    a plato:Dataset ;
+    plato:authority_title "DEEP: Digital Exposure of English Place-names" .
+
+whgx:name\/bunstowe
+    a plato:Name ;
+    plato:toponym "Bunstowe" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:attestation\/bunsty-bunstowe-normalised
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/bunsty ;
+    plato:attests_name whgx:name\/bunstowe ;
+    plato:sourced_by whgx:dataset\/deep ;
+    plato:form_status plato:Normalised ;
+    plato:meta_attestation_about whgx:attestation\/bunsty-bunstowe-attested ;
+    plato:has_meta_type plato:DerivedFrom .
+
+
+# =============================================================================
+# Observations
+#
+# 1. A consumer computing "earliest attestation of this name" can now exclude
+#    the headword and the search form, and one counting independent
+#    spellings can exclude the by-name, without knowing the survey's
+#    conventions. Before, all five attestations looked alike.
+#
+# 2. None of the new properties is on the Name node. "Bonestou" is one Name,
+#    referenced by a direct attestation and a by-name attestation; its status
+#    differs per occurrence, so it is recorded per attestation.
+#
+# 3. The witness date and the attested date never share a node. If the
+#    A-text were later re-dated, only whgx:timespan/c925 would change.
+# =============================================================================

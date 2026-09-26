@@ -23,9 +23,10 @@
     dcterms:title "PLATO — Place Attestation Ontology"@en ;
     dcterms:description """
         An ontology for representing historical place knowledge as attestations:
-        bundles of evidence linking SpatialEntities (places, routes, networks, and other
-        entities related to place) to Names, Geometries, Timespans, Types, and
-        Authorities with full provenance.
+        bundles of evidence linking SpatialEntities (settlements, routes,
+        networks, administrative units, regions and other entities whose
+        identity is bound up with space) to Names, Geometries, Timespans,
+        Types, PropertyValues and Authorities with full provenance.
 
         Developed by the Pelagios Network's Place Working Group, led by the
         Institute for Spatial History Innovation (ISHI), University of Pittsburgh.
@@ -61,10 +62,19 @@
 # -----------------------------------------------------------------------------
 # SpatialEntity
 # -----------------------------------------------------------------------------
-# The stable identity to which attestations refer. Typically a place, but
-# generalised to accommodate routes, networks, administrative units, and
-# other historical entities related to place. A SpatialEntity persists regardless
-# of how many attestations reference it.
+# The identity to which attestations refer: the point on which attestations
+# from different sources, periods and contributors converge. A SpatialEntity
+# persists regardless of how many attestations reference it.
+#
+# A SpatialEntity is not a Place, and PLATO defines no Place class. "Place"
+# carries several meanings in the gazetteer community, and which of them, if
+# any, corresponds to a SpatialEntity is contested; the ontology does not
+# settle it. Neither a SpatialEntity nor any set of attestations or of
+# SpatialEntities is a "place" by virtue of this ontology. Where the word
+# appears in this file it is used informally, for whatever a source is
+# talking about, and never as the name of a class or of a grouping. What kind
+# of entity a SpatialEntity is (settlement, route, region, period and so on)
+# is a matter for Type attestations.
 
 plato:SpatialEntity
     a owl:Class ;
@@ -84,6 +94,14 @@ plato:SpatialEntity
         SpatialEntities are not defined by any single attestation. They are the
         point of convergence for many attestations from different sources,
         periods and contributors.
+
+        A SpatialEntity is not a place, and PLATO defines no Place class.
+        "Place" carries several meanings in the gazetteer community, and
+        which of them, if any, corresponds to a SpatialEntity is contested;
+        the ontology does not settle it. Neither a SpatialEntity nor any set
+        of attestations or of SpatialEntities is a place by virtue of this
+        ontology. Where the word appears in this document it is used
+        informally, for whatever a source is talking about.
     """@en .
 
 
@@ -459,7 +477,7 @@ plato:attests_property
         population, a valuation, an elevation, a market's trading day. An
         attestation may assert several properties or none.
 
-        These are among the commonest things a source says about a place, and
+        These are among the commonest things a source says about an entity, and
         they carry exactly the provenance and temporal scoping the attestation
         pattern exists to handle: a population figure is a claim, by a named
         source, about one SpatialEntity, over a Timespan, with a certainty. The
@@ -689,6 +707,107 @@ plato:modified
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range xsd:dateTime .
+
+
+# =============================================================================
+# Occurrence and Form Status
+# =============================================================================
+# What an attestation says about the occurrence itself, as distinct from what
+# it says about the SpatialEntity. Philological gazetteers record these as a
+# matter of course. The English Place-Name Society surveys mark a form that
+# occurs three times in a source as '(3 X)' and a form found only as an
+# element of a personal name (Willelmus de Bonestou) as '(p)', and they
+# distinguish an attested spelling from the editorial headword under which
+# the entry is filed. Without a home for these the only option is free text
+# in plato:notes, which makes them unqueryable, and a consumer computing
+# "earliest attestation" or "number of independent spellings" then gets the
+# wrong answer without knowing it.
+#
+# All three properties sit on the Attestation rather than on the reusable
+# Name node, because they describe one occurrence: the same string can be a
+# direct attestation in one charter and a by-name element in another, a
+# reading in one source and a headword in another. They apply to every name
+# the attestation bundles, so an attestation should bundle only names of one
+# status.
+#
+# The vocabularies are open SKOS concepts rather than closed enumerations, as
+# with plato:geometry_role: the apparatus of survey traditions differs, and a
+# closed list would be guessing at conventions nobody here has surveyed.
+
+plato:occurrence_count
+    a owl:DatatypeProperty ;
+    rdfs:label "occurrence count"@en ;
+    rdfs:comment """
+        The number of times the attested form occurs in the cited source or
+        passage: the '(3 X)' of a place-name survey. A count of occurrences
+        of the form in this source, not of independent sources. It belongs to
+        the attestation, not to the Name, which may occur elsewhere.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:nonNegativeInteger .
+
+plato:occurrence_context
+    a owl:ObjectProperty ;
+    rdfs:label "occurrence context"@en ;
+    rdfs:comment """
+        The capacity in which the attested form occurs in the source. Should
+        point to a concept in a SKOS concept scheme. The starter concepts are:
+
+        - plato:Direct: the form refers to the SpatialEntity directly. The
+          default, and usually omitted.
+        - plato:InPersonalName: the form occurs only as an element of a
+          personal name, a surname or by-name such as 'Willelmus de
+          Bonestou'. This is the '(p)' of the place-name surveys, and it is
+          weaker evidence for the name's currency, and for the entity's
+          existence, than a direct attestation. Nothing else in the record
+          distinguishes Bonestou the hundred from de Bonestou the man.
+        - plato:InFieldName: the form survives only as an element of a later
+          minor name, such as a field name.
+        - plato:AttributionInferred: the source attribution was resolved
+          editorially from 'ibidem' or 'idem' and is inferred rather than
+          stated. Strictly a statement about the sourced_by relationship
+          rather than about the form; kept here because sourced_by is not
+          reified.
+
+        Not a certainty. A '(p)' attestation may be entirely certain as an
+        attestation; what differs is the kind of evidence it constitutes, and
+        folding that into a lower plato:certainty would discard the reason.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range skos:Concept .
+
+plato:form_status
+    a owl:ObjectProperty ;
+    rdfs:label "form status"@en ;
+    rdfs:comment """
+        The status of the name form this attestation contributes: read in the
+        cited source, chosen by the cited authority, or derived by the
+        contributing project. Should point to a concept in a SKOS concept
+        scheme. The starter concepts are:
+
+        - plato:Attested: a form read in the cited source. The default, and
+          usually omitted.
+        - plato:Headword: the editorial or preferred form under which the
+          cited authority files the entry ('Bunsty Hundred'). A scholarly
+          decision rather than a reading, and typically the form users search
+          for. Another authority may choose differently, which is why it is a
+          sourced attestation and not a label on the SpatialEntity.
+        - plato:Normalised: a form derived from an attested one for matching
+          or search ('Bunstow(e)' resolved to 'Bunstowe'), attested by no
+          source and carrying no independent evidential value. It may point
+          to the attestation it was derived from through a meta-attestation.
+        - plato:Reconstructed: a form inferred but not attested, the
+          philologists' asterisked form.
+
+        A different axis from plato:name_type, which classifies what the name
+        denotes: a headword is still a toponym. It sits on the Attestation,
+        not on the Name, because the same string can be a reading in one
+        attestation and a headword in another. The WHG ingestion prototype
+        reached the same placement independently: its preferred-name flag is
+        on the attestation, not on the toponym record.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range skos:Concept .
 
 
 # =============================================================================
@@ -1010,10 +1129,21 @@ plato:name_type
     a owl:DatatypeProperty ;
     rdfs:label "name type"@en ;
     rdfs:comment """
-        Type of name: 'toponym' (place name), 'chrononym' (period/era name),
-        'ethnonym' (people/ethnic group), 'demonym' (inhabitants), 'odonym'
-        (street/road name), 'hydronym' (water body name). Multiple types
-        possible (e.g., a name that functions as both toponym and ethnonym).
+        What the name denotes. The list is open: 'toponym' (place name),
+        'chrononym' (period or era name), 'ethnonym' (people or ethnic
+        group), 'demonym' (inhabitants), 'odonym' (street or road name) and
+        'hydronym' (water body) are the starter values, and a project may
+        add others ('oronym', 'hagionym') provided it documents them in its
+        gazetteer metadata. Multiple types are possible (a name that
+        functions as both toponym and ethnonym). plato.schema.json carries
+        the same open list; earlier releases closed it there, and the two
+        serialisations now agree.
+
+        This classifies the referent, not the status of the form. Whether a
+        string is an attested spelling, an editorial headword or a derived
+        search form is a property of the attestation (plato:form_status),
+        because the same string can have a different status in different
+        attestations.
     """@en ;
     rdfs:domain plato:Name ;
     rdfs:range xsd:string .
@@ -1504,6 +1634,63 @@ plato:bibliographic_string
     rdfs:comment "A formatted citation string for this source."@en ;
     rdfs:domain plato:Source ;
     rdfs:range xsd:string .
+
+
+# -----------------------------------------------------------------------------
+# Source date and derivation
+# -----------------------------------------------------------------------------
+# A Source needs a date of its own and a way to say that it is a copy of
+# another. The date a source was made is not the date of what it attests: an
+# annal for 921 read in a manuscript written c. 925 gives one attestation with
+# two dates, and the Timespan on the attestation dates the claim (the name was
+# in use in 921), not the witness. For medieval and early-modern evidence this
+# is the normal case rather than the edge: much of what survives is known only
+# through cartularies, registers, inspeximus confirmations and antiquarian
+# transcripts, and the date of the witness matters as much as the date of the
+# text. Encoding both in bibliographic_string makes every combination of text,
+# witness and copy-date a distinct Source and leaves the copy-date
+# unqueryable.
+#
+# The witness is modelled as a Source in its own right (the manuscript, the
+# cartulary, the edition) rather than by a separate Witness class: it is
+# citable, it has a date, and an attestation cites the one it was actually
+# read in. A manuscript sigil ('A') is then simply the authority_title of the
+# witness Source. CIDOC-CRM makes the same separation between a text (E33)
+# and its carrier (E84) and dates the carrier's production; PLATO needs the
+# two levels, not FRBR's four.
+
+plato:source_timespan
+    a owl:ObjectProperty ;
+    rdfs:label "source timespan"@en ;
+    rdfs:comment """
+        When this Source, as a document, was produced: the date of the
+        manuscript, the compilation of the cartulary, the publication of the
+        edition. Distinct from the Timespan an attestation asserts, which
+        dates the claim rather than the witness. An annal for 921 read in a
+        manuscript written c. 925 has an attested timespan of 921 and a
+        source timespan of c. 925. Reuses Timespan, so an approximate date
+        is start_earliest 915, end_latest 935, timespan_label 'c. 925'. The
+        same move as plato:has_timespan on a Period.
+    """@en ;
+    rdfs:domain plato:Source ;
+    rdfs:range plato:Timespan .
+
+plato:derived_from
+    a owl:ObjectProperty ;
+    rdfs:label "derived from"@en ;
+    rdfs:comment """
+        This Source is a copy, transcript, edition, calendar or confirmation
+        of that one. A later cartulary copy of a charter, an inspeximus, or a
+        printed edition of a manuscript is a Source of its own, with its own
+        source_timespan, derived_from the document it transmits. An
+        attestation should cite the Source it was actually read in; the chain
+        of derived_from links records what that Source transmits. The kind of
+        derivation (copy, edition, calendar, inspeximus) is not yet
+        distinguished; a sub-property or a small vocabulary can be added when
+        a project needs it.
+    """@en ;
+    rdfs:domain plato:Source ;
+    rdfs:range plato:Source .
 
 
 # =============================================================================

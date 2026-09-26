@@ -5,16 +5,7 @@
   "gazetteer": {
     "title": "Byzantine Cities Gazetteer",
     "description": "Historical cities of the Byzantine Empire and their predecessors.",
-    "contributor": {
-      "@id": "https://orcid.org/0000-0003-9876-5432",
-      "name": "Maria Komnena",
-      "orcid": "https://orcid.org/0000-0003-9876-5432",
-      "affiliation": {
-        "@id": "https://example.org/orgs/byzantine-institute",
-        "name": "Byzantine Studies Institute"
-      },
-      "role": "data_curator"
-    },
+    "contributor": "https://orcid.org/0000-0003-9876-5432",
     "licence": "https://creativecommons.org/licenses/by/4.0/"
   },
 

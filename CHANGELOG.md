@@ -5,6 +5,75 @@ with no implementations yet, so a renamed term is removed outright rather than
 retained as a deprecated equivalent. That policy will change once data in the
 wild uses the namespace.
 
+## Unreleased
+
+### Clarified
+
+A SpatialEntity is not a place, and PLATO defines no Place class. The ontology
+description, the `plato:SpatialEntity` definition, the README, the JSON schema
+and the deposit metadata no longer describe a SpatialEntity as "typically a
+place". "Place" carries several meanings in the gazetteer community, and which
+of them, if any, corresponds to a SpatialEntity is contested; the ontology now
+says so and takes no position. Neither a SpatialEntity nor any set of
+attestations or of SpatialEntities is a place by virtue of the ontology. Where
+the word still appears it is used informally, for whatever a source is talking
+about.
+
+### Added
+
+Two properties on `plato:Source`, closing
+[#11](https://github.com/pelagios/place-attestation-ontology/issues/11):
+
+- `plato:source_timespan` (range `plato:Timespan`): when the document, as a
+  witness, was produced. An annal for 921 read in a manuscript written c. 925
+  has an attested timespan of 921 and a source timespan of c. 925.
+- `plato:derived_from` (range `plato:Source`): this document is a copy,
+  transcript, edition, calendar or confirmation of that one. A witness is a
+  Source in its own right, and a manuscript sigil is its `authority_title`.
+
+Three properties on `plato:Attestation`, in a new "Occurrence and Form Status"
+section, closing
+[#12](https://github.com/pelagios/place-attestation-ontology/issues/12) and
+[#13](https://github.com/pelagios/place-attestation-ontology/issues/13):
+
+- `plato:occurrence_count` (`xsd:nonNegativeInteger`): how many times the form
+  occurs in the cited source, the surveys' "(3 X)".
+- `plato:occurrence_context` (range `skos:Concept`): the capacity in which the
+  form occurs. Starter concepts `plato:Direct`, `plato:InPersonalName` (the
+  surveys' "(p)"), `plato:InFieldName`, `plato:AttributionInferred`.
+- `plato:form_status` (range `skos:Concept`): whether the form was read in the
+  source, chosen by the cited authority, or derived by the project. Starter
+  concepts `plato:Attested`, `plato:Headword`, `plato:Normalised`,
+  `plato:Reconstructed`.
+
+All three sit on the Attestation rather than on the reusable Name node, because
+the same string can be direct in one source and a by-name element in another,
+a reading in one and a headword in another. The vocabularies are open SKOS
+concepts, as with `plato:geometry_role`, rather than closed enumerations.
+
+The JSON `$defs` follow: `source.timespan`, `source.derivedFrom` (a URI or an
+inline source object), `attestation.occurrenceCount`,
+`attestation.occurrenceContext` and `attestation.formStatus`.
+
+New examples: `examples/survey-attestations.ttl` and
+`schemas/examples/attestation-centric-survey.json`, built on place-name survey
+notation.
+
+### Changed
+
+`name.nameType` in `plato.schema.json` is no longer a closed enum. The ontology
+had always declared `plato:name_type` as an open string with six suggested
+values, and the schema closed the same six; the two now agree on an open list,
+with the six as documented starter values. Nothing implements the enum, so no
+data changes.
+
+### Fixed
+
+The two older JSON examples gave `gazetteer.contributor` as an inline
+contributor object, which the submission profiles reject (they declare it as a
+name or URI string). Both now give the contributor's ORCID URI, and all three
+JSON examples validate against their profiles.
+
 ## 0.3.0
 
 ### Renamed

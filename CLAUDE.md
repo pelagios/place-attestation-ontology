@@ -20,6 +20,27 @@ python3 -c "from rdflib import Graph; g=Graph(); g.parse('ontology.ttl', format=
 jq empty schemas/*.json schemas/examples/*.json
 ```
 
+`jsonschema` (4.26, with `referencing`) is installed in the user site-packages, so the JSON examples can be validated against their profile rather than just parsed. The profiles `$ref` the core by the relative name `plato.schema.json`, so register it under `https://w3id.org/plato/schemas/plato.schema.json`:
+
+```bash
+python3 - <<'EOF'
+import json, glob
+from jsonschema import Draft202012Validator
+from referencing import Registry, Resource
+load = lambda p: json.load(open(p))
+reg = Registry().with_resource('https://w3id.org/plato/schemas/plato.schema.json',
+                               Resource.from_contents(load('schemas/plato.schema.json')))
+profiles = {}
+for p in glob.glob('schemas/*-centric.schema.json'):
+    s = load(p); profiles[s['$id']] = s; reg = reg.with_resource(s['$id'], Resource.from_contents(s))
+for ex in sorted(glob.glob('schemas/examples/*.json')):
+    doc = load(ex); errs = list(Draft202012Validator(profiles[doc['$schema']], registry=reg).iter_errors(doc))
+    print(ex, 'VALID' if not errs else [list(e.absolute_path) for e in errs])
+EOF
+```
+
+Two traps: the profiles declare `gazetteer.contributor` as a string (a name or URI), not a contributor object; and years in `isoOrYear` fields must be four digits (`0921`, not `921`).
+
 CI never parses `examples/*.ttl`, so nothing but a local check catches syntax errors there. Two traps those files hit before: `/` is illegal unescaped in a Turtle local name, so the illustrative URIs are written `whgx:entity\/bristol` (resolving to `https://whgazetteer.org/example/entity/bristol`) — keep the backslash when adding terms; and each example must declare every prefix it uses, `rdfs:` included.
 
 ## Documentation build (CI)
@@ -65,7 +86,7 @@ Two consequences shape the rest of the model, and new work should preserve them:
 
 - **Attestation vs IdentityRelation vs Candidate.** An `Attestation` claims evidence about a SpatialEntity. An `IdentityRelation` claims two SpatialEntities are the same real-world entity — a separate class with its own provenance, certainty, and basis. A `Candidate` is an *algorithm-generated* match suggestion and is explicitly not an assertion. The lifecycle is: Candidate → human review → IdentityRelation (linked back via `promoted_from`) or rejection.
 - **Certainty vs fuzziness vs relativity.** These are orthogonal, not degrees of the same thing. `certainty` is epistemic (better evidence could raise it; 0.0 uncertain, 1.0 certain); `fuzziness` is ontological (the referent genuinely has no sharp boundary); `relative_to` + `relative_bearing`/`relative_distance`/`relative_qualifier` means the facet is defined against an anchor rather than absolutely. The qualification properties deliberately carry **no `rdfs:domain`** so they can be applied to any facet node or to an Attestation as a whole — keep it that way.
-- **`SpatialEntity` is not `Place`.** It is deliberately generalised to cover routes, networks, administrative units, and other entities related to place, so that Linked Traces use cases fit the same framework.
+- **`SpatialEntity` is not `Place`, and PLATO defines no Place class.** A SpatialEntity is the point on which attestations converge; it is deliberately generalised to cover routes, networks, administrative units, and other entities whose identity is bound up with space, so that Linked Traces use cases fit the same framework. What "place" means is contested in the Working Group (the referent a source talks about, a region of space, or a cluster of SpatialEntities sharing facets under some parameters), so the ontology must not define the word, must not describe a SpatialEntity as "typically a place", and must not describe any set of attestations or SpatialEntities as a place. Use "entity" in prose; keep "place" for what a source is talking about and for LPF's own "place record".
 
 ### Three representations that must stay in sync
 

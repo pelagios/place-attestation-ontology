@@ -6,9 +6,9 @@
 
 ## What is this?
 
-An OWL ontology for representing historical place knowledge as **attestations**: bundles of evidence linking places (and other historical entities) to names, geometries, timespans, types, and sources with full provenance.
+An OWL ontology for representing historical place knowledge as **attestations**: bundles of evidence linking SpatialEntities (settlements, routes, networks, administrative units, regions and other entities whose identity is bound up with space) to names, geometries, timespans, types, and sources with full provenance.
 
-The central idea is that the fundamental unit of contributed knowledge is not a *place record* but an *attestation* — a claim that a particular place had a particular name, geometry, or classification, during a particular period, according to a particular source. Places are stable identities; everything we know about them is layered on through attestations from different contributors, sources, and periods.
+The central idea is that the fundamental unit of contributed knowledge is not a *place record* but an *attestation* — a claim that a particular entity had a particular name, geometry, or classification, during a particular period, according to a particular source. SpatialEntities are stable identities, the points on which attestations converge; everything we know about them is layered on through attestations from different contributors, sources, and periods. A SpatialEntity is not a place: PLATO defines no Place class and does not define the word, which carries several contested meanings in the gazetteer community.
 
 ➤ **[Read the full ontology documentation](https://pelagios.org/place-attestation-ontology/)**, a generated reference for every class and property.
 
@@ -32,7 +32,7 @@ The ontology defines a small number of classes and a bundling mechanism that con
 
 | Class | Description |
 |-------|-------------|
-| **SpatialEntity** | A stable, persistent identity — typically a place, but generalised to accommodate routes, networks, administrative units, and other historical entities related to place. |
+| **SpatialEntity** | A stable, persistent identity: the point on which attestations converge. Covers settlements, routes, networks, administrative units, regions and other entities whose identity is bound up with space; what kind it is comes from Type attestations. Not a place — PLATO defines no Place class. |
 | **Attestation** | A lightweight bundle node linking a SpatialEntity to a Name, Geometry, Timespan, Type, and/or Source. Carries metadata (certainty, contributor, notes) but no substantive content of its own — its meaning is defined entirely by its outgoing relationships. |
 | **Name** | A toponym or appellation. Reusable: the same Name can appear in attestations for different SpatialEntities. |
 | **Geometry** | A spatial representation (point, polygon, line). Reusable across attestations and SpatialEntities. |
@@ -76,11 +76,13 @@ The `examples/` directory contains worked examples in Turtle (RDF) format:
 - **[relation.ttl](examples/relation.ttl)** — A entity-to-entity relationship: attesting that a city was the capital of a political entity during a particular period.
 - **[geometry-roles.ttl](examples/geometry-roles.ttl)** — Four geometries for one SpatialEntity — a built extent, a market-place feature point, a proxy locator and a map label anchor — distinguished by `plato:geometry_role`.
 - **[property-values.ttl](examples/property-values.ttl)** — Attributes that are neither name, geometry, timespan nor type: a census population, and a fair's trading days as a structured recurrence rule anchored to a moveable feast.
+- **[survey-attestations.ttl](examples/survey-attestations.ttl)** — Place-name survey data: a witness dated separately from the text it transmits (`plato:source_timespan`, `plato:derived_from`), a form found only inside a personal name (`plato:occurrence_context`, `plato:occurrence_count`), and an editorial headword and a derived search form distinguished from attested spellings (`plato:form_status`).
 
 The `schemas/examples/` directory contains corresponding examples in JSON format, following the JSON Schema submission profiles:
 
 - **[place-centric-constantinople.json](schemas/examples/place-centric-constantinople.json)** — Constantinople/Istanbul in place-centric JSON format, with three attestations nested under a single SpatialEntity.
-- **[attestation-centric-customs.json](schemas/examples/attestation-centric-customs.json)** — Two attestations from London customs accounts in attestation-centric JSON format, demonstrating the flexible model for contributing evidence about existing places.
+- **[attestation-centric-customs.json](schemas/examples/attestation-centric-customs.json)** — Two attestations from London customs accounts in attestation-centric JSON format, demonstrating the flexible model for contributing evidence about existing SpatialEntities.
+- **[attestation-centric-survey.json](schemas/examples/attestation-centric-survey.json)** — The survey-attestations example in attestation-centric JSON format: a dated witness with `derivedFrom`, `occurrenceCount`, `occurrenceContext` and `formStatus`.
 
 ## Relationship to the WHG v4 data model
 

@@ -95,11 +95,8 @@
         },
         "nameType": {
           "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["toponym", "chrononym", "ethnonym", "demonym", "odonym", "hydronym"]
-          },
-          "description": "Type(s) of name: toponym (place), chrononym (period), ethnonym (people), demonym (inhabitants), odonym (street), hydronym (water body)."
+          "items": { "type": "string" },
+          "description": "What the name denotes. An open list, matching plato:name_type in the ontology. Starter values: toponym (place), chrononym (period), ethnonym (people), demonym (inhabitants), odonym (street), hydronym (water body); a project may add others (oronym, hagionym) provided it documents them. Classifies the referent, not the status of the form: see attestation.formStatus."
         },
         "romanized": {
           "type": "string",
@@ -282,6 +279,17 @@
         "title": { "type": "string" },
         "uri": { "$ref": "#/$defs/uri", "description": "Resolvable URI for the source." },
         "citation": { "type": "string", "description": "Bibliographic citation string." },
+        "timespan": {
+          "$ref": "#/$defs/timespan",
+          "description": "When this source, as a document, was produced: the date of the manuscript, cartulary or edition (plato:source_timespan). Distinct from the attestation's timespans, which date the claim rather than the witness."
+        },
+        "derivedFrom": {
+          "oneOf": [
+            { "$ref": "#/$defs/uri", "description": "URI of the source this one transmits." },
+            { "$ref": "#/$defs/source" }
+          ],
+          "description": "The source of which this one is a copy, transcript, edition, calendar or confirmation (plato:derived_from): a URI, or an inline source object."
+        },
         "authorityType": {
           "type": "string",
           "enum": ["source", "dataset", "period", "relationType", "certaintyLevel"],
@@ -425,6 +433,19 @@
           "type": "string",
           "format": "date-time",
           "description": "When this attestation was last modified."
+        },
+        "occurrenceCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of times the attested form occurs in the cited source or passage (plato:occurrence_count)."
+        },
+        "occurrenceContext": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of a concept giving the capacity in which the form occurs (plato:occurrence_context), e.g. https://w3id.org/plato#InPersonalName for a form found only as an element of a personal name, or https://w3id.org/plato#AttributionInferred where the source was resolved editorially from 'ibidem'. Omit for a direct occurrence."
+        },
+        "formStatus": {
+          "$ref": "#/$defs/uri",
+          "description": "URI of a concept giving the status of the name form(s) this attestation contributes (plato:form_status): https://w3id.org/plato#Headword for an editorial or preferred form, https://w3id.org/plato#Normalised for a derived search form, https://w3id.org/plato#Reconstructed for an inferred form. Omit for a form read in the cited source."
         }
       },
       "additionalProperties": false
@@ -551,7 +572,7 @@
 
     "spatialEntity": {
       "type": "object",
-      "description": "A stable, persistent identity — typically a place, but generalised to routes, networks, administrative units, and other historical entities.",
+      "description": "A stable, persistent identity: the point on which attestations from different sources, periods and contributors converge. Not a place (PLATO defines no Place class); what kind of entity it is (settlement, route, region, administrative unit, period) is a matter for Type attestations.",
       "properties": {
         "@id": {
           "$ref": "#/$defs/uri",

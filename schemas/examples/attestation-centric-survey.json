@@ -1,0 +1,118 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/attestation-centric.schema.json",
+  "profile": "attestation-centric",
+
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/gazetteer/epns-survey",
+    "title": "Place-name survey attestations (illustrative)",
+    "contributor": "https://orcid.org/0000-0002-1234-5678"
+  },
+
+  "attestations": [
+    {
+      "about": "https://whgazetteer.org/example/entity/cambridge",
+      "names": [
+        { "toponym": "Grantanbrycg", "language": "ang", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "timespans": [
+        {
+          "startEarliest": "0921",
+          "startLatest": "0921",
+          "endEarliest": "0921",
+          "endLatest": "0921",
+          "startPrecision": "year",
+          "endPrecision": "year"
+        }
+      ],
+      "sources": [
+        {
+          "title": "A",
+          "citation": "ASC (A): Cambridge, Corpus Christi College, MS 173",
+          "timespan": {
+            "startEarliest": "0915",
+            "endLatest": "0935",
+            "label": "c. 925",
+            "startPrecision": "year",
+            "endPrecision": "year"
+          },
+          "derivedFrom": {
+            "title": "Anglo-Saxon Chronicle, annal for 921",
+            "citation": "ASC s.a. 921"
+          }
+        }
+      ],
+      "certainty": 1.0,
+      "notes": "Survey notation: 921 (c. 925) ASC (A). The attested timespan dates the claim; the source timespan dates the witness.",
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T10:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/bunsty",
+      "names": [
+        { "toponym": "Bonestou", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "timespans": [
+        { "startEarliest": "1086", "endLatest": "1086", "label": "1086" }
+      ],
+      "sources": [
+        { "title": "DB", "citation": "Domesday Book, Buckinghamshire" }
+      ],
+      "occurrenceCount": 3,
+      "certainty": 1.0,
+      "notes": "Survey notation: Bonestou 1086 DB (3 X). A direct occurrence, so occurrenceContext is omitted.",
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T10:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/bunsty",
+      "names": [
+        { "toponym": "Bonestou", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "timespans": [
+        { "label": "c. 1200" }
+      ],
+      "sources": [
+        { "title": "Deed, c. 1200 (illustrative)" }
+      ],
+      "occurrenceContext": "https://w3id.org/plato#InPersonalName",
+      "certainty": 1.0,
+      "notes": "Willelmus de Bonestou, witness. Survey notation: (p). The form occurs only as a by-name; the hundred itself is not named.",
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T10:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/bunsty",
+      "names": [
+        { "toponym": "Bunsty Hundred", "language": "en", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "sources": [
+        {
+          "title": "PN Bk",
+          "citation": "A. Mawer and F. M. Stenton, The Place-Names of Buckinghamshire (EPNS 2, 1925)",
+          "timespan": { "startEarliest": "1925", "endLatest": "1925", "label": "1925" }
+        }
+      ],
+      "formStatus": "https://w3id.org/plato#Headword",
+      "notes": "The editorial headword under which the survey files the entry: a scholarly decision, not a reading.",
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T10:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/bunsty",
+      "names": [
+        { "toponym": "Bunstowe", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "sources": [
+        { "title": "DEEP: Digital Exposure of English Place-names", "authorityType": "dataset" }
+      ],
+      "formStatus": "https://w3id.org/plato#Normalised",
+      "notes": "Search form derived from the attested Bunstow(e). Attested by no source; carries no independent evidential value.",
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T10:00:00Z"
+    }
+  ]
+}

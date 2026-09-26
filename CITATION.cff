@@ -5,7 +5,7 @@ abstract: >-
   An OWL ontology for representing historical place knowledge as attestations:
   bundles of evidence linking Spatial Entities (settlements, routes, networks,
   administrative units, regions and other entities whose identity is bound up
-  with space) to Names, Geometries, Timespans, Types, and
+  with space) to Names, Geometries, Timespans, Types, PropertyValues and
   Authorities with full provenance. PLATO formalises the World Historical
   Gazetteer v4 data model. The Linked Places Format (LPF) is defined as its
   single-object-attestation profile, so existing LPF files remain valid; the

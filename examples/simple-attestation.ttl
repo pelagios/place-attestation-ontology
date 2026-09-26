@@ -115,7 +115,7 @@ whgx:gazetteer\/english-trade
 # -----------------------------------------------------------------------------
 # The Attestation itself
 #
-# Note what is happening here: the scholar is NOT creating a new place.
+# Note what is happening here: the scholar is NOT creating a new SpatialEntity.
 # They are attesting that their source (TNA E122/73/12) references an
 # existing SpatialEntity (GeoNames Bristol) using the name form "Bristowe" at
 # a specific date. This is the attestation-first model in action.
