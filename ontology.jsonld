@@ -1,0 +1,2414 @@
+[ {
+  "@id" : "_:genid1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/plato#Geometry"
+    }, {
+      "@id" : "https://w3id.org/plato#Name"
+    }, {
+      "@id" : "https://w3id.org/plato#Timespan"
+    }, {
+      "@id" : "https://w3id.org/plato#Type"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid11",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/plato#Name"
+    }, {
+      "@id" : "https://w3id.org/plato#Period"
+    }, {
+      "@id" : "https://w3id.org/plato#SpatialEntity"
+    }, {
+      "@id" : "https://w3id.org/plato#Timespan"
+    }, {
+      "@id" : "https://w3id.org/plato#Type"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid19",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/plato#PropertyValue"
+    }, {
+      "@id" : "https://w3id.org/plato#Type"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid6",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/plato#Geometry"
+    }, {
+      "@id" : "https://w3id.org/plato#Name"
+    }, {
+      "@id" : "https://w3id.org/plato#Timespan"
+    }, {
+      "@id" : "https://w3id.org/plato#Type"
+    } ]
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/terms/contributor",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/created",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/creator",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/license",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/title",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/vocab/vann/preferredNamespacePrefix",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/vocab/vann/preferredNamespaceUri",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.opengis.net/ont/geosparql#Geometry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.opengis.net/ont/geosparql#asWKT",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ]
+}, {
+  "@id" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.w3.org/2001/XMLSchema#date",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#Concept",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.w3.org/2006/time#ProperInterval",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.w3.org/ns/dcat#Dataset",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.w3.org/ns/prov#Agent",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.w3.org/ns/prov#Entity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://xmlns.com/foaf/0.1/Agent",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://xmlns.com/foaf/0.1/Person",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://xmlns.com/foaf/0.1/account",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://xmlns.com/foaf/0.1/mbox",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://xmlns.com/foaf/0.1/name",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "https://orcid.org/0000-0003-3060-0181",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://xmlns.com/foaf/0.1/Person"
+  } ],
+  "http://xmlns.com/foaf/0.1/account" : [ {
+    "@id" : "https://github.com/docuracy"
+  } ],
+  "http://xmlns.com/foaf/0.1/mbox" : [ {
+    "@id" : "mailto:stephen.gadd@pitt.edu"
+  } ],
+  "http://xmlns.com/foaf/0.1/name" : [ {
+    "@value" : "Stephen Gadd"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
+  "http://purl.org/dc/terms/contributor" : [ {
+    "@value" : "Pelagios Network Place Working Group"
+  } ],
+  "http://purl.org/dc/terms/created" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2026-02-16"
+  } ],
+  "http://purl.org/dc/terms/creator" : [ {
+    "@id" : "https://orcid.org/0000-0003-3060-0181"
+  } ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "\n        An ontology for representing historical place knowledge as attestations:\n        bundles of evidence linking SpatialEntities (settlements, routes,\n        networks, administrative units, regions and other entities whose\n        identity is bound up with space) to Names, Geometries, Timespans,\n        Types, PropertyValues and Authorities with full provenance.\n\n        Developed by the Pelagios Network's Place Working Group, led by the\n        Institute for Spatial History Innovation (ISHI), University of Pittsburgh.\n\n        PLATO formalises the WHG v4 data model, in which the Attestation is\n        the fundamental unit of contributed knowledge. The Linked Places\n        Format (LPF) is defined as its single-object-attestation profile:\n        every LPF element corresponds to one attestation linking one entity\n        to one name, type, geometry or related entity, so existing LPF files\n        remain valid. The use cases of Linked Traces are accommodated within\n        the same model.\n    "
+  } ],
+  "http://purl.org/dc/terms/license" : [ {
+    "@id" : "https://creativecommons.org/licenses/by/4.0/"
+  } ],
+  "http://purl.org/dc/terms/title" : [ {
+    "@language" : "en",
+    "@value" : "PLATO — Place Attestation Ontology"
+  } ],
+  "http://purl.org/vocab/vann/preferredNamespacePrefix" : [ {
+    "@value" : "plato"
+  } ],
+  "http://purl.org/vocab/vann/preferredNamespaceUri" : [ {
+    "@value" : "https://w3id.org/plato#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://pelagios.org/place-attestation-ontology/index-en.html"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@value" : "0.4.0"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Attestation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A bundle of evidence asserting that a particular SpatialEntity had a particular\n        Name, Geometry, Type, or combination thereof, during a particular\n        Timespan, according to a particular Authority. The Attestation node\n        carries only metadata; its semantic content is defined entirely by its\n        outgoing relationships.\n\n        IMPORTANT: Attestations are document nodes in the graph, not edges.\n        They are instances of plato:Attestation (a class), not instances of\n        owl:ObjectProperty. This design enables meta-attestations and full\n        provenance tracking.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.w3.org/ns/prov#Entity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Authority",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Abstract superclass for all reference entities that provide provenance\n        or semantic grounding for attestations. Subtypes include Source,\n        Dataset, Period, RelationType, and CertaintyLevel.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Authority"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointUnionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/plato#CertaintyLevel"
+    }, {
+      "@id" : "https://w3id.org/plato#Dataset"
+    }, {
+      "@id" : "https://w3id.org/plato#Period"
+    }, {
+      "@id" : "https://w3id.org/plato#RelationType"
+    }, {
+      "@id" : "https://w3id.org/plato#Source"
+    } ]
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Candidate",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        An algorithm-generated match candidate between two SpatialEntities, produced\n        by the PLACE clustering engine. Candidates carry a similarity score,\n        algorithm version, and review status. They are explicitly not\n        IdentityRelations — they become IdentityRelations only when confirmed\n        by a human reviewer (linked back via plato:promoted_from).\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Candidate"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#CertaintyLevel",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A defined level of certainty for use in attestations, allowing\n        projects to standardise their confidence vocabulary.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Certainty Level"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Citation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        One attestation's use of one Authority: the qualified form of\n        plato:sourced_by. Carries what is true of this citation rather than\n        of the source or of the attestation: the locator within the work\n        (page, folio, column, table cell, entry), and whether the attribution\n        was stated in the source or inferred editorially. It carries no date.\n        The date of a witness belongs on the Source (plato:source_timespan)\n        and the date of the claim on the Attestation's Timespan.\n\n        An attestation resting on several sources has several Citations,\n        each with its own locator. Where there is nothing to say about the\n        citation, plato:sourced_by alone is sufficient.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Citation"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Contributor",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A person, team, or automated process that creates attestations.\n        Aligned with both foaf:Agent and prov:Agent for provenance\n        chain-of-custody tracking.\n\n        Contributors should be identified using persistent identifiers where\n        possible. For persons, ORCID (https://orcid.org/) is strongly\n        recommended and may be required by specific implementations. ORCID\n        identifiers should use the full URI format (https://orcid.org/0000-0000-0000-0000)\n        rather than just the numeric portion, as ORCID is particular about\n        proper URI formatting for linked data interoperability.\n\n        For organizations, ROR (https://ror.org/) or ISNI identifiers are\n        recommended. Proper identification ensures accurate attribution,\n        enables citation, and supports research assessment.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.w3.org/ns/prov#Agent"
+  }, {
+    "@id" : "http://xmlns.com/foaf/0.1/Agent"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Dataset",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A collection-level authority: a published gazetteer, a contributed\n        dataset, or an external authority corpus (GeoNames, Wikidata, TGN,\n        OSM, Pleiades). Carries metadata such as title, version, publisher,\n        licence, and URI.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Dataset"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Gazetteer",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A mutable, versioned workspace of SpatialEntities and their associated\n        Attestations, owned by a contributor or team. Replaces the WHG v3\n        concepts of Dataset, Dataset Collection, and Place Collection.\n        A Gazetteer can be incrementally edited, enriched, and corrected\n        without re-ingestion.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Gazetteer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.w3.org/ns/dcat#Dataset"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#GazetteerGroup",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A thematic or organisational grouping of Gazetteers (e.g.\n        'EMEW — Gazetteer of Early Modern England and Wales').\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Gazetteer Group"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Geometry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A spatial representation of a SpatialEntity's extent or location. Geometries\n        are independent, reusable entities. The same Geometry may be referenced\n        by multiple Attestations across different SpatialEntities or time periods.\n\n        Note: GeometryCollection is not supported in some graph database\n        implementations. For heterogeneous geometry sets (e.g., both point and\n        polygon), use multiple Geometry entities linked through separate\n        attestations.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#Geometry"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#IdentityRelation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        An assertion that two SpatialEntities refer to the same real-world entity.\n        Carries its own provenance (who asserted it, on what basis),\n        certainty (how confident the assertion is), and identity semantics\n        (exactMatch, closeMatch, related).\n\n        Identity relations are distinct from scholarly entity-to-entity\n        relations, which describe substantive historical relationships\n        between different entities. They are also distinct from Candidates,\n        which are algorithm-generated candidates not yet confirmed by\n        human review.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Identity Relation"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Name",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A toponym or appellation for a SpatialEntity. Names are independent, reusable\n        entities. The association between a Name and a SpatialEntity is always mediated\n        by an Attestation, which provides temporal scope and provenance.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Name"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Organization",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        An organization to which a Contributor is affiliated. This is a\n        lightweight class defined primarily to avoid ambiguity in ontology\n        visualizations. Organizations can be further described using properties\n        from FOAF, schema.org, or other ontologies.\n\n        Organizations should use persistent identifiers where possible:\n        - ROR (Research Organization Registry): https://ror.org/\n        - ISNI (International Standard Name Identifier)\n        - Wikidata QIDs\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Organization"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Period",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A named historical period (e.g. 'Byzantine', 'Early Modern'),\n        optionally linked to PeriodO or defined locally. Includes temporal\n        bounds for period-based querying.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#PropertyValue",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A quantitative or descriptive attribute of a SpatialEntity, expressed as a\n        property drawn from an external vocabulary together with its value.\n        Covers the many things a historical source says that are neither a\n        name, a location, a period nor a classification — populations,\n        valuations, elevations, recurrence rules for markets and fairs.\n\n        The property itself is identified by URI rather than enumerated here,\n        so the vocabulary stays open and delegated (Wikidata properties,\n        CIDOC-CRM, project vocabularies), in the same way that Type delegates\n        its classifications to AAT.\n\n        Values may be literals (with a datatype and optional unit) or\n        structured objects whose shape is declared by plato:value_type. As a\n        facet node, a PropertyValue may carry the qualification properties\n        (certainty, fuzziness) like any other.\n\n        Where the value is itself an entity, use a entity-to-entity relation\n        instead; this class is for attributes, not relationships.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Property Value"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#RelationType",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A vocabulary entry defining a semantic relationship between SpatialEntities:\n        'capital_of', 'successor_to', 'connected_by_trade_route_to', etc.\n        Carries a label, an inverse label, and domain/range constraints.\n        This allows the vocabulary of historical relationships to grow\n        without modifying the core ontology.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Relation Type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Source",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A citable source of evidence: a manuscript, chronicle, tax record,\n        map, scholarly article, or other document. Sources are the primary\n        provenance anchor for attestations. A Source may reference its parent\n        Dataset via plato:partOf.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Source"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#SpatialEntity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        An entity whose identity is bound up with space, whether its spatial\n        extent is attested directly, applies notionally (as with the region to\n        which a period applies), or is derived from its constituents (as with a\n        collection). A SpatialEntity need not have any attested geometry: lost,\n        imagined and unlocated entities are admissible.\n\n        What kind of entity it is (settlement, route, region, administrative\n        unit, period and so on) is not fixed by the class. It is established by\n        Type attestations, so a classification is a claim rather than an axiom.\n\n        SpatialEntities are not defined by any single attestation. They are the\n        point of convergence for many attestations from different sources,\n        periods and contributors.\n\n        A SpatialEntity is not a place, and PLATO defines no Place class.\n        \"Place\" carries several meanings in the gazetteer community, and\n        which of them, if any, corresponds to a SpatialEntity is contested;\n        the ontology does not settle it. Neither a SpatialEntity nor any set\n        of attestations or of SpatialEntities is a place by virtue of this\n        ontology. Where the word appears in this document it is used\n        informally, for whatever a source is talking about.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Spatial Entity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.w3.org/ns/prov#Entity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Timespan",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A temporal interval with start and end bounds. Timespans are\n        independent, reusable entities that may be shared across multiple\n        Attestations. Precision and uncertainty are expressed through\n        the start and end bound properties. Aligned with W3C Time Ontology\n        and compatible with PeriodO period definitions.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.w3.org/2006/time#ProperInterval"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#Type",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A classification or category for a SpatialEntity, typically drawn from a\n        controlled vocabulary such as the Getty Art & Architecture Thesaurus\n        (AAT). Types are independent, reusable entities.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#algorithm_version",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Candidate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "algorithm version"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#attests_about",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to the SpatialEntity it is about. Every attestation must\n        have exactly one subject entity. This is the primary entity being\n        described by the bundled name, geometry, timespan, and type assertions.\n\n        Functional property: each attestation has exactly one subject entity.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "attests about"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#attests_geometry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to a Geometry it asserts for the SpatialEntity. An\n        attestation may assert multiple geometries (e.g., point and polygon)\n        or no geometry at all (e.g., name-only attestations from textual sources).\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "attests geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#attests_name",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to a Name it asserts for the SpatialEntity. An attestation\n        may assert multiple names (e.g., primary name and variants) or no name\n        at all (e.g., geometry-only attestations).\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "attests name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#attests_property",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to a PropertyValue it asserts of the SpatialEntity — a\n        population, a valuation, an elevation, a market's trading day. An\n        attestation may assert several properties or none.\n\n        These are among the commonest things a source says about an entity, and\n        they carry exactly the provenance and temporal scoping the attestation\n        pattern exists to handle: a population figure is a claim, by a named\n        source, about one SpatialEntity, over a Timespan, with a certainty. The\n        attestation's own timespans scope the property as they scope every\n        other facet in the bundle.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "attests property"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#PropertyValue"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#attests_timespan",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to the Timespan during which the attested\n        properties (name, geometry, type) were applicable. Distinct from\n        the attestation's creation date: this is the historical timespan\n        being asserted, not when the assertion was made.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "attests timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#attests_type",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to a Type classification it assigns to the SpatialEntity.\n        An attestation may assert multiple types or no type at all.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "attests type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Type"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#attribution_status",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Whether the attribution of the evidence to the cited source was\n        stated by the source or resolved editorially. Should point to a\n        concept in a SKOS concept scheme. The starter concepts are:\n\n        - plato:AttributionStated: the source is named where the form\n          occurs. The default, and usually omitted.\n        - plato:AttributionInferred: the source was given as 'ibidem' or\n          'idem' and resolved by an editor, so the attribution is inferred\n          rather than stated. Not marginal: about one attestation in twenty\n          in the English Place-Name Society corpus.\n\n        A statement about the citation, not about the form, which is why it\n        lives here and not in plato:occurrence_context.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Citation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "attribution status"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#authority_title",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "title"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#authority_uri",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "authority URI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#authority_version",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Version identifier for tracking upstream authority updates."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "version"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#bbox",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Bounding box as array: [min_lon, min_lat, max_lon, max_lat].\n        Enables fast spatial filtering. Format: comma-separated string\n        or JSON array depending on serialization context.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "bounding box"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#bibliographic_string",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A formatted citation string for this source."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Source"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "bibliographic string"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#candidate_candidate",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Candidate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "candidate entity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#candidate_source",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Candidate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "source entity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#candidate_status",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Review status: 'suggested', 'confirmed', 'rejected'."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Candidate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "status"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#ccodes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "ISO 3166-1 alpha-2 country codes associated with this SpatialEntity."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "country codes"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#certainty",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Epistemic certainty, from 0.0 (completely uncertain) to 1.0\n        (completely certain). On an Attestation it is the contributor's\n        confidence in the bundle as a whole. On a facet node (Name, Geometry,\n        Timespan, Type, PropertyValue) it is the confidence in that value\n        alone, and may differ from the attestation's overall certainty.\n        Certainty reflects the limits of evidence: better evidence could in\n        principle raise it. Distinct from fuzziness (the referent has no\n        sharp boundary) and from spatial_precision (how finely a location\n        is specified). No rdfs:domain, so it can qualify any node.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "certainty"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#float"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#certainty_note",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Free-text explanation of the certainty assessment: quality of\n        evidence, degree of scholarly consensus, reliability of source\n        (e.g. 'manuscript partially illegible', 'coordinates extrapolated\n        from itinerary distances'). Applies wherever certainty does.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "certainty note"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#cites",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The Authority (a Source or a Dataset) this Citation uses. Exactly one\n        per Citation: an attestation resting on two sources has two\n        Citations.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Citation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "cites"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#connection_metadata",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Structured metadata for network-type attestations. Can encode\n        information about trade goods, flow direction, capacity, frequency,\n        or other properties of network connections. Format is implementation-\n        specific (JSON recommended) but should be documented in the gazetteer's\n        metadata.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "connection metadata"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contains_attestation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Links a Gazetteer to an Attestation contributed within it."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Gazetteer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "contains attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contains_entity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Links a Gazetteer to a SpatialEntity it contains."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Gazetteer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "contains entity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributed_by",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The agent (person, team, or process) who created this attestation.\n\n        Semantically equivalent to PROV-O's prov:wasAttributedTo for provenance\n        tracking. We don't use formal rdfs:subPropertyOf to avoid importing\n        PROV-O's domain/range constraints. Distinct from sourced_by, which\n        indicates the historical source being cited.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "contributed by"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributor_affiliation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Organizational affiliation of the contributor. Links to a\n        plato:Organization entity, which can be further described using\n        FOAF, schema.org, or other ontology properties. Organizations\n        should ideally use persistent identifiers (ROR, ISNI, etc.).\n\n        For simple cases, use contributor_affiliation_string for free-text\n        affiliation names.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "affiliation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Organization"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributor_affiliation_string",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Free-text organizational affiliation when a structured Organization\n        entity is not available. Example: \"University of Pittsburgh,\n        Institute for Spatial History Innovation\"\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "affiliation (string)"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributor_email",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Contact email address for the contributor. Useful for collaboration\n        and correspondence about contributed data.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "email"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributor_identifier",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Additional persistent identifier for the contributor. Can be used\n        for identifiers other than ORCID, such as:\n        - ISNI (International Standard Name Identifier)\n        - VIAF (Virtual International Authority File)\n        - Wikidata QID (for persons or organizations)\n        - Internal system identifiers\n\n        When using this property, specify the identifier type in the value\n        (e.g., \"ISNI:0000000121032683\" or \"VIAF:12345678\").\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "contributor identifier"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributor_name",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The name of the contributor (person, team, or automated process).\n        For persons, should be the full name as preferred by the contributor.\n        For teams, the team name. For automated processes, a descriptive name.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "contributor name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributor_orcid",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        ORCID identifier for person contributors. Can be provided in two formats:\n\n        1. Compact format: 0000-0000-0000-0000 (sixteen digits in groups of four)\n        2. URI format: https://orcid.org/0000-0000-0000-0000 (preferred)\n\n        The URI format (https://orcid.org/...) is preferred and required for\n        proper linked data representation. ORCID is particular about always\n        including the https:// protocol and domain prefix.\n\n        While optional in the general ontology, specific implementations\n        (e.g., WHG) may require ORCID for person contributors to ensure\n        proper attribution and citation.\n\n        ORCID provides persistent identification for researchers, enabling\n        proper credit and reducing name ambiguity.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "ORCID"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributor_role",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Role of the contributor in the project or gazetteer. Examples:\n        'principal_investigator', 'data_curator', 'student_researcher',\n        'automated_process', 'external_contributor'. Helps understand the\n        context and authority of contributions.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "contributor role"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#contributor_url",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Website or profile URL for the contributor (personal website,\n        institutional page, project page, GitHub profile, etc.). Provides\n        additional context about the contributor's work and identity.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "contributor URL"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#created",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Timestamp when this attestation was created. This is the contribution\n        date, not the historical timespan being attested (use attests_timespan\n        for that).\n\n        Semantically equivalent to PROV-O's prov:generatedAtTime. We don't use\n        formal rdfs:subPropertyOf to avoid importing PROV-O constraints.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "created"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#derived_from",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        This Source is a copy, transcript, edition, calendar or confirmation\n        of that one. A later cartulary copy of a charter, an inspeximus, or a\n        printed edition of a manuscript is a Source of its own, with its own\n        source_timespan, derived_from the document it transmits. An\n        attestation should cite the Source it was actually read in; the chain\n        of derived_from links records what that Source transmits. The kind of\n        derivation (copy, edition, calendar, inspeximus) is not yet\n        distinguished; a sub-property or a small vocabulary can be added when\n        a project needs it.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Source"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "derived from"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Source"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#edtf_string",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Extended Date/Time Format (EDTF) representation of this timespan.\n        Provides standardized string encoding for interchange with systems\n        using EDTF. Optional but recommended for interoperability with library\n        and archival systems. Example: '1453-05-29/1453-05-29' or '1450~/1453~'\n        for approximate dates.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "EDTF string"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#end_earliest",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The earliest possible end date for this timespan. Together with\n        end_latest, defines the uncertainty range for when the interval ended.\n        May be null for unknown or deliberately open-end intervals.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "end earliest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#end_latest",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The latest possible end date for this timespan. For certain dates,\n        this equals end_earliest. For uncertain dates, defines the end of\n        the uncertainty range for when the interval ended.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "end latest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#end_precision",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Temporal granularity of the end bound. Values: 'year', 'decade',\n        'century', 'era', 'geological_period'.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "end precision"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#entity_identifier",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The stable, persistent identifier for this SpatialEntity."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "identifier"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#form_status",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The status of the name form this attestation contributes: read in the\n        cited source, chosen by the cited authority, or derived by the\n        contributing project. Should point to a concept in a SKOS concept\n        scheme. The starter concepts are:\n\n        - plato:Attested: a form read in the cited source. The default, and\n          usually omitted.\n        - plato:Headword: the editorial or preferred form under which the\n          cited authority files the entry ('Bunsty Hundred'). A scholarly\n          decision rather than a reading, and typically the form users search\n          for. Another authority may choose differently, which is why it is a\n          sourced attestation and not a label on the SpatialEntity.\n        - plato:Normalised: a form derived from an attested one for matching\n          or search ('Bunstow(e)' resolved to 'Bunstowe'), attested by no\n          source and carrying no independent evidential value. It may point\n          to the attestation it was derived from through a meta-attestation.\n        - plato:Reconstructed: a form inferred but not attested, the\n          philologists' asterisked form.\n\n        A different axis from plato:name_type, which classifies what the name\n        denotes: a headword is still a toponym. It sits on the Attestation,\n        not on the Name, because the same string can be a reading in one\n        attestation and a headword in another. The WHG ingestion prototype\n        reached the same placement independently: its preferred-name flag is\n        on the attestation, not on the toponym record.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "form status"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#fuzziness",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Ontological fuzziness: a measure of how inherently vague or\n        indeterminate the facet's referent is, from 0.0 (crisp, sharply\n        bounded) to 1.0 (maximally vague). Distinct from certainty:\n        fuzziness is a property of the thing itself, not of our knowledge\n        of it. A regional boundary that was never precisely defined has\n        high fuzziness regardless of how much evidence we have.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "fuzziness"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#float"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#fuzziness_note",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Free-text explanation of the nature of ontological fuzziness\n        (e.g. 'regional boundary was never formally demarcated',\n        'name used inconsistently across contemporary sources',\n        'transition was gradual rather than a discrete event').\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "fuzziness note"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#gazetteer_owner",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Gazetteer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "owner"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#gazetteer_status",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Publication status: 'draft' or 'published'."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Gazetteer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "status"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#generated_at",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Candidate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "generated at"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#geo_json",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        GeoJSON representation of the geometry. Used for web mapping\n        applications and LPF export. Should be a valid GeoJSON geometry\n        object (not a Feature or FeatureCollection).\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "geometry GeoJSON"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#geo_wkt",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Well-Known Text representation of the geometry, following OGC/ISO\n        standards. Used for GeoSPARQL queries and RDF serialization.\n        Supports Point, LineString, Polygon, MultiPoint, MultiLineString,\n        MultiPolygon.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "geometry WKT"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#wktLiteral"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#asWKT"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#geometry_role",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        What this geometry depicts, as distinct from how precisely it is known\n        (plato:spatial_precision) or where its indexing point falls\n        (plato:repr_point). A SpatialEntity may be attested with several geometries at\n        once — a built extent, the location of a specific central feature, a\n        proxy standing in for the whole, the anchor of a map label — and without\n        a declared role a consumer cannot tell them apart, nor state which one\n        an analysis used.\n\n        Should point to a concept in a SKOS concept scheme (e.g. plato:Extent,\n        plato:FeaturePoint, plato:RepresentativePoint, plato:LabelAnchor,\n        plato:Itinerary). Using URIs rather than free text lets gazetteers that\n        record geometry differently be compared.\n\n        Note that role is orthogonal to precision: a proxy locator may be\n        surveyed to the metre and still not depict the SpatialEntity it stands for. A\n        parish church's coordinates contributed as a locator for a town are a\n        representative point of high precision, not an imprecise feature point.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "geometry role"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#has_citation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to a Citation: its qualified use of one\n        Authority, with a locator and an attribution status. An attestation\n        may have several, one per source it rests on.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has citation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Citation"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#has_meta_type",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The nature of a meta-attestation's relationship to its target attestation.\n        Should reference a controlled vocabulary concept defining the relationship\n        type. Standard values include:\n\n        - 'contradicts': asserts the target attestation is incorrect\n        - 'supports': provides additional evidence for the target attestation\n        - 'supersedes': replaces the target attestation with newer information\n        - 'refines': provides more precise information than the target\n        - 'challenges': questions the target attestation's validity\n        - 'bundles': groups the target with other related attestations\n\n        Using SKOS concepts rather than strings enables vocabulary management\n        and multilingual labels.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "meta-attestation type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#has_relation_type",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Specifies the semantic type of a entity-to-entity relationship\n        attested by an Attestation. References a RelationType authority\n        which defines the relationship's label, inverse, and domain/range\n        constraints. Examples: 'capital_of', 'successor_to',\n        'connected_by_trade_route_to'.\n\n        The extensible vocabulary pattern allows new relationship types to\n        be added as Authority records without modifying the ontology.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has relation type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#RelationType"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#has_timespan",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links a Period authority to its temporal extent, represented as a\n        Timespan node. Used for locally-defined periods or when more detailed\n        temporal modeling is needed than provided by external period definitions.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#hull",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Convex hull of the geometry as WKT Polygon. Used for quick spatial\n        filtering before more expensive exact geometry operations. Optional\n        but recommended for complex geometries.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "convex hull"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#wktLiteral"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#identity_asserted_at",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "asserted at"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#identity_asserted_by",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The agent who made or confirmed this identity assertion."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "asserted by"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Contributor"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#identity_basis",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Free-text explanation of the evidence or reasoning supporting\n        this identity assertion (e.g. 'coordinates within 500m and\n        name forms are cognate', 'identified by contributor during\n        reconciliation review', 'confirmed via TGN cross-reference').\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "identity basis"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#identity_certainty",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Confidence in the identity assertion, from 0.0 to 1.0. This is\n        the epistemic certainty of the asserter, distinct from identity_type\n        which describes the semantic nature of the relationship.\n        A closeMatch can have high certainty ('I'm confident these are\n        close but not exact') and an exactMatch can have low certainty\n        ('I think they're identical but I'm not sure').\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "identity certainty"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#float"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#identity_object",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The second SpatialEntity in an identity assertion."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "identity object"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#identity_sourced_by",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The Authority (Source or Dataset) that provides evidence for\n        this identity assertion, if any.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "identity sourced by"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#identity_subject",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The first SpatialEntity in an identity assertion."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "identity subject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#identity_type",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The semantic strength of the identity assertion:\n        'exactMatch'  — the two SpatialEntities are unambiguously the same entity.\n        'closeMatch'  — the two SpatialEntities are believed to be the same entity\n                        but with some residual ambiguity (e.g. differing\n                        granularity, overlapping but not identical scope).\n        'related'     — the two SpatialEntities are closely associated but may not\n                        be strictly identical (e.g. a settlement and its\n                        administrative district, or successive phases of\n                        a site that might or might not constitute continuity).\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "identity type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#inverse_label",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Inverse label (e.g. 'has_capital')."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#RelationType"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "inverse label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#ipa",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        International Phonetic Alphabet representation of the name's\n        pronunciation. Enables phonetic search and comparison across scripts\n        and languages.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "IPA"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#language",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        BCP 47 language tag for this name (e.g., 'ar' for Arabic, 'zh-Hans'\n        for Simplified Chinese). Recommended: use ISO 639-3 three-letter codes\n        within BCP 47 for better granularity (e.g., 'ara', 'cmn').\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "language"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#licence",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Dataset"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "licence"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#locator",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Where in the cited work the evidence sits: 'p. 412', 'f. 12v', 'Table\n        VI, col. 3, row 88', 's.v. Athlone', 'no. xix'. An uninterpreted\n        string, deliberately: sources locate themselves inconsistently, and\n        normalising the value would destroy exactly the information it is\n        there to carry. The same position and shape as PeriodO's source\n        locator.\n\n        A property of this citation, not of the source: one Source for a\n        printed gazetteer, a different locator on each attestation drawn\n        from it. Not to be confused with the spatial sense of 'locator' in\n        the plato:geometry_role comment, a proxy point standing in for an\n        entity.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Citation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "locator"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#member_of_group",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Links a Gazetteer to a GazetteerGroup."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Gazetteer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "member of group"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#GazetteerGroup"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#meta_attestation_about",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links a meta-Attestation to the Attestation it comments on or relates to.\n        Used with plato:has_meta_type to specify the nature of the relationship.\n\n        Example: A meta-attestation might assert that one source's geometry\n        attestation contradicts another source's geometry attestation for the\n        same SpatialEntity.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "meta-attestation about"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#modified",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Timestamp when this attestation was last modified. Enables tracking\n        of editorial changes and versioning.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "modified"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#name_embedding",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Vector embedding for phonetic similarity search. Typically a\n        256-dimensional vector generated from the name's phonetic form,\n        enabling fuzzy matching and transliteration-variant detection.\n        Format is implementation-specific but should be documented in\n        gazetteer metadata. WHG v4 uses Symphonym embeddings.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "name embedding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#name_type",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        What the name denotes. The list is open: 'toponym' (place name),\n        'chrononym' (period or era name), 'ethnonym' (people or ethnic\n        group), 'demonym' (inhabitants), 'odonym' (street or road name) and\n        'hydronym' (water body) are the starter values, and a project may\n        add others ('oronym', 'hagionym') provided it documents them in its\n        gazetteer metadata. Multiple types are possible (a name that\n        functions as both toponym and ethnonym). plato.schema.json carries\n        the same open list; earlier releases closed it there, and the two\n        serialisations now agree.\n\n        This classifies the referent, not the status of the form. Whether a\n        string is an attested spelling, an editorial headword or a derived\n        search form is a property of the attestation (plato:form_status),\n        because the same string can have a different status in different\n        attestations.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "name type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#namespace",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The authority namespace for this SpatialEntity (e.g. 'geonames', 'wikidata',\n        'tgn', 'osm', 'pleiades', 'whg'). Authority-sourced SpatialEntities carry\n        their origin namespace; contributed SpatialEntities that cannot be linked to\n        any authority receive the 'whg' namespace.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "namespace"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#notes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Free-text notes providing additional context about this attestation.\n        Can include transcriptions, translations, editorial comments, or\n        other information that doesn't fit structured fields.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "notes"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#occurrence_context",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The capacity in which the attested form occurs in the source. Should\n        point to a concept in a SKOS concept scheme. The starter concepts are:\n\n        - plato:Direct: the form refers to the SpatialEntity directly. The\n          default, and usually omitted.\n        - plato:InPersonalName: the form occurs only as an element of a\n          personal name, a surname or by-name such as 'Willelmus de\n          Bonestou'. This is the '(p)' of the place-name surveys, and it is\n          weaker evidence for the name's currency, and for the entity's\n          existence, than a direct attestation. Nothing else in the record\n          distinguishes Bonestou the hundred from de Bonestou the man.\n        - plato:InFieldName: the form survives only as an element of a later\n          minor name, such as a field name.\n\n        The editorially resolved 'ibidem' of the surveys is not an occurrence\n        context. It is a statement about the citation, and belongs on the\n        Citation as plato:attribution_status.\n\n        Not a certainty. A '(p)' attestation may be entirely certain as an\n        attestation; what differs is the kind of evidence it constitutes, and\n        folding that into a lower plato:certainty would discard the reason.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "occurrence context"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#occurrence_count",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The number of times the attested form occurs in the cited source or\n        passage: the '(3 X)' of a place-name survey. A count of occurrences\n        of the form in this source, not of independent sources. It belongs to\n        the attestation, not to the Name, which may occur elsewhere.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "occurrence count"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#open_end",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Boolean flag indicating that the end of this interval is deliberately\n        unspecified (not merely unknown). True for ongoing periods like 'Modern\n        era (1800-present)' or situations where the end does not exist. Aligns\n        with PeriodO's OpenEndInterval.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "open end"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#open_start",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Boolean flag indicating that the start of this interval is deliberately\n        unspecified (not merely unknown). True for intervals like 'everything\n        before 1453' or 'prehistory until...'. Distinct from null start_earliest,\n        which indicates unknown start. Aligns with PeriodO's OpenBeginningInterval.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "open start"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#partOf",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Links a Source to its parent Dataset."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Source"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "part of"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Dataset"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#period_label",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Human-readable label for this period (e.g., 'Byzantine period',\n        'Han Dynasty', 'Early Bronze Age'). Distinct from authority_title,\n        which may be more formal.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "period label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#period_periodo_uri",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Link to a PeriodO period definition for this Period authority.\n        When present, indicates this Period aligns with a standardized PeriodO\n        definition. The PeriodO record provides authoritative temporal bounds,\n        spatial extent, and cultural context. Example: 'https://n2t.net/ark:/99152/p06v8w4rb38'\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "PeriodO URI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#periodo_uri",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Link to a PeriodO period definition (https://perio.do/). When a timespan\n        corresponds to a standardized period in PeriodO, this property enables\n        alignment and allows PLATO to inherit PeriodO's temporal bounds, spatial\n        coverage, and cultural context. Example: 'https://n2t.net/ark:/99152/p06v8w4rb38'\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "PeriodO URI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#precision_km",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Uncertainty radius in kilometers. For point geometries, indicates\n        how far the true location might be from the stated coordinates.\n        For polygons, indicates boundary uncertainty. Can be multiple values\n        for heterogeneous geometries.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "precision in kilometers"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#float"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#precision_value",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Numeric precision indicator in years. For example, a decade-level\n        precision would have value 10, century-level would be 100. Enables\n        computational comparison of precision across timespans.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "precision value"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#integer"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#promoted_from",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an IdentityRelation to the Candidate from which it was\n        promoted, preserving the algorithmic provenance. Optional:\n        identity relations can also be created directly by human\n        assertion without a prior Candidate.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#IdentityRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "promoted from"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Candidate"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#property_label",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Human-readable label for the property (e.g. 'population')."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#PropertyValue"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "property label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#property_type",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        URI of the property in an external vocabulary — a Wikidata property,\n        a CIDOC-CRM property, or a project vocabulary term (e.g.\n        <https://www.wikidata.org/wiki/Property:P1082> for population).\n        Keeping the vocabulary external rather than enumerating attributes in\n        this ontology is what allows the model to carry attributes it has\n        never heard of.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#PropertyValue"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "property type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#publisher",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Dataset"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "publisher"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#relates_to",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to a second SpatialEntity, asserting a relationship\n        between the Attestation's subject entity (via attests_about) and this\n        target entity. The semantic nature of the relationship is specified by\n        plato:has_relation_type, which references a RelationType authority.\n\n        Example: An attestation about Constantinople that relates_to the\n        Byzantine Empire with relation_type \"capital_of\" asserts that\n        \"Constantinople was the capital of the Byzantine Empire\".\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "relates to"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#SpatialEntity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#relation_domain",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Valid subject type for this relation."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#RelationType"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "domain constraint"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#relation_label",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Forward label for the relationship (e.g. 'capital_of')."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#RelationType"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "relation label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#relation_range",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Valid object type for this relation."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#RelationType"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "range constraint"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#relative_bearing",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Compass bearing from the anchor, in degrees (0–360).\n        Primarily used for relative geometries: '90' means east of\n        the anchor. May carry its own certainty or fuzziness.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "bearing"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#float"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#relative_distance",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Distance from the anchor, in metres. Primarily used for\n        relative geometries. May carry its own certainty or fuzziness.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "distance"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#float"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#relative_qualifier",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A controlled-vocabulary term describing the relative relationship\n        when bearing and distance are not applicable or not sufficient.\n        Should point to a concept in a SKOS concept scheme (e.g.\n        plato:Near, plato:Within, plato:Beyond, plato:UpstreamOf,\n        plato:BetweenXAndY, plato:DuringReignOf, plato:VariantOf).\n        Using URIs rather than free text enables machine reconciliation\n        across gazetteers that describe relativity differently.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "_:genid1"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "relative qualifier"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#relative_to",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links a facet node to its anchor entity, indicating that this\n        facet is defined relationally rather than absolutely. The anchor\n        is typically a SpatialEntity, Period, or another facet (Name, Timespan, etc.).\n\n        Common patterns:\n        - Spatial relativity: \"20km east of Nanjing\" (anchor is a SpatialEntity)\n        - Temporal relativity: \"during the reign of Justinian\" (anchor is a Period)\n        - Name relativity: \"also known as Rome\" (anchor is another Name)\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "_:genid6"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "relative to"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "_:genid11"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#repr_point",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A single representative point (centroid, label point, or best\n        estimate) for spatial indexing and distance queries. Stored as WKT\n        Point. Required for all geometries to enable spatial search.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "representative point"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#wktLiteral"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#romanized",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Romanized (Latin-script) form of the name for searchability and\n        display in contexts requiring ASCII. Should specify transliteration\n        system used via plato:transliteration_system.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "romanized"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#script",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        ISO 15924 script code (e.g., 'Arab' for Arabic script, 'Latn' for\n        Latin script, 'Hant' for Traditional Han characters). Important for\n        names that may appear in multiple scripts.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "script"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#sequence",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Ordering index for attestations in routes or itineraries. Defines\n        the position of this attestation in an ordered sequence. Used when\n        the SpatialEntity being attested (via attests_about) is a Route or Itinerary.\n        Lower numbers come first in the sequence.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "sequence"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#integer"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#similarity_score",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Candidate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "similarity score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#float"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#source_crs",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Original coordinate reference system. Typically 'EPSG:4326' (WGS84),\n        but may reference historical or custom CRS identifiers for historical\n        maps. Enables proper interpretation of coordinate values.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "source CRS"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#source_label",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The original label as given in the contributing source, before\n        vocabulary mapping. For a structured PropertyValue this preserves the\n        unparsed original — 'Monday after Whitsun, 3 days' — which is what a\n        future reader will want to check against the document.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "_:genid19"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "source label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#source_timespan",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        When this Source, as a document, was produced: the date of the\n        manuscript, the compilation of the cartulary, the publication of the\n        edition. Distinct from the Timespan an attestation asserts, which\n        dates the claim rather than the witness. An annal for 921 read in a\n        manuscript written c. 925 has an attested timespan of 921 and a\n        source timespan of c. 925. Reuses Timespan, so an approximate date\n        is start_earliest 915, end_latest 935, timespan_label 'c. 925'. The\n        same move as plato:has_timespan on a Period.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Source"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "source timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#sourced_by",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Links an Attestation to the Authority (typically a Source or Dataset)\n        that grounds it. This provides the provenance chain for the attestation.\n\n        Semantically equivalent to PROV-O's prov:wasDerivedFrom, indicating the\n        authority is the origin of the attested knowledge. We don't use formal\n        rdfs:subPropertyOf to avoid importing PROV-O's domain/range constraints\n        which conflict with PLATO's class structure.\n\n        This is the direct form. Where the citation itself has something to\n        say (a page or folio, an attribution resolved from 'ibidem'), use\n        plato:has_citation to a Citation node that cites the Authority.\n        sourced_by is declared as the property chain has_citation o cites, so\n        a reasoner derives it from a Citation; data intended for consumers\n        without a reasoner should assert it directly as well.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Attestation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "sourced by"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/plato#Authority"
+  } ],
+  "http://www.w3.org/2002/07/owl#propertyChainAxiom" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/plato#has_citation"
+    }, {
+      "@id" : "https://w3id.org/plato#cites"
+    } ]
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#spatial_coverage",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Geographic or cultural region to which this period applies.\n        Free text or URI to a place/region. Useful because periods like\n        'Medieval' have different temporal bounds in different regions.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Period"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "spatial coverage"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#spatial_precision",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Precision qualifier for this geometry: 'exact' (surveyed or GPS),\n        'approximate' (estimated from maps or descriptions), 'uncertain'\n        (multiple possible locations), 'historical_approximate' (based on\n        historical sources with inherent imprecision). Multiple values\n        possible for heterogeneous geometries.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Geometry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "spatial precision"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#start_earliest",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The earliest possible start date for this timespan. Together with\n        start_latest, defines the uncertainty range for when the interval began.\n        Use ISO 8601 format (e.g., '1453-05-29') or integer year for year-level\n        precision. May be null for unknown or deliberately open-beginning intervals.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "start earliest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#start_latest",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The latest possible start date for this timespan. For certain dates,\n        this equals start_earliest. For uncertain dates, defines the end of\n        the uncertainty range for when the interval began.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "start latest"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#start_precision",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Temporal granularity of the start bound. Values: 'year', 'decade',\n        'century', 'era', 'geological_period'. This describes the resolution\n        of the date specification, distinct from certainty (which describes\n        the confidence in that specification).\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "start precision"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#timespan_label",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        Human-readable label for this timespan (e.g., 'Byzantine period',\n        'Early Bronze Age', 'Ming Dynasty'). Particularly useful for named\n        periods referenced across multiple attestations.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Timespan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "timespan label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#toponym",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The name string itself in its original script. This is the primary\n        property of a Name entity. Required for all Name instances.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "toponym"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#transliteration_system",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The transliteration/romanization system used (e.g., 'Pinyin' for\n        Chinese, 'BGN/PCGN' for Arabic, 'ISO 259' for Hebrew, 'Hepburn' for\n        Japanese). Enables proper interpretation and comparison of romanized\n        forms.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "transliteration system"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#type_identifier",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "URI or identifier in a controlled vocabulary (e.g. AAT)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "type identifier"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#type_label",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Human-readable label for this type."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#Type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "type label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#value_datatype",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Datatype of the literal value (e.g. xsd:integer, xsd:decimal, xsd:string)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#PropertyValue"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "value datatype"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#value_json",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        A structured value serialised as JSON, whose shape is declared by\n        plato:value_type. Use plato:value_literal instead for scalar values.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#PropertyValue"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "structured value"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#value_literal",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        The value, where it is a literal: a number, a string, a date. Use\n        plato:value_json instead where the value is structured.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#PropertyValue"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "value"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#Literal"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#value_type",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        URI declaring the shape of a structured value, so that a consumer can\n        tell whether it understands the value before attempting to read it.\n        Omitted for literal values.\n\n        Not every attribute a source states is scalar. A market's trading day\n        — 'the Monday after Whitsun, for three days' — is a recurrence rule\n        anchored to a moveable feast, and flattening it to a string would\n        reproduce the loss this class exists to prevent. The ontology stays\n        agnostic about such shapes: it records which shape is in use and\n        leaves the definition to the vocabulary that owns it.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#PropertyValue"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "value type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+}, {
+  "@id" : "https://w3id.org/plato#value_unit",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "\n        URI of the unit of measurement, where the value has one — a QUDT unit\n        or a Wikidata unit item. Omitted for counts and dimensionless values.\n    "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/plato#PropertyValue"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "value unit"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ]
+} ]

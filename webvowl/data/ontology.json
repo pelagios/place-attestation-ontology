@@ -1,0 +1,3554 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/ns/prov", "http://www.w3.org/2001/XMLSchema", "https://w3id.org/plato", "http://www.w3.org/ns/dcat", "http://xmlns.com/foaf/0.1", "http://www.w3.org/2006/time", "http://www.opengis.net/ont/geosparql", "http://www.w3.org/2004/02/skos/core" ],
+    "title" : {
+      "en" : "PLATO — Place Attestation Ontology"
+    },
+    "iri" : "https://w3id.org/plato",
+    "version" : "0.4.0",
+    "author" : [ "https://orcid.org/0000-0003-3060-0181" ],
+    "description" : {
+      "en" : "\n        An ontology for representing historical place knowledge as attestations:\n        bundles of evidence linking SpatialEntities (settlements, routes,\n        networks, administrative units, regions and other entities whose\n        identity is bound up with space) to Names, Geometries, Timespans,\n        Types, PropertyValues and Authorities with full provenance.\n\n        Developed by the Pelagios Network's Place Working Group, led by the\n        Institute for Spatial History Innovation (ISHI), University of Pittsburgh.\n\n        PLATO formalises the WHG v4 data model, in which the Attestation is\n        the fundamental unit of contributed knowledge. The Linked Places\n        Format (LPF) is defined as its single-object-attestation profile:\n        every LPF element corresponds to one attestation linking one entity\n        to one name, type, geometry or related entity, so existing LPF files\n        remain valid. The use cases of Linked Traces are accommodated within\n        the same model.\n    "
+    },
+    "other" : {
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "https://creativecommons.org/licenses/by/4.0/",
+        "type" : "iri"
+      } ],
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "https://orcid.org/0000-0003-3060-0181",
+        "type" : "iri"
+      } ],
+      "contributor" : [ {
+        "identifier" : "contributor",
+        "language" : "undefined",
+        "value" : "Pelagios Network Place Working Group",
+        "type" : "label"
+      } ],
+      "created" : [ {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2026-02-16",
+        "type" : "label"
+      } ],
+      "preferredNamespacePrefix" : [ {
+        "identifier" : "preferredNamespacePrefix",
+        "language" : "undefined",
+        "value" : "plato",
+        "type" : "label"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "undefined",
+        "value" : "0.4.0",
+        "type" : "label"
+      } ],
+      "preferredNamespaceUri" : [ {
+        "identifier" : "preferredNamespaceUri",
+        "language" : "undefined",
+        "value" : "https://w3id.org/plato#",
+        "type" : "label"
+      } ],
+      "title" : [ {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "PLATO — Place Attestation Ontology",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://pelagios.org/place-attestation-ontology/index-en.html",
+        "type" : "iri"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "26",
+    "type" : "owl:Class"
+  }, {
+    "id" : "53",
+    "type" : "owl:Class"
+  }, {
+    "id" : "38",
+    "type" : "owl:Class"
+  }, {
+    "id" : "20",
+    "type" : "owl:Class"
+  }, {
+    "id" : "72",
+    "type" : "owl:Class"
+  }, {
+    "id" : "32",
+    "type" : "owl:Class"
+  }, {
+    "id" : "29",
+    "type" : "owl:Class"
+  }, {
+    "id" : "59",
+    "type" : "owl:Class"
+  }, {
+    "id" : "30",
+    "type" : "owl:Class"
+  }, {
+    "id" : "57",
+    "type" : "owl:Class"
+  }, {
+    "id" : "46",
+    "type" : "owl:Class"
+  }, {
+    "id" : "7",
+    "type" : "owl:Class"
+  }, {
+    "id" : "86",
+    "type" : "owl:Class"
+  }, {
+    "id" : "42",
+    "type" : "owl:Class"
+  }, {
+    "id" : "127",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "21",
+    "type" : "owl:Class"
+  }, {
+    "id" : "96",
+    "type" : "owl:Class"
+  }, {
+    "id" : "110",
+    "type" : "owl:Class"
+  }, {
+    "id" : "131",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "144",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "150",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "151",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "153",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "154",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "155",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "156",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "116",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "13",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "163",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "89",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "63",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "166",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "5",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "167",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "137",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "170",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "172",
+    "type" : "owl:Class"
+  }, {
+    "id" : "70",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "10",
+    "type" : "owl:disjointUnionOf"
+  }, {
+    "id" : "61",
+    "type" : "owl:Class"
+  }, {
+    "id" : "98",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "173",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "174",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "24",
+    "type" : "owl:Class"
+  }, {
+    "id" : "44",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "129",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "188",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "189",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "122",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "39",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "178",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "109",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "47",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "191",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "79",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "35",
+    "type" : "owl:Class"
+  }, {
+    "id" : "195",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "4",
+    "type" : "owl:Class"
+  }, {
+    "id" : "133",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "73",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "125",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "198",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "77",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "141",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "91",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "75",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "165",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "120",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "2",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "200",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "55",
+    "type" : "owl:Class"
+  }, {
+    "id" : "112",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "158",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "16",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "193",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "202",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "15",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "162",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "169",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "146",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "82",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "208",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "27",
+    "type" : "owl:Class"
+  }, {
+    "id" : "149",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "176",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "197",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "218",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "94",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "219",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "210",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "52",
+    "type" : "owl:Class"
+  }, {
+    "id" : "228",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "230",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "50",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "100",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "11",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "185",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "231",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "232",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "135",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "222",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "182",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "49",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "237",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "69",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "238",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "18",
+    "type" : "owl:Class"
+  }, {
+    "id" : "243",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "139",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "107",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "244",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "143",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "36",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "84",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "33",
+    "type" : "owl:Class"
+  }, {
+    "id" : "114",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "240",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "160",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "67",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "8",
+    "type" : "rdfs:Datatype"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "https://w3id.org/plato#Geometry",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Geometry",
+      "en" : "Geometry"
+    },
+    "comment" : {
+      "en" : "\n        A spatial representation of a SpatialEntity's extent or location. Geometries\n        are independent, reusable entities. The same Geometry may be referenced\n        by multiple Attestations across different SpatialEntities or time periods.\n\n        Note: GeometryCollection is not supported in some graph database\n        implementations. For heterogeneous geometry sets (e.g., both point and\n        polygon), use multiple Geometry entities linked through separate\n        attestations.\n    "
+    },
+    "id" : "26",
+    "superClasses" : [ "27" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/prov#Agent",
+    "baseIri" : "http://www.w3.org/ns/prov",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Agent"
+    },
+    "subClasses" : [ "29" ],
+    "attributes" : [ "external" ],
+    "id" : "53"
+  }, {
+    "iri" : "https://w3id.org/plato#Name",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Name",
+      "en" : "Name"
+    },
+    "comment" : {
+      "en" : "\n        A toponym or appellation for a SpatialEntity. Names are independent, reusable\n        entities. The association between a Name and a SpatialEntity is always mediated\n        by an Attestation, which provides temporal scope and provenance.\n    "
+    },
+    "id" : "38"
+  }, {
+    "iri" : "https://w3id.org/plato#Citation",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Citation",
+      "en" : "Citation"
+    },
+    "comment" : {
+      "en" : "\n        One attestation's use of one Authority: the qualified form of\n        plato:sourced_by. Carries what is true of this citation rather than\n        of the source or of the attestation: the locator within the work\n        (page, folio, column, table cell, entry), and whether the attribution\n        was stated in the source or inferred editorially. It carries no date.\n        The date of a witness belongs on the Source (plato:source_timespan)\n        and the date of the claim on the Attestation's Timespan.\n\n        An attestation resting on several sources has several Citations,\n        each with its own locator. Where there is nothing to say about the\n        citation, plato:sourced_by alone is sufficient.\n    "
+    },
+    "id" : "20"
+  }, {
+    "iri" : "https://w3id.org/plato#IdentityRelation",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "IdentityRelation",
+      "en" : "Identity Relation"
+    },
+    "comment" : {
+      "en" : "\n        An assertion that two SpatialEntities refer to the same real-world entity.\n        Carries its own provenance (who asserted it, on what basis),\n        certainty (how confident the assertion is), and identity semantics\n        (exactMatch, closeMatch, related).\n\n        Identity relations are distinct from scholarly entity-to-entity\n        relations, which describe substantive historical relationships\n        between different entities. They are also distinct from Candidates,\n        which are algorithm-generated candidates not yet confirmed by\n        human review.\n    "
+    },
+    "id" : "72"
+  }, {
+    "iri" : "https://w3id.org/plato#Gazetteer",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Gazetteer",
+      "en" : "Gazetteer"
+    },
+    "comment" : {
+      "en" : "\n        A mutable, versioned workspace of SpatialEntities and their associated\n        Attestations, owned by a contributor or team. Replaces the WHG v3\n        concepts of Dataset, Dataset Collection, and Place Collection.\n        A Gazetteer can be incrementally edited, enriched, and corrected\n        without re-ingestion.\n    "
+    },
+    "id" : "32",
+    "superClasses" : [ "33" ]
+  }, {
+    "iri" : "https://w3id.org/plato#Contributor",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Contributor",
+      "en" : "Contributor"
+    },
+    "comment" : {
+      "en" : "\n        A person, team, or automated process that creates attestations.\n        Aligned with both foaf:Agent and prov:Agent for provenance\n        chain-of-custody tracking.\n\n        Contributors should be identified using persistent identifiers where\n        possible. For persons, ORCID (https://orcid.org/) is strongly\n        recommended and may be required by specific implementations. ORCID\n        identifiers should use the full URI format (https://orcid.org/0000-0000-0000-0000)\n        rather than just the numeric portion, as ORCID is particular about\n        proper URI formatting for linked data interoperability.\n\n        For organizations, ROR (https://ror.org/) or ISNI identifiers are\n        recommended. Proper identification ensures accurate attribution,\n        enables citation, and supports research assessment.\n    "
+    },
+    "id" : "29",
+    "superClasses" : [ "96", "53" ]
+  }, {
+    "iri" : "https://w3id.org/plato#RelationType",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "RelationType",
+      "en" : "Relation Type"
+    },
+    "comment" : {
+      "en" : "\n        A vocabulary entry defining a semantic relationship between SpatialEntities:\n        'capital_of', 'successor_to', 'connected_by_trade_route_to', etc.\n        Carries a label, an inverse label, and domain/range constraints.\n        This allows the vocabulary of historical relationships to grow\n        without modifying the core ontology.\n    "
+    },
+    "id" : "59",
+    "superClasses" : [ "10" ]
+  }, {
+    "iri" : "https://w3id.org/plato#Organization",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Organization",
+      "en" : "Organization"
+    },
+    "comment" : {
+      "en" : "\n        An organization to which a Contributor is affiliated. This is a\n        lightweight class defined primarily to avoid ambiguity in ontology\n        visualizations. Organizations can be further described using properties\n        from FOAF, schema.org, or other ontologies.\n\n        Organizations should use persistent identifiers where possible:\n        - ROR (Research Organization Registry): https://ror.org/\n        - ISNI (International Standard Name Identifier)\n        - Wikidata QIDs\n    "
+    },
+    "id" : "30"
+  }, {
+    "iri" : "https://w3id.org/plato#Dataset",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Dataset",
+      "en" : "Dataset"
+    },
+    "comment" : {
+      "en" : "\n        A collection-level authority: a published gazetteer, a contributed\n        dataset, or an external authority corpus (GeoNames, Wikidata, TGN,\n        OSM, Pleiades). Carries metadata such as title, version, publisher,\n        licence, and URI.\n    "
+    },
+    "id" : "57",
+    "superClasses" : [ "10" ]
+  }, {
+    "iri" : "https://w3id.org/plato#SpatialEntity",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "SpatialEntity",
+      "en" : "Spatial Entity"
+    },
+    "comment" : {
+      "en" : "\n        An entity whose identity is bound up with space, whether its spatial\n        extent is attested directly, applies notionally (as with the region to\n        which a period applies), or is derived from its constituents (as with a\n        collection). A SpatialEntity need not have any attested geometry: lost,\n        imagined and unlocated entities are admissible.\n\n        What kind of entity it is (settlement, route, region, administrative\n        unit, period and so on) is not fixed by the class. It is established by\n        Type attestations, so a classification is a claim rather than an axiom.\n\n        SpatialEntities are not defined by any single attestation. They are the\n        point of convergence for many attestations from different sources,\n        periods and contributors.\n\n        A SpatialEntity is not a place, and PLATO defines no Place class.\n        \"Place\" carries several meanings in the gazetteer community, and\n        which of them, if any, corresponds to a SpatialEntity is contested;\n        the ontology does not settle it. Neither a SpatialEntity nor any set\n        of attestations or of SpatialEntities is a place by virtue of this\n        ontology. Where the word appears in this document it is used\n        informally, for whatever a source is talking about.\n    "
+    },
+    "id" : "46",
+    "superClasses" : [ "110" ]
+  }, {
+    "iri" : "https://w3id.org/plato#Type",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Type",
+      "en" : "Type"
+    },
+    "comment" : {
+      "en" : "\n        A classification or category for a SpatialEntity, typically drawn from a\n        controlled vocabulary such as the Getty Art & Architecture Thesaurus\n        (AAT). Types are independent, reusable entities.\n    "
+    },
+    "id" : "7",
+    "superClasses" : [ "21" ]
+  }, {
+    "iri" : "https://w3id.org/plato#Candidate",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Candidate",
+      "en" : "Candidate"
+    },
+    "comment" : {
+      "en" : "\n        An algorithm-generated match candidate between two SpatialEntities, produced\n        by the PLACE clustering engine. Candidates carry a similarity score,\n        algorithm version, and review status. They are explicitly not\n        IdentityRelations — they become IdentityRelations only when confirmed\n        by a human reviewer (linked back via plato:promoted_from).\n    "
+    },
+    "id" : "86"
+  }, {
+    "iri" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+    "baseIri" : "http://www.opengis.net/ont/geosparql",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "wktLiteral"
+    },
+    "attributes" : [ "external" ],
+    "id" : "42"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "127",
+    "label" : {
+      "IRI-based" : "dateTime"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2004/02/skos/core#Concept",
+    "baseIri" : "http://www.w3.org/2004/02/skos/core",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Concept"
+    },
+    "subClasses" : [ "7" ],
+    "attributes" : [ "external" ],
+    "id" : "21"
+  }, {
+    "iri" : "http://xmlns.com/foaf/0.1/Agent",
+    "baseIri" : "http://xmlns.com/foaf/0.1",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Agent"
+    },
+    "subClasses" : [ "29" ],
+    "attributes" : [ "external" ],
+    "id" : "96"
+  }, {
+    "iri" : "http://www.w3.org/ns/prov#Entity",
+    "baseIri" : "http://www.w3.org/ns/prov",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Entity"
+    },
+    "subClasses" : [ "46", "4" ],
+    "attributes" : [ "external" ],
+    "id" : "110"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "131",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "144",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "150",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "151",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "153",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "154",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "155",
+    "label" : {
+      "IRI-based" : "dateTime"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "156",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "116",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "13",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "163",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "89",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "63",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "166",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "5",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "167",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "137",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "170",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://xmlns.com/foaf/0.1/Person",
+    "baseIri" : "http://xmlns.com/foaf/0.1",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Person"
+    },
+    "individuals" : [ {
+      "iri" : "https://orcid.org/0000-0003-3060-0181",
+      "baseIri" : "https://orcid.org",
+      "annotations" : {
+        "name" : [ {
+          "identifier" : "name",
+          "language" : "undefined",
+          "value" : "Stephen Gadd",
+          "type" : "label"
+        } ],
+        "mbox" : [ {
+          "identifier" : "mbox",
+          "language" : "undefined",
+          "value" : "mailto:stephen.gadd@pitt.edu",
+          "type" : "iri"
+        } ],
+        "account" : [ {
+          "identifier" : "account",
+          "language" : "undefined",
+          "value" : "https://github.com/docuracy",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "0000-0003-3060-0181"
+      }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "172"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "70",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://w3id.org/plato#Authority",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "disjointUnion" : [ "57", "55", "59", "61", "18" ],
+    "label" : {
+      "IRI-based" : "Authority",
+      "en" : "Authority"
+    },
+    "subClasses" : [ "57", "55", "59", "61", "18" ],
+    "comment" : {
+      "en" : "\n        Abstract superclass for all reference entities that provide provenance\n        or semantic grounding for attestations. Subtypes include Source,\n        Dataset, Period, RelationType, and CertaintyLevel.\n    "
+    },
+    "attributes" : [ "disjointUnion" ],
+    "id" : "10"
+  }, {
+    "iri" : "https://w3id.org/plato#CertaintyLevel",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "CertaintyLevel",
+      "en" : "Certainty Level"
+    },
+    "comment" : {
+      "en" : "\n        A defined level of certainty for use in attestations, allowing\n        projects to standardise their confidence vocabulary.\n    "
+    },
+    "id" : "61",
+    "superClasses" : [ "10" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "98",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "173",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "174",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2006/time#ProperInterval",
+    "baseIri" : "http://www.w3.org/2006/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ProperInterval"
+    },
+    "subClasses" : [ "1" ],
+    "attributes" : [ "external" ],
+    "id" : "24"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "44",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "129",
+    "label" : {
+      "IRI-based" : "boolean"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "188",
+    "label" : {
+      "IRI-based" : "nonNegativeInteger"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "189",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "122",
+    "label" : {
+      "IRI-based" : "boolean"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "39",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "178",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "109",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "47",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "191",
+    "label" : {
+      "IRI-based" : "dateTime"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "79",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://w3id.org/plato#PropertyValue",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PropertyValue",
+      "en" : "Property Value"
+    },
+    "comment" : {
+      "en" : "\n        A quantitative or descriptive attribute of a SpatialEntity, expressed as a\n        property drawn from an external vocabulary together with its value.\n        Covers the many things a historical source says that are neither a\n        name, a location, a period nor a classification — populations,\n        valuations, elevations, recurrence rules for markets and fairs.\n\n        The property itself is identified by URI rather than enumerated here,\n        so the vocabulary stays open and delegated (Wikidata properties,\n        CIDOC-CRM, project vocabularies), in the same way that Type delegates\n        its classifications to AAT.\n\n        Values may be literals (with a datatype and optional unit) or\n        structured objects whose shape is declared by plato:value_type. As a\n        facet node, a PropertyValue may carry the qualification properties\n        (certainty, fuzziness) like any other.\n\n        Where the value is itself an entity, use a entity-to-entity relation\n        instead; this class is for attributes, not relationships.\n    "
+    },
+    "id" : "35"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "195",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "https://w3id.org/plato#Attestation",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Attestation",
+      "en" : "Attestation"
+    },
+    "comment" : {
+      "en" : "\n        A bundle of evidence asserting that a particular SpatialEntity had a particular\n        Name, Geometry, Type, or combination thereof, during a particular\n        Timespan, according to a particular Authority. The Attestation node\n        carries only metadata; its semantic content is defined entirely by its\n        outgoing relationships.\n\n        IMPORTANT: Attestations are document nodes in the graph, not edges.\n        They are instances of plato:Attestation (a class), not instances of\n        owl:ObjectProperty. This design enables meta-attestations and full\n        provenance tracking.\n    "
+    },
+    "id" : "4",
+    "superClasses" : [ "110" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "133",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "73",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "125",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://w3id.org/plato#Timespan",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Timespan",
+      "en" : "Timespan"
+    },
+    "comment" : {
+      "en" : "\n        A temporal interval with start and end bounds. Timespans are\n        independent, reusable entities that may be shared across multiple\n        Attestations. Precision and uncertainty are expressed through\n        the start and end bound properties. Aligned with W3C Time Ontology\n        and compatible with PeriodO period definitions.\n    "
+    },
+    "id" : "1",
+    "superClasses" : [ "24" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "198",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "77",
+    "label" : {
+      "IRI-based" : "dateTime"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "141",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "91",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "75",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "165",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "120",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "2",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "200",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://w3id.org/plato#Source",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Source",
+      "en" : "Source"
+    },
+    "comment" : {
+      "en" : "\n        A citable source of evidence: a manuscript, chronicle, tax record,\n        map, scholarly article, or other document. Sources are the primary\n        provenance anchor for attestations. A Source may reference its parent\n        Dataset via plato:partOf.\n    "
+    },
+    "id" : "55",
+    "superClasses" : [ "10" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "112",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "158",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "16",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "193",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "202",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "instances" : 0,
+    "union" : [ "35", "7" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "15"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "162",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "169",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#float",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "146",
+    "label" : {
+      "IRI-based" : "float"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "82",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "208",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.opengis.net/ont/geosparql#Geometry",
+    "baseIri" : "http://www.opengis.net/ont/geosparql",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Geometry"
+    },
+    "subClasses" : [ "26" ],
+    "attributes" : [ "external" ],
+    "id" : "27"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "149",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "176",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "197",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "218",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "94",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "219",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "210",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "https://w3id.org/plato#GazetteerGroup",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "GazetteerGroup",
+      "en" : "Gazetteer Group"
+    },
+    "comment" : {
+      "en" : "\n        A thematic or organisational grouping of Gazetteers (e.g.\n        'EMEW — Gazetteer of Early Modern England and Wales').\n    "
+    },
+    "id" : "52"
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "228",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "230",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "instances" : 0,
+    "union" : [ "38", "46", "7", "1", "18" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "50"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "100",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "11",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "185",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "231",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "232",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "135",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "222",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "instances" : 0,
+    "union" : [ "38", "7", "26", "1" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "182"
+  }, {
+    "instances" : 0,
+    "union" : [ "38", "7", "26", "1" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "49"
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "237",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "69",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "238",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "https://w3id.org/plato#Period",
+    "baseIri" : "https://w3id.org/plato",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Period",
+      "en" : "Period"
+    },
+    "comment" : {
+      "en" : "\n        A named historical period (e.g. 'Byzantine', 'Early Modern'),\n        optionally linked to PeriodO or defined locally. Includes temporal\n        bounds for period-based querying.\n    "
+    },
+    "id" : "18",
+    "superClasses" : [ "10" ]
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "243",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "139",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "107",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "244",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "143",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "baseIri" : "http://www.w3.org/2000/01/rdf-schema",
+    "id" : "36",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "84",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/ns/dcat#Dataset",
+    "baseIri" : "http://www.w3.org/ns/dcat",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Dataset"
+    },
+    "subClasses" : [ "32" ],
+    "attributes" : [ "external" ],
+    "id" : "33"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "114",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "240",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "160",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "67",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "8",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  } ],
+  "property" : [ {
+    "id" : "0",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "3",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "6",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "9",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "12",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "14",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "17",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "19",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "22",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "23",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "25",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "28",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "31",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "34",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "37",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "40",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "41",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "43",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "45",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "48",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "51",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "54",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "56",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "58",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "60",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "62",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "64",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "65",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "66",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "68",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "71",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "74",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "76",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "78",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "80",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "81",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "83",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "85",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "87",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "88",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "90",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "92",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "93",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "95",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "97",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "99",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "101",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "102",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "103",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "104",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "105",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "106",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "108",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "111",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "113",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "115",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "117",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "118",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "119",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "121",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "123",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "124",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "126",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "128",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "130",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "132",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "134",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "136",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "138",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "140",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "142",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "145",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "147",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "148",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "152",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "157",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "159",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "161",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "164",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "168",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "171",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "175",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "177",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "179",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "180",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "181",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "183",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "184",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "186",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "187",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "190",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "192",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "194",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "196",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "199",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "201",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "203",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "204",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "205",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "206",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "207",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "209",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "211",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "212",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "213",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "214",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "215",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "216",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "217",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "220",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "221",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "223",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "224",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "225",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "226",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "227",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "229",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "233",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "234",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "235",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "236",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "239",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "241",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "242",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "245",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "246",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "247",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "248",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "249",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "250",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "251",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "252",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "253",
+    "type" : "owl:datatypeProperty"
+  } ],
+  "propertyAttribute" : [ {
+    "iri" : "https://w3id.org/plato#timespan_label",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "timespan_label",
+      "en" : "timespan label"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        Human-readable label for this timespan (e.g., 'Byzantine period',\n        'Early Bronze Age', 'Ming Dynasty'). Particularly useful for named\n        periods referenced across multiple attestations.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "0"
+  }, {
+    "iri" : "https://w3id.org/plato#connection_metadata",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "5",
+    "label" : {
+      "IRI-based" : "connection_metadata",
+      "en" : "connection metadata"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Structured metadata for network-type attestations. Can encode\n        information about trade goods, flow direction, capacity, frequency,\n        or other properties of network connections. Format is implementation-\n        specific (JSON recommended) but should be documented in the gazetteer's\n        metadata.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "3"
+  }, {
+    "iri" : "https://w3id.org/plato#type_identifier",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "8",
+    "label" : {
+      "IRI-based" : "type_identifier",
+      "en" : "type identifier"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "URI or identifier in a controlled vocabulary (e.g. AAT)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "6"
+  }, {
+    "iri" : "https://w3id.org/plato#authority_title",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "11",
+    "label" : {
+      "IRI-based" : "authority_title",
+      "en" : "title"
+    },
+    "domain" : "10",
+    "attributes" : [ "datatype" ],
+    "id" : "9"
+  }, {
+    "iri" : "https://w3id.org/plato#edtf_string",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "13",
+    "label" : {
+      "IRI-based" : "edtf_string",
+      "en" : "EDTF string"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        Extended Date/Time Format (EDTF) representation of this timespan.\n        Provides standardized string encoding for interchange with systems\n        using EDTF. Optional but recommended for interoperability with library\n        and archival systems. Example: '1453-05-29/1453-05-29' or '1450~/1453~'\n        for approximate dates.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "12"
+  }, {
+    "iri" : "https://w3id.org/plato#source_label",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "16",
+    "label" : {
+      "IRI-based" : "source_label",
+      "en" : "source label"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "\n        The original label as given in the contributing source, before\n        vocabulary mapping. For a structured PropertyValue this preserves the\n        unparsed original — 'Monday after Whitsun, 3 days' — which is what a\n        future reader will want to check against the document.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "14"
+  }, {
+    "range" : "10",
+    "domain" : "18",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "17"
+  }, {
+    "iri" : "https://w3id.org/plato#attribution_status",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "attribution_status",
+      "en" : "attribution status"
+    },
+    "domain" : "20",
+    "comment" : {
+      "en" : "\n        Whether the attribution of the evidence to the cited source was\n        stated by the source or resolved editorially. Should point to a\n        concept in a SKOS concept scheme. The starter concepts are:\n\n        - plato:AttributionStated: the source is named where the form\n          occurs. The default, and usually omitted.\n        - plato:AttributionInferred: the source was given as 'ibidem' or\n          'idem' and resolved by an editor, so the attribution is inferred\n          rather than stated. Not marginal: about one attestation in twenty\n          in the English Place-Name Society corpus.\n\n        A statement about the citation, not about the form, which is why it\n        lives here and not in plato:occurrence_context.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "19"
+  }, {
+    "iri" : "https://w3id.org/plato#attests_type",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "attests_type",
+      "en" : "attests type"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to a Type classification it assigns to the SpatialEntity.\n        An attestation may assert multiple types or no type at all.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "22"
+  }, {
+    "range" : "24",
+    "domain" : "1",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "23"
+  }, {
+    "range" : "27",
+    "domain" : "26",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "25"
+  }, {
+    "iri" : "https://w3id.org/plato#contributor_affiliation",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "30",
+    "label" : {
+      "IRI-based" : "contributor_affiliation",
+      "en" : "affiliation"
+    },
+    "domain" : "29",
+    "comment" : {
+      "en" : "\n        Organizational affiliation of the contributor. Links to a\n        plato:Organization entity, which can be further described using\n        FOAF, schema.org, or other ontology properties. Organizations\n        should ideally use persistent identifiers (ROR, ISNI, etc.).\n\n        For simple cases, use contributor_affiliation_string for free-text\n        affiliation names.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "28"
+  }, {
+    "range" : "33",
+    "domain" : "32",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "31"
+  }, {
+    "iri" : "https://w3id.org/plato#value_literal",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "36",
+    "label" : {
+      "IRI-based" : "value_literal",
+      "en" : "value"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "\n        The value, where it is a literal: a number, a string, a date. Use\n        plato:value_json instead where the value is structured.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "34"
+  }, {
+    "iri" : "https://w3id.org/plato#name_type",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "39",
+    "label" : {
+      "IRI-based" : "name_type",
+      "en" : "name type"
+    },
+    "domain" : "38",
+    "comment" : {
+      "en" : "\n        What the name denotes. The list is open: 'toponym' (place name),\n        'chrononym' (period or era name), 'ethnonym' (people or ethnic\n        group), 'demonym' (inhabitants), 'odonym' (street or road name) and\n        'hydronym' (water body) are the starter values, and a project may\n        add others ('oronym', 'hagionym') provided it documents them in its\n        gazetteer metadata. Multiple types are possible (a name that\n        functions as both toponym and ethnonym). plato.schema.json carries\n        the same open list; earlier releases closed it there, and the two\n        serialisations now agree.\n\n        This classifies the referent, not the status of the form. Whether a\n        string is an attested spelling, an editorial headword or a derived\n        search form is a property of the attestation (plato:form_status),\n        because the same string can have a different status in different\n        attestations.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "37"
+  }, {
+    "iri" : "https://w3id.org/plato#sourced_by",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "10",
+    "label" : {
+      "IRI-based" : "sourced_by",
+      "en" : "sourced by"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to the Authority (typically a Source or Dataset)\n        that grounds it. This provides the provenance chain for the attestation.\n\n        Semantically equivalent to PROV-O's prov:wasDerivedFrom, indicating the\n        authority is the origin of the attested knowledge. We don't use formal\n        rdfs:subPropertyOf to avoid importing PROV-O's domain/range constraints\n        which conflict with PLATO's class structure.\n\n        This is the direct form. Where the citation itself has something to\n        say (a page or folio, an attribution resolved from 'ibidem'), use\n        plato:has_citation to a Citation node that cites the Authority.\n        sourced_by is declared as the property chain has_citation o cites, so\n        a reasoner derives it from a Citation; data intended for consumers\n        without a reasoner should assert it directly as well.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "40"
+  }, {
+    "iri" : "https://w3id.org/plato#geo_wkt",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "42",
+    "label" : {
+      "IRI-based" : "geo_wkt",
+      "en" : "geometry WKT"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        Well-Known Text representation of the geometry, following OGC/ISO\n        standards. Used for GeoSPARQL queries and RDF serialization.\n        Supports Point, LineString, Polygon, MultiPoint, MultiLineString,\n        MultiPolygon.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "41"
+  }, {
+    "iri" : "https://w3id.org/plato#periodo_uri",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "44",
+    "label" : {
+      "IRI-based" : "periodo_uri",
+      "en" : "PeriodO URI"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        Link to a PeriodO period definition (https://perio.do/). When a timespan\n        corresponds to a standardized period in PeriodO, this property enables\n        alignment and allows PLATO to inherit PeriodO's temporal bounds, spatial\n        coverage, and cultural context. Example: 'https://n2t.net/ark:/99152/p06v8w4rb38'\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "43"
+  }, {
+    "iri" : "https://w3id.org/plato#namespace",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "47",
+    "label" : {
+      "IRI-based" : "namespace",
+      "en" : "namespace"
+    },
+    "domain" : "46",
+    "comment" : {
+      "en" : "\n        The authority namespace for this SpatialEntity (e.g. 'geonames', 'wikidata',\n        'tgn', 'osm', 'pleiades', 'whg'). Authority-sourced SpatialEntities carry\n        their origin namespace; contributed SpatialEntities that cannot be linked to\n        any authority receive the 'whg' namespace.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "45"
+  }, {
+    "iri" : "https://w3id.org/plato#relative_to",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "50",
+    "label" : {
+      "IRI-based" : "relative_to",
+      "en" : "relative to"
+    },
+    "domain" : "49",
+    "comment" : {
+      "en" : "\n        Links a facet node to its anchor entity, indicating that this\n        facet is defined relationally rather than absolutely. The anchor\n        is typically a SpatialEntity, Period, or another facet (Name, Timespan, etc.).\n\n        Common patterns:\n        - Spatial relativity: \"20km east of Nanjing\" (anchor is a SpatialEntity)\n        - Temporal relativity: \"during the reign of Justinian\" (anchor is a Period)\n        - Name relativity: \"also known as Rome\" (anchor is another Name)\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "48"
+  }, {
+    "iri" : "https://w3id.org/plato#member_of_group",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "52",
+    "label" : {
+      "IRI-based" : "member_of_group",
+      "en" : "member of group"
+    },
+    "domain" : "32",
+    "comment" : {
+      "en" : "Links a Gazetteer to a GazetteerGroup."
+    },
+    "attributes" : [ "object" ],
+    "id" : "51"
+  }, {
+    "range" : "10",
+    "domain" : "55",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "54"
+  }, {
+    "range" : "10",
+    "domain" : "57",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "56"
+  }, {
+    "range" : "10",
+    "domain" : "59",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "58"
+  }, {
+    "range" : "10",
+    "domain" : "61",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "60"
+  }, {
+    "iri" : "https://w3id.org/plato#contributor_role",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "63",
+    "label" : {
+      "IRI-based" : "contributor_role",
+      "en" : "contributor role"
+    },
+    "domain" : "29",
+    "comment" : {
+      "en" : "\n        Role of the contributor in the project or gazetteer. Examples:\n        'principal_investigator', 'data_curator', 'student_researcher',\n        'automated_process', 'external_contributor'. Helps understand the\n        context and authority of contributions.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "62"
+  }, {
+    "iri" : "https://w3id.org/plato#partOf",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "57",
+    "label" : {
+      "IRI-based" : "partOf",
+      "en" : "part of"
+    },
+    "domain" : "55",
+    "comment" : {
+      "en" : "Links a Source to its parent Dataset."
+    },
+    "attributes" : [ "object" ],
+    "id" : "64"
+  }, {
+    "iri" : "https://w3id.org/plato#contains_attestation",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "4",
+    "label" : {
+      "IRI-based" : "contains_attestation",
+      "en" : "contains attestation"
+    },
+    "domain" : "32",
+    "comment" : {
+      "en" : "Links a Gazetteer to an Attestation contributed within it."
+    },
+    "attributes" : [ "object" ],
+    "id" : "65"
+  }, {
+    "iri" : "https://w3id.org/plato#type_label",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "67",
+    "label" : {
+      "IRI-based" : "type_label",
+      "en" : "type label"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "Human-readable label for this type."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "66"
+  }, {
+    "iri" : "https://w3id.org/plato#certainty_note",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "certainty_note",
+      "en" : "certainty note"
+    },
+    "domain" : "69",
+    "comment" : {
+      "en" : "\n        Free-text explanation of the certainty assessment: quality of\n        evidence, degree of scholarly consensus, reliability of source\n        (e.g. 'manuscript partially illegible', 'coordinates extrapolated\n        from itinerary distances'). Applies wherever certainty does.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "68"
+  }, {
+    "iri" : "https://w3id.org/plato#identity_type",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "73",
+    "label" : {
+      "IRI-based" : "identity_type",
+      "en" : "identity type"
+    },
+    "domain" : "72",
+    "comment" : {
+      "en" : "\n        The semantic strength of the identity assertion:\n        'exactMatch'  — the two SpatialEntities are unambiguously the same entity.\n        'closeMatch'  — the two SpatialEntities are believed to be the same entity\n                        but with some residual ambiguity (e.g. differing\n                        granularity, overlapping but not identical scope).\n        'related'     — the two SpatialEntities are closely associated but may not\n                        be strictly identical (e.g. a settlement and its\n                        administrative district, or successive phases of\n                        a site that might or might not constitute continuity).\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "71"
+  }, {
+    "iri" : "https://w3id.org/plato#identity_basis",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "75",
+    "label" : {
+      "IRI-based" : "identity_basis",
+      "en" : "identity basis"
+    },
+    "domain" : "72",
+    "comment" : {
+      "en" : "\n        Free-text explanation of the evidence or reasoning supporting\n        this identity assertion (e.g. 'coordinates within 500m and\n        name forms are cognate', 'identified by contributor during\n        reconciliation review', 'confirmed via TGN cross-reference').\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "74"
+  }, {
+    "iri" : "https://w3id.org/plato#identity_asserted_at",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "77",
+    "label" : {
+      "IRI-based" : "identity_asserted_at",
+      "en" : "asserted at"
+    },
+    "domain" : "72",
+    "attributes" : [ "datatype" ],
+    "id" : "76"
+  }, {
+    "iri" : "https://w3id.org/plato#locator",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "79",
+    "label" : {
+      "IRI-based" : "locator",
+      "en" : "locator"
+    },
+    "domain" : "20",
+    "comment" : {
+      "en" : "\n        Where in the cited work the evidence sits: 'p. 412', 'f. 12v', 'Table\n        VI, col. 3, row 88', 's.v. Athlone', 'no. xix'. An uninterpreted\n        string, deliberately: sources locate themselves inconsistently, and\n        normalising the value would destroy exactly the information it is\n        there to carry. The same position and shape as PeriodO's source\n        locator.\n\n        A property of this citation, not of the source: one Source for a\n        printed gazetteer, a different locator on each attestation drawn\n        from it. Not to be confused with the spatial sense of 'locator' in\n        the plato:geometry_role comment, a proxy point standing in for an\n        entity.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "78"
+  }, {
+    "iri" : "https://w3id.org/plato#meta_attestation_about",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "4",
+    "label" : {
+      "IRI-based" : "meta_attestation_about",
+      "en" : "meta-attestation about"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links a meta-Attestation to the Attestation it comments on or relates to.\n        Used with plato:has_meta_type to specify the nature of the relationship.\n\n        Example: A meta-attestation might assert that one source's geometry\n        attestation contradicts another source's geometry attestation for the\n        same SpatialEntity.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "80"
+  }, {
+    "iri" : "https://w3id.org/plato#script",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "82",
+    "label" : {
+      "IRI-based" : "script",
+      "en" : "script"
+    },
+    "domain" : "38",
+    "comment" : {
+      "en" : "\n        ISO 15924 script code (e.g., 'Arab' for Arabic script, 'Latn' for\n        Latin script, 'Hant' for Traditional Han characters). Important for\n        names that may appear in multiple scripts.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "81"
+  }, {
+    "iri" : "https://w3id.org/plato#value_json",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "84",
+    "label" : {
+      "IRI-based" : "value_json",
+      "en" : "structured value"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "\n        A structured value serialised as JSON, whose shape is declared by\n        plato:value_type. Use plato:value_literal instead for scalar values.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "83"
+  }, {
+    "iri" : "https://w3id.org/plato#promoted_from",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "86",
+    "label" : {
+      "IRI-based" : "promoted_from",
+      "en" : "promoted from"
+    },
+    "domain" : "72",
+    "comment" : {
+      "en" : "\n        Links an IdentityRelation to the Candidate from which it was\n        promoted, preserving the algorithmic provenance. Optional:\n        identity relations can also be created directly by human\n        assertion without a prior Candidate.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "85"
+  }, {
+    "iri" : "https://w3id.org/plato#geometry_role",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "geometry_role",
+      "en" : "geometry role"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        What this geometry depicts, as distinct from how precisely it is known\n        (plato:spatial_precision) or where its indexing point falls\n        (plato:repr_point). A SpatialEntity may be attested with several geometries at\n        once — a built extent, the location of a specific central feature, a\n        proxy standing in for the whole, the anchor of a map label — and without\n        a declared role a consumer cannot tell them apart, nor state which one\n        an analysis used.\n\n        Should point to a concept in a SKOS concept scheme (e.g. plato:Extent,\n        plato:FeaturePoint, plato:RepresentativePoint, plato:LabelAnchor,\n        plato:Itinerary). Using URIs rather than free text lets gazetteers that\n        record geometry differently be compared.\n\n        Note that role is orthogonal to precision: a proxy locator may be\n        surveyed to the metre and still not depict the SpatialEntity it stands for. A\n        parish church's coordinates contributed as a locator for a town are a\n        representative point of high precision, not an imprecise feature point.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "87"
+  }, {
+    "iri" : "https://w3id.org/plato#contributor_name",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "89",
+    "label" : {
+      "IRI-based" : "contributor_name",
+      "en" : "contributor name"
+    },
+    "domain" : "29",
+    "comment" : {
+      "en" : "\n        The name of the contributor (person, team, or automated process).\n        For persons, should be the full name as preferred by the contributor.\n        For teams, the team name. For automated processes, a descriptive name.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "88"
+  }, {
+    "iri" : "https://w3id.org/plato#identity_certainty",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "91",
+    "label" : {
+      "IRI-based" : "identity_certainty",
+      "en" : "identity certainty"
+    },
+    "domain" : "72",
+    "comment" : {
+      "en" : "\n        Confidence in the identity assertion, from 0.0 to 1.0. This is\n        the epistemic certainty of the asserter, distinct from identity_type\n        which describes the semantic nature of the relationship.\n        A closeMatch can have high certainty ('I'm confident these are\n        close but not exact') and an exactMatch can have low certainty\n        ('I think they're identical but I'm not sure').\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "90"
+  }, {
+    "iri" : "https://w3id.org/plato#identity_sourced_by",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "10",
+    "label" : {
+      "IRI-based" : "identity_sourced_by",
+      "en" : "identity sourced by"
+    },
+    "domain" : "72",
+    "comment" : {
+      "en" : "\n        The Authority (Source or Dataset) that provides evidence for\n        this identity assertion, if any.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "92"
+  }, {
+    "iri" : "https://w3id.org/plato#precision_value",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "94",
+    "label" : {
+      "IRI-based" : "precision_value",
+      "en" : "precision value"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        Numeric precision indicator in years. For example, a decade-level\n        precision would have value 10, century-level would be 100. Enables\n        computational comparison of precision across timespans.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "93"
+  }, {
+    "iri" : "https://w3id.org/plato#identity_asserted_by",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "29",
+    "label" : {
+      "IRI-based" : "identity_asserted_by",
+      "en" : "asserted by"
+    },
+    "domain" : "72",
+    "comment" : {
+      "en" : "The agent who made or confirmed this identity assertion."
+    },
+    "attributes" : [ "object" ],
+    "id" : "95"
+  }, {
+    "iri" : "https://w3id.org/plato#certainty",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "98",
+    "label" : {
+      "IRI-based" : "certainty",
+      "en" : "certainty"
+    },
+    "domain" : "69",
+    "comment" : {
+      "en" : "\n        Epistemic certainty, from 0.0 (completely uncertain) to 1.0\n        (completely certain). On an Attestation it is the contributor's\n        confidence in the bundle as a whole. On a facet node (Name, Geometry,\n        Timespan, Type, PropertyValue) it is the confidence in that value\n        alone, and may differ from the attestation's overall certainty.\n        Certainty reflects the limits of evidence: better evidence could in\n        principle raise it. Distinct from fuzziness (the referent has no\n        sharp boundary) and from spatial_precision (how finely a location\n        is specified). No rdfs:domain, so it can qualify any node.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "97"
+  }, {
+    "iri" : "https://w3id.org/plato#algorithm_version",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "100",
+    "label" : {
+      "IRI-based" : "algorithm_version",
+      "en" : "algorithm version"
+    },
+    "domain" : "86",
+    "attributes" : [ "datatype" ],
+    "id" : "99"
+  }, {
+    "iri" : "https://w3id.org/plato#cites",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "10",
+    "label" : {
+      "IRI-based" : "cites",
+      "en" : "cites"
+    },
+    "domain" : "20",
+    "comment" : {
+      "en" : "\n        The Authority (a Source or a Dataset) this Citation uses. Exactly one\n        per Citation: an attestation resting on two sources has two\n        Citations.\n    "
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "101"
+  }, {
+    "iri" : "https://w3id.org/plato#gazetteer_owner",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "29",
+    "label" : {
+      "IRI-based" : "gazetteer_owner",
+      "en" : "owner"
+    },
+    "domain" : "32",
+    "attributes" : [ "object" ],
+    "id" : "102"
+  }, {
+    "iri" : "https://w3id.org/plato#identity_subject",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "identity_subject",
+      "en" : "identity subject"
+    },
+    "domain" : "72",
+    "comment" : {
+      "en" : "The first SpatialEntity in an identity assertion."
+    },
+    "attributes" : [ "object" ],
+    "id" : "103"
+  }, {
+    "iri" : "https://w3id.org/plato#has_timespan",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "has_timespan",
+      "en" : "has timespan"
+    },
+    "domain" : "18",
+    "comment" : {
+      "en" : "\n        Links a Period authority to its temporal extent, represented as a\n        Timespan node. Used for locally-defined periods or when more detailed\n        temporal modeling is needed than provided by external period definitions.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "104"
+  }, {
+    "iri" : "https://w3id.org/plato#hull",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "42",
+    "label" : {
+      "IRI-based" : "hull",
+      "en" : "convex hull"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        Convex hull of the geometry as WKT Polygon. Used for quick spatial\n        filtering before more expensive exact geometry operations. Optional\n        but recommended for complex geometries.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "105"
+  }, {
+    "iri" : "https://w3id.org/plato#value_type",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "107",
+    "label" : {
+      "IRI-based" : "value_type",
+      "en" : "value type"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "\n        URI declaring the shape of a structured value, so that a consumer can\n        tell whether it understands the value before attempting to read it.\n        Omitted for literal values.\n\n        Not every attribute a source states is scalar. A market's trading day\n        — 'the Monday after Whitsun, for three days' — is a recurrence rule\n        anchored to a moveable feast, and flattening it to a string would\n        reproduce the loss this class exists to prevent. The ontology stays\n        agnostic about such shapes: it records which shape is in use and\n        leaves the definition to the vocabulary that owns it.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "106"
+  }, {
+    "iri" : "https://w3id.org/plato#notes",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "109",
+    "label" : {
+      "IRI-based" : "notes",
+      "en" : "notes"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Free-text notes providing additional context about this attestation.\n        Can include transcriptions, translations, editorial comments, or\n        other information that doesn't fit structured fields.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "108"
+  }, {
+    "iri" : "https://w3id.org/plato#spatial_precision",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "112",
+    "label" : {
+      "IRI-based" : "spatial_precision",
+      "en" : "spatial precision"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        Precision qualifier for this geometry: 'exact' (surveyed or GPS),\n        'approximate' (estimated from maps or descriptions), 'uncertain'\n        (multiple possible locations), 'historical_approximate' (based on\n        historical sources with inherent imprecision). Multiple values\n        possible for heterogeneous geometries.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "111"
+  }, {
+    "iri" : "https://w3id.org/plato#value_datatype",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "114",
+    "label" : {
+      "IRI-based" : "value_datatype",
+      "en" : "value datatype"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "Datatype of the literal value (e.g. xsd:integer, xsd:decimal, xsd:string)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "113"
+  }, {
+    "iri" : "https://w3id.org/plato#end_earliest",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "116",
+    "label" : {
+      "IRI-based" : "end_earliest",
+      "en" : "end earliest"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        The earliest possible end date for this timespan. Together with\n        end_latest, defines the uncertainty range for when the interval ended.\n        May be null for unknown or deliberately open-end intervals.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "115"
+  }, {
+    "iri" : "https://w3id.org/plato#repr_point",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "42",
+    "label" : {
+      "IRI-based" : "repr_point",
+      "en" : "representative point"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        A single representative point (centroid, label point, or best\n        estimate) for spatial indexing and distance queries. Stored as WKT\n        Point. Required for all geometries to enable spatial search.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "117"
+  }, {
+    "iri" : "https://w3id.org/plato#candidate_candidate",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "candidate_candidate",
+      "en" : "candidate entity"
+    },
+    "domain" : "86",
+    "attributes" : [ "object" ],
+    "id" : "118"
+  }, {
+    "iri" : "https://w3id.org/plato#start_earliest",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "120",
+    "label" : {
+      "IRI-based" : "start_earliest",
+      "en" : "start earliest"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        The earliest possible start date for this timespan. Together with\n        start_latest, defines the uncertainty range for when the interval began.\n        Use ISO 8601 format (e.g., '1453-05-29') or integer year for year-level\n        precision. May be null for unknown or deliberately open-beginning intervals.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "119"
+  }, {
+    "iri" : "https://w3id.org/plato#open_start",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "122",
+    "label" : {
+      "IRI-based" : "open_start",
+      "en" : "open start"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        Boolean flag indicating that the start of this interval is deliberately\n        unspecified (not merely unknown). True for intervals like 'everything\n        before 1453' or 'prehistory until...'. Distinct from null start_earliest,\n        which indicates unknown start. Aligns with PeriodO's OpenBeginningInterval.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "121"
+  }, {
+    "iri" : "https://w3id.org/plato#contributed_by",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "29",
+    "label" : {
+      "IRI-based" : "contributed_by",
+      "en" : "contributed by"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        The agent (person, team, or process) who created this attestation.\n\n        Semantically equivalent to PROV-O's prov:wasAttributedTo for provenance\n        tracking. We don't use formal rdfs:subPropertyOf to avoid importing\n        PROV-O's domain/range constraints. Distinct from sourced_by, which\n        indicates the historical source being cited.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "123"
+  }, {
+    "iri" : "https://w3id.org/plato#language",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "125",
+    "label" : {
+      "IRI-based" : "language",
+      "en" : "language"
+    },
+    "domain" : "38",
+    "comment" : {
+      "en" : "\n        BCP 47 language tag for this name (e.g., 'ar' for Arabic, 'zh-Hans'\n        for Simplified Chinese). Recommended: use ISO 639-3 three-letter codes\n        within BCP 47 for better granularity (e.g., 'ara', 'cmn').\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "124"
+  }, {
+    "iri" : "https://w3id.org/plato#generated_at",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "127",
+    "label" : {
+      "IRI-based" : "generated_at",
+      "en" : "generated at"
+    },
+    "domain" : "86",
+    "attributes" : [ "datatype" ],
+    "id" : "126"
+  }, {
+    "iri" : "https://w3id.org/plato#open_end",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "129",
+    "label" : {
+      "IRI-based" : "open_end",
+      "en" : "open end"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        Boolean flag indicating that the end of this interval is deliberately\n        unspecified (not merely unknown). True for ongoing periods like 'Modern\n        era (1800-present)' or situations where the end does not exist. Aligns\n        with PeriodO's OpenEndInterval.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "128"
+  }, {
+    "iri" : "https://w3id.org/plato#gazetteer_status",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "131",
+    "label" : {
+      "IRI-based" : "gazetteer_status",
+      "en" : "status"
+    },
+    "domain" : "32",
+    "comment" : {
+      "en" : "Publication status: 'draft' or 'published'."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "130"
+  }, {
+    "iri" : "https://w3id.org/plato#inverse_label",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "133",
+    "label" : {
+      "IRI-based" : "inverse_label",
+      "en" : "inverse label"
+    },
+    "domain" : "59",
+    "comment" : {
+      "en" : "Inverse label (e.g. 'has_capital')."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "132"
+  }, {
+    "iri" : "https://w3id.org/plato#bibliographic_string",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "135",
+    "label" : {
+      "IRI-based" : "bibliographic_string",
+      "en" : "bibliographic string"
+    },
+    "domain" : "55",
+    "comment" : {
+      "en" : "A formatted citation string for this source."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "134"
+  }, {
+    "iri" : "https://w3id.org/plato#contributor_email",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "137",
+    "label" : {
+      "IRI-based" : "contributor_email",
+      "en" : "email"
+    },
+    "domain" : "29",
+    "comment" : {
+      "en" : "\n        Contact email address for the contributor. Useful for collaboration\n        and correspondence about contributed data.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "136"
+  }, {
+    "iri" : "https://w3id.org/plato#value_unit",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "139",
+    "label" : {
+      "IRI-based" : "value_unit",
+      "en" : "value unit"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "\n        URI of the unit of measurement, where the value has one — a QUDT unit\n        or a Wikidata unit item. Omitted for counts and dimensionless values.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "138"
+  }, {
+    "iri" : "https://w3id.org/plato#geo_json",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "141",
+    "label" : {
+      "IRI-based" : "geo_json",
+      "en" : "geometry GeoJSON"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        GeoJSON representation of the geometry. Used for web mapping\n        applications and LPF export. Should be a valid GeoJSON geometry\n        object (not a Feature or FeatureCollection).\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "140"
+  }, {
+    "iri" : "https://w3id.org/plato#fuzziness_note",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "144",
+    "label" : {
+      "IRI-based" : "fuzziness_note",
+      "en" : "fuzziness note"
+    },
+    "domain" : "143",
+    "comment" : {
+      "en" : "\n        Free-text explanation of the nature of ontological fuzziness\n        (e.g. 'regional boundary was never formally demarcated',\n        'name used inconsistently across contemporary sources',\n        'transition was gradual rather than a discrete event').\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "142"
+  }, {
+    "iri" : "https://w3id.org/plato#relative_bearing",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "146",
+    "label" : {
+      "IRI-based" : "relative_bearing",
+      "en" : "bearing"
+    },
+    "domain" : "143",
+    "comment" : {
+      "en" : "\n        Compass bearing from the anchor, in degrees (0–360).\n        Primarily used for relative geometries: '90' means east of\n        the anchor. May carry its own certainty or fuzziness.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "145"
+  }, {
+    "iri" : "https://w3id.org/plato#contains_entity",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "contains_entity",
+      "en" : "contains entity"
+    },
+    "domain" : "32",
+    "comment" : {
+      "en" : "Links a Gazetteer to a SpatialEntity it contains."
+    },
+    "attributes" : [ "object" ],
+    "id" : "147"
+  }, {
+    "iri" : "https://w3id.org/plato#relation_label",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "149",
+    "label" : {
+      "IRI-based" : "relation_label",
+      "en" : "relation label"
+    },
+    "domain" : "59",
+    "comment" : {
+      "en" : "Forward label for the relationship (e.g. 'capital_of')."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "148"
+  }, {
+    "iri" : "https://w3id.org/plato#has_citation",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "20",
+    "label" : {
+      "IRI-based" : "has_citation",
+      "en" : "has citation"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to a Citation: its qualified use of one\n        Authority, with a locator and an attribution status. An attestation\n        may have several, one per source it rests on.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "152"
+  }, {
+    "iri" : "https://w3id.org/plato#spatial_coverage",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "158",
+    "label" : {
+      "IRI-based" : "spatial_coverage",
+      "en" : "spatial coverage"
+    },
+    "domain" : "18",
+    "comment" : {
+      "en" : "\n        Geographic or cultural region to which this period applies.\n        Free text or URI to a place/region. Useful because periods like\n        'Medieval' have different temporal bounds in different regions.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "157"
+  }, {
+    "iri" : "https://w3id.org/plato#toponym",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "160",
+    "label" : {
+      "IRI-based" : "toponym",
+      "en" : "toponym"
+    },
+    "domain" : "38",
+    "comment" : {
+      "en" : "\n        The name string itself in its original script. This is the primary\n        property of a Name entity. Required for all Name instances.\n    "
+    },
+    "attributes" : [ "datatype", "functional" ],
+    "id" : "159"
+  }, {
+    "iri" : "https://w3id.org/plato#source_crs",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "162",
+    "label" : {
+      "IRI-based" : "source_crs",
+      "en" : "source CRS"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        Original coordinate reference system. Typically 'EPSG:4326' (WGS84),\n        but may reference historical or custom CRS identifiers for historical\n        maps. Enables proper interpretation of coordinate values.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "161"
+  }, {
+    "iri" : "https://w3id.org/plato#start_latest",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "165",
+    "label" : {
+      "IRI-based" : "start_latest",
+      "en" : "start latest"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        The latest possible start date for this timespan. For certain dates,\n        this equals start_earliest. For uncertain dates, defines the end of\n        the uncertainty range for when the interval began.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "164"
+  }, {
+    "iri" : "https://w3id.org/plato#relative_distance",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "169",
+    "label" : {
+      "IRI-based" : "relative_distance",
+      "en" : "distance"
+    },
+    "domain" : "69",
+    "comment" : {
+      "en" : "\n        Distance from the anchor, in metres. Primarily used for\n        relative geometries. May carry its own certainty or fuzziness.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "168"
+  }, {
+    "iri" : "https://w3id.org/plato#end_latest",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "151",
+    "label" : {
+      "IRI-based" : "end_latest",
+      "en" : "end latest"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        The latest possible end date for this timespan. For certain dates,\n        this equals end_earliest. For uncertain dates, defines the end of\n        the uncertainty range for when the interval ended.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "171"
+  }, {
+    "iri" : "https://w3id.org/plato#relation_domain",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "176",
+    "label" : {
+      "IRI-based" : "relation_domain",
+      "en" : "domain constraint"
+    },
+    "domain" : "59",
+    "comment" : {
+      "en" : "Valid subject type for this relation."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "175"
+  }, {
+    "iri" : "https://w3id.org/plato#name_embedding",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "178",
+    "label" : {
+      "IRI-based" : "name_embedding",
+      "en" : "name embedding"
+    },
+    "domain" : "38",
+    "comment" : {
+      "en" : "\n        Vector embedding for phonetic similarity search. Typically a\n        256-dimensional vector generated from the name's phonetic form,\n        enabling fuzzy matching and transliteration-variant detection.\n        Format is implementation-specific but should be documented in\n        gazetteer metadata. WHG v4 uses Symphonym embeddings.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "177"
+  }, {
+    "iri" : "https://w3id.org/plato#end_precision",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "150",
+    "label" : {
+      "IRI-based" : "end_precision",
+      "en" : "end precision"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        Temporal granularity of the end bound. Values: 'year', 'decade',\n        'century', 'era', 'geological_period'.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "179"
+  }, {
+    "iri" : "https://w3id.org/plato#has_meta_type",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "has_meta_type",
+      "en" : "meta-attestation type"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        The nature of a meta-attestation's relationship to its target attestation.\n        Should reference a controlled vocabulary concept defining the relationship\n        type. Standard values include:\n\n        - 'contradicts': asserts the target attestation is incorrect\n        - 'supports': provides additional evidence for the target attestation\n        - 'supersedes': replaces the target attestation with newer information\n        - 'refines': provides more precise information than the target\n        - 'challenges': questions the target attestation's validity\n        - 'bundles': groups the target with other related attestations\n\n        Using SKOS concepts rather than strings enables vocabulary management\n        and multilingual labels.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "180"
+  }, {
+    "iri" : "https://w3id.org/plato#relative_qualifier",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "relative_qualifier",
+      "en" : "relative qualifier"
+    },
+    "domain" : "182",
+    "comment" : {
+      "en" : "\n        A controlled-vocabulary term describing the relative relationship\n        when bearing and distance are not applicable or not sufficient.\n        Should point to a concept in a SKOS concept scheme (e.g.\n        plato:Near, plato:Within, plato:Beyond, plato:UpstreamOf,\n        plato:BetweenXAndY, plato:DuringReignOf, plato:VariantOf).\n        Using URIs rather than free text enables machine reconciliation\n        across gazetteers that describe relativity differently.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "181"
+  }, {
+    "iri" : "https://w3id.org/plato#attests_name",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "38",
+    "label" : {
+      "IRI-based" : "attests_name",
+      "en" : "attests name"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to a Name it asserts for the SpatialEntity. An attestation\n        may assert multiple names (e.g., primary name and variants) or no name\n        at all (e.g., geometry-only attestations).\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "183"
+  }, {
+    "iri" : "https://w3id.org/plato#authority_uri",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "185",
+    "label" : {
+      "IRI-based" : "authority_uri",
+      "en" : "authority URI"
+    },
+    "domain" : "10",
+    "attributes" : [ "datatype" ],
+    "id" : "184"
+  }, {
+    "iri" : "https://w3id.org/plato#has_relation_type",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "59",
+    "label" : {
+      "IRI-based" : "has_relation_type",
+      "en" : "has relation type"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Specifies the semantic type of a entity-to-entity relationship\n        attested by an Attestation. References a RelationType authority\n        which defines the relationship's label, inverse, and domain/range\n        constraints. Examples: 'capital_of', 'successor_to',\n        'connected_by_trade_route_to'.\n\n        The extensible vocabulary pattern allows new relationship types to\n        be added as Authority records without modifying the ontology.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "186"
+  }, {
+    "iri" : "https://w3id.org/plato#derived_from",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "55",
+    "label" : {
+      "IRI-based" : "derived_from",
+      "en" : "derived from"
+    },
+    "domain" : "55",
+    "comment" : {
+      "en" : "\n        This Source is a copy, transcript, edition, calendar or confirmation\n        of that one. A later cartulary copy of a charter, an inspeximus, or a\n        printed edition of a manuscript is a Source of its own, with its own\n        source_timespan, derived_from the document it transmits. An\n        attestation should cite the Source it was actually read in; the chain\n        of derived_from links records what that Source transmits. The kind of\n        derivation (copy, edition, calendar, inspeximus) is not yet\n        distinguished; a sub-property or a small vocabulary can be added when\n        a project needs it.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "187"
+  }, {
+    "iri" : "https://w3id.org/plato#attests_property",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "35",
+    "label" : {
+      "IRI-based" : "attests_property",
+      "en" : "attests property"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to a PropertyValue it asserts of the SpatialEntity — a\n        population, a valuation, an elevation, a market's trading day. An\n        attestation may assert several properties or none.\n\n        These are among the commonest things a source says about an entity, and\n        they carry exactly the provenance and temporal scoping the attestation\n        pattern exists to handle: a population figure is a claim, by a named\n        source, about one SpatialEntity, over a Timespan, with a certainty. The\n        attestation's own timespans scope the property as they scope every\n        other facet in the bundle.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "190"
+  }, {
+    "iri" : "https://w3id.org/plato#similarity_score",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "193",
+    "label" : {
+      "IRI-based" : "similarity_score",
+      "en" : "similarity score"
+    },
+    "domain" : "86",
+    "attributes" : [ "datatype" ],
+    "id" : "192"
+  }, {
+    "iri" : "https://w3id.org/plato#attests_timespan",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "attests_timespan",
+      "en" : "attests timespan"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to the Timespan during which the attested\n        properties (name, geometry, type) were applicable. Distinct from\n        the attestation's creation date: this is the historical timespan\n        being asserted, not when the assertion was made.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "194"
+  }, {
+    "iri" : "https://w3id.org/plato#relation_range",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "197",
+    "label" : {
+      "IRI-based" : "relation_range",
+      "en" : "range constraint"
+    },
+    "domain" : "59",
+    "comment" : {
+      "en" : "Valid object type for this relation."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "196"
+  }, {
+    "iri" : "https://w3id.org/plato#attests_about",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "attests_about",
+      "en" : "attests about"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to the SpatialEntity it is about. Every attestation must\n        have exactly one subject entity. This is the primary entity being\n        described by the bundled name, geometry, timespan, and type assertions.\n\n        Functional property: each attestation has exactly one subject entity.\n    "
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "199"
+  }, {
+    "iri" : "https://w3id.org/plato#sequence",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "202",
+    "label" : {
+      "IRI-based" : "sequence",
+      "en" : "sequence"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Ordering index for attestations in routes or itineraries. Defines\n        the position of this attestation in an ordered sequence. Used when\n        the SpatialEntity being attested (via attests_about) is a Route or Itinerary.\n        Lower numbers come first in the sequence.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "201"
+  }, {
+    "iri" : "https://w3id.org/plato#form_status",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "form_status",
+      "en" : "form status"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        The status of the name form this attestation contributes: read in the\n        cited source, chosen by the cited authority, or derived by the\n        contributing project. Should point to a concept in a SKOS concept\n        scheme. The starter concepts are:\n\n        - plato:Attested: a form read in the cited source. The default, and\n          usually omitted.\n        - plato:Headword: the editorial or preferred form under which the\n          cited authority files the entry ('Bunsty Hundred'). A scholarly\n          decision rather than a reading, and typically the form users search\n          for. Another authority may choose differently, which is why it is a\n          sourced attestation and not a label on the SpatialEntity.\n        - plato:Normalised: a form derived from an attested one for matching\n          or search ('Bunstow(e)' resolved to 'Bunstowe'), attested by no\n          source and carrying no independent evidential value. It may point\n          to the attestation it was derived from through a meta-attestation.\n        - plato:Reconstructed: a form inferred but not attested, the\n          philologists' asterisked form.\n\n        A different axis from plato:name_type, which classifies what the name\n        denotes: a headword is still a toponym. It sits on the Attestation,\n        not on the Name, because the same string can be a reading in one\n        attestation and a headword in another. The WHG ingestion prototype\n        reached the same placement independently: its preferred-name flag is\n        on the attestation, not on the toponym record.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "203"
+  }, {
+    "iri" : "https://w3id.org/plato#occurrence_count",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "188",
+    "label" : {
+      "IRI-based" : "occurrence_count",
+      "en" : "occurrence count"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        The number of times the attested form occurs in the cited source or\n        passage: the '(3 X)' of a place-name survey. A count of occurrences\n        of the form in this source, not of independent sources. It belongs to\n        the attestation, not to the Name, which may occur elsewhere.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "204"
+  }, {
+    "iri" : "https://w3id.org/plato#fuzziness",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "153",
+    "label" : {
+      "IRI-based" : "fuzziness",
+      "en" : "fuzziness"
+    },
+    "domain" : "69",
+    "comment" : {
+      "en" : "\n        Ontological fuzziness: a measure of how inherently vague or\n        indeterminate the facet's referent is, from 0.0 (crisp, sharply\n        bounded) to 1.0 (maximally vague). Distinct from certainty:\n        fuzziness is a property of the thing itself, not of our knowledge\n        of it. A regional boundary that was never precisely defined has\n        high fuzziness regardless of how much evidence we have.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "205"
+  }, {
+    "iri" : "https://w3id.org/plato#contributor_identifier",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "167",
+    "label" : {
+      "IRI-based" : "contributor_identifier",
+      "en" : "contributor identifier"
+    },
+    "domain" : "29",
+    "comment" : {
+      "en" : "\n        Additional persistent identifier for the contributor. Can be used\n        for identifiers other than ORCID, such as:\n        - ISNI (International Standard Name Identifier)\n        - VIAF (Virtual International Authority File)\n        - Wikidata QID (for persons or organizations)\n        - Internal system identifiers\n\n        When using this property, specify the identifier type in the value\n        (e.g., \"ISNI:0000000121032683\" or \"VIAF:12345678\").\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "206"
+  }, {
+    "iri" : "https://w3id.org/plato#period_periodo_uri",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "173",
+    "label" : {
+      "IRI-based" : "period_periodo_uri",
+      "en" : "PeriodO URI"
+    },
+    "domain" : "18",
+    "comment" : {
+      "en" : "\n        Link to a PeriodO period definition for this Period authority.\n        When present, indicates this Period aligns with a standardized PeriodO\n        definition. The PeriodO record provides authoritative temporal bounds,\n        spatial extent, and cultural context. Example: 'https://n2t.net/ark:/99152/p06v8w4rb38'\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "207"
+  }, {
+    "iri" : "https://w3id.org/plato#property_type",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "210",
+    "label" : {
+      "IRI-based" : "property_type",
+      "en" : "property type"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "\n        URI of the property in an external vocabulary — a Wikidata property,\n        a CIDOC-CRM property, or a project vocabulary term (e.g.\n        <https://www.wikidata.org/wiki/Property:P1082> for population).\n        Keeping the vocabulary external rather than enumerating attributes in\n        this ontology is what allows the model to carry attributes it has\n        never heard of.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "209"
+  }, {
+    "iri" : "https://w3id.org/plato#romanized",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "208",
+    "label" : {
+      "IRI-based" : "romanized",
+      "en" : "romanized"
+    },
+    "domain" : "38",
+    "comment" : {
+      "en" : "\n        Romanized (Latin-script) form of the name for searchability and\n        display in contexts requiring ASCII. Should specify transliteration\n        system used via plato:transliteration_system.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "211"
+  }, {
+    "iri" : "https://w3id.org/plato#period_label",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "189",
+    "label" : {
+      "IRI-based" : "period_label",
+      "en" : "period label"
+    },
+    "domain" : "18",
+    "comment" : {
+      "en" : "\n        Human-readable label for this period (e.g., 'Byzantine period',\n        'Han Dynasty', 'Early Bronze Age'). Distinct from authority_title,\n        which may be more formal.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "212"
+  }, {
+    "iri" : "https://w3id.org/plato#modified",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "191",
+    "label" : {
+      "IRI-based" : "modified",
+      "en" : "modified"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Timestamp when this attestation was last modified. Enables tracking\n        of editorial changes and versioning.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "213"
+  }, {
+    "iri" : "https://w3id.org/plato#occurrence_context",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "occurrence_context",
+      "en" : "occurrence context"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        The capacity in which the attested form occurs in the source. Should\n        point to a concept in a SKOS concept scheme. The starter concepts are:\n\n        - plato:Direct: the form refers to the SpatialEntity directly. The\n          default, and usually omitted.\n        - plato:InPersonalName: the form occurs only as an element of a\n          personal name, a surname or by-name such as 'Willelmus de\n          Bonestou'. This is the '(p)' of the place-name surveys, and it is\n          weaker evidence for the name's currency, and for the entity's\n          existence, than a direct attestation. Nothing else in the record\n          distinguishes Bonestou the hundred from de Bonestou the man.\n        - plato:InFieldName: the form survives only as an element of a later\n          minor name, such as a field name.\n\n        The editorially resolved 'ibidem' of the surveys is not an occurrence\n        context. It is a statement about the citation, and belongs on the\n        Citation as plato:attribution_status.\n\n        Not a certainty. A '(p)' attestation may be entirely certain as an\n        attestation; what differs is the kind of evidence it constitutes, and\n        folding that into a lower plato:certainty would discard the reason.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "214"
+  }, {
+    "iri" : "https://w3id.org/plato#source_timespan",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "source_timespan",
+      "en" : "source timespan"
+    },
+    "domain" : "55",
+    "comment" : {
+      "en" : "\n        When this Source, as a document, was produced: the date of the\n        manuscript, the compilation of the cartulary, the publication of the\n        edition. Distinct from the Timespan an attestation asserts, which\n        dates the claim rather than the witness. An annal for 921 read in a\n        manuscript written c. 925 has an attested timespan of 921 and a\n        source timespan of c. 925. Reuses Timespan, so an approximate date\n        is start_earliest 915, end_latest 935, timespan_label 'c. 925'. The\n        same move as plato:has_timespan on a Period.\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "215"
+  }, {
+    "iri" : "https://w3id.org/plato#start_precision",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "200",
+    "label" : {
+      "IRI-based" : "start_precision",
+      "en" : "start precision"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "\n        Temporal granularity of the start bound. Values: 'year', 'decade',\n        'century', 'era', 'geological_period'. This describes the resolution\n        of the date specification, distinct from certainty (which describes\n        the confidence in that specification).\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "216"
+  }, {
+    "iri" : "https://w3id.org/plato#precision_km",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "174",
+    "label" : {
+      "IRI-based" : "precision_km",
+      "en" : "precision in kilometers"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        Uncertainty radius in kilometers. For point geometries, indicates\n        how far the true location might be from the stated coordinates.\n        For polygons, indicates boundary uncertainty. Can be multiple values\n        for heterogeneous geometries.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "217"
+  }, {
+    "iri" : "https://w3id.org/plato#property_label",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "218",
+    "label" : {
+      "IRI-based" : "property_label",
+      "en" : "property label"
+    },
+    "domain" : "35",
+    "comment" : {
+      "en" : "Human-readable label for the property (e.g. 'population')."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "220"
+  }, {
+    "iri" : "https://w3id.org/plato#candidate_status",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "222",
+    "label" : {
+      "IRI-based" : "candidate_status",
+      "en" : "status"
+    },
+    "domain" : "86",
+    "comment" : {
+      "en" : "Review status: 'suggested', 'confirmed', 'rejected'."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "221"
+  }, {
+    "range" : "96",
+    "domain" : "29",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "223"
+  }, {
+    "range" : "21",
+    "domain" : "7",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "224"
+  }, {
+    "iri" : "https://w3id.org/plato#attests_geometry",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "26",
+    "label" : {
+      "IRI-based" : "attests_geometry",
+      "en" : "attests geometry"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to a Geometry it asserts for the SpatialEntity. An\n        attestation may assert multiple geometries (e.g., point and polygon)\n        or no geometry at all (e.g., name-only attestations from textual sources).\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "225"
+  }, {
+    "range" : "110",
+    "domain" : "4",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "226"
+  }, {
+    "range" : "110",
+    "domain" : "46",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "227"
+  }, {
+    "range" : "53",
+    "domain" : "29",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "229"
+  }, {
+    "iri" : "https://w3id.org/plato#ccodes",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "170",
+    "label" : {
+      "IRI-based" : "ccodes",
+      "en" : "country codes"
+    },
+    "domain" : "46",
+    "comment" : {
+      "en" : "ISO 3166-1 alpha-2 country codes associated with this SpatialEntity."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "233"
+  }, {
+    "iri" : "https://w3id.org/plato#created",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "155",
+    "label" : {
+      "IRI-based" : "created",
+      "en" : "created"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Timestamp when this attestation was created. This is the contribution\n        date, not the historical timespan being attested (use attests_timespan\n        for that).\n\n        Semantically equivalent to PROV-O's prov:generatedAtTime. We don't use\n        formal rdfs:subPropertyOf to avoid importing PROV-O constraints.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "234"
+  }, {
+    "iri" : "https://w3id.org/plato#ipa",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "198",
+    "label" : {
+      "IRI-based" : "ipa",
+      "en" : "IPA"
+    },
+    "domain" : "38",
+    "comment" : {
+      "en" : "\n        International Phonetic Alphabet representation of the name's\n        pronunciation. Enables phonetic search and comparison across scripts\n        and languages.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "235"
+  }, {
+    "iri" : "https://w3id.org/plato#contributor_url",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "156",
+    "label" : {
+      "IRI-based" : "contributor_url",
+      "en" : "contributor URL"
+    },
+    "domain" : "29",
+    "comment" : {
+      "en" : "\n        Website or profile URL for the contributor (personal website,\n        institutional page, project page, GitHub profile, etc.). Provides\n        additional context about the contributor's work and identity.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "236"
+  }, {
+    "iri" : "https://w3id.org/plato#transliteration_system",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "240",
+    "label" : {
+      "IRI-based" : "transliteration_system",
+      "en" : "transliteration system"
+    },
+    "domain" : "38",
+    "comment" : {
+      "en" : "\n        The transliteration/romanization system used (e.g., 'Pinyin' for\n        Chinese, 'BGN/PCGN' for Arabic, 'ISO 259' for Hebrew, 'Hepburn' for\n        Japanese). Enables proper interpretation and comparison of romanized\n        forms.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "239"
+  }, {
+    "iri" : "https://w3id.org/plato#identity_object",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "identity_object",
+      "en" : "identity object"
+    },
+    "domain" : "72",
+    "comment" : {
+      "en" : "The second SpatialEntity in an identity assertion."
+    },
+    "attributes" : [ "object" ],
+    "id" : "241"
+  }, {
+    "iri" : "http://www.opengis.net/ont/geosparql#asWKT",
+    "baseIri" : "http://www.opengis.net/ont/geosparql",
+    "range" : "230",
+    "label" : {
+      "IRI-based" : "asWKT"
+    },
+    "domain" : "228",
+    "attributes" : [ "datatype", "external" ],
+    "id" : "242"
+  }, {
+    "iri" : "https://w3id.org/plato#entity_identifier",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "154",
+    "label" : {
+      "IRI-based" : "entity_identifier",
+      "en" : "identifier"
+    },
+    "domain" : "46",
+    "comment" : {
+      "en" : "The stable, persistent identifier for this SpatialEntity."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "245"
+  }, {
+    "iri" : "https://w3id.org/plato#candidate_source",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "candidate_source",
+      "en" : "source entity"
+    },
+    "domain" : "86",
+    "attributes" : [ "object" ],
+    "id" : "246"
+  }, {
+    "iri" : "https://w3id.org/plato#contributor_orcid",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "163",
+    "label" : {
+      "IRI-based" : "contributor_orcid",
+      "en" : "ORCID"
+    },
+    "domain" : "29",
+    "comment" : {
+      "en" : "\n        ORCID identifier for person contributors. Can be provided in two formats:\n\n        1. Compact format: 0000-0000-0000-0000 (sixteen digits in groups of four)\n        2. URI format: https://orcid.org/0000-0000-0000-0000 (preferred)\n\n        The URI format (https://orcid.org/...) is preferred and required for\n        proper linked data representation. ORCID is particular about always\n        including the https:// protocol and domain prefix.\n\n        While optional in the general ontology, specific implementations\n        (e.g., WHG) may require ORCID for person contributors to ensure\n        proper attribution and citation.\n\n        ORCID provides persistent identification for researchers, enabling\n        proper credit and reducing name ambiguity.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "247"
+  }, {
+    "iri" : "https://w3id.org/plato#bbox",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "232",
+    "label" : {
+      "IRI-based" : "bbox",
+      "en" : "bounding box"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "\n        Bounding box as array: [min_lon, min_lat, max_lon, max_lat].\n        Enables fast spatial filtering. Format: comma-separated string\n        or JSON array depending on serialization context.\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "248"
+  }, {
+    "iri" : "https://w3id.org/plato#relates_to",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "46",
+    "label" : {
+      "IRI-based" : "relates_to",
+      "en" : "relates to"
+    },
+    "domain" : "4",
+    "comment" : {
+      "en" : "\n        Links an Attestation to a second SpatialEntity, asserting a relationship\n        between the Attestation's subject entity (via attests_about) and this\n        target entity. The semantic nature of the relationship is specified by\n        plato:has_relation_type, which references a RelationType authority.\n\n        Example: An attestation about Constantinople that relates_to the\n        Byzantine Empire with relation_type \"capital_of\" asserts that\n        \"Constantinople was the capital of the Byzantine Empire\".\n    "
+    },
+    "attributes" : [ "object" ],
+    "id" : "249"
+  }, {
+    "iri" : "https://w3id.org/plato#publisher",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "219",
+    "label" : {
+      "IRI-based" : "publisher",
+      "en" : "publisher"
+    },
+    "domain" : "57",
+    "attributes" : [ "datatype" ],
+    "id" : "250"
+  }, {
+    "iri" : "https://w3id.org/plato#contributor_affiliation_string",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "166",
+    "label" : {
+      "IRI-based" : "contributor_affiliation_string",
+      "en" : "affiliation (string)"
+    },
+    "domain" : "29",
+    "comment" : {
+      "en" : "\n        Free-text organizational affiliation when a structured Organization\n        entity is not available. Example: \"University of Pittsburgh,\n        Institute for Spatial History Innovation\"\n    "
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "251"
+  }, {
+    "iri" : "https://w3id.org/plato#licence",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "195",
+    "label" : {
+      "IRI-based" : "licence",
+      "en" : "licence"
+    },
+    "domain" : "57",
+    "attributes" : [ "datatype" ],
+    "id" : "252"
+  }, {
+    "iri" : "https://w3id.org/plato#authority_version",
+    "baseIri" : "https://w3id.org/plato",
+    "range" : "231",
+    "label" : {
+      "IRI-based" : "authority_version",
+      "en" : "version"
+    },
+    "domain" : "10",
+    "comment" : {
+      "en" : "Version identifier for tracking upstream authority updates."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "253"
+  } ]
+}
