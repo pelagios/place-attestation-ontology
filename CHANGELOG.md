@@ -5,7 +5,7 @@ with no implementations yet, so a renamed term is removed outright rather than
 retained as a deprecated equivalent. That policy will change once data in the
 wild uses the namespace.
 
-## Unreleased
+## 0.4.0
 
 ### Clarified
 

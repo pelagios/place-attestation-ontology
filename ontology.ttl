@@ -19,7 +19,7 @@
 
 <https://w3id.org/plato>
     a owl:Ontology ;
-    owl:versionInfo "0.3.0" ;
+    owl:versionInfo "0.4.0" ;
     dcterms:title "PLATO — Place Attestation Ontology"@en ;
     dcterms:description """
         An ontology for representing historical place knowledge as attestations:

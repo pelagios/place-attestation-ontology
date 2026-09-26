@@ -2,7 +2,7 @@
   "title": "PLATO — Place Attestation Ontology",
   "description": "<p>An OWL ontology for representing historical place knowledge as <em>attestations</em>: bundles of evidence linking SpatialEntities (settlements, routes, networks, administrative units, regions and other entities whose identity is bound up with space) to Names, Geometries, Timespans, Types, PropertyValues and Authorities with full provenance.</p><p>PLATO formalises the World Historical Gazetteer v4 data model, in which the Attestation is the fundamental unit of contributed knowledge. The Linked Places Format (LPF) is defined as its single-object-attestation profile, so existing LPF files remain valid; the use cases of Linked Traces are accommodated within the same model.</p><p>Developed by the Pelagios Network's Place Working Group, led by the Institute for Spatial History Innovation (ISHI), University of Pittsburgh.</p><p><strong>Status: early draft, published for discussion and review. Not yet stable.</strong></p>",
   "upload_type": "software",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "cc-by-4.0",
   "access_right": "open",
   "creators": [
