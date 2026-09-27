@@ -1631,11 +1631,15 @@ plato:source_label
         The original label as given in the contributing source, before
         vocabulary mapping. For a structured PropertyValue this preserves the
         unparsed original — 'Monday after Whitsun, 3 days' — which is what a
-        future reader will want to check against the document.
+        future reader will want to check against the document. On an
+        Attestation it is the source's own wording of the relation the
+        attestation asserts ('part of Berkshire', 'within Buckingham'), before
+        that relation is mapped to a RelationType; an attestation asserts at
+        most one relation, so the wording is never ambiguous.
     """@en ;
     rdfs:domain [
         a owl:Class ;
-        owl:unionOf (plato:Type plato:PropertyValue)
+        owl:unionOf (plato:Type plato:PropertyValue plato:Attestation)
     ] ;
     rdfs:range xsd:string .
 

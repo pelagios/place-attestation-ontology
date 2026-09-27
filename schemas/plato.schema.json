@@ -347,7 +347,7 @@
         },
         "relationLabel": {
           "type": "string",
-          "description": "Human-readable label for the relation type."
+          "description": "The source's own wording of this relation, before it is mapped to a relation type (plato:source_label): 'part of Berkshire', 'within Buckingham'."
         }
       },
       "required": ["relatesTo", "relationType"],
@@ -365,11 +365,7 @@
         },
         "metaType": {
           "$ref": "#/$defs/uri",
-          "description": "URI of a SKOS concept defining the nature of the meta-attestation (e.g. contradicts, supports, supersedes, refines, bundles)."
-        },
-        "metaTypeLabel": {
-          "type": "string",
-          "description": "Human-readable label for the meta-type (optional, for convenience)."
+          "description": "URI of a SKOS concept defining the nature of the meta-attestation (e.g. contradicts, supports, supersedes, refines, bundles). Its label is the concept's own."
         }
       },
       "required": ["targetAttestation", "metaType"],
@@ -426,8 +422,9 @@
 
         "relations": {
           "type": "array",
+          "maxItems": 1,
           "items": { "$ref": "#/$defs/relation" },
-          "description": "entity-to-entity relations asserted by this attestation."
+          "description": "The entity-to-entity relation this attestation asserts: at most one. In RDF a relation's target, type and wording sit on the attestation itself, so two relations are two attestations."
         },
 
         "meta": {

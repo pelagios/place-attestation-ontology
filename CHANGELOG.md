@@ -71,6 +71,23 @@ property the profiles' top-level `identityRelations` maps to.
 
 ### Changed
 
+A relation's wording now reaches RDF. `relationLabel` was mapped to null in the
+context, so every relation label (DEEP's 539,306 among them) was lost in RDF,
+and the schema described it, wrongly for how it is used, as a label for the
+relation type. It is now the source's own wording of the relation before it is
+mapped to a relation type ("part of Berkshire", "within Buckingham"), as in
+LPF, and maps to `plato:source_label`, whose domain widens from Type and
+PropertyValue to include Attestation. The JSON key is unchanged.
+
+An attestation now asserts at most one relation (`relations` has `maxItems:
+1`). In RDF a relation's target, type and wording sit on the attestation
+itself, so with two relations which wording went with which target was lost;
+two relations are two attestations. Nothing in DEEP or the examples had more
+than one.
+
+`metaTypeLabel` is removed from the JSON Schema and the context. A meta type
+is a concept whose label is the concept's own, and the key was dropped in RDF.
+
 Country codes are now in PLATO JSON. `ccodes`, an array of ISO 3166-1 alpha-2
 codes, is added to `spatialEntity` in `plato.schema.json` and mapped to the
 existing `plato:ccodes` in the context, so the JSON, the spreadsheet tables and

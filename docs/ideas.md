@@ -6,7 +6,7 @@ date.** Everything else follows from that.
 
 ## An example
 
-A customs account of 1480 to 1485, now in The National Archives, mentions a
+A customs account of 1480 to 1485, now in The National Archives (UK), mentions a
 port it spells *Bristowe*. In PLATO that is recorded as one **attestation**:
 
 ```{figure} _static/attestation.svg
