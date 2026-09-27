@@ -1,0 +1,139 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/gazetteer/statistics",
+    "title": "Figures from a statistical table (illustrative; draft, issue #14)"
+  },
+  "dataSets": [
+    {
+      "@id": "https://whgazetteer.org/example/table/occupations-1851",
+      "title": "Occupations of persons aged 20 and over, 1851 (illustrative)",
+      "description": "Persons aged 20 and over, by occupation and sex, for each county. The figures here are invented.",
+      "isPartOf": "https://whgazetteer.org/example/source/census-1851-occupations",
+      "structure": {
+        "@id": "https://whgazetteer.org/example/table/occupations-1851/structure",
+        "components": [
+          {
+            "dimension": "http://purl.org/linked-data/sdmx/2009/dimension#refArea"
+          },
+          {
+            "dimension": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod"
+          },
+          {
+            "dimension": "https://whgazetteer.org/example/dim/occupation"
+          },
+          {
+            "dimension": "http://purl.org/linked-data/sdmx/2009/dimension#sex"
+          },
+          {
+            "measure": "https://whgazetteer.org/example/measure/persons"
+          }
+        ]
+      }
+    }
+  ],
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/example/entity/example-county",
+      "label": "Example County",
+      "attestations": [
+        {
+          "properties": [
+            {
+              "@id": "https://whgazetteer.org/example/table/occupations-1851/all/total",
+              "property": "https://whgazetteer.org/example/measure/persons",
+              "label": "persons",
+              "value": 1000,
+              "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
+              "dimensions": {
+                "http://purl.org/linked-data/sdmx/2009/dimension#refArea": {
+                  "@id": "https://whgazetteer.org/example/entity/example-county"
+                },
+                "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod": "1851",
+                "https://whgazetteer.org/example/dim/occupation": {
+                  "@id": "https://whgazetteer.org/example/code/occupation/all"
+                }
+              }
+            },
+            {
+              "@id": "https://whgazetteer.org/example/table/occupations-1851/agri/total",
+              "property": "https://whgazetteer.org/example/measure/persons",
+              "label": "persons",
+              "value": 300,
+              "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
+              "dimensions": {
+                "http://purl.org/linked-data/sdmx/2009/dimension#refArea": {
+                  "@id": "https://whgazetteer.org/example/entity/example-county"
+                },
+                "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod": "1851",
+                "https://whgazetteer.org/example/dim/occupation": {
+                  "@id": "https://whgazetteer.org/example/code/occupation/agricultural-labourer"
+                }
+              },
+              "universe": "https://whgazetteer.org/example/table/occupations-1851/all/total"
+            },
+            {
+              "@id": "https://whgazetteer.org/example/table/occupations-1851/agri/m",
+              "property": "https://whgazetteer.org/example/measure/persons",
+              "label": "persons",
+              "value": 280,
+              "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
+              "dimensions": {
+                "http://purl.org/linked-data/sdmx/2009/dimension#refArea": {
+                  "@id": "https://whgazetteer.org/example/entity/example-county"
+                },
+                "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod": "1851",
+                "https://whgazetteer.org/example/dim/occupation": {
+                  "@id": "https://whgazetteer.org/example/code/occupation/agricultural-labourer"
+                },
+                "http://purl.org/linked-data/sdmx/2009/dimension#sex": {
+                  "@id": "http://purl.org/linked-data/sdmx/2009/code#sex-M"
+                }
+              },
+              "universe": "https://whgazetteer.org/example/table/occupations-1851/agri/total"
+            },
+            {
+              "@id": "https://whgazetteer.org/example/table/occupations-1851/agri/f",
+              "property": "https://whgazetteer.org/example/measure/persons",
+              "label": "persons",
+              "value": 20,
+              "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
+              "dimensions": {
+                "http://purl.org/linked-data/sdmx/2009/dimension#refArea": {
+                  "@id": "https://whgazetteer.org/example/entity/example-county"
+                },
+                "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod": "1851",
+                "https://whgazetteer.org/example/dim/occupation": {
+                  "@id": "https://whgazetteer.org/example/code/occupation/agricultural-labourer"
+                },
+                "http://purl.org/linked-data/sdmx/2009/dimension#sex": {
+                  "@id": "http://purl.org/linked-data/sdmx/2009/code#sex-F"
+                }
+              },
+              "universe": "https://whgazetteer.org/example/table/occupations-1851/agri/total"
+            }
+          ],
+          "timespans": [
+            {
+              "startEarliest": "1851",
+              "endLatest": "1851",
+              "sourceLabel": "1851"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/census-1851-occupations",
+                "title": "Census of Great Britain, 1851: occupations (illustrative)"
+              },
+              "locator": "Table 1, rows for Example County",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "One attestation carries the table's figures for this county. Each figure is an observation: its coordinates are its own, so the county is never said to have 'sex = M'. The male and female figures have the occupation total as their universe, and that has the county total."
+        }
+      ]
+    }
+  ]
+}
