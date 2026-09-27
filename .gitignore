@@ -1,2 +1,3 @@
 docs/_build/
 docs/_generated/
+__pycache__/
