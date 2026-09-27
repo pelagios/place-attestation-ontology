@@ -36,7 +36,7 @@
           {
             "name": "country_codes",
             "titles": "country_codes",
-            "dc:description": "Two-letter ISO country codes for the modern countries the place lies in, separated by ';'. Optional.",
+            "dc:description": "Two-letter ISO codes of the modern countries whose territory contains or overlaps the place, separated by ';'. A finding aid for search and matching, not evidence. Optional.",
             "skos:example": "GB",
             "propertyUrl": "https://w3id.org/plato#ccodes",
             "separator": ";",

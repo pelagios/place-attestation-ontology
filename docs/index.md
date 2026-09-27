@@ -47,9 +47,23 @@ you three things.
 **Ready for other systems.**
 : Data in PLATO's shape can be read by any software that implements the PLATO
   standard, without a conversion written for your project alone. You do not
-  need to know in advance which systems those will be. The World Historical
-  Gazetteer is moving towards implementing PLATO, so that data organised this
-  way can more easily be welcomed there.
+  need to know in advance which systems those will be.
+
+  :::{admonition} The World Historical Gazetteer
+  :class: tip
+
+  The [World Historical Gazetteer](https://whgazetteer.org) (WHG) is moving
+  towards implementing PLATO, so that data organised this way can more easily
+  be welcomed there.
+
+  Its **Map your Data** tool, now in beta testing and reached from the WHG
+  site, *reconciles* your places with established reference gazetteers such
+  as Pleiades, GeoNames and Wikidata: it finds the record for the same place,
+  so that you can take its coordinates where yours have none. It reads many
+  formats, PLATO's among them, and runs entirely in your browser without
+  uploading anything to WHG. You can use it whether or not you contribute
+  to WHG.
+  :::
 
 **Nothing is flattened.**
 : Every statement keeps its source and its date, so your data can sit

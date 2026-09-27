@@ -71,6 +71,20 @@ property the profiles' top-level `identityRelations` maps to.
 
 ### Changed
 
+Country codes are now in PLATO JSON. `ccodes`, an array of ISO 3166-1 alpha-2
+codes, is added to `spatialEntity` in `plato.schema.json` and mapped to the
+existing `plato:ccodes` in the context, so the JSON, the spreadsheet tables and
+Linked Places Format all carry them and LPF's `ccodes` round-trip. Their
+meaning is now stated, as in LPF: the modern countries whose territory contains
+or overlaps the place. Like the label they are a finding aid, not evidence,
+and need no source; a historical claim about a country belongs in a relation
+attestation.
+
+The guide's "Ready for other systems" gains a panel on the World Historical
+Gazetteer: that it is moving towards implementing PLATO, and that its Map your
+Data tool, in beta testing, reconciles places with Pleiades, GeoNames and
+Wikidata in the browser, for anyone.
+
 Three places where the spreadsheet tables and the JSON Schema disagreed are
 resolved, each towards the ontology, which set none of these constraints:
 

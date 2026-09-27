@@ -2066,7 +2066,14 @@ plato:namespace
 plato:ccodes
     a owl:DatatypeProperty ;
     rdfs:label "country codes"@en ;
-    rdfs:comment "ISO 3166-1 alpha-2 country codes associated with this SpatialEntity."@en ;
+    rdfs:comment """
+        ISO 3166-1 alpha-2 codes of the modern countries whose territory
+        contains or overlaps this SpatialEntity, as in Linked Places Format.
+        A finding aid for search and matching, like a label: not evidence,
+        and not a claim about the past, so it needs no source. Where a
+        country is itself the subject of a historical claim ("this town lay
+        in the Kingdom of Aragon"), record it as a relation attestation.
+    """@en ;
     rdfs:domain plato:SpatialEntity ;
     rdfs:range xsd:string .
 

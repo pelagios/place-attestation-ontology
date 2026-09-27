@@ -618,6 +618,12 @@
           "type": "string",
           "description": "A preferred display label (convenience field; canonical names come via attestations)."
         },
+        "ccodes": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[A-Z]{2}$" },
+          "uniqueItems": true,
+          "description": "ISO 3166-1 alpha-2 codes of the modern countries whose territory contains or overlaps this SpatialEntity (plato:ccodes), as in Linked Places Format. A finding aid for search and matching, like the label: not evidence, so it needs no source."
+        },
         "attestations": {
           "type": "array",
           "items": { "$ref": "#/$defs/attestation" },

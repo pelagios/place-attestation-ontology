@@ -12,7 +12,7 @@
   "spatialEntities": [
     {
       "@id": "https://whgazetteer.org/place/12345",
-      "label": "Constantinople / İstanbul",
+      "label": "Constantinople / İstanbul", "ccodes": ["TR"],
       "attestations": [
         {
           "names": [
