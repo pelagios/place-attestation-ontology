@@ -61,6 +61,27 @@ work, with Node.js 24 or later: for example,
 files are handled through a working database on disk, as in the browser, so
 memory stays roughly constant at any size.
 
+## Citing a place in a gazetteer that changes
+
+A place's evidence grows and is corrected while its identity stays the
+same, so a citation of it has to say which state was meant. PLATO gives
+three pieces for that.
+
+- **A version.** A gazetteer carries a version (`version` in JSON,
+  `dcat:version` in RDF). Cite a place as its address plus the gazetteer
+  version, as PeriodO is cited. A frozen snapshot published under its own
+  address points back with `isVersionOf` and `previousVersion`.
+- **Nothing is deleted once published.** When a gazetteer's `status` is
+  `published`, its attestations are append-only. A correction is a new
+  attestation that supersedes or contradicts the old one, and a withdrawal
+  is one that retracts it (`plato:Retracts`). Every attestation carries its
+  `created` time, so the state as of any date can be worked out from the
+  data itself.
+- **A state on request.** A platform can offer that state directly through
+  datetime negotiation on the place's address ([RFC 7089, "Memento"](https://www.rfc-editor.org/rfc/rfc7089)):
+  ask for the address as it stood at a moment, and get the attestations that
+  held then. PLATO recommends this to platforms but does not require it.
+
 ## JSON to RDF
 
 Add the JSON-LD context to a JSON document, as described under

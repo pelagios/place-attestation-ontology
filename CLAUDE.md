@@ -135,6 +135,10 @@ Naming conventions differ by layer and are not accidental: RDF uses `snake_case`
 
 The two profiles differ only in where the subject lives, and the schemas enforce this: **place-centric** nests attestations under each SpatialEntity and forbids `about` on them (`"not": {"required": ["about"]}`); **attestation-centric** references existing SpatialEntities by URI and requires `about`. Identity relations follow the same logic: `subject` is required in the top-level `identityRelations` of both profiles, and optional on relations nested under a SpatialEntity, where the context supplies it (a nested one that repeats it must repeat the enclosing `@id`, which the schema cannot check). Profiles `$ref` the core schema by relative path (`plato.schema.json#/$defs/…`), so the three schema files must remain siblings in `schemas/`.
 
+### Versions and the append-only rule
+
+A Gazetteer is versioned with DCAT 3 (`dcat:version`, `dcat:isVersionOf`, `dcat:previousVersion`), not with `plato:authority_version`, whose domain would make it an Authority. Once a Gazetteer's status is `published`, its attestations are append-only, and this is normative: never deleted or changed; corrections are new attestations with a meta-attestation (Supersedes, Contradicts, Retracts). Any tool that shows the current state must leave retracted and superseded attestations out, and any tool that writes to a published gazetteer must not edit in place.
+
 ## Editing conventions
 
 `ontology.ttl` is organised into banner-comment sections (`# ====` for major groups, `# ----` for individual terms). Every term carries an `rdfs:label`, an `@en` triple-quoted `rdfs:comment` that explains the *rationale* and not just the meaning, and often a preceding prose comment block giving the design argument. New terms should match that density — the file doubles as the design document, and Widoco renders the comments as the published documentation.

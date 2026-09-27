@@ -4,7 +4,9 @@
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/gazetteer/judgements",
     "title": "Denials, alternatives and judged readings (illustrative)",
-    "contributor": "https://orcid.org/0000-0002-1234-5678"
+    "contributor": "https://orcid.org/0000-0002-1234-5678",
+    "version": "2026-09",
+    "status": "published"
   },
   "spatialEntities": [
     {
@@ -36,6 +38,40 @@
             }
           ],
           "notes": "The return answered for every district it covered, so 'no market here' is a statement, certain, not a gap. The attestation is about the real town, with the one thing denied; no market is invented."
+        },
+        {
+          "@id": "https://whgazetteer.org/example/attestation/littleworth-bad-import",
+          "geometries": [
+            {
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          ],
+          "sources": [
+            {
+              "title": "Batch import, 2026-09-01"
+            }
+          ],
+          "created": "2026-09-01T09:00:00Z",
+          "notes": "A bad import put Littleworth at 0°, 0°. In a published gazetteer it is not deleted: the next attestation retracts it."
+        },
+        {
+          "meta": {
+            "targetAttestation": "https://whgazetteer.org/example/attestation/littleworth-bad-import",
+            "metaType": "https://w3id.org/plato#Retracts"
+          },
+          "sources": [
+            {
+              "title": "Batch import, 2026-09-01"
+            }
+          ],
+          "created": "2026-09-02T10:00:00Z",
+          "notes": "Withdrawn by whoever made it. The state as of 1 September still shows the point; the state from 2 September on does not."
         }
       ]
     },

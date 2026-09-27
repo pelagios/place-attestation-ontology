@@ -3,7 +3,6 @@
   "$id": "https://w3id.org/plato/schemas/attestation-centric.schema.json",
   "title": "PLATO Attestation-Centric Submission Profile",
   "description": "Submit one or more attestations referencing existing SpatialEntities by URI. This profile is for incremental scholarly contribution: attesting evidence about SpatialEntities that already exist in the system without redefining them. Each attestation must specify its 'about' field.",
-
   "type": "object",
   "properties": {
     "$schema": {
@@ -15,7 +14,6 @@
       "const": "attestation-centric",
       "description": "Identifies this as an attestation-centric submission."
     },
-
     "gazetteer": {
       "type": "object",
       "description": "Metadata about the contributing gazetteer.",
@@ -24,57 +22,104 @@
           "$ref": "plato.schema.json#/$defs/uri",
           "description": "URI of the gazetteer. In attestation-centric mode, this should typically reference an existing gazetteer."
         },
-        "title": { "type": "string", "description": "Gazetteer title." },
-        "description": { "type": "string" },
-        "contributor": { "type": "string", "description": "Contributor name or URI." },
-        "licence": { "$ref": "plato.schema.json#/$defs/uri" }
+        "title": {
+          "type": "string",
+          "description": "Gazetteer title."
+        },
+        "description": {
+          "type": "string"
+        },
+        "contributor": {
+          "type": "string",
+          "description": "Contributor name or URI."
+        },
+        "licence": {
+          "$ref": "plato.schema.json#/$defs/uri"
+        },
+        "version": {
+          "type": "string",
+          "description": "The gazetteer's version indicator (dcat:version): '2026-09', '1.4'. A place is cited as its IRI plus this version."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "published"
+          ],
+          "description": "Publication status (plato:gazetteer_status). Once 'published', the gazetteer's attestations are append-only: never deleted or changed, only superseded or retracted by new ones."
+        },
+        "isVersionOf": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "For a frozen snapshot: the living gazetteer it is a version of (dcat:isVersionOf)."
+        },
+        "previousVersion": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "For a frozen snapshot: the snapshot before it (dcat:previousVersion)."
+        }
       },
-      "required": ["title"],
+      "required": [
+        "title"
+      ],
       "additionalProperties": false
     },
-
     "attestations": {
       "type": "array",
       "description": "Attestations referencing existing SpatialEntities.",
       "items": {
         "allOf": [
-          { "$ref": "plato.schema.json#/$defs/attestation" },
+          {
+            "$ref": "plato.schema.json#/$defs/attestation"
+          },
           {
             "type": "object",
             "description": "In attestation-centric mode, 'about' is required — it identifies the existing SpatialEntity being attested.",
-            "required": ["about"]
+            "required": [
+              "about"
+            ]
           }
         ]
       },
       "minItems": 1
     },
-
     "newSpatialEntities": {
       "type": "array",
       "description": "Optional: new SpatialEntities that do not yet exist in the system. Use sparingly — only when no existing SpatialEntity matches. These follow the place-centric pattern (SpatialEntity with nested attestations) but are submitted alongside attestation-centric contributions.",
       "items": {
         "allOf": [
-          { "$ref": "plato.schema.json#/$defs/spatialEntity" },
+          {
+            "$ref": "plato.schema.json#/$defs/spatialEntity"
+          },
           {
             "type": "object",
-            "required": ["attestations"]
+            "required": [
+              "attestations"
+            ]
           }
         ]
       }
     },
-
     "identityRelations": {
       "type": "array",
       "description": "Identity assertions between SpatialEntities.",
       "items": {
         "allOf": [
-          { "$ref": "plato.schema.json#/$defs/identityRelation" },
-          { "type": "object", "description": "At the top level nothing supplies the subject, so it must be given.", "required": ["subject"] }
+          {
+            "$ref": "plato.schema.json#/$defs/identityRelation"
+          },
+          {
+            "type": "object",
+            "description": "At the top level nothing supplies the subject, so it must be given.",
+            "required": [
+              "subject"
+            ]
+          }
         ]
       }
     }
   },
-
-  "required": ["profile", "attestations"],
+  "required": [
+    "profile",
+    "attestations"
+  ],
   "additionalProperties": false
 }

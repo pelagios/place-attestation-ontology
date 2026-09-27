@@ -3,7 +3,6 @@
   "$id": "https://w3id.org/plato/schemas/place-centric.schema.json",
   "title": "PLATO Place-Centric Submission Profile",
   "description": "Submit one or more SpatialEntities with their attestations nested under them. This is the successor to LPF for dataset ingestion and legacy gazetteer contributions. Each SpatialEntity carries its own attestations, which do not need to specify an 'about' field (it is implicit from the nesting).",
-
   "type": "object",
   "properties": {
     "$schema": {
@@ -15,7 +14,6 @@
       "const": "place-centric",
       "description": "Identifies this as a place-centric submission."
     },
-
     "gazetteer": {
       "type": "object",
       "description": "Metadata about the contributing gazetteer.",
@@ -24,21 +22,54 @@
           "$ref": "plato.schema.json#/$defs/uri",
           "description": "URI of the gazetteer, if it already exists in the system."
         },
-        "title": { "type": "string", "description": "Gazetteer title." },
-        "description": { "type": "string" },
-        "contributor": { "type": "string", "description": "Contributor name or URI." },
-        "licence": { "$ref": "plato.schema.json#/$defs/uri" }
+        "title": {
+          "type": "string",
+          "description": "Gazetteer title."
+        },
+        "description": {
+          "type": "string"
+        },
+        "contributor": {
+          "type": "string",
+          "description": "Contributor name or URI."
+        },
+        "licence": {
+          "$ref": "plato.schema.json#/$defs/uri"
+        },
+        "version": {
+          "type": "string",
+          "description": "The gazetteer's version indicator (dcat:version): '2026-09', '1.4'. A place is cited as its IRI plus this version."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "published"
+          ],
+          "description": "Publication status (plato:gazetteer_status). Once 'published', the gazetteer's attestations are append-only: never deleted or changed, only superseded or retracted by new ones."
+        },
+        "isVersionOf": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "For a frozen snapshot: the living gazetteer it is a version of (dcat:isVersionOf)."
+        },
+        "previousVersion": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "For a frozen snapshot: the snapshot before it (dcat:previousVersion)."
+        }
       },
-      "required": ["title"],
+      "required": [
+        "title"
+      ],
       "additionalProperties": false
     },
-
     "spatialEntities": {
       "type": "array",
       "description": "The SpatialEntities being submitted, each with its attestations nested. A SpatialEntity may have no attestations: it is then only a referent, such as the target of a relation, and its label is not evidence.",
       "items": {
         "allOf": [
-          { "$ref": "plato.schema.json#/$defs/spatialEntity" },
+          {
+            "$ref": "plato.schema.json#/$defs/spatialEntity"
+          },
           {
             "type": "object",
             "properties": {
@@ -46,12 +77,16 @@
                 "type": "array",
                 "items": {
                   "allOf": [
-                    { "$ref": "plato.schema.json#/$defs/attestation" },
+                    {
+                      "$ref": "plato.schema.json#/$defs/attestation"
+                    },
                     {
                       "type": "object",
                       "description": "In place-centric mode, 'about' is implicit (the enclosing SpatialEntity) and should be omitted.",
                       "not": {
-                        "required": ["about"]
+                        "required": [
+                          "about"
+                        ]
                       }
                     }
                   ]
@@ -60,7 +95,9 @@
               "identityRelations": {
                 "type": "array",
                 "description": "Identity assertions whose subject is the enclosing SpatialEntity. 'subject' is implicit from the nesting and may be omitted; if it is given, it must be the enclosing SpatialEntity's @id.",
-                "items": { "$ref": "plato.schema.json#/$defs/identityRelation" }
+                "items": {
+                  "$ref": "plato.schema.json#/$defs/identityRelation"
+                }
               }
             }
           }
@@ -68,19 +105,29 @@
       },
       "minItems": 1
     },
-
     "identityRelations": {
       "type": "array",
       "description": "Identity assertions between SpatialEntities in this submission or between submitted SpatialEntities and existing ones.",
       "items": {
         "allOf": [
-          { "$ref": "plato.schema.json#/$defs/identityRelation" },
-          { "type": "object", "description": "At the top level nothing supplies the subject, so it must be given.", "required": ["subject"] }
+          {
+            "$ref": "plato.schema.json#/$defs/identityRelation"
+          },
+          {
+            "type": "object",
+            "description": "At the top level nothing supplies the subject, so it must be given.",
+            "required": [
+              "subject"
+            ]
+          }
         ]
       }
     }
   },
-
-  "required": ["profile", "gazetteer", "spatialEntities"],
+  "required": [
+    "profile",
+    "gazetteer",
+    "spatialEntities"
+  ],
   "additionalProperties": false
 }
