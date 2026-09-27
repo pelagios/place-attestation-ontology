@@ -1769,8 +1769,14 @@ plato:partOf
 plato:bibliographic_string
     a owl:DatatypeProperty ;
     rdfs:label "bibliographic string"@en ;
-    rdfs:comment "A formatted citation string for this source."@en ;
-    rdfs:domain plato:Source ;
+    rdfs:comment """
+        A formatted citation string for this source or other authority. The
+        domain is Authority, not Source, because any authority can be cited
+        formally, a dataset as much as a document. Restricting it to Source
+        made a cited Dataset a Source as well, which the disjoint union of
+        Authority forbids.
+    """@en ;
+    rdfs:domain plato:Authority ;
     rdfs:range xsd:string .
 
 

@@ -67,6 +67,16 @@ property the profiles' top-level `identityRelations` maps to.
 
 ### Changed
 
+`plato:bibliographic_string` now has domain `plato:Authority`, not
+`plato:Source`. The JSON `source` object allows a `citation` whatever its
+`authorityType`, so a cited dataset was inferred to be both a Source and a
+Dataset, which the disjoint union of Authority forbids. Conversely, the JSON
+schema now allows `timespan` and `derivedFrom` only on sources (an omitted
+`authorityType` counts as a source), matching the domains of
+`source_timespan` and `derived_from`. The schema and the context both note
+that JSON-LD does not apply the `authorityType` default, so producers
+targeting RDF should state it. Found by the DEEP/EPNS triplification.
+
 In the JSON-LD context, a gazetteer's `title` and `licence` now map to
 `dcterms:title` and `dcterms:license`. They mapped to `plato:authority_title`
 and `plato:licence`, whose domains are `plato:Authority` and `plato:Dataset`, so

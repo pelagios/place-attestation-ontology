@@ -306,24 +306,30 @@
         "citation": { "type": "string", "description": "Bibliographic citation string." },
         "timespan": {
           "$ref": "#/$defs/timespan",
-          "description": "When this source, as a document, was produced: the date of the manuscript, cartulary or edition (plato:source_timespan). Distinct from the attestation's timespans, which date the claim rather than the witness."
+          "description": "When this source, as a document, was produced: the date of the manuscript, cartulary or edition (plato:source_timespan). Distinct from the attestation's timespans, which date the claim rather than the witness. Only for authorityType 'source'."
         },
         "derivedFrom": {
           "oneOf": [
             { "$ref": "#/$defs/uri", "description": "URI of the source this one transmits." },
             { "$ref": "#/$defs/source" }
           ],
-          "description": "The source of which this one is a copy, transcript, edition, calendar or confirmation (plato:derived_from): a URI, or an inline source object."
+          "description": "The source of which this one is a copy, transcript, edition, calendar or confirmation (plato:derived_from): a URI, or an inline source object. Only for authorityType 'source'."
         },
         "authorityType": {
           "type": "string",
           "enum": ["source", "dataset", "period", "relationType", "certaintyLevel"],
           "default": "source",
-          "description": "Which Authority subclass this represents."
+          "description": "Which Authority subclass this represents. The default applies to JSON consumers only: JSON-LD applies no defaults, so a document that will be turned into RDF should state authorityType, or the source expands as an Authority of no stated kind."
         }
       },
       "required": ["title"],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "required": ["authorityType"], "properties": { "authorityType": { "not": { "const": "source" } } } },
+          "then": { "not": { "anyOf": [ { "required": ["timespan"] }, { "required": ["derivedFrom"] } ] } }
+        }
+      ]
     },
 
 
