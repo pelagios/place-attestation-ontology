@@ -47,10 +47,6 @@
               "value": 1000,
               "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
               "dimensions": {
-                "http://purl.org/linked-data/sdmx/2009/dimension#refArea": {
-                  "@id": "https://whgazetteer.org/example/entity/example-county"
-                },
-                "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod": "1851",
                 "https://whgazetteer.org/example/dim/occupation": {
                   "@id": "https://whgazetteer.org/example/code/occupation/all"
                 }
@@ -63,10 +59,6 @@
               "value": 300,
               "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
               "dimensions": {
-                "http://purl.org/linked-data/sdmx/2009/dimension#refArea": {
-                  "@id": "https://whgazetteer.org/example/entity/example-county"
-                },
-                "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod": "1851",
                 "https://whgazetteer.org/example/dim/occupation": {
                   "@id": "https://whgazetteer.org/example/code/occupation/agricultural-labourer"
                 }
@@ -80,10 +72,6 @@
               "value": 280,
               "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
               "dimensions": {
-                "http://purl.org/linked-data/sdmx/2009/dimension#refArea": {
-                  "@id": "https://whgazetteer.org/example/entity/example-county"
-                },
-                "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod": "1851",
                 "https://whgazetteer.org/example/dim/occupation": {
                   "@id": "https://whgazetteer.org/example/code/occupation/agricultural-labourer"
                 },
@@ -100,10 +88,6 @@
               "value": 20,
               "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
               "dimensions": {
-                "http://purl.org/linked-data/sdmx/2009/dimension#refArea": {
-                  "@id": "https://whgazetteer.org/example/entity/example-county"
-                },
-                "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod": "1851",
                 "https://whgazetteer.org/example/dim/occupation": {
                   "@id": "https://whgazetteer.org/example/code/occupation/agricultural-labourer"
                 },
@@ -112,6 +96,26 @@
                 }
               },
               "universe": "https://whgazetteer.org/example/table/occupations-1851/agri/total"
+            },
+            {
+              "@id": "https://whgazetteer.org/example/table/occupations-1851/miner/f",
+              "property": "https://whgazetteer.org/example/measure/persons",
+              "label": "persons",
+              "dataSet": "https://whgazetteer.org/example/table/occupations-1851",
+              "dimensions": {
+                "https://whgazetteer.org/example/dim/occupation": {
+                  "@id": "https://whgazetteer.org/example/code/occupation/miner"
+                },
+                "http://purl.org/linked-data/sdmx/2009/dimension#sex": {
+                  "@id": "http://purl.org/linked-data/sdmx/2009/code#sex-F"
+                }
+              },
+              "attributes": {
+                "http://purl.org/linked-data/sdmx/2009/attribute#obsStatus": {
+                  "@id": "https://whgazetteer.org/example/code/obs-status/nil-or-not-applicable"
+                }
+              },
+              "sourceLabel": "—"
             }
           ],
           "timespans": [
@@ -131,7 +135,7 @@
               "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
             }
           ],
-          "notes": "One attestation carries the table's figures for this county. Each figure is an observation: its coordinates are its own, so the county is never said to have 'sex = M'. The male and female figures have the occupation total as their universe, and that has the county total."
+          "notes": "One attestation carries the table's figures for this county. Each figure is an observation: its coordinates are its own, so the county is never said to have 'sex = M'. The male and female figures have the occupation total as their universe, and that has the county total. The last figure was printed as a dash: an observation with a status and no value, not a 0."
         }
       ]
     }
