@@ -498,7 +498,7 @@
         },
         "formStatus": {
           "$ref": "#/$defs/uri",
-          "description": "URI of a concept giving the status of the name form(s) this attestation contributes (plato:form_status): https://w3id.org/plato#Headword for an editorial or preferred form, https://w3id.org/plato#Normalised for a derived search form, https://w3id.org/plato#Reconstructed for an inferred form. Omit for a form read in the cited source."
+          "description": "URI of a concept giving the status of the name form(s) this attestation contributes (plato:form_status): https://w3id.org/plato#Headword for the form the cited authority files the entry under, https://w3id.org/plato#Preferred for the form the contributing project prefers for display and search, https://w3id.org/plato#Normalised for a derived search form, https://w3id.org/plato#Reconstructed for an inferred form. Omit for a form read in the cited source (https://w3id.org/plato#Attested)."
         }
       },
       "additionalProperties": false
