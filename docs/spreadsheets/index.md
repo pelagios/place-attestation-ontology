@@ -1,18 +1,19 @@
 # Organising data in spreadsheets
 
 You can put your data into PLATO's shape with an ordinary spreadsheet in
-Excel, LibreOffice or Google Sheets. The spreadsheet has eight sheets, one for
+Excel, LibreOffice or Google Sheets, using **temPlato**, PLATO's spreadsheet
+template. It has eight sheets, one for
 each kind of information, and filling them in is also a way of working out
 what your data is: which places it is about, which sources it rests on, and
 what each source actually says. Most datasets use only three or four of the
 sheets.
 
-## Get the template
+## Get temPlato
 
-- {download}`Template workbook (.xlsx) <../_generated/downloads/plato-tables-template.xlsx>`:
+- {download}`temPlato workbook (.xlsx) <../_generated/downloads/plato-tables-template.xlsx>`:
   the easiest way to start. Hover over any column heading to see what to put
   in it; columns with a fixed list of values offer a drop-down.
-- {download}`Template as CSV files (.zip) <../_generated/downloads/plato-tables-template.zip>`:
+- {download}`temPlato as CSV files (.zip) <../_generated/downloads/plato-tables-template.zip>`:
   the same eight sheets as separate CSV files, with the table definitions.
 
 ## The eight sheets
@@ -56,7 +57,7 @@ locations, types, relations and properties becomes one attestation. The
 
 :::{note}
 Spreadsheet programs sometimes "correct" what you type: `0921` becomes `921`,
-and `1-2` becomes a date. The template workbook formats its columns as text to
+and `1-2` becomes a date. The temPlato workbook formats its columns as text to
 prevent this. If you build your own sheets, format the columns as text before
 typing, and save CSV files as **CSV UTF-8**.
 :::
@@ -76,7 +77,7 @@ The spreadsheets cover most datasets, but a few things need the
 
 ## Checking your tables
 
-The template workbook catches most mistakes as you type. For a full check,
+The temPlato workbook catches most mistakes as you type. For a full check,
 open **[PLATO tools](https://pelagios.org/plato-tools/)**, drop your eight CSV files (or the
 workbook, or a zip of the files) onto the page, and press **Check**. It runs
 in your browser, so nothing is uploaded, and it lists every problem with its

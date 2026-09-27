@@ -153,6 +153,12 @@ Seven gaps found while converting other projects' data to PLATO are closed:
   `match_type` accept `unspecified`, for a source that links two records
   without saying how strongly. The value is still required.
 
+The spreadsheet template is named temPlato in the guide, the glossary and the
+workbook's own title sheet (the download filenames are unchanged, so existing
+links keep working). The sheet reference opens by saying where it fits: that it
+belongs to "Organising data in spreadsheets", and that spreadsheets are one of
+several formats that comply with PLATO, beside PLATO JSON and linked data.
+
 The guide's "Data that tools can rely on" is now "Ready for other systems",
 so that it is not confused with PLATO tools, and says that the World
 Historical Gazetteer is moving towards implementing PLATO.

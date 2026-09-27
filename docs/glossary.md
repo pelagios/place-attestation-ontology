@@ -68,6 +68,10 @@ SpatialEntity
   units or the regions historical periods apply to. What kind each is comes
   from type attestations.
 
+temPlato
+: PLATO's spreadsheet template: eight linked sheets, as an Excel workbook or
+  as CSV files, for putting data into PLATO's shape without software.
+
 URI
 : A web address used as a permanent identifier, such as
   `https://www.geonames.org/2654675/`.

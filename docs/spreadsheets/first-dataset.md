@@ -6,7 +6,7 @@ five of the eight sheets. The finished tables are the *customs* example,
 which you can {download}`download as CSV files <../_generated/downloads/plato-tables-example-customs.zip>`
 and open beside this page.
 
-Start from the {download}`template workbook <../_generated/downloads/plato-tables-template.xlsx>`.
+Start from the {download}`temPlato workbook <../_generated/downloads/plato-tables-template.xlsx>`.
 Only the columns you fill in are shown below; leave the others empty.
 
 ## 1. List your places

@@ -113,7 +113,7 @@ def write_workbook(meta, path):
     readme = wb.active
     readme.title = "Read me"
     rows = [
-        ["PLATO spreadsheet template"],
+        ["temPlato: the PLATO spreadsheet template"],
         [""],
         ["Fill in one sheet per kind of information. Keep all eight sheets, even the ones you leave empty."],
         ["Hover over a column heading to see what to put in it and an example."],
