@@ -25,6 +25,25 @@ you three things.
   because it separates what your sources say from your own interpretation of
   them, and shows where your evidence is thin.
 
+  It also leaves room for what historical evidence is really like. Sources
+  that disagree are recorded side by side, and nothing forces you to choose
+  between them; a scholar's judgement that one statement contradicts,
+  supports or supersedes another can be recorded as evidence in its own
+  right. And PLATO keeps apart the different ways of not knowing, rather
+  than collapsing them all into "uncertain":
+
+  - how sure you are of a statement, which better evidence could change;
+  - a date known only within limits, or given only as "c. 925" or "before
+    1300";
+  - a place with no sharp edge, such as "the Levant", which no evidence will
+    make crisp;
+  - a location given only relative to somewhere else, such as "two leagues
+    north of the ford";
+  - evidence that is certain but weaker in kind, such as a name found only
+    inside a person's name;
+  - a reference an editor has had to work out from "ibid.";
+  - a match with a record elsewhere that is close, but perhaps not exact.
+
 **Data that tools can rely on.**
 : Data in PLATO's shape can be read by any software that implements the PLATO
   standard, without a conversion written for your project alone. You do not
