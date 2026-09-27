@@ -602,7 +602,7 @@
 
     "spatialEntity": {
       "type": "object",
-      "description": "A stable, persistent identity: the point on which attestations from different sources, periods and contributors converge. Not a place (PLATO defines no Place class); what kind of entity it is (settlement, route, region, administrative unit, period) is a matter for Type attestations.",
+      "description": "A stable, persistent identity: the point on which attestations from different sources, periods and contributors converge. Many SpatialEntities are places in the everyday sense and some are not; PLATO gives 'place' no prescribed meaning. What kind of entity this is (settlement, route, region, administrative unit, period) is a matter for Type attestations.",
       "properties": {
         "@id": {
           "$ref": "#/$defs/uri",

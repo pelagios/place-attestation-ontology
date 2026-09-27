@@ -66,15 +66,15 @@
 # from different sources, periods and contributors converge. A SpatialEntity
 # persists regardless of how many attestations reference it.
 #
-# A SpatialEntity is not a Place, and PLATO defines no Place class. "Place"
-# carries several meanings in the gazetteer community, and which of them, if
-# any, corresponds to a SpatialEntity is contested; the ontology does not
-# settle it. Neither a SpatialEntity nor any set of attestations or of
-# SpatialEntities is a "place" by virtue of this ontology. Where the word
-# appears in this file it is used informally, for whatever a source is
-# talking about, and never as the name of a class or of a grouping. What kind
-# of entity a SpatialEntity is (settlement, route, region, period and so on)
-# is a matter for Type attestations.
+# PLATO defines no Place class and gives the word "place" no prescribed
+# meaning. Many SpatialEntities are what people would call places, and some
+# are not: a route, a network, the region to which a period applies. The word
+# is also used differently across languages and disciplines. So the ontology
+# neither equates a SpatialEntity with a place nor defines a place in terms
+# of SpatialEntities or their attestations, and where the word appears in
+# this file it is used in its ordinary sense. What kind of entity a
+# SpatialEntity is (settlement, route, region, period and so on) is a matter
+# for Type attestations.
 
 plato:SpatialEntity
     a owl:Class ;
@@ -95,13 +95,13 @@ plato:SpatialEntity
         point of convergence for many attestations from different sources,
         periods and contributors.
 
-        A SpatialEntity is not a place, and PLATO defines no Place class.
-        "Place" carries several meanings in the gazetteer community, and
-        which of them, if any, corresponds to a SpatialEntity is contested;
-        the ontology does not settle it. Neither a SpatialEntity nor any set
-        of attestations or of SpatialEntities is a place by virtue of this
-        ontology. Where the word appears in this document it is used
-        informally, for whatever a source is talking about.
+        PLATO defines no Place class and gives "place" no prescribed
+        meaning. Many SpatialEntities are what people would call places and
+        some are not, and the word is used differently across languages and
+        disciplines. The ontology therefore neither equates a SpatialEntity
+        with a place nor defines a place in terms of SpatialEntities or
+        their attestations. Where the word appears in this document it is
+        used in its ordinary sense.
     """@en .
 
 

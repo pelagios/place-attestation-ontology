@@ -8,7 +8,7 @@
 
 An OWL ontology for representing historical place knowledge as **attestations**: bundles of evidence linking SpatialEntities (settlements, routes, networks, administrative units, regions and other entities whose identity is bound up with space) to names, geometries, timespans, types, and sources with full provenance.
 
-The central idea is that the fundamental unit of contributed knowledge is not a *place record* but an *attestation* — a claim that a particular entity had a particular name, geometry, or classification, during a particular period, according to a particular source. SpatialEntities are stable identities, the points on which attestations converge; everything we know about them is layered on through attestations from different contributors, sources, and periods. A SpatialEntity is not a place: PLATO defines no Place class and does not define the word, which carries several contested meanings in the gazetteer community.
+The central idea is that the fundamental unit of contributed knowledge is not a *place record* but an *attestation* — a claim that a particular entity had a particular name, geometry, or classification, during a particular period, according to a particular source. SpatialEntities are stable identities, the points on which attestations converge; everything we know about them is layered on through attestations from different contributors, sources, and periods. Many SpatialEntities are places in the everyday sense and some are not; PLATO defines no Place class and gives the word no prescribed meaning.
 
 ➤ **[Read the full ontology documentation](https://pelagios.org/place-attestation-ontology/)**, a generated reference for every class and property.
 
@@ -32,7 +32,7 @@ The ontology defines a small number of classes and a bundling mechanism that con
 
 | Class | Description |
 |-------|-------------|
-| **SpatialEntity** | A stable, persistent identity: the point on which attestations converge. Covers settlements, routes, networks, administrative units, regions and other entities whose identity is bound up with space; what kind it is comes from Type attestations. Not a place — PLATO defines no Place class. |
+| **SpatialEntity** | A stable, persistent identity: the point on which attestations converge. Covers settlements, routes, networks, administrative units, regions and other entities whose identity is bound up with space; what kind it is comes from Type attestations. Many are places in the everyday sense; PLATO gives "place" no prescribed meaning. |
 | **Attestation** | A lightweight bundle node linking a SpatialEntity to a Name, Geometry, Timespan, Type, and/or Source. Carries metadata (certainty, contributor, notes) but no substantive content of its own — its meaning is defined entirely by its outgoing relationships. |
 | **Name** | A toponym or appellation. Reusable: the same Name can appear in attestations for different SpatialEntities. |
 | **Geometry** | A spatial representation (point, polygon, line). Reusable across attestations and SpatialEntities. |

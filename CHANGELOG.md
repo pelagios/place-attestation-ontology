@@ -9,6 +9,27 @@ wild uses the namespace.
 
 ### Added
 
+Spreadsheet tables for contributors who work in Excel, LibreOffice or Google
+Sheets: `schemas/tables/`, eight linked CSV tables (places, sources, names,
+locations, types, relations, properties, identities) described by a CSV on
+the Web (CSVW) metadata file, `schemas/tables/csv-metadata.json`, which states
+the columns, their allowed values, the references between tables and how each
+row becomes PLATO RDF. Header-only templates sit beside it and two worked
+examples under `schemas/tables/examples/`. The sheet of entities is called
+`places` because that is what contributors expect; its rows are
+SpatialEntities.
+
+The tables follow one rule, forced by how CSVW works: a cell yields at most
+one triple, so every node a row creates must always exist. Each attestation
+sheet therefore has a required main item (the name, the location, the type),
+and a required `date` column holding the date as the source gives it
+('undated' is allowed), with optional `from` and `to`. Tested with the
+reference implementation (rdf-tabular) in strict mode and with the Python
+`csvw` package; the converted graphs use only declared terms and contain no
+dangling or untyped nodes. What the tables cannot express (several facets or
+several sources in one attestation, shared Name or Geometry nodes, meta-
+attestations) needs the JSON submission formats.
+
 `schemas/plato.context.jsonld`, a JSON-LD 1.1 context mapping every key of
 `plato.schema.json` and of both submission profiles to its ontology term, so
 that a conformant submission expands to the RDF graph the ontology describes.
@@ -33,6 +54,12 @@ types for a value derived from another attestation's.
 property the profiles' top-level `identityRelations` maps to.
 
 ### Changed
+
+The wording on "place" is corrected. 0.4.0 said that a SpatialEntity is not a
+place; that over-corrected. Many SpatialEntities are places in the everyday
+sense and some are not, so PLATO defines no Place class and gives "place" no
+prescribed meaning. It neither equates a SpatialEntity with a place nor
+defines a place in terms of SpatialEntities or their attestations.
 
 The range of `plato:start_earliest`, `start_latest`, `end_earliest` and
 `end_latest` is `rdfs:Literal` rather than `xsd:string`, so that a producer may

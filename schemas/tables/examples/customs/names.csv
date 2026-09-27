@@ -1,0 +1,3 @@
+place_id,name,language,script,romanized,name_type,form_status,occurrence_context,occurrence_count,date,from,to,source_id,locator,attribution,certainty,notes
+bristol,Bristowe,enm,Latn,,,,,,1480-1485,1480,1485,tna-e122-19-10,,,0.95,Clear manuscript hand.
+deptford-strand,Deptford Strand,en,Latn,,toponym;odonym,,,,1481,1481,1481,tna-e122-19-10,,,0.7,Manuscript partially damaged; reading probable but not certain.

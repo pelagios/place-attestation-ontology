@@ -1,0 +1,9 @@
+source_id,title,citation,uri,date,from,to,derived_from
+asc-annal-921,"Anglo-Saxon Chronicle, annal for 921",ASC s.a. 921,,undated,,,
+asc-ms-a,A,"ASC (A): Cambridge, Corpus Christi College, MS 173",,c. 925,0915,0935,asc-annal-921
+domesday,DB,"Domesday Book, Buckinghamshire",,1086,1086,1086,
+deed-c1200,"Deed, c. 1200 (illustrative)",,,c. 1200,1190,1210,
+fine-c1240,"Fine, c. 1240 (illustrative)",,,c. 1240,1235,1245,
+close-rolls,Cl,Calendar of the Close Rolls,,undated,,,
+pn-bk,PN Bk,"A. Mawer and F. M. Stenton, The Place-Names of Buckinghamshire (EPNS 2, 1925)",,1925,1925,1925,
+deep,DEEP,DEEP: Digital Exposure of English Place-names,,2013,2013,2013,
