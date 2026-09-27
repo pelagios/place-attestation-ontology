@@ -5,6 +5,40 @@ with no implementations yet, so a renamed term is removed outright rather than
 retained as a deprecated equivalent. That policy will change once data in the
 wild uses the namespace.
 
+## Unreleased
+
+### Added
+
+`schemas/plato.context.jsonld`, a JSON-LD 1.1 context mapping every key of
+`plato.schema.json` and of both submission profiles to its ontology term, so
+that a conformant submission expands to the RDF graph the ontology describes.
+The document node is the Gazetteer; place-centric nesting is read through the
+reverse of `attests_about`; `qualification`, `relations` and `meta` are nesting
+keys; `authorityType` becomes `rdf:type`. Keys that mean different things by
+parent are resolved with property-scoped contexts. What a context cannot do is
+listed in the file's `$comment`.
+
+Starter concepts declared as `skos:Concept`s in six `skos:ConceptScheme`s
+(`FormStatusScheme`, `OccurrenceContextScheme`, `AttributionStatusScheme`,
+`GeometryRoleScheme`, `RelativeQualifierScheme`, `MetaTypeScheme`), so that the
+IRIs named in property comments (`plato:Headword`, `plato:InPersonalName`,
+`plato:Extent`, `plato:Near`, `plato:Supersedes`, ...) are terms of the ontology
+rather than only mentions. `plato:DerivedFrom` is added to the meta-attestation
+types for a value derived from another attestation's.
+
+`plato:ContainedIn`, a `RelationType` instance for containment (`contained_in`
+/ `contains`), aligned to Getty `broaderPartitive` by `authority_uri`.
+
+`plato:contains_identity_relation` (Gazetteer to IdentityRelation), the
+property the profiles' top-level `identityRelations` maps to.
+
+### Changed
+
+The range of `plato:start_earliest`, `start_latest`, `end_earliest` and
+`end_latest` is `rdfs:Literal` rather than `xsd:string`, so that a producer may
+emit `xsd:gYear`, `xsd:date` or `xsd:dateTime` by shape and a store can index
+the bounds; plain strings remain conformant.
+
 ## 0.4.0
 
 ### Clarified

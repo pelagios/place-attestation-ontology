@@ -41,6 +41,8 @@ EOF
 
 Two traps: the profiles declare `gazetteer.contributor` as a string (a name or URI), not a contributor object; and years in `isoOrYear` fields must be four digits (`0921`, not `921`).
 
+`pyld` is installed too, so the context can be checked by expansion rather than by inspection: expand each JSON example with the context, convert to N-Quads, parse with rdflib, and confirm every `plato:` predicate and class in the result is declared in the ontology and every key in the schema `$defs` is a context term. When sabotaging a term to prove the check can fail, sabotage it inside the scoped context where it is defined (`ctx['attestations']['@context']['notes']`), because a top-level redefinition is shadowed and the check passes for the wrong reason.
+
 CI never parses `examples/*.ttl`, so nothing but a local check catches syntax errors there. Two traps those files hit before: `/` is illegal unescaped in a Turtle local name, so the illustrative URIs are written `whgx:entity\/bristol` (resolving to `https://whgazetteer.org/example/entity/bristol`) — keep the backslash when adding terms; and each example must declare every prefix it uses, `rdfs:` included.
 
 ## Documentation build (CI)
@@ -96,8 +98,9 @@ Two consequences shape the rest of the model, and new work should preserve them:
 | RDF/OWL | `ontology.ttl` | Normative; the conceptual model |
 | JSON Schema | `schemas/plato.schema.json` | Shared `$defs` for every object type |
 | Submission profiles | `schemas/place-centric.schema.json`, `schemas/attestation-centric.schema.json` | Two ingestion shapes composed from those `$defs` |
+| JSON-LD context | `schemas/plato.context.jsonld` | Maps every JSON key to its RDF term; expanding a submission with it yields the graph |
 
-Adding or renaming a term means touching the ontology, the JSON `$defs`, and usually an example in both `examples/` (Turtle) and `schemas/examples/` (JSON).
+Adding or renaming a term means touching the ontology, the JSON `$defs`, the JSON-LD context (a key the context does not name is dropped silently on expansion), and usually an example in both `examples/` (Turtle) and `schemas/examples/` (JSON). A property-scoped context in the context file resolves keys that mean different things by parent (`label`, `source`, `contributor`, `identifier`); a new such key goes in the scoped context of its parent, not at the top level, or it will shadow nothing and map wrongly. Starter concepts for SKOS-valued properties are declared in the Starter Vocabularies section of the ontology, not only named in comments.
 
 Naming conventions differ by layer and are not accidental: RDF uses `snake_case` (`attests_name`, `start_earliest`, `name_type`), JSON uses `camelCase` (`startEarliest`, `nameType`). The JSON schemas also *nest* the qualification properties under a `qualification` object on each facet, whereas in RDF they are applied directly to the facet node.
 

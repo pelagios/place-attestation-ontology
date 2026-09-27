@@ -701,14 +701,16 @@ plato:has_meta_type
     rdfs:comment """
         The nature of a meta-attestation's relationship to its target attestation.
         Should reference a controlled vocabulary concept defining the relationship
-        type. Standard values include:
+        type. The starter concepts, declared in this ontology's MetaTypeScheme:
 
-        - 'contradicts': asserts the target attestation is incorrect
-        - 'supports': provides additional evidence for the target attestation
-        - 'supersedes': replaces the target attestation with newer information
-        - 'refines': provides more precise information than the target
-        - 'challenges': questions the target attestation's validity
-        - 'bundles': groups the target with other related attestations
+        - plato:Contradicts: asserts the target attestation is incorrect
+        - plato:Supports: provides additional evidence for the target attestation
+        - plato:Supersedes: replaces the target attestation with newer information
+        - plato:Refines: provides more precise information than the target
+        - plato:Challenges: questions the target attestation's validity
+        - plato:Bundles: groups the target with other related attestations
+        - plato:DerivedFrom: this attestation's value was derived from the
+          target's (a normalised search form from an attested spelling)
 
         Using SKOS concepts rather than strings enables vocabulary management
         and multilingual labels.
@@ -1451,11 +1453,19 @@ plato:start_earliest
     rdfs:comment """
         The earliest possible start date for this timespan. Together with
         start_latest, defines the uncertainty range for when the interval began.
-        Use ISO 8601 format (e.g., '1453-05-29') or integer year for year-level
-        precision. May be null for unknown or deliberately open-beginning intervals.
+        Use ISO 8601 format (e.g., '1453-05-29') or a four-digit year ('0921')
+        for year-level precision. May be null for unknown or deliberately
+        open-beginning intervals.
+
+        The range is rdfs:Literal rather than a single datatype, because one
+        property carries values of three shapes. A plain string is conformant;
+        a producer that can type by shape should emit xsd:gYear for a year,
+        xsd:date for a day and xsd:dateTime otherwise, so that a store can
+        index and compare the bounds. The same applies to start_latest,
+        end_earliest and end_latest.
     """@en ;
     rdfs:domain plato:Timespan ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:start_latest
     a owl:DatatypeProperty ;
@@ -1466,7 +1476,7 @@ plato:start_latest
         the uncertainty range for when the interval began.
     """@en ;
     rdfs:domain plato:Timespan ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:end_earliest
     a owl:DatatypeProperty ;
@@ -1477,7 +1487,7 @@ plato:end_earliest
         May be null for unknown or deliberately open-end intervals.
     """@en ;
     rdfs:domain plato:Timespan ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:end_latest
     a owl:DatatypeProperty ;
@@ -1488,7 +1498,7 @@ plato:end_latest
         the uncertainty range for when the interval ended.
     """@en ;
     rdfs:domain plato:Timespan ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:timespan_label
     a owl:DatatypeProperty ;
@@ -2061,6 +2071,18 @@ plato:contains_attestation
     rdfs:domain plato:Gazetteer ;
     rdfs:range plato:Attestation .
 
+plato:contains_identity_relation
+    a owl:ObjectProperty ;
+    rdfs:label "contains identity relation"@en ;
+    rdfs:comment """
+        Links a Gazetteer to an IdentityRelation asserted within it. The
+        submission profiles carry identity relations at the top level of a
+        document, beside the entities and attestations, and this is the
+        property that top level maps to.
+    """@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range plato:IdentityRelation .
+
 plato:member_of_group
     a owl:ObjectProperty ;
     rdfs:label "member of group"@en ;
@@ -2080,6 +2102,246 @@ plato:gazetteer_owner
     rdfs:label "owner"@en ;
     rdfs:domain plato:Gazetteer ;
     rdfs:range plato:Contributor .
+
+
+# =============================================================================
+# Starter Vocabularies
+# =============================================================================
+# The object properties that range over skos:Concept delegate their values to
+# concept schemes rather than fixing them in the class model, so that a
+# project can extend a vocabulary without an ontology release. The starter
+# concepts named in the property comments are declared here, so that the
+# IRIs data points at are terms of this ontology and resolve to a definition.
+# Each scheme is open: a project may add concepts in its own namespace, and
+# should document them in its gazetteer metadata.
+#
+# One RelationType authority instance is also declared, for containment,
+# because it is the entity-to-entity relation every gazetteer needs first.
+# Others (capital_of, successor_to, ...) are left to project vocabularies.
+
+plato:FormStatusScheme
+    a skos:ConceptScheme ;
+    rdfs:label "form status"@en ;
+    rdfs:comment "Starter concepts for plato:form_status. The status of the name form an attestation contributes."@en .
+
+plato:Attested
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "attested"@en ;
+    skos:definition "A form read in the cited source. The default form status, usually omitted."@en .
+
+plato:Headword
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "headword"@en ;
+    skos:definition "The editorial or preferred form under which the cited authority files the entry. A scholarly decision rather than a reading."@en .
+
+plato:Normalised
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "normalised"@en ;
+    skos:definition "A form derived from an attested one for matching or search, attested by no source and carrying no independent evidential value."@en .
+
+plato:Reconstructed
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "reconstructed"@en ;
+    skos:definition "A form inferred but not attested; the philologists' asterisked form."@en .
+
+plato:OccurrenceContextScheme
+    a skos:ConceptScheme ;
+    rdfs:label "occurrence context"@en ;
+    rdfs:comment "Starter concepts for plato:occurrence_context. The capacity in which an attested form occurs in its source."@en .
+
+plato:Direct
+    a skos:Concept ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "direct"@en ;
+    skos:definition "The form refers to the SpatialEntity directly. The default occurrence context, usually omitted."@en .
+
+plato:InPersonalName
+    a skos:Concept ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "in personal name"@en ;
+    skos:definition "The form occurs only as an element of a personal name, a surname or by-name; the (p) of the place-name surveys."@en .
+
+plato:InFieldName
+    a skos:Concept ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "in field name"@en ;
+    skos:definition "The form survives only as an element of a later minor name, such as a field name."@en .
+
+plato:AttributionStatusScheme
+    a skos:ConceptScheme ;
+    rdfs:label "attribution status"@en ;
+    rdfs:comment "Starter concepts for plato:attribution_status. Whether the attribution of evidence to a cited source was stated or resolved editorially."@en .
+
+plato:AttributionStated
+    a skos:Concept ;
+    skos:inScheme plato:AttributionStatusScheme ;
+    skos:prefLabel "attribution stated"@en ;
+    skos:definition "The source is named where the form occurs. The default attribution status, usually omitted."@en .
+
+plato:AttributionInferred
+    a skos:Concept ;
+    skos:inScheme plato:AttributionStatusScheme ;
+    skos:prefLabel "attribution inferred"@en ;
+    skos:definition "The source was given as ibidem or idem and resolved by an editor, so the attribution is inferred rather than stated."@en .
+
+plato:GeometryRoleScheme
+    a skos:ConceptScheme ;
+    rdfs:label "geometry role"@en ;
+    rdfs:comment "Starter concepts for plato:geometry_role. What a geometry depicts, as distinct from how precisely it is known."@en .
+
+plato:Extent
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "extent"@en ;
+    skos:definition "The built or bounded extent of the SpatialEntity."@en .
+
+plato:FeaturePoint
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "feature point"@en ;
+    skos:definition "The location of a specific central feature of the SpatialEntity, such as a market place or a church."@en .
+
+plato:RepresentativePoint
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "representative point"@en ;
+    skos:definition "A proxy point standing in for the whole SpatialEntity, for indexing and display; it need not depict any feature of it."@en .
+
+plato:LabelAnchor
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "label anchor"@en ;
+    skos:definition "The anchor point of a map label."@en .
+
+plato:Itinerary
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "itinerary"@en ;
+    skos:definition "A line tracing a route or journey."@en .
+
+plato:RelativeQualifierScheme
+    a skos:ConceptScheme ;
+    rdfs:label "relative qualifier"@en ;
+    rdfs:comment "Starter concepts for plato:relative_qualifier. How a facet is defined relative to its anchor when bearing and distance are not applicable or not sufficient."@en .
+
+plato:Near
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "near"@en ;
+    skos:definition "Close to the anchor, without a stated bearing or distance."@en .
+
+plato:Within
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "within"@en ;
+    skos:definition "Inside the anchor."@en .
+
+plato:Beyond
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "beyond"@en ;
+    skos:definition "On the far side of the anchor from the point of view of the source."@en .
+
+plato:UpstreamOf
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "upstream of"@en ;
+    skos:definition "Upstream of the anchor along a watercourse."@en .
+
+plato:BetweenXAndY
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "between"@en ;
+    skos:definition "Between the anchor and a second anchor."@en .
+
+plato:DuringReignOf
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "during reign of"@en ;
+    skos:definition "A timespan defined by the reign or tenure of the anchor."@en .
+
+plato:VariantOf
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "variant of"@en ;
+    skos:definition "A name defined as a variant of the anchor name."@en .
+
+plato:MetaTypeScheme
+    a skos:ConceptScheme ;
+    rdfs:label "meta-attestation type"@en ;
+    rdfs:comment "Starter concepts for plato:has_meta_type. The nature of a meta-attestation's relationship to its target attestation."@en .
+
+plato:Contradicts
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "contradicts"@en ;
+    skos:definition "Asserts that the target attestation is incorrect."@en .
+
+plato:Supports
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "supports"@en ;
+    skos:definition "Provides additional evidence for the target attestation."@en .
+
+plato:Supersedes
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "supersedes"@en ;
+    skos:definition "Replaces the target attestation with newer information."@en .
+
+plato:Refines
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "refines"@en ;
+    skos:definition "Provides more precise information than the target attestation."@en .
+
+plato:Challenges
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "challenges"@en ;
+    skos:definition "Questions the validity of the target attestation."@en .
+
+plato:Bundles
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "bundles"@en ;
+    skos:definition "Groups the target with other related attestations."@en .
+
+plato:DerivedFrom
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "derived from"@en ;
+    skos:definition "This attestation's value was derived from the target attestation's, as a normalised search form is derived from an attested spelling."@en .
+
+# -----------------------------------------------------------------------------
+# RelationType: containment
+# -----------------------------------------------------------------------------
+# Containment is the entity-to-entity relation every gazetteer needs first: a
+# parish in a hundred, a hundred in a county, a town in a region. It is
+# declared as a RelationType authority instance, so an attestation asserts it
+# through relates_to and has_relation_type like any other relation, with a
+# timespan, a source and a certainty. The Getty vocabulary's broaderPartitive
+# is the same relation, and is recorded as the authority URI so that data
+# already pointing at it can be aligned.
+
+plato:ContainedIn
+    a plato:RelationType ;
+    plato:authority_title "contained in"@en ;
+    plato:relation_label "contained_in" ;
+    plato:inverse_label "contains" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    plato:authority_uri "http://vocab.getty.edu/ontology#broaderPartitive"^^xsd:anyURI ;
+    rdfs:comment """
+        The subject SpatialEntity is contained in the target SpatialEntity, for
+        the attested timespan: a parish in a hundred, a hundred in a county.
+        Not an identity relation and not fixed by the class model; it is a
+        claim, with a source and a certainty, like any other attestation.
+    """@en .
 
 
 # =============================================================================

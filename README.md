@@ -88,6 +88,14 @@ The `schemas/examples/` directory contains corresponding examples in JSON format
 - **[attestation-centric-citations.json](schemas/examples/attestation-centric-citations.json)** — The citations example in attestation-centric JSON format: `citations` with `locator` and `attributionStatus`.
 - **[attestation-centric-survey.json](schemas/examples/attestation-centric-survey.json)** — The survey-attestations example in attestation-centric JSON format: a dated witness with `derivedFrom`, `occurrenceCount`, `occurrenceContext` and `formStatus`.
 
+## JSON Schemas and the JSON-LD context
+
+`schemas/plato.schema.json` holds the shared `$defs` for every object type, and the two submission profiles (`place-centric.schema.json`, `attestation-centric.schema.json`) compose them into the two ingestion shapes. Both are JSON Schema, and they validate a submission's shape.
+
+`schemas/plato.context.jsonld` is the JSON-LD 1.1 context that connects those keys to the ontology: it maps every key in the `$defs` and the profiles to its `plato:` term, so that expanding a conformant submission with the context yields the RDF graph the ontology describes. Add it as the document's `@context` (intended URL `https://w3id.org/plato/schemas/plato.context.jsonld`) and any JSON-LD processor produces the triples. The document node is the Gazetteer; in place-centric documents, attestations nested under a SpatialEntity are linked by the reverse of `attests_about`. The context's own `$comment` lists what a context cannot do (it adds no `rdf:type` to untyped objects, and it cannot type timespan bounds or convert coordinate arrays to WKT), which a triplifier covers itself.
+
+The starter concepts named by the SKOS-valued properties (`form_status`, `occurrence_context`, `attribution_status`, `geometry_role`, `relative_qualifier`, `has_meta_type`) are declared in the ontology as `skos:Concept`s in six concept schemes, so the IRIs data points at resolve to a definition. One `RelationType` instance, `plato:ContainedIn`, is declared for containment.
+
 ## Relationship to the WHG v4 data model
 
 PLATO formalises the data model developed for [WHG v4](https://docs.whgazetteer.org/content/v4/data-model/introduction.html), which implements the attestation-as-bundle pattern in ArangoDB. The ontology is intended to be platform-independent — it defines the conceptual model from which platform-specific implementations (graph databases, JSON schemas, spreadsheet formats, RDF serialisations) are derived as projections.
