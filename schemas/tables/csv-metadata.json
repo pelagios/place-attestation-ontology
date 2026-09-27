@@ -115,13 +115,13 @@
           {
             "name": "from",
             "titles": "from",
-            "dc:description": "Earliest year or date the source can have been made, as four digits or YYYY-MM-DD. Optional.",
+            "dc:description": "Earliest year or date the source can have been made, with at least four digits, or YYYY-MM-DD. Optional.",
             "skos:example": "1086",
             "aboutUrl": "#{source_id}-time",
             "propertyUrl": "https://w3id.org/plato#start_earliest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -133,7 +133,7 @@
             "propertyUrl": "https://w3id.org/plato#end_latest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -283,6 +283,32 @@
             "datatype": "nonNegativeInteger"
           },
           {
+            "name": "transcription_accuracy",
+            "titles": "transcription_accuracy",
+            "dc:description": "How faithfully the name renders what the source shows: 'Accurate', 'Inaccurate' (misread), or 'False' (a ghost form not in the source). Optional.",
+            "skos:example": "Inaccurate",
+            "aboutUrl": "#row-{_row}-name",
+            "propertyUrl": "https://w3id.org/plato#transcription_accuracy",
+            "valueUrl": "https://w3id.org/plato#Transcription{transcription_accuracy}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Accurate|Inaccurate|False)$"
+            }
+          },
+          {
+            "name": "transcription_completeness",
+            "titles": "transcription_completeness",
+            "dc:description": "Whether the name is whole: 'Complete', 'Reconstructable' (part lost, but it can be supplied), or 'NonReconstructable'. Optional.",
+            "skos:example": "Reconstructable",
+            "aboutUrl": "#row-{_row}-name",
+            "propertyUrl": "https://w3id.org/plato#transcription_completeness",
+            "valueUrl": "https://w3id.org/plato#Transcription{transcription_completeness}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Complete|Reconstructable|NonReconstructable)$"
+            }
+          },
+          {
             "name": "date",
             "titles": "date",
             "dc:description": "The date as your source gives it, in any form: '1086', 'c. 925', '1480-1485', 'a. 1300'. Write 'undated' if the source gives no date. Required on every row.",
@@ -294,13 +320,13 @@
           {
             "name": "from",
             "titles": "from",
-            "dc:description": "Earliest year or date the row can refer to, as four digits (0921, not 921) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
+            "dc:description": "Earliest year or date the row can refer to, with at least four digits (0921, not 921; -12000 for 12,000 BCE) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
             "skos:example": "1086",
             "aboutUrl": "#row-{_row}-time",
             "propertyUrl": "https://w3id.org/plato#start_earliest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -312,7 +338,7 @@
             "propertyUrl": "https://w3id.org/plato#end_latest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -346,6 +372,19 @@
             }
           },
           {
+            "name": "citation_function",
+            "titles": "citation_function",
+            "dc:description": "Why the source is cited, as a term of CiTO, the Citation Typing Ontology: 'citesAsEvidence' (the source is the evidence), 'citesAsDataSource', 'citesAsRelated', 'citesForInformation' and so on. Optional; leave empty if your data does not say.",
+            "skos:example": "citesAsEvidence",
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#citation_function",
+            "valueUrl": "http://purl.org/spar/cito/{citation_function}",
+            "datatype": {
+              "base": "string",
+              "format": "^(cites|agreesWith|citesAsAuthority|citesAsDataSource|citesAsEvidence|citesAsMetadataDocument|citesAsPotentialSolution|citesAsRecommendedReading|citesAsRelated|citesAsSourceDocument|citesForInformation|compiles|confirms|containsAssertionFrom|corrects|credits|critiques|derides|describes|disagreesWith|discusses|disputes|documents|extends|includesExcerptFrom|includesQuotationFrom|linksTo|obtainsBackgroundFrom|obtainsSupportFrom|parodies|plagiarizes|qualifies|refutes|repliesTo|retracts|reviews|ridicules|speculatesOn|supports|updates|usesConclusionsFrom|usesDataFrom|usesMethodIn)$"
+            }
+          },
+          {
             "name": "certainty",
             "titles": "certainty",
             "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
@@ -367,6 +406,17 @@
             "datatype": {
               "base": "string",
               "format": "^(Certain|LessCertain|Uncertain)$"
+            }
+          },
+          {
+            "name": "denied",
+            "titles": "denied",
+            "dc:description": "'yes' if the source says this is not so: no market here, a grant refused. The row then records a denial, not an assertion, so give only the one thing the source denies. Leave empty for an ordinary row.",
+            "skos:example": "yes",
+            "propertyUrl": "https://w3id.org/plato#negated",
+            "datatype": {
+              "base": "boolean",
+              "format": "yes|no"
             }
           },
           {
@@ -543,13 +593,13 @@
           {
             "name": "from",
             "titles": "from",
-            "dc:description": "Earliest year or date the row can refer to, as four digits (0921, not 921) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
+            "dc:description": "Earliest year or date the row can refer to, with at least four digits (0921, not 921; -12000 for 12,000 BCE) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
             "skos:example": "1086",
             "aboutUrl": "#row-{_row}-time",
             "propertyUrl": "https://w3id.org/plato#start_earliest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -561,7 +611,7 @@
             "propertyUrl": "https://w3id.org/plato#end_latest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -595,6 +645,19 @@
             }
           },
           {
+            "name": "citation_function",
+            "titles": "citation_function",
+            "dc:description": "Why the source is cited, as a term of CiTO, the Citation Typing Ontology: 'citesAsEvidence' (the source is the evidence), 'citesAsDataSource', 'citesAsRelated', 'citesForInformation' and so on. Optional; leave empty if your data does not say.",
+            "skos:example": "citesAsEvidence",
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#citation_function",
+            "valueUrl": "http://purl.org/spar/cito/{citation_function}",
+            "datatype": {
+              "base": "string",
+              "format": "^(cites|agreesWith|citesAsAuthority|citesAsDataSource|citesAsEvidence|citesAsMetadataDocument|citesAsPotentialSolution|citesAsRecommendedReading|citesAsRelated|citesAsSourceDocument|citesForInformation|compiles|confirms|containsAssertionFrom|corrects|credits|critiques|derides|describes|disagreesWith|discusses|disputes|documents|extends|includesExcerptFrom|includesQuotationFrom|linksTo|obtainsBackgroundFrom|obtainsSupportFrom|parodies|plagiarizes|qualifies|refutes|repliesTo|retracts|reviews|ridicules|speculatesOn|supports|updates|usesConclusionsFrom|usesDataFrom|usesMethodIn)$"
+            }
+          },
+          {
             "name": "certainty",
             "titles": "certainty",
             "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
@@ -616,6 +679,17 @@
             "datatype": {
               "base": "string",
               "format": "^(Certain|LessCertain|Uncertain)$"
+            }
+          },
+          {
+            "name": "denied",
+            "titles": "denied",
+            "dc:description": "'yes' if the source says this is not so: no market here, a grant refused. The row then records a denial, not an assertion, so give only the one thing the source denies. Leave empty for an ordinary row.",
+            "skos:example": "yes",
+            "propertyUrl": "https://w3id.org/plato#negated",
+            "datatype": {
+              "base": "boolean",
+              "format": "yes|no"
             }
           },
           {
@@ -745,13 +819,13 @@
           {
             "name": "from",
             "titles": "from",
-            "dc:description": "Earliest year or date the row can refer to, as four digits (0921, not 921) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
+            "dc:description": "Earliest year or date the row can refer to, with at least four digits (0921, not 921; -12000 for 12,000 BCE) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
             "skos:example": "1086",
             "aboutUrl": "#row-{_row}-time",
             "propertyUrl": "https://w3id.org/plato#start_earliest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -763,7 +837,7 @@
             "propertyUrl": "https://w3id.org/plato#end_latest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -797,6 +871,19 @@
             }
           },
           {
+            "name": "citation_function",
+            "titles": "citation_function",
+            "dc:description": "Why the source is cited, as a term of CiTO, the Citation Typing Ontology: 'citesAsEvidence' (the source is the evidence), 'citesAsDataSource', 'citesAsRelated', 'citesForInformation' and so on. Optional; leave empty if your data does not say.",
+            "skos:example": "citesAsEvidence",
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#citation_function",
+            "valueUrl": "http://purl.org/spar/cito/{citation_function}",
+            "datatype": {
+              "base": "string",
+              "format": "^(cites|agreesWith|citesAsAuthority|citesAsDataSource|citesAsEvidence|citesAsMetadataDocument|citesAsPotentialSolution|citesAsRecommendedReading|citesAsRelated|citesAsSourceDocument|citesForInformation|compiles|confirms|containsAssertionFrom|corrects|credits|critiques|derides|describes|disagreesWith|discusses|disputes|documents|extends|includesExcerptFrom|includesQuotationFrom|linksTo|obtainsBackgroundFrom|obtainsSupportFrom|parodies|plagiarizes|qualifies|refutes|repliesTo|retracts|reviews|ridicules|speculatesOn|supports|updates|usesConclusionsFrom|usesDataFrom|usesMethodIn)$"
+            }
+          },
+          {
             "name": "certainty",
             "titles": "certainty",
             "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
@@ -818,6 +905,17 @@
             "datatype": {
               "base": "string",
               "format": "^(Certain|LessCertain|Uncertain)$"
+            }
+          },
+          {
+            "name": "denied",
+            "titles": "denied",
+            "dc:description": "'yes' if the source says this is not so: no market here, a grant refused. The row then records a denial, not an assertion, so give only the one thing the source denies. Leave empty for an ordinary row.",
+            "skos:example": "yes",
+            "propertyUrl": "https://w3id.org/plato#negated",
+            "datatype": {
+              "base": "boolean",
+              "format": "yes|no"
             }
           },
           {
@@ -958,13 +1056,13 @@
           {
             "name": "from",
             "titles": "from",
-            "dc:description": "Earliest year or date the row can refer to, as four digits (0921, not 921) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
+            "dc:description": "Earliest year or date the row can refer to, with at least four digits (0921, not 921; -12000 for 12,000 BCE) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
             "skos:example": "1086",
             "aboutUrl": "#row-{_row}-time",
             "propertyUrl": "https://w3id.org/plato#start_earliest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -976,7 +1074,7 @@
             "propertyUrl": "https://w3id.org/plato#end_latest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -1010,6 +1108,19 @@
             }
           },
           {
+            "name": "citation_function",
+            "titles": "citation_function",
+            "dc:description": "Why the source is cited, as a term of CiTO, the Citation Typing Ontology: 'citesAsEvidence' (the source is the evidence), 'citesAsDataSource', 'citesAsRelated', 'citesForInformation' and so on. Optional; leave empty if your data does not say.",
+            "skos:example": "citesAsEvidence",
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#citation_function",
+            "valueUrl": "http://purl.org/spar/cito/{citation_function}",
+            "datatype": {
+              "base": "string",
+              "format": "^(cites|agreesWith|citesAsAuthority|citesAsDataSource|citesAsEvidence|citesAsMetadataDocument|citesAsPotentialSolution|citesAsRecommendedReading|citesAsRelated|citesAsSourceDocument|citesForInformation|compiles|confirms|containsAssertionFrom|corrects|credits|critiques|derides|describes|disagreesWith|discusses|disputes|documents|extends|includesExcerptFrom|includesQuotationFrom|linksTo|obtainsBackgroundFrom|obtainsSupportFrom|parodies|plagiarizes|qualifies|refutes|repliesTo|retracts|reviews|ridicules|speculatesOn|supports|updates|usesConclusionsFrom|usesDataFrom|usesMethodIn)$"
+            }
+          },
+          {
             "name": "certainty",
             "titles": "certainty",
             "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
@@ -1031,6 +1142,17 @@
             "datatype": {
               "base": "string",
               "format": "^(Certain|LessCertain|Uncertain)$"
+            }
+          },
+          {
+            "name": "denied",
+            "titles": "denied",
+            "dc:description": "'yes' if the source says this is not so: no market here, a grant refused. The row then records a denial, not an assertion, so give only the one thing the source denies. Leave empty for an ordinary row.",
+            "skos:example": "yes",
+            "propertyUrl": "https://w3id.org/plato#negated",
+            "datatype": {
+              "base": "boolean",
+              "format": "yes|no"
             }
           },
           {
@@ -1163,13 +1285,13 @@
           {
             "name": "from",
             "titles": "from",
-            "dc:description": "Earliest year or date the row can refer to, as four digits (0921, not 921) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
+            "dc:description": "Earliest year or date the row can refer to, with at least four digits (0921, not 921; -12000 for 12,000 BCE) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
             "skos:example": "1086",
             "aboutUrl": "#row-{_row}-time",
             "propertyUrl": "https://w3id.org/plato#start_earliest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -1181,7 +1303,7 @@
             "propertyUrl": "https://w3id.org/plato#end_latest",
             "datatype": {
               "base": "string",
-              "format": "^-?\\d{4}(-\\d{2}(-\\d{2})?)?$"
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
             }
           },
           {
@@ -1215,6 +1337,19 @@
             }
           },
           {
+            "name": "citation_function",
+            "titles": "citation_function",
+            "dc:description": "Why the source is cited, as a term of CiTO, the Citation Typing Ontology: 'citesAsEvidence' (the source is the evidence), 'citesAsDataSource', 'citesAsRelated', 'citesForInformation' and so on. Optional; leave empty if your data does not say.",
+            "skos:example": "citesAsEvidence",
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#citation_function",
+            "valueUrl": "http://purl.org/spar/cito/{citation_function}",
+            "datatype": {
+              "base": "string",
+              "format": "^(cites|agreesWith|citesAsAuthority|citesAsDataSource|citesAsEvidence|citesAsMetadataDocument|citesAsPotentialSolution|citesAsRecommendedReading|citesAsRelated|citesAsSourceDocument|citesForInformation|compiles|confirms|containsAssertionFrom|corrects|credits|critiques|derides|describes|disagreesWith|discusses|disputes|documents|extends|includesExcerptFrom|includesQuotationFrom|linksTo|obtainsBackgroundFrom|obtainsSupportFrom|parodies|plagiarizes|qualifies|refutes|repliesTo|retracts|reviews|ridicules|speculatesOn|supports|updates|usesConclusionsFrom|usesDataFrom|usesMethodIn)$"
+            }
+          },
+          {
             "name": "certainty",
             "titles": "certainty",
             "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
@@ -1236,6 +1371,17 @@
             "datatype": {
               "base": "string",
               "format": "^(Certain|LessCertain|Uncertain)$"
+            }
+          },
+          {
+            "name": "denied",
+            "titles": "denied",
+            "dc:description": "'yes' if the source says this is not so: no market here, a grant refused. The row then records a denial, not an assertion, so give only the one thing the source denies. Leave empty for an ordinary row.",
+            "skos:example": "yes",
+            "propertyUrl": "https://w3id.org/plato#negated",
+            "datatype": {
+              "base": "boolean",
+              "format": "yes|no"
             }
           },
           {

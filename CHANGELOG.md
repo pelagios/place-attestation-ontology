@@ -119,6 +119,53 @@ resolved, each towards the ontology, which set none of these constraints:
   Where the source does not say how strong the match is, the value is
   `unspecified` (see below), so that the strength is never guessed.
 
+A survey of four corpora (Pleiades, Vision of Britain, Vision of Ireland and
+DEEP, with the markets data) found the following, each measured and each
+decided by Stephen Gadd:
+
+- **Why a source is cited.** `plato:citation_function` on a Citation (JSON
+  `citationFunction`, tables `citation_function`), valued by a property of
+  CiTO, the Citation Typing Ontology: `cito:citesAsEvidence`,
+  `cito:citesAsDataSource`, `cito:citesAsRelated` and the rest of the 43
+  properties below `cito:cites` in CiTO 2.9.0, which the JSON Schema and the
+  tables list exactly. Only CiTO terms are accepted; a vocabulary's own terms,
+  such as Pleiades' `seeFurther` (136,758 of its 218,324 references), are
+  mapped to CiTO by the producer.
+- **How well a form was read.** `plato:transcription_accuracy` (Accurate,
+  Inaccurate, False) and `plato:transcription_completeness` (Complete,
+  Reconstructable, NonReconstructable), two new concept schemes. Like the
+  other qualification properties they have no `rdfs:domain`; in JSON they go in
+  a facet's `qualification`, and the tables' names sheet has a column for each.
+  Pleiades judges all 44,079 of its names this way.
+- **A source's denial.** `plato:negated` (JSON `negated`, tables `denied`):
+  the source states that what the attestation bundles is not so, as 1,000 of
+  the 1,813 rows of the 1886 return of market rights do. The attestation is
+  about the real place, so no market that never existed is invented. A tool
+  that cannot express a denial must leave the attestation out and report it.
+- **Alternative readings.** `plato:AlternativeTo` joins the meta types: this
+  attestation and its target are alternative readings of the same evidence,
+  at most one of them right, to be counted as one piece of evidence. None of
+  the four corpora records either-or readings, so this was added on the
+  argument, ahead of data that uses it.
+- **Identifiers that are IRIs.** The JSON Schema's `uri` definition now has
+  format `iri`, so identifiers with non-ASCII characters (Pleiades'
+  `#André-1980`, 1,410 citations) validate as they are, as JSON-LD and RDF
+  allow; every ASCII URI still validates.
+- **Deep time.** Years in the structured date fields, JSON and tables, may
+  have more than four digits (`-12000`), as `xsd:gYear` allows; four is still
+  the minimum. Pleiades has 199 endpoints before 9999 BCE.
+- **People and organisations connected to a place** (a grantee, an owner) need
+  no new term: the `plato:PropertyValue` comment now documents the pattern,
+  the agent's IRI as the value with the property naming the role.
+
+A new example, `schemas/examples/place-centric-judgements.json`, shows a
+denial, a pair of alternatives, a judged reading, a deep-time date and an IRI
+with an accented letter; the citations examples cite with `citesAsEvidence`.
+
+Statistical data (a figure's dimensional address, and the universe it is a
+proportion of) is being designed separately, on the W3C RDF Data Cube
+vocabulary, and the next release waits for it.
+
 An identity relation nested under its SpatialEntity no longer needs a
 `subject`. The JSON-LD context already took the subject from the nesting
 (the reverse of `plato:identity_subject`), as it takes a nested

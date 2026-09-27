@@ -70,7 +70,7 @@
         { "@id": "https://whgazetteer.org/example/source/harley-charters", "title": "Harl", "citation": "British Library, Harley Charters" }
       ],
       "citations": [
-        { "source": "https://whgazetteer.org/example/source/close-rolls", "locator": "1251–53, p. 214" },
+        { "source": "https://whgazetteer.org/example/source/close-rolls", "locator": "1251–53, p. 214", "citationFunction": "http://purl.org/spar/cito/citesAsEvidence" },
         { "source": "https://whgazetteer.org/example/source/harley-charters", "locator": "Harl. Ch. 84 D 20" }
       ],
       "notes": "Survey notation: 1252 Cl et passim to 1346 Harl. One claim resting on two sources, each located.",
@@ -90,7 +90,8 @@
         {
           "source": "https://whgazetteer.org/example/source/close-rolls",
           "locator": "1253–54, p. 31",
-          "attributionStatus": "https://w3id.org/plato#AttributionInferred"
+          "attributionStatus": "https://w3id.org/plato#AttributionInferred",
+          "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
         }
       ],
       "certainty": 1.0,

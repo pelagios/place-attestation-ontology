@@ -241,8 +241,15 @@ plato:PropertyValue
         facet node, a PropertyValue may carry the qualification properties
         (certainty, fuzziness) like any other.
 
-        Where the value is itself an entity, use a entity-to-entity relation
-        instead; this class is for attributes, not relationships.
+        Where the value is another SpatialEntity, use an entity-to-entity
+        relation instead; this class is for attributes of the entity. A person
+        or organisation connected to it (the grantee of a market right, an
+        owner, a lord of the manor) is such an attribute: the value is the
+        agent's IRI, ideally in an authority such as Wikidata or VIAF, with
+        value_datatype xsd:anyURI, and the property names the role, for
+        example http://www.wikidata.org/prop/direct/P127 ('owned by'). This
+        asserts nothing false, and needs no agent class: PLATO's own agent
+        classes (Contributor, Organization) describe who recorded the data.
 
         A latitude given without a longitude (a source's 'at 9.5 degrees
         north') is a PropertyValue, not a Geometry, since it is not a location:
@@ -633,6 +640,29 @@ plato:attribution_status
     rdfs:domain plato:Citation ;
     rdfs:range skos:Concept .
 
+plato:citation_function
+    a owl:ObjectProperty ;
+    rdfs:label "citation function"@en ;
+    rdfs:comment """
+        Why the source is cited: as the evidence for the attestation, as a
+        source of its data, as related reading, and so on. The value is a
+        property of CiTO, the Citation Typing Ontology
+        (http://purl.org/spar/cito/): cito:citesAsEvidence,
+        cito:citesAsDataSource, cito:citesAsRelated, cito:citesForInformation,
+        cito:citesAsRecommendedReading, or another of the properties below
+        cito:cites. Only CiTO properties are used, so that every consumer reads
+        the same function the same way; a project whose own vocabulary has
+        other terms maps them to CiTO when it organises its data.
+
+        Without it, 'this source is the evidence' and 'see this source for
+        more' are the same link, which is the distinction an attestation model
+        exists to make: 136,758 of Pleiades' 218,324 references are 'see
+        further', and only 12,483 are cited as evidence. Absent, the function
+        is unstated, as before; a consumer should not assume evidence.
+    """@en ;
+    rdfs:domain plato:Citation ;
+    rdfs:range rdf:Property .
+
 
 # =============================================================================
 # entity-to-entity Relations
@@ -728,6 +758,8 @@ plato:has_meta_type
         - plato:Annotates: adds a remark about the target, with its own source,
           without supporting, contradicting or refining it; the remark is the
           meta-attestation's notes
+        - plato:AlternativeTo: this attestation and the target are alternative
+          readings of the same evidence, at most one of them right
 
         Using SKOS concepts rather than strings enables vocabulary management
         and multilingual labels.
@@ -783,6 +815,61 @@ plato:certainty_level
         or any facet node.
     """@en ;
     rdfs:range plato:CertaintyLevel .
+
+plato:transcription_accuracy
+    a owl:ObjectProperty ;
+    rdfs:label "transcription accuracy"@en ;
+    rdfs:comment """
+        How faithfully a transcribed value (a name form, most often) renders
+        what the source shows: a concept in plato:TranscriptionAccuracyScheme,
+        plato:TranscriptionAccurate, plato:TranscriptionInaccurate or
+        plato:TranscriptionFalse. It judges the reading, not the source and not
+        the identification: plato:form_status says how a form came to be, and
+        plato:certainty how sure anyone is of the attestation, and neither says
+        how well the form was read. Pleiades records it for every name.
+
+        Like the other qualification properties it has no rdfs:domain, so a
+        transcribed coordinate or date can be judged the same way.
+    """@en ;
+    rdfs:range skos:Concept .
+
+plato:transcription_completeness
+    a owl:ObjectProperty ;
+    rdfs:label "transcription completeness"@en ;
+    rdfs:comment """
+        Whether a transcribed value is whole: a concept in
+        plato:TranscriptionCompletenessScheme, plato:TranscriptionComplete,
+        plato:TranscriptionReconstructable (part is lost but can be supplied
+        with confidence) or plato:TranscriptionNonReconstructable (part is lost
+        and cannot be supplied). A different axis from accuracy: a damaged form
+        can be accurately read as far as it goes. No rdfs:domain, as for
+        accuracy.
+    """@en ;
+    rdfs:range skos:Concept .
+
+plato:negated
+    a owl:DatatypeProperty ;
+    rdfs:label "negated"@en ;
+    rdfs:comment """
+        True when the source states that what this attestation bundles is not
+        so: that a place had no market, that a name was not used, that a grant
+        was refused. The attestation is still about a real SpatialEntity (the
+        town that had no market), with the facet the source denies (a Type
+        'market'); nothing that never existed need be invented. A denial is a
+        statement a source makes, often a certain one, so it is neither low
+        certainty nor a meta-attestation, which needs a claim to contradict.
+        The 1886 return of market rights answered for every borough and
+        district in England and Wales, and 1,000 of its 1,813 rows are denials.
+
+        A consumer that does not implement this property will read a denial
+        as an assertion, the opposite of what the source says. So it must be
+        honoured: a tool that cannot express a denial in its target format
+        must leave the attestation out and report it, never write it as an
+        assertion. Bundle one denied facet per attestation, so that what is
+        denied is never in doubt. Absent or false, the attestation asserts.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:boolean .
 
 plato:sequence
     a owl:DatatypeProperty ;
@@ -1495,8 +1582,9 @@ plato:start_earliest
     rdfs:comment """
         The earliest possible start date for this timespan. Together with
         start_latest, defines the uncertainty range for when the interval began.
-        Use ISO 8601 format (e.g., '1453-05-29') or a four-digit year ('0921')
-        for year-level precision. May be null for unknown or deliberately
+        Use ISO 8601 format (e.g., '1453-05-29') or a year of at least four
+        digits ('0921', '-12000') for year-level precision; deep-time years
+        have as many digits as they need, as in xsd:gYear. May be null for unknown or deliberately
         open-beginning intervals.
 
         The range is rdfs:Literal rather than a single datatype, because one
@@ -2260,6 +2348,52 @@ plato:AttributionInferred
     skos:prefLabel "attribution inferred"@en ;
     skos:definition "The source was given as ibidem or idem and resolved by an editor, so the attribution is inferred rather than stated."@en .
 
+plato:TranscriptionAccuracyScheme
+    a skos:ConceptScheme ;
+    rdfs:label "transcription accuracy"@en ;
+    rdfs:comment "Starter concepts for plato:transcription_accuracy. How faithfully a transcribed value renders what the source shows."@en .
+
+plato:TranscriptionAccurate
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "accurate"@en ;
+    skos:definition "The transcription renders what the source shows."@en .
+
+plato:TranscriptionInaccurate
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "inaccurate"@en ;
+    skos:definition "The transcription departs from what the source shows, by misreading or error, but is a reading of something the source contains."@en .
+
+plato:TranscriptionFalse
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "false"@en ;
+    skos:definition "The transcribed form is not in the source at all: a ghost form, kept because it circulates and must be recognisable."@en .
+
+plato:TranscriptionCompletenessScheme
+    a skos:ConceptScheme ;
+    rdfs:label "transcription completeness"@en ;
+    rdfs:comment "Starter concepts for plato:transcription_completeness. Whether a transcribed value is whole, and if not, whether the lost part can be supplied."@en .
+
+plato:TranscriptionComplete
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "complete"@en ;
+    skos:definition "Nothing of the value is lost."@en .
+
+plato:TranscriptionReconstructable
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "reconstructable"@en ;
+    skos:definition "Part of the value is lost, damaged or abbreviated, but can be supplied with confidence."@en .
+
+plato:TranscriptionNonReconstructable
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "not reconstructable"@en ;
+    skos:definition "Part of the value is lost and cannot be supplied."@en .
+
 plato:GeometryRoleScheme
     a skos:ConceptScheme ;
     rdfs:label "geometry role"@en ;
@@ -2394,6 +2528,12 @@ plato:Annotates
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "annotates"@en ;
     skos:definition "Adds a remark about the target attestation, with its own source, without supporting, contradicting or refining it. The remark is the meta-attestation's notes."@en .
+
+plato:AlternativeTo
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "alternative to"@en ;
+    skos:definition "This attestation and the target are alternative readings of the same evidence: at most one of them is right. Each keeps its own certainty. Link every alternative in a set to the same first one. A set of alternatives is one piece of evidence, not several, so it must be counted once."@en .
 
 # -----------------------------------------------------------------------------
 # Certainty levels

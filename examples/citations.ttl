@@ -2,6 +2,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix whgx: <https://whgazetteer.org/example/> .
+@prefix cito: <http://purl.org/spar/cito/> .
 
 # The "whgx:" prefix is used throughout these examples for illustrative URIs.
 # Page numbers, folio references and the medieval sources in this file are
@@ -124,7 +125,8 @@ whgx:timespan\/1252-1346
 whgx:citation\/bonestowe-cl-1252
     a plato:Citation ;
     plato:cites whgx:source\/close-rolls ;
-    plato:locator "1251–53, p. 214" .
+    plato:locator "1251–53, p. 214" ;
+    plato:citation_function cito:citesAsEvidence .
 
 whgx:citation\/bonestowe-harl-1346
     a plato:Citation ;
@@ -166,7 +168,8 @@ whgx:citation\/bonestou-cl-1254
     a plato:Citation ;
     plato:cites whgx:source\/close-rolls ;
     plato:locator "1253–54, p. 31" ;
-    plato:attribution_status plato:AttributionInferred .
+    plato:attribution_status plato:AttributionInferred ;
+    plato:citation_function cito:citesAsEvidence .
 
 whgx:attestation\/bonestou-1254
     a plato:Attestation ;

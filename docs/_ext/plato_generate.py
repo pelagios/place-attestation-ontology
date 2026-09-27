@@ -28,6 +28,8 @@ def allowed_values(column):
         m = re.fullmatch(r"\^\(([A-Za-z|]+)\)\$", dt.get("format", ""))
         if m:
             return m.group(1).split("|")
+        if dt.get("base") == "boolean" and re.fullmatch(r"[A-Za-z]+\|[A-Za-z]+", dt.get("format", "")):
+            return dt["format"].split("|")   # a CSVW boolean written as, say, yes|no
     return None
 
 
@@ -46,8 +48,8 @@ def value_hint(column):
         if base == "decimal":
             lo, hi = dt.get("minInclusive"), dt.get("maxInclusive")
             hint = "A number" + (f" from {lo} to {hi}" if lo is not None and hi is not None else f", at least {lo}" if lo is not None else "")
-        elif "-?\\d{4}" in dt.get("format", ""):
-            hint = "Four-digit year, or YYYY-MM-DD"
+        elif "-?\\d{4" in dt.get("format", ""):
+            hint = "Year of at least four digits, or YYYY-MM-DD"
         elif dt.get("@id", "").endswith("wktLiteral"):
             hint = "Well-Known Text"
     if column.get("separator"):
@@ -118,7 +120,7 @@ def write_workbook(meta, path):
         ["Fill in one sheet per kind of information. Keep all eight sheets, even the ones you leave empty."],
         ["Hover over a column heading to see what to put in it and an example."],
         ["Every row in names, locations, types, relations and properties needs a place_id (from the places sheet), a source_id (from the sources sheet) and a date."],
-        ["Write the date as your source gives it, or 'undated'. Put years in 'from' and 'to' as four digits: 0921, not 921."],
+        ["Write the date as your source gives it, or 'undated'. Put years in 'from' and 'to' with at least four digits: 0921, not 921."],
         ["Columns with a fixed list of values offer a drop-down; the values are case-sensitive."],
         [""],
         ["Guide: https://pelagios.org/place-attestation-ontology/guide/"],
@@ -129,6 +131,12 @@ def write_workbook(meta, path):
     readme["A1"].font = Font(bold=True, size=14)
     readme.column_dimensions["A"].width = 120
     head_fill = PatternFill("solid", fgColor="DDE7F0")
+    # Excel refuses an inline drop-down list longer than 255 characters, and the workbook then
+    # opens as damaged; the CiTO functions are far longer. Every list therefore lives in a column
+    # of a hidden sheet, which a drop-down can reference at any length.
+    lists = wb.create_sheet("values")
+    lists.sheet_state = "hidden"
+    list_col = 0
     for t in meta["tables"]:
         ws = wb.create_sheet(t["url"][:-4])
         cols = data_columns(t)
@@ -149,11 +157,19 @@ def write_workbook(meta, path):
                     ws.cell(row=r, column=i).number_format = "@"
             vals = allowed_values(c)
             if vals:
-                dv = DataValidation(type="list", formula1='"' + ",".join(vals) + '"', allow_blank=True)
-                dv.error, dv.errorTitle = "Choose one of: " + ", ".join(vals), "Not an allowed value"
+                list_col += 1
+                for r, v in enumerate(vals, start=1):
+                    lists.cell(row=r, column=list_col, value=v)
+                ref = lists.cell(row=1, column=list_col).column_letter
+                dv = DataValidation(type="list", formula1=f"values!${ref}$1:${ref}${len(vals)}", allow_blank=True)
+                listed = ", ".join(vals)
+                # Excel's error message holds at most 225 characters.
+                dv.error = ("Choose one of: " + listed) if len(listed) <= 200 else "Choose a value from the drop-down list; the values are case-sensitive."
+                dv.errorTitle = "Not an allowed value"
                 ws.add_data_validation(dv)
                 dv.add(f"{letter}2:{letter}1001")
         ws.freeze_panes = "A2"
+    wb.move_sheet(lists, offset=len(wb.sheetnames) - 1 - wb.sheetnames.index("values"))   # last, out of the way
     wb.save(path)
 
 

@@ -45,8 +45,9 @@ locations, types, relations and properties becomes one attestation. The
    locations, types, relations and properties, fill in `place_id`,
    `source_id` and `date` on every row.
 4. **Write the date as your source gives it**, or `undated`. Then, if you can,
-   put the earliest and latest years in `from` and `to`, as **four digits**:
-   `0921`, not `921`. For a single year, put it in both. Leave `to` empty if
+   put the earliest and latest years in `from` and `to`, with **at least four
+   digits**: `0921`, not `921`. Years BCE take a minus sign, and deep time
+   as many digits as it needs (`-12000`). For a single year, put it in both. Leave `to` empty if
    the end is unknown.
 5. **Some columns take a fixed word**, such as `Headword` or `ContainedIn`.
    Use it exactly as written, with the same capital letters. The workbook
@@ -54,6 +55,9 @@ locations, types, relations and properties becomes one attestation. The
    lists them all.
 6. **One fact per row.** If a source gives two spellings, that is two rows in
    names. If two sources give the same spelling, that is also two rows.
+7. **A source that denies something is recorded too.** If a source says a
+   place had no market, add a row in types with `market` and `denied` set to
+   `yes`. The row is then a denial, so give only the one thing denied.
 
 :::{note}
 Spreadsheet programs sometimes "correct" what you type: `0921` becomes `921`,
@@ -72,6 +76,8 @@ The spreadsheets cover most datasets, but a few things need the
 - one piece of evidence giving several facts together, such as a name and a
   location in a single statement;
 - one scholar's comment on another's evidence ("this contradicts that");
+- readings that are alternatives to each other, such as a "Neuton" that could
+  be either of two Newtons, of which at most one is right;
 - a relation type that PLATO does not list yet. Ask for it to be added by
   [opening an issue](https://github.com/pelagios/place-attestation-ontology/issues).
 

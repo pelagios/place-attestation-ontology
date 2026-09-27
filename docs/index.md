@@ -42,7 +42,14 @@ you three things.
   - evidence that is certain but weaker in kind, such as a name found only
     inside a person's name;
   - a reference an editor has had to work out from "ibid.";
+  - a form read from a damaged or misread document, judged for how well it
+    was read;
+  - a mention that could be one of two places, recorded as alternatives, at
+    most one of them right, rather than as two separate claims;
   - a match with a record elsewhere that is close, but perhaps not exact.
+
+  A source can also say that something was *not* so, such as "no market
+  here", and that is recorded as a denial, not left out.
 
 **Ready for other systems.**
 : Data in PLATO's shape can be read by any software that implements the PLATO

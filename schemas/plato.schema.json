@@ -8,14 +8,14 @@
 
     "uri": {
       "type": "string",
-      "format": "uri",
-      "description": "A URI identifying an entity."
+      "format": "iri",
+      "description": "An IRI identifying an entity. Non-ASCII characters are written as they are (#André-1980), as JSON-LD and RDF allow; percent-encoding them would change the identifier. Every ASCII URI is also an IRI."
     },
 
     "isoOrYear": {
       "type": "string",
-      "description": "ISO 8601 date/time or a signed integer year (e.g. '-0500' for 500 BCE).",
-      "pattern": "^-?\\d{4}(-\\d{2}(-\\d{2}(T\\d{2}:\\d{2}(:\\d{2})?Z?)?)?)?$"
+      "description": "ISO 8601 date/time or a signed integer year of at least four digits (e.g. '-0500' for 500 BCE, '-12000' for 12,000 BCE); deep-time years have as many digits as they need.",
+      "pattern": "^-?\\d{4,}(-\\d{2}(-\\d{2}(T\\d{2}:\\d{2}(:\\d{2})?Z?)?)?)?$"
     },
 
     "precision": {
@@ -53,6 +53,14 @@
         "certaintyLevel": {
           "$ref": "#/$defs/uri",
           "description": "Certainty as a word rather than a number (plato:certainty_level): the URI of a CertaintyLevel, such as https://w3id.org/plato#Certain, #LessCertain or #Uncertain, or one a project declares. Use it when certainty is stated in words, rather than inventing a number."
+        },
+        "transcriptionAccuracy": {
+          "$ref": "#/$defs/uri",
+          "description": "How faithfully a transcribed value renders what the source shows (plato:transcription_accuracy): https://w3id.org/plato#TranscriptionAccurate, #TranscriptionInaccurate or #TranscriptionFalse (a ghost form not in the source). It judges the reading, not the source."
+        },
+        "transcriptionCompleteness": {
+          "$ref": "#/$defs/uri",
+          "description": "Whether a transcribed value is whole (plato:transcription_completeness): https://w3id.org/plato#TranscriptionComplete, #TranscriptionReconstructable (part lost, but can be supplied) or #TranscriptionNonReconstructable."
         },
         "fuzziness": {
           "$ref": "#/$defs/unitFloat01",
@@ -306,6 +314,11 @@
         "attributionStatus": {
           "$ref": "#/$defs/uri",
           "description": "URI of a concept saying whether the attribution was stated by the source or resolved editorially (plato:attribution_status): https://w3id.org/plato#AttributionInferred for an 'ibidem' resolved by an editor. Omit where the source is named where the form occurs."
+        },
+        "citationFunction": {
+          "type": "string",
+          "enum": ["http://purl.org/spar/cito/cites", "http://purl.org/spar/cito/agreesWith", "http://purl.org/spar/cito/citesAsAuthority", "http://purl.org/spar/cito/citesAsDataSource", "http://purl.org/spar/cito/citesAsEvidence", "http://purl.org/spar/cito/citesAsMetadataDocument", "http://purl.org/spar/cito/citesAsPotentialSolution", "http://purl.org/spar/cito/citesAsRecommendedReading", "http://purl.org/spar/cito/citesAsRelated", "http://purl.org/spar/cito/citesAsSourceDocument", "http://purl.org/spar/cito/citesForInformation", "http://purl.org/spar/cito/compiles", "http://purl.org/spar/cito/confirms", "http://purl.org/spar/cito/containsAssertionFrom", "http://purl.org/spar/cito/corrects", "http://purl.org/spar/cito/credits", "http://purl.org/spar/cito/critiques", "http://purl.org/spar/cito/derides", "http://purl.org/spar/cito/describes", "http://purl.org/spar/cito/disagreesWith", "http://purl.org/spar/cito/discusses", "http://purl.org/spar/cito/disputes", "http://purl.org/spar/cito/documents", "http://purl.org/spar/cito/extends", "http://purl.org/spar/cito/includesExcerptFrom", "http://purl.org/spar/cito/includesQuotationFrom", "http://purl.org/spar/cito/linksTo", "http://purl.org/spar/cito/obtainsBackgroundFrom", "http://purl.org/spar/cito/obtainsSupportFrom", "http://purl.org/spar/cito/parodies", "http://purl.org/spar/cito/plagiarizes", "http://purl.org/spar/cito/qualifies", "http://purl.org/spar/cito/refutes", "http://purl.org/spar/cito/repliesTo", "http://purl.org/spar/cito/retracts", "http://purl.org/spar/cito/reviews", "http://purl.org/spar/cito/ridicules", "http://purl.org/spar/cito/speculatesOn", "http://purl.org/spar/cito/supports", "http://purl.org/spar/cito/updates", "http://purl.org/spar/cito/usesConclusionsFrom", "http://purl.org/spar/cito/usesDataFrom", "http://purl.org/spar/cito/usesMethodIn"],
+          "description": "Why the source is cited (plato:citation_function): a property of CiTO, the Citation Typing Ontology (version 2.9.0), such as http://purl.org/spar/cito/citesAsEvidence, #citesAsDataSource or #citesAsRelated. Only CiTO properties are accepted; map a vocabulary's own terms to CiTO. Omit when the function is not stated."
         }
       },
       "required": ["source"],
@@ -459,6 +472,10 @@
         "certaintyLevel": {
           "$ref": "#/$defs/uri",
           "description": "Certainty of this attestation as a word rather than a number (plato:certainty_level): the URI of a CertaintyLevel, such as https://w3id.org/plato#Certain, #LessCertain or #Uncertain (the three of Linked Places Format), or one a project declares. Give it instead of certainty when certainty is stated in words; never invent a number."
+        },
+        "negated": {
+          "type": "boolean",
+          "description": "True when the source states that what this attestation bundles is not so: no market here, a grant refused (plato:negated). Bundle one denied facet per attestation. A consumer must honour it: a tool that cannot express a denial must leave the attestation out and report it, never write it as an assertion. Absent or false, the attestation asserts."
         },
 
         "sequence": {

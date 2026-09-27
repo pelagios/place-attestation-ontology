@@ -1,0 +1,152 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/gazetteer/judgements",
+    "title": "Denials, alternatives and judged readings (illustrative)",
+    "contributor": "https://orcid.org/0000-0002-1234-5678"
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/example/entity/littleworth",
+      "label": "Littleworth",
+      "attestations": [
+        {
+          "types": [
+            {
+              "label": "market"
+            }
+          ],
+          "negated": true,
+          "timespans": [
+            {
+              "startEarliest": "1886",
+              "endLatest": "1886",
+              "sourceLabel": "1886"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/market-rights-1886",
+                "title": "Return of market rights and tolls, 1886"
+              },
+              "locator": "vol. XIII, p. 88",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The return answered for every district it covered, so 'no market here' is a statement, certain, not a gap. The attestation is about the real town, with the one thing denied; no market is invented."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/newton-by-the-river",
+      "label": "Newton (by the river)",
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/example/attestation/newton-a",
+          "names": [
+            {
+              "toponym": "Neuton"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/charter-c1200",
+                "title": "Charter, c. 1200"
+              },
+              "locator": "witness list"
+            }
+          ],
+          "certainty": 0.6,
+          "notes": "The charter names Neuton without saying which of two Newtons it means."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/newton-on-the-hill",
+      "label": "Newton (on the hill)",
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/example/attestation/newton-b",
+          "names": [
+            {
+              "toponym": "Neuton"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/source/charter-c1200",
+              "locator": "witness list"
+            }
+          ],
+          "certainty": 0.4,
+          "meta": {
+            "targetAttestation": "https://whgazetteer.org/example/attestation/newton-a",
+            "metaType": "https://w3id.org/plato#AlternativeTo"
+          },
+          "notes": "The same mention read as the other Newton. With plato:AlternativeTo, the two are one piece of evidence, at most one of them right, not two."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/fenland-hundred",
+      "label": "Fenland Hundred",
+      "attestations": [
+        {
+          "names": [
+            {
+              "toponym": "Fenl[and]",
+              "qualification": {
+                "transcriptionAccuracy": "https://w3id.org/plato#TranscriptionAccurate",
+                "transcriptionCompleteness": "https://w3id.org/plato#TranscriptionReconstructable"
+              }
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/bibliography#André-1980",
+                "title": "André 1980"
+              },
+              "locator": "p. 12",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The form is damaged at its end but can be supplied: read accurately as far as it goes. The source's identifier keeps its accented letter; it is an IRI, not percent-encoded."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/cave-site",
+      "label": "Cave site",
+      "attestations": [
+        {
+          "types": [
+            {
+              "label": "rock shelter"
+            }
+          ],
+          "timespans": [
+            {
+              "startEarliest": "-12000",
+              "endLatest": "-10000",
+              "sourceLabel": "c. 12,000–10,000 BCE"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/excavation-report",
+                "title": "Excavation report"
+              },
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A deep-time date in the structured bounds: years have as many digits as they need."
+        }
+      ]
+    }
+  ]
+}

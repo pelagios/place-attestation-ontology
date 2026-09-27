@@ -14,7 +14,8 @@ Certainty
 
 Citation
 : One attestation's use of one source, with the locator saying where in the
-  source the evidence is.
+  source the evidence is, and, where known, why the source is cited: as the
+  evidence, as a source of data, as related reading.
 
 CSVW (CSV on the Web)
 : The W3C standard used to describe the spreadsheet tables: their columns,
@@ -23,8 +24,13 @@ CSVW (CSV on the Web)
 Date, from, to
 : *Date* is the date as the source gives it, or "undated", kept in the
   source's own words. *From* and *to* are
-  the earliest and latest years or days it can mean, written with four-digit
+  the earliest and latest years or days it can mean, written with at least four-digit
   years.
+
+Denial
+: A source's statement that something was not so, such as "no market here".
+  It is recorded as an attestation marked as denied, about the real place,
+  so that nothing that never existed has to be invented.
 
 Fuzziness
 : The sense in which something genuinely has no sharp edge, such as "the
