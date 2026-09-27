@@ -379,6 +379,12 @@ plato:Gazetteer
         concepts of Dataset, Dataset Collection, and Place Collection.
         A Gazetteer can be incrementally edited, enriched, and corrected
         without re-ingestion.
+
+        As a dcat:Dataset, a Gazetteer is titled with dcterms:title and
+        licensed with dcterms:license. Not with plato:authority_title or
+        plato:licence: their domains are plato:Authority and plato:Dataset,
+        so using them would make the Gazetteer one of the Authorities it
+        contains attestations about.
     """@en .
 
 plato:GazetteerGroup
@@ -1122,7 +1128,13 @@ plato:identity_subject
 plato:identity_object
     a owl:ObjectProperty ;
     rdfs:label "identity object"@en ;
-    rdfs:comment "The second SpatialEntity in an identity assertion."@en ;
+    rdfs:comment """
+        The second SpatialEntity in an identity assertion. Often a record in
+        another authority, such as a GeoNames feature or a Wikidata item,
+        which this range makes a SpatialEntity. That is intended: in PLATO
+        an authority record is a SpatialEntity like any other, identified by
+        its own URI, with its origin recorded in plato:namespace.
+    """@en ;
     rdfs:domain plato:IdentityRelation ;
     rdfs:range plato:SpatialEntity .
 

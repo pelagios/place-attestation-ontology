@@ -1,6 +1,7 @@
 @prefix plato: <https://w3id.org/plato#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix whgx: <https://whgazetteer.org/example/> .
 
 # The "whgx:" prefix is used throughout these examples for illustrative
@@ -105,7 +106,7 @@ whgx:contributor\/trade-historian
 
 whgx:gazetteer\/english-trade
     a plato:Gazetteer ;
-    plato:authority_title "Ports in 15th-Century English Trade" ;
+    dcterms:title "Ports in 15th-Century English Trade" ;
     plato:gazetteer_owner whgx:contributor\/trade-historian ;
     plato:gazetteer_status "draft" ;
     plato:contains_entity whgx:entity\/bristol ;

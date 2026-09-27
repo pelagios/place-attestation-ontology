@@ -67,6 +67,14 @@ property the profiles' top-level `identityRelations` maps to.
 
 ### Changed
 
+In the JSON-LD context, a gazetteer's `title` and `licence` now map to
+`dcterms:title` and `dcterms:license`. They mapped to `plato:authority_title`
+and `plato:licence`, whose domains are `plato:Authority` and `plato:Dataset`, so
+every Gazetteer was inferred to be an Authority, and so one of the five
+disjoint kinds of Authority. The Turtle example that did the same is
+corrected, and the Gazetteer definition now says which properties to use.
+Found by the DEEP/EPNS triplification.
+
 The wording on "place" is corrected. 0.4.0 said that a SpatialEntity is not a
 place; that over-corrected. Many SpatialEntities are places in the everyday
 sense and some are not, so PLATO defines no Place class and gives "place" no
