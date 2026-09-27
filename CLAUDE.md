@@ -47,7 +47,7 @@ CI never parses `examples/*.ttl`, so nothing but a local check catches syntax er
 
 ## Documentation build (CI)
 
-`.github/workflows/widoco.yml` runs on pushes to `main` that touch `ontology.ttl`, `README.md`, `examples/**`, `schemas/**`, or the workflow itself. It downloads the latest [Widoco](https://github.com/dgarijo/Widoco) release, generates HTML docs **from `ontology.ttl` only**, and force-pushes them to `gh-pages`; GitHub's own `pages-build-deployment` then publishes that branch. Changes to schemas or examples trigger a rebuild but are not themselves validated or rendered.
+`.github/workflows/widoco.yml` runs on pushes to `main` that touch `ontology.ttl`, `README.md`, `examples/**`, `schemas/**`, or the workflow itself. It downloads the latest [Widoco](https://github.com/dgarijo/Widoco) release, generates HTML docs **from `ontology.ttl` only**, copies `schemas/` beside them (so the JSON-LD context is served as `application/ld+json`, which raw.githubusercontent.com cannot do and jsonld.js requires), and force-pushes the result to `gh-pages`; GitHub's own `pages-build-deployment` then publishes that branch. Changes to schemas or examples trigger a rebuild but are not themselves validated or rendered.
 
 The workflow's fragile parts are already commented in place: the Widoco release lookup must send an `Authorization` header (unauthenticated API calls share a per-IP quota across runners and get rate-limited), while the asset download must **not** (the redirect target rejects it). Widoco also exits non-zero on success, so the run is `|| true` and success is inferred from the output tree.
 

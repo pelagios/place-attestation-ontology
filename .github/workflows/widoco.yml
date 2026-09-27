@@ -119,6 +119,15 @@ jobs:
           EOF
           fi
 
+          # Publish the JSON Schemas and the JSON-LD context beside the docs.
+          # raw.githubusercontent.com serves them as text/plain, which a
+          # spec-conformant JSON-LD processor (jsonld.js) will not parse as a
+          # remote context; GitHub Pages serves .jsonld as application/ld+json
+          # and .json as application/json, with CORS. w3id.org/plato/schemas/*
+          # is meant to redirect here.
+          mkdir -p "$PUBLISH_DIR/schemas"
+          cp -r schemas/. "$PUBLISH_DIR/schemas/"
+
           # Verify
           echo "=== Files in publish dir ==="
           ls -la "$PUBLISH_DIR"/ | head -20
