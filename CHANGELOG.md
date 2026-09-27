@@ -76,8 +76,8 @@ context, so every relation label (DEEP's 539,306 among them) was lost in RDF,
 and the schema described it, wrongly for how it is used, as a label for the
 relation type. It is now the source's own wording of the relation before it is
 mapped to a relation type ("part of Berkshire", "within Buckingham"), as in
-LPF, and maps to `plato:source_label`, whose domain widens from Type and
-PropertyValue to include Attestation. The JSON key is unchanged.
+LPF, and maps to `plato:source_label`, which no longer has a domain (see
+below). The JSON key is unchanged.
 
 An attestation now asserts at most one relation (`relations` has `maxItems:
 1`). In RDF a relation's target, type and wording sit on the attestation
@@ -113,8 +113,45 @@ resolved, each towards the ontology, which set none of these constraints:
   requires `attestations` or sets a minimum of one. Such a place is only a
   referent, such as the target of a relation, and its label is not evidence.
 - An identity match must say what kind of match it is. `match_type` is now
-  required in the identities sheet, as `identityType` already was in JSON:
-  a match of unstated strength is ambiguous.
+  required in the identities sheet, as `identityType` already was in JSON.
+  Where the source does not say how strong the match is, the value is
+  `unspecified` (see below), so that the strength is never guessed.
+
+Seven gaps found while converting other projects' data to PLATO are closed:
+
+- **A source's own wording on any facet.** `sourceLabel` is added to names,
+  geometries and timespans in JSON, and `plato:source_label` loses its
+  `rdfs:domain`, so it applies to any facet or attestation, as the
+  qualification properties do: the form as printed, coordinates as printed
+  ('03-47S/13038E'), a date as written ('about 1841'). In the tables, the
+  `date` column of every sheet now writes `plato:source_label`;
+  `plato:timespan_label` keeps its meaning of a named period ('Byzantine
+  period'). The examples' written dates move with it. Closes #8.
+- **A neutral meta type.** `plato:Annotates` joins the MetaTypeScheme: a
+  meta-attestation that remarks on another, with its own source, without
+  supporting, contradicting or refining it. The remark is its `notes`.
+- **A record's own identifier.** `entityIdentifier` and `namespace` are added
+  to `spatialEntity` in JSON, mapped to the existing `plato:entity_identifier`
+  and `plato:namespace`, which is restated as an identifier other than the
+  IRI: a project's own record id, or an authority's. A finding aid, not a
+  claim about the place. The tables' `place_id` is now written to it rather
+  than only minted into the IRI.
+- **A latitude alone.** `plato:PropertyValue` documents that a latitude
+  without a longitude is a property value, not a geometry, with property
+  `http://www.w3.org/2003/01/geo/wgs84_pos#lat`.
+- **Certainty in words.** `plato:certainty_level` (no domain, range
+  `plato:CertaintyLevel`) and three starter levels, `plato:Certain`,
+  `plato:LessCertain` and `plato:Uncertain`, the words of Linked Places
+  Format, whose `certainty` now round-trips. `certaintyLevel` (a URI) is
+  added to attestations and to `qualification` in JSON, and a
+  `certainty_level` column to every attestation sheet. The number stays
+  optional, and a producer should not invent one from a word.
+- **A preferred form.** `plato:Preferred` joins the FormStatusScheme: the form
+  the contributing project prefers for display and search, a project decision
+  that the cited source may not show. The tables' `form_status` accepts it.
+- **An identity of unstated strength.** `identityType` and the tables'
+  `match_type` accept `unspecified`, for a source that links two records
+  without saying how strongly. The value is still required.
 
 The guide's "Data that tools can rely on" is now "Ready for other systems",
 so that it is not confused with PLATO tools, and says that the World

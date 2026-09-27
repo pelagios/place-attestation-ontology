@@ -243,6 +243,11 @@ plato:PropertyValue
 
         Where the value is itself an entity, use a entity-to-entity relation
         instead; this class is for attributes, not relationships.
+
+        A latitude given without a longitude (a source's 'at 9.5 degrees
+        north') is a PropertyValue, not a Geometry, since it is not a location:
+        property http://www.w3.org/2003/01/geo/wgs84_pos#lat, the value in
+        decimal degrees. A longitude alone is the same, with wgs84_pos#long.
     """@en .
 
 
@@ -358,7 +363,10 @@ plato:CertaintyLevel
     rdfs:label "Certainty Level"@en ;
     rdfs:comment """
         A defined level of certainty for use in attestations, allowing
-        projects to standardise their confidence vocabulary.
+        projects to standardise their confidence vocabulary. An attestation or
+        facet points at one with plato:certainty_level. PLATO declares the three
+        levels of Linked Places Format (plato:Certain, plato:LessCertain,
+        plato:Uncertain); a project may declare its own.
     """@en .
 
 
@@ -717,6 +725,9 @@ plato:has_meta_type
         - plato:Bundles: groups the target with other related attestations
         - plato:DerivedFrom: this attestation's value was derived from the
           target's (a normalised search form from an attested spelling)
+        - plato:Annotates: adds a remark about the target, with its own source,
+          without supporting, contradicting or refining it; the remark is the
+          meta-attestation's notes
 
         Using SKOS concepts rather than strings enables vocabulary management
         and multilingual labels.
@@ -758,6 +769,20 @@ plato:certainty_note
         from itinerary distances'). Applies wherever certainty does.
     """@en ;
     rdfs:range xsd:string .
+
+plato:certainty_level
+    a owl:ObjectProperty ;
+    rdfs:label "certainty level"@en ;
+    rdfs:comment """
+        Certainty as a word rather than a number: a CertaintyLevel, such as
+        plato:Certain, plato:LessCertain or plato:Uncertain (the three of Linked
+        Places Format), or one a project declares. Use it when a source or a
+        dataset states certainty in words, rather than inventing a number for
+        plato:certainty; the two may also be given together. Like
+        plato:certainty it has no rdfs:domain, so it can qualify an Attestation
+        or any facet node.
+    """@en ;
+    rdfs:range plato:CertaintyLevel .
 
 plato:sequence
     a owl:DatatypeProperty ;
@@ -922,6 +947,9 @@ plato:form_status
           to the attestation it was derived from through a meta-attestation.
         - plato:Reconstructed: a form inferred but not attested, the
           philologists' asterisked form.
+        - plato:Preferred: the form the contributing project prefers for
+          display and search ('Ranny (Fort)'). A project decision, so the cited
+          source may show a different form.
 
         A different axis from plato:name_type, which classifies what the name
         denotes: a headword is still a toponym. It sits on the Attestation,
@@ -1151,6 +1179,8 @@ plato:identity_type
                         be strictly identical (e.g. a settlement and its
                         administrative district, or successive phases of
                         a site that might or might not constitute continuity).
+        'unspecified' — the source links the two but does not say how strongly;
+                        honest where the alternative is to guess a strength.
     """@en ;
     rdfs:domain plato:IdentityRelation ;
     rdfs:range xsd:string .
@@ -1518,7 +1548,8 @@ plato:timespan_label
     rdfs:comment """
         Human-readable label for this timespan (e.g., 'Byzantine period',
         'Early Bronze Age', 'Ming Dynasty'). Particularly useful for named
-        periods referenced across multiple attestations.
+        periods referenced across multiple attestations. The date exactly as a
+        source writes it ('c. 925', 'a. 1300') is plato:source_label.
     """@en ;
     rdfs:domain plato:Timespan ;
     rdfs:range xsd:string .
@@ -1631,16 +1662,16 @@ plato:source_label
         The original label as given in the contributing source, before
         vocabulary mapping. For a structured PropertyValue this preserves the
         unparsed original — 'Monday after Whitsun, 3 days' — which is what a
-        future reader will want to check against the document. On an
-        Attestation it is the source's own wording of the relation the
-        attestation asserts ('part of Berkshire', 'within Buckingham'), before
-        that relation is mapped to a RelationType; an attestation asserts at
-        most one relation, so the wording is never ambiguous.
+        future reader will want to check against the document. On a Name it is
+        the form as printed where the toponym has been normalised; on a
+        Geometry, the coordinates as printed ('03-47S/13038E', '??'); on a
+        Timespan, the date as written ('about 1841'). On an Attestation it is
+        the source's own wording of the relation the attestation asserts
+        ('part of Berkshire', 'within Buckingham'), before that relation is
+        mapped to a RelationType; an attestation asserts at most one relation,
+        so the wording is never ambiguous. Like the qualification properties it
+        has no rdfs:domain, so it applies to any facet node or attestation.
     """@en ;
-    rdfs:domain [
-        a owl:Class ;
-        owl:unionOf (plato:Type plato:PropertyValue plato:Attestation)
-    ] ;
     rdfs:range xsd:string .
 
 
@@ -2051,7 +2082,12 @@ plato:contributor_identifier
 plato:entity_identifier
     a owl:DatatypeProperty ;
     rdfs:label "identifier"@en ;
-    rdfs:comment "The stable, persistent identifier for this SpatialEntity."@en ;
+    rdfs:comment """
+        An identifier for this SpatialEntity other than its IRI: the
+        contributing project's own record id ('GLOB_366') or an authority's
+        ('geonames:2654675'), with plato:namespace saying whose. A finding aid,
+        like a label: not a claim about the place.
+    """@en ;
     rdfs:domain plato:SpatialEntity ;
     rdfs:range xsd:string .
 
@@ -2059,10 +2095,11 @@ plato:namespace
     a owl:DatatypeProperty ;
     rdfs:label "namespace"@en ;
     rdfs:comment """
-        The authority namespace for this SpatialEntity (e.g. 'geonames', 'wikidata',
-        'tgn', 'osm', 'pleiades', 'whg'). Authority-sourced SpatialEntities carry
-        their origin namespace; contributed SpatialEntities that cannot be linked to
-        any authority receive the 'whg' namespace.
+        Whose identifier plato:entity_identifier is (e.g. 'geonames', 'wikidata',
+        'tgn', 'osm', 'pleiades', 'whg', or the contributing project's own short
+        name). Authority-sourced SpatialEntities carry their origin namespace;
+        contributed SpatialEntities that cannot be linked to any authority
+        receive the 'whg' namespace.
     """@en ;
     rdfs:domain plato:SpatialEntity ;
     rdfs:range xsd:string .
@@ -2176,6 +2213,12 @@ plato:Reconstructed
     skos:inScheme plato:FormStatusScheme ;
     skos:prefLabel "reconstructed"@en ;
     skos:definition "A form inferred but not attested; the philologists' asterisked form."@en .
+
+plato:Preferred
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "preferred"@en ;
+    skos:definition "The form the contributing project prefers for display and search: a project decision, so the cited source may show a different form."@en .
 
 plato:OccurrenceContextScheme
     a skos:ConceptScheme ;
@@ -2345,6 +2388,33 @@ plato:DerivedFrom
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "derived from"@en ;
     skos:definition "This attestation's value was derived from the target attestation's, as a normalised search form is derived from an attested spelling."@en .
+
+plato:Annotates
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "annotates"@en ;
+    skos:definition "Adds a remark about the target attestation, with its own source, without supporting, contradicting or refining it. The remark is the meta-attestation's notes."@en .
+
+# -----------------------------------------------------------------------------
+# Certainty levels
+# -----------------------------------------------------------------------------
+# The three words Linked Places Format uses for certainty, as CertaintyLevel
+# authority instances, for plato:certainty_level. A project may declare its own.
+
+plato:Certain
+    a plato:CertaintyLevel ;
+    plato:authority_title "certain"@en ;
+    rdfs:comment "The statement is certain: the source, or the contributor, has no doubt of it."@en .
+
+plato:LessCertain
+    a plato:CertaintyLevel ;
+    plato:authority_title "less certain"@en ;
+    rdfs:comment "The statement is probable but not certain."@en .
+
+plato:Uncertain
+    a plato:CertaintyLevel ;
+    plato:authority_title "uncertain"@en ;
+    rdfs:comment "The statement is doubtful: possible, but not established."@en .
 
 # -----------------------------------------------------------------------------
 # RelationType: containment

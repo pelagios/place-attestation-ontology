@@ -50,6 +50,10 @@
           "type": "string",
           "description": "Explanation of the basis for the certainty value: quality of evidence, reliability of source, scholarly consensus."
         },
+        "certaintyLevel": {
+          "$ref": "#/$defs/uri",
+          "description": "Certainty as a word rather than a number (plato:certainty_level): the URI of a CertaintyLevel, such as https://w3id.org/plato#Certain, #LessCertain or #Uncertain, or one a project declares. Use it when certainty is stated in words, rather than inventing a number."
+        },
         "fuzziness": {
           "$ref": "#/$defs/unitFloat01",
           "description": "Ontological fuzziness: 0.0 = crisp, 1.0 = maximally vague."
@@ -113,6 +117,10 @@
         "nameEmbedding": {
           "type": "string",
           "description": "Vector embedding for phonetic similarity search (format: implementation-specific, typically 256-dimensional vector)."
+        },
+        "sourceLabel": {
+          "type": "string",
+          "description": "The name as the source prints it, where toponym records a normalised form (plato:source_label)."
         },
         "qualification": { "$ref": "#/$defs/qualification" }
       },
@@ -181,6 +189,10 @@
           "type": "string",
           "description": "Original coordinate reference system (e.g. 'EPSG:4326')."
         },
+        "sourceLabel": {
+          "type": "string",
+          "description": "The coordinates as the source prints them, before parsing: '03-47S/13038E', '??' (plato:source_label)."
+        },
         "qualification": { "$ref": "#/$defs/qualification" }
       },
       "additionalProperties": false
@@ -244,6 +256,10 @@
         "openEnd": { "type": "boolean", "description": "True if end is deliberately unspecified (not just unknown)." },
         "periodoUri": { "$ref": "#/$defs/uri", "description": "Link to PeriodO period definition." },
         "edtfString": { "type": "string", "description": "Extended Date/Time Format representation." },
+        "sourceLabel": {
+          "type": "string",
+          "description": "The date exactly as the source writes it: 'about 1841', 'a. 1300' (plato:source_label)."
+        },
         "qualification": { "$ref": "#/$defs/qualification" }
       },
       "additionalProperties": false
@@ -440,6 +456,10 @@
           "type": "string",
           "description": "Explanation of the certainty assessment."
         },
+        "certaintyLevel": {
+          "$ref": "#/$defs/uri",
+          "description": "Certainty of this attestation as a word rather than a number (plato:certainty_level): the URI of a CertaintyLevel, such as https://w3id.org/plato#Certain, #LessCertain or #Uncertain (the three of Linked Places Format), or one a project declares. Give it instead of certainty when certainty is stated in words; never invent a number."
+        },
 
         "sequence": {
           "type": "integer",
@@ -570,8 +590,8 @@
         },
         "identityType": {
           "type": "string",
-          "enum": ["exactMatch", "closeMatch", "related"],
-          "description": "Semantic strength of the identity assertion."
+          "enum": ["exactMatch", "closeMatch", "related", "unspecified"],
+          "description": "Semantic strength of the identity assertion. Use unspecified when the source links the two but does not say how strongly."
         },
         "certainty": {
           "$ref": "#/$defs/unitFloat01",
@@ -620,6 +640,14 @@
           "items": { "type": "string", "pattern": "^[A-Z]{2}$" },
           "uniqueItems": true,
           "description": "ISO 3166-1 alpha-2 codes of the modern countries whose territory contains or overlaps this SpatialEntity (plato:ccodes), as in Linked Places Format. A finding aid for search and matching, like the label: not evidence, so it needs no source."
+        },
+        "entityIdentifier": {
+          "type": "string",
+          "description": "An identifier for this SpatialEntity other than its IRI (plato:entity_identifier): the contributing project's own record id, or an authority's. A finding aid, not a claim about the place."
+        },
+        "namespace": {
+          "type": "string",
+          "description": "Whose identifier entityIdentifier is (plato:namespace): a short name such as 'geonames', 'wikidata', 'pleiades', or the contributing project's own."
         },
         "attestations": {
           "type": "array",

@@ -55,7 +55,7 @@ whgx:timespan\/c925
     a plato:Timespan ;
     plato:start_earliest "0915" ;
     plato:end_latest "0935" ;
-    plato:timespan_label "c. 925" ;
+    plato:source_label "c. 925" ;
     plato:start_precision "year" ;
     plato:end_precision "year" .
 

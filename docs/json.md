@@ -39,7 +39,7 @@ it into RDF in the PLATO ontology:
     {
       "about": "https://www.geonames.org/2654675/",
       "names": [ { "toponym": "Bristowe", "language": "enm" } ],
-      "timespans": [ { "startEarliest": "1480", "endLatest": "1485", "label": "1480-1485" } ],
+      "timespans": [ { "startEarliest": "1480", "endLatest": "1485", "sourceLabel": "1480-1485" } ],
       "sources": [ { "title": "TNA E 122/19/10" } ]
     }
   ]
@@ -56,3 +56,11 @@ JSON keys are camelCase (`startEarliest`, `formStatus`); the ontology's
 properties are snake_case (`start_earliest`, `form_status`). The context maps
 one to the other. The fixed values for keys such as `formStatus` are the full
 identifiers listed under [Vocabularies](vocabularies.md).
+
+`sourceLabel`, on a name, geometry, timespan, type or property value, is the
+source's own wording where the structured value normalises it: a date as
+written ('about 1841'), coordinates as printed. A timespan's `label` is for a
+named period ('Byzantine period'). Certainty stated in words goes in
+`certaintyLevel`, as the URI of a level such as
+`https://w3id.org/plato#LessCertain`, rather than as an invented number in
+`certainty`.

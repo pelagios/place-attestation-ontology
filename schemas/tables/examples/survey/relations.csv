@@ -1,2 +1,2 @@
-place_id,relation_type,related_place_id,date,from,to,source_id,locator,attribution,certainty,notes
-bunsty,ContainedIn,buckinghamshire,1086,1086,,domesday,,,,Domesday lists the hundred under Buckinghamshire; no end date is asserted.
+place_id,relation_type,related_place_id,date,from,to,source_id,locator,attribution,certainty,certainty_level,notes
+bunsty,ContainedIn,buckinghamshire,1086,1086,,domesday,,,,,Domesday lists the hundred under Buckinghamshire; no end date is asserted.

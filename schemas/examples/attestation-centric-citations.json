@@ -15,7 +15,7 @@
         { "toponym": "Athlone", "language": "en", "script": "Latn", "nameType": ["toponym"] }
       ],
       "timespans": [
-        { "startEarliest": "1887", "endLatest": "1887", "label": "1887" }
+        { "startEarliest": "1887", "endLatest": "1887", "sourceLabel": "1887" }
       ],
       "citations": [
         {
@@ -23,7 +23,7 @@
             "@id": "https://whgazetteer.org/example/source/bartholomew-1887",
             "title": "Bartholomew, Gazetteer of the British Isles",
             "citation": "J. Bartholomew, Gazetteer of the British Isles (Edinburgh, 1887)",
-            "timespan": { "startEarliest": "1887", "endLatest": "1887", "label": "1887" }
+            "timespan": { "startEarliest": "1887", "endLatest": "1887", "sourceLabel": "1887" }
           },
           "locator": "p. 25, s.v. Athlone"
         }
@@ -38,7 +38,7 @@
         { "toponym": "Abingdon", "language": "en", "script": "Latn", "nameType": ["toponym"] }
       ],
       "timespans": [
-        { "startEarliest": "1887", "endLatest": "1887", "label": "1887" }
+        { "startEarliest": "1887", "endLatest": "1887", "sourceLabel": "1887" }
       ],
       "citations": [
         {
@@ -84,7 +84,7 @@
         { "toponym": "Bonestou", "script": "Latn", "nameType": ["toponym"] }
       ],
       "timespans": [
-        { "startEarliest": "1254", "endLatest": "1254", "label": "1254" }
+        { "startEarliest": "1254", "endLatest": "1254", "sourceLabel": "1254" }
       ],
       "citations": [
         {

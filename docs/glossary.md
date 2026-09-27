@@ -7,7 +7,10 @@ Attestation
 
 Certainty
 : How sure whoever recorded a statement is of it, from 0 to 1. It reflects the
-  evidence: better evidence could change it. Not the same as fuzziness.
+  evidence: better evidence could change it. Not the same as fuzziness. Where
+  a source or a dataset gives certainty in words, the *certainty level*
+  records the word ('Certain', 'LessCertain', 'Uncertain') instead of a
+  number.
 
 Citation
 : One attestation's use of one source, with the locator saying where in the
@@ -18,7 +21,8 @@ CSVW (CSV on the Web)
   allowed values, how they refer to one another and how rows become RDF.
 
 Date, from, to
-: *Date* is the date as the source gives it, or "undated". *From* and *to* are
+: *Date* is the date as the source gives it, or "undated", kept in the
+  source's own words. *From* and *to* are
   the earliest and latest years or days it can mean, written with four-digit
   years.
 

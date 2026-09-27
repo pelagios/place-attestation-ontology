@@ -20,10 +20,10 @@
           {
             "name": "place_id",
             "titles": "place_id",
-            "dc:description": "A short identifier for the place, unique in this sheet. Any text will do ('bristol', 'p1'); the other sheets use it to refer to this row.",
+            "dc:description": "A short identifier for the place, unique in this sheet. Any text will do ('bristol', 'p1'); the other sheets use it to refer to this row. It is also kept in the data as the place's identifier, so a record can be traced back to your row.",
             "skos:example": "bristol",
             "required": true,
-            "suppressOutput": true
+            "propertyUrl": "https://w3id.org/plato#entity_identifier"
           },
           {
             "name": "label",
@@ -110,7 +110,7 @@
             "skos:example": "1086",
             "required": true,
             "aboutUrl": "#{source_id}-time",
-            "propertyUrl": "https://w3id.org/plato#timespan_label"
+            "propertyUrl": "https://w3id.org/plato#source_label"
           },
           {
             "name": "from",
@@ -253,13 +253,13 @@
           {
             "name": "form_status",
             "titles": "form_status",
-            "dc:description": "What kind of form this is: 'Attested' (read in the source; the default), 'Headword' (the form an editor files the entry under), 'Normalised' (a spelling made up for searching), 'Reconstructed' (inferred, not found). Leave empty for an ordinary reading.",
+            "dc:description": "What kind of form this is: 'Attested' (read in the source; the default), 'Headword' (the form an editor files the entry under), 'Normalised' (a spelling made up for searching), 'Reconstructed' (inferred, not found), 'Preferred' (the form your project prefers for display and search, which the source may not show). Leave empty for an ordinary reading.",
             "skos:example": "Headword",
             "propertyUrl": "https://w3id.org/plato#form_status",
             "valueUrl": "https://w3id.org/plato#{form_status}",
             "datatype": {
               "base": "string",
-              "format": "^(Attested|Headword|Normalised|Reconstructed)$"
+              "format": "^(Attested|Headword|Normalised|Reconstructed|Preferred)$"
             }
           },
           {
@@ -289,7 +289,7 @@
             "skos:example": "1086",
             "required": true,
             "aboutUrl": "#row-{_row}-time",
-            "propertyUrl": "https://w3id.org/plato#timespan_label"
+            "propertyUrl": "https://w3id.org/plato#source_label"
           },
           {
             "name": "from",
@@ -348,13 +348,25 @@
           {
             "name": "certainty",
             "titles": "certainty",
-            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional.",
+            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
             "skos:example": "0.9",
             "propertyUrl": "https://w3id.org/plato#certainty",
             "datatype": {
               "base": "decimal",
               "minInclusive": 0,
               "maxInclusive": 1
+            }
+          },
+          {
+            "name": "certainty_level",
+            "titles": "certainty_level",
+            "dc:description": "Certainty in words: 'Certain', 'LessCertain' or 'Uncertain', the three levels of Linked Places Format. Optional; may be given with or instead of certainty.",
+            "skos:example": "LessCertain",
+            "propertyUrl": "https://w3id.org/plato#certainty_level",
+            "valueUrl": "https://w3id.org/plato#{certainty_level}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Certain|LessCertain|Uncertain)$"
             }
           },
           {
@@ -526,7 +538,7 @@
             "skos:example": "1086",
             "required": true,
             "aboutUrl": "#row-{_row}-time",
-            "propertyUrl": "https://w3id.org/plato#timespan_label"
+            "propertyUrl": "https://w3id.org/plato#source_label"
           },
           {
             "name": "from",
@@ -585,13 +597,25 @@
           {
             "name": "certainty",
             "titles": "certainty",
-            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional.",
+            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
             "skos:example": "0.9",
             "propertyUrl": "https://w3id.org/plato#certainty",
             "datatype": {
               "base": "decimal",
               "minInclusive": 0,
               "maxInclusive": 1
+            }
+          },
+          {
+            "name": "certainty_level",
+            "titles": "certainty_level",
+            "dc:description": "Certainty in words: 'Certain', 'LessCertain' or 'Uncertain', the three levels of Linked Places Format. Optional; may be given with or instead of certainty.",
+            "skos:example": "LessCertain",
+            "propertyUrl": "https://w3id.org/plato#certainty_level",
+            "valueUrl": "https://w3id.org/plato#{certainty_level}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Certain|LessCertain|Uncertain)$"
             }
           },
           {
@@ -716,7 +740,7 @@
             "skos:example": "1086",
             "required": true,
             "aboutUrl": "#row-{_row}-time",
-            "propertyUrl": "https://w3id.org/plato#timespan_label"
+            "propertyUrl": "https://w3id.org/plato#source_label"
           },
           {
             "name": "from",
@@ -775,13 +799,25 @@
           {
             "name": "certainty",
             "titles": "certainty",
-            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional.",
+            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
             "skos:example": "0.9",
             "propertyUrl": "https://w3id.org/plato#certainty",
             "datatype": {
               "base": "decimal",
               "minInclusive": 0,
               "maxInclusive": 1
+            }
+          },
+          {
+            "name": "certainty_level",
+            "titles": "certainty_level",
+            "dc:description": "Certainty in words: 'Certain', 'LessCertain' or 'Uncertain', the three levels of Linked Places Format. Optional; may be given with or instead of certainty.",
+            "skos:example": "LessCertain",
+            "propertyUrl": "https://w3id.org/plato#certainty_level",
+            "valueUrl": "https://w3id.org/plato#{certainty_level}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Certain|LessCertain|Uncertain)$"
             }
           },
           {
@@ -917,7 +953,7 @@
             "skos:example": "1086",
             "required": true,
             "aboutUrl": "#row-{_row}-time",
-            "propertyUrl": "https://w3id.org/plato#timespan_label"
+            "propertyUrl": "https://w3id.org/plato#source_label"
           },
           {
             "name": "from",
@@ -976,13 +1012,25 @@
           {
             "name": "certainty",
             "titles": "certainty",
-            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional.",
+            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
             "skos:example": "0.9",
             "propertyUrl": "https://w3id.org/plato#certainty",
             "datatype": {
               "base": "decimal",
               "minInclusive": 0,
               "maxInclusive": 1
+            }
+          },
+          {
+            "name": "certainty_level",
+            "titles": "certainty_level",
+            "dc:description": "Certainty in words: 'Certain', 'LessCertain' or 'Uncertain', the three levels of Linked Places Format. Optional; may be given with or instead of certainty.",
+            "skos:example": "LessCertain",
+            "propertyUrl": "https://w3id.org/plato#certainty_level",
+            "valueUrl": "https://w3id.org/plato#{certainty_level}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Certain|LessCertain|Uncertain)$"
             }
           },
           {
@@ -1039,7 +1087,7 @@
     {
       "url": "properties.csv",
       "dc:title": "Properties",
-      "dc:description": "One row for each other fact a source states about a place: a population, a valuation, a market day. Each row becomes a plato:Attestation of one plato:PropertyValue.",
+      "dc:description": "One row for each other fact a source states about a place: a population, a valuation, a market day. Each row becomes a plato:Attestation of one plato:PropertyValue. A latitude given without a longitude is a property too, not a location: property_uri http://www.w3.org/2003/01/geo/wgs84_pos#lat, with the value in decimal degrees.",
       "tableSchema": {
         "aboutUrl": "#row-{_row}",
         "foreignKeys": [
@@ -1110,7 +1158,7 @@
             "skos:example": "1086",
             "required": true,
             "aboutUrl": "#row-{_row}-time",
-            "propertyUrl": "https://w3id.org/plato#timespan_label"
+            "propertyUrl": "https://w3id.org/plato#source_label"
           },
           {
             "name": "from",
@@ -1169,13 +1217,25 @@
           {
             "name": "certainty",
             "titles": "certainty",
-            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional.",
+            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
             "skos:example": "0.9",
             "propertyUrl": "https://w3id.org/plato#certainty",
             "datatype": {
               "base": "decimal",
               "minInclusive": 0,
               "maxInclusive": 1
+            }
+          },
+          {
+            "name": "certainty_level",
+            "titles": "certainty_level",
+            "dc:description": "Certainty in words: 'Certain', 'LessCertain' or 'Uncertain', the three levels of Linked Places Format. Optional; may be given with or instead of certainty.",
+            "skos:example": "LessCertain",
+            "propertyUrl": "https://w3id.org/plato#certainty_level",
+            "valueUrl": "https://w3id.org/plato#{certainty_level}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Certain|LessCertain|Uncertain)$"
             }
           },
           {
@@ -1288,13 +1348,13 @@
           {
             "name": "match_type",
             "titles": "match_type",
-            "dc:description": "'exactMatch' (certainly the same), 'closeMatch' (the same, with some difference of extent or scope), or 'related' (closely associated). Required: a match of unstated strength is ambiguous.",
+            "dc:description": "'exactMatch' (certainly the same), 'closeMatch' (the same, with some difference of extent or scope), 'related' (closely associated), or 'unspecified' (your source links the two but does not say how strongly). Required, so that a match of unstated strength is marked as such rather than read as exact.",
             "skos:example": "exactMatch",
             "required": true,
             "propertyUrl": "https://w3id.org/plato#identity_type",
             "datatype": {
               "base": "string",
-              "format": "^(exactMatch|closeMatch|related)$"
+              "format": "^(exactMatch|closeMatch|related|unspecified)$"
             }
           },
           {

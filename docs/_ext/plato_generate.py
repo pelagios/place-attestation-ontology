@@ -88,6 +88,13 @@ def write_vocabularies_md():
         for c in sorted(g.subjects(SKOS.inScheme, scheme), key=str):
             lines.append("| `{}` | {} | `{}` |".format(str(c)[len(P):], _cell(g.value(c, SKOS.definition)), c))
         lines.append("")
+    lines += ["## Certainty levels", "",
+              "The words that the `certainty_level` column, and `certaintyLevel` in JSON, can name, for certainty given in words rather than as a number.",
+              "", "| Value | Meaning | Full identifier |", "|---|---|---|"]
+    for c in sorted(g.subjects(RDF.type, PL.CertaintyLevel), key=str):
+        if str(c).startswith(P):
+            lines.append("| `{}` | {} | `{}` |".format(str(c)[len(P):], _cell(g.value(c, RDFS.comment)), c))
+    lines.append("")
     lines += ["## Relation types", "",
               "The relations that the `relation_type` column of the relations sheet, and `relationType` in JSON, can name.",
               "", "| Value | Reads as | Inverse | Meaning |", "|---|---|---|---|"]

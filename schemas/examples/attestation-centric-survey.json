@@ -31,7 +31,7 @@
           "timespan": {
             "startEarliest": "0915",
             "endLatest": "0935",
-            "label": "c. 925",
+            "sourceLabel": "c. 925",
             "startPrecision": "year",
             "endPrecision": "year"
           },
@@ -53,7 +53,7 @@
         { "toponym": "Bonestou", "script": "Latn", "nameType": ["toponym"] }
       ],
       "timespans": [
-        { "startEarliest": "1086", "endLatest": "1086", "label": "1086" }
+        { "startEarliest": "1086", "endLatest": "1086", "sourceLabel": "1086" }
       ],
       "sources": [
         { "title": "DB", "citation": "Domesday Book, Buckinghamshire" }
@@ -71,7 +71,7 @@
         { "toponym": "Bonestou", "script": "Latn", "nameType": ["toponym"] }
       ],
       "timespans": [
-        { "label": "c. 1200" }
+        { "sourceLabel": "c. 1200" }
       ],
       "sources": [
         { "title": "Deed, c. 1200 (illustrative)" }
@@ -92,7 +92,7 @@
         {
           "title": "PN Bk",
           "citation": "A. Mawer and F. M. Stenton, The Place-Names of Buckinghamshire (EPNS 2, 1925)",
-          "timespan": { "startEarliest": "1925", "endLatest": "1925", "label": "1925" }
+          "timespan": { "startEarliest": "1925", "endLatest": "1925", "sourceLabel": "1925" }
         }
       ],
       "formStatus": "https://w3id.org/plato#Headword",
