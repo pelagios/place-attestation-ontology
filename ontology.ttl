@@ -262,10 +262,14 @@ plato:PropertyValue
         The measure stays plato:property_type and plato:value_literal, and the
         area and date stay on the attestation; a cube export adds the direct
         measure statement, sdmx-dimension:refArea and refPeriod. A printed dash
-        is an observation with an obsStatus and no value, never 0; money in
-        pounds, shillings and pence is whole pence, with unit
-        plato:PreDecimalPenny; a coordinate the source does not give is an
-        explicit 'unknown' code.
+        is an observation with an obsStatus and no value, never 0. Money is
+        an exact integer in the smallest unit of its system of account
+        (farthings, for sterling amounts with halfpennies), the unit an IRI
+        from a fitting authority or minted by the encoding project, ideally
+        naming a unit of account in a named system ('penny sterling'); PLATO
+        mints no currency and converts nothing. A coordinate the source does
+        not give is an explicit 'unknown' code. A table mixing measures is one
+        qb:DataSet per measure.
 
         A latitude given without a longitude (a source's 'at 9.5 degrees
         north') is a PropertyValue, not a Geometry, since it is not a location:
@@ -1804,11 +1808,6 @@ plato:property_type
     """@en ;
     rdfs:domain plato:PropertyValue ;
     rdfs:range xsd:anyURI .
-
-plato:PreDecimalPenny
-    a skos:Concept ;
-    skos:prefLabel "penny (pre-decimal)"@en ;
-    skos:definition "DRAFT (issue #14). The penny of the pound sterling before 1971: 1/240 of a pound, 1/12 of a shilling. The unit for an amount in pounds, shillings and pence stored exactly as whole pence; the printed form stays in plato:source_label."@en .
 
 plato:universe
     a owl:ObjectProperty ;
