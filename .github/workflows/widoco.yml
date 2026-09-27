@@ -128,6 +128,31 @@ jobs:
           mkdir -p "$PUBLISH_DIR/schemas"
           cp -r schemas/. "$PUBLISH_DIR/schemas/"
 
+          # Replace Widoco's re-serialisations of the ontology with ones made
+          # directly from the source, so that every negotiated form of
+          # w3id.org/plato is the same graph. Widoco's OWL API output keeps the
+          # source triples but adds about 65 declarations of external terms,
+          # one of them wrong (geo:wktLiteral typed as owl:Class). The Turtle is
+          # the source file itself, comments included; Pages serves it as
+          # text/turtle, which raw.githubusercontent.com does not.
+          python3 -m venv /tmp/rdf
+          /tmp/rdf/bin/pip install --quiet rdflib
+          cp ontology.ttl "$PUBLISH_DIR/ontology.ttl"
+          /tmp/rdf/bin/python - "$PUBLISH_DIR" << 'PY'
+          import sys
+          from rdflib import Graph
+          from rdflib.compare import to_isomorphic
+          out = sys.argv[1]
+          g = Graph()
+          g.parse("ontology.ttl", format="turtle")
+          for name, fmt in [("ontology.nt", "nt"), ("ontology.owl", "xml"), ("ontology.jsonld", "json-ld")]:
+              g.serialize(destination=f"{out}/{name}", format=fmt)
+              h = Graph()
+              h.parse(f"{out}/{name}", format=fmt)
+              assert to_isomorphic(g) == to_isomorphic(h), name
+              print(f"{name}: {len(h)} triples, isomorphic with ontology.ttl")
+          PY
+
           # Verify
           echo "=== Files in publish dir ==="
           ls -la "$PUBLISH_DIR"/ | head -20
