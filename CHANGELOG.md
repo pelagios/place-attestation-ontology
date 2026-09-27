@@ -119,6 +119,21 @@ resolved, each towards the ontology, which set none of these constraints:
   Where the source does not say how strong the match is, the value is
   `unspecified` (see below), so that the strength is never guessed.
 
+A place can now be cited in a state that reproduces (issue #9). A Gazetteer
+is documented as versioned but had no version, so a citation of a place
+could not say which state was meant, and `plato:authority_version` could
+not be reused: its domain would have made every Gazetteer an Authority.
+Instead, as a `dcat:Dataset`, a Gazetteer uses DCAT 3's `dcat:version`,
+`dcat:isVersionOf` and `dcat:previousVersion` (JSON `version`,
+`isVersionOf`, `previousVersion`), and a place is cited as its IRI plus the
+gazetteer version. JSON also gains the gazetteer's `status`, mapped to the
+existing `plato:gazetteer_status`. Once a gazetteer is published its
+attestations are append-only, normatively: never deleted or changed, only
+superseded, contradicted or retracted, so the state as of any date is a
+filter over the data. `plato:Retracts` joins the meta types for a claim its
+maker withdraws. Datetime negotiation (RFC 7089) is recommended to
+platforms in the guide, not required. Decided by Stephen Gadd.
+
 A survey of four corpora (Pleiades, Vision of Britain, Vision of Ireland and
 DEEP, with the markets data) found the following, each measured and each
 decided by Stephen Gadd:

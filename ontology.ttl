@@ -420,6 +420,28 @@ plato:Gazetteer
         plato:licence: their domains are plato:Authority and plato:Dataset,
         so using them would make the Gazetteer one of the Authorities it
         contains attestations about.
+
+        Versions, and so citations that reproduce. A SpatialEntity's evidence
+        grows and is corrected while its identity stays the same, so a
+        citation of it must say which state was meant. For the same reason
+        as above, a Gazetteer's version uses DCAT 3's own properties, not a
+        PLATO one: dcat:version for its version indicator, and, for a frozen
+        snapshot published under its own IRI, dcat:isVersionOf (the living
+        Gazetteer) and dcat:previousVersion (the snapshot before). A
+        SpatialEntity is then cited as its IRI plus the Gazetteer version,
+        one number per gazetteer rather than one per entity, as PeriodO cites.
+
+        Once a Gazetteer's plato:gazetteer_status is 'published', its
+        attestations are append-only, and this is normative: an attestation is
+        never deleted or changed. A correction is a new attestation with a
+        meta-attestation (plato:Supersedes, plato:Contradicts), and a
+        withdrawal is a meta-attestation of type plato:Retracts. Each carries
+        plato:created. The state as of any moment D is then a filter over the
+        data: the attestations created by D, less those superseded or
+        retracted by D. A platform can offer that state on request, by
+        datetime negotiation on the entity's IRI (RFC 7089, Memento); PLATO
+        recommends this but does not require it, since it is behaviour of a
+        server, not of data.
     """@en .
 
 plato:GazetteerGroup
@@ -785,6 +807,8 @@ plato:has_meta_type
           meta-attestation's notes
         - plato:AlternativeTo: this attestation and the target are alternative
           readings of the same evidence, at most one of them right
+        - plato:Retracts: the target attestation is withdrawn by whoever made
+          it, and kept only so that earlier states can be reproduced
 
         Using SKOS concepts rather than strings enables vocabulary management
         and multilingual labels.
@@ -952,7 +976,9 @@ plato:created
     rdfs:comment """
         Timestamp when this attestation was created. This is the contribution
         date, not the historical timespan being attested (use attests_timespan
-        for that).
+        for that). In a published Gazetteer it is the time axis along which an
+        earlier state is recomputed, so every attestation and meta-attestation
+        there should carry it.
 
         Semantically equivalent to PROV-O's prov:generatedAtTime. We don't use
         formal rdfs:subPropertyOf to avoid importing PROV-O constraints.
@@ -964,8 +990,12 @@ plato:modified
     a owl:DatatypeProperty ;
     rdfs:label "modified"@en ;
     rdfs:comment """
-        Timestamp when this attestation was last modified. Enables tracking
-        of editorial changes and versioning.
+        Timestamp when this attestation was last modified, while its
+        Gazetteer is still a draft. Once the Gazetteer is published its
+        attestations are append-only (see plato:Gazetteer): a published
+        attestation is not modified, and a change is a new attestation with a
+        meta-attestation, so that the state at any earlier moment can be
+        recomputed and every citation of it reproduces.
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range xsd:dateTime .
@@ -2286,7 +2316,7 @@ plato:member_of_group
 plato:gazetteer_status
     a owl:DatatypeProperty ;
     rdfs:label "status"@en ;
-    rdfs:comment "Publication status: 'draft' or 'published'."@en ;
+    rdfs:comment "Publication status: 'draft' or 'published'. From 'published' on, the Gazetteer's attestations are append-only (see plato:Gazetteer)."@en ;
     rdfs:domain plato:Gazetteer ;
     rdfs:range xsd:string .
 
@@ -2573,6 +2603,12 @@ plato:AlternativeTo
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "alternative to"@en ;
     skos:definition "This attestation and the target are alternative readings of the same evidence: at most one of them is right. Each keeps its own certainty. Link every alternative in a set to the same first one. A set of alternatives is one piece of evidence, not several, so it must be counted once."@en .
+
+plato:Retracts
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "retracts"@en ;
+    skos:definition "The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. For a claim its maker takes back, such as a bad import, where plato:Contradicts would read as one scholar disputing another. A tool showing the current state leaves a retracted attestation out."@en .
 
 # -----------------------------------------------------------------------------
 # Certainty levels

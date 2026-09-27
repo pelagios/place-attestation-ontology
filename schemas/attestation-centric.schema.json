@@ -35,6 +35,26 @@
         },
         "licence": {
           "$ref": "plato.schema.json#/$defs/uri"
+        },
+        "version": {
+          "type": "string",
+          "description": "The gazetteer's version indicator (dcat:version): '2026-09', '1.4'. A place is cited as its IRI plus this version."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "published"
+          ],
+          "description": "Publication status (plato:gazetteer_status). Once 'published', the gazetteer's attestations are append-only: never deleted or changed, only superseded or retracted by new ones."
+        },
+        "isVersionOf": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "For a frozen snapshot: the living gazetteer it is a version of (dcat:isVersionOf)."
+        },
+        "previousVersion": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "For a frozen snapshot: the snapshot before it (dcat:previousVersion)."
         }
       },
       "required": [
