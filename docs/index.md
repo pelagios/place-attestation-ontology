@@ -13,7 +13,8 @@ something was and what it belonged to. That evidence is usually kept in
 whatever shape one project needed at the time, which makes it hard to reuse,
 to combine with other projects' work, or to hand on to others.
 
-PLATO gives that evidence a shape. It is a published standard for recording
+PLATO, the **PL**ace **AT**testation **O**ntology, gives that evidence a
+shape. It is a published standard for recording
 what sources say about places, and organising your data in its shape gives
 you three things.
 
