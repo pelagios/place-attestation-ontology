@@ -121,6 +121,13 @@
           "certainty": 1.0,
           "created": "2026-02-16T10:00:00Z"
         }
+      ],
+      "identityRelations": [
+        {
+          "object": "https://sws.geonames.org/745044/",
+          "identityType": "closeMatch",
+          "basis": "GeoNames describes the modern city: the same settlement, with a different extent. Nested here, the relation needs no subject: it is this SpatialEntity."
+        }
       ]
     }
   ]

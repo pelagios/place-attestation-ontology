@@ -66,7 +66,12 @@
     "identityRelations": {
       "type": "array",
       "description": "Identity assertions between SpatialEntities.",
-      "items": { "$ref": "plato.schema.json#/$defs/identityRelation" }
+      "items": {
+        "allOf": [
+          { "$ref": "plato.schema.json#/$defs/identityRelation" },
+          { "type": "object", "description": "At the top level nothing supplies the subject, so it must be given.", "required": ["subject"] }
+        ]
+      }
     }
   },
 

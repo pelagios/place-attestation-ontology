@@ -117,6 +117,15 @@ resolved, each towards the ontology, which set none of these constraints:
   Where the source does not say how strong the match is, the value is
   `unspecified` (see below), so that the strength is never guessed.
 
+An identity relation nested under its SpatialEntity no longer needs a
+`subject`. The JSON-LD context already took the subject from the nesting
+(the reverse of `plato:identity_subject`), as it takes a nested
+attestation's `about`, but the schema still required it everywhere. It is
+now required only in the top-level `identityRelations` of both profiles,
+where nothing else supplies it. A nested relation may still repeat it; if it
+does, it must be the enclosing SpatialEntity's `@id`. The Constantinople
+examples gain such a relation, to GeoNames.
+
 Seven gaps found while converting other projects' data to PLATO are closed:
 
 - **A source's own wording on any facet.** `sourceLabel` is added to names,

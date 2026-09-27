@@ -253,6 +253,22 @@ whgx:attestation\/istanbul-ottoman
     plato:created "2026-02-15T10:00:00Z"^^xsd:dateTime .
 
 
+# -----------------------------------------------------------------------------
+# Identity: the same place in GeoNames
+#
+# Not an attestation but a separate claim, with its own basis. In the
+# place-centric JSON it is nested under the SpatialEntity, which supplies
+# identity_subject, so the JSON gives no subject.
+# -----------------------------------------------------------------------------
+
+whgx:identity\/constantinople-geonames
+    a plato:IdentityRelation ;
+    plato:identity_subject whgx:entity\/constantinople ;
+    plato:identity_object <https://sws.geonames.org/745044/> ;
+    plato:identity_type "closeMatch" ;
+    plato:identity_basis "GeoNames describes the modern city: the same settlement, with a different extent." .
+
+
 # =============================================================================
 # Observations
 #

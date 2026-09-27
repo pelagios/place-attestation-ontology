@@ -133,7 +133,7 @@ Adding or renaming a term means touching the ontology, the JSON `$defs`, the JSO
 
 Naming conventions differ by layer and are not accidental: RDF uses `snake_case` (`attests_name`, `start_earliest`, `name_type`), JSON uses `camelCase` (`startEarliest`, `nameType`). The JSON schemas also *nest* the qualification properties under a `qualification` object on each facet, whereas in RDF they are applied directly to the facet node.
 
-The two profiles differ only in where the subject lives, and the schemas enforce this: **place-centric** nests attestations under each SpatialEntity and forbids `about` on them (`"not": {"required": ["about"]}`); **attestation-centric** references existing SpatialEntities by URI and requires `about`. Profiles `$ref` the core schema by relative path (`plato.schema.json#/$defs/…`), so the three schema files must remain siblings in `schemas/`.
+The two profiles differ only in where the subject lives, and the schemas enforce this: **place-centric** nests attestations under each SpatialEntity and forbids `about` on them (`"not": {"required": ["about"]}`); **attestation-centric** references existing SpatialEntities by URI and requires `about`. Identity relations follow the same logic: `subject` is required in the top-level `identityRelations` of both profiles, and optional on relations nested under a SpatialEntity, where the context supplies it (a nested one that repeats it must repeat the enclosing `@id`, which the schema cannot check). Profiles `$ref` the core schema by relative path (`plato.schema.json#/$defs/…`), so the three schema files must remain siblings in `schemas/`.
 
 ## Editing conventions
 

@@ -56,6 +56,11 @@
                     }
                   ]
                 }
+              },
+              "identityRelations": {
+                "type": "array",
+                "description": "Identity assertions whose subject is the enclosing SpatialEntity. 'subject' is implicit from the nesting and may be omitted; if it is given, it must be the enclosing SpatialEntity's @id.",
+                "items": { "$ref": "plato.schema.json#/$defs/identityRelation" }
               }
             }
           }
@@ -67,7 +72,12 @@
     "identityRelations": {
       "type": "array",
       "description": "Identity assertions between SpatialEntities in this submission or between submitted SpatialEntities and existing ones.",
-      "items": { "$ref": "plato.schema.json#/$defs/identityRelation" }
+      "items": {
+        "allOf": [
+          { "$ref": "plato.schema.json#/$defs/identityRelation" },
+          { "type": "object", "description": "At the top level nothing supplies the subject, so it must be given.", "required": ["subject"] }
+        ]
+      }
     }
   },
 

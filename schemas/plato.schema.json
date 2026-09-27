@@ -582,7 +582,7 @@
         "@id": { "$ref": "#/$defs/uri" },
         "subject": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the first SpatialEntity."
+          "description": "URI of the first SpatialEntity. Required in a top-level identityRelations array; may be omitted when the relation is nested under its SpatialEntity, whose @id it then is (the nesting maps to the reverse of plato:identity_subject). If given there, it must be that same @id."
         },
         "object": {
           "$ref": "#/$defs/uri",
@@ -618,7 +618,7 @@
           "description": "URI of the Candidate from which this was promoted, if any."
         }
       },
-      "required": ["subject", "object", "identityType"],
+      "required": ["object", "identityType"],
       "additionalProperties": false
     },
 
