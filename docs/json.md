@@ -17,6 +17,13 @@ validating. Worked examples are in the repository's
 [schemas/examples](https://github.com/pelagios/place-attestation-ontology/tree/main/schemas/examples)
 folder.
 
+## Checking and converting
+
+[PLATO tools](https://pelagios.org/plato-tools/) checks a JSON submission against these schemas and
+converts it to RDF, to the spreadsheet tables or to Linked Places Format, in
+the browser and at any size. It reads JSON Lines too: a header line, then one
+place per line, which is the easiest shape to write and to stream.
+
 ## From JSON to linked data
 
 Add the PLATO JSON-LD context to a JSON document and any JSON-LD processor turns

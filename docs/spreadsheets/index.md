@@ -77,9 +77,14 @@ The spreadsheets cover most datasets, but a few things need the
 ## Checking your tables
 
 The template workbook catches most mistakes as you type. For a full check,
-which is optional and needs some technical confidence, the tables are
-described in the W3C standard *CSV on the Web* (CSVW), so any CSVW validator
-can check them against the
+open **[PLATO tools](https://pelagios.org/plato-tools/)**, drop your eight CSV files (or the
+workbook, or a zip of the files) onto the page, and press **Check**. It runs
+in your browser, so nothing is uploaded, and it lists every problem with its
+sheet, row and column, in plain words. It also says what PLATO JSON could
+not hold, should you convert the tables later.
+
+If you prefer the command line: the tables are described in the W3C standard
+*CSV on the Web* (CSVW), so any CSVW validator can check them against the
 [table definitions](https://w3id.org/plato/schemas/tables/csv-metadata.json).
 For example, with Python installed:
 
@@ -97,6 +102,8 @@ missing required value and any value that is not allowed.
 Once your tables are complete and pass the check above, your data is in
 PLATO's shape. Any tool that implements PLATO can read it, and any CSVW
 processor can turn it into linked data (see [Linked data](../linked-data.md)).
+[PLATO tools](https://pelagios.org/plato-tools/) converts the tables to PLATO JSON, RDF or Linked
+Places Format in your browser.
 You can publish the tables as they are, for example in a repository such as
 Zenodo beside a publication, or load them into a platform that works with
 PLATO; platforms may prefer either the workbook or the eight CSV files.

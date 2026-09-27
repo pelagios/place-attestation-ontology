@@ -73,6 +73,10 @@ spreadsheet, you can use PLATO.
   to record manuscripts copied later, names found only inside personal names,
   editorial headwords and inferred references.
 
+**I want to check a file, or convert it to another format.**
+: Use [PLATO tools](https://pelagios.org/plato-tools/): drop the file on the page. It runs in your
+  browser, so nothing is uploaded, and it works at any size.
+
 **I produce data with my own software, or work with RDF.**
 : See [JSON formats](json.md) and [Linked data](linked-data.md).
 

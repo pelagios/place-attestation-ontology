@@ -9,6 +9,10 @@ wild uses the namespace.
 
 ### Added
 
+The guide, the README and the linked-data and JSON pages point to
+[PLATO tools](https://pelagios.org/plato-tools/), which checks and converts PLATO data in the browser
+(spreadsheet tables, PLATO JSON and JSON Lines, RDF, Linked Places Format v1).
+
 A guide to PLATO, published at
 https://pelagios.org/place-attestation-ontology/guide/ beside the ontology
 reference, and linked from the top of it. Built with Sphinx from `docs/`, it

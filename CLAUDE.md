@@ -75,6 +75,10 @@ python3 -m sphinx -b linkcheck docs docs/_build/linkcheck
 
 The workflow also inserts a "Start with the guide" banner after the first `</h1>` of Widoco's `index-en.html`, and asserts that it found one.
 
+## PLATO tools (sibling repository)
+
+[pelagios/plato-tools](https://github.com/pelagios/plato-tools), published at https://pelagios.org/plato-tools/, validates and converts PLATO data in the browser. It vendors this repository's normative files (ontology, JSON Schemas, JSON-LD context, `csv-metadata.json`) from a commit pinned in its `package.json`, and its tests encode how the three layers must agree: JSON to RDF must give exactly `jsonld.js`'s graph, RDF to JSON must be lossless, and the table validator must agree with rdf-tabular. So after changing a schema, the context or the table definitions, re-pin there (`npm run vendor`) and run its tests. Its testing surfaced three places where the layers disagree, all still open: the tables allow a type with only a label, a place with no evidence rows and an identity match without a match type, while the JSON Schema requires `type.identifier`, at least one attestation per place, and `identityType`.
+
 ## Releases
 
 A release bumps the version in four places that must stay in step:

@@ -50,6 +50,13 @@ Every node is typed, and every attestation has exactly one subject, source,
 date and citation, so the output is complete PLATO without further
 processing.
 
+## Without installing anything
+
+[PLATO tools](https://pelagios.org/plato-tools/) converts between PLATO JSON, RDF (it reads N-Triples,
+N-Quads and Turtle, and writes N-Triples), the spreadsheet tables and Linked
+Places Format, in the browser, and checks RDF against the terms the ontology
+declares.
+
 ## JSON to RDF
 
 Add the JSON-LD context to a JSON document, as described under
