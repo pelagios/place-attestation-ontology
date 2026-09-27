@@ -3,9 +3,14 @@
 table.docutils td, table.docutils th { vertical-align: top; }
 
 /* The landing page's drawing: beside the text on wide screens, above it on narrow ones.
-   A white panel keeps the black line art legible in the dark theme. */
-img.plato-hero { float: right; width: 38%; max-width: 340px; margin: 0 0 1rem 1.5rem;
-  background: #ffffff; border-radius: 12px; padding: 6px; }
+   The drawing is line art on a transparent ground, so it sits on the page itself rather
+   than on a panel. In the dark theme the ink is inverted, which turns black lines white;
+   a white panel would otherwise be a bright rectangle in the middle of a dark page. */
+img.plato-hero { float: right; width: 38%; max-width: 340px; margin: 0 0 1rem 1.5rem; }
+body[data-theme="dark"] img.plato-hero { filter: invert(1); }
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) img.plato-hero { filter: invert(1); }
+}
 @media (max-width: 46em) { img.plato-hero { float: none; display: block; width: 75%; margin: 0 auto 1.25rem; } }
 
 /* Space after a list that ends a definition, before the next term. */
