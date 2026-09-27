@@ -6,7 +6,7 @@ Attestation
   spreadsheets becomes one attestation.
 
 Certainty
-: How sure the contributor is of a statement, from 0 to 1. It reflects the
+: How sure whoever recorded a statement is of it, from 0 to 1. It reflects the
   evidence: better evidence could change it. Not the same as fuzziness.
 
 Citation
@@ -37,7 +37,7 @@ Ibid. (ibidem), idem
 
 JSON-LD
 : A way of writing linked data as JSON. PLATO's JSON-LD context turns a JSON
-  submission into RDF.
+  document into RDF.
 
 Locator
 : Where in a source the evidence is: a page, folio, column or entry number.

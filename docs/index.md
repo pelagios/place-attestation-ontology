@@ -1,20 +1,48 @@
-# PLATO: a guide for contributors
+# PLATO: a guide to organising data about places
 
-PLATO is a shared way of recording what historical sources say about places:
-what they were called, where they were, what kind of places they were and how
-they related to one another. Every one of those statements is kept together
-with the source that makes it and the date it applies to, so that evidence
-from many people about the same place can be brought together without losing
-track of who said what.
+```{image} _static/plato-thinking.png
+:alt: A line drawing of the philosopher Plato, chin in hand, thinking about a network of linked data: Wikidata, GeoNames, the Getty AAT, PeriodO and linked open data.
+:class: plato-hero
+```
 
-You do not need to know anything about ontologies, JSON or linked data to use
-PLATO. If you can fill in a spreadsheet, you can contribute.
+## Why PLATO
+
+Research on historical places produces a great deal of evidence: names read
+in documents, positions taken from maps, statements about what kind of place
+something was and what it belonged to. That evidence is usually kept in
+whatever shape one project needed at the time, which makes it hard to reuse,
+to combine with other projects' work, or to hand on to others.
+
+PLATO gives that evidence a shape. It is a published standard for recording
+what sources say about places, and organising your data in its shape gives
+you three things.
+
+**A structure to think with.**
+: PLATO asks the same few questions of every piece of data: *what is it
+  about, what does it say, which source says so, and when does it apply?*
+  Answering them is often the most useful step in organising a dataset,
+  because it separates what your sources say from your own interpretation of
+  them, and shows where your evidence is thin.
+
+**Data that tools can rely on.**
+: Data in PLATO's shape can be read by any software that implements the PLATO
+  standard, without a conversion written for your project alone. You do not
+  need to know in advance which tools those will be.
+
+**Nothing is flattened.**
+: Every statement keeps its source and its date, so your data can sit
+  alongside other people's evidence about the same places without either
+  overwriting the other, and a reader can always ask *who says so, and when?*
+
+This guide shows how to put your data into that shape. You do not need to
+know anything about ontologies, JSON or linked data: if you can fill in a
+spreadsheet, you can use PLATO.
 
 ## Where to start
 
-**I have a list of places and want to contribute it.**
-: Read [Contributing with spreadsheets](spreadsheets/index.md), then follow
-  [your first contribution](spreadsheets/first-contribution.md) step by step.
+**I have a list of places, or notes about places, to organise.**
+: Read [Organising data in spreadsheets](spreadsheets/index.md), then follow
+  [a first dataset](spreadsheets/first-dataset.md) step by step.
 
 **I want to understand the ideas first.**
 : [The ideas in five minutes](ideas.md) explains places, attestations,
@@ -25,8 +53,8 @@ PLATO. If you can fill in a spreadsheet, you can contribute.
   to record manuscripts copied later, names found only inside personal names,
   editorial headwords and inferred references.
 
-**I work with JSON or RDF.**
-: See [JSON submissions](json.md) and [Linked data](linked-data.md).
+**I produce data with my own software, or work with RDF.**
+: See [JSON formats](json.md) and [Linked data](linked-data.md).
 
 **I have met a word I do not know.**
 : The [glossary](glossary.md) explains the terms used in this guide.
@@ -42,7 +70,7 @@ guide is the friendlier way in.
 
 ideas
 spreadsheets/index
-spreadsheets/first-contribution
+spreadsheets/first-dataset
 spreadsheets/survey-example
 ```
 

@@ -40,7 +40,7 @@ processor converts them. With the reference implementation,
 rdf serialize --validate --input-format tabular --minimal --output-format turtle csv-metadata.json
 ```
 
-Use `serialize --validate` to check a submission: rdf-tabular's plain
+Use `serialize --validate` to check a set of tables: rdf-tabular's plain
 `validate` command reports broken references as warnings and still says the
 input is valid.
 
@@ -52,6 +52,6 @@ processing.
 
 ## JSON to RDF
 
-Add the JSON-LD context to a JSON submission, as described under
-[JSON submissions](json.md), and expand or convert it with any JSON-LD 1.1
+Add the JSON-LD context to a JSON document, as described under
+[JSON formats](json.md), and expand or convert it with any JSON-LD 1.1
 processor.

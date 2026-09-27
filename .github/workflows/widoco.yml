@@ -154,7 +154,7 @@ jobs:
               print(f"{name}: {len(h)} triples, isomorphic with ontology.ttl")
           PY
 
-          # Build the contributor guide (Sphinx, docs/) into guide/. Its reference
+          # Build the PLATO guide (Sphinx, docs/) into guide/. Its reference
           # pages, template workbook and download zips are generated from
           # ontology.ttl and schemas/tables/ during the build. -W fails the
           # deploy on any warning, so a broken link or include never goes live.
@@ -168,8 +168,8 @@ jobs:
           html = open(path, encoding="utf-8").read()
           banner = ('<p style="background:#fff4d6;border:1px solid #e0c36a;border-radius:6px;'
                     'padding:10px 14px;font-size:1.05em">New to PLATO? '
-                    '<a href="guide/"><strong>Start with the guide</strong></a>: what PLATO is, '
-                    'and how to contribute with an ordinary spreadsheet. This page is the formal reference.</p>')
+                    '<a href="guide/"><strong>Start with the guide</strong></a>: why PLATO, and how to organise '
+                    'data about places in an ordinary spreadsheet. This page is the formal reference.</p>')
           assert "</h1>" in html, "Widoco page has no </h1> to put the guide link after"
           open(path, "w", encoding="utf-8").write(html.replace("</h1>", "</h1>" + banner, 1))
           print("guide link added to index-en.html")

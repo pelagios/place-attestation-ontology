@@ -6,7 +6,7 @@
     }
   ],
   "dc:title": "PLATO spreadsheet tables",
-  "dc:description": "CSV on the Web (CSVW) metadata for contributing to PLATO with spreadsheets. It describes eight linked tables, how they refer to one another, and how each row becomes RDF in the PLATO ontology (https://w3id.org/plato#). Keep every table, even if you leave it empty apart from its header row. Guide: https://pelagios.org/place-attestation-ontology/guide/.",
+  "dc:description": "CSV on the Web (CSVW) metadata for organising data about places in PLATO's shape with spreadsheets. It describes eight linked tables, how they refer to one another, and how each row becomes RDF in the PLATO ontology (https://w3id.org/plato#). Keep every table, even if you leave it empty apart from its header row. Guide: https://pelagios.org/place-attestation-ontology/guide/.",
   "dc:source": "https://w3id.org/plato/schemas/tables/csv-metadata.json",
   "tables": [
     {

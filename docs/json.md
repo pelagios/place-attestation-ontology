@@ -1,6 +1,6 @@
-# JSON submissions
+# JSON formats
 
-For contributors who produce data by program, PLATO has two JSON formats,
+If you produce data with your own software, PLATO has two JSON formats,
 each defined by a JSON Schema. They carry everything the spreadsheets do and
 more: several facts or several sources in one attestation, shared names and
 geometries, comments on other people's evidence.
@@ -19,7 +19,7 @@ folder.
 
 ## From JSON to linked data
 
-Add the PLATO JSON-LD context to a submission and any JSON-LD processor turns
+Add the PLATO JSON-LD context to a JSON document and any JSON-LD processor turns
 it into RDF in the PLATO ontology:
 
 ```json
@@ -27,7 +27,7 @@ it into RDF in the PLATO ontology:
   "@context": "https://w3id.org/plato/schemas/plato.context.jsonld",
   "$schema": "https://w3id.org/plato/schemas/attestation-centric.schema.json",
   "profile": "attestation-centric",
-  "gazetteer": { "title": "My contribution" },
+  "gazetteer": { "title": "My dataset" },
   "attestations": [
     {
       "about": "https://www.geonames.org/2654675/",

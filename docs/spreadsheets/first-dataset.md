@@ -1,6 +1,6 @@
-# Your first contribution
+# A first dataset, step by step
 
-This walkthrough builds a small contribution from one source: a London customs
+This walkthrough builds a small dataset from one source: a London customs
 account of 1480 to 1485 that mentions Bristol and Deptford Strand. It uses
 five of the eight sheets. The finished tables are the *customs* example,
 which you can {download}`download as CSV files <../_generated/downloads/plato-tables-example-customs.zip>`
@@ -40,7 +40,7 @@ One row for each name a source gives, spelt exactly as the source spells it.
 ```
 
 The first row says: *the customs account, for 1480 to 1485, calls Bristol
-"Bristowe"*. The second says how sure the contributor is of a damaged reading
+"Bristowe"*. The second says how sure the compiler is of a damaged reading
 (`certainty` 0.7) and why (`notes`). *Deptford Strand* names both a place and
 a street, hence two name types.
 

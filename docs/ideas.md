@@ -76,11 +76,11 @@ than lowering your certainty, so that the reason is kept.
 
 ## Why this way
 
-Because every statement keeps its source and date, contributions from
+Because every statement keeps its source and date, datasets from
 different projects can be combined without anyone's evidence being flattened
 into someone else's. A user can always ask *who says so, and when?* And
 because a place's names and locations are evidence rather than fixed
 properties, disagreements between sources can be recorded instead of resolved
 by deletion.
 
-Next: [Contributing with spreadsheets](spreadsheets/index.md).
+Next: [Organising data in spreadsheets](spreadsheets/index.md).

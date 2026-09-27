@@ -1,8 +1,11 @@
-# Contributing with spreadsheets
+# Organising data in spreadsheets
 
-You can contribute to PLATO with an ordinary spreadsheet in Excel,
-LibreOffice or Google Sheets. The spreadsheet has eight sheets, one for each
-kind of information. Most contributions use only three or four of them.
+You can put your data into PLATO's shape with an ordinary spreadsheet in
+Excel, LibreOffice or Google Sheets. The spreadsheet has eight sheets, one for
+each kind of information, and filling them in is also a way of working out
+what your data is: which places it is about, which sources it rests on, and
+what each source actually says. Most datasets use only three or four of the
+sheets.
 
 ## Get the template
 
@@ -60,7 +63,7 @@ typing, and save CSV files as **CSV UTF-8**.
 
 ## What the spreadsheets cannot say
 
-The spreadsheets cover most contributions, but a few things need the
+The spreadsheets cover most datasets, but a few things need the
 [JSON format](../json.md) instead:
 
 - one piece of evidence that rests on two sources at once, such as the
@@ -89,8 +92,11 @@ csvwvalidate csv-metadata.json
 It reports, with the row and column, any identifier that does not exist, any
 missing required value and any value that is not allowed.
 
-## Submitting
+## Using your tables
 
-How you submit depends on the platform you are contributing to: some take the
-workbook, some the eight CSV files. Check with the platform; this guide will
-list platforms as they add support.
+Once your tables are complete and pass the check above, your data is in
+PLATO's shape. Any tool that implements PLATO can read it, and any CSVW
+processor can turn it into linked data (see [Linked data](../linked-data.md)).
+You can publish the tables as they are, for example in a repository such as
+Zenodo beside a publication, or load them into a platform that works with
+PLATO; platforms may prefer either the workbook or the eight CSV files.
