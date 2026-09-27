@@ -9,6 +9,18 @@ wild uses the namespace.
 
 ### Added
 
+A contributor guide, published at
+https://pelagios.org/place-attestation-ontology/guide/ beside the ontology
+reference, and linked from the top of it. Built with Sphinx from `docs/`, it
+is written for people with no background in ontologies or linked data: the
+ideas in plain language, how to contribute with a spreadsheet (a first
+contribution step by step, and a place-name survey example for copies,
+editions, "ibid." and headwords), a reference for every sheet and column, the
+vocabularies, the JSON formats, the linked-data addresses, and a glossary.
+The sheet reference, vocabulary pages, template workbook and download zips
+are generated from `ontology.ttl` and `schemas/tables/` during the build, so
+they cannot drift from the normative files.
+
 Spreadsheet tables for contributors who work in Excel, LibreOffice or Google
 Sheets: `schemas/tables/`, eight linked CSV tables (places, sources, names,
 locations, types, relations, properties, identities) described by a CSV on

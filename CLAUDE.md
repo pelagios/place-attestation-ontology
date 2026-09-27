@@ -64,6 +64,17 @@ CI never parses `examples/*.ttl`, so nothing but a local check catches syntax er
 
 The workflow's fragile parts are already commented in place: the Widoco release lookup must send an `Authorization` header (unauthenticated API calls share a per-IP quota across runners and get rate-limited), while the asset download must **not** (the redirect target rejects it). Widoco also exits non-zero on success, so the run is `|| true` and success is inferred from the output tree.
 
+## Contributor guide (Sphinx)
+
+`docs/` is a Sphinx site (MyST Markdown, Furo theme), built by the docs workflow into `guide/` on Pages: https://pelagios.org/place-attestation-ontology/guide/. It is written for non-technical contributors, so keep its prose plain and explain every term (British spelling, as everywhere). `docs/_ext/plato_generate.py` generates, at build time and into the git-ignored `docs/_generated/`: the sheet reference from `schemas/tables/csv-metadata.json`, the vocabulary pages from `ontology.ttl`, the template workbook (`.xlsx`, with drop-downs and text-formatted columns), and zips of the template and each worked example. The walkthrough pages `{include}` tables rendered from the example CSVs rather than quoting them, so none of this can drift. Build locally with warnings as errors, as CI does, and run the link checker after changing links:
+
+```bash
+python3 -m sphinx -W --keep-going -b html docs docs/_build/html
+python3 -m sphinx -b linkcheck docs docs/_build/linkcheck
+```
+
+The workflow also inserts a "Start with the guide" banner after the first `</h1>` of Widoco's `index-en.html`, and asserts that it found one.
+
 ## Releases
 
 A release bumps the version in four places that must stay in step:
