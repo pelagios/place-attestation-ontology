@@ -84,8 +84,22 @@ in your browser, so nothing is uploaded, and it lists every problem with its
 sheet, row and column, in plain words. It also says what PLATO JSON could
 not hold, should you convert the tables later.
 
-If you prefer the command line: the tables are described in the W3C standard
-*CSV on the Web* (CSVW), so any CSVW validator can check them against the
+If you prefer the command line, or have many sets of tables to check, PLATO
+tools runs there too, with the same checks and the same report. You need
+[Node.js](https://nodejs.org) 24 or later; then, in a terminal:
+
+```bash
+# a folder holding your eight CSV files is one set of tables;
+# a zip of them, or the workbook, works the same way
+npx github:pelagios/plato-tools check my-tables/
+```
+
+Name as many folders or files as you like: each gets its own report, and a
+total comes at the end. The [instructions](https://github.com/pelagios/plato-tools#from-the-command-line) list the other options,
+including conversion.
+
+The tables are also described in the W3C standard *CSV on the Web* (CSVW), so
+any CSVW validator can check them against the
 [table definitions](https://w3id.org/plato/schemas/tables/csv-metadata.json).
 For example, with Python installed:
 

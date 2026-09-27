@@ -11,7 +11,9 @@ wild uses the namespace.
 
 The guide, the README and the linked-data and JSON pages point to
 [PLATO tools](https://pelagios.org/plato-tools/), which checks and converts PLATO data in the browser
-(spreadsheet tables, PLATO JSON and JSON Lines, RDF, Linked Places Format v1).
+(spreadsheet tables, PLATO JSON and JSON Lines, RDF, Linked Places Format v1). PLATO tools also runs from the command line, for checking and converting
+many files at once; the guide's spreadsheet, JSON and linked-data pages and
+the README say how.
 
 A guide to PLATO, published at
 https://pelagios.org/place-attestation-ontology/guide/ beside the ontology

@@ -91,7 +91,8 @@ spreadsheet, you can use PLATO.
 
 **I want to check a file, or convert it to another format.**
 : Use [PLATO tools](https://pelagios.org/plato-tools/): drop the file on the page. It runs in your
-  browser, so nothing is uploaded, and it works at any size.
+  browser, so nothing is uploaded, and it works at any size. To check many
+  files at once, it also runs [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line).
 
 **I produce data with my own software, or work with RDF.**
 : See [JSON formats](json.md) and [Linked data](linked-data.md).

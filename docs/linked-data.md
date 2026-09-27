@@ -55,7 +55,11 @@ processing.
 [PLATO tools](https://pelagios.org/plato-tools/) converts between PLATO JSON, RDF (it reads N-Triples,
 N-Quads and Turtle, and writes N-Triples), the spreadsheet tables and Linked
 Places Format, in the browser, and checks RDF against the terms the ontology
-declares.
+declares. The same conversions run [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line) for batch
+work, with Node.js 24 or later: for example,
+`npx github:pelagios/plato-tools convert --to ntriples data.jsonl`. Large RDF
+files are handled through a working database on disk, as in the browser, so
+memory stays roughly constant at any size.
 
 ## JSON to RDF
 

@@ -29,3 +29,7 @@ html_theme_options = {
     "source_directory": "docs/",
 }
 html_show_sourcelink = False
+
+# GitHub renders a README heading's anchor as "user-content-<slug>" and resolves "#<slug>" with a
+# script, so the link checker cannot find it (checked by hand: #from-the-command-line exists).
+linkcheck_anchors_ignore_for_url = [r"https://github\.com/"]

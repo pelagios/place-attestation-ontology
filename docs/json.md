@@ -19,10 +19,23 @@ folder.
 
 ## Checking and converting
 
-[PLATO tools](https://pelagios.org/plato-tools/) checks a JSON submission against these schemas and
+[PLATO tools](https://pelagios.org/plato-tools/) checks a JSON document against these schemas and
 converts it to RDF, to the spreadsheet tables or to Linked Places Format, in
 the browser and at any size. It reads JSON Lines too: a header line, then one
 place per line, which is the easiest shape to write and to stream.
+
+For batch jobs and pipelines it also runs [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line),
+with Node.js 24 or later. It uses the same engine as the page, so it gives
+the same results:
+
+```bash
+npx github:pelagios/plato-tools check data/*.jsonl            # a report per file, then a total
+npx github:pelagios/plato-tools check --json data/*.json > report.jsonl
+npx github:pelagios/plato-tools convert --to ntriples --out rdf/ data/*.jsonl
+```
+
+It exits with 0 when no file has problems, 1 when any has, and 2 when a file
+cannot be read or the command is wrong, so a script can stop on invalid data.
 
 ## From JSON to linked data
 
