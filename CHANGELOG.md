@@ -71,6 +71,24 @@ property the profiles' top-level `identityRelations` maps to.
 
 ### Changed
 
+Three places where the spreadsheet tables and the JSON Schema disagreed are
+resolved, each towards the ontology, which set none of these constraints:
+
+- A type needs only a label. `type.identifier` is no longer required in
+  `plato.schema.json`, though still strongly encouraged: a source's own type
+  word with no vocabulary match (the survey's "hundred") is recorded as a
+  label alone, as the tables and the ontology already allowed.
+- A place may have no attestations. The place-centric profile no longer
+  requires `attestations` or sets a minimum of one. Such a place is only a
+  referent, such as the target of a relation, and its label is not evidence.
+- An identity match must say what kind of match it is. `match_type` is now
+  required in the identities sheet, as `identityType` already was in JSON:
+  a match of unstated strength is ambiguous.
+
+The guide's "Data that tools can rely on" is now "Ready for other systems",
+so that it is not confused with PLATO tools, and says that the World
+Historical Gazetteer is moving towards implementing PLATO.
+
 `plato:bibliographic_string` now has domain `plato:Authority`, not
 `plato:Source`. The JSON `source` object allows a `citation` whatever its
 `authorityType`, so a cited dataset was inferred to be both a Source and a

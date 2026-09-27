@@ -44,10 +44,12 @@ you three things.
   - a reference an editor has had to work out from "ibid.";
   - a match with a record elsewhere that is close, but perhaps not exact.
 
-**Data that tools can rely on.**
+**Ready for other systems.**
 : Data in PLATO's shape can be read by any software that implements the PLATO
   standard, without a conversion written for your project alone. You do not
-  need to know in advance which tools those will be.
+  need to know in advance which systems those will be. The World Historical
+  Gazetteer is moving towards implementing PLATO, so that data organised this
+  way can more easily be welcomed there.
 
 **Nothing is flattened.**
 : Every statement keeps its source and its date, so your data can sit

@@ -257,7 +257,7 @@
         "@id": { "$ref": "#/$defs/uri" },
         "identifier": {
           "$ref": "#/$defs/uri",
-          "description": "URI in the controlled vocabulary (e.g. an AAT concept URI)."
+          "description": "URI of the concept in a controlled vocabulary (e.g. an AAT concept URI). Strongly encouraged, since it is what lets types from different sources be compared, but not required: a source's own type word with no vocabulary match is recorded as a label alone."
         },
         "label": { "type": "string", "description": "Human-readable label." },
         "sourceLabel": {
@@ -266,7 +266,7 @@
         },
         "qualification": { "$ref": "#/$defs/qualification" }
       },
-      "required": ["identifier", "label"],
+      "required": ["label"],
       "additionalProperties": false
     },
 

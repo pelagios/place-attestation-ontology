@@ -35,7 +35,7 @@
 
     "spatialEntities": {
       "type": "array",
-      "description": "The SpatialEntitys being submitted, each with nested attestations.",
+      "description": "The SpatialEntities being submitted, each with its attestations nested. A SpatialEntity may have no attestations: it is then only a referent, such as the target of a relation, and its label is not evidence.",
       "items": {
         "allOf": [
           { "$ref": "plato.schema.json#/$defs/spatialEntity" },
@@ -44,7 +44,6 @@
             "properties": {
               "attestations": {
                 "type": "array",
-                "minItems": 1,
                 "items": {
                   "allOf": [
                     { "$ref": "plato.schema.json#/$defs/attestation" },
@@ -58,8 +57,7 @@
                   ]
                 }
               }
-            },
-            "required": ["attestations"]
+            }
           }
         ]
       },

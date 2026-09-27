@@ -1288,8 +1288,9 @@
           {
             "name": "match_type",
             "titles": "match_type",
-            "dc:description": "'exactMatch' (certainly the same), 'closeMatch' (the same, with some difference of extent or scope), or 'related' (closely associated). Optional.",
+            "dc:description": "'exactMatch' (certainly the same), 'closeMatch' (the same, with some difference of extent or scope), or 'related' (closely associated). Required: a match of unstated strength is ambiguous.",
             "skos:example": "exactMatch",
+            "required": true,
             "propertyUrl": "https://w3id.org/plato#identity_type",
             "datatype": {
               "base": "string",
@@ -1324,10 +1325,10 @@
           },
           {
             "name": "type_identity",
-            "virtual": true,
-            "aboutUrl": "#row-{_row}",
             "propertyUrl": "rdf:type",
-            "valueUrl": "https://w3id.org/plato#IdentityRelation"
+            "valueUrl": "https://w3id.org/plato#IdentityRelation",
+            "aboutUrl": "#row-{_row}",
+            "virtual": true
           }
         ]
       }
