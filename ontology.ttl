@@ -656,9 +656,14 @@ plato:citation_function
 
         Without it, 'this source is the evidence' and 'see this source for
         more' are the same link, which is the distinction an attestation model
-        exists to make: 136,758 of Pleiades' 218,324 references are 'see
-        further', and only 12,483 are cited as evidence. Absent, the function
+        exists to make: 143,418 of Pleiades' 244,759 references are 'see
+        further', and only 21,652 are cited as evidence. Absent, the function
         is unstated, as before; a consumer should not assume evidence.
+
+        Only a property CiTO defines is a valid value. An IRI in the CiTO
+        namespace is not enough: Pleiades writes cito:seeFurther and
+        cito:seeAlso, which CiTO does not define, so the JSON Schema and the
+        tables list the accepted properties exactly.
     """@en ;
     rdfs:domain plato:Citation ;
     rdfs:range rdf:Property .

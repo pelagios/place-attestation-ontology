@@ -129,8 +129,12 @@ decided by Stephen Gadd:
   `cito:citesAsDataSource`, `cito:citesAsRelated` and the rest of the 43
   properties below `cito:cites` in CiTO 2.9.0, which the JSON Schema and the
   tables list exactly. Only CiTO terms are accepted; a vocabulary's own terms,
-  such as Pleiades' `seeFurther` (136,758 of its 218,324 references), are
-  mapped to CiTO by the producer.
+  such as Pleiades' `seeFurther` (143,418 of its 244,759 references), are
+  mapped to CiTO by the producer. Pleiades writes them as `cito:seeFurther`
+  and `cito:seeAlso`, IRIs in CiTO's namespace that CiTO does not define,
+  which is why the accepted properties are listed exactly rather than
+  matched by namespace. (The survey first gave 218,324 references; it had
+  missed the 22,311 names that carry their own.)
 - **How well a form was read.** `plato:transcription_accuracy` (Accurate,
   Inaccurate, False) and `plato:transcription_completeness` (Complete,
   Reconstructable, NonReconstructable), two new concept schemes. Like the
