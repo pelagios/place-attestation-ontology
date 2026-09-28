@@ -1,9 +1,15 @@
 # Changelog
 
-All notable changes to PLATO are recorded here. The ontology is an early draft
-with no implementations yet, so a renamed term is removed outright rather than
-retained as a deprecated equivalent. That policy will change once data in the
-wild uses the namespace.
+All notable changes to PLATO are recorded here. The ontology is an early draft.
+
+Until 0.5.0 it had no implementations and no data published in its namespace,
+so a renamed term was removed outright rather than kept as a deprecated
+equivalent. That is no longer so: PLATO tools implements it, and DEEP (the
+digitised English Place-Name Society survey) publishes its data in PLATO's
+namespace. So from 0.5.0 on, a term that is renamed or withdrawn is kept,
+marked `owl:deprecated` with a pointer to its replacement, for at least one
+release before it is removed. The changes recorded under 0.5.0 and earlier
+were made under the earlier policy.
 
 ## 0.5.0
 

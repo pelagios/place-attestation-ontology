@@ -143,6 +143,10 @@ A figure from a statistical table is a `plato:PropertyValue` that is also a `qb:
 
 A Gazetteer is versioned with DCAT 3 (`dcat:version`, `dcat:isVersionOf`, `dcat:previousVersion`), not with `plato:authority_version`, whose domain would make it an Authority. Once a Gazetteer's status is `published`, its attestations are append-only, and this is normative: never deleted or changed; corrections are new attestations with a meta-attestation (Supersedes, Contradicts, Retracts). Any tool that shows the current state must leave retracted and superseded attestations out, and any tool that writes to a published gazetteer must not edit in place.
 
+## Deprecation
+
+From 0.5.0 on, PLATO has an implementation (PLATO tools) and data published in its namespace (DEEP), so a renamed or withdrawn term is not removed outright: keep it, mark it `owl:deprecated true` with a pointer to its replacement (in its comment, and as `dcterms:isReplacedBy` where there is one), and remove it no sooner than the release after. The same holds for a JSON key: keep it in the schema and the context, described as deprecated, for a release. The CHANGELOG preamble states the policy.
+
 ## Editing conventions
 
 `ontology.ttl` is organised into banner-comment sections (`# ====` for major groups, `# ----` for individual terms). Every term carries an `rdfs:label`, an `@en` triple-quoted `rdfs:comment` that explains the *rationale* and not just the meaning, and often a preceding prose comment block giving the design argument. New terms should match that density — the file doubles as the design document, and Widoco renders the comments as the published documentation.
