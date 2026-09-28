@@ -104,6 +104,9 @@ spreadsheet, you can use PLATO.
 **I produce data with my own software, or work with RDF.**
 : See [JSON formats](json.md) and [Linked data](linked-data.md).
 
+**My sources are statistical tables: census volumes, returns.**
+: See [Statistical tables](statistics.md).
+
 **I have met a word I do not know.**
 : The [glossary](glossary.md) explains the terms used in this guide.
 
@@ -136,6 +139,7 @@ glossary
 :caption: For developers
 
 json
+statistics
 linked-data
 ```
 

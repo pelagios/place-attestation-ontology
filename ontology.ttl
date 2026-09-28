@@ -251,9 +251,9 @@ plato:PropertyValue
         asserts nothing false, and needs no agent class: PLATO's own agent
         classes (Contributor, Organization) describe who recorded the data.
 
-        DRAFT (issue #14): a figure from a statistical table is a
-        PropertyValue that is also a qb:Observation of the RDF Data Cube
-        vocabulary. It carries qb:dataSet (the table, a qb:DataSet), one
+        A figure from a statistical table (a census count, a toll receipt) is
+        a PropertyValue that is also a qb:Observation of the W3C RDF Data
+        Cube vocabulary. It carries qb:dataSet (the table, a qb:DataSet), one
         direct statement for each of its coordinates with the table's
         qb:DimensionProperty predicates, one for each fact about the figure
         with qb:AttributeProperty predicates (sdmx-attribute:obsStatus for a
@@ -269,7 +269,11 @@ plato:PropertyValue
         naming a unit of account in a named system ('penny sterling'); PLATO
         mints no currency and converts nothing. A coordinate the source does
         not give is an explicit 'unknown' code. A table mixing measures is one
-        qb:DataSet per measure.
+        qb:DataSet per measure. Dimension values are concepts, with the
+        source's label as skos:prefLabel, in code lists the encoding project
+        publishes where none exists. A statistical table in spreadsheet form
+        keeps its own CSV on the Web description and links to places by
+        place_id. The design, and its testing on three corpora, is issue #14.
 
         A latitude given without a longitude (a source's 'at 9.5 degrees
         north') is a PropertyValue, not a Geometry, since it is not a location:
@@ -1846,8 +1850,10 @@ plato:universe
     a owl:ObjectProperty ;
     rdfs:label "universe"@en ;
     rdfs:comment """
-        DRAFT (issue #14). The figure this figure is a part or share of: its
-        denominator, where the source defines one. The occupied beside the
+        The figure this figure is a part or share of: its denominator, where
+        the source defines one. Asserted only from the source, never inferred
+        from labels or sums: in Vision of Ireland three of seven plausible
+        denominators by name are wrong. The occupied beside the
         total of the same row, or Vision of Ireland's Total Population cube as
         the universe of the others for the same unit and year. RDF Data Cube
         has no such property, and without it which number is the denominator

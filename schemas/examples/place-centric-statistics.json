@@ -3,7 +3,7 @@
   "profile": "place-centric",
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/gazetteer/statistics",
-    "title": "Figures from a statistical table (illustrative; draft, issue #14)"
+    "title": "Figures from a statistical table (illustrative)"
   },
   "dataSets": [
     {

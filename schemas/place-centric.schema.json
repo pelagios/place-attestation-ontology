@@ -64,7 +64,7 @@
     },
     "dataSets": {
       "type": "array",
-      "description": "DRAFT (issue #14). The statistical tables the document's figures belong to.",
+      "description": "The statistical tables the document's figures belong to.",
       "items": {
         "$ref": "plato.schema.json#/$defs/dataSet"
       }

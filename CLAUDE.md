@@ -135,6 +135,10 @@ Naming conventions differ by layer and are not accidental: RDF uses `snake_case`
 
 The two profiles differ only in where the subject lives, and the schemas enforce this: **place-centric** nests attestations under each SpatialEntity and forbids `about` on them (`"not": {"required": ["about"]}`); **attestation-centric** references existing SpatialEntities by URI and requires `about`. Identity relations follow the same logic: `subject` is required in the top-level `identityRelations` of both profiles, and optional on relations nested under a SpatialEntity, where the context supplies it (a nested one that repeats it must repeat the enclosing `@id`, which the schema cannot check). Profiles `$ref` the core schema by relative path (`plato.schema.json#/$defs/…`), so the three schema files must remain siblings in `schemas/`.
 
+### Statistical figures (issue #14)
+
+A figure from a statistical table is a `plato:PropertyValue` that is also a `qb:Observation` (RDF Data Cube). Its coordinates and attributes are direct statements keyed by the table's property IRIs: in JSON, absolute-IRI keys under the `dimensions` and `attributes` nesting keys. The measure stays `property_type`/`value_literal`, and the area and date stay on the attestation; nothing is written twice, so a PLATO document is not Data Cube as written, and plato-tools' `--cube` export derives the rest. `plato:universe` is asserted only from the source. PLATO mints no currency, no code lists and no units: those are the encoding project's.
+
 ### Versions and the append-only rule
 
 A Gazetteer is versioned with DCAT 3 (`dcat:version`, `dcat:isVersionOf`, `dcat:previousVersion`), not with `plato:authority_version`, whose domain would make it an Authority. Once a Gazetteer's status is `published`, its attestations are append-only, and this is normative: never deleted or changed; corrections are new attestations with a meta-attestation (Supersedes, Contradicts, Retracts). Any tool that shows the current state must leave retracted and superseded attestations out, and any tool that writes to a published gazetteer must not edit in place.

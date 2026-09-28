@@ -182,9 +182,37 @@ A new example, `schemas/examples/place-centric-judgements.json`, shows a
 denial, a pair of alternatives, a judged reading, a deep-time date and an IRI
 with an accented letter; the citations examples cite with `citesAsEvidence`.
 
-Statistical data (a figure's dimensional address, and the universe it is a
-proportion of) is being designed separately, on the W3C RDF Data Cube
-vocabulary, and the next release waits for it.
+Figures from statistical tables (issue #14), designed on the W3C RDF Data
+Cube vocabulary and tested on three corpora (Vision of Britain, Vision of
+Ireland and the 1886 markets return): every round trip rebuilt its source
+exactly, and every integrity check passed. Decided by Stephen Gadd:
+
+- A figure is a `plato:PropertyValue` that is also a `qb:Observation`: JSON
+  `dataSet` (its table), `dimensions` and `attributes` (objects keyed by the
+  IRIs of the table's dimension and attribute properties, each entry a direct
+  statement on the figure) and `universe`, and a header array `dataSets`
+  describing the tables and their structures. The county is no longer said to
+  have "class 1": the observation is.
+- `plato:universe`, the one new property: the figure this one is a part or
+  share of, asserted only from the source, never inferred.
+- Nothing is written twice. The measure stays `property` and `value`, and the
+  area and date stay on the attestation; plato-tools' cube export
+  (`convert --to ntriples --cube`) adds the measure statement, refArea and
+  refPeriod, and declares them in each table's structure, so that the export
+  is standard Data Cube while a PLATO document is not, and need not be.
+- A printed dash is a figure with `sdmx-attribute:obsStatus` and no value,
+  never 0; a blank cell is no figure. Money is an exact integer in the
+  smallest unit of its system of account, the unit's IRI from a fitting
+  authority or minted by the encoding project: PLATO mints no currency and
+  converts nothing. A coordinate the source does not give is an explicit
+  "unknown" code. A table mixing measures is one data set per measure.
+- Dimension values are concepts, published by the encoding project where no
+  code list exists (almost none do). Statistical tables in spreadsheet form
+  keep their own CSVW description; the eight PLATO sheets do not change.
+- A figure needs a value unless its attributes give an `obsStatus`.
+
+A new example, `schemas/examples/place-centric-statistics.json`, and a guide
+page, "Statistical tables", show the pattern.
 
 An identity relation nested under its SpatialEntity no longer needs a
 `subject`. The JSON-LD context already took the subject from the nesting

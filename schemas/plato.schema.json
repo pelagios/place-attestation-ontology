@@ -243,7 +243,7 @@
     },
     "propertyValue": {
       "type": "object",
-      "description": "An attribute of a SpatialEntity that is not a Name, Geometry, Timespan or Type: a population, a valuation, an elevation, a market's trading day. The property is identified by URI in an external vocabulary; the value is either a literal or a structured object whose shape is declared by valueType. A value is required, except for a figure whose attributes give an sdmx-attribute:obsStatus, such as a printed dash (DRAFT, issue #14).",
+      "description": "An attribute of a SpatialEntity that is not a Name, Geometry, Timespan or Type: a population, a valuation, an elevation, a market's trading day. The property is identified by URI in an external vocabulary; the value is either a literal or a structured object whose shape is declared by valueType. A value is required, except for a figure whose attributes give an sdmx-attribute:obsStatus, such as a printed dash.",
       "properties": {
         "@id": {
           "$ref": "#/$defs/uri"
@@ -286,11 +286,11 @@
         },
         "dataSet": {
           "$ref": "#/$defs/uri",
-          "description": "DRAFT (issue #14). The statistical table this figure belongs to (qb:dataSet): the IRI of a qb:DataSet, described in the document's dataSets or elsewhere. Makes this PropertyValue a Data Cube observation."
+          "description": "The statistical table this figure belongs to (qb:dataSet): the IRI of a qb:DataSet, described in the document's dataSets or elsewhere. Makes this PropertyValue a Data Cube observation."
         },
         "dimensions": {
           "type": "object",
-          "description": "DRAFT (issue #14). The figure's coordinates in its table: each key the IRI of a qb:DimensionProperty, each value a code ({\"@id\": IRI}) or, for a numeric dimension, a literal. Each becomes a direct statement on the observation, so a coordinate is never said of the place. The area and date are not repeated here: they are the attestation's, and a cube export adds them. A coordinate the source does not give is the code list's 'unknown' concept.",
+          "description": "The figure's coordinates in its table: each key the IRI of a qb:DimensionProperty, each value a code ({\"@id\": IRI}) or, for a numeric dimension, a literal. Each becomes a direct statement on the observation, so a coordinate is never said of the place. The area and date are not repeated here: they are the attestation's, and a cube export adds them. A coordinate the source does not give is the code list's 'unknown' concept.",
           "propertyNames": {
             "format": "iri"
           },
@@ -320,11 +320,11 @@
         },
         "universe": {
           "$ref": "#/$defs/uri",
-          "description": "DRAFT (issue #14). The @id of the PropertyValue this figure is a part or share of: its denominator (plato:universe)."
+          "description": "The @id of the PropertyValue this figure is a part or share of: its denominator (plato:universe)."
         },
         "attributes": {
           "type": "object",
-          "description": "DRAFT (issue #14). Facts about the figure itself: each key the IRI of a qb:AttributeProperty, each value a code or a literal, becoming a direct statement on the observation. sdmx-attribute:obsStatus gives a cell's state, such as a printed dash ('nil or not applicable'); others give approximation or the period an amount covers.",
+          "description": "Facts about the figure itself: each key the IRI of a qb:AttributeProperty, each value a code or a literal, becoming a direct statement on the observation. sdmx-attribute:obsStatus gives a cell's state, such as a printed dash ('nil or not applicable'); others give approximation or the period an amount covers.",
           "propertyNames": {
             "format": "iri"
           },
@@ -1013,7 +1013,7 @@
     },
     "dataSet": {
       "type": "object",
-      "description": "DRAFT (issue #14). A statistical table (qb:DataSet), not a plato:Dataset authority.",
+      "description": "A statistical table (qb:DataSet), not a plato:Dataset authority.",
       "properties": {
         "@id": {
           "$ref": "#/$defs/uri"
