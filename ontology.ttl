@@ -418,7 +418,10 @@ plato:Gazetteer
         withdrawal is a meta-attestation of type plato:Retracts. Each carries
         plato:created. The state as of any moment D is then a filter over the
         data: the attestations created by D, less those superseded or
-        retracted by D. A platform can offer that state on request, by
+        retracted by D. A supersession or retraction takes effect only while
+        it holds itself, so retracting a retraction restores its target, and
+        a chain of them resolves the same way; a cycle is an error in the
+        data. A platform can offer that state on request, by
         datetime negotiation on the entity's IRI (RFC 7089, Memento); PLATO
         recommends this but does not require it, since it is behaviour of a
         server, not of data.
@@ -2574,7 +2577,7 @@ plato:Retracts
     a skos:Concept ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "retracts"@en ;
-    skos:definition "The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. For a claim its maker takes back, such as a bad import, where plato:Contradicts would read as one scholar disputing another. A tool showing the current state leaves a retracted attestation out."@en .
+    skos:definition "The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. For a claim its maker takes back, such as a bad import, where plato:Contradicts would read as one scholar disputing another. A tool showing the current state leaves a retracted attestation out. A retraction is itself an attestation: retracting it withdraws the withdrawal, and the target holds again."@en .
 
 # -----------------------------------------------------------------------------
 # Certainty levels
