@@ -57,7 +57,10 @@ locations, types, relations and properties becomes one attestation. The
    names. If two sources give the same spelling, that is also two rows.
 7. **A source that denies something is recorded too.** If a source says a
    place had no market, add a row in types with `market` and `denied` set to
-   `yes`. The row is then a denial, so give only the one thing denied.
+   `yes`. The row is then a denial, so give only the one thing denied. If the
+   source only reports something ("it is said"), hedges it, or leaves it
+   undecided, set `stance` to `Reported`, `Tentative` or `Doubted`: that is the
+   source's stance, not a denial, and not your own certainty.
 
 :::{note}
 Spreadsheet programs sometimes "correct" what you type: `0921` becomes `921`,

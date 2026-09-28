@@ -3,6 +3,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix whgx: <https://whgazetteer.org/example/> .
 @prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 
 # The "whgx:" prefix is used throughout these examples for illustrative URIs.
 # Page numbers, folio references and the medieval sources in this file are
@@ -20,6 +21,7 @@
 #   2. One claim resting on two sources, each with its own locator: the
 #      place-name surveys' "1252 Cl et passim to 1346 Harl".
 #   3. An attribution given as "ib." in the survey and resolved editorially.
+#   4. A source that passes a claim on without vouching for it.
 #
 # In every case sourced_by is asserted directly as well as through the
 # Citation. The ontology declares sourced_by as the chain has_citation o
@@ -40,6 +42,9 @@ whgx:source\/bartholomew-1887
     a plato:Source ;
     plato:authority_title "Bartholomew, Gazetteer of the British Isles" ;
     plato:bibliographic_string "J. Bartholomew, Gazetteer of the British Isles (Edinburgh, 1887)" ;
+    # The licence of the copy cited, with dcterms:license as for a Gazetteer
+    # (plato:licence is deprecated): here a scan marked public domain.
+    dcterms:license <https://creativecommons.org/publicdomain/mark/1.0/> ;
     plato:source_timespan whgx:timespan\/1887 .
 
 whgx:timespan\/1887
@@ -180,6 +185,34 @@ whgx:attestation\/bonestou-1254
     plato:has_citation whgx:citation\/bonestou-cl-1254 ;
     plato:certainty 1.0 ;
     plato:notes "Source given as ib. in the survey; resolved editorially." .
+
+
+# -----------------------------------------------------------------------------
+# 4. A source that reports rather than asserts
+#
+# A county description of 1673 says a market "is said to be kept" at Kingsbury.
+# The encoder is certain that this is what the source says, so certainty stays
+# at 1.0; the hedge is the source's, and plato:source_stance records it. Doubt
+# would be plato:StanceDoubted, and a denial plato:negated: three different
+# statements.
+# -----------------------------------------------------------------------------
+
+whgx:source\/county-description-1673
+    a plato:Source ;
+    plato:authority_title "A county description, 1673" .
+
+whgx:type\/market
+    a plato:Type ;
+    plato:type_label "market" .
+
+whgx:attestation\/kingsbury-market-1673
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/kingsbury ;
+    plato:attests_type whgx:type\/market ;
+    plato:sourced_by whgx:source\/county-description-1673 ;
+    plato:source_stance plato:StanceReported ;
+    plato:certainty 1.0 ;
+    plato:notes "The source: 'a market is said to be kept here'." .
 
 
 # =============================================================================

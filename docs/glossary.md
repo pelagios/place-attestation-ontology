@@ -8,9 +8,9 @@ Attestation
 Certainty
 : How sure whoever recorded a statement is of it, from 0 to 1. It reflects the
   evidence: better evidence could change it. Not the same as fuzziness. Where
-  a source or a dataset gives certainty in words, the *certainty level*
-  records the word ('Certain', 'LessCertain', 'Uncertain') instead of a
-  number.
+  a dataset gives certainty in words, the *certainty level* records the word
+  ('Certain', 'LessCertain', 'Uncertain') instead of a number. Certainty is
+  never the source's own hedging: that is its *stance*.
 
 Citation
 : One attestation's use of one source, with the locator saying where in the
@@ -66,7 +66,16 @@ RDF
 
 Source
 : A document, map, book or dataset that evidence comes from. A source can be
-  derived from another, as a copy or an edition.
+  derived from another, as a copy or an edition. It can carry its licence, the
+  licence of the copy you cite, so that anyone using your data can see which
+  sources may be reused.
+
+Stance
+: How firmly a source itself says something. Most sources simply assert, but
+  some pass a claim on without vouching for it ("it is said"), hedge it, or
+  raise it and leave it undecided. That is recorded as the source's stance,
+  separately from how sure you are: you can be quite certain that a source
+  hedged. Leaving a thing undecided is not denying it (see Denial).
 
 SpatialEntity
 : PLATO's term for the thing attestations are about. Many SpatialEntities are

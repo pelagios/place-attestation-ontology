@@ -564,6 +564,10 @@
           "$ref": "#/$defs/uri",
           "description": "Resolvable URI for the source."
         },
+        "licence": {
+          "$ref": "#/$defs/uri",
+          "description": "The licence of the source as cited, the edition or copy, as the licence's web address, for example https://creativecommons.org/publicdomain/mark/1.0/ (dcterms:license, as for the gazetteer). It lets a consumer see that a cited source is licence-restricted."
+        },
         "citation": {
           "type": "string",
           "description": "Bibliographic citation string."
@@ -764,6 +768,10 @@
         "negated": {
           "type": "boolean",
           "description": "True when the source states that what this attestation bundles is not so: no market here, a grant refused (plato:negated). Bundle one denied facet per attestation. A consumer must honour it: a tool that cannot express a denial must leave the attestation out and report it, never write it as an assertion. Absent or false, the attestation asserts."
+        },
+        "sourceStance": {
+          "$ref": "#/$defs/uri",
+          "description": "How firmly the source itself asserts what this attestation records (plato:source_stance): the URI of a concept such as https://w3id.org/plato#StanceReported (passed on without vouching: 'it is said'), #StanceTentative (hedged), or #StanceDoubted (raised and left unsettled, which is not a denial: that is negated). Omit where the source simply asserts (#StanceAsserted, the default). This is the source's stance, not anyone's confidence in the attestation, which is certainty or certaintyLevel."
         },
         "sequence": {
           "type": "integer",

@@ -33,6 +33,8 @@ you three things.
   than collapsing them all into "uncertain":
 
   - how sure you are of a statement, which better evidence could change;
+  - how firmly the source itself says it: a claim it only reports ("it is
+    said"), hedges, or raises and leaves undecided;
   - a date known only within limits, or given only as "c. 925" or "before
     1300";
   - a place with no sharp edge, such as "the Levant", which no evidence will

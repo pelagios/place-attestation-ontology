@@ -76,4 +76,8 @@ written ('about 1841'), coordinates as printed. A timespan's `label` is for a
 named period ('Byzantine period'). Certainty stated in words goes in
 `certaintyLevel`, as the URI of a level such as
 `https://w3id.org/plato#LessCertain`, rather than as an invented number in
-`certainty`.
+`certainty`. Both are your confidence. How firmly the source itself says
+something goes in an attestation's `sourceStance`, such as
+`https://w3id.org/plato#StanceReported` for a claim it only passes on ("it is
+said"). A source's `licence` is the web address of the licence of the copy you
+cite, written as the gazetteer's is.

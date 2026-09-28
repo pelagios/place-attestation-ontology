@@ -22,7 +22,7 @@ so it always matches them.
 In every sheet except places, sources and identities, each row becomes one
 PLATO attestation, and these columns are shared: `place_id`, `date`, `from`,
 `to`, `source_id`, `locator`, `attribution`, `citation_function`,
-`certainty`, `certainty_level`, `denied` and `notes`.
+`certainty`, `certainty_level`, `denied`, `stance` and `notes`.
 
 ```{include} ../_generated/sheets.md
 ```

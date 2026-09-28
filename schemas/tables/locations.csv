@@ -1,1 +1,1 @@
-place_id,latitude,longitude,wkt,geometry_role,precision_km,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,notes
+place_id,latitude,longitude,wkt,geometry_role,precision_km,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes

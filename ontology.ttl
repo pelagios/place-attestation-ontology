@@ -353,6 +353,12 @@ plato:Source
         map, scholarly article, or other document. Sources are the primary
         provenance anchor for attestations. A Source may reference its parent
         Dataset via plato:partOf.
+
+        A Source's licence, that of the edition or copy cited, is given with
+        dcterms:license, as a Gazetteer's is. A project that admits evidence
+        by its licence (citing a share-alike source as a witness but never
+        copying it, say) needs the licence on the thing cited, so that it
+        travels with the data.
     """@en .
 
 plato:Dataset
@@ -363,7 +369,7 @@ plato:Dataset
         A collection-level authority: a published gazetteer, a contributed
         dataset, or an external authority corpus (GeoNames, Wikidata, TGN,
         OSM, Pleiades). Carries metadata such as title, version, publisher,
-        licence, and URI.
+        and URI, and a licence (dcterms:license, as for any Authority).
     """@en .
 
 plato:Period
@@ -844,6 +850,9 @@ plato:certainty
         principle raise it. Distinct from fuzziness (the referent has no
         sharp boundary) and from spatial_precision (how finely a location
         is specified). No rdfs:domain, so it can qualify any node.
+
+        It is never the source's own confidence: how firmly a source asserts
+        what it says (hedging, hearsay, doubt) is plato:source_stance.
     """@en ;
     rdfs:range xsd:float .
 
@@ -864,9 +873,12 @@ plato:certainty_level
     rdfs:comment """
         Certainty as a word rather than a number: a CertaintyLevel, such as
         plato:Certain, plato:LessCertain or plato:Uncertain (the three of Linked
-        Places Format), or one a project declares. Use it when a source or a
-        dataset states certainty in words, rather than inventing a number for
-        plato:certainty; the two may also be given together. Like
+        Places Format), or one a project declares. Use it when certainty is
+        stated in words, by a dataset or on a project's own scale, rather than
+        inventing a number for plato:certainty; the two may also be given
+        together. It is the same confidence as plato:certainty, the
+        contributor's or editor's, not the source's: a source that hedges or
+        reports is recorded with plato:source_stance. Like
         plato:certainty it has no rdfs:domain, so it can qualify an Attestation
         or any facet node.
     """@en ;
@@ -926,6 +938,43 @@ plato:negated
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range xsd:boolean .
+
+# A source can say a thing without vouching for it. Blome's Britannia (1673)
+# passes on 118 of its 7,435 statements about markets ("it is said", "as Cambden
+# noteth") and hedges 27 more; Everitt (1967) leaves undecided 65 places that
+# Adams calls markets. None of the existing terms records this. certainty is the
+# encoder's confidence, and an editor may be quite certain that a source hedged;
+# attribution_status is about whether the source is named; negated is a denial,
+# and doubt is precisely not one. So the source's own stance is a property of
+# the attestation, beside negated.
+
+plato:source_stance
+    a owl:ObjectProperty ;
+    rdfs:label "source stance"@en ;
+    rdfs:comment """
+        How firmly the source itself asserts what this attestation bundles: a
+        concept in plato:SourceStanceScheme, plato:StanceAsserted (the default,
+        usually omitted), plato:StanceReported, plato:StanceTentative or
+        plato:StanceDoubted, or one a project declares. It records the source,
+        not whoever encodes it: plato:certainty and plato:certainty_level are
+        the contributor's or editor's confidence, and an editor may be quite
+        certain that a source hedged. Nor is it plato:attribution_status, which
+        says whether the source is named where the evidence occurs.
+
+        Doubt is not denial. A source that raises a thing and declines to
+        settle it is plato:StanceDoubted; one that says it is not so is
+        plato:negated. A source that passes on a claim and names whom it
+        reports can have that work cited as well.
+
+        It qualifies the attestation as a whole, as plato:negated does, so
+        bundle one facet per attestation where the source's stance differs
+        between facets. A consumer that cannot express a stance reads the
+        attestation as asserted, which overstates the source but does not
+        invert it. So, unlike plato:negated, no consumer is required to leave
+        it out, but a converter should report the loss.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range skos:Concept .
 
 plato:sequence
     a owl:DatatypeProperty ;
@@ -1957,6 +2006,17 @@ plato:publisher
 plato:licence
     a owl:DatatypeProperty ;
     rdfs:label "licence"@en ;
+    rdfs:comment """
+        Deprecated: use dcterms:license. It could be given only to a Dataset,
+        it had no route in PLATO JSON, and it was a literal where a
+        Gazetteer's dcterms:license points at the licence itself. So the
+        licence of a cited source had no way into the data. dcterms:license has
+        no domain, so it serves every Authority and the Gazetteer alike, and
+        says nothing about what kind of thing is licensed. Kept for one release
+        under the deprecation policy.
+    """@en ;
+    owl:deprecated true ;
+    dcterms:isReplacedBy dcterms:license ;
     rdfs:domain plato:Dataset ;
     rdfs:range xsd:anyURI .
 
@@ -2471,6 +2531,35 @@ plato:TranscriptionNonReconstructable
     skos:inScheme plato:TranscriptionCompletenessScheme ;
     skos:prefLabel "not reconstructable"@en ;
     skos:definition "Part of the value is lost and cannot be supplied."@en .
+
+plato:SourceStanceScheme
+    a skos:ConceptScheme ;
+    rdfs:label "source stance"@en ;
+    rdfs:comment "Starter concepts for plato:source_stance. How firmly the source itself asserts what an attestation records, as distinct from anyone's confidence in it."@en .
+
+plato:StanceAsserted
+    a skos:Concept ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "asserted"@en ;
+    skos:definition "The source states it as so, on its own account. The default source stance, usually omitted."@en .
+
+plato:StanceReported
+    a skos:Concept ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "reported"@en ;
+    skos:definition "The source passes it on without vouching for it: 'it is said', 'as Cambden noteth'."@en .
+
+plato:StanceTentative
+    a skos:Concept ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "tentative"@en ;
+    skos:definition "The source states it, but with a hedge: 'as it seems', 'were (if not are)'."@en .
+
+plato:StanceDoubted
+    a skos:Concept ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "doubted"@en ;
+    skos:definition "The source raises it and declines to settle it. Not a denial, which is plato:negated."@en .
 
 plato:GeometryRoleScheme
     a skos:ConceptScheme ;

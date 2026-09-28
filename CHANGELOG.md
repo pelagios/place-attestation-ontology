@@ -11,6 +11,52 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
+## Unreleased
+
+Two gaps found in encoding the markets corpus (the CAMPOP market and fair
+records: Blome's Britannia of 1673, Everitt's survey of 1967, and the
+project's register of sources), both checked against 0.5.0.
+
+### Added
+
+- `plato:source_stance` (JSON `sourceStance`, tables `stance`): how firmly
+  the source itself asserts what an attestation records, with a starter
+  scheme `plato:SourceStanceScheme` of `plato:StanceAsserted` (the default),
+  `plato:StanceReported` (passed on without vouching: "it is said", "as
+  Cambden noteth"), `plato:StanceTentative` (hedged) and `plato:StanceDoubted`
+  (raised and left unsettled). Blome passes on 118 of 7,435 statements and
+  hedges 27; Everitt leaves 65 places undecided. Nothing could record this.
+  `certainty` is the encoder's confidence, and an editor may be quite sure a
+  source hedged; `attribution_status` is about whether the source is named;
+  `negated` is a denial, and doubt is not one. Like `negated` it qualifies the
+  whole attestation. Unlike it, no consumer is required to drop an attestation
+  it cannot express, since reading a report as an assertion overstates the
+  source but does not invert it; converters should report the loss.
+- A licence on a source (JSON `licence` on `source`, tables `licence` on
+  sources), as `dcterms:license`, exactly as on the gazetteer. The markets
+  project admits evidence by its licence (13 sources under three licences),
+  and the licence could not travel with the data, so a consumer could not see
+  that a cited source was licence-restricted.
+
+### Deprecated
+
+- `plato:licence`, replaced by `dcterms:license` (`dcterms:isReplacedBy`). It
+  could be given only to a Dataset, had no route in PLATO JSON, and was a
+  literal where the gazetteer's licence is an IRI. It stays for one release
+  under the deprecation policy. No published data uses it.
+
+### Clarified
+
+- `plato:certainty_level` is the same confidence as `plato:certainty`, the
+  contributor's or editor's. Its comment had said "when a source or a dataset
+  states certainty in words", which left open whose certainty it was.
+
+### Changed
+
+- The spreadsheet tables gain two columns: `stance` after `denied` on every
+  attestation sheet, and `licence` after `derived_from` on sources. Sheets
+  made with the earlier template need the two columns added, empty if unused.
+
 ## 0.5.0
 
 ### Added

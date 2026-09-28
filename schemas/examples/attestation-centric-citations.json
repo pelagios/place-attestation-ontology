@@ -23,6 +23,7 @@
             "@id": "https://whgazetteer.org/example/source/bartholomew-1887",
             "title": "Bartholomew, Gazetteer of the British Isles",
             "citation": "J. Bartholomew, Gazetteer of the British Isles (Edinburgh, 1887)",
+            "licence": "https://creativecommons.org/publicdomain/mark/1.0/",
             "timespan": { "startEarliest": "1887", "endLatest": "1887", "sourceLabel": "1887" }
           },
           "locator": "p. 25, s.v. Athlone"
@@ -96,6 +97,19 @@
       ],
       "certainty": 1.0,
       "notes": "Source given as ib. in the survey; resolved editorially. The attestation is certain; the attribution is inferred.",
+      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "created": "2026-09-26T12:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/kingsbury",
+      "types": [ { "label": "market" } ],
+      "sources": [
+        { "@id": "https://whgazetteer.org/example/source/county-description-1673", "title": "A county description, 1673" }
+      ],
+      "sourceStance": "https://w3id.org/plato#StanceReported",
+      "certainty": 1.0,
+      "notes": "The source: 'a market is said to be kept here'.",
       "contributor": "https://orcid.org/0000-0002-1234-5678",
       "created": "2026-09-26T12:00:00Z"
     }

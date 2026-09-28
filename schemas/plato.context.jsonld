@@ -359,6 +359,10 @@
                   "@id": "plato:authority_uri",
                   "@type": "xsd:anyURI"
                 },
+                "licence": {
+                  "@id": "dcterms:license",
+                  "@type": "@id"
+                },
                 "citation": "plato:bibliographic_string",
                 "timespan": {
                   "@id": "plato:source_timespan",
@@ -436,6 +440,10 @@
                     "uri": {
                       "@id": "plato:authority_uri",
                       "@type": "xsd:anyURI"
+                    },
+                    "licence": {
+                      "@id": "dcterms:license",
+                      "@type": "@id"
                     },
                     "citation": "plato:bibliographic_string",
                     "timespan": {
@@ -590,7 +598,11 @@
               "@id": "plato:form_status",
               "@type": "@id"
             },
-            "negated": "plato:negated"
+            "negated": "plato:negated",
+            "sourceStance": {
+              "@id": "plato:source_stance",
+              "@type": "@id"
+            }
           }
         },
         "identityRelations": {
@@ -623,6 +635,10 @@
                 "uri": {
                   "@id": "plato:authority_uri",
                   "@type": "xsd:anyURI"
+                },
+                "licence": {
+                  "@id": "dcterms:license",
+                  "@type": "@id"
                 },
                 "citation": "plato:bibliographic_string",
                 "timespan": {
@@ -981,6 +997,10 @@
                   "@id": "plato:authority_uri",
                   "@type": "xsd:anyURI"
                 },
+                "licence": {
+                  "@id": "dcterms:license",
+                  "@type": "@id"
+                },
                 "citation": "plato:bibliographic_string",
                 "timespan": {
                   "@id": "plato:source_timespan",
@@ -1058,6 +1078,10 @@
                     "uri": {
                       "@id": "plato:authority_uri",
                       "@type": "xsd:anyURI"
+                    },
+                    "licence": {
+                      "@id": "dcterms:license",
+                      "@type": "@id"
                     },
                     "citation": "plato:bibliographic_string",
                     "timespan": {
@@ -1212,7 +1236,11 @@
               "@id": "plato:form_status",
               "@type": "@id"
             },
-            "negated": "plato:negated"
+            "negated": "plato:negated",
+            "sourceStance": {
+              "@id": "plato:source_stance",
+              "@type": "@id"
+            }
           }
         },
         "identityRelations": {
@@ -1245,6 +1273,10 @@
                 "uri": {
                   "@id": "plato:authority_uri",
                   "@type": "xsd:anyURI"
+                },
+                "licence": {
+                  "@id": "dcterms:license",
+                  "@type": "@id"
                 },
                 "citation": "plato:bibliographic_string",
                 "timespan": {
@@ -1593,6 +1625,10 @@
               "@id": "plato:authority_uri",
               "@type": "xsd:anyURI"
             },
+            "licence": {
+              "@id": "dcterms:license",
+              "@type": "@id"
+            },
             "citation": "plato:bibliographic_string",
             "timespan": {
               "@id": "plato:source_timespan",
@@ -1670,6 +1706,10 @@
                 "uri": {
                   "@id": "plato:authority_uri",
                   "@type": "xsd:anyURI"
+                },
+                "licence": {
+                  "@id": "dcterms:license",
+                  "@type": "@id"
                 },
                 "citation": "plato:bibliographic_string",
                 "timespan": {
@@ -1824,7 +1864,11 @@
           "@id": "plato:form_status",
           "@type": "@id"
         },
-        "negated": "plato:negated"
+        "negated": "plato:negated",
+        "sourceStance": {
+          "@id": "plato:source_stance",
+          "@type": "@id"
+        }
       }
     },
     "identityRelations": {
@@ -1857,6 +1901,10 @@
             "uri": {
               "@id": "plato:authority_uri",
               "@type": "xsd:anyURI"
+            },
+            "licence": {
+              "@id": "dcterms:license",
+              "@type": "@id"
             },
             "citation": "plato:bibliographic_string",
             "timespan": {

@@ -3,7 +3,7 @@
   "profile": "place-centric",
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/gazetteer/judgements",
-    "title": "Denials, alternatives and judged readings (illustrative)",
+    "title": "Denials, stances, alternatives and judged readings (illustrative)",
     "contributor": "https://orcid.org/0000-0002-1234-5678",
     "version": "2026-09",
     "status": "published"
@@ -181,6 +181,65 @@
             }
           ],
           "notes": "A deep-time date in the structured bounds: years have as many digits as they need."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/kingsbury",
+      "label": "Kingsbury",
+      "attestations": [
+        {
+          "types": [
+            {
+              "label": "market"
+            }
+          ],
+          "sourceStance": "https://w3id.org/plato#StanceReported",
+          "timespans": [
+            {
+              "startEarliest": "1673",
+              "endLatest": "1673",
+              "sourceLabel": "1673"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/county-description-1673",
+                "title": "A county description, 1673",
+                "licence": "https://creativecommons.org/publicdomain/mark/1.0/"
+              },
+              "locator": "p. 212",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The source says only that a market 'is said to be kept' here, passing the claim on without vouching for it. The stance is the source's: the encoder is certain that this is what it says, so certainty is not lowered to record it. The copy cited is marked public domain, and the licence travels with the citation."
+        },
+        {
+          "types": [
+            {
+              "label": "market"
+            }
+          ],
+          "sourceStance": "https://w3id.org/plato#StanceDoubted",
+          "timespans": [
+            {
+              "startEarliest": "1500",
+              "endLatest": "1640",
+              "sourceLabel": "1500-1640"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/market-survey-1967",
+                "title": "A survey of markets, 1967"
+              },
+              "locator": "p. 470",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The survey raises the market and declines to settle whether there was one. That is doubt, not denial: negated would say there was no market."
         }
       ]
     }

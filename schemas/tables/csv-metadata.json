@@ -145,6 +145,15 @@
             "valueUrl": "#{derived_from}"
           },
           {
+            "name": "licence",
+            "titles": "licence",
+            "dc:description": "The web address of the licence of the source as you cite it (the edition or copy), for example https://creativecommons.org/licenses/by/4.0/. Optional.",
+            "skos:example": "https://creativecommons.org/publicdomain/mark/1.0/",
+            "propertyUrl": "http://purl.org/dc/terms/license",
+            "valueUrl": "{+licence}",
+            "datatype": "anyURI"
+          },
+          {
             "name": "type_source",
             "virtual": true,
             "aboutUrl": "#{source_id}",
@@ -417,6 +426,18 @@
             "datatype": {
               "base": "boolean",
               "format": "yes|no"
+            }
+          },
+          {
+            "name": "stance",
+            "titles": "stance",
+            "dc:description": "How firmly the source itself says it: 'Reported' if the source passes it on without vouching for it ('it is said'), 'Tentative' if it hedges, 'Doubted' if it raises it but will not decide (that is not a denial: use denied for that), or 'Asserted'. Leave empty where the source simply states it. This is the source's stance, not how sure you are, which is certainty.",
+            "skos:example": "Reported",
+            "propertyUrl": "https://w3id.org/plato#source_stance",
+            "valueUrl": "https://w3id.org/plato#Stance{stance}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Asserted|Reported|Tentative|Doubted)$"
             }
           },
           {
@@ -693,6 +714,18 @@
             }
           },
           {
+            "name": "stance",
+            "titles": "stance",
+            "dc:description": "How firmly the source itself says it: 'Reported' if the source passes it on without vouching for it ('it is said'), 'Tentative' if it hedges, 'Doubted' if it raises it but will not decide (that is not a denial: use denied for that), or 'Asserted'. Leave empty where the source simply states it. This is the source's stance, not how sure you are, which is certainty.",
+            "skos:example": "Reported",
+            "propertyUrl": "https://w3id.org/plato#source_stance",
+            "valueUrl": "https://w3id.org/plato#Stance{stance}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Asserted|Reported|Tentative|Doubted)$"
+            }
+          },
+          {
             "name": "notes",
             "titles": "notes",
             "dc:description": "Anything else worth saying about this row, in your own words. Optional.",
@@ -916,6 +949,18 @@
             "datatype": {
               "base": "boolean",
               "format": "yes|no"
+            }
+          },
+          {
+            "name": "stance",
+            "titles": "stance",
+            "dc:description": "How firmly the source itself says it: 'Reported' if the source passes it on without vouching for it ('it is said'), 'Tentative' if it hedges, 'Doubted' if it raises it but will not decide (that is not a denial: use denied for that), or 'Asserted'. Leave empty where the source simply states it. This is the source's stance, not how sure you are, which is certainty.",
+            "skos:example": "Reported",
+            "propertyUrl": "https://w3id.org/plato#source_stance",
+            "valueUrl": "https://w3id.org/plato#Stance{stance}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Asserted|Reported|Tentative|Doubted)$"
             }
           },
           {
@@ -1156,6 +1201,18 @@
             }
           },
           {
+            "name": "stance",
+            "titles": "stance",
+            "dc:description": "How firmly the source itself says it: 'Reported' if the source passes it on without vouching for it ('it is said'), 'Tentative' if it hedges, 'Doubted' if it raises it but will not decide (that is not a denial: use denied for that), or 'Asserted'. Leave empty where the source simply states it. This is the source's stance, not how sure you are, which is certainty.",
+            "skos:example": "Reported",
+            "propertyUrl": "https://w3id.org/plato#source_stance",
+            "valueUrl": "https://w3id.org/plato#Stance{stance}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Asserted|Reported|Tentative|Doubted)$"
+            }
+          },
+          {
             "name": "notes",
             "titles": "notes",
             "dc:description": "Anything else worth saying about this row, in your own words. Optional.",
@@ -1382,6 +1439,18 @@
             "datatype": {
               "base": "boolean",
               "format": "yes|no"
+            }
+          },
+          {
+            "name": "stance",
+            "titles": "stance",
+            "dc:description": "How firmly the source itself says it: 'Reported' if the source passes it on without vouching for it ('it is said'), 'Tentative' if it hedges, 'Doubted' if it raises it but will not decide (that is not a denial: use denied for that), or 'Asserted'. Leave empty where the source simply states it. This is the source's stance, not how sure you are, which is certainty.",
+            "skos:example": "Reported",
+            "propertyUrl": "https://w3id.org/plato#source_stance",
+            "valueUrl": "https://w3id.org/plato#Stance{stance}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Asserted|Reported|Tentative|Doubted)$"
             }
           },
           {
