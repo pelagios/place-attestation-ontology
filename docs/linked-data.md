@@ -20,14 +20,6 @@ that asks for it. The files themselves are published at
 graph: the Turtle is the source file, and the others are generated from it
 and checked against it on every release.
 
-:::{note}
-The w3id.org redirects are being updated so that `https://w3id.org/plato`
-also negotiates JSON-LD, RDF/XML and N-Triples, and so that the schemas and
-context are served with JSON media types. Until that change is live, strict
-JSON-LD processors such as jsonld.js should load the context from
-<https://pelagios.org/place-attestation-ontology/schemas/plato.context.jsonld>.
-:::
-
 ## Spreadsheets to RDF
 
 The spreadsheet tables are described in the W3C standard
