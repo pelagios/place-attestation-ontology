@@ -62,6 +62,13 @@
       ],
       "additionalProperties": false
     },
+    "dataSets": {
+      "type": "array",
+      "description": "DRAFT (issue #14). The statistical tables the document's figures belong to.",
+      "items": {
+        "$ref": "plato.schema.json#/$defs/dataSet"
+      }
+    },
     "spatialEntities": {
       "type": "array",
       "description": "The SpatialEntities being submitted, each with its attestations nested. A SpatialEntity may have no attestations: it is then only a referent, such as the target of a relation, and its label is not evidence.",

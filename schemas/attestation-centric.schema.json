@@ -62,6 +62,13 @@
       ],
       "additionalProperties": false
     },
+    "dataSets": {
+      "type": "array",
+      "description": "DRAFT (issue #14). The statistical tables the document's figures belong to.",
+      "items": {
+        "$ref": "plato.schema.json#/$defs/dataSet"
+      }
+    },
     "attestations": {
       "type": "array",
       "description": "Attestations referencing existing SpatialEntities.",

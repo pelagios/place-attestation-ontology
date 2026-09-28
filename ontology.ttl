@@ -251,6 +251,26 @@ plato:PropertyValue
         asserts nothing false, and needs no agent class: PLATO's own agent
         classes (Contributor, Organization) describe who recorded the data.
 
+        DRAFT (issue #14): a figure from a statistical table is a
+        PropertyValue that is also a qb:Observation of the RDF Data Cube
+        vocabulary. It carries qb:dataSet (the table, a qb:DataSet), one
+        direct statement for each of its coordinates with the table's
+        qb:DimensionProperty predicates, one for each fact about the figure
+        with qb:AttributeProperty predicates (sdmx-attribute:obsStatus for a
+        cell's state), and plato:universe for the figure it is a part or share
+        of. So the county is not said to have 'class 1': the observation is.
+        The measure stays plato:property_type and plato:value_literal, and the
+        area and date stay on the attestation; a cube export adds the direct
+        measure statement, sdmx-dimension:refArea and refPeriod. A printed dash
+        is an observation with an obsStatus and no value, never 0. Money is
+        an exact integer in the smallest unit of its system of account
+        (farthings, for sterling amounts with halfpennies), the unit an IRI
+        from a fitting authority or minted by the encoding project, ideally
+        naming a unit of account in a named system ('penny sterling'); PLATO
+        mints no currency and converts nothing. A coordinate the source does
+        not give is an explicit 'unknown' code. A table mixing measures is one
+        qb:DataSet per measure.
+
         A latitude given without a longitude (a source's 'at 9.5 degrees
         north') is a PropertyValue, not a Geometry, since it is not a location:
         property http://www.w3.org/2003/01/geo/wgs84_pos#lat, the value in
@@ -1821,6 +1841,20 @@ plato:property_type
     """@en ;
     rdfs:domain plato:PropertyValue ;
     rdfs:range xsd:anyURI .
+
+plato:universe
+    a owl:ObjectProperty ;
+    rdfs:label "universe"@en ;
+    rdfs:comment """
+        DRAFT (issue #14). The figure this figure is a part or share of: its
+        denominator, where the source defines one. The occupied beside the
+        total of the same row, or Vision of Ireland's Total Population cube as
+        the universe of the others for the same unit and year. RDF Data Cube
+        has no such property, and without it which number is the denominator
+        of which is lost, unrecoverably once the table is gone.
+    """@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range plato:PropertyValue .
 
 plato:property_label
     a owl:DatatypeProperty ;
