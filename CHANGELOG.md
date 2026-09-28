@@ -131,7 +131,8 @@ existing `plato:gazetteer_status`. Once a gazetteer is published its
 attestations are append-only, normatively: never deleted or changed, only
 superseded, contradicted or retracted, so the state as of any date is a
 filter over the data. `plato:Retracts` joins the meta types for a claim its
-maker withdraws. Datetime negotiation (RFC 7089) is recommended to
+maker withdraws. A retraction or supersession takes effect only while it
+holds itself, so retracting a retraction restores its target. Datetime negotiation (RFC 7089) is recommended to
 platforms in the guide, not required. Decided by Stephen Gadd.
 
 A survey of four corpora (Pleiades, Vision of Britain, Vision of Ireland and
