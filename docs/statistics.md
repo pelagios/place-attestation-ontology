@@ -94,3 +94,11 @@ each table's structure. A figure whose date is not one year or one day gets
 no `refPeriod`; it is reported, not guessed. The second runs Data Cube's
 integrity checks on the result, at any size, and says which passed, which
 failed, and which had nothing to check.
+
+If you run the W3C's own integrity queries instead, normalise the cube first,
+as the [specification](https://www.w3.org/TR/vocab-data-cube/#normalize)
+requires. The export writes each table's structure in the short form
+(`qb:dimension`, `qb:measure`, `qb:attribute`), which normalisation expands.
+The queries assume the expanded form, so without that step IC-11, IC-12 and
+IC-14 find nothing to check and pass without testing anything.
+`plato-tools datacube` normalises as it reads.
