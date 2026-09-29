@@ -50,6 +50,8 @@ road can list its stations differently, and one town can be the third stop on
 one route and the ninth on another; each row keeps its own source's order.
 Two members with the same number are alternatives at that point (two branches
 of a road). A member with no number is in an order the source does not give.
+The members of a network usually have none; a river's reaches, which the water
+puts in order, can be numbered downstream.
 
 ## The stretch between two places
 

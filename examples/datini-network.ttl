@@ -67,7 +67,7 @@ whgx:datini\/place\/pisa
     a plato:SpatialEntity ;
     rdfs:label "Pisa" .
 
-# A network has no order, so its members have no plato:sequence.
+# Nothing in the letters puts the cities in an order, so no plato:sequence.
 whgx:datini\/attestation\/florence-member
     a plato:Attestation ;
     plato:attests_about whgx:datini\/place\/florence ;

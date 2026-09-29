@@ -42,8 +42,8 @@ came from and how.
 ```{include} ../_generated/examples/datini/relations.md
 ```
 
-Each city is a `MemberOf` the network, with no `sequence`: a network has no
-order.
+Each city is a `MemberOf` the network, with no `sequence`: nothing in the
+letters puts the cities in an order.
 
 ## The connections
 
