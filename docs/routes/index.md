@@ -12,7 +12,8 @@ real sources:
 
 - [the Antonine Itinerary](antonine.md): two Roman roads from London to the
   Kent ports, a **route**;
-- King John's itinerary, a dated **journey** (in preparation);
+- [King John in 1215](king-john.md): the King's movements around the sealing
+  of Magna Carta, a dated **journey**;
 - the River Idle, a river **network** with a direction (in preparation);
 - the Datini letters, a **network** of correspondence between cities (in
   preparation).

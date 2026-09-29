@@ -1,0 +1,197 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative
+# URIs. External URIs that already exist (Wikidata) are used directly. This
+# file shows part of the King John example; the whole of it is in
+# schemas/tables/examples/king-john/ (spreadsheet tables) and
+# schemas/examples/place-centric-king-john.json (PLATO JSON), with the same
+# URIs.
+
+
+# =============================================================================
+# An itinerary: King John in June and July 1215
+#
+# Scenario: T. D. Hardy's Itinerary of King John (1835) traces the King from
+# day to day by the places and dates at which his letters were witnessed. In
+# its prefatory remarks (pp. 108-110) it follows him through the weeks around
+# the sealing of Magna Carta:
+#
+#   "from the 1st to the 3d of June 1215, the King was at Windsor ... he
+#   returned to Windsor, and continued there until the 15th: on that day he
+#   met the barons at Runnemead by appointment ... The King then returned to
+#   Windsor, and remained there until the 18th of June, from which time until
+#   the 23d he was every day both at Windsor and at Runnemead ... The first
+#   four days of July he passed at Marlborough ... it is unquestionable that
+#   the King did not then visit the Isle of Wight"
+#
+# The dates are Julian, as the rolls give them.
+#
+# This demonstrates:
+#   1. An itinerary as a SpatialEntity typed plato:TypeItinerary, its stops
+#      attested with plato:MemberOf, ordered by plato:sequence, and dated
+#      stop by stop, each timespan the stay at that stop.
+#   2. One place visited more than once: Windsor is a member several times,
+#      at different positions, each with its own dates.
+#   3. A member in no order: from the 18th to the 23rd the King was "every
+#      day both at Windsor and at Runnemead"; Runnymede has no sequence, and
+#      the timespans carry what the source says.
+#   4. A stated length of stay with its dates: plato:duration "P4D".
+#   5. A denial: the source says the King did not go to the Isle of Wight.
+# =============================================================================
+
+
+# --- Sources: Hardy, derived from the enrolled letters -------------------------
+
+whgx:king-john\/source\/chancery-rolls
+    a plato:Source ;
+    plato:authority_title "Enrolled royal letters of 1215" ;
+    plato:bibliographic_string "The attestations of King John's letters of 1215, enrolled on the Chancery rolls, from which Hardy traced the King's movements" .
+
+whgx:king-john\/source\/hardy-1835
+    a plato:Source ;
+    plato:authority_title "A Description of the Patent Rolls in the Tower of London; to which is added an Itinerary of King John" ;
+    plato:bibliographic_string "T. D. Hardy, A Description of the Patent Rolls in the Tower of London; to which is added an Itinerary of King John, with prefatory observations (London: Record Commission, 1835)" ;
+    plato:authority_uri "https://archive.org/details/descriptionofpat00hard"^^xsd:anyURI ;
+    plato:derived_from whgx:king-john\/source\/chancery-rolls ;
+    dcterms:license <https://creativecommons.org/publicdomain/mark/1.0/> .
+
+
+# --- The itinerary -----------------------------------------------------------------
+
+whgx:king-john\/place\/itinerary-1215
+    a plato:SpatialEntity ;
+    rdfs:label "King John's itinerary, 1 June to 17 July 1215" .
+
+whgx:king-john\/attestation\/itinerary-type
+    a plato:Attestation ;
+    plato:attests_about whgx:king-john\/place\/itinerary-1215 ;
+    plato:attests_type [ a plato:Type ; plato:type_label "itinerary" ;
+                         plato:type_identifier "https://w3id.org/plato#TypeItinerary"^^xsd:anyURI ] ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:king-john\/source\/hardy-1835 ;
+        plato:locator "pp. 108-109" ;
+        plato:citation_function cito:citesAsEvidence ] .
+
+
+# --- Windsor, the first stop and a later one ------------------------------------
+
+whgx:king-john\/place\/windsor
+    a plato:SpatialEntity ;
+    rdfs:label "Windsor" .
+
+whgx:king-john\/attestation\/windsor-1
+    a plato:Attestation ;
+    plato:attests_about whgx:king-john\/place\/windsor ;
+    plato:relates_to whgx:king-john\/place\/itinerary-1215 ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 1 ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "from the 1st to the 3d of June 1215" ;
+        plato:start_earliest "1215-06-01" ;
+        plato:end_latest "1215-06-03" ] ;
+    plato:has_citation whgx:king-john\/citation\/p108 .
+
+whgx:king-john\/attestation\/windsor-8
+    a plato:Attestation ;
+    plato:attests_about whgx:king-john\/place\/windsor ;
+    plato:relates_to whgx:king-john\/place\/itinerary-1215 ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 8 ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "until the 18th of June" ;
+        plato:start_earliest "1215-06-15" ;
+        plato:end_latest "1215-06-18" ] ;
+    plato:has_citation whgx:king-john\/citation\/p108 .
+
+whgx:king-john\/citation\/p108
+    a plato:Citation ;
+    plato:cites whgx:king-john\/source\/hardy-1835 ;
+    plato:locator "p. 108" ;
+    plato:citation_function cito:citesAsEvidence .
+
+
+# --- Runnymede: once in order, once in no order ---------------------------------
+
+whgx:king-john\/place\/runnymede
+    a plato:SpatialEntity ;
+    rdfs:label "Runnymede" .
+
+whgx:king-john\/attestation\/runnymede-7
+    a plato:Attestation ;
+    plato:attests_about whgx:king-john\/place\/runnymede ;
+    plato:relates_to whgx:king-john\/place\/itinerary-1215 ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 7 ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "the 15th" ;
+        plato:start_earliest "1215-06-15" ;
+        plato:end_latest "1215-06-15" ] ;
+    plato:has_citation whgx:king-john\/citation\/p108 .
+
+# No plato:sequence: "every day both at Windsor and at Runnemead" puts neither
+# before the other. The overlap with Windsor's stay is in the timespans.
+whgx:king-john\/attestation\/runnymede-daily
+    a plato:Attestation ;
+    plato:attests_about whgx:king-john\/place\/runnymede ;
+    plato:relates_to whgx:king-john\/place\/itinerary-1215 ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "from which time until the 23d" ;
+        plato:start_earliest "1215-06-18" ;
+        plato:end_latest "1215-06-23" ] ;
+    plato:has_citation whgx:king-john\/citation\/p108 .
+
+
+# --- Marlborough: a stated length of stay -------------------------------------
+
+whgx:king-john\/place\/marlborough
+    a plato:SpatialEntity ;
+    rdfs:label "Marlborough" .
+
+whgx:king-john\/attestation\/marlborough-12
+    a plato:Attestation ;
+    plato:attests_about whgx:king-john\/place\/marlborough ;
+    plato:relates_to whgx:king-john\/place\/itinerary-1215 ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 12 ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "the first four days of July" ;
+        plato:start_earliest "1215-07-01" ;
+        plato:end_latest "1215-07-04" ;
+        plato:duration "P4D"^^xsd:duration ] ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:king-john\/source\/hardy-1835 ;
+        plato:locator "p. 109" ] .
+
+
+# --- The Isle of Wight: a stop the source denies --------------------------------
+#
+# Earlier historians said the King went to the Isle of Wight after Magna
+# Carta; Hardy says he did not. The denial is an attestation like any other,
+# about the island, with plato:negated. A consumer that cannot express a
+# denial must leave it out: written as an ordinary membership, it would put
+# the King where the source says he never was.
+
+whgx:king-john\/place\/isle-of-wight
+    a plato:SpatialEntity ;
+    rdfs:label "Isle of Wight" .
+
+whgx:king-john\/attestation\/isle-of-wight-denied
+    a plato:Attestation ;
+    plato:attests_about whgx:king-john\/place\/isle-of-wight ;
+    plato:relates_to whgx:king-john\/place\/itinerary-1215 ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:negated true ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "then" ;
+        plato:start_earliest "1215-06-15" ;
+        plato:end_latest "1215-07-17" ] ;
+    plato:notes "\"it is unquestionable that the King did not then visit the Isle of Wight\"" ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:king-john\/source\/hardy-1835 ;
+        plato:locator "pp. 109-110" ] .

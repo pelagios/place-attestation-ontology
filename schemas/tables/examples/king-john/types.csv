@@ -1,0 +1,2 @@
+place_id,type_label,type_uri,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+itinerary-1215,itinerary,https://w3id.org/plato#TypeItinerary,1215,1215-06-01,1215-07-17,hardy-1835,pp. 108-109,,citesAsEvidence,,,,,
