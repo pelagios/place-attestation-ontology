@@ -1,0 +1,7 @@
+place_id,type_label,type_uri,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+iter-iii,route,https://w3id.org/plato#TypeRoute,undated,,,parthey-pinder-1848,"p. 225, Wess. 473",,citesAsEvidence,,,,,
+iter-iv,route,https://w3id.org/plato#TypeRoute,undated,,,parthey-pinder-1848,"p. 225, Wess. 473",,citesAsEvidence,,,,,
+leg-londinium-durobrivae,segment,https://w3id.org/plato#TypeSegment,undated,,,parthey-pinder-1848,"p. 225, Wess. 473",,citesAsEvidence,,,,,
+leg-durobrivae-durovernum,segment,https://w3id.org/plato#TypeSegment,undated,,,parthey-pinder-1848,"p. 225, Wess. 473",,citesAsEvidence,,,,,
+leg-durovernum-dubris,segment,https://w3id.org/plato#TypeSegment,undated,,,parthey-pinder-1848,"p. 225, Wess. 473",,citesAsEvidence,,,,,
+leg-durovernum-lemanis,segment,https://w3id.org/plato#TypeSegment,undated,,,parthey-pinder-1848,"p. 225, Wess. 473",,citesAsEvidence,,,,,

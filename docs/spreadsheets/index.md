@@ -62,6 +62,12 @@ locations, types, relations, connections and properties becomes one attestation.
    source only reports something ("it is said"), hedges it, or leaves it
    undecided, set `stance` to `Reported`, `Tentative` or `Doubted`: that is the
    source's stance, not a denial, and not your own certainty.
+8. **A relations row names exactly one thing.** Fill in either
+   `related_place_id`, for a place in your places sheet, or `related_uri`, for
+   something described elsewhere such as a person, with a name for it in
+   `related_label`: never both, and never neither. PLATO tools reports a row
+   that breaks this rule. [Routes, journeys and networks](../routes/index.md)
+   explains the relations for them.
 
 :::{note}
 Spreadsheet programs sometimes "correct" what you type: `0921` becomes `921`,
@@ -82,7 +88,9 @@ The spreadsheets cover most datasets, but a few things need the
 - one scholar's comment on another's evidence ("this contradicts that");
 - readings that are alternatives to each other, such as a "Neuton" that could
   be either of two Newtons, of which at most one is right;
-- a relation type that PLATO does not list yet. Ask for it to be added by
+- a relation type that PLATO does not list, such as your project's own "flows
+  into" for a river. In JSON it can say which of PLATO's types it narrows; or
+  ask for it to be added to PLATO by
   [opening an issue](https://github.com/pelagios/place-attestation-ontology/issues).
 
 ## Checking your tables

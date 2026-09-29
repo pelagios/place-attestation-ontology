@@ -1,0 +1,12 @@
+place_id,label,country_codes
+iter-iii,Iter III of the Antonine Itinerary: London to Dover,GB
+iter-iv,Iter IV of the Antonine Itinerary: London to Lympne,GB
+londinium,Londinium (London),GB
+durobrivae,Durobrivae (Rochester),GB
+durovernum,Durovernum (Canterbury),GB
+dubris,Portus Dubris (Dover),GB
+lemanis,Portus Lemanis (Lympne),GB
+leg-londinium-durobrivae,Road from Londinium to Durobrivae,GB
+leg-durobrivae-durovernum,Road from Durobrivae to Durovernum,GB
+leg-durovernum-dubris,Road from Durovernum to Portus Dubris,GB
+leg-durovernum-lemanis,Road from Durovernum to Portus Lemanis,GB

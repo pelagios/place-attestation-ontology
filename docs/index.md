@@ -129,6 +129,14 @@ spreadsheets/survey-example
 
 ```{toctree}
 :hidden:
+:caption: Routes, journeys and networks
+
+routes/index
+routes/antonine
+```
+
+```{toctree}
+:hidden:
 :caption: Reference
 
 spreadsheets/reference

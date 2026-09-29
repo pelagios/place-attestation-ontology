@@ -1,0 +1,1254 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/antonine/",
+    "title": "The Antonine Itinerary: two routes from London to the Kent ports",
+    "description": "Iters III and IV of the Antonine Itinerary, from G. Parthey and M. Pinder's edition (1848), p. 225: London to Dover and London to Lympne, which share their first two legs. A worked example of PLATO's route pattern: stations and the roads between them are members of each route, in the order the Itinerary gives, and each road's length is attested as each iter states it. Locations and identities from Pleiades."
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/iter-iii",
+      "label": "Iter III of the Antonine Itinerary: London to Dover",
+      "entityIdentifier": "iter-iii",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+                "title": "Itinerarium Antonini Augusti et Hierosolymitanum",
+                "citation": "G. Parthey and M. Pinder (eds), Itinerarium Antonini Augusti et Hierosolymitanum ex libris manuscriptis (Berlin: F. Nicolai, 1848)",
+                "uri": "https://archive.org/details/iternerariumanto00itin",
+                "authorityType": "source",
+                "timespan": {
+                  "sourceLabel": "1848",
+                  "startEarliest": "1848",
+                  "endLatest": "1848"
+                },
+                "derivedFrom": {
+                  "@id": "https://whgazetteer.org/example/antonine/source/itinerarium",
+                  "title": "Itinerarium Antonini Augusti",
+                  "citation": "Itinerarium provinciarum Antonini Augusti, the Roman road itinerary compiled probably in the third century",
+                  "authorityType": "source",
+                  "timespan": {
+                    "sourceLabel": "probably 3rd century",
+                    "startEarliest": "0200",
+                    "endLatest": "0300"
+                  }
+                },
+                "licence": "https://creativecommons.org/publicdomain/mark/1.0/"
+              },
+              "locator": "p. 225, Wess. 473",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeRoute",
+              "label": "route"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.2",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Written \"mpm LXVI sic\". The stated total of the route; its three legs add up to it.",
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (Roman miles)",
+              "value": 66,
+              "unit": "http://www.wikidata.org/entity/Q2118176"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/iter-iv",
+      "label": "Iter IV of the Antonine Itinerary: London to Lympne",
+      "entityIdentifier": "iter-iv",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeRoute",
+              "label": "route"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.7",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Written \"mpm LXVIII sic\". The stated total of the route, as this edition prints it; its three legs add up to it here. The manuscripts differ: most read LXVI, one (L) is corrected to LXVIIII, and one (G) reads CLXVIII.",
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (Roman miles)",
+              "value": 68,
+              "unit": "http://www.wikidata.org/entity/Q2118176"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/londinium",
+      "label": "Londinium (London)",
+      "entityIdentifier": "londinium",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.1",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Ablative, in the heading of Iters III and IV: \"Item a Londinio\".",
+          "names": [
+            {
+              "toponym": "Londinio",
+              "language": "la",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Attested"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/antonine/source/pleiades",
+                "title": "Pleiades",
+                "citation": "Pleiades: a gazetteer of past places, https://pleiades.stoa.org/ (data downloaded 29 September 2026)",
+                "uri": "https://pleiades.stoa.org/",
+                "authorityType": "source",
+                "timespan": {
+                  "sourceLabel": "2026",
+                  "startEarliest": "2026",
+                  "endLatest": "2026"
+                },
+                "licence": "https://creativecommons.org/licenses/by/3.0/"
+              },
+              "locator": "places/79574",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.088949,
+                51.513335
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.088949,
+                  51.513335
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.1",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The starting point, named in the heading.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iii",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 1
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.6",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The starting point, named in the heading.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iv",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 1
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/antonine/place/londinium",
+          "object": "https://pleiades.stoa.org/places/79574",
+          "identityType": "exactMatch",
+          "certainty": 1,
+          "basis": "The name the Itinerary gives matches the Pleiades place",
+          "source": {
+            "@id": "https://whgazetteer.org/example/antonine/source/pleiades",
+            "title": "Pleiades"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/durobrivae",
+      "label": "Durobrivae (Rochester)",
+      "entityIdentifier": "durobrivae",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Ablative, as the Itinerary lists its stations.",
+          "names": [
+            {
+              "toponym": "Durobrivis",
+              "language": "la",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Attested"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/pleiades",
+              "locator": "places/79433",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                0.502597,
+                51.389649
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  0.502597,
+                  51.389649
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iii",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 3
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.8",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iv",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 3
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/antonine/place/durobrivae",
+          "object": "https://pleiades.stoa.org/places/79433",
+          "identityType": "exactMatch",
+          "certainty": 1,
+          "basis": "The name the Itinerary gives matches the Pleiades place",
+          "source": {
+            "@id": "https://whgazetteer.org/example/antonine/source/pleiades",
+            "title": "Pleiades"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/durovernum",
+      "label": "Durovernum (Canterbury)",
+      "entityIdentifier": "durovernum",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Ablative, as the Itinerary lists its stations.",
+          "names": [
+            {
+              "toponym": "Duroverno",
+              "language": "la",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Attested"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/pleiades",
+              "locator": "places/79439",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                1.08386,
+                51.279876
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  1.08386,
+                  51.279876
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iii",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 5
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.9",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iv",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 5
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/antonine/place/durovernum",
+          "object": "https://pleiades.stoa.org/places/79439",
+          "identityType": "exactMatch",
+          "certainty": 1,
+          "basis": "The name the Itinerary gives matches the Pleiades place",
+          "source": {
+            "@id": "https://whgazetteer.org/example/antonine/source/pleiades",
+            "title": "Pleiades"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/dubris",
+      "label": "Portus Dubris (Dover)",
+      "entityIdentifier": "dubris",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.5",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "\"To the port of Dubris\".",
+          "names": [
+            {
+              "toponym": "Ad portum Dubris",
+              "language": "la",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Attested"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/pleiades",
+              "locator": "places/79646",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                1.307512,
+                51.123013
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  1.307512,
+                  51.123013
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.5",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iii",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 7
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/antonine/place/dubris",
+          "object": "https://pleiades.stoa.org/places/79646",
+          "identityType": "exactMatch",
+          "certainty": 1,
+          "basis": "The name the Itinerary gives matches the Pleiades place",
+          "source": {
+            "@id": "https://whgazetteer.org/example/antonine/source/pleiades",
+            "title": "Pleiades"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/lemanis",
+      "label": "Portus Lemanis (Lympne)",
+      "entityIdentifier": "lemanis",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.10",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "\"To the port of Lemanis\".",
+          "names": [
+            {
+              "toponym": "Ad portum Lemanis",
+              "language": "la",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Attested"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/pleiades",
+              "locator": "places/79647",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                1.021146,
+                51.068468
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  1.021146,
+                  51.068468
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.10",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iv",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 7
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/antonine/place/lemanis",
+          "object": "https://pleiades.stoa.org/places/79647",
+          "identityType": "exactMatch",
+          "certainty": 1,
+          "basis": "The name the Itinerary gives matches the Pleiades place",
+          "source": {
+            "@id": "https://whgazetteer.org/example/antonine/source/pleiades",
+            "title": "Pleiades"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/leg-londinium-durobrivae",
+      "label": "Road from Londinium to Durobrivae",
+      "entityIdentifier": "leg-londinium-durobrivae",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iii",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 2
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.8",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iv",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 2
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "In the direction the Itinerary runs.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/londinium",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "In the direction the Itinerary runs.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/durobrivae",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Written \"mpm XXVII\". As Iter III gives it.",
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (Roman miles)",
+              "value": 27,
+              "unit": "http://www.wikidata.org/entity/Q2118176"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.8",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Written \"mpm XXVII\". As Iter IV gives it.",
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (Roman miles)",
+              "value": 27,
+              "unit": "http://www.wikidata.org/entity/Q2118176"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/leg-durobrivae-durovernum",
+      "label": "Road from Durobrivae to Durovernum",
+      "entityIdentifier": "leg-durobrivae-durovernum",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iii",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 4
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.9",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iv",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 4
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "In the direction the Itinerary runs.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/durobrivae",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "In the direction the Itinerary runs.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/durovernum",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Written \"mpm XXV\". As Iter III gives it.",
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (Roman miles)",
+              "value": 25,
+              "unit": "http://www.wikidata.org/entity/Q2118176"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.9",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Written \"mpm XXV\". As Iter IV gives it.",
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (Roman miles)",
+              "value": 25,
+              "unit": "http://www.wikidata.org/entity/Q2118176"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/leg-durovernum-dubris",
+      "label": "Road from Durovernum to Portus Dubris",
+      "entityIdentifier": "leg-durovernum-dubris",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.5",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iii",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 6
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.5",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "In the direction the Itinerary runs.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/durovernum",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.5",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "In the direction the Itinerary runs.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/dubris",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.5",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Written \"mpm XIIII\". As Iter III gives it.",
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (Roman miles)",
+              "value": 14,
+              "unit": "http://www.wikidata.org/entity/Q2118176"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/antonine/place/leg-durovernum-lemanis",
+      "label": "Road from Durovernum to Portus Lemanis",
+      "entityIdentifier": "leg-durovernum-lemanis",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.10",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/iter-iv",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 6
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.10",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "In the direction the Itinerary runs.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/durovernum",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.10",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "In the direction the Itinerary runs.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/antonine/place/lemanis",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/antonine/source/parthey-pinder-1848",
+              "locator": "p. 225, Wess. 473.10",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Written \"mpm XVI\". As Iter IV gives it.",
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (Roman miles)",
+              "value": 16,
+              "unit": "http://www.wikidata.org/entity/Q2118176"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    }
+  ]
+}

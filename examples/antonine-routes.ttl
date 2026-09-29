@@ -1,0 +1,213 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative
+# URIs. External URIs that already exist (Pleiades, Wikidata) are used
+# directly. This file shows part of the Antonine example; the whole of it is
+# in schemas/tables/examples/antonine/ (spreadsheet tables) and
+# schemas/examples/place-centric-antonine.json (PLATO JSON), with the same
+# URIs.
+
+
+# =============================================================================
+# Routes: two iters of the Antonine Itinerary that share a road
+#
+# Scenario: Iters III and IV of the Antonine Itinerary both leave Londinium
+# (London) and run through Durobrivae (Rochester) and Durovernum
+# (Canterbury), then part: Iter III to Portus Dubris (Dover), Iter IV to
+# Portus Lemanis (Lympne). Each iter states its total length and the length
+# of each leg, in Roman miles. Parthey and Pinder's edition (1848), p. 225,
+# prints them at Wesseling 473.1-10:
+#
+#   Item a Londinio ad portum Dubris ..... mpm LXVI sic
+#   Durobrivis ........................... mpm XXVII
+#   Duroverno ............................ mpm XXV
+#   Ad portum Dubris ..................... mpm XIIII
+#
+#   Item a Londinio ad portum Lemanis .... mpm LXVIII sic
+#   Durobrivis ........................... mpm XXVII
+#   Duroverno ............................ mpm XXV
+#   Ad portum Lemanis .................... mpm XVI
+#
+# This demonstrates:
+#   1. A route as a SpatialEntity typed plato:TypeRoute, whose members are
+#      attested with plato:MemberOf and ordered by plato:sequence.
+#   2. The road between two stations as a segment (plato:TypeSegment), a
+#      member of the route like its stations, with plato:BeginsAt and
+#      plato:EndsAt giving the direction the Itinerary runs.
+#   3. One segment shared by two routes, at the same place in each order:
+#      the sequence is on the attestation, so each route keeps its own.
+#   4. A distance attested once for each iter that gives it: two
+#      attestations of the same length, from two lines of the same source.
+#   5. A stated total kept as the source prints it ("sic"), with the
+#      manuscripts' disagreement in a note, rather than corrected.
+# =============================================================================
+
+
+# --- Sources: the edition, derived from the Itinerary it edits ---------------
+
+whgx:antonine\/source\/itinerarium
+    a plato:Source ;
+    plato:authority_title "Itinerarium Antonini Augusti" ;
+    plato:bibliographic_string "Itinerarium provinciarum Antonini Augusti, the Roman road itinerary compiled probably in the third century" .
+
+whgx:antonine\/source\/parthey-pinder-1848
+    a plato:Source ;
+    plato:authority_title "Itinerarium Antonini Augusti et Hierosolymitanum" ;
+    plato:bibliographic_string "G. Parthey and M. Pinder (eds), Itinerarium Antonini Augusti et Hierosolymitanum ex libris manuscriptis (Berlin: F. Nicolai, 1848)" ;
+    plato:authority_uri "https://archive.org/details/iternerariumanto00itin"^^xsd:anyURI ;
+    plato:derived_from whgx:antonine\/source\/itinerarium ;
+    dcterms:license <https://creativecommons.org/publicdomain/mark/1.0/> .
+
+
+# --- The routes ---------------------------------------------------------------
+
+whgx:antonine\/place\/iter-iii
+    a plato:SpatialEntity ;
+    rdfs:label "Iter III of the Antonine Itinerary: London to Dover" .
+
+whgx:antonine\/place\/iter-iv
+    a plato:SpatialEntity ;
+    rdfs:label "Iter IV of the Antonine Itinerary: London to Lympne" .
+
+# A route is a SpatialEntity like any other; what kind is a Type attestation.
+whgx:antonine\/attestation\/iter-iii-type
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/iter-iii ;
+    plato:attests_type [ a plato:Type ; plato:type_label "route" ;
+                         plato:type_identifier "https://w3id.org/plato#TypeRoute"^^xsd:anyURI ] ;
+    plato:has_citation whgx:antonine\/citation\/wess-473 .
+
+whgx:antonine\/citation\/wess-473
+    a plato:Citation ;
+    plato:cites whgx:antonine\/source\/parthey-pinder-1848 ;
+    plato:locator "p. 225, Wess. 473" ;
+    plato:citation_function cito:citesAsEvidence .
+
+
+# --- The stations: Durobrivae, the second member of each iter -------------------
+
+whgx:antonine\/place\/durobrivae
+    a plato:SpatialEntity ;
+    rdfs:label "Durobrivae (Rochester)" .
+
+whgx:antonine\/attestation\/durobrivae-in-iter-iii
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/durobrivae ;
+    plato:relates_to whgx:antonine\/place\/iter-iii ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 3 ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:antonine\/source\/parthey-pinder-1848 ;
+        plato:locator "p. 225, Wess. 473.3" ] .
+
+whgx:antonine\/attestation\/durobrivae-in-iter-iv
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/durobrivae ;
+    plato:relates_to whgx:antonine\/place\/iter-iv ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 3 ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:antonine\/source\/parthey-pinder-1848 ;
+        plato:locator "p. 225, Wess. 473.8" ] .
+
+
+# --- The road from Londinium to Durobrivae: one segment, in both iters -------
+#
+# The stations and the roads between them share one order: Londinium 1, this
+# road 2, Durobrivae 3, the next road 4, and so on. The road is the same
+# SpatialEntity in both iters, and each iter's attestation gives it its place
+# in that iter's order.
+
+whgx:antonine\/place\/leg-londinium-durobrivae
+    a plato:SpatialEntity ;
+    rdfs:label "Road from Londinium to Durobrivae" .
+
+whgx:antonine\/attestation\/leg-1-type
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/leg-londinium-durobrivae ;
+    plato:attests_type [ a plato:Type ; plato:type_label "segment" ;
+                         plato:type_identifier "https://w3id.org/plato#TypeSegment"^^xsd:anyURI ] ;
+    plato:has_citation whgx:antonine\/citation\/wess-473 .
+
+whgx:antonine\/attestation\/leg-1-in-iter-iii
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/leg-londinium-durobrivae ;
+    plato:relates_to whgx:antonine\/place\/iter-iii ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 2 ;
+    plato:has_citation whgx:antonine\/citation\/wess-473 .
+
+whgx:antonine\/attestation\/leg-1-in-iter-iv
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/leg-londinium-durobrivae ;
+    plato:relates_to whgx:antonine\/place\/iter-iv ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 2 ;
+    plato:has_citation whgx:antonine\/citation\/wess-473 .
+
+# Its ends, in the direction the Itinerary runs. They are places, joined to
+# the segment by BeginsAt and EndsAt; ConnectedTo and LeadsTo join places to
+# places, so a walk across the network never counts a road as a stop.
+whgx:antonine\/attestation\/leg-1-begins
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/leg-londinium-durobrivae ;
+    plato:relates_to whgx:antonine\/place\/londinium ;
+    plato:has_relation_type plato:BeginsAt ;
+    plato:has_citation whgx:antonine\/citation\/wess-473 .
+
+whgx:antonine\/attestation\/leg-1-ends
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/leg-londinium-durobrivae ;
+    plato:relates_to whgx:antonine\/place\/durobrivae ;
+    plato:has_relation_type plato:EndsAt ;
+    plato:has_citation whgx:antonine\/citation\/wess-473 .
+
+# Its length, once for each iter that gives it. Both say XXVII; were they to
+# differ, the two attestations would simply disagree, each with its source.
+whgx:antonine\/attestation\/leg-1-length-iter-iii
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/leg-londinium-durobrivae ;
+    plato:attests_property [ a plato:PropertyValue ;
+        plato:property_type "https://www.wikidata.org/wiki/Property:P2043"^^xsd:anyURI ;
+        plato:property_label "length (Roman miles)" ;
+        plato:value_literal 27 ;
+        plato:value_unit "http://www.wikidata.org/entity/Q2118176"^^xsd:anyURI ;
+        plato:source_label "mpm XXVII" ] ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:antonine\/source\/parthey-pinder-1848 ;
+        plato:locator "p. 225, Wess. 473.3" ] .
+
+whgx:antonine\/attestation\/leg-1-length-iter-iv
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/leg-londinium-durobrivae ;
+    plato:attests_property [ a plato:PropertyValue ;
+        plato:property_type "https://www.wikidata.org/wiki/Property:P2043"^^xsd:anyURI ;
+        plato:property_label "length (Roman miles)" ;
+        plato:value_literal 27 ;
+        plato:value_unit "http://www.wikidata.org/entity/Q2118176"^^xsd:anyURI ;
+        plato:source_label "mpm XXVII" ] ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:antonine\/source\/parthey-pinder-1848 ;
+        plato:locator "p. 225, Wess. 473.8" ] .
+
+
+# --- A stated total, kept as printed -------------------------------------------
+
+whgx:antonine\/attestation\/iter-iv-length
+    a plato:Attestation ;
+    plato:attests_about whgx:antonine\/place\/iter-iv ;
+    plato:attests_property [ a plato:PropertyValue ;
+        plato:property_type "https://www.wikidata.org/wiki/Property:P2043"^^xsd:anyURI ;
+        plato:property_label "length (Roman miles)" ;
+        plato:value_literal 68 ;
+        plato:value_unit "http://www.wikidata.org/entity/Q2118176"^^xsd:anyURI ;
+        plato:source_label "mpm LXVIII sic" ] ;
+    plato:notes "The stated total of the route, as this edition prints it; its three legs add up to it here. The manuscripts differ: most read LXVI, one (L) is corrected to LXVIIII, and one (G) reads CLXVIII." ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:antonine\/source\/parthey-pinder-1848 ;
+        plato:locator "p. 225, Wess. 473.7" ] .

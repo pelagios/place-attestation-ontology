@@ -81,3 +81,14 @@ something goes in an attestation's `sourceStance`, such as
 `https://w3id.org/plato#StanceReported` for a claim it only passes on ("it is
 said"). A source's `licence` is the web address of the licence of the copy you
 cite, written as the gazetteer's is.
+
+Routes, journeys and networks use a few more keys (see
+[Routes, journeys and networks](routes/index.md)). An attestation that makes a
+place a member of a route, with `relationType`
+`https://w3id.org/plato#MemberOf`, gives its position in `sequence`, a whole
+number. A relation to something that is not a place, such as a person in
+Wikidata, gives its web address in `relatesTo` and a name to show it by in
+`relatedLabel`. A timespan's `duration` is a length the source states, as an
+`xsd:duration` such as `P42D` for six weeks. `computed`, on an attestation or
+in a `qualification`, marks a value software worked out, not a source's
+statement; data you record from sources never needs it.
