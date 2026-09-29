@@ -88,8 +88,9 @@ about either city.
 
 Your project may need a more particular word, such as "flows into" for a
 river. The spreadsheets take only PLATO's own words, so a project's own kinds
-of connection need the [JSON format](../json.md), where each can say which of
-PLATO's words it narrows.
+of connection need the [JSON format](../json.md). There a document declares
+each one once, in `relationTypes`, with the PLATO word it narrows, so that
+any software that knows only PLATO's words still follows it the right way.
 
 ## How long
 

@@ -69,6 +69,13 @@
         "$ref": "plato.schema.json#/$defs/dataSet"
       }
     },
+    "relationTypes": {
+      "type": "array",
+      "description": "Relation types the document declares for its own use, each with the PLATO type it narrows.",
+      "items": {
+        "$ref": "plato.schema.json#/$defs/relationType"
+      }
+    },
     "attestations": {
       "type": "array",
       "description": "Attestations referencing existing SpatialEntities.",

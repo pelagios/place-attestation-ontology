@@ -58,6 +58,13 @@ described elsewhere, which is what Linked Traces records.
   'carries post to') names the starter type it narrows, so a consumer that
   knows only `LeadsTo` still follows it the right way. `skos:broader` could
   not be used, because a RelationType is an Authority, not a skos:Concept.
+- `plato:declares_relation_type` (JSON `relationTypes`, a document-level
+  array beside `dataSets`): the relation types a document declares for its
+  own use, each with `label`, `inverseLabel` and `broaderRelation`. Without
+  it a project could use its own relation type in JSON but not declare it,
+  although the guide said it could; only RDF could. The WHG documentation
+  review found the gap. It gets a link of its own, not `dcterms:hasPart`,
+  which already joins a gazetteer to its statistical tables.
 - Four Types, `plato:TypeRoute`, `plato:TypeItinerary`, `plato:TypeNetwork` and
   `plato:TypeSegment`, so that any consumer can tell these entities from
   places. A segment (a leg of a road, a reach of a river) is a SpatialEntity

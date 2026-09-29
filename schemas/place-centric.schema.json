@@ -69,6 +69,13 @@
         "$ref": "plato.schema.json#/$defs/dataSet"
       }
     },
+    "relationTypes": {
+      "type": "array",
+      "description": "Relation types the document declares for its own use, each with the PLATO type it narrows.",
+      "items": {
+        "$ref": "plato.schema.json#/$defs/relationType"
+      }
+    },
     "spatialEntities": {
       "type": "array",
       "description": "The SpatialEntities being submitted, each with its attestations nested. A SpatialEntity may have no attestations: it is then only a referent, such as the target of a relation, and its label is not evidence.",

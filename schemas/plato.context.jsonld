@@ -76,6 +76,17 @@
         }
       }
     },
+    "relationTypes": {
+      "@id": "plato:declares_relation_type",
+      "@context": {
+        "label": "plato:authority_title",
+        "inverseLabel": "plato:inverse_label",
+        "broaderRelation": {
+          "@id": "plato:broader_relation",
+          "@type": "@id"
+        }
+      }
+    },
     "spatialEntities": {
       "@id": "plato:contains_entity",
       "@context": {

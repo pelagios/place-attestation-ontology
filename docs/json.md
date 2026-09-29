@@ -92,3 +92,21 @@ Wikidata, gives its web address in `relatesTo` and a name to show it by in
 `xsd:duration` such as `P42D` for six weeks. `computed`, on an attestation or
 in a `qualification`, marks a value software worked out, not a source's
 statement; data you record from sources never needs it.
+
+A project may need a relation PLATO does not name, such as "flows into" for a
+river. A document declares it once, in a `relationTypes` array beside its
+`gazetteer`, and then uses its address as any relation's `relationType`:
+
+```json
+"relationTypes": [
+  {
+    "@id": "https://example.org/vocab/flows-into",
+    "label": "flows into",
+    "inverseLabel": "receives",
+    "broaderRelation": "https://w3id.org/plato#LeadsTo"
+  }
+]
+```
+
+`broaderRelation` names the PLATO relation it narrows, so software that knows
+only `LeadsTo` still reads "flows into" as a connection running one way.

@@ -674,6 +674,33 @@
       ],
       "additionalProperties": false
     },
+    "relationType": {
+      "type": "object",
+      "description": "A relation type the document declares for its own use (plato:declares_relation_type): a project's 'flows into', with the PLATO type it narrows. Declare it once here, then use its @id as a relation's relationType. PLATO's own types (https://w3id.org/plato#LeadsTo and the rest) need no declaration.",
+      "properties": {
+        "@id": {
+          "$ref": "#/$defs/uri",
+          "description": "The relation type's web address, as relations use it in relationType."
+        },
+        "label": {
+          "type": "string",
+          "description": "What the relation is called, read from subject to target (plato:authority_title): 'flows into'."
+        },
+        "inverseLabel": {
+          "type": "string",
+          "description": "What it is called read the other way (plato:inverse_label): 'receives'."
+        },
+        "broaderRelation": {
+          "$ref": "#/$defs/uri",
+          "description": "The more general relation type it narrows (plato:broader_relation), usually one of PLATO's: https://w3id.org/plato#LeadsTo for 'flows into'. A consumer that knows only the broader type follows it the same way."
+        }
+      },
+      "required": [
+        "@id",
+        "label"
+      ],
+      "additionalProperties": false
+    },
     "metaAttestation": {
       "type": "object",
       "description": "A reference to a target attestation and the nature of the commentary. Meta-types use SKOS concepts for vocabulary management.",

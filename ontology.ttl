@@ -2491,6 +2491,25 @@ plato:contains_identity_relation
     rdfs:domain plato:Gazetteer ;
     rdfs:range plato:IdentityRelation .
 
+# A project's own relation types ('flows into', 'carries post to') are declared once
+# in the document that uses them, where a reader looks for vocabulary, not inside
+# whichever citation first needs one. dcterms:hasPart already links a gazetteer to
+# its statistical tables; a link of its own lets a reader tell the two apart without
+# guessing from what each node carries.
+
+plato:declares_relation_type
+    a owl:ObjectProperty ;
+    rdfs:label "declares relation type"@en ;
+    rdfs:comment """
+        Links a Gazetteer to a RelationType it declares for its own use: a
+        project's 'flows into', with its label, inverse label and the starter
+        type it narrows (plato:broader_relation). The JSON profiles carry
+        these in a document-level relationTypes array, beside dataSets. A
+        relation type PLATO declares needs no declaration here.
+    """@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range plato:RelationType .
+
 plato:member_of_group
     a owl:ObjectProperty ;
     rdfs:label "member of group"@en ;
