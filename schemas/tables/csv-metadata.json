@@ -6,7 +6,7 @@
     }
   ],
   "dc:title": "PLATO spreadsheet tables",
-  "dc:description": "CSV on the Web (CSVW) metadata for organising data about places in PLATO's shape with spreadsheets. It describes eight linked tables, how they refer to one another, and how each row becomes RDF in the PLATO ontology (https://w3id.org/plato#). Keep every table, even if you leave it empty apart from its header row. Guide: https://pelagios.org/place-attestation-ontology/guide/.",
+  "dc:description": "CSV on the Web (CSVW) metadata for organising data about places in PLATO's shape with spreadsheets. It describes nine linked tables, how they refer to one another, and how each row becomes RDF in the PLATO ontology (https://w3id.org/plato#). Keep every table, even if you leave it empty apart from its header row. Guide: https://pelagios.org/place-attestation-ontology/guide/.",
   "dc:source": "https://w3id.org/plato/schemas/tables/csv-metadata.json",
   "tables": [
     {
@@ -1031,7 +1031,7 @@
     {
       "url": "relations.csv",
       "dc:title": "Relations",
-      "dc:description": "One row for each time a source relates one place to another, such as a parish lying in a hundred. Each row becomes a plato:Attestation relating the place in place_id to the place in related_place_id. Both must be in the places sheet.",
+      "dc:description": "One row for each time a source relates a place to something else: a parish lying in a hundred, a station on a road, a stop on a journey, one place leading to another, a place where a person was born. Each row becomes a plato:Attestation relating the place in place_id either to another place, in related_place_id, or to something described elsewhere (a person, an object, an event), in related_uri. Fill in one of the two, not both.",
       "tableSchema": {
         "aboutUrl": "#row-{_row}",
         "foreignKeys": [
@@ -1070,24 +1070,47 @@
           {
             "name": "relation_type",
             "titles": "relation_type",
-            "dc:description": "How the places are related. 'ContainedIn': the place in place_id lies within the place in related_place_id. Further relation types are added to PLATO's vocabulary on request.",
+            "dc:description": "How they are related. Places within places: 'ContainedIn' (the place in place_id lies within the other). Routes, journeys and networks: 'MemberOf' (the place is a station, stop or member of the route, journey or network in related_place_id; give its position in sequence), 'ConnectedTo' (directly connected, either way), 'LeadsTo' (connected one way, from place_id to the other), 'BeginsAt' and 'EndsAt' (a segment, such as a leg of a road, begins or ends at the other place), 'HasEnd' (the other place is one end of a segment with no direction; give it for both ends). People, objects and events, in related_uri: 'BirthplaceOf', 'DeathplaceOf', 'ResidenceOf', 'FindspotOf', 'SettingOf', 'WorkplaceOf'. Further relation types are added to PLATO's vocabulary on request.",
             "skos:example": "ContainedIn",
             "required": true,
             "propertyUrl": "https://w3id.org/plato#has_relation_type",
             "valueUrl": "https://w3id.org/plato#{relation_type}",
             "datatype": {
               "base": "string",
-              "format": "^(ContainedIn)$"
+              "format": "^(ContainedIn|MemberOf|ConnectedTo|LeadsTo|BeginsAt|EndsAt|HasEnd|BirthplaceOf|DeathplaceOf|ResidenceOf|FindspotOf|SettingOf|WorkplaceOf)$"
             }
           },
           {
             "name": "related_place_id",
             "titles": "related_place_id",
-            "dc:description": "The other place: a place_id from the places sheet.",
+            "dc:description": "The other place: a place_id from the places sheet. Leave empty if the row relates the place to something that is not a place, in related_uri.",
             "skos:example": "buckinghamshire",
-            "required": true,
             "propertyUrl": "https://w3id.org/plato#relates_to",
             "valueUrl": "places.csv#{related_place_id}"
+          },
+          {
+            "name": "related_uri",
+            "titles": "related_uri",
+            "dc:description": "The web address of what the place is related to, when it is not a place in your places sheet: a person, an object or an event described elsewhere, such as http://www.wikidata.org/entity/Q9441 for the Buddha. Leave empty if you filled in related_place_id.",
+            "skos:example": "http://www.wikidata.org/entity/Q9441",
+            "propertyUrl": "https://w3id.org/plato#relates_to",
+            "valueUrl": "{+related_uri}",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "related_label",
+            "titles": "related_label",
+            "dc:description": "A name for what related_uri points to ('the Buddha'), so that it can be shown without looking the address up. Give it whenever you fill in related_uri.",
+            "skos:example": "the Buddha",
+            "propertyUrl": "https://w3id.org/plato#related_label"
+          },
+          {
+            "name": "sequence",
+            "titles": "sequence",
+            "dc:description": "For MemberOf: the place's position on the route or journey, as your source orders it (1, 2, 3 ...). Two places with the same number are alternatives. Leave empty if the source gives no order.",
+            "skos:example": "3",
+            "propertyUrl": "https://w3id.org/plato#sequence",
+            "datatype": "integer"
           },
           {
             "name": "date",
@@ -1259,6 +1282,290 @@
             "aboutUrl": "#row-{_row}-citation",
             "propertyUrl": "https://w3id.org/plato#cites",
             "valueUrl": "sources.csv#{source_id}"
+          }
+        ]
+      }
+    },
+    {
+      "url": "connections.csv",
+      "dc:title": "Connections",
+      "dc:description": "One row for each figure a source gives about a connection between two places: the number of letters sent from one city to another, a journey time, a toll, a cargo. Each row becomes a plato:Attestation relating the place in place_id to the place in related_place_id, with one plato:PropertyValue. Several figures about one connection are several rows. A connection with no figures goes in the relations sheet; a physical link with its own existence, such as a leg of a road, is better entered as a place of its own, with its figures in the properties sheet.",
+      "tableSchema": {
+        "aboutUrl": "#row-{_row}",
+        "foreignKeys": [
+          {
+            "columnReference": "place_id",
+            "reference": {
+              "resource": "places.csv",
+              "columnReference": "place_id"
+            }
+          },
+          {
+            "columnReference": "source_id",
+            "reference": {
+              "resource": "sources.csv",
+              "columnReference": "source_id"
+            }
+          },
+          {
+            "columnReference": "related_place_id",
+            "reference": {
+              "resource": "places.csv",
+              "columnReference": "place_id"
+            }
+          }
+        ],
+        "columns": [
+          {
+            "name": "place_id",
+            "titles": "place_id",
+            "dc:description": "The place this row is about: a place_id from the places sheet.",
+            "skos:example": "florence",
+            "required": true,
+            "propertyUrl": "https://w3id.org/plato#attests_about",
+            "valueUrl": "places.csv#{place_id}"
+          },
+          {
+            "name": "relation_type",
+            "titles": "relation_type",
+            "dc:description": "'ConnectedTo' (connected, either way) or 'LeadsTo' (one way, from place_id to the other: letters sent from it, water flowing from it).",
+            "skos:example": "LeadsTo",
+            "required": true,
+            "propertyUrl": "https://w3id.org/plato#has_relation_type",
+            "valueUrl": "https://w3id.org/plato#{relation_type}",
+            "datatype": {
+              "base": "string",
+              "format": "^(ConnectedTo|LeadsTo)$"
+            }
+          },
+          {
+            "name": "related_place_id",
+            "titles": "related_place_id",
+            "dc:description": "The other place: a place_id from the places sheet.",
+            "skos:example": "barcelona",
+            "propertyUrl": "https://w3id.org/plato#relates_to",
+            "valueUrl": "places.csv#{related_place_id}",
+            "required": true
+          },
+          {
+            "name": "property_uri",
+            "titles": "property_uri",
+            "dc:description": "What the figure is, as the web address of a property in a published vocabulary.",
+            "skos:example": "https://www.wikidata.org/wiki/Property:P1082",
+            "required": true,
+            "aboutUrl": "#row-{_row}-value",
+            "propertyUrl": "https://w3id.org/plato#property_type",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "property_label",
+            "titles": "property_label",
+            "dc:description": "What is being stated, in words ('population'). Optional.",
+            "skos:example": "population",
+            "aboutUrl": "#row-{_row}-value",
+            "propertyUrl": "https://w3id.org/plato#property_label"
+          },
+          {
+            "name": "value",
+            "titles": "value",
+            "dc:description": "The figure, as the source gives it or as a number.",
+            "skos:example": "3304",
+            "required": true,
+            "aboutUrl": "#row-{_row}-value",
+            "propertyUrl": "https://w3id.org/plato#value_literal"
+          },
+          {
+            "name": "unit_uri",
+            "titles": "unit_uri",
+            "dc:description": "The unit, as the web address of a unit in a published vocabulary, if the value has one. Optional.",
+            "aboutUrl": "#row-{_row}-value",
+            "propertyUrl": "https://w3id.org/plato#value_unit",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "date",
+            "titles": "date",
+            "dc:description": "The date as your source gives it, in any form: '1086', 'c. 925', '1480-1485', 'a. 1300'. Write 'undated' if the source gives no date. Required on every row.",
+            "skos:example": "1086",
+            "required": true,
+            "aboutUrl": "#row-{_row}-time",
+            "propertyUrl": "https://w3id.org/plato#source_label"
+          },
+          {
+            "name": "from",
+            "titles": "from",
+            "dc:description": "Earliest year or date the row can refer to, with at least four digits (0921, not 921; -12000 for 12,000 BCE) or YYYY-MM-DD. Optional; leave empty if you cannot say.",
+            "skos:example": "1086",
+            "aboutUrl": "#row-{_row}-time",
+            "propertyUrl": "https://w3id.org/plato#start_earliest",
+            "datatype": {
+              "base": "string",
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
+            }
+          },
+          {
+            "name": "to",
+            "titles": "to",
+            "dc:description": "Latest year or date the row can refer to, in the same form as 'from'. For a single year, put it in both 'from' and 'to'. Leave empty if the end is unknown.",
+            "skos:example": "1086",
+            "aboutUrl": "#row-{_row}-time",
+            "propertyUrl": "https://w3id.org/plato#end_latest",
+            "datatype": {
+              "base": "string",
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
+            }
+          },
+          {
+            "name": "source_id",
+            "titles": "source_id",
+            "dc:description": "The source this comes from: a source_id from the sources sheet.",
+            "skos:example": "domesday",
+            "required": true,
+            "propertyUrl": "https://w3id.org/plato#sourced_by",
+            "valueUrl": "sources.csv#{source_id}"
+          },
+          {
+            "name": "locator",
+            "titles": "locator",
+            "dc:description": "Where in the source: a page, folio, column or entry, written as the source numbers it ('p. 25', 'f. 12v'). Optional.",
+            "skos:example": "f. 143",
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#locator"
+          },
+          {
+            "name": "attribution",
+            "titles": "attribution",
+            "dc:description": "'Inferred' if the source was given as 'ibid.' or 'idem' and an editor worked out which source was meant. Leave empty otherwise.",
+            "skos:example": "Inferred",
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#attribution_status",
+            "valueUrl": "https://w3id.org/plato#Attribution{attribution}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Stated|Inferred)$"
+            }
+          },
+          {
+            "name": "citation_function",
+            "titles": "citation_function",
+            "dc:description": "Why the source is cited, as a term of CiTO, the Citation Typing Ontology: 'citesAsEvidence' (the source is the evidence), 'citesAsDataSource', 'citesAsRelated', 'citesForInformation' and so on. Optional; leave empty if your data does not say.",
+            "skos:example": "citesAsEvidence",
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#citation_function",
+            "valueUrl": "http://purl.org/spar/cito/{citation_function}",
+            "datatype": {
+              "base": "string",
+              "format": "^(cites|agreesWith|citesAsAuthority|citesAsDataSource|citesAsEvidence|citesAsMetadataDocument|citesAsPotentialSolution|citesAsRecommendedReading|citesAsRelated|citesAsSourceDocument|citesForInformation|compiles|confirms|containsAssertionFrom|corrects|credits|critiques|derides|describes|disagreesWith|discusses|disputes|documents|extends|includesExcerptFrom|includesQuotationFrom|linksTo|obtainsBackgroundFrom|obtainsSupportFrom|parodies|plagiarizes|qualifies|refutes|repliesTo|retracts|reviews|ridicules|speculatesOn|supports|updates|usesConclusionsFrom|usesDataFrom|usesMethodIn)$"
+            }
+          },
+          {
+            "name": "certainty",
+            "titles": "certainty",
+            "dc:description": "How sure you are of this row, from 0 (not at all) to 1 (certain). Optional: if your source or your judgement gives certainty in words, use certainty_level instead, rather than inventing a number.",
+            "skos:example": "0.9",
+            "propertyUrl": "https://w3id.org/plato#certainty",
+            "datatype": {
+              "base": "decimal",
+              "minInclusive": 0,
+              "maxInclusive": 1
+            }
+          },
+          {
+            "name": "certainty_level",
+            "titles": "certainty_level",
+            "dc:description": "Certainty in words: 'Certain', 'LessCertain' or 'Uncertain', the three levels of Linked Places Format. Optional; may be given with or instead of certainty.",
+            "skos:example": "LessCertain",
+            "propertyUrl": "https://w3id.org/plato#certainty_level",
+            "valueUrl": "https://w3id.org/plato#{certainty_level}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Certain|LessCertain|Uncertain)$"
+            }
+          },
+          {
+            "name": "denied",
+            "titles": "denied",
+            "dc:description": "'yes' if the source says this is not so: no market here, a grant refused. The row then records a denial, not an assertion, so give only the one thing the source denies. Leave empty for an ordinary row.",
+            "skos:example": "yes",
+            "propertyUrl": "https://w3id.org/plato#negated",
+            "datatype": {
+              "base": "boolean",
+              "format": "yes|no"
+            }
+          },
+          {
+            "name": "stance",
+            "titles": "stance",
+            "dc:description": "How firmly the source itself says it: 'Reported' if the source passes it on without vouching for it ('it is said'), 'Tentative' if it hedges, 'Doubted' if it raises it but will not decide (that is not a denial: use denied for that), or 'Asserted'. Leave empty where the source simply states it. This is the source's stance, not how sure you are, which is certainty.",
+            "skos:example": "Reported",
+            "propertyUrl": "https://w3id.org/plato#source_stance",
+            "valueUrl": "https://w3id.org/plato#Stance{stance}",
+            "datatype": {
+              "base": "string",
+              "format": "^(Asserted|Reported|Tentative|Doubted)$"
+            }
+          },
+          {
+            "name": "notes",
+            "titles": "notes",
+            "dc:description": "Anything else worth saying about this row, in your own words. Optional.",
+            "propertyUrl": "https://w3id.org/plato#notes"
+          },
+          {
+            "name": "type_attestation",
+            "virtual": true,
+            "aboutUrl": "#row-{_row}",
+            "propertyUrl": "rdf:type",
+            "valueUrl": "https://w3id.org/plato#Attestation"
+          },
+          {
+            "name": "link_timespan",
+            "virtual": true,
+            "aboutUrl": "#row-{_row}",
+            "propertyUrl": "https://w3id.org/plato#attests_timespan",
+            "valueUrl": "#row-{_row}-time"
+          },
+          {
+            "name": "type_timespan",
+            "virtual": true,
+            "aboutUrl": "#row-{_row}-time",
+            "propertyUrl": "rdf:type",
+            "valueUrl": "https://w3id.org/plato#Timespan"
+          },
+          {
+            "name": "link_citation",
+            "virtual": true,
+            "aboutUrl": "#row-{_row}",
+            "propertyUrl": "https://w3id.org/plato#has_citation",
+            "valueUrl": "#row-{_row}-citation"
+          },
+          {
+            "name": "type_citation",
+            "virtual": true,
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "rdf:type",
+            "valueUrl": "https://w3id.org/plato#Citation"
+          },
+          {
+            "name": "cites",
+            "virtual": true,
+            "aboutUrl": "#row-{_row}-citation",
+            "propertyUrl": "https://w3id.org/plato#cites",
+            "valueUrl": "sources.csv#{source_id}"
+          },
+          {
+            "name": "link_value",
+            "virtual": true,
+            "aboutUrl": "#row-{_row}",
+            "propertyUrl": "https://w3id.org/plato#attests_property",
+            "valueUrl": "#row-{_row}-value"
+          },
+          {
+            "name": "type_value",
+            "virtual": true,
+            "aboutUrl": "#row-{_row}-value",
+            "propertyUrl": "rdf:type",
+            "valueUrl": "https://w3id.org/plato#PropertyValue"
           }
         ]
       }

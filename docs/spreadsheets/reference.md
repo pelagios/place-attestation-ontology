@@ -5,7 +5,7 @@
 
 This is the column-by-column reference for **temPlato**, PLATO's spreadsheet
 template. If you are new to it, start with
-[Organising data in spreadsheets](index.md), which explains the eight sheets
+[Organising data in spreadsheets](index.md), which explains the nine sheets
 and the rules that apply to all of them, and where to download the template.
 
 Spreadsheets are one of several formats that comply with PLATO. The same data

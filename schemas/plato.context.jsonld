@@ -114,6 +114,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -180,6 +181,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -228,6 +230,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -267,6 +270,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -318,6 +322,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -389,6 +394,7 @@
                       "@id": "plato:certainty_level",
                       "@type": "@id"
                     },
+                    "computed": "plato:computed",
                     "transcriptionAccuracy": {
                       "@id": "plato:transcription_accuracy",
                       "@type": "@id"
@@ -471,6 +477,7 @@
                           "@id": "plato:certainty_level",
                           "@type": "@id"
                         },
+                        "computed": "plato:computed",
                         "transcriptionAccuracy": {
                           "@id": "plato:transcription_accuracy",
                           "@type": "@id"
@@ -527,6 +534,7 @@
               "@id": "plato:relates_to",
               "@type": "@id"
             },
+            "relatedLabel": "plato:related_label",
             "relationType": {
               "@id": "plato:has_relation_type",
               "@type": "@id"
@@ -547,6 +555,7 @@
               "@id": "plato:certainty_level",
               "@type": "@id"
             },
+            "computed": "plato:computed",
             "sequence": "plato:sequence",
             "notes": "plato:notes",
             "contributor": {
@@ -666,6 +675,7 @@
                       "@id": "plato:certainty_level",
                       "@type": "@id"
                     },
+                    "computed": "plato:computed",
                     "transcriptionAccuracy": {
                       "@id": "plato:transcription_accuracy",
                       "@type": "@id"
@@ -752,6 +762,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -818,6 +829,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -866,6 +878,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -905,6 +918,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -956,6 +970,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -1027,6 +1042,7 @@
                       "@id": "plato:certainty_level",
                       "@type": "@id"
                     },
+                    "computed": "plato:computed",
                     "transcriptionAccuracy": {
                       "@id": "plato:transcription_accuracy",
                       "@type": "@id"
@@ -1109,6 +1125,7 @@
                           "@id": "plato:certainty_level",
                           "@type": "@id"
                         },
+                        "computed": "plato:computed",
                         "transcriptionAccuracy": {
                           "@id": "plato:transcription_accuracy",
                           "@type": "@id"
@@ -1165,6 +1182,7 @@
               "@id": "plato:relates_to",
               "@type": "@id"
             },
+            "relatedLabel": "plato:related_label",
             "relationType": {
               "@id": "plato:has_relation_type",
               "@type": "@id"
@@ -1185,6 +1203,7 @@
               "@id": "plato:certainty_level",
               "@type": "@id"
             },
+            "computed": "plato:computed",
             "sequence": "plato:sequence",
             "notes": "plato:notes",
             "contributor": {
@@ -1304,6 +1323,7 @@
                       "@id": "plato:certainty_level",
                       "@type": "@id"
                     },
+                    "computed": "plato:computed",
                     "transcriptionAccuracy": {
                       "@id": "plato:transcription_accuracy",
                       "@type": "@id"
@@ -1380,6 +1400,7 @@
               "@id": "plato:certainty_level",
               "@type": "@id"
             },
+            "computed": "plato:computed",
             "transcriptionAccuracy": {
               "@id": "plato:transcription_accuracy",
               "@type": "@id"
@@ -1446,6 +1467,7 @@
               "@id": "plato:certainty_level",
               "@type": "@id"
             },
+            "computed": "plato:computed",
             "transcriptionAccuracy": {
               "@id": "plato:transcription_accuracy",
               "@type": "@id"
@@ -1494,6 +1516,7 @@
               "@id": "plato:certainty_level",
               "@type": "@id"
             },
+            "computed": "plato:computed",
             "transcriptionAccuracy": {
               "@id": "plato:transcription_accuracy",
               "@type": "@id"
@@ -1533,6 +1556,7 @@
               "@id": "plato:certainty_level",
               "@type": "@id"
             },
+            "computed": "plato:computed",
             "transcriptionAccuracy": {
               "@id": "plato:transcription_accuracy",
               "@type": "@id"
@@ -1584,6 +1608,7 @@
               "@id": "plato:certainty_level",
               "@type": "@id"
             },
+            "computed": "plato:computed",
             "transcriptionAccuracy": {
               "@id": "plato:transcription_accuracy",
               "@type": "@id"
@@ -1655,6 +1680,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"
@@ -1737,6 +1763,7 @@
                       "@id": "plato:certainty_level",
                       "@type": "@id"
                     },
+                    "computed": "plato:computed",
                     "transcriptionAccuracy": {
                       "@id": "plato:transcription_accuracy",
                       "@type": "@id"
@@ -1793,6 +1820,7 @@
           "@id": "plato:relates_to",
           "@type": "@id"
         },
+        "relatedLabel": "plato:related_label",
         "relationType": {
           "@id": "plato:has_relation_type",
           "@type": "@id"
@@ -1813,6 +1841,7 @@
           "@id": "plato:certainty_level",
           "@type": "@id"
         },
+        "computed": "plato:computed",
         "sequence": "plato:sequence",
         "notes": "plato:notes",
         "contributor": {
@@ -1932,6 +1961,7 @@
                   "@id": "plato:certainty_level",
                   "@type": "@id"
                 },
+                "computed": "plato:computed",
                 "transcriptionAccuracy": {
                   "@id": "plato:transcription_accuracy",
                   "@type": "@id"

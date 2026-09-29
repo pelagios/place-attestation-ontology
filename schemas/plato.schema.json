@@ -88,6 +88,10 @@
         "relativeQualifier": {
           "$ref": "#/$defs/uri",
           "description": "URI of a controlled-vocabulary term describing the relative relationship (e.g. plato:Near, plato:Within, plato:UpstreamOf)."
+        },
+        "computed": {
+          "type": "boolean",
+          "description": "True when this value was worked out by software from other data, not taken from a source (plato:computed): an itinerary's timespan from its stops' timespans, a route's line from its stations. A computed value is not evidence; a consumer must not import it as an attestation."
         }
       },
       "additionalProperties": false
@@ -640,11 +644,15 @@
     },
     "relation": {
       "type": "object",
-      "description": "A entity-to-entity relation attested by an attestation (e.g. capital_of, successor_to).",
+      "description": "An entity-to-entity relation attested by an attestation: containment, membership of a route or network (with sequence), a connection, or a place's part in the life of a person, the history of an object or the course of an event.",
       "properties": {
         "relatesTo": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the target SpatialEntity."
+          "description": "URI of the target: usually another SpatialEntity; or an entity that is not spatial, described elsewhere (a person, an object or an event, e.g. a Wikidata IRI), with relatedLabel to name it."
+        },
+        "relatedLabel": {
+          "type": "string",
+          "description": "A name for the relatesTo target, for display (plato:related_label): 'the Buddha'. Give it whenever the target is not a SpatialEntity in the same dataset, since a platform cannot reliably look up every IRI."
         },
         "relationType": {
           "$ref": "#/$defs/uri",
@@ -773,9 +781,13 @@
           "$ref": "#/$defs/uri",
           "description": "How firmly the source itself asserts what this attestation records (plato:source_stance): the URI of a concept such as https://w3id.org/plato#StanceReported (passed on without vouching: 'it is said'), #StanceTentative (hedged), or #StanceDoubted (raised and left unsettled, which is not a denial: that is negated). Omit where the source simply asserts (#StanceAsserted, the default). This is the source's stance, not anyone's confidence in the attestation, which is certainty or certaintyLevel."
         },
+        "computed": {
+          "type": "boolean",
+          "description": "True when this whole attestation was worked out by software from other data, not taken from a source (plato:computed): an itinerary's span from its stops. A computed value is not evidence; a consumer must not import it as an attestation."
+        },
         "sequence": {
           "type": "integer",
-          "description": "Ordering index for attestations in routes or itineraries."
+          "description": "The position of this attestation's entity among the members of the route, itinerary or network it relates to with MemberOf (plato:sequence), as its source gives it. Lower numbers come first; equal numbers are alternatives; omit it where the source gives no order."
         },
         "notes": {
           "type": "string",

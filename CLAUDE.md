@@ -127,7 +127,7 @@ Two consequences shape the rest of the model, and new work should preserve them:
 | JSON Schema | `schemas/plato.schema.json` | Shared `$defs` for every object type |
 | Submission profiles | `schemas/place-centric.schema.json`, `schemas/attestation-centric.schema.json` | Two ingestion shapes composed from those `$defs` |
 | JSON-LD context | `schemas/plato.context.jsonld` | Maps every JSON key to its RDF term; expanding a submission with it yields the graph |
-| Spreadsheet tables | `schemas/tables/csv-metadata.json` (+ header-only `*.csv`) | CSVW metadata for eight linked CSV tables; converting them yields the graph |
+| Spreadsheet tables | `schemas/tables/csv-metadata.json` (+ header-only `*.csv`) | CSVW metadata for nine linked CSV tables; converting them yields the graph |
 
 Adding or renaming a term means touching the ontology, the JSON `$defs`, the JSON-LD context (a key the context does not name is dropped silently on expansion), and usually an example in both `examples/` (Turtle) and `schemas/examples/` (JSON). A property-scoped context in the context file resolves keys that mean different things by parent (`label`, `source`, `contributor`, `identifier`); a new such key goes in the scoped context of its parent, not at the top level, or it will shadow nothing and map wrongly. Starter concepts for SKOS-valued properties are declared in the Starter Vocabularies section of the ontology, not only named in comments.
 

@@ -84,7 +84,7 @@ SpatialEntity
   from type attestations.
 
 temPlato
-: PLATO's spreadsheet template: eight linked sheets, as an Excel workbook or
+: PLATO's spreadsheet template: nine linked sheets, as an Excel workbook or
   as CSV files, for putting data into PLATO's shape without software.
 
 URI

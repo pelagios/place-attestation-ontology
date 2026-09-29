@@ -17,6 +17,13 @@ Two gaps found in encoding the markets corpus (the CAMPOP market and fair
 records: Blome's Britannia of 1673, Everitt's survey of 1967, and the
 project's register of sources), both checked against 0.5.0.
 
+Routes, itineraries and networks, which WHG will support and for which it
+needs modelling examples, following the WHG v4 patterns and agreed with the
+WHG documentation. PLATO had `plato:sequence` and `plato:connection_metadata`
+for them, but no relation types to use them with, and nothing had tested
+either. The same change lets a place be related to people, objects and events
+described elsewhere, which is what Linked Traces records.
+
 ### Added
 
 - `plato:source_stance` (JSON `sourceStance`, tables `stance`): how firmly
@@ -37,6 +44,36 @@ project's register of sources), both checked against 0.5.0.
   project admits evidence by its licence (13 sources under three licences),
   and the licence could not travel with the data, so a consumer could not see
   that a cited source was licence-restricted.
+- Relation types for routes, itineraries and networks: `plato:MemberOf` (a
+  station, stop or member of a route, itinerary or network, ordered by
+  `plato:sequence`), `plato:ConnectedTo` (undirected) and `plato:LeadsTo`
+  (directed, from the attestation's subject to its target);
+  `plato:BeginsAt` and `plato:EndsAt` for the ends of a directed segment, and
+  `plato:HasEnd` for those of an undirected one. A segment's ends never use
+  `ConnectedTo`, which always joins two places, so a walk across a network
+  never takes two steps for one. Direction is
+  carried by the relation type alone, never by a qualifier, so that a consumer
+  filtering on the type cannot misread a one-way connection as two-way.
+- `plato:broader_relation`: a project's own relation type ('flows into',
+  'carries post to') names the starter type it narrows, so a consumer that
+  knows only `LeadsTo` still follows it the right way. `skos:broader` could
+  not be used, because a RelationType is an Authority, not a skos:Concept.
+- Four Types, `plato:TypeRoute`, `plato:TypeItinerary`, `plato:TypeNetwork` and
+  `plato:TypeSegment`, so that any consumer can tell these entities from
+  places. A segment (a leg of a road, a reach of a river) is a SpatialEntity
+  of its own, and platforms may leave segments out of lists of places.
+- Relation types for places in the history of people, objects and events, as
+  Linked Traces records them: `plato:BirthplaceOf`, `plato:DeathplaceOf`,
+  `plato:ResidenceOf`, `plato:FindspotOf`, `plato:SettingOf` and
+  `plato:WorkplaceOf` (the relational keywords WHG's own collections use;
+  the rest of their keywords are themes, not relations), with
+  `plato:related_label` (JSON `relatedLabel`, tables `related_label`) to name
+  a target described elsewhere.
+- `plato:computed` (JSON `computed`, on an attestation or in any
+  `qualification`): a value worked out by software, such as an itinerary's
+  span from its stops. It is not evidence, and a consumer must not import it
+  as an attestation. WHG will export such values, and without the marker a
+  re-import would turn them into evidence no source gave.
 
 ### Deprecated
 
@@ -45,17 +82,47 @@ project's register of sources), both checked against 0.5.0.
   literal where the gazetteer's licence is an IRI. It stays for one release
   under the deprecation policy. No published data uses it.
 
+### Removed
+
+- `plato:connection_metadata`, removed outright, as a deliberate exception to
+  the deprecation policy. It was an opaque string whose format each project
+  chose, with no JSON key and no spreadsheet column, and no data, tool or
+  platform used it (WHG never implemented it). What it was for is now carried
+  in the open: the kind of connection and its direction by the relation type,
+  and figures such as goods, frequency or journey time as PropertyValues, each
+  with its own source and date.
+
 ### Clarified
 
 - `plato:certainty_level` is the same confidence as `plato:certainty`, the
   contributor's or editor's. Its comment had said "when a source or a dataset
   states certainty in words", which left open whose certainty it was.
+- `plato:sequence` sits on the attestation about a member, which relates_to
+  the route, itinerary or network with `plato:MemberOf`, as in WHG v4. Its
+  comment had said the attestation was about the route, which leaves the
+  number nothing to order. Equal numbers are alternatives; no number means no
+  order is given.
+- `plato:relates_to` no longer has `rdfs:range plato:SpatialEntity`. Its
+  target may be a person, object or event described elsewhere, which the range
+  would have inferred to be a SpatialEntity.
 
 ### Changed
 
 - The spreadsheet tables gain two columns: `stance` after `denied` on every
   attestation sheet, and `licence` after `derived_from` on sources. Sheets
   made with the earlier template need the two columns added, empty if unused.
+- The relations sheet gains `related_uri`, `related_label` and `sequence`
+  after `related_place_id`, which is now optional: a row relates its place
+  either to another place or, in `related_uri`, to something described
+  elsewhere, and should fill in one of the two. `relation_type` takes the new
+  relation types.
+- A ninth sheet, `connections`, for figures about a connection between two
+  places (letters sent from one city to another, a journey time): one link
+  and one figure per row, becoming a `ConnectedTo` or `LeadsTo` attestation
+  with one PropertyValue. A relations row cannot carry a figure, because a
+  row may not create an optional node. Sets of tables made with the earlier
+  template need an empty `connections.csv`, headings only, and the three new
+  relations columns.
 
 ## 0.5.0
 

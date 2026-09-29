@@ -738,22 +738,57 @@ plato:citation_function
 #
 # This makes the relationship itself an attestation, carrying certainty,
 # timespan, and source provenance.
+#
+# The target is usually a second SpatialEntity, but need not be. Linked Traces
+# annotates places with their part in the lives of people, the history of
+# objects and the course of events: the Buddha's birthplace, a coin's findspot,
+# the setting of a battle. Those things are not spatial entities, and making
+# them so to satisfy a range would stretch the class past meaning. So
+# relates_to has no rdfs:range: its target may be an entity described
+# elsewhere (a person in Wikidata, an object in a museum catalogue), named by
+# its IRI and not modelled here. plato:related_label carries a name for it,
+# since a consumer cannot be expected to dereference an arbitrary IRI.
 
 plato:relates_to
     a owl:ObjectProperty ;
     rdfs:label "relates to"@en ;
     rdfs:comment """
-        Links an Attestation to a second SpatialEntity, asserting a relationship
-        between the Attestation's subject entity (via attests_about) and this
-        target entity. The semantic nature of the relationship is specified by
+        Links an Attestation to the second entity of a relationship between
+        the Attestation's subject entity (via attests_about) and this target.
+        The semantic nature of the relationship is specified by
         plato:has_relation_type, which references a RelationType authority.
 
         Example: An attestation about Constantinople that relates_to the
         Byzantine Empire with relation_type "capital_of" asserts that
         "Constantinople was the capital of the Byzantine Empire".
+
+        The target is usually another SpatialEntity in the same dataset. It
+        may instead be an entity that is not spatial and is described
+        elsewhere: a person, an object or an event, identified by its IRI
+        (an attestation about Lumbini that relates_to the Buddha, with
+        plato:BirthplaceOf). There is deliberately no rdfs:range, so such a
+        target is not inferred to be a SpatialEntity. Give an external target
+        a plato:related_label. Platforms should show relations to entities
+        that are not spatial apart from spatial ones, and leave them out of
+        containment, clustering and matching.
+    """@en ;
+    rdfs:domain plato:Attestation .
+
+plato:related_label
+    a owl:DatatypeProperty ;
+    rdfs:label "related label"@en ;
+    rdfs:comment """
+        A name for the target of plato:relates_to, for display: 'the Buddha',
+        'denarius of Hadrian, BM 1872,0709.470'. It belongs on the attestation
+        rather than on the target, because the target may be someone else's
+        IRI, about which this dataset makes no other statement, and a platform
+        showing a place cannot reliably look up every IRI it links to. Give it
+        whenever the target is not a SpatialEntity in the same dataset; it is
+        harmless, but redundant, when the target is. It names the target; the
+        source's own wording of the relation is plato:source_label.
     """@en ;
     rdfs:domain plato:Attestation ;
-    rdfs:range plato:SpatialEntity .
+    rdfs:range xsd:string .
 
 plato:has_relation_type
     a owl:ObjectProperty ;
@@ -769,6 +804,27 @@ plato:has_relation_type
         be added as Authority records without modifying the ontology.
     """@en ;
     rdfs:domain plato:Attestation ;
+    rdfs:range plato:RelationType .
+
+# A project's own relation type is usually a narrower case of one PLATO
+# declares: a river's "flows into" is a directed connection, a post road's
+# "carries post to" another. Saying so lets a consumer that knows only the
+# starter types still traverse the project's network in the right direction.
+# skos:broader cannot say it: RelationType is an Authority, not a skos:Concept,
+# and skos:broader's domain would infer every relation type to be a Concept.
+
+plato:broader_relation
+    a owl:ObjectProperty ;
+    rdfs:label "broader relation"@en ;
+    rdfs:comment """
+        The more general RelationType of which this one is a narrower case:
+        a project's 'flows into' has broader_relation plato:LeadsTo, so any
+        attestation of the one is also, for a consumer that follows this
+        link, an attestation of the other. A narrower type keeps the
+        direction of its broader one. Transitive in use: a consumer should
+        follow the chain to the starter type it knows.
+    """@en ;
+    rdfs:domain plato:RelationType ;
     rdfs:range plato:RelationType .
 
 
@@ -915,6 +971,32 @@ plato:transcription_completeness
     """@en ;
     rdfs:range skos:Concept .
 
+# A platform works things out from what it holds: the span of an itinerary
+# from the dates of its stops, the extent of a route from its stations, a
+# network's hull. Those values are useful to export, and harmful to import:
+# read back as attestations, they become evidence that no source gave, and
+# they outlive any correction to the members they were computed from. So a
+# computed value says so.
+
+plato:computed
+    a owl:DatatypeProperty ;
+    rdfs:label "computed"@en ;
+    rdfs:comment """
+        True when this value, or this whole attestation, was worked out by
+        software from other data rather than taken from a source: an
+        itinerary's timespan from the timespans of its stops, a route's
+        geometry from its stations. A computed value is not evidence. A
+        consumer may show it, but must not take it in as an attestation of
+        its own: it should compute the value again from the members, or leave
+        it out and say so. Absent or false, a value is attested.
+
+        It is not plato:form_status Normalised (a name form an editor
+        derived from an attested one), nor a Candidate (a match an algorithm
+        suggests). Like the qualification properties it has no rdfs:domain,
+        so it can mark an Attestation or any facet node.
+    """@en ;
+    rdfs:range xsd:boolean .
+
 plato:negated
     a owl:DatatypeProperty ;
     rdfs:label "negated"@en ;
@@ -976,30 +1058,37 @@ plato:source_stance
     rdfs:domain plato:Attestation ;
     rdfs:range skos:Concept .
 
+# Routes, itineraries and networks follow the WHG v4 pattern: the route is a
+# SpatialEntity, and each member (a station, a stop, a segment) has an
+# attestation about the member that relates_to the route with
+# plato:MemberOf. The order belongs on that attestation, because it is the
+# order one source gives: two itineraries of the same road may list its
+# stations differently, and each attestation keeps its own source's order.
+# Figures about a connection (a distance, a delivery time, a cargo) are
+# PropertyValues, each with its own source and date; plato:connection_metadata,
+# an opaque string for them, was removed in 0.6.0.
+
 plato:sequence
     a owl:DatatypeProperty ;
     rdfs:label "sequence"@en ;
     rdfs:comment """
-        Ordering index for attestations in routes or itineraries. Defines
-        the position of this attestation in an ordered sequence. Used when
-        the SpatialEntity being attested (via attests_about) is a Route or Itinerary.
-        Lower numbers come first in the sequence.
+        The position of a member in an ordered whole, as one source gives it:
+        a station on a route, a stop on an itinerary, a segment of a road.
+        It sits on the attestation about the member, which relates_to the
+        route, itinerary or network with plato:MemberOf; the relates_to target
+        is what the number orders, so one place can hold different positions
+        on different routes. Lower numbers come first.
+
+        Two members with the same number are alternatives at that point (two
+        branches of a road); a source that disagrees with another about the
+        order is recorded as its own attestations, with a meta-attestation
+        where a judgement is made between them. A member with no sequence is
+        in an order the source does not give. The members of an itinerary
+        carry their own timespans, from arrival to departure, and the order of
+        a journey known only from its dates may be left to those timespans.
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range xsd:integer .
-
-plato:connection_metadata
-    a owl:DatatypeProperty ;
-    rdfs:label "connection metadata"@en ;
-    rdfs:comment """
-        Structured metadata for network-type attestations. Can encode
-        information about trade goods, flow direction, capacity, frequency,
-        or other properties of network connections. Format is implementation-
-        specific (JSON recommended) but should be documented in the gazetteer's
-        metadata.
-    """@en ;
-    rdfs:domain plato:Attestation ;
-    rdfs:range xsd:string .
 
 plato:notes
     a owl:DatatypeProperty ;
@@ -2407,9 +2496,13 @@ plato:gazetteer_owner
 # Each scheme is open: a project may add concepts in its own namespace, and
 # should document them in its gazetteer metadata.
 #
-# One RelationType authority instance is also declared, for containment,
-# because it is the entity-to-entity relation every gazetteer needs first.
-# Others (capital_of, successor_to, ...) are left to project vocabularies.
+# RelationType authority instances are declared for containment, which every
+# gazetteer needs first; for routes, itineraries and networks; and for the
+# part a place plays in the history of a person, an object or an event, as
+# Linked Traces records it. Others (capital_of, successor_to, ...) are left to
+# project vocabularies, which may say which starter type each narrows with
+# plato:broader_relation. Four Types are declared so that routes, itineraries,
+# networks and their segments can be told from places by any consumer.
 
 plato:FormStatusScheme
     a skos:ConceptScheme ;
@@ -2754,6 +2847,220 @@ plato:ContainedIn
         Not an identity relation and not fixed by the class model; it is a
         claim, with a source and a certainty, like any other attestation.
     """@en .
+
+# -----------------------------------------------------------------------------
+# RelationTypes: routes, itineraries and networks
+# -----------------------------------------------------------------------------
+# The WHG v4 patterns. A route, an itinerary or a network is a SpatialEntity,
+# typed as such, and each member has an attestation about the member that
+# relates_to the whole with MemberOf, ordered where the source orders it by
+# plato:sequence. A connection between two members is an attestation about one
+# that relates_to the other with ConnectedTo or LeadsTo. Direction is carried
+# by the relation type and nowhere else, so that a consumer filtering on the
+# type cannot miss it: a qualifier that turned an undirected relation into a
+# directed one would be silently misread by anything that ignored it.
+#
+# A physical link with its own existence (a leg of a road, a reach of a river)
+# is a SpatialEntity of type TypeSegment: a member of its route or network,
+# with BeginsAt and EndsAt its end places (or HasEnd twice, if it has no
+# direction), and its length and other figures as PropertyValues. Segments
+# never use ConnectedTo or LeadsTo for their ends: those always join one place
+# to another, so that "the places connected to Londinium" never returns a
+# segment, and a walk across a network does not take two steps for every one. A link that is only a relationship (two cities that
+# exchanged letters) is the ConnectedTo or LeadsTo attestation itself, with
+# its figures as that attestation's PropertyValues.
+
+plato:MemberOf
+    a plato:RelationType ;
+    plato:authority_title "member of"@en ;
+    plato:relation_label "member_of" ;
+    plato:inverse_label "has_member" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity (a route, itinerary or network)" ;
+    rdfs:comment """
+        The subject is a member of the target route, itinerary or network: a
+        station on a road, a stop on a journey, a port in a trade network, a
+        segment of a river system. Its position, where the source gives one,
+        is plato:sequence on the same attestation. A route may be a member of
+        another route (one stage of a pilgrimage), but not, through any chain
+        of memberships, of itself. Not containment: a town on a road is not
+        within it, and a network's members need not lie inside anything.
+    """@en .
+
+plato:ConnectedTo
+    a plato:RelationType ;
+    plato:authority_title "connected to"@en ;
+    plato:relation_label "connected_to" ;
+    plato:inverse_label "connected_to" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The subject and target are directly connected, in no particular
+        direction: an attestation that A is connected to B says the same as
+        one that B is connected to A. For a connection that runs one way, use
+        plato:LeadsTo. A connection known in both directions from sources that
+        each give one is better recorded as two LeadsTo attestations, each
+        with its own source, than as one ConnectedTo.
+    """@en .
+
+plato:LeadsTo
+    a plato:RelationType ;
+    plato:authority_title "leads to"@en ;
+    plato:relation_label "leads_to" ;
+    plato:inverse_label "reached_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        A directed connection, from the subject (attests_about) to the target
+        (relates_to): a river reach that flows into the next, a post road
+        carrying mail one way, letters sent from one city to another. Not
+        river-specific: a project declares its own narrower types ('flows
+        into', 'carries post to') with plato:broader_relation pointing here,
+        so that a consumer that knows only LeadsTo still follows them in the
+        right direction.
+    """@en .
+
+plato:BeginsAt
+    a plato:RelationType ;
+    plato:authority_title "begins at"@en ;
+    plato:relation_label "begins_at" ;
+    plato:inverse_label "beginning_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The subject segment begins at the target: a leg of an itinerary at the
+        station it leaves, a river reach at its upstream confluence. With
+        plato:EndsAt it gives a segment a direction. A segment with no
+        direction is joined to its two ends with plato:HasEnd.
+    """@en .
+
+plato:EndsAt
+    a plato:RelationType ;
+    plato:authority_title "ends at"@en ;
+    plato:relation_label "ends_at" ;
+    plato:inverse_label "end_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The subject segment ends at the target: a leg of an itinerary at the
+        station it reaches, a river reach at its downstream confluence. See
+        plato:BeginsAt.
+    """@en .
+
+plato:HasEnd
+    a plato:RelationType ;
+    plato:authority_title "has end"@en ;
+    plato:relation_label "has_end" ;
+    plato:inverse_label "end_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The subject segment has the target as one of its ends, in no
+        particular direction: a stretch of road between two towns, walked
+        either way. An undirected segment has two HasEnd attestations. Not
+        plato:ConnectedTo, which joins two places directly: were a segment
+        connected to its ends, every place would be two steps from its
+        neighbours.
+    """@en .
+
+# -----------------------------------------------------------------------------
+# RelationTypes: people, objects and events (Linked Traces)
+# -----------------------------------------------------------------------------
+# Linked Traces annotated places with their part in things that are not
+# spatial. In PLATO each such statement is an attestation about the place that
+# relates_to the person, object or event by its IRI, with a plato:related_label
+# to name it. These are the relations Linked Traces and WHG's collections used
+# most; a project may declare more. A journey is not among them: its waypoints,
+# stops, origin and destination are members of an itinerary, with
+# plato:MemberOf, ordered by plato:sequence, their stays given by timespans. Nor
+# are thematic keywords ('coastal trade', 'politics'): they are not relations,
+# and belong in notes or, where they classify, in a Type.
+
+plato:BirthplaceOf
+    a plato:RelationType ;
+    plato:authority_title "birthplace of"@en ;
+    plato:relation_label "birthplace_of" ;
+    plato:inverse_label "born_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "person" ;
+    rdfs:comment "The subject is where the target person was born."@en .
+
+plato:DeathplaceOf
+    a plato:RelationType ;
+    plato:authority_title "deathplace of"@en ;
+    plato:relation_label "deathplace_of" ;
+    plato:inverse_label "died_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "person" ;
+    rdfs:comment "The subject is where the target person died."@en .
+
+plato:ResidenceOf
+    a plato:RelationType ;
+    plato:authority_title "residence of"@en ;
+    plato:relation_label "residence_of" ;
+    plato:inverse_label "resided_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "person or group" ;
+    rdfs:comment "The target person or group lived at the subject, for the attested timespan."@en .
+
+plato:FindspotOf
+    a plato:RelationType ;
+    plato:authority_title "findspot of"@en ;
+    plato:relation_label "findspot_of" ;
+    plato:inverse_label "found_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "object" ;
+    rdfs:comment "The target object (a coin, an inscription, a manuscript) was found at the subject. The timespan is when it was found, if known."@en .
+
+plato:SettingOf
+    a plato:RelationType ;
+    plato:authority_title "setting of"@en ;
+    plato:relation_label "setting_of" ;
+    plato:inverse_label "took_place_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "event" ;
+    rdfs:comment "The target event (a battle, a council, a fair) took place at the subject, wholly or in part."@en .
+
+plato:WorkplaceOf
+    a plato:RelationType ;
+    plato:authority_title "workplace of"@en ;
+    plato:relation_label "workplace_of" ;
+    plato:inverse_label "worked_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "person or group" ;
+    rdfs:comment "The target person or group worked, or held office, at the subject, for the attested timespan: Linked Traces' heldOffice, and work generally."@en .
+
+# -----------------------------------------------------------------------------
+# Types: routes, itineraries, networks and segments
+# -----------------------------------------------------------------------------
+# What kind of entity a SpatialEntity is, is a Type attestation, and usually a
+# term from a vocabulary such as the AAT. These four are declared because a
+# platform's behaviour depends on them: it draws a route from its ordered
+# members, computes an itinerary's span, and may leave segments out of lists
+# of places, where "Londinium to Caesaromagus" would be a pseudo-place. A Type
+# attestation points at one with its IRI as the type identifier. The
+# distinction between a route and an itinerary is WHG's: a route is a way, and
+# an itinerary is a journey made along one, dated stop by stop.
+
+plato:TypeRoute
+    a plato:Type ;
+    plato:type_label "route"@en ;
+    rdfs:comment "An ordered set of places making a way: a road, a sea lane, a pilgrimage route. Its timespan, if any, is when it was in use, not when anyone travelled it."@en .
+
+plato:TypeItinerary
+    a plato:Type ;
+    plato:type_label "itinerary"@en ;
+    rdfs:comment "A journey made through places in order, each stop with its own timespan: a traveller's tour, a royal progress, a ship's voyage. Not plato:Itinerary, which is a geometry role (a line tracing a route or journey)."@en .
+
+plato:TypeNetwork
+    a plato:Type ;
+    plato:type_label "network"@en ;
+    rdfs:comment "A set of places and the connections between them, in no single order: a river system, a canal network, a correspondence network."@en .
+
+plato:TypeSegment
+    a plato:Type ;
+    plato:type_label "segment"@en ;
+    rdfs:comment "A physical link with an existence of its own: a leg of a route between two stations, a reach of a river between confluences. Platforms may leave segments out of lists and searches of places."@en .
 
 
 # =============================================================================

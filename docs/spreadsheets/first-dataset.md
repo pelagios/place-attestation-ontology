@@ -2,7 +2,7 @@
 
 This walkthrough builds a small dataset from one source: a London customs
 account of 1480 to 1485 that mentions Bristol and Deptford Strand. It uses
-five of the eight sheets. The finished tables are the *customs* example,
+five of the nine sheets. The finished tables are the *customs* example,
 which you can {download}`download as CSV files <../_generated/downloads/plato-tables-example-customs.zip>`
 and open beside this page.
 
