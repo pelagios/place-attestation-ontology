@@ -1,0 +1,1468 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/datini/",
+    "title": "The Datini letters: a network of correspondence",
+    "description": "Eleven directed connections between the principal offices of Francesco di Marco Datini's firm (Florence, Pisa, Prato, Genoa, Barcelona, Valencia, Palma de Mallorca, Avignon), each with the number of letters sent and the median delivery time, worked out for this example from the Datini Correspondence Metadata (Franklin-Lyons 2024, CC BY 4.0). A worked example of PLATO's network pattern where the connections are relationships, not physical links: the figures belong to each connection."
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/datini-network",
+      "label": "The Datini correspondence network: the principal offices",
+      "entityIdentifier": "datini-network",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1355-1443",
+              "startEarliest": "1355",
+              "endLatest": "1443"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/datini/source/datini-metadata",
+                "title": "Datini Correspondence Metadata",
+                "citation": "A. Franklin-Lyons, Datini Correspondence Metadata Project (BodoArXiv, 2024), doi:10.34055/osf.io/wgpm4, with the data at doi:10.17605/OSF.IO/MT25A: one record for each letter of the Datini archive, from the catalogue of the Archivio di Stato di Prato",
+                "uri": "https://doi.org/10.17605/OSF.IO/MT25A",
+                "authorityType": "source",
+                "timespan": {
+                  "sourceLabel": "2024",
+                  "startEarliest": "2024",
+                  "endLatest": "2024"
+                },
+                "licence": "https://creativecommons.org/licenses/by/4.0/"
+              },
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The span of sending dates the dataset gives for the letters counted here.",
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeNetwork",
+              "label": "network"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "IT",
+        "ES",
+        "FR"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/florence",
+      "label": "Florence",
+      "entityIdentifier": "florence",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "provenienza, destinazione",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The name the archive catalogue files the city under.",
+          "names": [
+            {
+              "toponym": "FIRENZE",
+              "language": "it",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "City List with Coordinates, FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                11.2558136,
+                43.7695604
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  11.2558136,
+                  43.7695604
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A network has no order, so no sequence.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/datini-network",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1355-1402",
+              "startEarliest": "1355",
+              "endLatest": "1402"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+                "title": "Letters and delivery times by pair of cities",
+                "citation": "Counts of letters, and median delivery times, for pairs of cities, worked out for this example on 29 September 2026 from the Datini Correspondence Metadata",
+                "authorityType": "source",
+                "timespan": {
+                  "sourceLabel": "2026",
+                  "startEarliest": "2026",
+                  "endLatest": "2026"
+                },
+                "derivedFrom": "https://whgazetteer.org/example/datini/source/datini-metadata",
+                "licence": "https://creativecommons.org/licenses/by/4.0/"
+              },
+              "locator": "FIRENZE to PISA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from FIRENZE to PISA. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/pisa",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 16261
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1355-1402",
+              "startEarliest": "1355",
+              "endLatest": "1402"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "FIRENZE to PISA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 13555 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/pisa",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 2,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1367-1443",
+              "startEarliest": "1367",
+              "endLatest": "1443"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "FIRENZE to PRATO",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from FIRENZE to PRATO. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/prato",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 6804
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1367-1443",
+              "startEarliest": "1367",
+              "endLatest": "1443"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "FIRENZE to PRATO",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 5703 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/prato",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 0,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1379-1405",
+              "startEarliest": "1379",
+              "endLatest": "1405"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "FIRENZE to GENOVA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from FIRENZE to GENOVA. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/genoa",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 5306
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1379-1405",
+              "startEarliest": "1379",
+              "endLatest": "1405"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "FIRENZE to GENOVA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 4578 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/genoa",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 8,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1382-1412",
+              "startEarliest": "1382",
+              "endLatest": "1412"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "FIRENZE to BARCELLONA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from FIRENZE to BARCELLONA. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/barcelona",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 5097
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1382-1412",
+              "startEarliest": "1382",
+              "endLatest": "1412"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "FIRENZE to BARCELLONA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 4314 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/barcelona",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 30,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "IT"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/datini/place/florence",
+          "object": "http://www.wikidata.org/entity/Q2044",
+          "identityType": "exactMatch",
+          "basis": "The city the dataset names, and its English name (Florence)"
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/pisa",
+      "label": "Pisa",
+      "entityIdentifier": "pisa",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "provenienza, destinazione",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The name the archive catalogue files the city under.",
+          "names": [
+            {
+              "toponym": "PISA",
+              "language": "it",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "City List with Coordinates, PISA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                10.4016888,
+                43.7228386
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  10.4016888,
+                  43.7228386
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A network has no order, so no sequence.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/datini-network",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1379-1413",
+              "startEarliest": "1379",
+              "endLatest": "1413"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "PISA to FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from PISA to FIRENZE. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/florence",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 6414
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1379-1413",
+              "startEarliest": "1379",
+              "endLatest": "1413"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "PISA to FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 4933 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/florence",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 2,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "IT"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/datini/place/pisa",
+          "object": "http://www.wikidata.org/entity/Q13375",
+          "identityType": "exactMatch",
+          "basis": "The city the dataset names, and its English name (Pisa)"
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/prato",
+      "label": "Prato",
+      "entityIdentifier": "prato",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "provenienza, destinazione",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The name the archive catalogue files the city under.",
+          "names": [
+            {
+              "toponym": "PRATO",
+              "language": "it",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "City List with Coordinates, PRATO",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                11.102228,
+                43.8777049
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  11.102228,
+                  43.8777049
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A network has no order, so no sequence.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/datini-network",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1383-1419",
+              "startEarliest": "1383",
+              "endLatest": "1419"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "PRATO to FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from PRATO to FIRENZE. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/florence",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 5700
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1383-1419",
+              "startEarliest": "1383",
+              "endLatest": "1419"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "PRATO to FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 4848 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/florence",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 1,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "IT"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/datini/place/prato",
+          "object": "http://www.wikidata.org/entity/Q13377",
+          "identityType": "exactMatch",
+          "basis": "The city the dataset names, and its English name (Prato)"
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/genoa",
+      "label": "Genoa",
+      "entityIdentifier": "genoa",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "provenienza, destinazione",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The name the archive catalogue files the city under.",
+          "names": [
+            {
+              "toponym": "GENOVA",
+              "language": "it",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "City List with Coordinates, GENOVA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                8.946256,
+                44.4056499
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  8.946256,
+                  44.4056499
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A network has no order, so no sequence.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/datini-network",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1382-1414",
+              "startEarliest": "1382",
+              "endLatest": "1414"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "GENOVA to FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from GENOVA to FIRENZE. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/florence",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 2902
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1382-1414",
+              "startEarliest": "1382",
+              "endLatest": "1414"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "GENOVA to FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 2427 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/florence",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 7,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "IT"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/datini/place/genoa",
+          "object": "http://www.wikidata.org/entity/Q1449",
+          "identityType": "exactMatch",
+          "basis": "The city the dataset names, and its English name (Genoa)"
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/barcelona",
+      "label": "Barcelona",
+      "entityIdentifier": "barcelona",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "provenienza, destinazione",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The name the archive catalogue files the city under.",
+          "names": [
+            {
+              "toponym": "BARCELLONA",
+              "language": "it",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "City List with Coordinates, BARCELLONA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                2.1734035,
+                41.3850639
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  2.1734035,
+                  41.3850639
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A network has no order, so no sequence.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/datini-network",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1386-1419",
+              "startEarliest": "1386",
+              "endLatest": "1419"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "BARCELLONA to VALENZA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from BARCELLONA to VALENZA. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/valencia",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 3551
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1386-1419",
+              "startEarliest": "1386",
+              "endLatest": "1419"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "BARCELLONA to VALENZA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 2882 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/valencia",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 7,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1394-1411",
+              "startEarliest": "1394",
+              "endLatest": "1411"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "BARCELLONA to MAIORCA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from BARCELLONA to MAIORCA. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/palma",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 3193
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1394-1411",
+              "startEarliest": "1394",
+              "endLatest": "1411"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "BARCELLONA to MAIORCA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 2947 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/palma",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 5,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "ES"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/datini/place/barcelona",
+          "object": "http://www.wikidata.org/entity/Q1492",
+          "identityType": "exactMatch",
+          "basis": "The city the dataset names, and its English name (Barcelona)"
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/valencia",
+      "label": "Valencia",
+      "entityIdentifier": "valencia",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "provenienza, destinazione",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The name the archive catalogue files the city under.",
+          "names": [
+            {
+              "toponym": "VALENZA",
+              "language": "it",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "City List with Coordinates, VALENZA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.3762881,
+                39.4699075
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.3762881,
+                  39.4699075
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A network has no order, so no sequence.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/datini-network",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1382-1411",
+              "startEarliest": "1382",
+              "endLatest": "1411"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "VALENZA to BARCELLONA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from VALENZA to BARCELLONA. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/barcelona",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 2841
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1382-1411",
+              "startEarliest": "1382",
+              "endLatest": "1411"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "VALENZA to BARCELLONA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 2211 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/barcelona",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 7,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "ES"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/datini/place/valencia",
+          "object": "http://www.wikidata.org/entity/Q8818",
+          "identityType": "exactMatch",
+          "basis": "The city the dataset names, and its English name (Valencia)"
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/palma",
+      "label": "Palma de Mallorca",
+      "entityIdentifier": "palma",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "provenienza, destinazione",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The name the archive catalogue files the city under.",
+          "names": [
+            {
+              "toponym": "MAIORCA",
+              "language": "it",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "City List with Coordinates, MAIORCA",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                2.650706,
+                39.570023
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  2.650706,
+                  39.570023
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A network has no order, so no sequence.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/datini-network",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "ES"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/datini/place/palma",
+          "object": "http://www.wikidata.org/entity/Q8826",
+          "identityType": "exactMatch",
+          "basis": "The city the dataset names, and its English name (Palma de Majorca)"
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/datini/place/avignon",
+      "label": "Avignon",
+      "entityIdentifier": "avignon",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "provenienza, destinazione",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The name the archive catalogue files the city under.",
+          "names": [
+            {
+              "toponym": "AVIGNONE",
+              "language": "it",
+              "script": "Latn"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword"
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "locator": "City List with Coordinates, AVIGNONE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                4.8086864,
+                43.949947
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  4.8086864,
+                  43.949947
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/datini-metadata",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A network has no order, so no sequence.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/datini-network",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1371-1420",
+              "startEarliest": "1371",
+              "endLatest": "1420"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "AVIGNONE to FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Every letter the dataset records from AVIGNONE to FIRENZE. The dates are the years of sending as the dataset gives them.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/florence",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P1114",
+              "label": "letters sent",
+              "value": 2517
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1371-1420",
+              "startEarliest": "1371",
+              "endLatest": "1420"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/datini/source/letters-by-pair",
+              "locator": "AVIGNONE to FIRENZE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The median of arrival date minus sending date, over the 2114 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/datini/place/florence",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2047",
+              "label": "median delivery time (days)",
+              "value": 20,
+              "unit": "http://www.wikidata.org/entity/Q573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "FR"
+      ],
+      "identityRelations": [
+        {
+          "subject": "https://whgazetteer.org/example/datini/place/avignon",
+          "object": "http://www.wikidata.org/entity/Q6397",
+          "identityType": "exactMatch",
+          "basis": "The city the dataset names, and its English name (Avignon)"
+        }
+      ]
+    }
+  ]
+}

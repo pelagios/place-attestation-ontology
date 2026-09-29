@@ -1,0 +1,138 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative
+# URIs. External URIs that already exist (Wikidata) are used directly. This
+# file shows part of the Datini example; the whole of it is in
+# schemas/tables/examples/datini/ (spreadsheet tables) and
+# schemas/examples/place-centric-datini.json (PLATO JSON), with the same URIs.
+
+
+# =============================================================================
+# A network of relationships: the Datini letters
+#
+# Scenario: the archive of Francesco di Marco Datini (d. 1410), merchant of
+# Prato, holds the letters exchanged between his firm's offices and their
+# correspondents. The Datini Correspondence Metadata gives one record for each
+# of 145,417 letters, with the cities it went from and to, and the dates it was sent
+# and received. Counting the letters between two cities, and taking the median
+# delivery time, turns the records into a network: cities connected by the
+# post that ran between them.
+#
+# This demonstrates:
+#   1. A connection that is a relationship, not a physical link: the
+#      attestation itself joins the two cities with plato:LeadsTo, and carries
+#      the figures about the connection as PropertyValues.
+#   2. Each direction as its own attestation, with its own figures: Florence
+#      to Pisa and Pisa to Florence differ, so neither is plato:ConnectedTo.
+#   3. Figures a project works out from its sources, cited as a source of
+#      their own, plato:derived_from the material: they are attested findings,
+#      not plato:computed values, which are what a platform can derive again
+#      from the same data.
+# =============================================================================
+
+
+# --- Sources: the dataset, and the counts worked out from it -------------------
+
+whgx:datini\/source\/datini-metadata
+    a plato:Source ;
+    plato:authority_title "Datini Correspondence Metadata" ;
+    plato:bibliographic_string "A. Franklin-Lyons, Datini Correspondence Metadata Project (BodoArXiv, 2024), doi:10.34055/osf.io/wgpm4, with the data at doi:10.17605/OSF.IO/MT25A: one record for each letter of the Datini archive, from the catalogue of the Archivio di Stato di Prato" ;
+    plato:authority_uri "https://doi.org/10.17605/OSF.IO/MT25A"^^xsd:anyURI ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> .
+
+whgx:datini\/source\/letters-by-pair
+    a plato:Source ;
+    plato:authority_title "Letters and delivery times by pair of cities" ;
+    plato:bibliographic_string "Counts of letters, and median delivery times, for pairs of cities, worked out for this example on 29 September 2026 from the Datini Correspondence Metadata" ;
+    plato:derived_from whgx:datini\/source\/datini-metadata ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> .
+
+
+# --- The network and two of its cities ------------------------------------------
+
+whgx:datini\/place\/datini-network
+    a plato:SpatialEntity ;
+    rdfs:label "The Datini correspondence network: the principal offices" .
+
+whgx:datini\/place\/florence
+    a plato:SpatialEntity ;
+    rdfs:label "Florence" .
+
+whgx:datini\/place\/pisa
+    a plato:SpatialEntity ;
+    rdfs:label "Pisa" .
+
+# A network has no order, so its members have no plato:sequence.
+whgx:datini\/attestation\/florence-member
+    a plato:Attestation ;
+    plato:attests_about whgx:datini\/place\/florence ;
+    plato:relates_to whgx:datini\/place\/datini-network ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:has_citation [ a plato:Citation ; plato:cites whgx:datini\/source\/datini-metadata ;
+                         plato:citation_function cito:citesAsDataSource ] .
+
+
+# --- Florence to Pisa, and Pisa to Florence -------------------------------------
+#
+# One attestation for each figure, each joining the two cities: the figure is
+# about the connection, not about either city.
+
+whgx:datini\/attestation\/florence-pisa-letters
+    a plato:Attestation ;
+    plato:attests_about whgx:datini\/place\/florence ;
+    plato:relates_to whgx:datini\/place\/pisa ;
+    plato:has_relation_type plato:LeadsTo ;
+    plato:attests_property [ a plato:PropertyValue ;
+        plato:property_type "https://www.wikidata.org/wiki/Property:P1114"^^xsd:anyURI ;
+        plato:property_label "letters sent" ;
+        plato:value_literal 16261 ] ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "1355-1402" ;
+        plato:start_earliest "1355" ;
+        plato:end_latest "1402" ] ;
+    plato:has_citation whgx:datini\/citation\/florence-pisa .
+
+whgx:datini\/attestation\/florence-pisa-delivery
+    a plato:Attestation ;
+    plato:attests_about whgx:datini\/place\/florence ;
+    plato:relates_to whgx:datini\/place\/pisa ;
+    plato:has_relation_type plato:LeadsTo ;
+    plato:attests_property [ a plato:PropertyValue ;
+        plato:property_type "https://www.wikidata.org/wiki/Property:P2047"^^xsd:anyURI ;
+        plato:property_label "median delivery time (days)" ;
+        plato:value_literal 2 ;
+        plato:value_unit "http://www.wikidata.org/entity/Q573"^^xsd:anyURI ] ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "1355-1402" ;
+        plato:start_earliest "1355" ;
+        plato:end_latest "1402" ] ;
+    plato:notes "The median of arrival date minus sending date, over the 13555 letters with both dates and a delay of 0 to 365 days. The mean is not given: impossible delays in the records move it too far." ;
+    plato:has_citation whgx:datini\/citation\/florence-pisa .
+
+whgx:datini\/citation\/florence-pisa
+    a plato:Citation ;
+    plato:cites whgx:datini\/source\/letters-by-pair ;
+    plato:locator "FIRENZE to PISA" ;
+    plato:citation_function cito:citesAsDataSource .
+
+whgx:datini\/attestation\/pisa-florence-letters
+    a plato:Attestation ;
+    plato:attests_about whgx:datini\/place\/pisa ;
+    plato:relates_to whgx:datini\/place\/florence ;
+    plato:has_relation_type plato:LeadsTo ;
+    plato:attests_property [ a plato:PropertyValue ;
+        plato:property_type "https://www.wikidata.org/wiki/Property:P1114"^^xsd:anyURI ;
+        plato:property_label "letters sent" ;
+        plato:value_literal 6414 ] ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "1379-1413" ;
+        plato:start_earliest "1379" ;
+        plato:end_latest "1413" ] ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:datini\/source\/letters-by-pair ;
+        plato:locator "PISA to FIRENZE" ] .

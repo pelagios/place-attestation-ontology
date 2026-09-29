@@ -1,0 +1,9 @@
+place_id,same_as,match_type,certainty,basis,source_id
+florence,http://www.wikidata.org/entity/Q2044,exactMatch,,"The city the dataset names, and its English name (Florence)",
+pisa,http://www.wikidata.org/entity/Q13375,exactMatch,,"The city the dataset names, and its English name (Pisa)",
+prato,http://www.wikidata.org/entity/Q13377,exactMatch,,"The city the dataset names, and its English name (Prato)",
+genoa,http://www.wikidata.org/entity/Q1449,exactMatch,,"The city the dataset names, and its English name (Genoa)",
+barcelona,http://www.wikidata.org/entity/Q1492,exactMatch,,"The city the dataset names, and its English name (Barcelona)",
+valencia,http://www.wikidata.org/entity/Q8818,exactMatch,,"The city the dataset names, and its English name (Valencia)",
+palma,http://www.wikidata.org/entity/Q8826,exactMatch,,"The city the dataset names, and its English name (Palma de Majorca)",
+avignon,http://www.wikidata.org/entity/Q6397,exactMatch,,"The city the dataset names, and its English name (Avignon)",

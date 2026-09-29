@@ -16,8 +16,8 @@ real sources:
   of Magna Carta, a dated **journey**;
 - [the lower Idle](river-idle.md): a river from Mattersey to the Trent, a
   **network** with a direction;
-- the Datini letters, a **network** of correspondence between cities (in
-  preparation).
+- [the Datini letters](datini.md): the post between a merchant's offices, a
+  **network** of correspondence between cities.
 
 ## Three kinds of thing
 

@@ -135,6 +135,7 @@ routes/index
 routes/antonine
 routes/king-john
 routes/river-idle
+routes/datini
 ```
 
 ```{toctree}

@@ -79,6 +79,9 @@ described elsewhere, which is what Linked Traces records.
   span from its stops. It is not evidence, and a consumer must not import it
   as an attestation. WHG will export such values, and without the marker a
   re-import would turn them into evidence no source gave.
+  It marks what can be derived again from the same data; a figure a project
+  works out from its sources and publishes (a count of letters) is attested,
+  citing that work as a source derived from the material.
 
 ### Deprecated
 

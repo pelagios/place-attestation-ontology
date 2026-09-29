@@ -990,6 +990,14 @@ plato:computed
         its own: it should compute the value again from the members, or leave
         it out and say so. Absent or false, a value is attested.
 
+        It is for a value derived from other statements in the same data,
+        which any consumer holding them could derive again. A figure a
+        project works out from its own source material and publishes as a
+        finding (letters counted from a register, a median taken over them)
+        is not computed in this sense: it is attested, citing the work that
+        produced it as a Source or Dataset derived_from the material it was
+        worked out from.
+
         It is not plato:form_status Normalised (a name form an editor
         derived from an attested one), nor a Candidate (a match an algorithm
         suggests). Like the qualification properties it has no rdfs:domain,
