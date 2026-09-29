@@ -212,6 +212,10 @@
                 "startLatest": "plato:start_latest",
                 "endEarliest": "plato:end_earliest",
                 "endLatest": "plato:end_latest",
+                "duration": {
+                  "@id": "plato:duration",
+                  "@type": "xsd:duration"
+                },
                 "label": "plato:timespan_label",
                 "startPrecision": "plato:start_precision",
                 "endPrecision": "plato:end_precision",
@@ -376,6 +380,10 @@
                     "startLatest": "plato:start_latest",
                     "endEarliest": "plato:end_earliest",
                     "endLatest": "plato:end_latest",
+                    "duration": {
+                      "@id": "plato:duration",
+                      "@type": "xsd:duration"
+                    },
                     "label": "plato:timespan_label",
                     "startPrecision": "plato:start_precision",
                     "endPrecision": "plato:end_precision",
@@ -459,6 +467,10 @@
                         "startLatest": "plato:start_latest",
                         "endEarliest": "plato:end_earliest",
                         "endLatest": "plato:end_latest",
+                        "duration": {
+                          "@id": "plato:duration",
+                          "@type": "xsd:duration"
+                        },
                         "label": "plato:timespan_label",
                         "startPrecision": "plato:start_precision",
                         "endPrecision": "plato:end_precision",
@@ -657,6 +669,10 @@
                     "startLatest": "plato:start_latest",
                     "endEarliest": "plato:end_earliest",
                     "endLatest": "plato:end_latest",
+                    "duration": {
+                      "@id": "plato:duration",
+                      "@type": "xsd:duration"
+                    },
                     "label": "plato:timespan_label",
                     "startPrecision": "plato:start_precision",
                     "endPrecision": "plato:end_precision",
@@ -860,6 +876,10 @@
                 "startLatest": "plato:start_latest",
                 "endEarliest": "plato:end_earliest",
                 "endLatest": "plato:end_latest",
+                "duration": {
+                  "@id": "plato:duration",
+                  "@type": "xsd:duration"
+                },
                 "label": "plato:timespan_label",
                 "startPrecision": "plato:start_precision",
                 "endPrecision": "plato:end_precision",
@@ -1024,6 +1044,10 @@
                     "startLatest": "plato:start_latest",
                     "endEarliest": "plato:end_earliest",
                     "endLatest": "plato:end_latest",
+                    "duration": {
+                      "@id": "plato:duration",
+                      "@type": "xsd:duration"
+                    },
                     "label": "plato:timespan_label",
                     "startPrecision": "plato:start_precision",
                     "endPrecision": "plato:end_precision",
@@ -1107,6 +1131,10 @@
                         "startLatest": "plato:start_latest",
                         "endEarliest": "plato:end_earliest",
                         "endLatest": "plato:end_latest",
+                        "duration": {
+                          "@id": "plato:duration",
+                          "@type": "xsd:duration"
+                        },
                         "label": "plato:timespan_label",
                         "startPrecision": "plato:start_precision",
                         "endPrecision": "plato:end_precision",
@@ -1305,6 +1333,10 @@
                     "startLatest": "plato:start_latest",
                     "endEarliest": "plato:end_earliest",
                     "endLatest": "plato:end_latest",
+                    "duration": {
+                      "@id": "plato:duration",
+                      "@type": "xsd:duration"
+                    },
                     "label": "plato:timespan_label",
                     "startPrecision": "plato:start_precision",
                     "endPrecision": "plato:end_precision",
@@ -1498,6 +1530,10 @@
             "startLatest": "plato:start_latest",
             "endEarliest": "plato:end_earliest",
             "endLatest": "plato:end_latest",
+            "duration": {
+              "@id": "plato:duration",
+              "@type": "xsd:duration"
+            },
             "label": "plato:timespan_label",
             "startPrecision": "plato:start_precision",
             "endPrecision": "plato:end_precision",
@@ -1662,6 +1698,10 @@
                 "startLatest": "plato:start_latest",
                 "endEarliest": "plato:end_earliest",
                 "endLatest": "plato:end_latest",
+                "duration": {
+                  "@id": "plato:duration",
+                  "@type": "xsd:duration"
+                },
                 "label": "plato:timespan_label",
                 "startPrecision": "plato:start_precision",
                 "endPrecision": "plato:end_precision",
@@ -1745,6 +1785,10 @@
                     "startLatest": "plato:start_latest",
                     "endEarliest": "plato:end_earliest",
                     "endLatest": "plato:end_latest",
+                    "duration": {
+                      "@id": "plato:duration",
+                      "@type": "xsd:duration"
+                    },
                     "label": "plato:timespan_label",
                     "startPrecision": "plato:start_precision",
                     "endPrecision": "plato:end_precision",
@@ -1943,6 +1987,10 @@
                 "startLatest": "plato:start_latest",
                 "endEarliest": "plato:end_earliest",
                 "endLatest": "plato:end_latest",
+                "duration": {
+                  "@id": "plato:duration",
+                  "@type": "xsd:duration"
+                },
                 "label": "plato:timespan_label",
                 "startPrecision": "plato:start_precision",
                 "endPrecision": "plato:end_precision",

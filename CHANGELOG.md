@@ -69,6 +69,11 @@ described elsewhere, which is what Linked Traces records.
   the rest of their keywords are themes, not relations), with
   `plato:related_label` (JSON `relatedLabel`, tables `related_label`) to name
   a target described elsewhere.
+- `plato:duration` (JSON `duration` on a timespan, tables `duration` on the
+  relations sheet): how long something lasted, as an `xsd:duration`, with or
+  without dates. A source often gives a length and no dates ("where I staid
+  6 weekes"), and an itinerary needs it to tell a long stay from a night's
+  lodging. `xsd:duration` has no weeks, so six weeks is `P42D`.
 - `plato:computed` (JSON `computed`, on an attestation or in any
   `qualification`): a value worked out by software, such as an itinerary's
   span from its stops. It is not evidence, and a consumer must not import it
@@ -112,17 +117,20 @@ described elsewhere, which is what Linked Traces records.
   attestation sheet, and `licence` after `derived_from` on sources. Sheets
   made with the earlier template need the two columns added, empty if unused.
 - The relations sheet gains `related_uri`, `related_label` and `sequence`
-  after `related_place_id`, which is now optional: a row relates its place
-  either to another place or, in `related_uri`, to something described
-  elsewhere, and should fill in one of the two. `relation_type` takes the new
-  relation types.
+  after `related_place_id` (which is now optional), and `duration` after
+  `to`. A row relates its place either to another place or, in
+  `related_uri`, to something described elsewhere, and must fill in exactly
+  one of the two. CSVW cannot state that rule, so rdf-tabular does not check
+  it; PLATO tools does, as an error. `relation_type` takes the new relation
+  types.
 - A ninth sheet, `connections`, for figures about a connection between two
   places (letters sent from one city to another, a journey time): one link
   and one figure per row, becoming a `ConnectedTo` or `LeadsTo` attestation
   with one PropertyValue. A relations row cannot carry a figure, because a
   row may not create an optional node. Sets of tables made with the earlier
-  template need an empty `connections.csv`, headings only, and the three new
-  relations columns.
+  template need an empty `connections.csv`, headings only, and the four new
+  relations columns. The sheets take only PLATO's own relation types; a
+  project's own, declared with `broader_relation`, need JSON or RDF.
 
 ## 0.5.0
 

@@ -404,6 +404,11 @@
           "$ref": "#/$defs/isoOrYear",
           "description": "Latest possible end date."
         },
+        "duration": {
+          "type": "string",
+          "pattern": "^-?P(?=\\d|T\\d)(\\d+Y)?(\\d+M)?(\\d+D)?(T(?=\\d)(\\d+H)?(\\d+M)?(\\d+(\\.\\d+)?S)?)?$",
+          "description": "How long the timespan lasted, as an xsd:duration (plato:duration): 'P42D' for six weeks, 'P1D' for a day. For a length the source states, with or without dates; xsd:duration has no weeks, so write them as days."
+        },
         "label": {
           "type": "string",
           "description": "Human-readable period name (e.g. 'Byzantine period')."

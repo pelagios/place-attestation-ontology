@@ -73,7 +73,7 @@
 # neither equates a SpatialEntity with a place nor defines a place in terms
 # of SpatialEntities or their attestations, and where the word appears in
 # this file it is used in its ordinary sense. What kind of entity a
-# SpatialEntity is (settlement, route, region, period and so on) is a matter
+# SpatialEntity is (settlement, route, network, region and so on) is a matter
 # for Type attestations.
 
 plato:SpatialEntity
@@ -88,7 +88,7 @@ plato:SpatialEntity
         imagined and unlocated entities are admissible.
 
         What kind of entity it is (settlement, route, region, administrative
-        unit, period and so on) is not fixed by the class. It is established by
+        unit and so on) is not fixed by the class. It is established by
         Type attestations, so a classification is a claim rather than an axiom.
 
         SpatialEntities are not defined by any single attestation. They are the
@@ -1830,6 +1830,25 @@ plato:end_latest
     rdfs:domain plato:Timespan ;
     rdfs:range rdfs:Literal .
 
+# A source often says how long, and not when: "where I staid six weeks", "three days' journey".
+# The bounds cannot hold that, since there are no bounds to give. An itinerary also needs it to
+# tell a long stay from a night's lodging where the dates are not known.
+
+plato:duration
+    a owl:DatatypeProperty ;
+    rdfs:label "duration"@en ;
+    rdfs:comment """
+        How long the timespan lasted, as an xsd:duration ('P42D' for six
+        weeks, 'P1D' for a day), where the source states a length: a stay at
+        a stop on an itinerary, a siege, a fair. It may stand alone, when the
+        source gives a length and no dates, or beside the bounds, which it
+        does not replace. xsd:duration has no weeks, so weeks are written as
+        days; the source's own words ('staid 6 weekes') are
+        plato:source_label on the same timespan.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:duration .
+
 plato:timespan_label
     a owl:DatatypeProperty ;
     rdfs:label "timespan label"@en ;
@@ -2912,9 +2931,11 @@ plato:LeadsTo
     plato:relation_range "SpatialEntity" ;
     rdfs:comment """
         A directed connection, from the subject (attests_about) to the target
-        (relates_to): a river reach that flows into the next, a post road
-        carrying mail one way, letters sent from one city to another. Not
-        river-specific: a project declares its own narrower types ('flows
+        (relates_to): one river flowing into another, a post road carrying
+        mail from one town to the next, letters sent from one city to
+        another. It joins two places; the reaches and legs of a network are
+        segments, whose direction is given by plato:BeginsAt and
+        plato:EndsAt. Not river-specific: a project declares its own narrower types ('flows
         into', 'carries post to') with plato:broader_relation pointing here,
         so that a consumer that knows only LeadsTo still follows them in the
         right direction.
@@ -2951,7 +2972,7 @@ plato:HasEnd
     a plato:RelationType ;
     plato:authority_title "has end"@en ;
     plato:relation_label "has_end" ;
-    plato:inverse_label "end_of" ;
+    plato:inverse_label "one_end_of" ;
     plato:relation_domain "SpatialEntity (a segment)" ;
     plato:relation_range "SpatialEntity" ;
     rdfs:comment """

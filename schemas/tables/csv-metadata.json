@@ -1031,7 +1031,7 @@
     {
       "url": "relations.csv",
       "dc:title": "Relations",
-      "dc:description": "One row for each time a source relates a place to something else: a parish lying in a hundred, a station on a road, a stop on a journey, one place leading to another, a place where a person was born. Each row becomes a plato:Attestation relating the place in place_id either to another place, in related_place_id, or to something described elsewhere (a person, an object, an event), in related_uri. Fill in one of the two, not both.",
+      "dc:description": "One row for each time a source relates a place to something else: a parish lying in a hundred, a station on a road, a stop on a journey, one place leading to another, a place where a person was born. Each row becomes a plato:Attestation relating the place in place_id either to another place, in related_place_id, or to something described elsewhere (a person, an object, an event), in related_uri. Fill in exactly one of the two: CSVW cannot state that rule, so PLATO tools checks it.",
       "tableSchema": {
         "aboutUrl": "#row-{_row}",
         "foreignKeys": [
@@ -1070,7 +1070,7 @@
           {
             "name": "relation_type",
             "titles": "relation_type",
-            "dc:description": "How they are related. Places within places: 'ContainedIn' (the place in place_id lies within the other). Routes, journeys and networks: 'MemberOf' (the place is a station, stop or member of the route, journey or network in related_place_id; give its position in sequence), 'ConnectedTo' (directly connected, either way), 'LeadsTo' (connected one way, from place_id to the other), 'BeginsAt' and 'EndsAt' (a segment, such as a leg of a road, begins or ends at the other place), 'HasEnd' (the other place is one end of a segment with no direction; give it for both ends). People, objects and events, in related_uri: 'BirthplaceOf', 'DeathplaceOf', 'ResidenceOf', 'FindspotOf', 'SettingOf', 'WorkplaceOf'. Further relation types are added to PLATO's vocabulary on request.",
+            "dc:description": "How they are related. Places within places: 'ContainedIn' (the place in place_id lies within the other). Routes, journeys and networks: 'MemberOf' (the place is a station, stop or member of the route, journey or network in related_place_id; give its position in sequence), 'ConnectedTo' (directly connected, either way), 'LeadsTo' (connected one way, from place_id to the other), 'BeginsAt' and 'EndsAt' (a segment, such as a leg of a road, begins or ends at the other place), 'HasEnd' (the other place is one end of a segment with no direction; give it for both ends). People, objects and events, in related_uri: 'BirthplaceOf', 'DeathplaceOf', 'ResidenceOf', 'FindspotOf', 'SettingOf', 'WorkplaceOf'. Only PLATO's own relation types can be used here; a project's own (declared in JSON or RDF with broader_relation) cannot, and further types are added to PLATO's vocabulary on request.",
             "skos:example": "ContainedIn",
             "required": true,
             "propertyUrl": "https://w3id.org/plato#has_relation_type",
@@ -1143,6 +1143,17 @@
             "datatype": {
               "base": "string",
               "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
+            }
+          },
+          {
+            "name": "duration",
+            "titles": "duration",
+            "dc:description": "How long, where the source says so without dates, or as well as them: a stay at a stop on a journey ('P42D' for six weeks, 'P1D' for a day, 'PT12H' for twelve hours). Write it in this form, with weeks as days; put the source's own words in date. Optional.",
+            "skos:example": "P42D",
+            "aboutUrl": "#row-{_row}-time",
+            "propertyUrl": "https://w3id.org/plato#duration",
+            "datatype": {
+              "base": "duration"
             }
           },
           {
