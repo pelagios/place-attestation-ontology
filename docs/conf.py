@@ -22,7 +22,11 @@ templates_path = []
 html_theme = "furo"
 html_title = "PLATO guide"
 html_static_path = ["_static"]
-html_css_files = ["plato.css"]
+html_css_files = [
+    "https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700"
+    "&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap",
+    "plato.css",
+]
 html_theme_options = {
     "source_repository": "https://github.com/pelagios/place-attestation-ontology/",
     "source_branch": "main",
