@@ -1,0 +1,2451 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/river-idle/",
+    "title": "The River Idle, from Mattersey to the Trent",
+    "description": "The lower River Idle as a directed network: ten reaches from Mattersey to the tidal Trent, as REWT v0.2.0-alpha routes them over OS Open Rivers (CC BY 4.0, contains OS data © Crown copyright and database rights 2026), with dated evidence about the river from Oksanen's Inland Navigation in England and Wales before 1348 and Gadd's Compulsory Purchase for Transport Infrastructure, 1539-1720 (both CC BY 4.0). A worked example of PLATO's network pattern: reaches as segments with BeginsAt and EndsAt, rivers joined by LeadsTo."
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/river-idle",
+      "label": "River Idle, from Mattersey to the Trent",
+      "entityIdentifier": "river-idle",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+                "title": "REWT v0.2.0-alpha: Rivers of England and Wales, Temporally (Stage 1)",
+                "citation": "S. Gadd, REWT v0.2.0-alpha: Rivers of England and Wales, Temporally (Stage 1) (Zenodo, 2026), doi:10.5281/zenodo.22256085. Contains OS data © Crown copyright and database rights 2026.",
+                "uri": "https://doi.org/10.5281/zenodo.22256085",
+                "authorityType": "source",
+                "timespan": {
+                  "sourceLabel": "2026",
+                  "startEarliest": "2026",
+                  "endLatest": "2026"
+                },
+                "licence": "https://creativecommons.org/licenses/by/4.0/"
+              },
+              "locator": "layer link, name River Idle",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeNetwork",
+              "label": "network"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "node C7DF9A14",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Through Bycarrs Dyke, into the tidal Trent at node-10.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-trent",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1720",
+              "startEarliest": "1720",
+              "endLatest": "1720"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/river-idle/source/gadd-2019",
+                "title": "Compulsory Purchase for Transport Infrastructure, 1539-1720",
+                "citation": "S. Gadd, Compulsory Purchase for Transport Infrastructure, 1539-1720 (figshare, 2019), doi:10.6084/m9.figshare.6467798",
+                "uri": "https://doi.org/10.6084/m9.figshare.6467798",
+                "authorityType": "source",
+                "timespan": {
+                  "sourceLabel": "2019",
+                  "startEarliest": "2019",
+                  "endLatest": "2019"
+                },
+                "licence": "https://creativecommons.org/licenses/by/4.0/"
+              },
+              "locator": "Idle, 1720",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The source dates the Act 1720 but cites 6 Geo. II, which is 1732-33; 6 Geo. I is 1719-20. Kept as the source gives it, not corrected. An Act is evidence of an intention (lease or easement, by a municipal corporation: the source's L and M), not that the river was made navigable. From East Retford to Bawtry, it takes in reaches 1 to 5 of this stretch: Bawtry lies on reach 5.",
+          "properties": [
+            {
+              "property": "http://purl.org/dc/terms/isReferencedBy",
+              "label": "navigation Act",
+              "value": "An Act for making the River Idle navigable, from East-Retford in the County of Nottingham, to Bawtry Wharf in the County of York, 6 Geo. II, c.30"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/river-ryton",
+      "label": "River Ryton",
+      "entityIdentifier": "river-ryton",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "link 53DEF62E, to_node 69D120BE",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The River Ryton flows into the Idle at node-03. Rivers are places, joined by LeadsTo; reaches are segments, joined to their ends by BeginsAt and EndsAt.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#LeadsTo"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/river-trent",
+      "label": "River Trent",
+      "entityIdentifier": "river-trent",
+      "attestations": [],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/mattersey",
+      "label": "Mattersey",
+      "entityIdentifier": "mattersey",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/river-idle/source/oksanen-2019",
+                "title": "Inland Navigation in England and Wales before 1348: GIS Database",
+                "citation": "E. Oksanen, Inland Navigation in England and Wales before 1348: GIS Database (Archaeology Data Service, 2019), doi:10.5284/1057497",
+                "uri": "https://doi.org/10.5284/1057497",
+                "authorityType": "source",
+                "timespan": {
+                  "sourceLabel": "2019",
+                  "startEarliest": "2019",
+                  "endLatest": "2019"
+                },
+                "licence": "https://creativecommons.org/licenses/by/4.0/"
+              },
+              "locator": "heads_of_navigation, Easting 468975, Northing 389526",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.96413,
+                53.39807
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.96413,
+                  53.39807
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1322",
+              "endLatest": "1322"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/oksanen-2019",
+              "locator": "heads_of_navigation, Head_Navi Mattersey",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Oksanen class DE; Last_Date 1322. Obstruct: \"1363, Elkesley to downriver.\" References: Cole 2007, 65-6; Edwards 1987, 189-91.",
+          "types": [
+            {
+              "label": "head of navigation"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/bawtry",
+      "label": "Bawtry",
+      "entityIdentifier": "bawtry",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/oksanen-2019",
+              "locator": "heads_of_navigation, Easting 465714, Northing 393140",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.01241,
+                53.43096
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.01241,
+                  53.43096
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "post-1348",
+              "startEarliest": "1348"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/oksanen-2019",
+              "locator": "heads_of_navigation, Head_Navi Bawtry",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Oksanen class KB. \"Purveyance account port.\" Reference: Langdon 1993, 5.",
+          "types": [
+            {
+              "label": "head of navigation"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-00",
+      "label": "River Idle: junction with the Carr Drain (start of this stretch, by Mattersey)",
+      "entityIdentifier": "node-00",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/2A1704A0-D47A-43F1-A4C4-7CBC23B11AB3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.95734,
+                53.39743
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.95734,
+                  53.39743
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-01",
+      "label": "River Idle: junction with an unnamed drain",
+      "entityIdentifier": "node-01",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/6033FEA3-9774-4ED9-8512-1E4B3E05A949",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.00194,
+                53.40707
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.00194,
+                  53.40707
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-02",
+      "label": "River Idle: junction with the Main Drain",
+      "entityIdentifier": "node-02",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/69BEB3D8-F593-400C-8FB1-0B1D0F305484",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.00982,
+                53.41156
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.00982,
+                  53.41156
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-03",
+      "label": "River Idle: junction with the River Ryton",
+      "entityIdentifier": "node-03",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/69D120BE-1460-46B3-AEC5-E436C9C52804",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.01211,
+                53.42215
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.01211,
+                  53.42215
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-04",
+      "label": "River Idle: junction with an unnamed channel",
+      "entityIdentifier": "node-04",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/BA45594B-1CFB-4A28-A69A-6150B0A4E8F2",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.01438,
+                53.42635
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.01438,
+                  53.42635
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-05",
+      "label": "River Idle: junction with the New Drain",
+      "entityIdentifier": "node-05",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/B9038E88-E873-4578-90FA-EB7BB5FEFC1F",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.99565,
+                53.4369
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.99565,
+                  53.4369
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-06",
+      "label": "River Idle: junction with the Magnus Drain",
+      "entityIdentifier": "node-06",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/A849CC7C-CF83-4C40-8241-15A3E35B3878",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.94469,
+                53.44238
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.94469,
+                  53.44238
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-07",
+      "label": "River Idle: junction with the Carr Road West Drain",
+      "entityIdentifier": "node-07",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/D2BF6342-0292-4C1A-A922-36343DE04DDD",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.92905,
+                53.44614
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.92905,
+                  53.44614
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-08",
+      "label": "River Idle: where OS Open Rivers names the channel Bycarrs Dyke",
+      "entityIdentifier": "node-08",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/3D5AB441-1923-4569-9D15-42A0B795AE64",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.91605,
+                53.46041
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.91605,
+                  53.46041
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-09",
+      "label": "Bycarrs Dyke: the tidal limit in REWT",
+      "entityIdentifier": "node-09",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/D614F45C-C00E-417B-B787-4568198ED12F",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.81267,
+                53.44368
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.81267,
+                  53.44368
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/node-10",
+      "label": "Bycarrs Dyke: junction with the River Trent",
+      "entityIdentifier": "node-10",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:node/C7DF9A14-BC1E-4C6C-82E4-CC944C78E3D6",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.81193,
+                53.44294
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.81193,
+                  53.44294
+                ]
+              },
+              "role": "https://w3id.org/plato#RepresentativePoint"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-01",
+      "label": "River Idle, reach 1 of 10",
+      "entityIdentifier": "reach-01",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.98163,
+                53.40591
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.98163,
+                  53.40591
+                ]
+              },
+              "wkt": "LINESTRING(-0.95734 53.39743, -0.95791 53.39712, -0.95897 53.39683, -0.95972 53.39642, -0.96173 53.39694, -0.96236 53.39766, -0.96587 53.39847, -0.96605 53.39917, -0.96546 53.39987, -0.96559 53.40005, -0.96746 53.39987, -0.96872 53.40020, -0.96980 53.39969, -0.96996 53.39986, -0.96998 53.40074, -0.97170 53.40109, -0.97201 53.40149, -0.97181 53.40225, -0.97267 53.40342, -0.97452 53.40465, -0.97499 53.40485, -0.97570 53.40496, -0.97720 53.40477, -0.97758 53.40482, -0.97797 53.40516, -0.97799 53.40593, -0.97823 53.40605, -0.97973 53.40611, -0.98063 53.40563, -0.98106 53.40566, -0.98198 53.40607, -0.98116 53.40638, -0.98114 53.40652, -0.98335 53.40736, -0.98369 53.40738, -0.98479 53.40687, -0.98721 53.40675, -0.98906 53.40516, -0.98963 53.40370, -0.99059 53.40385, -0.99163 53.40350, -0.99246 53.40340, -0.99297 53.40314, -0.99313 53.40376, -0.99341 53.40386, -0.99401 53.40356, -0.99476 53.40238, -0.99508 53.40231, -0.99554 53.40247, -0.99604 53.40300, -0.99542 53.40338, -0.99546 53.40359, -0.99635 53.40377, -0.99780 53.40337, -0.99814 53.40339, -0.99880 53.40438, -0.99980 53.40502, -1.00079 53.40506, -1.00147 53.40649, -1.00178 53.40659, -1.00257 53.40650, -1.00289 53.40666, -1.00278 53.40680, -1.00194 53.40707)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Numbered downstream, in the direction REWT routes the water.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 1
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-00",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-01",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 5011.1,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-02",
+      "label": "River Idle, reach 2 of 10",
+      "entityIdentifier": "reach-02",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13 name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.00559,
+                53.40975
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.00559,
+                  53.40975
+                ]
+              },
+              "wkt": "LINESTRING(-1.00194 53.40707, -1.00163 53.40764, -1.00163 53.40808, -1.00569 53.40937, -1.00559 53.40974, -1.00592 53.41049, -1.00725 53.41094, -1.00675 53.41126, -1.00682 53.41146, -1.00732 53.41165, -1.00982 53.41156)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 2
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13 from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-01",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13 to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-02",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13 length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 927.9,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-03",
+      "label": "River Idle, reach 3 of 10",
+      "entityIdentifier": "reach-03",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/754A649A-42DA-4A98-8474-FE4E0876E009 name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/754A649A-42DA-4A98-8474-FE4E0876E009",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.00341,
+                53.41855
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.00341,
+                  53.41855
+                ]
+              },
+              "wkt": "LINESTRING(-1.00982 53.41156, -1.01004 53.41172, -1.00999 53.41195, -1.00823 53.41271, -1.00768 53.41369, -1.00740 53.41376, -1.00656 53.41368, -1.00620 53.41383, -1.00577 53.41453, -1.00642 53.41487, -1.00628 53.41525, -1.00461 53.41571, -1.00420 53.41594, -1.00363 53.41705, -1.00366 53.41795, -1.00330 53.41883, -1.00407 53.41991, -1.00341 53.42048, -1.00383 53.42085, -1.00465 53.42111, -1.00550 53.42090, -1.00677 53.42096, -1.00758 53.42067, -1.00870 53.42137, -1.00992 53.42129, -1.00965 53.42198, -1.00984 53.42220, -1.01050 53.42218, -1.01146 53.42167, -1.01177 53.42176, -1.01211 53.42215)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/754A649A-42DA-4A98-8474-FE4E0876E009",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/754A649A-42DA-4A98-8474-FE4E0876E009",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 3
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/754A649A-42DA-4A98-8474-FE4E0876E009 from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-02",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/754A649A-42DA-4A98-8474-FE4E0876E009 to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-03",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/754A649A-42DA-4A98-8474-FE4E0876E009 length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 2112.9,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-04",
+      "label": "River Idle, reach 4 of 10",
+      "entityIdentifier": "reach-04",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57 name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.01416,
+                53.42404
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.01416,
+                  53.42404
+                ]
+              },
+              "wkt": "LINESTRING(-1.01211 53.42215, -1.01249 53.42287, -1.01385 53.42359, -1.01410 53.42386, -1.01424 53.42432, -1.01412 53.42533, -1.01438 53.42635)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 4
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57 from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-03",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57 to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-04",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57 length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 518.2,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-05",
+      "label": "River Idle, reach 5 of 10",
+      "entityIdentifier": "reach-05",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4 name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -1.00914,
+                53.43356
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -1.00914,
+                  53.43356
+                ]
+              },
+              "wkt": "LINESTRING(-1.01438 53.42635, -1.01428 53.42733, -1.01242 53.43098, -1.01272 53.43229, -1.01267 53.43258, -1.01239 53.43283, -1.01196 53.43291, -1.01043 53.43271, -1.00981 53.43279, -1.00921 53.43352, -1.00857 53.43388, -1.00658 53.43364, -1.00517 53.43371, -1.00328 53.43463, -1.00028 53.43501, -0.99565 53.43690)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 5
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4 from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-04",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4 to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-05",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4 length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 2039.3,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-06",
+      "label": "River Idle, reach 6 of 10",
+      "entityIdentifier": "reach-06",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.96849,
+                53.43464
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.96849,
+                  53.43464
+                ]
+              },
+              "wkt": "LINESTRING(-0.99565 53.43690, -0.99512 53.43689, -0.99357 53.43621, -0.99290 53.43607, -0.99171 53.43606, -0.99021 53.43624, -0.98883 53.43601, -0.98669 53.43506, -0.98641 53.43383, -0.98561 53.43311, -0.98484 53.43272, -0.98361 53.43286, -0.98235 53.43335, -0.98014 53.43319, -0.97808 53.43335, -0.97567 53.43329, -0.97501 53.43359, -0.97422 53.43477, -0.97427 53.43534, -0.97497 53.43615, -0.97479 53.43644, -0.97414 53.43668, -0.97351 53.43673, -0.97284 53.43652, -0.97055 53.43512, -0.96985 53.43484, -0.96847 53.43464, -0.96775 53.43482, -0.96722 53.43553, -0.96719 53.43651, -0.96682 53.43764, -0.96616 53.43845, -0.96519 53.43900, -0.96415 53.44104, -0.96378 53.44255, -0.96335 53.44295, -0.96207 53.44352, -0.96013 53.44489, -0.95923 53.44521, -0.95749 53.44564, -0.95600 53.44566, -0.95508 53.44555, -0.95291 53.44502, -0.95077 53.44496, -0.94954 53.44481, -0.94833 53.44447, -0.94718 53.44355, -0.94553 53.44301, -0.94469 53.44238)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 6
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-05",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-06",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 4999.9,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-07",
+      "label": "River Idle, reach 7 of 10",
+      "entityIdentifier": "reach-07",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/05E368BF-37C1-471A-9064-5A893E946DE2 name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/05E368BF-37C1-471A-9064-5A893E946DE2",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.93593,
+                53.4428
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.93593,
+                  53.4428
+                ]
+              },
+              "wkt": "LINESTRING(-0.94469 53.44238, -0.94373 53.44207, -0.93866 53.44186, -0.93556 53.44293, -0.93490 53.44384, -0.93442 53.44419, -0.93218 53.44446, -0.92905 53.44614)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/05E368BF-37C1-471A-9064-5A893E946DE2",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/05E368BF-37C1-471A-9064-5A893E946DE2",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 7
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/05E368BF-37C1-471A-9064-5A893E946DE2 from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-06",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/05E368BF-37C1-471A-9064-5A893E946DE2 to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-07",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/05E368BF-37C1-471A-9064-5A893E946DE2 length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 1239.6,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-08",
+      "label": "River Idle, reach 8 of 10",
+      "entityIdentifier": "reach-08",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648 name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.92103,
+                53.45315
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.92103,
+                  53.45315
+                ]
+              },
+              "wkt": "LINESTRING(-0.92905 53.44614, -0.92828 53.44692, -0.92871 53.44812, -0.92841 53.44873, -0.92707 53.44941, -0.92648 53.44989, -0.92594 53.45006, -0.92494 53.45010, -0.92439 53.45024, -0.92359 53.45080, -0.92257 53.45127, -0.92179 53.45205, -0.92127 53.45295, -0.92037 53.45371, -0.92044 53.45415, -0.92165 53.45492, -0.92213 53.45547, -0.92216 53.45617, -0.92153 53.45751, -0.92057 53.45807, -0.91893 53.45848, -0.91728 53.45947, -0.91605 53.46041)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 8
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648 from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-07",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648 to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-08",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648 length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 2080.3,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-09",
+      "label": "Bycarrs Dyke, reach 9 of 10",
+      "entityIdentifier": "reach-09",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0 name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0 name_alt",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "OS Open Rivers gives this as an alternative name.",
+          "names": [
+            {
+              "toponym": "Bycarrs Dyke"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "before 1086",
+              "endLatest": "1086"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/oksanen-2019",
+              "locator": "heads_of_navigation, Head_Navi Mattersey, Notes",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "certainty": 0.8,
+          "notes": "\"Before 1086 the original course of Idle had been diverted east to join Trent through Bycarr's Dyke.\" Oksanen names no reach; this example matches the name to the reaches OS calls Bycarrs Dyke, hence certainty 0.8.",
+          "names": [
+            {
+              "toponym": "Bycarr's Dyke",
+              "language": "en"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.86003,
+                53.45932
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.86003,
+                  53.45932
+                ]
+              },
+              "wkt": "LINESTRING(-0.91605 53.46041, -0.91494 53.46085, -0.91341 53.46052, -0.91227 53.46045, -0.91076 53.46090, -0.90995 53.46101, -0.90534 53.46086, -0.90342 53.46103, -0.90056 53.46101, -0.89682 53.46186, -0.89446 53.46174, -0.89021 53.46179, -0.88778 53.46188, -0.88607 53.46212, -0.88259 53.46182, -0.88131 53.46184, -0.87969 53.46164, -0.87781 53.46162, -0.87657 53.46146, -0.87409 53.46157, -0.87200 53.46076, -0.86807 53.46064, -0.86660 53.46030, -0.86576 53.45995, -0.86015 53.45935, -0.85880 53.45902, -0.85712 53.45893, -0.85534 53.45849, -0.85395 53.45847, -0.85255 53.45798, -0.85089 53.45788, -0.84985 53.45734, -0.84852 53.45690, -0.84686 53.45604, -0.84449 53.45584, -0.84337 53.45424, -0.84135 53.45348, -0.84027 53.45291, -0.83916 53.45265, -0.83819 53.45187, -0.83574 53.45066, -0.83461 53.45031, -0.83292 53.44935, -0.83071 53.44853, -0.82961 53.44768, -0.82670 53.44633, -0.82608 53.44626, -0.82488 53.44658, -0.82383 53.44611, -0.82150 53.44587, -0.81959 53.44618, -0.81740 53.44617, -0.81528 53.44517, -0.81365 53.44458, -0.81301 53.44413, -0.81267 53.44368)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 9
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0 from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-08",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0 to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-09",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0 length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 7675.2,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/river-idle/place/reach-10",
+      "label": "Bycarrs Dyke, reach 10 of 10",
+      "entityIdentifier": "reach-10",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3 name",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "names": [
+            {
+              "toponym": "River Idle"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3 name_alt",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "OS Open Rivers gives this as an alternative name.",
+          "names": [
+            {
+              "toponym": "Bycarrs Dyke"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "before 1086",
+              "endLatest": "1086"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/oksanen-2019",
+              "locator": "heads_of_navigation, Head_Navi Mattersey, Notes",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "certainty": 0.8,
+          "notes": "\"Before 1086 the original course of Idle had been diverted east to join Trent through Bycarr's Dyke.\" Oksanen names no reach; this example matches the name to the reaches OS calls Bycarrs Dyke, hence certainty 0.8.",
+          "names": [
+            {
+              "toponym": "Bycarr's Dyke",
+              "language": "en"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The line, simplified to 5 m; latitude and longitude are its midpoint.",
+          "geometries": [
+            {
+              "reprPoint": [
+                -0.81243,
+                53.44322
+              ],
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -0.81243,
+                  53.44322
+                ]
+              },
+              "wkt": "LINESTRING(-0.81267 53.44368, -0.81230 53.44297, -0.81193 53.44294)",
+              "role": "https://w3id.org/plato#Extent"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "types": [
+            {
+              "identifier": "https://w3id.org/plato#TypeSegment",
+              "label": "segment"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/river-idle",
+              "relationType": "https://w3id.org/plato#MemberOf"
+            }
+          ],
+          "sequence": 10
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3 from_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-09",
+              "relationType": "https://w3id.org/plato#BeginsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3 to_node",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/river-idle/place/node-10",
+              "relationType": "https://w3id.org/plato#EndsAt"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "undated"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/river-idle/source/rewt-v020",
+              "locator": "os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3 length_m",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "properties": [
+            {
+              "property": "https://www.wikidata.org/wiki/Property:P2043",
+              "label": "length (metres)",
+              "value": 107.4,
+              "unit": "http://www.wikidata.org/entity/Q11573"
+            }
+          ]
+        }
+      ],
+      "ccodes": [
+        "GB"
+      ]
+    }
+  ]
+}

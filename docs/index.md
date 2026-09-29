@@ -134,6 +134,7 @@ spreadsheets/survey-example
 routes/index
 routes/antonine
 routes/king-john
+routes/river-idle
 ```
 
 ```{toctree}

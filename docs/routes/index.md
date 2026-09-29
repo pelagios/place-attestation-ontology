@@ -14,7 +14,8 @@ real sources:
   Kent ports, a **route**;
 - [King John in 1215](king-john.md): the King's movements around the sealing
   of Magna Carta, a dated **journey**;
-- the River Idle, a river **network** with a direction (in preparation);
+- [the lower Idle](river-idle.md): a river from Mattersey to the Trent, a
+  **network** with a direction;
 - the Datini letters, a **network** of correspondence between cities (in
   preparation).
 

@@ -1,0 +1,14 @@
+place_id,type_label,type_uri,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+river-idle,network,https://w3id.org/plato#TypeNetwork,undated,,,rewt-v020,"layer link, name River Idle",,citesAsDataSource,,,,,
+reach-01,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E,,citesAsDataSource,,,,,
+reach-02,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13,,citesAsDataSource,,,,,
+reach-03,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/754A649A-42DA-4A98-8474-FE4E0876E009,,citesAsDataSource,,,,,
+reach-04,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57,,citesAsDataSource,,,,,
+reach-05,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4,,citesAsDataSource,,,,,
+reach-06,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F,,citesAsDataSource,,,,,
+reach-07,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/05E368BF-37C1-471A-9064-5A893E946DE2,,citesAsDataSource,,,,,
+reach-08,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648,,citesAsDataSource,,,,,
+reach-09,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0,,citesAsDataSource,,,,,
+reach-10,segment,https://w3id.org/plato#TypeSegment,undated,,,rewt-v020,os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3,,citesAsDataSource,,,,,
+mattersey,head of navigation,,1322,,1322,oksanen-2019,"heads_of_navigation, Head_Navi Mattersey",,citesAsDataSource,,,,,"Oksanen class DE; Last_Date 1322. Obstruct: ""1363, Elkesley to downriver."" References: Cole 2007, 65-6; Edwards 1987, 189-91."
+bawtry,head of navigation,,post-1348,1348,,oksanen-2019,"heads_of_navigation, Head_Navi Bawtry",,citesAsDataSource,,,,,"Oksanen class KB. ""Purveyance account port."" Reference: Langdon 1993, 5."

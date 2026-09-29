@@ -1,0 +1,197 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative
+# URIs. External URIs that already exist (Wikidata) are used directly. This
+# file shows part of the River Idle example; the whole of it is in
+# schemas/tables/examples/river-idle/ (spreadsheet tables) and
+# schemas/examples/place-centric-river-idle.json (PLATO JSON), with the same
+# URIs.
+
+
+# =============================================================================
+# A directed network: the lower River Idle
+#
+# Scenario: REWT (Rivers of England and Wales, Temporally) routes the water
+# of England and Wales over OS Open Rivers. Its v0.2.0-alpha deposit gives
+# the Idle from Mattersey to the tidal Trent as ten reaches, each running
+# from one junction to the next, downstream. REWT makes no historical claim;
+# the history comes from two other datasets: Oksanen's heads of navigation
+# before 1348, and Gadd's table of Acts for river works, 1539-1720.
+#
+# This demonstrates:
+#   1. A river as a network (plato:TypeNetwork) whose members are its
+#      reaches, each a segment (plato:TypeSegment) with plato:BeginsAt and
+#      plato:EndsAt giving the direction the water flows.
+#   2. Rivers joined to rivers by plato:LeadsTo: they are places; the
+#      reaches are segments, and never take LeadsTo for their ends.
+#   3. A dataset's identifiers (OS link GUIDs, not stable across OS releases
+#      and not IRIs) kept as locators, not used as the entities' URIs.
+#   4. A historical name matched to modern reaches by the encoder, with that
+#      judgement in the certainty and the note.
+#   5. An Act kept as the source gives it, including a regnal year that
+#      contradicts its date, and read as an intention, not a work done.
+# =============================================================================
+
+
+# --- Sources --------------------------------------------------------------------
+
+whgx:river-idle\/source\/rewt-v020
+    a plato:Source ;
+    plato:authority_title "REWT v0.2.0-alpha: Rivers of England and Wales, Temporally (Stage 1)" ;
+    plato:bibliographic_string "S. Gadd, REWT v0.2.0-alpha: Rivers of England and Wales, Temporally (Stage 1) (Zenodo, 2026), doi:10.5281/zenodo.22256085. Contains OS data © Crown copyright and database rights 2026." ;
+    plato:authority_uri "https://doi.org/10.5281/zenodo.22256085"^^xsd:anyURI ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> .
+
+whgx:river-idle\/source\/oksanen-2019
+    a plato:Source ;
+    plato:authority_title "Inland Navigation in England and Wales before 1348: GIS Database" ;
+    plato:bibliographic_string "E. Oksanen, Inland Navigation in England and Wales before 1348: GIS Database (Archaeology Data Service, 2019), doi:10.5284/1057497" ;
+    plato:authority_uri "https://doi.org/10.5284/1057497"^^xsd:anyURI ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> .
+
+whgx:river-idle\/source\/gadd-2019
+    a plato:Source ;
+    plato:authority_title "Compulsory Purchase for Transport Infrastructure, 1539-1720" ;
+    plato:bibliographic_string "S. Gadd, Compulsory Purchase for Transport Infrastructure, 1539-1720 (figshare, 2019), doi:10.6084/m9.figshare.6467798" ;
+    plato:authority_uri "https://doi.org/10.6084/m9.figshare.6467798"^^xsd:anyURI ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> .
+
+
+# --- The river, and the rivers it joins -----------------------------------------
+
+whgx:river-idle\/place\/river-idle
+    a plato:SpatialEntity ;
+    rdfs:label "River Idle, from Mattersey to the Trent" .
+
+whgx:river-idle\/place\/river-ryton
+    a plato:SpatialEntity ;
+    rdfs:label "River Ryton" .
+
+whgx:river-idle\/place\/river-trent
+    a plato:SpatialEntity ;
+    rdfs:label "River Trent" .
+
+whgx:river-idle\/attestation\/idle-is-a-network
+    a plato:Attestation ;
+    plato:attests_about whgx:river-idle\/place\/river-idle ;
+    plato:attests_type [ a plato:Type ; plato:type_label "network" ;
+                         plato:type_identifier "https://w3id.org/plato#TypeNetwork"^^xsd:anyURI ] ;
+    plato:has_citation whgx:river-idle\/citation\/rewt .
+
+whgx:river-idle\/citation\/rewt
+    a plato:Citation ;
+    plato:cites whgx:river-idle\/source\/rewt-v020 ;
+    plato:locator "layer link, name River Idle" ;
+    plato:citation_function cito:citesAsDataSource .
+
+# Rivers are places, and LeadsTo joins places: the Ryton flows into the Idle,
+# the Idle into the Trent.
+whgx:river-idle\/attestation\/ryton-into-idle
+    a plato:Attestation ;
+    plato:attests_about whgx:river-idle\/place\/river-ryton ;
+    plato:relates_to whgx:river-idle\/place\/river-idle ;
+    plato:has_relation_type plato:LeadsTo ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:river-idle\/source\/rewt-v020 ;
+        plato:locator "link 53DEF62E, to_node 69D120BE" ] .
+
+
+# --- Reach 4, below the Ryton junction ------------------------------------------
+#
+# The junctions are places too (node-03, node-04), with REWT's node
+# identifiers as locators. The OS identifiers are not used as URIs: they are
+# not persistent between OS releases, and os: is not a registered prefix.
+
+whgx:river-idle\/place\/reach-04
+    a plato:SpatialEntity ;
+    rdfs:label "River Idle, reach 4 of 10" .
+
+whgx:river-idle\/place\/node-03
+    a plato:SpatialEntity ;
+    rdfs:label "River Idle: junction with the River Ryton" .
+
+whgx:river-idle\/place\/node-04
+    a plato:SpatialEntity ;
+    rdfs:label "River Idle: junction with an unnamed channel" .
+
+whgx:river-idle\/attestation\/reach-04-member
+    a plato:Attestation ;
+    plato:attests_about whgx:river-idle\/place\/reach-04 ;
+    plato:relates_to whgx:river-idle\/place\/river-idle ;
+    plato:has_relation_type plato:MemberOf ;
+    plato:sequence 4 ;
+    plato:has_citation whgx:river-idle\/citation\/reach-04 .
+
+whgx:river-idle\/attestation\/reach-04-begins
+    a plato:Attestation ;
+    plato:attests_about whgx:river-idle\/place\/reach-04 ;
+    plato:relates_to whgx:river-idle\/place\/node-03 ;
+    plato:has_relation_type plato:BeginsAt ;
+    plato:has_citation whgx:river-idle\/citation\/reach-04 .
+
+whgx:river-idle\/attestation\/reach-04-ends
+    a plato:Attestation ;
+    plato:attests_about whgx:river-idle\/place\/reach-04 ;
+    plato:relates_to whgx:river-idle\/place\/node-04 ;
+    plato:has_relation_type plato:EndsAt ;
+    plato:has_citation whgx:river-idle\/citation\/reach-04 .
+
+whgx:river-idle\/attestation\/reach-04-length
+    a plato:Attestation ;
+    plato:attests_about whgx:river-idle\/place\/reach-04 ;
+    plato:attests_property [ a plato:PropertyValue ;
+        plato:property_type "https://www.wikidata.org/wiki/Property:P2043"^^xsd:anyURI ;
+        plato:property_label "length (metres)" ;
+        plato:value_literal 518.2 ;
+        plato:value_unit "http://www.wikidata.org/entity/Q11573"^^xsd:anyURI ] ;
+    plato:has_citation whgx:river-idle\/citation\/reach-04 .
+
+whgx:river-idle\/citation\/reach-04
+    a plato:Citation ;
+    plato:cites whgx:river-idle\/source\/rewt-v020 ;
+    plato:locator "os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57" ;
+    plato:citation_function cito:citesAsDataSource .
+
+
+# --- A name before 1086, matched by the encoder --------------------------------
+
+whgx:river-idle\/place\/reach-09
+    a plato:SpatialEntity ;
+    rdfs:label "Bycarrs Dyke, reach 9 of 10" .
+
+whgx:river-idle\/attestation\/reach-09-bycarrs-dyke
+    a plato:Attestation ;
+    plato:attests_about whgx:river-idle\/place\/reach-09 ;
+    plato:attests_name [ a plato:Name ; plato:toponym "Bycarr's Dyke" ; plato:language "en" ] ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "before 1086" ;
+        plato:end_latest "1086" ] ;
+    plato:certainty 0.8 ;
+    plato:notes "Oksanen names no reach; this example matches the name to the reaches OS calls Bycarrs Dyke, hence certainty 0.8." ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:river-idle\/source\/oksanen-2019 ;
+        plato:locator "heads_of_navigation, Head_Navi Mattersey, Notes" ] .
+
+
+# --- An Act, as the source gives it -------------------------------------------
+
+whgx:river-idle\/attestation\/idle-act-1720
+    a plato:Attestation ;
+    plato:attests_about whgx:river-idle\/place\/river-idle ;
+    plato:attests_property [ a plato:PropertyValue ;
+        plato:property_type "http://purl.org/dc/terms/isReferencedBy"^^xsd:anyURI ;
+        plato:property_label "navigation Act" ;
+        plato:value_literal "An Act for making the River Idle navigable, from East-Retford in the County of Nottingham, to Bawtry Wharf in the County of York, 6 Geo. II, c.30" ] ;
+    plato:attests_timespan [ a plato:Timespan ;
+        plato:source_label "1720" ;
+        plato:start_earliest "1720" ;
+        plato:end_latest "1720" ] ;
+    plato:notes "The source dates the Act 1720 but cites 6 Geo. II, which is 1732-33; 6 Geo. I is 1719-20. Kept as the source gives it, not corrected. An Act is evidence of an intention, not that the river was made navigable." ;
+    plato:has_citation [ a plato:Citation ;
+        plato:cites whgx:river-idle\/source\/gadd-2019 ;
+        plato:locator "Idle, 1720" ] .
