@@ -11,7 +11,7 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
-## Unreleased
+## 0.6.0
 
 Two gaps found in encoding the markets corpus (the CAMPOP market and fair
 records: Blome's Britannia of 1673, Everitt's survey of 1967, and the
