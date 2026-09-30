@@ -11,7 +11,7 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
-## Unreleased
+## 0.7.0
 
 Dataset metadata, from a review of PLATO against the FAIR principles, and a
 licence correction.
@@ -140,6 +140,7 @@ Found by WHG's rewrite of its documentation against PLATO:
 - A page on bringing Recogito annotations into PLATO, with PLATO tools: what
   each part of an annotation becomes, and what is left out and why.
 
+## 0.6.0
 
 Two gaps found in encoding the markets corpus (the CAMPOP market and fair
 records: Blome's Britannia of 1673, Everitt's survey of 1967, and the
@@ -193,9 +194,8 @@ described elsewhere, which is what Linked Traces records.
   although the guide said it could; only RDF could. The WHG documentation
   review found the gap. It gets a link of its own, not `dcterms:hasPart`,
   which already joins a gazetteer to its statistical tables.
-- Four concepts in `plato:EntityKindScheme`, `plato:TypeRoute`,
-  `plato:TypeItinerary`, `plato:TypeNetwork` and `plato:TypeSegment`, named
-  in a Type's identifier, so that any consumer can tell these entities from
+- Four Types, `plato:TypeRoute`, `plato:TypeItinerary`, `plato:TypeNetwork` and
+  `plato:TypeSegment`, so that any consumer can tell these entities from
   places. A segment (a leg of a road, a reach of a river) is a SpatialEntity
   of its own, and platforms may leave segments out of lists of places.
 - Relation types for places in the history of people, objects and events, as
