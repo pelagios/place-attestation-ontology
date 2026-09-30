@@ -15,6 +15,14 @@ on:
       - 'schemas/**'
       - 'docs/**'
       - '.github/workflows/widoco.yml'
+      - 'scripts/build_releases.py'
+    # A release tag must rebuild, so that releases/X.Y.Z/ appears. PLATO tags
+    # after pushing the release commit to main, and that main push has
+    # usually started (without the tag) before the tag exists. GitHub does
+    # not evaluate the paths filter above for tag pushes, so every v* tag
+    # triggers a run.
+    tags:
+      - 'v*'
   workflow_dispatch:
     inputs:
       reason:
@@ -26,12 +34,31 @@ on:
 permissions:
   contents: write
 
+# Every run force-pushes a fresh gh-pages, so the last to finish wins. Queue
+# runs rather than race them: otherwise the main push for a release, still
+# building without the tag, can finish after the tag's run and publish a site
+# with no releases/X.Y.Z/. A queued run replaces an older queued one, which is
+# harmless because each run rebuilds everything from main and all tags.
+concurrency:
+  group: gh-pages-docs
+  cancel-in-progress: false
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          # Full history, which brings every tag: the releases/ copies are
+          # read with `git show vX.Y.Z:ontology.ttl`. The default depth of 1
+          # fetches no tags, and build_releases.py would publish none.
+          fetch-depth: 0
+          # A tag push would otherwise check out the tag, and publish that
+          # release's ontology as the current one at the site root even if
+          # main has moved on. Always build the site from main on a tag push;
+          # otherwise keep the default (the ref that triggered the run).
+          ref: ${{ startsWith(github.ref, 'refs/tags/') && 'main' || '' }}
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -137,7 +164,7 @@ jobs:
           # the source file itself, comments included; Pages serves it as
           # text/turtle, which raw.githubusercontent.com does not.
           python3 -m venv /tmp/rdf
-          /tmp/rdf/bin/pip install --quiet rdflib
+          /tmp/rdf/bin/pip install --quiet rdflib==7.6.0   # pinned: releases/X.Y.Z/ files must keep the same bytes from one deploy to the next
           cp ontology.ttl "$PUBLISH_DIR/ontology.ttl"
           /tmp/rdf/bin/python - "$PUBLISH_DIR" << 'PY'
           import sys
@@ -153,6 +180,15 @@ jobs:
               assert to_isomorphic(g) == to_isomorphic(h), name
               print(f"{name}: {len(h)} triples, isomorphic with ontology.ttl")
           PY
+
+          # A fixed copy of every release, from its tag, at
+          # releases/X.Y.Z/ontology.{ttl,nt,owl,jsonld}, plus releases/index.json.
+          # w3id.org/plato/X.Y.Z redirects here, so these paths are permanent:
+          # rename nothing. The Turtle is the tagged file byte for byte; the
+          # others are made and checked exactly as above. A tag whose ontology
+          # is missing or does not parse is skipped with a ::warning:: and left
+          # out of index.json rather than failing the deploy.
+          /tmp/rdf/bin/python scripts/build_releases.py "$PUBLISH_DIR"
 
           # Build the PLATO guide (Sphinx, docs/) into guide/. Its reference
           # pages, template workbook and download zips are generated from
