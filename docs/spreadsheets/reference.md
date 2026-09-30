@@ -19,7 +19,7 @@ example, and the values it accepts. This page is generated from the
 [table definitions](https://w3id.org/plato/schemas/tables/csv-metadata.json),
 so it always matches them.
 
-In every sheet except places, sources and identities, each row becomes one
+In every sheet except about, places, sources and identities, each row becomes one
 PLATO attestation, and these columns are shared: `place_id`, `date`, `from`,
 `to`, `source_id`, `locator`, `attribution`, `citation_function`,
 `certainty`, `certainty_level`, `denied`, `stance` and `notes`.

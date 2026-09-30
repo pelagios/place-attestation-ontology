@@ -34,7 +34,7 @@ carries the Ordnance Survey's attribution, which its licence requires.
 ```{include} ../_generated/examples/river-idle/places.md
 ```
 
-There are four kinds of place here. The Idle itself is the network, and the
+There are five kinds of place here. The Idle itself is the network, and the
 Ryton and the Trent are the rivers it meets. The ten reaches are the stretches
 of channel between one junction and the next, and the eleven junctions (the
 `node-` rows) are where they meet. Mattersey and Bawtry are the towns where

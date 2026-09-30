@@ -53,6 +53,12 @@ Fuzziness
   Levant" or a gradual change of rule. It is a property of the thing, not of
   our knowledge of it, so it is different from certainty.
 
+Gazetteer
+: In PLATO, a dataset of places and the evidence about them, such as
+  yours: the about sheet of the spreadsheets, and the `gazetteer` header of
+  a JSON document, describe it. In everyday use, also a reference list of
+  places, such as GeoNames or Pleiades.
+
 Headword
 : The form of a name under which an editor or survey files an entry. An
   editorial decision rather than a reading.
@@ -60,6 +66,12 @@ Headword
 Ibid. (ibidem), idem
 : "The same (source) as before". Where an editor has worked out which source
   was meant, the attribution is *inferred*.
+
+Identity match
+: A statement that a place in your data is the same as a record elsewhere,
+  such as in Pleiades or Wikidata, and how closely: an exact match, a close
+  match, or only related. The spreadsheets record it in the identities sheet,
+  JSON in `identityRelations`.
 
 Itinerary
 : A journey someone actually made, through places in order, with each stop
@@ -75,6 +87,12 @@ Locator
 Member
 : A place that belongs to a route, journey or network, recorded with the
   relation `MemberOf`. Its position in the order is its *sequence*.
+
+Meta-attestation
+: An attestation about another attestation rather than about a place: one
+  scholar recording that another's evidence is supported, contradicted,
+  replaced or withdrawn. It lets corrections and disagreements be kept, not
+  written over.
 
 Network
 : A set of places and the connections between them, in no single order: a
@@ -119,16 +137,22 @@ SpatialEntity
   units or the regions historical periods apply to. What kind each is comes
   from type attestations.
 
-temPlato
-: PLATO's spreadsheet template: ten linked sheets, as an Excel workbook or
-  as CSV files, for putting data into PLATO's shape without software.
-
 Stance
 : How firmly a source itself says something. Most sources simply assert, but
   some pass a claim on without vouching for it ("it is said"), hedge it, or
   raise it and leave it undecided. That is recorded as the source's stance,
   separately from how sure you are: you can be quite certain that a source
   hedged. Leaving a thing undecided is not denying it (see Denial).
+
+temPlato
+: PLATO's spreadsheet template: ten linked sheets, as an Excel workbook or
+  as CSV files, for putting data into PLATO's shape without software.
+
+Type
+: What kind of thing a place is, such as a market town, a river or a road,
+  usually taken from a published vocabulary such as the Getty Art &
+  Architecture Thesaurus, with the vocabulary's web address. The spreadsheets
+  record it in the types sheet.
 
 URI
 : A web address used as a permanent identifier, such as

@@ -29,8 +29,7 @@ were made under the earlier policy.
   column for one, so it applies to data published as JSON or RDF. The
   examples that say they are published now give every attestation one.
 - The IRIs of a dataset made from the spreadsheet tables are now normative,
-  taken from the ones PLATO tools makes (which is to follow in two details:
-  the `/` on the Gazetteer's IRI, and encoding `! ' ( ) *`). The base is the one given for a
+  taken from the ones PLATO tools makes. The base is the one given for a
   conversion, else the about sheet's `base_uri`, with a `/` added when it
   ends in neither `/` nor `#`. A place is `<base>place/<place_id>` and a
   source `<base>source/<source_id>`, with every character of the identifier

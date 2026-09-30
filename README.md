@@ -29,7 +29,7 @@ This work grows out of the [World Historical Gazetteer](https://whgazetteer.org)
 
 - **Linked Traces** extended LPF to handle events, routes, and journeys — things that aren't places but involve places. Its use cases are real, but the attestation-based model proposed here accommodates them within a single unified framework rather than requiring a separate format.
 
-PLATO grounds everything in the attestation-as-bundle pattern and defines LPF as its **single-object-attestation profile**: every LPF element corresponds to one attestation linking one entity to one name, type, geometry or related entity. Existing LPF files remain valid, and the simple interchange format and the richer model coexist without either superseding the other. The use cases of Linked Traces are accommodated within the same model. LPF development sits with the Pelagios Network's Place Working Group.
+PLATO grounds everything in the attestation-as-bundle pattern and defines LPF as its **single-object-attestation profile**: every LPF element corresponds to one attestation linking one entity to one name, type, geometry or related entity. Existing LPF files remain valid, and the simple interchange format and the richer model coexist without either superseding the other. The use cases of Linked Traces are accommodated within the same model. LPF's development continues in its own [repository](https://github.com/LinkedPasts/linked-places-format), under the Pelagios Network's Place Working Group.
 
 For the broader discussion of the architectural and conceptual motivations, see [WHG Discussion #98](https://github.com/WorldHistoricalGazetteer/place/discussions/98).
 
@@ -42,7 +42,7 @@ The ontology defines a small number of classes and a bundling mechanism that con
 | Class | Description |
 |-------|-------------|
 | **SpatialEntity** | A stable, persistent identity: the point on which attestations converge. Covers settlements, routes, networks, administrative units, regions and other entities whose identity is bound up with space; what kind it is comes from Type attestations. Many are places in the everyday sense; PLATO gives "place" no prescribed meaning. |
-| **Attestation** | A lightweight bundle node linking a SpatialEntity to a Name, Geometry, Timespan, Type, and/or Source. Carries metadata (certainty, contributor, notes) but no substantive content of its own — its meaning is defined entirely by its outgoing relationships. |
+| **Attestation** | A lightweight bundle node linking a SpatialEntity to a Name, Geometry, Timespan, Type, PropertyValue and/or Source. Carries metadata (certainty, contributor, notes) but no substantive content of its own — its meaning is defined entirely by its outgoing relationships. |
 | **Name** | A toponym or appellation. Reusable: the same Name can appear in attestations for different SpatialEntities. |
 | **Geometry** | A spatial representation (point, polygon, line). Reusable across attestations and SpatialEntities. |
 | **Timespan** | A temporal interval with start/end bounds and precision metadata. Reusable. |
@@ -51,7 +51,7 @@ The ontology defines a small number of classes and a bundling mechanism that con
 | **Authority** | Abstract superclass for provenance entities, with subtypes: **Source** (a citable document), **Dataset** (a collection-level authority), **Period** (a named historical period), **RelationType** (a vocabulary entry for entity-to-entity relationships), and **CertaintyLevel**. |
 | **Citation** | One attestation's use of one source: the qualified form of `sourced_by`, carrying a locator (page, folio, cell) and whether the attribution was stated or inferred. An attestation resting on two sources has two Citations. |
 | **Gazetteer** | A mutable workspace of SpatialEntities and Attestations, owned by a contributor or team. |
-| **Candidate** | An algorithm-generated match candidate between two SpatialEntities — explicitly *not* an Attestation until confirmed by a human reviewer. |
+| **Candidate** | An algorithm-generated match candidate between two SpatialEntities — explicitly *not* an IdentityRelation until a human reviewer confirms it (linked back via `promoted_from`). |
 
 ### The bundling mechanism
 
@@ -74,7 +74,7 @@ Not every relationship is required in every attestation. A contributor might att
 
 Because Attestations are first-class entities, they can themselves be the subject of other Attestations. This allows scholars to record that one attestation contradicts, supports, or supersedes another — modelling scholarly discourse and the evolution of historical understanding without special-case logic.
 
-### entity-to-entity relations
+### Entity-to-entity relations
 
 Relationships like "capital_of", "successor_to", or "connected_by_trade_route_to" are modelled as Attestations that link two SpatialEntities via `attests_about` and `relates_to`, with the semantic type specified by a RelationType authority. This keeps the core ontology stable while allowing the vocabulary of historical relationships to grow.
 
@@ -84,10 +84,12 @@ The `examples/` directory contains worked examples in Turtle (RDF) format:
 
 - **[constantinople.ttl](examples/constantinople.ttl)** — Constantinople/Istanbul through three historical periods, demonstrating how multiple attestations with different names, geometries, and timespans converge on a single SpatialEntity.
 - **[simple-attestation.ttl](examples/simple-attestation.ttl)** — A minimal example: a scholar attesting that a known place appears in their source with a particular name and date.
-- **[relation.ttl](examples/relation.ttl)** — A entity-to-entity relationship: attesting that a city was the capital of a political entity during a particular period.
+- **[relation.ttl](examples/relation.ttl)** — An entity-to-entity relationship: attesting that a city was the capital of a political entity during a particular period.
 - **[geometry-roles.ttl](examples/geometry-roles.ttl)** — Four geometries for one SpatialEntity — a built extent, a market-place feature point, a proxy locator and a map label anchor — distinguished by `plato:geometry_role`.
 - **[property-values.ttl](examples/property-values.ttl)** — Attributes that are neither name, geometry, timespan nor type: a census population, and a fair's trading days as a structured recurrence rule anchored to a moveable feast.
 - **[citations.ttl](examples/citations.ttl)** — Reified citations: one printed gazetteer cited at different pages, one claim resting on two sources with a locator in each, and an attribution resolved editorially from an *ibidem* (`plato:Citation`, `plato:locator`, `plato:attribution_status`).
+- **[identity-judgements.ttl](examples/identity-judgements.ttl)** — Identity judgements: a cluster of matches accepted together, then withdrawn, corrected and denied, each with its own provenance.
+- **[antonine-routes.ttl](examples/antonine-routes.ttl)**, **[king-john-itinerary.ttl](examples/king-john-itinerary.ttl)**, **[river-idle-network.ttl](examples/river-idle-network.ttl)**, **[datini-network.ttl](examples/datini-network.ttl)** — Parts of the four worked examples of routes, a journey and networks, explained in the guide's [Routes, journeys and networks](https://pelagios.org/place-attestation-ontology/guide/routes/index.html); each whole example is in the JSON examples below and as spreadsheet tables in `schemas/tables/examples/`.
 - **[survey-attestations.ttl](examples/survey-attestations.ttl)** — Place-name survey data: a witness dated separately from the text it transmits (`plato:source_timespan`, `plato:derived_from`), a form found only inside a personal name (`plato:occurrence_context`, `plato:occurrence_count`), and an editorial headword and a derived search form distinguished from attested spellings (`plato:form_status`).
 
 The `schemas/examples/` directory contains corresponding examples in JSON format, following the JSON Schema submission profiles:
@@ -96,6 +98,10 @@ The `schemas/examples/` directory contains corresponding examples in JSON format
 - **[attestation-centric-customs.json](schemas/examples/attestation-centric-customs.json)** — Two attestations from London customs accounts in attestation-centric JSON format, demonstrating the flexible model for contributing evidence about existing SpatialEntities.
 - **[attestation-centric-citations.json](schemas/examples/attestation-centric-citations.json)** — The citations example in attestation-centric JSON format: `citations` with `locator` and `attributionStatus`.
 - **[attestation-centric-survey.json](schemas/examples/attestation-centric-survey.json)** — The survey-attestations example in attestation-centric JSON format: a dated witness with `derivedFrom`, `occurrenceCount`, `occurrenceContext` and `formStatus`.
+- **[place-centric-judgements.json](schemas/examples/place-centric-judgements.json)** — Denials, a source's stance, alternative readings and transcription judgements, and a withdrawn import.
+- **[place-centric-statistics.json](schemas/examples/place-centric-statistics.json)** — Figures from a statistical table, with their dimensions, as explained in the guide's [Statistical tables](https://pelagios.org/place-attestation-ontology/guide/statistics.html).
+- **[place-centric-georeference.json](schemas/examples/place-centric-georeference.json)** — Geometries traced from a historical map, citing the map and the georeference they were placed through.
+- **[place-centric-antonine.json](schemas/examples/place-centric-antonine.json)**, **[place-centric-king-john.json](schemas/examples/place-centric-king-john.json)**, **[place-centric-river-idle.json](schemas/examples/place-centric-river-idle.json)**, **[place-centric-datini.json](schemas/examples/place-centric-datini.json)** — The four worked examples of routes, a journey and networks, whole.
 
 ## JSON Schemas and the JSON-LD context
 
@@ -103,7 +109,7 @@ The `schemas/examples/` directory contains corresponding examples in JSON format
 
 `schemas/plato.context.jsonld` is the JSON-LD 1.1 context that connects those keys to the ontology: it maps every key in the `$defs` and the profiles to its `plato:` term, so that expanding a conformant submission with the context yields the RDF graph the ontology describes. Add it as the document's `@context` (intended URL `https://w3id.org/plato/schemas/plato.context.jsonld`) and any JSON-LD processor produces the triples. The document node is the Gazetteer; in place-centric documents, attestations nested under a SpatialEntity are linked by the reverse of `attests_about`. The context's own `$comment` lists what a context cannot do (it adds no `rdf:type` to untyped objects, and it cannot type timespan bounds or convert coordinate arrays to WKT), which a triplifier covers itself.
 
-The starter concepts named by the SKOS-valued properties (`form_status`, `occurrence_context`, `attribution_status`, `geometry_role`, `relative_qualifier`, `has_meta_type`) are declared in the ontology as `skos:Concept`s in six concept schemes, so the IRIs data points at resolve to a definition. `RelationType` instances are declared for containment (`plato:ContainedIn`); for routes, itineraries and networks (`plato:MemberOf`, `plato:ConnectedTo`, the directed `plato:LeadsTo`, `plato:BeginsAt`/`plato:EndsAt` for the ends of a directed segment, and `plato:HasEnd` for those of an undirected one); and for the part a place plays in the history of a person, an object or an event, as Linked Traces records it (`plato:BirthplaceOf`, `plato:DeathplaceOf`, `plato:ResidenceOf`, `plato:FindspotOf`, `plato:SettingOf`, `plato:WorkplaceOf`), and for the images and records about it (`plato:DepictedIn`, `plato:SubjectOf`). A project declares its own relation types under these with `plato:broader_relation`. Four concepts in `plato:EntityKindScheme` (`plato:TypeRoute`, `plato:TypeItinerary`, `plato:TypeNetwork`, `plato:TypeSegment`), named in a Type's identifier, let any consumer tell those entities from places.
+The starter concepts named by the SKOS-valued properties (`form_status`, `occurrence_context`, `attribution_status`, `geometry_role`, `relative_qualifier`, `has_meta_type`, `source_stance`, `transcription_accuracy`, `transcription_completeness`) are declared in the ontology as `skos:Concept`s in concept schemes, so the IRIs data points at resolve to a definition. `RelationType` instances are declared for containment (`plato:ContainedIn`); for routes, itineraries and networks (`plato:MemberOf`, `plato:ConnectedTo`, the directed `plato:LeadsTo`, `plato:BeginsAt`/`plato:EndsAt` for the ends of a directed segment, and `plato:HasEnd` for those of an undirected one); and for the part a place plays in the history of a person, an object or an event, as Linked Traces records it (`plato:BirthplaceOf`, `plato:DeathplaceOf`, `plato:ResidenceOf`, `plato:FindspotOf`, `plato:SettingOf`, `plato:WorkplaceOf`), and for the images and records about it (`plato:DepictedIn`, `plato:SubjectOf`). A project declares its own relation types under these with `plato:broader_relation`. Four concepts in `plato:EntityKindScheme` (`plato:TypeRoute`, `plato:TypeItinerary`, `plato:TypeNetwork`, `plato:TypeSegment`), named in a Type's identifier, let any consumer tell those entities from places.
 
 ## Relationship to the WHG v4 data model
 

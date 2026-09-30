@@ -149,6 +149,14 @@ permanent addresses for your places.
   to record manuscripts copied later, names found only inside personal names,
   editorial headwords and inferred references.
 
+**I have annotated texts or maps in Recogito.**
+: [Annotations from Recogito](annotations.md) shows how the places you linked
+  become a PLATO dataset.
+
+**My data is a road, a journey, or a network of rivers or letters.**
+: See [Routes, journeys and networks](routes/index.md), with four worked
+  examples.
+
 **I want to check a file, or convert it to another format.**
 : Use [PLATO tools](https://pelagios.org/plato-tools/): drop the file on the page, and see
   [checking, converting and comparing](tools.md) for what it tells you. It runs in your
