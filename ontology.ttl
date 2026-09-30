@@ -11,6 +11,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
 
 
 # =============================================================================
@@ -20,6 +21,9 @@
 <https://w3id.org/plato>
     a owl:Ontology ;
     owl:versionInfo "0.6.0" ;
+    owl:versionIRI <https://w3id.org/plato/0.6.0> ;
+    owl:priorVersion <https://w3id.org/plato/0.5.0> ;
+    dcterms:issued "2026-09-29"^^xsd:date ;
     dcterms:title "PLATO — Place Attestation Ontology"@en ;
     dcterms:description """
         An ontology for representing historical place knowledge as attestations:
@@ -43,6 +47,10 @@
     dcterms:contributor "Pelagios Network Place Working Group" ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:created "2026-02-16"^^xsd:date ;
+    bibo:doi "10.5281/zenodo.21688313" ;
+    dcterms:bibliographicCitation "Gadd, Stephen, and the Pelagios Network Place Working Group. PLATO — Place Attestation Ontology, version 0.6.0. Zenodo, 2026. https://doi.org/10.5281/zenodo.21688313" ;
+    dcat:keyword "ontology"@en, "historical gazetteer"@en, "place"@en, "attestation"@en,
+        "provenance"@en, "linked open data"@en, "digital humanities"@en ;
     rdfs:seeAlso <https://pelagios.org/place-attestation-ontology/index-en.html> ;
     vann:preferredNamespacePrefix "plato" ;
     vann:preferredNamespaceUri "https://w3id.org/plato#" .
@@ -78,6 +86,7 @@
 
 plato:SpatialEntity
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf prov:Entity ;
     rdfs:label "Spatial Entity"@en ;
     rdfs:comment """
@@ -119,6 +128,7 @@ plato:SpatialEntity
 
 plato:Attestation
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf prov:Entity ;
     rdfs:label "Attestation"@en ;
     rdfs:comment """
@@ -144,6 +154,7 @@ plato:Attestation
 
 plato:Name
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Name"@en ;
     rdfs:comment """
         A toponym or appellation for a SpatialEntity. Names are independent, reusable
@@ -161,6 +172,7 @@ plato:Name
 
 plato:Geometry
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf geo:Geometry ;
     rdfs:label "Geometry"@en ;
     rdfs:comment """
@@ -184,6 +196,7 @@ plato:Geometry
 
 plato:Timespan
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf time:ProperInterval ;
     rdfs:label "Timespan"@en ;
     rdfs:comment """
@@ -204,6 +217,7 @@ plato:Timespan
 
 plato:Type
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Type"@en ;
     rdfs:comment """
@@ -223,6 +237,7 @@ plato:Type
 
 plato:PropertyValue
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Property Value"@en ;
     rdfs:comment """
         A quantitative or descriptive attribute of a SpatialEntity, expressed as a
@@ -304,6 +319,7 @@ plato:PropertyValue
 
 plato:Citation
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Citation"@en ;
     rdfs:comment """
         One attestation's use of one Authority: the qualified form of
@@ -330,6 +346,7 @@ plato:Citation
 
 plato:Authority
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     owl:disjointUnionOf (
         plato:Source
         plato:Dataset
@@ -346,6 +363,7 @@ plato:Authority
 
 plato:Source
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf plato:Authority ;
     rdfs:label "Source"@en ;
     rdfs:comment """
@@ -363,6 +381,7 @@ plato:Source
 
 plato:Dataset
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf plato:Authority ;
     rdfs:label "Dataset"@en ;
     rdfs:comment """
@@ -374,6 +393,7 @@ plato:Dataset
 
 plato:Period
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf plato:Authority ;
     rdfs:label "Period"@en ;
     rdfs:comment """
@@ -384,6 +404,7 @@ plato:Period
 
 plato:RelationType
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf plato:Authority ;
     rdfs:label "Relation Type"@en ;
     rdfs:comment """
@@ -396,6 +417,7 @@ plato:RelationType
 
 plato:CertaintyLevel
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf plato:Authority ;
     rdfs:label "Certainty Level"@en ;
     rdfs:comment """
@@ -416,6 +438,7 @@ plato:CertaintyLevel
 
 plato:Gazetteer
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf dcat:Dataset ;
     rdfs:label "Gazetteer"@en ;
     rdfs:comment """
@@ -459,6 +482,7 @@ plato:Gazetteer
 
 plato:GazetteerGroup
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Gazetteer Group"@en ;
     rdfs:comment """
         A thematic or organisational grouping of Gazetteers (e.g.
@@ -472,6 +496,7 @@ plato:GazetteerGroup
 
 plato:Contributor
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subClassOf foaf:Agent, prov:Agent ;
     rdfs:label "Contributor"@en ;
     rdfs:comment """
@@ -501,6 +526,7 @@ plato:Contributor
 
 plato:Organization
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Organization"@en ;
     rdfs:comment """
         An organization to which a Contributor is affiliated. This is a
@@ -528,6 +554,7 @@ plato:Organization
 
 plato:attests_about
     a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "attests about"@en ;
     rdfs:comment """
         Links an Attestation to the SpatialEntity it is about. Every attestation must
@@ -541,6 +568,7 @@ plato:attests_about
 
 plato:attests_name
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "attests name"@en ;
     rdfs:comment """
         Links an Attestation to a Name it asserts for the SpatialEntity. An attestation
@@ -552,6 +580,7 @@ plato:attests_name
 
 plato:attests_geometry
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "attests geometry"@en ;
     rdfs:comment """
         Links an Attestation to a Geometry it asserts for the SpatialEntity. An
@@ -563,6 +592,7 @@ plato:attests_geometry
 
 plato:attests_timespan
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "attests timespan"@en ;
     rdfs:comment """
         Links an Attestation to the Timespan during which the attested
@@ -575,6 +605,7 @@ plato:attests_timespan
 
 plato:attests_type
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "attests type"@en ;
     rdfs:comment """
         Links an Attestation to a Type classification it assigns to the SpatialEntity.
@@ -585,6 +616,7 @@ plato:attests_type
 
 plato:attests_property
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "attests property"@en ;
     rdfs:comment """
         Links an Attestation to a PropertyValue it asserts of the SpatialEntity — a
@@ -603,6 +635,7 @@ plato:attests_property
 
 plato:sourced_by
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "sourced by"@en ;
     rdfs:comment """
         Links an Attestation to the Authority (typically a Source or Dataset)
@@ -626,6 +659,7 @@ plato:sourced_by
 
 plato:has_citation
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "has citation"@en ;
     rdfs:comment """
         Links an Attestation to a Citation: its qualified use of one
@@ -645,6 +679,7 @@ plato:has_citation
 
 plato:cites
     a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "cites"@en ;
     rdfs:comment """
         The Authority (a Source or a Dataset) this Citation uses. Exactly one
@@ -656,6 +691,7 @@ plato:cites
 
 plato:locator
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "locator"@en ;
     rdfs:comment """
         Where in the cited work the evidence sits: 'p. 412', 'f. 12v', 'Table
@@ -676,6 +712,7 @@ plato:locator
 
 plato:attribution_status
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "attribution status"@en ;
     rdfs:comment """
         Whether the attribution of the evidence to the cited source was
@@ -697,6 +734,7 @@ plato:attribution_status
 
 plato:citation_function
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "citation function"@en ;
     rdfs:comment """
         Why the source is cited: as the evidence for the attestation, as a
@@ -751,6 +789,7 @@ plato:citation_function
 
 plato:relates_to
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "relates to"@en ;
     rdfs:comment """
         Links an Attestation to the second entity of a relationship between
@@ -776,6 +815,7 @@ plato:relates_to
 
 plato:related_label
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "related label"@en ;
     rdfs:comment """
         A name for the target of plato:relates_to, for display: 'the Buddha',
@@ -792,6 +832,7 @@ plato:related_label
 
 plato:has_relation_type
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "has relation type"@en ;
     rdfs:comment """
         Specifies the semantic type of a entity-to-entity relationship
@@ -815,6 +856,7 @@ plato:has_relation_type
 
 plato:broader_relation
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "broader relation"@en ;
     rdfs:comment """
         The more general RelationType of which this one is a narrower case:
@@ -843,6 +885,7 @@ plato:broader_relation
 
 plato:meta_attestation_about
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "meta-attestation about"@en ;
     rdfs:comment """
         Links a meta-Attestation to the Attestation it comments on or relates to.
@@ -857,6 +900,7 @@ plato:meta_attestation_about
 
 plato:has_meta_type
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "meta-attestation type"@en ;
     rdfs:comment """
         The nature of a meta-attestation's relationship to its target attestation.
@@ -895,6 +939,7 @@ plato:has_meta_type
 
 plato:certainty
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "certainty"@en ;
     rdfs:comment """
         Epistemic certainty, from 0.0 (completely uncertain) to 1.0
@@ -914,6 +959,7 @@ plato:certainty
 
 plato:certainty_note
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "certainty note"@en ;
     rdfs:comment """
         Free-text explanation of the certainty assessment: quality of
@@ -925,6 +971,7 @@ plato:certainty_note
 
 plato:certainty_level
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "certainty level"@en ;
     rdfs:comment """
         Certainty as a word rather than a number: a CertaintyLevel, such as
@@ -942,6 +989,7 @@ plato:certainty_level
 
 plato:transcription_accuracy
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "transcription accuracy"@en ;
     rdfs:comment """
         How faithfully a transcribed value (a name form, most often) renders
@@ -959,6 +1007,7 @@ plato:transcription_accuracy
 
 plato:transcription_completeness
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "transcription completeness"@en ;
     rdfs:comment """
         Whether a transcribed value is whole: a concept in
@@ -980,6 +1029,7 @@ plato:transcription_completeness
 
 plato:computed
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "computed"@en ;
     rdfs:comment """
         True when this value, or this whole attestation, was worked out by
@@ -1007,6 +1057,7 @@ plato:computed
 
 plato:negated
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "negated"@en ;
     rdfs:comment """
         True when the source states that what this attestation bundles is not
@@ -1040,6 +1091,7 @@ plato:negated
 
 plato:source_stance
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "source stance"@en ;
     rdfs:comment """
         How firmly the source itself asserts what this attestation bundles: a
@@ -1078,6 +1130,7 @@ plato:source_stance
 
 plato:sequence
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "sequence"@en ;
     rdfs:comment """
         The position of a member in an ordered whole, as one source gives it:
@@ -1100,6 +1153,7 @@ plato:sequence
 
 plato:notes
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "notes"@en ;
     rdfs:comment """
         Free-text notes providing additional context about this attestation.
@@ -1111,6 +1165,7 @@ plato:notes
 
 plato:contributed_by
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contributed by"@en ;
     rdfs:comment """
         The agent (person, team, or process) who created this attestation.
@@ -1125,6 +1180,7 @@ plato:contributed_by
 
 plato:created
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "created"@en ;
     rdfs:comment """
         Timestamp when this attestation was created. This is the contribution
@@ -1141,6 +1197,7 @@ plato:created
 
 plato:modified
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "modified"@en ;
     rdfs:comment """
         Timestamp when this attestation was last modified, while its
@@ -1181,6 +1238,7 @@ plato:modified
 
 plato:occurrence_count
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "occurrence count"@en ;
     rdfs:comment """
         The number of times the attested form occurs in the cited source or
@@ -1193,6 +1251,7 @@ plato:occurrence_count
 
 plato:occurrence_context
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "occurrence context"@en ;
     rdfs:comment """
         The capacity in which the attested form occurs in the source. Should
@@ -1222,6 +1281,7 @@ plato:occurrence_context
 
 plato:form_status
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "form status"@en ;
     rdfs:comment """
         The status of the name form this attestation contributes: read in the
@@ -1315,6 +1375,7 @@ plato:form_status
 
 plato:fuzziness
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "fuzziness"@en ;
     rdfs:comment """
         Ontological fuzziness: a measure of how inherently vague or
@@ -1328,6 +1389,7 @@ plato:fuzziness
 
 plato:fuzziness_note
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "fuzziness note"@en ;
     rdfs:comment """
         Free-text explanation of the nature of ontological fuzziness
@@ -1348,6 +1410,7 @@ plato:fuzziness_note
 
 plato:relative_to
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "relative to"@en ;
     rdfs:comment """
         Links a facet node to its anchor entity, indicating that this
@@ -1370,6 +1433,7 @@ plato:relative_to
 
 plato:relative_bearing
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "bearing"@en ;
     rdfs:comment """
         Compass bearing from the anchor, in degrees (0–360).
@@ -1380,6 +1444,7 @@ plato:relative_bearing
 
 plato:relative_distance
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "distance"@en ;
     rdfs:comment """
         Distance from the anchor, in metres. Primarily used for
@@ -1389,6 +1454,7 @@ plato:relative_distance
 
 plato:relative_qualifier
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "relative qualifier"@en ;
     rdfs:comment """
         A controlled-vocabulary term describing the relative relationship
@@ -1427,6 +1493,7 @@ plato:relative_qualifier
 
 plato:IdentityRelation
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Identity Relation"@en ;
     rdfs:comment """
         An assertion that two SpatialEntities refer to the same real-world entity.
@@ -1443,6 +1510,7 @@ plato:IdentityRelation
 
 plato:identity_subject
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "identity subject"@en ;
     rdfs:comment "The first SpatialEntity in an identity assertion."@en ;
     rdfs:domain plato:IdentityRelation ;
@@ -1450,6 +1518,7 @@ plato:identity_subject
 
 plato:identity_object
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "identity object"@en ;
     rdfs:comment """
         The second SpatialEntity in an identity assertion. Often a record in
@@ -1463,6 +1532,7 @@ plato:identity_object
 
 plato:identity_type
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "identity type"@en ;
     rdfs:comment """
         The semantic strength of the identity assertion:
@@ -1482,6 +1552,7 @@ plato:identity_type
 
 plato:identity_certainty
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "identity certainty"@en ;
     rdfs:comment """
         Confidence in the identity assertion, from 0.0 to 1.0. This is
@@ -1496,6 +1567,7 @@ plato:identity_certainty
 
 plato:identity_basis
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "identity basis"@en ;
     rdfs:comment """
         Free-text explanation of the evidence or reasoning supporting
@@ -1508,6 +1580,7 @@ plato:identity_basis
 
 plato:identity_asserted_by
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "asserted by"@en ;
     rdfs:comment "The agent who made or confirmed this identity assertion."@en ;
     rdfs:domain plato:IdentityRelation ;
@@ -1515,12 +1588,14 @@ plato:identity_asserted_by
 
 plato:identity_asserted_at
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "asserted at"@en ;
     rdfs:domain plato:IdentityRelation ;
     rdfs:range xsd:dateTime .
 
 plato:identity_sourced_by
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "identity sourced by"@en ;
     rdfs:comment """
         The Authority (Source or Dataset) that provides evidence for
@@ -1531,6 +1606,7 @@ plato:identity_sourced_by
 
 plato:promoted_from
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "promoted from"@en ;
     rdfs:comment """
         Links an IdentityRelation to the Candidate from which it was
@@ -1550,6 +1626,7 @@ plato:promoted_from
 
 plato:toponym
     a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "toponym"@en ;
     rdfs:comment """
         The name string itself in its original script. This is the primary
@@ -1560,6 +1637,7 @@ plato:toponym
 
 plato:language
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "language"@en ;
     rdfs:comment """
         BCP 47 language tag for this name (e.g., 'ar' for Arabic, 'zh-Hans'
@@ -1571,6 +1649,7 @@ plato:language
 
 plato:script
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "script"@en ;
     rdfs:comment """
         ISO 15924 script code (e.g., 'Arab' for Arabic script, 'Latn' for
@@ -1582,6 +1661,7 @@ plato:script
 
 plato:name_type
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "name type"@en ;
     rdfs:comment """
         What the name denotes. The list is open: 'toponym' (place name),
@@ -1605,6 +1685,7 @@ plato:name_type
 
 plato:romanized
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "romanized"@en ;
     rdfs:comment """
         Romanized (Latin-script) form of the name for searchability and
@@ -1616,6 +1697,7 @@ plato:romanized
 
 plato:transliteration_system
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "transliteration system"@en ;
     rdfs:comment """
         The transliteration/romanization system used (e.g., 'Pinyin' for
@@ -1628,6 +1710,7 @@ plato:transliteration_system
 
 plato:ipa
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "IPA"@en ;
     rdfs:comment """
         International Phonetic Alphabet representation of the name's
@@ -1639,6 +1722,7 @@ plato:ipa
 
 plato:name_embedding
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "name embedding"@en ;
     rdfs:comment """
         Vector embedding for phonetic similarity search. Typically a
@@ -1660,6 +1744,7 @@ plato:name_embedding
 
 plato:geo_wkt
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:subPropertyOf geo:asWKT ;
     rdfs:label "geometry WKT"@en ;
     rdfs:comment """
@@ -1673,6 +1758,7 @@ plato:geo_wkt
 
 plato:geo_json
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "geometry GeoJSON"@en ;
     rdfs:comment """
         GeoJSON representation of the geometry. Used for web mapping
@@ -1684,6 +1770,7 @@ plato:geo_json
 
 plato:repr_point
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "representative point"@en ;
     rdfs:comment """
         A single representative point (centroid, label point, or best
@@ -1695,6 +1782,7 @@ plato:repr_point
 
 plato:geometry_role
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "geometry role"@en ;
     rdfs:comment """
         What this geometry depicts, as distinct from how precisely it is known
@@ -1720,6 +1808,7 @@ plato:geometry_role
 
 plato:hull
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "convex hull"@en ;
     rdfs:comment """
         Convex hull of the geometry as WKT Polygon. Used for quick spatial
@@ -1731,6 +1820,7 @@ plato:hull
 
 plato:bbox
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "bounding box"@en ;
     rdfs:comment """
         Bounding box as array: [min_lon, min_lat, max_lon, max_lat].
@@ -1742,6 +1832,7 @@ plato:bbox
 
 plato:spatial_precision
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "spatial precision"@en ;
     rdfs:comment """
         Precision qualifier for this geometry: 'exact' (surveyed or GPS),
@@ -1755,6 +1846,7 @@ plato:spatial_precision
 
 plato:precision_km
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "precision in kilometers"@en ;
     rdfs:comment """
         Uncertainty radius in kilometers. For point geometries, indicates
@@ -1767,6 +1859,7 @@ plato:precision_km
 
 plato:source_crs
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "source CRS"@en ;
     rdfs:comment """
         Original coordinate reference system. Typically 'EPSG:4326' (WGS84),
@@ -1786,6 +1879,7 @@ plato:source_crs
 
 plato:start_earliest
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "start earliest"@en ;
     rdfs:comment """
         The earliest possible start date for this timespan. Together with
@@ -1807,6 +1901,7 @@ plato:start_earliest
 
 plato:start_latest
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "start latest"@en ;
     rdfs:comment """
         The latest possible start date for this timespan. For certain dates,
@@ -1818,6 +1913,7 @@ plato:start_latest
 
 plato:end_earliest
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "end earliest"@en ;
     rdfs:comment """
         The earliest possible end date for this timespan. Together with
@@ -1829,6 +1925,7 @@ plato:end_earliest
 
 plato:end_latest
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "end latest"@en ;
     rdfs:comment """
         The latest possible end date for this timespan. For certain dates,
@@ -1844,6 +1941,7 @@ plato:end_latest
 
 plato:duration
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "duration"@en ;
     rdfs:comment """
         How long the timespan lasted, as an xsd:duration ('P42D' for six
@@ -1859,6 +1957,7 @@ plato:duration
 
 plato:timespan_label
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "timespan label"@en ;
     rdfs:comment """
         Human-readable label for this timespan (e.g., 'Byzantine period',
@@ -1871,6 +1970,7 @@ plato:timespan_label
 
 plato:start_precision
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "start precision"@en ;
     rdfs:comment """
         Temporal granularity of the start bound. Values: 'year', 'decade',
@@ -1883,6 +1983,7 @@ plato:start_precision
 
 plato:end_precision
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "end precision"@en ;
     rdfs:comment """
         Temporal granularity of the end bound. Values: 'year', 'decade',
@@ -1893,6 +1994,7 @@ plato:end_precision
 
 plato:precision_value
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "precision value"@en ;
     rdfs:comment """
         Numeric precision indicator in years. For example, a decade-level
@@ -1904,6 +2006,7 @@ plato:precision_value
 
 plato:open_start
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "open start"@en ;
     rdfs:comment """
         Boolean flag indicating that the start of this interval is deliberately
@@ -1916,6 +2019,7 @@ plato:open_start
 
 plato:open_end
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "open end"@en ;
     rdfs:comment """
         Boolean flag indicating that the end of this interval is deliberately
@@ -1928,6 +2032,7 @@ plato:open_end
 
 plato:periodo_uri
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "PeriodO URI"@en ;
     rdfs:comment """
         Link to a PeriodO period definition (https://perio.do/). When a timespan
@@ -1940,6 +2045,7 @@ plato:periodo_uri
 
 plato:edtf_string
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "EDTF string"@en ;
     rdfs:comment """
         Extended Date/Time Format (EDTF) representation of this timespan.
@@ -1958,6 +2064,7 @@ plato:edtf_string
 
 plato:type_identifier
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "type identifier"@en ;
     rdfs:comment "URI or identifier in a controlled vocabulary (e.g. AAT)."@en ;
     rdfs:domain plato:Type ;
@@ -1965,6 +2072,7 @@ plato:type_identifier
 
 plato:type_label
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "type label"@en ;
     rdfs:comment "Human-readable label for this type."@en ;
     rdfs:domain plato:Type ;
@@ -1972,6 +2080,7 @@ plato:type_label
 
 plato:source_label
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "source label"@en ;
     rdfs:comment """
         The original label as given in the contributing source, before
@@ -1999,6 +2108,7 @@ plato:source_label
 
 plato:property_type
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "property type"@en ;
     rdfs:comment """
         URI of the property in an external vocabulary — a Wikidata property,
@@ -2013,6 +2123,7 @@ plato:property_type
 
 plato:universe
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "universe"@en ;
     rdfs:comment """
         The figure this figure is a part or share of: its denominator, where
@@ -2029,6 +2140,7 @@ plato:universe
 
 plato:property_label
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "property label"@en ;
     rdfs:comment "Human-readable label for the property (e.g. 'population')."@en ;
     rdfs:domain plato:PropertyValue ;
@@ -2036,6 +2148,7 @@ plato:property_label
 
 plato:value_literal
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "value"@en ;
     rdfs:comment """
         The value, where it is a literal: a number, a string, a date. Use
@@ -2046,6 +2159,7 @@ plato:value_literal
 
 plato:value_datatype
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "value datatype"@en ;
     rdfs:comment "Datatype of the literal value (e.g. xsd:integer, xsd:decimal, xsd:string)."@en ;
     rdfs:domain plato:PropertyValue ;
@@ -2053,6 +2167,7 @@ plato:value_datatype
 
 plato:value_unit
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "value unit"@en ;
     rdfs:comment """
         URI of the unit of measurement, where the value has one — a QUDT unit
@@ -2063,6 +2178,7 @@ plato:value_unit
 
 plato:value_type
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "value type"@en ;
     rdfs:comment """
         URI declaring the shape of a structured value, so that a consumer can
@@ -2081,6 +2197,7 @@ plato:value_type
 
 plato:value_json
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "structured value"@en ;
     rdfs:comment """
         A structured value serialised as JSON, whose shape is declared by
@@ -2096,18 +2213,21 @@ plato:value_json
 
 plato:authority_title
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "title"@en ;
     rdfs:domain plato:Authority ;
     rdfs:range xsd:string .
 
 plato:authority_uri
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "authority URI"@en ;
     rdfs:domain plato:Authority ;
     rdfs:range xsd:anyURI .
 
 plato:authority_version
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "version"@en ;
     rdfs:comment "Version identifier for tracking upstream authority updates."@en ;
     rdfs:domain plato:Authority ;
@@ -2115,12 +2235,14 @@ plato:authority_version
 
 plato:publisher
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "publisher"@en ;
     rdfs:domain plato:Dataset ;
     rdfs:range xsd:string .
 
 plato:licence
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "licence"@en ;
     rdfs:comment """
         Deprecated: use dcterms:license. It could be given only to a Dataset,
@@ -2138,6 +2260,7 @@ plato:licence
 
 plato:partOf
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "part of"@en ;
     rdfs:comment "Links a Source to its parent Dataset."@en ;
     rdfs:domain plato:Source ;
@@ -2145,6 +2268,7 @@ plato:partOf
 
 plato:bibliographic_string
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "bibliographic string"@en ;
     rdfs:comment """
         A formatted citation string for this source or other authority. The
@@ -2182,6 +2306,7 @@ plato:bibliographic_string
 
 plato:source_timespan
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "source timespan"@en ;
     rdfs:comment """
         When this Source, as a document, was produced: the date of the
@@ -2198,6 +2323,7 @@ plato:source_timespan
 
 plato:derived_from
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "derived from"@en ;
     rdfs:comment """
         This Source is a copy, transcript, edition, calendar or confirmation
@@ -2222,6 +2348,7 @@ plato:derived_from
 
 plato:has_timespan
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "has timespan"@en ;
     rdfs:comment """
         Links a Period authority to its temporal extent, represented as a
@@ -2233,6 +2360,7 @@ plato:has_timespan
 
 plato:period_periodo_uri
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "PeriodO URI"@en ;
     rdfs:comment """
         Link to a PeriodO period definition for this Period authority.
@@ -2245,6 +2373,7 @@ plato:period_periodo_uri
 
 plato:period_label
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "period label"@en ;
     rdfs:comment """
         Human-readable label for this period (e.g., 'Byzantine period',
@@ -2256,6 +2385,7 @@ plato:period_label
 
 plato:spatial_coverage
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "spatial coverage"@en ;
     rdfs:comment """
         Geographic or cultural region to which this period applies.
@@ -2272,6 +2402,7 @@ plato:spatial_coverage
 
 plato:relation_label
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "relation label"@en ;
     rdfs:comment "Forward label for the relationship (e.g. 'capital_of')."@en ;
     rdfs:domain plato:RelationType ;
@@ -2279,6 +2410,7 @@ plato:relation_label
 
 plato:inverse_label
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "inverse label"@en ;
     rdfs:comment "Inverse label (e.g. 'has_capital')."@en ;
     rdfs:domain plato:RelationType ;
@@ -2286,6 +2418,7 @@ plato:inverse_label
 
 plato:relation_domain
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "domain constraint"@en ;
     rdfs:comment "Valid subject type for this relation."@en ;
     rdfs:domain plato:RelationType ;
@@ -2293,6 +2426,7 @@ plato:relation_domain
 
 plato:relation_range
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "range constraint"@en ;
     rdfs:comment "Valid object type for this relation."@en ;
     rdfs:domain plato:RelationType ;
@@ -2308,6 +2442,7 @@ plato:relation_range
 
 plato:contributor_name
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contributor name"@en ;
     rdfs:comment """
         The name of the contributor (person, team, or automated process).
@@ -2319,6 +2454,7 @@ plato:contributor_name
 
 plato:contributor_orcid
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "ORCID"@en ;
     rdfs:comment """
         ORCID identifier for person contributors. Can be provided in two formats:
@@ -2342,6 +2478,7 @@ plato:contributor_orcid
 
 plato:contributor_email
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "email"@en ;
     rdfs:comment """
         Contact email address for the contributor. Useful for collaboration
@@ -2352,6 +2489,7 @@ plato:contributor_email
 
 plato:contributor_affiliation
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "affiliation"@en ;
     rdfs:comment """
         Organizational affiliation of the contributor. Links to a
@@ -2367,6 +2505,7 @@ plato:contributor_affiliation
 
 plato:contributor_affiliation_string
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "affiliation (string)"@en ;
     rdfs:comment """
         Free-text organizational affiliation when a structured Organization
@@ -2378,6 +2517,7 @@ plato:contributor_affiliation_string
 
 plato:contributor_role
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contributor role"@en ;
     rdfs:comment """
         Role of the contributor in the project or gazetteer. Examples:
@@ -2390,6 +2530,7 @@ plato:contributor_role
 
 plato:contributor_url
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contributor URL"@en ;
     rdfs:comment """
         Website or profile URL for the contributor (personal website,
@@ -2401,6 +2542,7 @@ plato:contributor_url
 
 plato:contributor_identifier
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contributor identifier"@en ;
     rdfs:comment """
         Additional persistent identifier for the contributor. Can be used
@@ -2423,6 +2565,7 @@ plato:contributor_identifier
 
 plato:entity_identifier
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "identifier"@en ;
     rdfs:comment """
         An identifier for this SpatialEntity other than its IRI: the
@@ -2435,6 +2578,7 @@ plato:entity_identifier
 
 plato:namespace
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "namespace"@en ;
     rdfs:comment """
         Whose identifier plato:entity_identifier is (e.g. 'geonames', 'wikidata',
@@ -2448,6 +2592,7 @@ plato:namespace
 
 plato:ccodes
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "country codes"@en ;
     rdfs:comment """
         ISO 3166-1 alpha-2 codes of the modern countries whose territory
@@ -2467,6 +2612,7 @@ plato:ccodes
 
 plato:contains_entity
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contains entity"@en ;
     rdfs:comment "Links a Gazetteer to a SpatialEntity it contains."@en ;
     rdfs:domain plato:Gazetteer ;
@@ -2474,6 +2620,7 @@ plato:contains_entity
 
 plato:contains_attestation
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contains attestation"@en ;
     rdfs:comment "Links a Gazetteer to an Attestation contributed within it."@en ;
     rdfs:domain plato:Gazetteer ;
@@ -2481,6 +2628,7 @@ plato:contains_attestation
 
 plato:contains_identity_relation
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contains identity relation"@en ;
     rdfs:comment """
         Links a Gazetteer to an IdentityRelation asserted within it. The
@@ -2499,6 +2647,7 @@ plato:contains_identity_relation
 
 plato:declares_relation_type
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "declares relation type"@en ;
     rdfs:comment """
         Links a Gazetteer to a RelationType it declares for its own use: a
@@ -2512,6 +2661,7 @@ plato:declares_relation_type
 
 plato:member_of_group
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "member of group"@en ;
     rdfs:comment "Links a Gazetteer to a GazetteerGroup."@en ;
     rdfs:domain plato:Gazetteer ;
@@ -2519,6 +2669,7 @@ plato:member_of_group
 
 plato:gazetteer_status
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "status"@en ;
     rdfs:comment "Publication status: 'draft' or 'published'. From 'published' on, the Gazetteer's attestations are append-only (see plato:Gazetteer)."@en ;
     rdfs:domain plato:Gazetteer ;
@@ -2526,6 +2677,7 @@ plato:gazetteer_status
 
 plato:gazetteer_owner
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "owner"@en ;
     rdfs:domain plato:Gazetteer ;
     rdfs:range plato:Contributor .
@@ -2552,297 +2704,348 @@ plato:gazetteer_owner
 
 plato:FormStatusScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "form status"@en ;
     rdfs:comment "Starter concepts for plato:form_status. The status of the name form an attestation contributes."@en .
 
 plato:Attested
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:FormStatusScheme ;
     skos:prefLabel "attested"@en ;
     skos:definition "A form read in the cited source. The default form status, usually omitted."@en .
 
 plato:Headword
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:FormStatusScheme ;
     skos:prefLabel "headword"@en ;
     skos:definition "The editorial or preferred form under which the cited authority files the entry. A scholarly decision rather than a reading."@en .
 
 plato:Normalised
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:FormStatusScheme ;
     skos:prefLabel "normalised"@en ;
     skos:definition "A form derived from an attested one for matching or search, attested by no source and carrying no independent evidential value."@en .
 
 plato:Reconstructed
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:FormStatusScheme ;
     skos:prefLabel "reconstructed"@en ;
     skos:definition "A form inferred but not attested; the philologists' asterisked form."@en .
 
 plato:Preferred
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:FormStatusScheme ;
     skos:prefLabel "preferred"@en ;
     skos:definition "The form the contributing project prefers for display and search: a project decision, so the cited source may show a different form."@en .
 
 plato:OccurrenceContextScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "occurrence context"@en ;
     rdfs:comment "Starter concepts for plato:occurrence_context. The capacity in which an attested form occurs in its source."@en .
 
 plato:Direct
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:OccurrenceContextScheme ;
     skos:prefLabel "direct"@en ;
     skos:definition "The form refers to the SpatialEntity directly. The default occurrence context, usually omitted."@en .
 
 plato:InPersonalName
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:OccurrenceContextScheme ;
     skos:prefLabel "in personal name"@en ;
     skos:definition "The form occurs only as an element of a personal name, a surname or by-name; the (p) of the place-name surveys."@en .
 
 plato:InFieldName
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:OccurrenceContextScheme ;
     skos:prefLabel "in field name"@en ;
     skos:definition "The form survives only as an element of a later minor name, such as a field name."@en .
 
 plato:AttributionStatusScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "attribution status"@en ;
     rdfs:comment "Starter concepts for plato:attribution_status. Whether the attribution of evidence to a cited source was stated or resolved editorially."@en .
 
 plato:AttributionStated
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:AttributionStatusScheme ;
     skos:prefLabel "attribution stated"@en ;
     skos:definition "The source is named where the form occurs. The default attribution status, usually omitted."@en .
 
 plato:AttributionInferred
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:AttributionStatusScheme ;
     skos:prefLabel "attribution inferred"@en ;
     skos:definition "The source was given as ibidem or idem and resolved by an editor, so the attribution is inferred rather than stated."@en .
 
 plato:TranscriptionAccuracyScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "transcription accuracy"@en ;
     rdfs:comment "Starter concepts for plato:transcription_accuracy. How faithfully a transcribed value renders what the source shows."@en .
 
 plato:TranscriptionAccurate
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:TranscriptionAccuracyScheme ;
     skos:prefLabel "accurate"@en ;
     skos:definition "The transcription renders what the source shows."@en .
 
 plato:TranscriptionInaccurate
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:TranscriptionAccuracyScheme ;
     skos:prefLabel "inaccurate"@en ;
     skos:definition "The transcription departs from what the source shows, by misreading or error, but is a reading of something the source contains."@en .
 
 plato:TranscriptionFalse
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:TranscriptionAccuracyScheme ;
     skos:prefLabel "false"@en ;
     skos:definition "The transcribed form is not in the source at all: a ghost form, kept because it circulates and must be recognisable."@en .
 
 plato:TranscriptionCompletenessScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "transcription completeness"@en ;
     rdfs:comment "Starter concepts for plato:transcription_completeness. Whether a transcribed value is whole, and if not, whether the lost part can be supplied."@en .
 
 plato:TranscriptionComplete
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:TranscriptionCompletenessScheme ;
     skos:prefLabel "complete"@en ;
     skos:definition "Nothing of the value is lost."@en .
 
 plato:TranscriptionReconstructable
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:TranscriptionCompletenessScheme ;
     skos:prefLabel "reconstructable"@en ;
     skos:definition "Part of the value is lost, damaged or abbreviated, but can be supplied with confidence."@en .
 
 plato:TranscriptionNonReconstructable
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:TranscriptionCompletenessScheme ;
     skos:prefLabel "not reconstructable"@en ;
     skos:definition "Part of the value is lost and cannot be supplied."@en .
 
 plato:SourceStanceScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "source stance"@en ;
     rdfs:comment "Starter concepts for plato:source_stance. How firmly the source itself asserts what an attestation records, as distinct from anyone's confidence in it."@en .
 
 plato:StanceAsserted
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:SourceStanceScheme ;
     skos:prefLabel "asserted"@en ;
     skos:definition "The source states it as so, on its own account. The default source stance, usually omitted."@en .
 
 plato:StanceReported
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:SourceStanceScheme ;
     skos:prefLabel "reported"@en ;
     skos:definition "The source passes it on without vouching for it: 'it is said', 'as Cambden noteth'."@en .
 
 plato:StanceTentative
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:SourceStanceScheme ;
     skos:prefLabel "tentative"@en ;
     skos:definition "The source states it, but with a hedge: 'as it seems', 'were (if not are)'."@en .
 
 plato:StanceDoubted
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:SourceStanceScheme ;
     skos:prefLabel "doubted"@en ;
     skos:definition "The source raises it and declines to settle it. Not a denial, which is plato:negated."@en .
 
 plato:GeometryRoleScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "geometry role"@en ;
     rdfs:comment "Starter concepts for plato:geometry_role. What a geometry depicts, as distinct from how precisely it is known."@en .
 
 plato:Extent
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:GeometryRoleScheme ;
     skos:prefLabel "extent"@en ;
     skos:definition "The built or bounded extent of the SpatialEntity."@en .
 
 plato:FeaturePoint
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:GeometryRoleScheme ;
     skos:prefLabel "feature point"@en ;
     skos:definition "The location of a specific central feature of the SpatialEntity, such as a market place or a church."@en .
 
 plato:RepresentativePoint
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:GeometryRoleScheme ;
     skos:prefLabel "representative point"@en ;
     skos:definition "A proxy point standing in for the whole SpatialEntity, for indexing and display; it need not depict any feature of it."@en .
 
 plato:LabelAnchor
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:GeometryRoleScheme ;
     skos:prefLabel "label anchor"@en ;
     skos:definition "The anchor point of a map label."@en .
 
 plato:Itinerary
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:GeometryRoleScheme ;
     skos:prefLabel "itinerary"@en ;
     skos:definition "A line tracing a route or journey."@en .
 
 plato:RelativeQualifierScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "relative qualifier"@en ;
     rdfs:comment "Starter concepts for plato:relative_qualifier. How a facet is defined relative to its anchor when bearing and distance are not applicable or not sufficient."@en .
 
 plato:Near
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:RelativeQualifierScheme ;
     skos:prefLabel "near"@en ;
     skos:definition "Close to the anchor, without a stated bearing or distance."@en .
 
 plato:Within
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:RelativeQualifierScheme ;
     skos:prefLabel "within"@en ;
     skos:definition "Inside the anchor."@en .
 
 plato:Beyond
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:RelativeQualifierScheme ;
     skos:prefLabel "beyond"@en ;
     skos:definition "On the far side of the anchor from the point of view of the source."@en .
 
 plato:UpstreamOf
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:RelativeQualifierScheme ;
     skos:prefLabel "upstream of"@en ;
     skos:definition "Upstream of the anchor along a watercourse."@en .
 
 plato:BetweenXAndY
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:RelativeQualifierScheme ;
     skos:prefLabel "between"@en ;
     skos:definition "Between the anchor and a second anchor."@en .
 
 plato:DuringReignOf
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:RelativeQualifierScheme ;
     skos:prefLabel "during reign of"@en ;
     skos:definition "A timespan defined by the reign or tenure of the anchor."@en .
 
 plato:VariantOf
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:RelativeQualifierScheme ;
     skos:prefLabel "variant of"@en ;
     skos:definition "A name defined as a variant of the anchor name."@en .
 
 plato:MetaTypeScheme
     a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "meta-attestation type"@en ;
     rdfs:comment "Starter concepts for plato:has_meta_type. The nature of a meta-attestation's relationship to its target attestation."@en .
 
 plato:Contradicts
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "contradicts"@en ;
     skos:definition "Asserts that the target attestation is incorrect."@en .
 
 plato:Supports
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "supports"@en ;
     skos:definition "Provides additional evidence for the target attestation."@en .
 
 plato:Supersedes
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "supersedes"@en ;
     skos:definition "Replaces the target attestation with newer information."@en .
 
 plato:Refines
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "refines"@en ;
     skos:definition "Provides more precise information than the target attestation."@en .
 
 plato:Challenges
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "challenges"@en ;
     skos:definition "Questions the validity of the target attestation."@en .
 
 plato:Bundles
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "bundles"@en ;
     skos:definition "Groups the target with other related attestations."@en .
 
 plato:DerivedFrom
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "derived from"@en ;
     skos:definition "This attestation's value was derived from the target attestation's, as a normalised search form is derived from an attested spelling."@en .
 
 plato:Annotates
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "annotates"@en ;
     skos:definition "Adds a remark about the target attestation, with its own source, without supporting, contradicting or refining it. The remark is the meta-attestation's notes."@en .
 
 plato:AlternativeTo
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "alternative to"@en ;
     skos:definition "This attestation and the target are alternative readings of the same evidence: at most one of them is right. Each keeps its own certainty. Link every alternative in a set to the same first one. A set of alternatives is one piece of evidence, not several, so it must be counted once."@en .
 
 plato:Retracts
     a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "retracts"@en ;
     skos:definition "The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. For a claim its maker takes back, such as a bad import, where plato:Contradicts would read as one scholar disputing another. A tool showing the current state leaves a retracted attestation out. A retraction is itself an attestation: retracting it withdraws the withdrawal, and the target holds again."@en .
@@ -2855,16 +3058,19 @@ plato:Retracts
 
 plato:Certain
     a plato:CertaintyLevel ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "certain"@en ;
     rdfs:comment "The statement is certain: the source, or the contributor, has no doubt of it."@en .
 
 plato:LessCertain
     a plato:CertaintyLevel ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "less certain"@en ;
     rdfs:comment "The statement is probable but not certain."@en .
 
 plato:Uncertain
     a plato:CertaintyLevel ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "uncertain"@en ;
     rdfs:comment "The statement is doubtful: possible, but not established."@en .
 
@@ -2881,6 +3087,7 @@ plato:Uncertain
 
 plato:ContainedIn
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "contained in"@en ;
     plato:relation_label "contained_in" ;
     plato:inverse_label "contains" ;
@@ -2918,6 +3125,7 @@ plato:ContainedIn
 
 plato:MemberOf
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "member of"@en ;
     plato:relation_label "member_of" ;
     plato:inverse_label "has_member" ;
@@ -2935,6 +3143,7 @@ plato:MemberOf
 
 plato:ConnectedTo
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "connected to"@en ;
     plato:relation_label "connected_to" ;
     plato:inverse_label "connected_to" ;
@@ -2951,6 +3160,7 @@ plato:ConnectedTo
 
 plato:LeadsTo
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "leads to"@en ;
     plato:relation_label "leads_to" ;
     plato:inverse_label "reached_from" ;
@@ -2970,6 +3180,7 @@ plato:LeadsTo
 
 plato:BeginsAt
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "begins at"@en ;
     plato:relation_label "begins_at" ;
     plato:inverse_label "beginning_of" ;
@@ -2984,6 +3195,7 @@ plato:BeginsAt
 
 plato:EndsAt
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "ends at"@en ;
     plato:relation_label "ends_at" ;
     plato:inverse_label "end_of" ;
@@ -2997,6 +3209,7 @@ plato:EndsAt
 
 plato:HasEnd
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "has end"@en ;
     plato:relation_label "has_end" ;
     plato:inverse_label "one_end_of" ;
@@ -3026,6 +3239,7 @@ plato:HasEnd
 
 plato:BirthplaceOf
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "birthplace of"@en ;
     plato:relation_label "birthplace_of" ;
     plato:inverse_label "born_at" ;
@@ -3035,6 +3249,7 @@ plato:BirthplaceOf
 
 plato:DeathplaceOf
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "deathplace of"@en ;
     plato:relation_label "deathplace_of" ;
     plato:inverse_label "died_at" ;
@@ -3044,6 +3259,7 @@ plato:DeathplaceOf
 
 plato:ResidenceOf
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "residence of"@en ;
     plato:relation_label "residence_of" ;
     plato:inverse_label "resided_at" ;
@@ -3053,6 +3269,7 @@ plato:ResidenceOf
 
 plato:FindspotOf
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "findspot of"@en ;
     plato:relation_label "findspot_of" ;
     plato:inverse_label "found_at" ;
@@ -3062,6 +3279,7 @@ plato:FindspotOf
 
 plato:SettingOf
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "setting of"@en ;
     plato:relation_label "setting_of" ;
     plato:inverse_label "took_place_at" ;
@@ -3071,6 +3289,7 @@ plato:SettingOf
 
 plato:WorkplaceOf
     a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "workplace of"@en ;
     plato:relation_label "workplace_of" ;
     plato:inverse_label "worked_at" ;
@@ -3092,21 +3311,25 @@ plato:WorkplaceOf
 
 plato:TypeRoute
     a plato:Type ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:type_label "route"@en ;
     rdfs:comment "An ordered set of places making a way: a road, a sea lane, a pilgrimage route. Its timespan, if any, is when it was in use, not when anyone travelled it."@en .
 
 plato:TypeItinerary
     a plato:Type ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:type_label "itinerary"@en ;
     rdfs:comment "A journey made through places in order, each stop with its own timespan: a traveller's tour, a royal progress, a ship's voyage. Not plato:Itinerary, which is a geometry role (a line tracing a route or journey)."@en .
 
 plato:TypeNetwork
     a plato:Type ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:type_label "network"@en ;
     rdfs:comment "A set of places and the connections between them, in no single order: a river system, a canal network, a correspondence network."@en .
 
 plato:TypeSegment
     a plato:Type ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:type_label "segment"@en ;
     rdfs:comment "A physical link with an existence of its own: a leg of a route between two stations, a reach of a river between confluences. Platforms may leave segments out of lists and searches of places."@en .
 
@@ -3122,6 +3345,7 @@ plato:TypeSegment
 
 plato:Candidate
     a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Candidate"@en ;
     rdfs:comment """
         An algorithm-generated match candidate between two SpatialEntities, produced
@@ -3133,30 +3357,35 @@ plato:Candidate
 
 plato:candidate_source
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "source entity"@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range plato:SpatialEntity .
 
 plato:candidate_candidate
     a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "candidate entity"@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range plato:SpatialEntity .
 
 plato:similarity_score
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "similarity score"@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range xsd:float .
 
 plato:algorithm_version
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "algorithm version"@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range xsd:string .
 
 plato:candidate_status
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "status"@en ;
     rdfs:comment "Review status: 'suggested', 'confirmed', 'rejected'."@en ;
     rdfs:domain plato:Candidate ;
@@ -3164,6 +3393,7 @@ plato:candidate_status
 
 plato:generated_at
     a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "generated at"@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range xsd:dateTime .

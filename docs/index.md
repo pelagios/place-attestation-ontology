@@ -15,8 +15,9 @@ to combine with other projects' work, or to hand on to others.
 
 PLATO, the **PL**ace **AT**testation **O**ntology, gives that evidence a
 shape. It is a published standard for recording
-what sources say about places, and organising your data in its shape gives
-you three things.
+what sources say about places, designed so that data in its shape can meet the
+[FAIR principles](#plato-and-fair-data), and organising your data in its shape
+gives you three things.
 
 **A structure to think with.**
 : PLATO asks the same few questions of every piece of data: *what is it
@@ -82,6 +83,49 @@ you three things.
 This guide shows how to put your data into that shape. You do not need to
 know anything about ontologies, JSON or linked data: if you can fill in a
 spreadsheet, you can use PLATO.
+
+## PLATO and FAIR data
+
+The [FAIR principles](https://www.gofair.foundation/fair-principles) ask that
+research data be **Findable, Accessible, Interoperable and Reusable**, by
+people and by software. Funders and repositories increasingly expect them.
+PLATO is built to help, and here is how, principle by principle.
+
+**Findable.**
+: Every place, source and statement in PLATO's shape can have a permanent
+  web address of its own, so it can be found, cited and linked to. PLATO
+  itself has one, `https://w3id.org/plato`, and each release is archived on
+  Zenodo with its own DOI.
+
+**Accessible.**
+: PLATO's definitions are openly licensed (CC BY 4.0) and published at that
+  address in the standard formats software asks for. Data in PLATO's shape
+  is plain spreadsheet tables, JSON or linked data: open formats that anyone
+  can read without special software, and that
+  [PLATO tools](https://pelagios.org/plato-tools/) checks and converts.
+
+**Interoperable.**
+: PLATO is a formal standard (an OWL ontology) built on widely used
+  vocabularies, among them PROV for provenance, DCAT for datasets, SKOS for
+  vocabularies and CiTO for citations. Your places can be matched to shared
+  gazetteers such as Pleiades, GeoNames and Wikidata, so your data joins
+  up with other people's.
+
+**Reusable.**
+: Every statement keeps its source, its date, how sure anyone is of it, and
+  how firmly the source itself says it. That is the provenance someone else
+  needs before they can trust and reuse your data. A licence can be stated
+  for the dataset and for each source.
+
+PLATO gives the structure; a few steps remain yours when you publish:
+
+- **choose a licence** for your dataset and state it;
+- **give it permanent addresses**, under a base you control and will keep,
+  such as your own w3id address or a DOI, not a temporary one;
+- **deposit it** in a repository that gives it a DOI, such as Zenodo;
+- **describe it**: a title, who made it, and what it covers.
+
+Taken together, those steps and PLATO's structure make a dataset FAIR.
 
 ## Where to start
 

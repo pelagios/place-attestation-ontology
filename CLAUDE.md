@@ -81,12 +81,15 @@ The workflow also inserts a "Start with the guide" banner after the first `</h1>
 
 ## Releases
 
-A release bumps the version in four places that must stay in step:
+A release bumps the version in these places, which must stay in step:
 
-- `ontology.ttl` — `owl:versionInfo`
+- `ontology.ttl` — `owl:versionInfo`, `owl:versionIRI` (`https://w3id.org/plato/X.Y.Z`), `owl:priorVersion` (the previous release's version IRI), `dcterms:issued` (the release date) and the version in `dcterms:bibliographicCitation`
 - `CITATION.cff` — `version` and `date-released`
 - `.zenodo.json` — `version`
-- the git tag (`v0.1.1` style)
+- `schemas/plato.context.jsonld` — the "Written against" line of its `$comment`
+- the git tag (`v0.1.1` style); pushing it rebuilds the docs, which publish that release's ontology under `releases/X.Y.Z/`, where `https://w3id.org/plato/X.Y.Z` resolves
+
+Every term carries `rdfs:isDefinedBy <https://w3id.org/plato>`: give a new term one too.
 
 Zenodo archives the repository as it stands at the tag, so **never put a per-version DOI in `README.md` or `CITATION.cff`** — per-version DOIs don't exist until after publication, so quoting one would freeze a placeholder into the archive. Only the concept DOI (`10.5281/zenodo.21688313`, which always resolves to the latest version) is cited in-repo; readers get per-version DOIs from the Zenodo record's Versions panel.
 
