@@ -735,7 +735,7 @@
       "properties": {
         "@id": {
           "$ref": "#/$defs/uri",
-          "description": "Stable URI for this attestation."
+          "description": "Stable URI for this attestation. Recommended for every attestation in a published dataset (status published): a later attestation that corrects, replaces or withdraws this one must point to it, and a comparison of two versions can only tell a changed attestation from a deleted one by its URI. Meant to become required."
         },
         "about": {
           "$ref": "#/$defs/uri",

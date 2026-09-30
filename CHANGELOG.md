@@ -13,6 +13,22 @@ were made under the earlier policy.
 
 ## Unreleased
 
+### Changed
+
+- The append-only rule of a published Gazetteer now says what an
+  attestation's content is: its facets and citations, whether or not they
+  have IRIs of their own. A Name shared under its IRI is not re-spelt once
+  published, since that would change every attestation pointing to it. The
+  SpatialEntities and Authorities attestations are about or cite may still be
+  corrected and enriched. Found while building PLATO tools' version check,
+  which treats them so.
+- Every attestation in a published Gazetteer should have a permanent IRI
+  (`@id`): a correction or withdrawal must point to its target. A
+  recommendation for now, in the ontology, the JSON Schema's description and
+  the guide, meant to become a requirement. The spreadsheet tables have no
+  column for one, so it applies to data published as JSON or RDF. The
+  examples that say they are published now give every attestation one.
+
 ### Fixed
 
 - The core schema's description of `about` still said it was required in

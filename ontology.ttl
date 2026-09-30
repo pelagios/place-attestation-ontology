@@ -509,8 +509,19 @@ plato:Gazetteer
 
         Once a Gazetteer's plato:gazetteer_status is 'published', its
         attestations are append-only, and this is normative: an attestation is
-        never deleted or changed. A correction is a new attestation with a
-        meta-attestation (plato:Supersedes, plato:Contradicts), and a
+        never deleted or changed. What an attestation says includes its
+        facets and citations (plato:attests_name, attests_geometry,
+        attests_timespan, attests_type, attests_property, attests_identity,
+        plato:has_citation) whether or not they have IRIs of their own: a Name
+        shared under its IRI is not re-spelt once published, since that would
+        change every attestation pointing to it. The SpatialEntities and
+        Authorities that attestations are about or cite are not attestations,
+        and their descriptions may still be corrected and enriched. Every
+        attestation in a published Gazetteer should have a permanent IRI of
+        its own, since a correction or withdrawal must point to its target;
+        this is a recommendation, meant to become a requirement. A correction
+        is a new attestation with a meta-attestation (plato:Supersedes,
+        plato:Contradicts), and a
         withdrawal is a meta-attestation of type plato:Retracts. Each carries
         plato:created. The state as of any moment D is then a filter over the
         data: the attestations created by D, less those superseded or

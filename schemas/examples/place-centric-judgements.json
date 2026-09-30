@@ -21,6 +21,7 @@
       "label": "Littleworth",
       "attestations": [
         {
+          "@id": "https://whgazetteer.org/example/attestation/littleworth-no-market",
           "types": [
             {
               "label": "market"
@@ -68,6 +69,7 @@
           "notes": "A bad import put Littleworth at 0°, 0°. In a published gazetteer it is not deleted: the next attestation retracts it."
         },
         {
+          "@id": "https://whgazetteer.org/example/attestation/littleworth-bad-import-retracted",
           "meta": {
             "targetAttestation": "https://whgazetteer.org/example/attestation/littleworth-bad-import",
             "metaType": "https://w3id.org/plato#Retracts"
@@ -159,6 +161,7 @@
       "label": "Fenland Hundred",
       "attestations": [
         {
+          "@id": "https://whgazetteer.org/example/attestation/fenland-hundred-name",
           "names": [
             {
               "toponym": "Fenl[and]",
@@ -187,6 +190,7 @@
       "label": "Cave site",
       "attestations": [
         {
+          "@id": "https://whgazetteer.org/example/attestation/cave-site-rock-shelter",
           "types": [
             {
               "label": "rock shelter"
@@ -217,6 +221,7 @@
       "label": "Kingsbury",
       "attestations": [
         {
+          "@id": "https://whgazetteer.org/example/attestation/kingsbury-market-reported",
           "types": [
             {
               "label": "market"
@@ -244,6 +249,7 @@
           "notes": "The source says only that a market 'is said to be kept' here, passing the claim on without vouching for it. The stance is the source's: the encoder is certain that this is what it says, so certainty is not lowered to record it. The copy cited is marked public domain, and the licence travels with the citation."
         },
         {
+          "@id": "https://whgazetteer.org/example/attestation/kingsbury-market-doubted",
           "types": [
             {
               "label": "market"

@@ -69,6 +69,10 @@ three pieces for that.
   is one that retracts it (`plato:Retracts`). Every attestation carries its
   `created` time, so the state as of any date can be worked out from the
   data itself.
+- **Addresses for attestations.** An attestation can only be withdrawn or
+  replaced by pointing to it, so every attestation in a published dataset
+  should have a permanent address of its own (`@id`). This is a
+  recommendation for now, and is meant to become a requirement.
 - **A state on request.** A platform can offer that state directly through
   datetime negotiation on the place's address ([RFC 7089, "Memento"](https://www.rfc-editor.org/rfc/rfc7089)):
   ask for the address as it stood at a moment, and get the attestations that
