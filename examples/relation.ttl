@@ -117,28 +117,32 @@ whgx:dataset\/mongol-secondary
 
 # -----------------------------------------------------------------------------
 # Contributors
+#
+# Both contributors and both organisations are fictitious. Josiah Carberry is
+# the fictitious person whose ORCID (0000-0002-1825-0097) ORCID's own
+# documentation uses for testing; Wilhelmina Placeholder is invented and has
+# no ORCID. Real scholars appear here only as the authors of cited works.
 # -----------------------------------------------------------------------------
 
 whgx:org\/central-asian-studies
     a plato:Organization ;
     rdfs:label "Central Asian Studies Program" .
 
-whgx:org\/tcnj
+whgx:org\/steppe-history-institute
     a plato:Organization ;
-    rdfs:label "College of New Jersey" .
+    rdfs:label "Institute of Steppe History" .
 
 whgx:contributor\/scholar-a
     a plato:Contributor ;
-    plato:contributor_name "David Morgan" ;
-    plato:contributor_orcid "https://orcid.org/0000-0001-2345-6789" ;
+    plato:contributor_name "Josiah Carberry" ;
+    plato:contributor_orcid "https://orcid.org/0000-0002-1825-0097" ;
     plato:contributor_affiliation whgx:org\/central-asian-studies ;
     plato:contributor_role "principal_investigator" .
 
 whgx:contributor\/scholar-b
     a plato:Contributor ;
-    plato:contributor_name "Thomas Allsen" ;
-    plato:contributor_orcid "https://orcid.org/0000-0002-1825-0097" ;
-    plato:contributor_affiliation whgx:org\/tcnj ;
+    plato:contributor_name "Wilhelmina Placeholder" ;
+    plato:contributor_affiliation whgx:org\/steppe-history-institute ;
     plato:contributor_role "external_contributor" .
 
 

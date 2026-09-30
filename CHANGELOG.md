@@ -91,6 +91,7 @@ were made under the earlier policy.
   MOD 11-2), so any checker that tests it rightly rejected them. They are now `0000-0002-1825-0097`, the fictitious
   Josiah Carberry whom ORCID's own documentation uses, in the Turtle and the
   JSON examples alike.
+- The relation example (`examples/relation.ttl`) named two real historians as the contributors making its claims; they are now fictitious (Josiah Carberry, with ORCID's test ORCID, and Wilhelmina Placeholder, with none), and Allsen's book stays cited only as a source.
 - The core schema's description of `about` still said it was required in
   every attestation-centric attestation; it now gives the meta-attestation
   exception that 0.7.1 made in the attestation-centric schema. Description
