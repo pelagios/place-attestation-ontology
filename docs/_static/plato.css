@@ -28,5 +28,7 @@ body[data-theme="dark"] img.plato-hero { filter: invert(1); }
 /* Space after a list that ends a definition, before the next term. */
 dl dd > ul:last-child { margin-bottom: 1.25rem; }
 
-/* The logo: the pin mark above the guide's name in the sidebar, kept small. */
+/* The logo: the pin mark above the guide's name in the sidebar, kept small, with the name
+   centred beneath it (Furo centres the logo but leaves the name flush left). */
 .sidebar-logo { max-width: 56px; }
+.sidebar-brand-text { text-align: center; }
