@@ -183,6 +183,8 @@ spreadsheets/index
 spreadsheets/first-dataset
 spreadsheets/survey-example
 annotations
+tei
+tables-of-places
 tools
 ```
 
