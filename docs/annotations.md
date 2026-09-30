@@ -75,5 +75,5 @@ annotation's address is not used as the attestation's own identifier: you
 may edit an annotation and download it again, but an attestation in a
 published dataset must never change. See [PLATO and FAIR data](index.md#plato-and-fair-data).
 
-The full mapping, for developers, is in the
-[PLATO tools README](https://github.com/pelagios/plato-tools#web-annotations-recogito).
+The full mapping, for developers, is beside PLATO tools'
+[annotation test files](https://github.com/pelagios/plato-tools/blob/main/test/fixtures/annotations/README.md#the-mapping).

@@ -68,7 +68,11 @@ three pieces for that.
   attestation that supersedes or contradicts the old one, and a withdrawal
   is one that retracts it (`plato:Retracts`). Every attestation carries its
   `created` time, so the state as of any date can be worked out from the
-  data itself.
+  data itself. Before publishing a new version, check that it keeps this
+  rule: [PLATO tools](https://pelagios.org/plato-tools/) compares it with the
+  earlier one and lists anything deleted or changed (see
+  [comparing two versions](tools.md#comparing-two-versions)). From the
+  command line: `npx github:pelagios/plato-tools compare earlier.jsonl later.jsonl`.
 - **Addresses for attestations.** An attestation can only be withdrawn or
   replaced by pointing to it, so every attestation in a published dataset
   should have a permanent address of its own (`@id`). This is a

@@ -147,7 +147,8 @@ Taken together, those steps and PLATO's structure make a dataset FAIR.
   editorial headwords and inferred references.
 
 **I want to check a file, or convert it to another format.**
-: Use [PLATO tools](https://pelagios.org/plato-tools/): drop the file on the page. It runs in your
+: Use [PLATO tools](https://pelagios.org/plato-tools/): drop the file on the page, and see
+  [checking, converting and comparing](tools.md) for what it tells you. It runs in your
   browser, so nothing is uploaded, and it works at any size. To check many
   files at once, it also runs [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line).
 
@@ -174,6 +175,7 @@ spreadsheets/index
 spreadsheets/first-dataset
 spreadsheets/survey-example
 annotations
+tools
 ```
 
 ```{toctree}

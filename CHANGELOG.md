@@ -29,6 +29,12 @@ were made under the earlier policy.
   column for one, so it applies to data published as JSON or RDF. The
   examples that say they are published now give every attestation one.
 
+### Added
+
+- A guide page, *Checking, converting and comparing*, on what PLATO tools
+  checks, what each format keeps when converting, and what the version check
+  reports.
+
 ### Fixed
 
 - The core schema's description of `about` still said it was required in
