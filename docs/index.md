@@ -173,6 +173,7 @@ ideas
 spreadsheets/index
 spreadsheets/first-dataset
 spreadsheets/survey-example
+annotations
 ```
 
 ```{toctree}

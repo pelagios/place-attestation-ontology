@@ -10,17 +10,28 @@
 
 
 # =============================================================================
-# Constantinople / Istanbul through three historical periods
+# Constantinople / Istanbul in three sources
 #
 # This example demonstrates the core attestation-as-bundle pattern:
 # a single SpatialEntity with multiple Attestations, each bundling a different
-# Name, Geometry, and Timespan, sourced from different authorities.
+# Name and Timespan (and, where the source gives one, a Geometry), sourced
+# from different authorities:
+#
+#   - Herodotus, Histories 4.144.2, who writes that Megabazus was "at
+#     Byzantion" (ἐν Βυζαντίῳ);
+#   - the Notitia Urbis Constantinopolitanae, a fifth-century list of the
+#     city's regions and buildings, whose preface names the city
+#     "urbis Constantinopolitanae";
+#   - GeoNames, feature 745044, which gives the current Turkish name
+#     İstanbul and a point.
 #
 # The key properties to observe:
 #   - One SpatialEntity, three Attestations.
 #   - Names, Geometries, and Timespans are independent, reusable nodes.
 #   - Each Attestation bundles a specific combination with provenance.
-#   - No data is overwritten when a new period is added.
+#   - No data is overwritten when a new source is added.
+#   - Each Timespan is the date its source witnesses, not the span of years
+#     in which the name was in use.
 # =============================================================================
 
 
@@ -37,6 +48,10 @@ whgx:entity\/constantinople
 
 # -----------------------------------------------------------------------------
 # Names
+#
+# Where the source writes the name in an inflected form, the toponym is the
+# normalised form and plato:source_label keeps the form as the source prints
+# it.
 # -----------------------------------------------------------------------------
 
 whgx:name\/byzantion-grc
@@ -46,16 +61,16 @@ whgx:name\/byzantion-grc
     plato:script "Grek" ;
     plato:romanized "Byzantion" ;
     plato:transliteration_system "ISO 843" ;
-    plato:name_type "toponym" .
+    plato:name_type "toponym" ;
+    plato:source_label "Βυζαντίῳ" .
 
-whgx:name\/konstantinoupolis-grc
+whgx:name\/constantinopolis-la
     a plato:Name ;
-    plato:toponym "Κωνσταντινούπολις" ;
-    plato:language "grc" ;
-    plato:script "Grek" ;
-    plato:romanized "Konstantinoupolis" ;
-    plato:transliteration_system "ISO 843" ;
-    plato:name_type "toponym" .
+    plato:toponym "Constantinopolis" ;
+    plato:language "la" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" ;
+    plato:source_label "urbis Constantinopolitanae" .
 
 whgx:name\/istanbul-tr
     a plato:Name ;
@@ -67,73 +82,46 @@ whgx:name\/istanbul-tr
 
 # -----------------------------------------------------------------------------
 # Geometries
+#
+# Only GeoNames gives coordinates. Herodotus and the Notitia name the city
+# but do not locate it, so their attestations attest no geometry: a point
+# added by the encoder would be the encoder's claim, not the source's.
 # -----------------------------------------------------------------------------
 
-whgx:geometry\/ancient-settlement
+whgx:geometry\/geonames-point
     a plato:Geometry ;
-    plato:geo_wkt "POINT(28.9784 41.0082)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
-    plato:repr_point "POINT(28.9784 41.0082)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
-    plato:bbox "28.97, 41.00, 28.98, 41.01" ;
-    plato:spatial_precision "approximate" ;
-    plato:precision_km 2.0 ;
-    plato:source_crs "EPSG:4326" .
-
-whgx:geometry\/byzantine-walls
-    a plato:Geometry ;
-    plato:geo_wkt """POLYGON((28.9550 41.0020, 28.9550 41.0200,
-                              29.0100 41.0200, 29.0100 41.0020,
-                              28.9550 41.0020))"""^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
-    plato:repr_point "POINT(28.9784 41.0082)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
-    plato:bbox "28.95, 41.00, 29.01, 41.02" ;
-    plato:spatial_precision "historical_approximate" ;
-    plato:precision_km 0.5 ;
-    plato:source_crs "EPSG:4326" .
-
-whgx:geometry\/ottoman-expanded
-    a plato:Geometry ;
-    plato:geo_wkt """POLYGON((28.9200 40.9800, 28.9200 41.0500,
-                              29.0800 41.0500, 29.0800 40.9800,
-                              28.9200 40.9800))"""^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
-    plato:repr_point "POINT(28.9784 41.0082)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
-    plato:bbox "28.92, 40.98, 29.08, 41.05" ;
-    plato:spatial_precision "approximate" ;
-    plato:precision_km 1.0 ;
+    plato:geo_wkt "POINT(28.94966 41.01384)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
+    plato:repr_point "POINT(28.94966 41.01384)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
     plato:source_crs "EPSG:4326" .
 
 
 # -----------------------------------------------------------------------------
 # Timespans
+#
+# Each is the date of its source, with bounds as wide as the evidence for
+# that date requires.
 # -----------------------------------------------------------------------------
 
-whgx:timespan\/ancient-greek
+whgx:timespan\/herodotus-histories
     a plato:Timespan ;
-    plato:start_earliest "-0670" ;
-    plato:start_latest "-0664" ;
-    plato:end_earliest "0330" ;
-    plato:end_latest "0330" ;
+    plato:start_earliest "-0440" ;
+    plato:end_latest "-0420" ;
     plato:start_precision "decade" ;
-    plato:end_precision "year" ;
-    plato:timespan_label "Ancient Greek period" .
+    plato:end_precision "decade" .
 
-whgx:timespan\/byzantine
+whgx:timespan\/notitia-urbis
     a plato:Timespan ;
-    plato:start_earliest "0330" ;
-    plato:start_latest "0330" ;
-    plato:end_earliest "1453" ;
-    plato:end_latest "1453" ;
-    plato:start_precision "year" ;
-    plato:end_precision "year" ;
-    plato:timespan_label "Byzantine period" .
+    plato:start_earliest "0425" ;
+    plato:end_latest "0450" ;
+    plato:start_precision "decade" ;
+    plato:end_precision "year" .
 
-whgx:timespan\/ottoman
+whgx:timespan\/geonames-consulted
     a plato:Timespan ;
-    plato:start_earliest "1453" ;
-    plato:start_latest "1453" ;
-    plato:end_earliest "1923" ;
-    plato:end_latest "1923" ;
-    plato:start_precision "year" ;
-    plato:end_precision "year" ;
-    plato:timespan_label "Ottoman period" .
+    plato:start_earliest "2026-09-30" ;
+    plato:end_latest "2026-09-30" ;
+    plato:start_precision "day" ;
+    plato:end_precision "day" .
 
 
 # -----------------------------------------------------------------------------
@@ -144,7 +132,7 @@ whgx:timespan\/ottoman
 
 whgx:type\/inhabited-place
     a plato:Type ;
-    plato:type_identifier <http://vocab.getty.edu/aat/300008347> ;
+    plato:type_identifier "http://vocab.getty.edu/aat/300008347"^^xsd:anyURI ;
     plato:type_label "inhabited place" .
 
 
@@ -152,35 +140,23 @@ whgx:type\/inhabited-place
 # Sources
 # -----------------------------------------------------------------------------
 
-whgx:source\/classical-texts
+whgx:source\/herodotus-histories
     a plato:Source ;
-    plato:authority_title "Classical texts (composite)" ;
-    plato:bibliographic_string "Various classical sources including Herodotus and Strabo" ;
-    plato:partOf whgx:dataset\/classical-geography .
+    plato:authority_title "Herodotus, Histories IV.144" ;
+    plato:bibliographic_string "Hdt. 4.144.2" ;
+    plato:authority_uri "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0125:book=4:chapter=144"^^xsd:anyURI .
 
-whgx:source\/byzantine-chronicle
+whgx:source\/notitia-urbis
     a plato:Source ;
-    plato:authority_title "Byzantine Chronicle" ;
-    plato:bibliographic_string "Chronicle of Constantinople, 6th century" ;
-    plato:partOf whgx:dataset\/byzantine-sources .
+    plato:authority_title "Notitia Urbis Constantinopolitanae" ;
+    plato:bibliographic_string "Notitia Urbis Constantinopolitanae, praefatio, ed. O. Seeck, Notitia Dignitatum (1876), p. 229" ;
+    plato:authority_uri "https://www.livius.org/sources/content/notitia-urbis-constantinopolitanae/"^^xsd:anyURI .
 
-whgx:source\/ottoman-tax-records
+whgx:source\/geonames
     a plato:Source ;
-    plato:authority_title "Ottoman tax records" ;
-    plato:bibliographic_string "Istanbul tahrir defterleri, 16th century" ;
-    plato:partOf whgx:dataset\/ottoman-admin .
-
-whgx:dataset\/classical-geography
-    a plato:Dataset ;
-    plato:authority_title "Classical Geography Sources" .
-
-whgx:dataset\/byzantine-sources
-    a plato:Dataset ;
-    plato:authority_title "Byzantine Historical Sources" .
-
-whgx:dataset\/ottoman-admin
-    a plato:Dataset ;
-    plato:authority_title "Ottoman Administrative Records" .
+    plato:authority_title "GeoNames" ;
+    plato:bibliographic_string "GeoNames, feature 745044 (Istanbul)" ;
+    plato:authority_uri "https://www.geonames.org/745044/"^^xsd:anyURI .
 
 
 # -----------------------------------------------------------------------------
@@ -200,56 +176,57 @@ whgx:contributor\/historian
 
 
 # -----------------------------------------------------------------------------
-# Attestation 1: Ancient Greek period (Byzantion)
+# Attestation 1: Byzantion, in Herodotus
 # -----------------------------------------------------------------------------
 
-whgx:attestation\/byzantion-ancient
+whgx:attestation\/byzantion-herodotus
     a plato:Attestation ;
     plato:attests_about whgx:entity\/constantinople ;
     plato:attests_name whgx:name\/byzantion-grc ;
-    plato:attests_geometry whgx:geometry\/ancient-settlement ;
-    plato:attests_timespan whgx:timespan\/ancient-greek ;
+    plato:attests_timespan whgx:timespan\/herodotus-histories ;
     plato:attests_type whgx:type\/inhabited-place ;
-    plato:sourced_by whgx:source\/classical-texts ;
+    plato:sourced_by whgx:source\/herodotus-histories ;
     plato:contributed_by whgx:contributor\/historian ;
-    plato:certainty 0.7 ;
-    plato:certainty_note "Settlement boundaries uncertain; point location well attested." ;
+    plato:certainty 1.0 ;
+    plato:certainty_note "The source names the city: Megabazus was 'at Byzantion' (ἐν Βυζαντίῳ). It gives no location, so no geometry is attested." ;
+    plato:notes "The timespan is the date of the source, not the span in which the name Byzantion was used. The Histories are usually dated about 440 BC; nothing in them can be dated with certainty after 430 BC, and Herodotus is thought to have died about 425 BC. The bounds are set wide enough to cover both." ;
     plato:created "2026-02-15T10:00:00Z"^^xsd:dateTime .
 
 
 # -----------------------------------------------------------------------------
-# Attestation 2: Byzantine period (Konstantinoupolis)
+# Attestation 2: Constantinopolis, in the Notitia Urbis
 # -----------------------------------------------------------------------------
 
-whgx:attestation\/konstantinoupolis-byzantine
+whgx:attestation\/constantinopolis-notitia
     a plato:Attestation ;
     plato:attests_about whgx:entity\/constantinople ;
-    plato:attests_name whgx:name\/konstantinoupolis-grc ;
-    plato:attests_geometry whgx:geometry\/byzantine-walls ;
-    plato:attests_timespan whgx:timespan\/byzantine ;
+    plato:attests_name whgx:name\/constantinopolis-la ;
+    plato:attests_timespan whgx:timespan\/notitia-urbis ;
     plato:attests_type whgx:type\/inhabited-place ;
-    plato:sourced_by whgx:source\/byzantine-chronicle ;
+    plato:sourced_by whgx:source\/notitia-urbis ;
     plato:contributed_by whgx:contributor\/historian ;
-    plato:certainty 0.95 ;
-    plato:certainty_note "Well documented in multiple Byzantine sources." ;
+    plato:certainty 1.0 ;
+    plato:certainty_note "The preface names the city 'urbis Constantinopolitanae'. The source describes the city's fourteen regions but gives no coordinates, so no geometry is attested." ;
+    plato:notes "The timespan is the date of the source, not the span in which the name Constantinopolis was used. The Notitia was written under Theodosius II, who died in 450, and whom its preface praises; proposed dates run from about 425 to 447-450." ;
     plato:created "2026-02-15T10:00:00Z"^^xsd:dateTime .
 
 
 # -----------------------------------------------------------------------------
-# Attestation 3: Ottoman period (Istanbul)
+# Attestation 3: İstanbul, in GeoNames
 # -----------------------------------------------------------------------------
 
-whgx:attestation\/istanbul-ottoman
+whgx:attestation\/istanbul-geonames
     a plato:Attestation ;
     plato:attests_about whgx:entity\/constantinople ;
     plato:attests_name whgx:name\/istanbul-tr ;
-    plato:attests_geometry whgx:geometry\/ottoman-expanded ;
-    plato:attests_timespan whgx:timespan\/ottoman ;
+    plato:attests_geometry whgx:geometry\/geonames-point ;
+    plato:attests_timespan whgx:timespan\/geonames-consulted ;
     plato:attests_type whgx:type\/inhabited-place ;
-    plato:sourced_by whgx:source\/ottoman-tax-records ;
+    plato:sourced_by whgx:source\/geonames ;
     plato:contributed_by whgx:contributor\/historian ;
-    plato:certainty 0.9 ;
-    plato:certainty_note "Boundaries approximate; based on administrative records." ;
+    plato:certainty 1.0 ;
+    plato:certainty_note "GeoNames gives İstanbul as the official Turkish name, and a single point for the city; the point stands for the whole city and marks no boundary." ;
+    plato:notes "The timespan is the day GeoNames was consulted. A modern gazetteer witnesses the current name, not when the name came into use." ;
     plato:created "2026-02-15T10:00:00Z"^^xsd:dateTime .
 
 
@@ -278,10 +255,18 @@ whgx:identity\/constantinople-geonames
 # 2. Each Name is an independent node. "İstanbul" could also appear in
 #    attestations for other SpatialEntities if needed.
 #
-# 3. Adding a fourth period (e.g. modern Republic of Turkey) means adding
-#    a new Attestation, Name, Geometry, and Timespan — nothing is overwritten.
+# 3. Adding a fourth source means adding a new Attestation, with its own
+#    Name and Timespan (and Geometry, if the source gives one) — nothing is
+#    overwritten.
 #
-# 4. If a scholar disagrees with the Byzantine geometry, they create a new
-#    Attestation with a different Geometry and Source — both attestations
-#    coexist, with their own certainty and provenance.
+# 4. If a scholar wants to locate Byzantion from other evidence, such as
+#    archaeology, they create a new Attestation with a Geometry and that
+#    Source — both attestations coexist, with their own certainty and
+#    provenance.
+#
+# 5. Each date is what its source witnesses: Herodotus's Histories, the
+#    Notitia's composition, the day GeoNames was consulted. None of them is
+#    the period in which the name was used. That period is a conclusion
+#    drawn from many attestations, not a fact any one source records; a
+#    named period, where one is wanted, goes in plato:timespan_label.
 # =============================================================================

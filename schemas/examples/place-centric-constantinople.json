@@ -25,26 +25,47 @@
               "script": "Grek",
               "romanized": "Byzantion",
               "transliterationSystem": "ISO 843",
-              "nameType": ["toponym"]
-            }
-          ],
-          "geometries": [
-            {
-              "geojson": { "type": "Point", "coordinates": [28.9784, 41.0082] },
-              "reprPoint": [28.9784, 41.0082],
-              "bbox": [28.97, 41.00, 28.98, 41.01],
-              "spatialPrecision": ["approximate"],
-              "precisionKm": [2.0],
-              "sourceCrs": "EPSG:4326"
+              "nameType": ["toponym"],
+              "sourceLabel": "Βυζαντίῳ"
             }
           ],
           "timespans": [
             {
-              "startEarliest": "-0670",
-              "startLatest": "-0664",
-              "endEarliest": "0330",
-              "endLatest": "0330",
-              "label": "Ancient Greek period",
+              "startEarliest": "-0440",
+              "endLatest": "-0420",
+              "startPrecision": "decade",
+              "endPrecision": "decade"
+            }
+          ],
+          "types": [
+            { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" }
+          ],
+          "sources": [
+            {
+              "title": "Herodotus, Histories IV.144",
+              "citation": "Hdt. 4.144.2",
+              "uri": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0125:book=4:chapter=144"
+            }
+          ],
+          "certainty": 1.0,
+          "certaintyNote": "The source names the city: Megabazus was 'at Byzantion' (ἐν Βυζαντίῳ). It gives no location, so no geometry is attested.",
+          "notes": "The timespan is the date of the source, not the span in which the name Byzantion was used. The Histories are usually dated about 440 BC; nothing in them can be dated with certainty after 430 BC, and Herodotus is thought to have died about 425 BC. The bounds are set wide enough to cover both.",
+          "created": "2026-02-16T10:00:00Z"
+        },
+        {
+          "names": [
+            {
+              "toponym": "Constantinopolis",
+              "language": "la",
+              "script": "Latn",
+              "nameType": ["toponym"],
+              "sourceLabel": "urbis Constantinopolitanae"
+            }
+          ],
+          "timespans": [
+            {
+              "startEarliest": "0425",
+              "endLatest": "0450",
               "startPrecision": "decade",
               "endPrecision": "year"
             }
@@ -53,48 +74,15 @@
             { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" }
           ],
           "sources": [
-            { "title": "Herodotus, Histories IV.144", "citation": "Hdt. 4.144" }
-          ],
-          "certainty": 0.9,
-          "notes": "Founded as Byzantion by Megarian colonists.",
-          "created": "2026-02-16T10:00:00Z"
-        },
-        {
-          "names": [
             {
-              "toponym": "Κωνσταντινούπολις",
-              "language": "grc",
-              "script": "Grek",
-              "romanized": "Konstantinoupolis",
-              "transliterationSystem": "ISO 843",
-              "nameType": ["toponym"]
-            },
-            {
-              "toponym": "Constantinople",
-              "language": "en",
-              "script": "Latn",
-              "nameType": ["toponym"]
+              "title": "Notitia Urbis Constantinopolitanae",
+              "citation": "Notitia Urbis Constantinopolitanae, praefatio, ed. O. Seeck, Notitia Dignitatum (1876), p. 229",
+              "uri": "https://www.livius.org/sources/content/notitia-urbis-constantinopolitanae/"
             }
-          ],
-          "timespans": [
-            {
-              "startEarliest": "0330",
-              "startLatest": "0330",
-              "endEarliest": "1453",
-              "endLatest": "1453",
-              "label": "Byzantine period",
-              "startPrecision": "year",
-              "endPrecision": "year"
-            }
-          ],
-          "types": [
-            { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" },
-            { "identifier": "http://vocab.getty.edu/aat/300387068", "label": "capital city" }
-          ],
-          "sources": [
-            { "title": "Notitia Urbis Constantinopolitanae", "uri": "https://www.example.org/notitia" }
           ],
           "certainty": 1.0,
+          "certaintyNote": "The preface names the city 'urbis Constantinopolitanae'. The source describes the city's fourteen regions but gives no coordinates, so no geometry is attested.",
+          "notes": "The timespan is the date of the source, not the span in which the name Constantinopolis was used. The Notitia was written under Theodosius II, who died in 450, and whom its preface praises; proposed dates run from about 425 to 447-450.",
           "created": "2026-02-16T10:00:00Z"
         },
         {
@@ -106,22 +94,34 @@
               "nameType": ["toponym"]
             }
           ],
+          "geometries": [
+            {
+              "geojson": { "type": "Point", "coordinates": [28.94966, 41.01384] },
+              "reprPoint": [28.94966, 41.01384],
+              "sourceCrs": "EPSG:4326"
+            }
+          ],
           "timespans": [
             {
-              "startEarliest": "1453",
-              "startLatest": "1453",
-              "label": "Ottoman/Modern period",
-              "startPrecision": "year",
-              "openEnd": true
+              "startEarliest": "2026-09-30",
+              "endLatest": "2026-09-30",
+              "startPrecision": "day",
+              "endPrecision": "day"
             }
           ],
           "types": [
             { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" }
           ],
           "sources": [
-            { "title": "GeoNames", "uri": "https://www.geonames.org/745044/" }
+            {
+              "title": "GeoNames",
+              "citation": "GeoNames, feature 745044 (Istanbul)",
+              "uri": "https://www.geonames.org/745044/"
+            }
           ],
           "certainty": 1.0,
+          "certaintyNote": "GeoNames gives İstanbul as the official Turkish name, and a single point for the city; the point stands for the whole city and marks no boundary.",
+          "notes": "The timespan is the day GeoNames was consulted. A modern gazetteer witnesses the current name, not when the name came into use.",
           "created": "2026-02-16T10:00:00Z"
         }
       ],

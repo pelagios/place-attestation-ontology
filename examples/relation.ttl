@@ -174,7 +174,7 @@ whgx:attestation\/karakorum-capital
 whgx:attestation\/karakorum-dispute
     a plato:Attestation ;
     plato:meta_attestation_about whgx:attestation\/karakorum-capital ;
-    plato:has_meta_type whgx:meta-type\/refines ;
+    plato:has_meta_type plato:Refines ;
     plato:sourced_by whgx:source\/allsen-2001 ;
     plato:contributed_by whgx:contributor\/scholar-b ;
     plato:certainty 0.7 ;
@@ -187,11 +187,8 @@ whgx:attestation\/karakorum-dispute
     """ ;
     plato:created "2026-02-15T16:00:00Z"^^xsd:dateTime .
 
-# Meta-attestation type as SKOS concept
-whgx:meta-type\/refines
-    a skos:Concept ;
-    skos:prefLabel "refines"@en ;
-    skos:definition "Provides more precise information than the target attestation"@en .
+# plato:Refines is one of the starter meta-attestation types declared in the
+# ontology (plato:MetaTypeScheme); a project may declare its own concepts too.
 
 
 # =============================================================================

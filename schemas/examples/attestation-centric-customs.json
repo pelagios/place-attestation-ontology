@@ -69,7 +69,7 @@
           "precisionKm": [0.5],
           "qualification": {
             "relativeTo": "https://www.geonames.org/2651048/",
-            "relativeQualifier": "http://w3id.org/plato/vocab#Near",
+            "relativeQualifier": "https://w3id.org/plato#Near",
             "relativeDistance": 500,
             "fuzziness": 0.6,
             "fuzzinessNote": "Strand location was not precisely bounded; refers to a general waterfront area."

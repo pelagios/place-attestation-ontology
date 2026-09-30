@@ -101,6 +101,44 @@ licence correction.
 - `LICENSE.md` held the CC BY-NC 4.0 legal code, contradicting every other
   statement of PLATO's licence; it is now CC BY 4.0, as PLATO has always
   been declared.
+- `plato:geo_json` has range `rdf:JSON`, not `xsd:string`. The JSON-LD
+  context has always mapped `geojson` with `@type: @json`, the only way a
+  GeoJSON object becomes a literal, so every converted dataset already
+  carries `rdf:JSON`; the ontology now says so.
+
+### Fixed
+
+Found by WHG's rewrite of its documentation against PLATO:
+
+- `type_identifier` is written as a literal typed `xsd:anyURI`, never an
+  IRI object, as the context and the tables produce it; the comment says
+  so, and `examples/constantinople.ttl` now uses that form.
+- `start_precision` and `end_precision` list `day` and `month`, as the JSON
+  Schema always has.
+- `name_embedding` no longer says "typically 256-dimensional": the model and
+  dimension are the producer's, and must be stated in the gazetteer's
+  description, since vectors from different models cannot be compared.
+- The Constantinople example dated each name to a whole historical period
+  (330 to 1453, 1453 to 1923) while citing sources that cannot witness such
+  spans, and its Turtle and JSON versions disagreed. Both now use the same
+  three sources (Herodotus, the Notitia Urbis Constantinopolitanae,
+  GeoNames), each dated to what it witnesses, with only the geometry a
+  source gives; the Notitia's Latin form is attested as written.
+- `examples/relation.ttl` uses `plato:Refines` rather than a concept of its
+  own, and the customs example `https://w3id.org/plato#Near` rather than
+  the retired `http://w3id.org/plato/vocab#` namespace.
+
+### Examples
+
+- `examples/identity-judgements.ttl`: a cluster of suggested matches
+  accepted in one act (`plato:attests_identity`, `promoted_from` Candidates
+  with `match_parameters`), that act withdrawn with `plato:Retracts`, the
+  corrected matches, and a denial (`plato:negated`).
+
+### Guide
+
+- A page on bringing Recogito annotations into PLATO, with PLATO tools: what
+  each part of an annotation becomes, and what is left out and why.
 
 
 Two gaps found in encoding the markets corpus (the CAMPOP market and fair

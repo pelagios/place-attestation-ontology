@@ -1808,11 +1808,12 @@ plato:name_embedding
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "name embedding"@en ;
     rdfs:comment """
-        Vector embedding for phonetic similarity search. Typically a
-        256-dimensional vector generated from the name's phonetic form,
-        enabling fuzzy matching and transliteration-variant detection.
-        Format is implementation-specific but should be documented in
-        gazetteer metadata. WHG v4 uses Symphonym embeddings.
+        Vector embedding for phonetic similarity search: a vector generated
+        from the name's phonetic form, enabling fuzzy matching and
+        transliteration-variant detection. Its model and dimension are the
+        producer's (WHG v4 uses Symphonym embeddings), so both must be
+        stated in the gazetteer's description: vectors from different
+        models cannot be compared.
     """@en ;
     rdfs:domain plato:Name ;
     rdfs:range xsd:string .
@@ -1846,10 +1847,16 @@ plato:geo_json
     rdfs:comment """
         GeoJSON representation of the geometry. Used for web mapping
         applications and LPF export. Should be a valid GeoJSON geometry
-        object (not a Feature or FeatureCollection).
+        object (not a Feature or FeatureCollection). Its datatype is
+        rdf:JSON, the JSON literal of JSON-LD 1.1: the JSON-LD context
+        maps the geojson key with @type @json, which is the only way a
+        GeoJSON object in a document can become a literal rather than
+        a node, so every converted dataset already carries rdf:JSON.
+        (Before 0.7.0 the range was given as xsd:string, which no
+        conversion produced.)
     """@en ;
     rdfs:domain plato:Geometry ;
-    rdfs:range xsd:string .
+    rdfs:range rdf:JSON .
 
 plato:repr_point
     a owl:DatatypeProperty ;
@@ -2056,8 +2063,9 @@ plato:start_precision
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "start precision"@en ;
     rdfs:comment """
-        Temporal granularity of the start bound. Values: 'year', 'decade',
-        'century', 'era', 'geological_period'. This describes the resolution
+        Temporal granularity of the start bound. Values: 'day', 'month',
+        'year', 'decade', 'century', 'era', 'geological_period' (as the
+        JSON Schema's precision enumeration). This describes the resolution
         of the date specification, distinct from certainty (which describes
         the confidence in that specification).
     """@en ;
@@ -2069,8 +2077,8 @@ plato:end_precision
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "end precision"@en ;
     rdfs:comment """
-        Temporal granularity of the end bound. Values: 'year', 'decade',
-        'century', 'era', 'geological_period'.
+        Temporal granularity of the end bound. Values: 'day', 'month',
+        'year', 'decade', 'century', 'era', 'geological_period'.
     """@en ;
     rdfs:domain plato:Timespan ;
     rdfs:range xsd:string .
@@ -2158,7 +2166,10 @@ plato:type_identifier
         (https://wiki.openstreetmap.org/wiki/Tag:waterway=stream), since the
         value alone is ambiguous. A source's own category that no vocabulary
         holds is recorded as the Type's label and plato:source_label, with no
-        identifier, rather than as a code made up for it.
+        identifier, rather than as a code made up for it. The IRI is written
+        as a literal typed xsd:anyURI, never as an IRI object: that is what
+        the JSON-LD context and the spreadsheet tables produce, and one form
+        lets queries compare identifiers without converting them.
     """@en ;
     rdfs:domain plato:Type ;
     rdfs:range xsd:anyURI .

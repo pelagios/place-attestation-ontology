@@ -136,7 +136,7 @@
         },
         "nameEmbedding": {
           "type": "string",
-          "description": "Vector embedding for phonetic similarity search (format: implementation-specific, typically 256-dimensional vector)."
+          "description": "Vector embedding for phonetic similarity search. Its model and dimension are the producer's and must be stated in the gazetteer's description, since vectors from different models cannot be compared."
         },
         "sourceLabel": {
           "type": "string",

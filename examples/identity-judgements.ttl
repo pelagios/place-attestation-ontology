@@ -1,0 +1,236 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative
+# URIs that represent WHG entities (SpatialEntities, Attestations, Sources, etc.).
+# In a production system these would be real, resolvable WHG identifiers.
+# whgx:county-survey\/… stands for the records of a second, separate gazetteer.
+
+
+# =============================================================================
+# Identity judgements: a cluster accepted, withdrawn, corrected, and denied
+#
+# Scenario: an editor reconciles a gazetteer of fen parishes against a county
+# survey. Matching software suggests that the parishes' "Newton (by the
+# river)" is the same place as two of the survey's records. The editor accepts
+# both suggestions in one act, finds two days later that one of them is wrong,
+# withdraws the act and states the correct matches, and records that the two
+# Newtons of the parishes gazetteer are different places.
+#
+# This demonstrates:
+#   1. Candidates: software's suggestions, which are not claims.
+#   2. plato:attests_identity: identity relations asserted in one act are
+#      bundled in one Attestation, which gives them one author, date and
+#      source, and lets them be withdrawn together.
+#   3. plato:Retracts: a published attestation is never deleted or edited; it
+#      is withdrawn by a meta-attestation from whoever made it.
+#   4. plato:negated: an attestation bundling one exactMatch that says two
+#      entities are NOT the same, so disagreement is recorded as well as
+#      agreement.
+#
+# The same judgements in JSON, with the denial, are in
+# schemas/examples/place-centric-judgements.json.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# SpatialEntities: two in the parishes gazetteer, two in the county survey
+# -----------------------------------------------------------------------------
+
+whgx:entity\/newton-by-the-river
+    a plato:SpatialEntity ;
+    rdfs:label "Newton (by the river)" .
+
+whgx:entity\/newton-on-the-hill
+    a plato:SpatialEntity ;
+    rdfs:label "Newton (on the hill)" .
+
+whgx:county-survey\/newton-mill
+    a plato:SpatialEntity ;
+    rdfs:label "Newton Mill" .
+
+whgx:county-survey\/newton-upland
+    a plato:SpatialEntity ;
+    rdfs:label "Newton Upland" .
+
+
+# -----------------------------------------------------------------------------
+# Candidates: what the matching software suggested
+#
+# Not claims by anyone. They record the score and the settings that produced
+# it, so that a reviewer, or a later reader, can see why a match was offered.
+# -----------------------------------------------------------------------------
+
+whgx:candidate\/c1
+    a plato:Candidate ;
+    plato:candidate_source whgx:entity\/newton-by-the-river ;
+    plato:candidate_candidate whgx:county-survey\/newton-mill ;
+    plato:similarity_score "0.93"^^xsd:float ;
+    plato:algorithm_version "matcher 2.1" ;
+    plato:match_parameters """{"threshold": 0.8, "weights": {"name": 0.5, "distance": 0.4, "type": 0.1}}""" ;
+    plato:generated_at "2026-09-09T18:00:00Z"^^xsd:dateTime ;
+    plato:candidate_status "confirmed" .
+
+whgx:candidate\/c2
+    a plato:Candidate ;
+    plato:candidate_source whgx:entity\/newton-by-the-river ;
+    plato:candidate_candidate whgx:county-survey\/newton-upland ;
+    plato:similarity_score "0.84"^^xsd:float ;
+    plato:algorithm_version "matcher 2.1" ;
+    plato:match_parameters """{"threshold": 0.8, "weights": {"name": 0.5, "distance": 0.4, "type": 0.1}}""" ;
+    plato:generated_at "2026-09-09T18:00:00Z"^^xsd:dateTime ;
+    plato:candidate_status "confirmed" .
+
+
+# -----------------------------------------------------------------------------
+# Who judged, and on what evidence
+# -----------------------------------------------------------------------------
+
+whgx:contributor\/editor
+    a plato:Contributor ;
+    plato:contributor_name "The parishes gazetteer's editor" .
+
+whgx:source\/review-2026-09-10
+    a plato:Source ;
+    plato:authority_title "Review of suggested matches against the county survey, 10 September 2026" .
+
+whgx:source\/review-2026-09-12
+    a plato:Source ;
+    plato:authority_title "Second review of the Newtons, with the tithe maps, 12 September 2026" .
+
+
+# -----------------------------------------------------------------------------
+# Act 1: the editor accepts both suggestions at once
+#
+# One attestation bundles the two exactMatch relations, so they share one
+# author, date and source. Closure may be taken inside this bundle only: from
+# its two relations, Newton Mill is also the same as Newton Upland. It must
+# not be taken across different attestations, whoever made them.
+# -----------------------------------------------------------------------------
+
+whgx:attestation\/newton-cluster-1
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/newton-by-the-river ;
+    plato:attests_identity whgx:identity\/river-mill-1 , whgx:identity\/river-upland-1 ;
+    plato:sourced_by whgx:source\/review-2026-09-10 ;
+    plato:contributed_by whgx:contributor\/editor ;
+    plato:created "2026-09-10T11:00:00Z"^^xsd:dateTime .
+
+whgx:identity\/river-mill-1
+    a plato:IdentityRelation ;
+    plato:identity_subject whgx:entity\/newton-by-the-river ;
+    plato:identity_object whgx:county-survey\/newton-mill ;
+    plato:identity_type "exactMatch" ;
+    plato:promoted_from whgx:candidate\/c1 .
+
+whgx:identity\/river-upland-1
+    a plato:IdentityRelation ;
+    plato:identity_subject whgx:entity\/newton-by-the-river ;
+    plato:identity_object whgx:county-survey\/newton-upland ;
+    plato:identity_type "exactMatch" ;
+    plato:promoted_from whgx:candidate\/c2 .
+
+
+# -----------------------------------------------------------------------------
+# Act 2: the editor withdraws Act 1
+#
+# The gazetteer is published, so Act 1 is not deleted or changed. Its maker
+# withdraws it, both relations together, by a meta-attestation of type
+# plato:Retracts. A view of the gazetteer as of 11 September still shows
+# Act 1; a view from 12 September on leaves it out.
+# -----------------------------------------------------------------------------
+
+whgx:attestation\/newton-cluster-1-retracted
+    a plato:Attestation ;
+    plato:meta_attestation_about whgx:attestation\/newton-cluster-1 ;
+    plato:has_meta_type plato:Retracts ;
+    plato:sourced_by whgx:source\/review-2026-09-12 ;
+    plato:contributed_by whgx:contributor\/editor ;
+    plato:notes "The tithe maps put Newton Upland on the hill, not by the river: the second match was wrong. The first is restated below." ;
+    plato:created "2026-09-12T09:00:00Z"^^xsd:dateTime .
+
+
+# -----------------------------------------------------------------------------
+# Act 3: the correct matches, one act each
+#
+# Two attestations, not one bundle, because they are about different places:
+# nothing may be chained between them.
+# -----------------------------------------------------------------------------
+
+whgx:attestation\/newton-river-mill
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/newton-by-the-river ;
+    plato:attests_identity whgx:identity\/river-mill-2 ;
+    plato:sourced_by whgx:source\/review-2026-09-12 ;
+    plato:contributed_by whgx:contributor\/editor ;
+    plato:created "2026-09-12T09:05:00Z"^^xsd:dateTime .
+
+whgx:identity\/river-mill-2
+    a plato:IdentityRelation ;
+    plato:identity_subject whgx:entity\/newton-by-the-river ;
+    plato:identity_object whgx:county-survey\/newton-mill ;
+    plato:identity_type "exactMatch" ;
+    plato:promoted_from whgx:candidate\/c1 .
+
+whgx:attestation\/newton-hill-upland
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/newton-on-the-hill ;
+    plato:attests_identity whgx:identity\/hill-upland ;
+    plato:sourced_by whgx:source\/review-2026-09-12 ;
+    plato:contributed_by whgx:contributor\/editor ;
+    plato:created "2026-09-12T09:05:00Z"^^xsd:dateTime .
+
+whgx:identity\/hill-upland
+    a plato:IdentityRelation ;
+    plato:identity_subject whgx:entity\/newton-on-the-hill ;
+    plato:identity_object whgx:county-survey\/newton-upland ;
+    plato:identity_type "exactMatch" ;
+    plato:identity_basis "Both are the settlement on the hill on the tithe maps." .
+
+
+# -----------------------------------------------------------------------------
+# Act 4: the two Newtons are different places
+#
+# A denial is an attestation marked plato:negated, bundling one exactMatch
+# relation: it says the two entities are NOT the same. It is attributed and
+# dated like any claim. A consumer that cannot express a denial must leave it
+# out and report it, never write it as a match.
+# -----------------------------------------------------------------------------
+
+whgx:attestation\/newtons-distinct
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/newton-on-the-hill ;
+    plato:negated true ;
+    plato:attests_identity whgx:identity\/hill-river-denied ;
+    plato:sourced_by whgx:source\/review-2026-09-12 ;
+    plato:contributed_by whgx:contributor\/editor ;
+    plato:created "2026-09-12T09:10:00Z"^^xsd:dateTime .
+
+whgx:identity\/hill-river-denied
+    a plato:IdentityRelation ;
+    plato:identity_subject whgx:entity\/newton-on-the-hill ;
+    plato:identity_object whgx:entity\/newton-by-the-river ;
+    plato:identity_type "exactMatch" .
+
+
+# =============================================================================
+# Observations
+#
+# 1. The current state, leaving out the retracted Act 1, is: Newton (by the
+#    river) is Newton Mill; Newton (on the hill) is Newton Upland; and the two
+#    Newtons are different places. No inference crosses from one attestation
+#    to another, so the two matches never join the two Newtons into one.
+#
+# 2. The history is kept: anyone can see that the editor once matched Newton
+#    Upland to the river Newton, when, and why it was withdrawn.
+#
+# 3. Candidate c1 was confirmed twice, by Acts 1 and 3. The candidate's status
+#    records only that a person accepted it; who, when and on what evidence
+#    is carried by the attestations.
+#
+# 4. Identity is evidence, never fact: these are one editor's attributed
+#    judgements, and another project may state others about the same
+#    entities. Platforms must not merge records on the strength of them.
+# =============================================================================
