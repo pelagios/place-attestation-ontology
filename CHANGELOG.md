@@ -13,7 +13,17 @@ were made under the earlier policy.
 
 ## Unreleased
 
-Found by WHG's final pass on its documentation against 0.7.0.
+Found by WHG's final pass on its documentation against 0.7.0, and a logo.
+
+### Added
+
+- A logo: a map pin (a place) whose head carries the rings of the
+  Mediterranean eye charm, with the guide's attestation gold as the ring
+  between white and blue. `docs/_static/logo/` holds the mark, a one-colour
+  version, the lockup with the name for light and dark grounds (lettering
+  as outlines, so no font is needed), and favicons;
+  `scripts/build_logo.py` builds them from the guide's fonts. The guide
+  uses it as its favicon.
 
 ### Fixed
 
