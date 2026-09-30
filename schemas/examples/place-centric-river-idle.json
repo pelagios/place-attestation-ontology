@@ -4,7 +4,27 @@
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/river-idle/",
     "title": "The River Idle, from Mattersey to the Trent",
-    "description": "The lower River Idle as a directed network: ten reaches from Mattersey to the tidal Trent, as REWT v0.2.0-alpha routes them over OS Open Rivers (CC BY 4.0, contains OS data © Crown copyright and database rights 2026), with dated evidence about the river from Oksanen's Inland Navigation in England and Wales before 1348 and Gadd's Compulsory Purchase for Transport Infrastructure, 1539-1720 (both CC BY 4.0). A worked example of PLATO's network pattern: reaches as segments with BeginsAt and EndsAt, rivers joined by LeadsTo."
+    "description": "The lower River Idle as a directed network, from REWT v0.2.0-alpha (contains OS data © Crown copyright and database rights 2026), with dated evidence from Oksanen (2019) and Gadd (2019): a worked example of PLATO's network pattern.",
+    "creator": [
+      {
+        "@id": "https://orcid.org/0000-0003-3060-0181"
+      }
+    ],
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "status": "draft",
+    "keywords": [
+      "rivers",
+      "navigation",
+      "networks"
+    ],
+    "spatial": [
+      "http://www.wikidata.org/entity/Q21"
+    ],
+    "temporal": {
+      "startDate": "1086",
+      "endDate": "1720"
+    },
+    "uriSpace": "https://whgazetteer.org/example/river-idle/"
   },
   "spatialEntities": [
     {

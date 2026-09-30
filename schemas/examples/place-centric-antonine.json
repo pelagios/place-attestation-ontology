@@ -4,7 +4,28 @@
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/antonine/",
     "title": "The Antonine Itinerary: two routes from London to the Kent ports",
-    "description": "Iters III and IV of the Antonine Itinerary, from G. Parthey and M. Pinder's edition (1848), p. 225: London to Dover and London to Lympne, which share their first two legs. A worked example of PLATO's route pattern: stations and the roads between them are members of each route, in the order the Itinerary gives, and each road's length is attested as each iter states it. Locations and identities from Pleiades."
+    "description": "Iters III and IV of the Antonine Itinerary, from Parthey and Pinder's edition (1848), p. 225: a worked example of PLATO's route pattern. Locations and identities from Pleiades.",
+    "creator": [
+      {
+        "@id": "https://orcid.org/0000-0003-3060-0181"
+      }
+    ],
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "status": "draft",
+    "keywords": [
+      "Antonine Itinerary",
+      "Roman roads",
+      "routes"
+    ],
+    "spatial": [
+      "http://www.wikidata.org/entity/Q185103",
+      "http://www.wikidata.org/entity/Q67479626"
+    ],
+    "temporal": {
+      "startDate": "0200",
+      "endDate": "0300"
+    },
+    "uriSpace": "https://whgazetteer.org/example/antonine/"
   },
   "spatialEntities": [
     {

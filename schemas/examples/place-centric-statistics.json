@@ -3,7 +3,14 @@
   "profile": "place-centric",
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/gazetteer/statistics",
-    "title": "Figures from a statistical table (illustrative)"
+    "title": "Figures from a statistical table (illustrative)",
+    "creator": [
+      {
+        "@id": "https://orcid.org/0000-0003-3060-0181",
+        "name": "Stephen Gadd"
+      }
+    ],
+    "licence": "https://creativecommons.org/licenses/by/4.0/"
   },
   "dataSets": [
     {

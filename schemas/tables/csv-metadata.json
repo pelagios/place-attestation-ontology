@@ -6,9 +6,168 @@
     }
   ],
   "dc:title": "PLATO spreadsheet tables",
-  "dc:description": "CSV on the Web (CSVW) metadata for organising data about places in PLATO's shape with spreadsheets. It describes nine linked tables, how they refer to one another, and how each row becomes RDF in the PLATO ontology (https://w3id.org/plato#). Keep every table, even if you leave it empty apart from its header row. Guide: https://pelagios.org/place-attestation-ontology/guide/.",
+  "dc:description": "CSV on the Web (CSVW) metadata for organising data about places in PLATO's shape with spreadsheets. It describes ten linked tables, how they refer to one another, and how each row becomes RDF in the PLATO ontology (https://w3id.org/plato#). Keep every table, even if you leave it empty apart from its header row. Guide: https://pelagios.org/place-attestation-ontology/guide/.",
   "dc:source": "https://w3id.org/plato/schemas/tables/csv-metadata.json",
   "tables": [
+    {
+      "url": "about.csv",
+      "dc:title": "About",
+      "dc:description": "One row describing the dataset as a whole: its title, who made it, its licence, what it covers, and the base of its web addresses. It is what makes the dataset findable and citable (the FAIR principles). Exactly one row. Only the title is required, and the licence too once status is 'published'.",
+      "tableSchema": {
+        "aboutUrl": "#dataset",
+        "columns": [
+          {
+            "name": "title",
+            "titles": "title",
+            "dc:description": "The dataset's title.",
+            "skos:example": "Place-names of Bunsty Hundred",
+            "required": true,
+            "propertyUrl": "http://purl.org/dc/terms/title"
+          },
+          {
+            "name": "description",
+            "titles": "description",
+            "dc:description": "What the dataset is, in a sentence or two: where it comes from and what it covers. Optional.",
+            "propertyUrl": "http://purl.org/dc/terms/description"
+          },
+          {
+            "name": "creator",
+            "titles": "creator",
+            "dc:description": "The web addresses of the people or organisations to cite as its authors, such as ORCIDs, separated by ';'. Optional; give an ORCID where you can. In the tables these are recorded as web addresses in text form; converting with PLATO tools turns them into links.",
+            "skos:example": "https://orcid.org/0000-0003-3060-0181",
+            "propertyUrl": "http://purl.org/dc/terms/creator",
+            "separator": ";",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "creator_name",
+            "titles": "creator_name",
+            "dc:description": "The names of authors who have no web address, separated by ';'. Optional.",
+            "skos:example": "Anne Annotator",
+            "propertyUrl": "http://purl.org/dc/elements/1.1/creator",
+            "separator": ";"
+          },
+          {
+            "name": "contributor",
+            "titles": "contributor",
+            "dc:description": "The web address of the person or organisation that owns or maintains the dataset, if not its author. Optional.",
+            "propertyUrl": "https://w3id.org/plato#gazetteer_owner",
+            "valueUrl": "{+contributor}",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "licence",
+            "titles": "licence",
+            "dc:description": "The web address of the dataset's licence, such as https://creativecommons.org/licenses/by/4.0/. Required once status is 'published'.",
+            "skos:example": "https://creativecommons.org/licenses/by/4.0/",
+            "propertyUrl": "http://purl.org/dc/terms/license",
+            "valueUrl": "{+licence}",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "version",
+            "titles": "version",
+            "dc:description": "The dataset's version, in any form you use: '1.2', '2026-09'. Optional.",
+            "skos:example": "1.0",
+            "propertyUrl": "http://www.w3.org/ns/dcat#version"
+          },
+          {
+            "name": "status",
+            "titles": "status",
+            "dc:description": "'draft' while it may still change, or 'published' once others may cite it. Once published, its evidence is only ever added to, never changed. Optional.",
+            "skos:example": "draft",
+            "propertyUrl": "https://w3id.org/plato#gazetteer_status",
+            "datatype": {
+              "base": "string",
+              "format": "^(draft|published)$"
+            }
+          },
+          {
+            "name": "keywords",
+            "titles": "keywords",
+            "dc:description": "Words a catalogue can find it by, separated by ';'. Optional.",
+            "skos:example": "place-names;Buckinghamshire",
+            "propertyUrl": "http://www.w3.org/ns/dcat#keyword",
+            "separator": ";"
+          },
+          {
+            "name": "spatial",
+            "titles": "spatial",
+            "dc:description": "The area it covers, as web addresses (a Wikidata or GeoNames region), separated by ';'. Optional. In the tables these are recorded as web addresses in text form; converting with PLATO tools turns them into links.",
+            "skos:example": "http://www.wikidata.org/entity/Q21",
+            "propertyUrl": "http://purl.org/dc/terms/spatial",
+            "separator": ";",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "temporal_from",
+            "titles": "temporal_from",
+            "dc:description": "The earliest year or date the dataset covers, with at least four digits. Optional.",
+            "skos:example": "0921",
+            "aboutUrl": "#dataset-coverage",
+            "propertyUrl": "http://www.w3.org/ns/dcat#startDate",
+            "datatype": {
+              "base": "string",
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
+            }
+          },
+          {
+            "name": "temporal_to",
+            "titles": "temporal_to",
+            "dc:description": "The latest year or date it covers, in the same form. Optional.",
+            "skos:example": "1346",
+            "aboutUrl": "#dataset-coverage",
+            "propertyUrl": "http://www.w3.org/ns/dcat#endDate",
+            "datatype": {
+              "base": "string",
+              "format": "^-?\\d{4,}(-\\d{2}(-\\d{2})?)?$"
+            }
+          },
+          {
+            "name": "landing_page",
+            "titles": "landing_page",
+            "dc:description": "The web page where people find and download the dataset. Optional.",
+            "propertyUrl": "http://www.w3.org/ns/dcat#landingPage",
+            "valueUrl": "{+landing_page}",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "dataset_uri",
+            "titles": "dataset_uri",
+            "dc:description": "The dataset's own permanent web address, if it has one. Optional.",
+            "propertyUrl": "http://purl.org/dc/terms/identifier",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "base_uri",
+            "titles": "base_uri",
+            "dc:description": "The base of the web addresses of the dataset's places and sources, such as https://w3id.org/my-project/: choose one you control and will keep. PLATO tools makes each place's address from it and its place_id. Optional, but give it before publishing.",
+            "skos:example": "https://w3id.org/my-project/",
+            "propertyUrl": "http://rdfs.org/ns/void#uriSpace",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "type_dataset",
+            "virtual": true,
+            "propertyUrl": "rdf:type",
+            "valueUrl": "https://w3id.org/plato#Gazetteer"
+          },
+          {
+            "name": "link_coverage",
+            "virtual": true,
+            "propertyUrl": "http://purl.org/dc/terms/temporal",
+            "valueUrl": "#dataset-coverage"
+          },
+          {
+            "name": "type_coverage",
+            "virtual": true,
+            "aboutUrl": "#dataset-coverage",
+            "propertyUrl": "rdf:type",
+            "valueUrl": "http://purl.org/dc/terms/PeriodOfTime"
+          }
+        ]
+      }
+    },
     {
       "url": "places.csv",
       "dc:title": "Places",
@@ -1070,14 +1229,14 @@
           {
             "name": "relation_type",
             "titles": "relation_type",
-            "dc:description": "How they are related. Places within places: 'ContainedIn' (the place in place_id lies within the other). Routes, journeys and networks: 'MemberOf' (the place is a station, stop or member of the route, journey or network in related_place_id; give its position in sequence), 'ConnectedTo' (directly connected, either way), 'LeadsTo' (connected one way, from place_id to the other), 'BeginsAt' and 'EndsAt' (a segment, such as a leg of a road, begins or ends at the other place), 'HasEnd' (the other place is one end of a segment with no direction; give it for both ends). People, objects and events, in related_uri: 'BirthplaceOf', 'DeathplaceOf', 'ResidenceOf', 'FindspotOf', 'SettingOf', 'WorkplaceOf'. Only PLATO's own relation types can be used here; a project's own (declared in JSON or RDF with broader_relation) cannot, and further types are added to PLATO's vocabulary on request.",
+            "dc:description": "How they are related. Places within places: 'ContainedIn' (the place in place_id lies within the other). Routes, journeys and networks: 'MemberOf' (the place is a station, stop or member of the route, journey or network in related_place_id; give its position in sequence), 'ConnectedTo' (directly connected, either way), 'LeadsTo' (connected one way, from place_id to the other), 'BeginsAt' and 'EndsAt' (a segment, such as a leg of a road, begins or ends at the other place), 'HasEnd' (the other place is one end of a segment with no direction; give it for both ends). People, objects and events, in related_uri: 'BirthplaceOf', 'DeathplaceOf', 'ResidenceOf', 'FindspotOf', 'SettingOf', 'WorkplaceOf'. Images and records about a place, in related_uri: 'DepictedIn' (a photograph, map or drawing shows it), 'SubjectOf' (an archival file, report or publication is about it). Only PLATO's own relation types can be used here; a project's own (declared in JSON or RDF with broader_relation) cannot, and further types are added to PLATO's vocabulary on request.",
             "skos:example": "ContainedIn",
             "required": true,
             "propertyUrl": "https://w3id.org/plato#has_relation_type",
             "valueUrl": "https://w3id.org/plato#{relation_type}",
             "datatype": {
               "base": "string",
-              "format": "^(ContainedIn|MemberOf|ConnectedTo|LeadsTo|BeginsAt|EndsAt|HasEnd|BirthplaceOf|DeathplaceOf|ResidenceOf|FindspotOf|SettingOf|WorkplaceOf)$"
+              "format": "^(ContainedIn|MemberOf|ConnectedTo|LeadsTo|BeginsAt|EndsAt|HasEnd|BirthplaceOf|DeathplaceOf|ResidenceOf|FindspotOf|SettingOf|WorkplaceOf|DepictedIn|SubjectOf)$"
             }
           },
           {

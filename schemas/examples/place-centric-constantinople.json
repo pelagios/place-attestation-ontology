@@ -8,7 +8,8 @@
     "contributor": "https://orcid.org/0000-0003-9876-5432",
     "licence": "https://creativecommons.org/licenses/by/4.0/",
     "version": "2026-09",
-    "status": "published"
+    "status": "published",
+    "creator": [{"@id": "https://orcid.org/0000-0003-3060-0181", "name": "Stephen Gadd"}]
   },
 
   "spatialEntities": [

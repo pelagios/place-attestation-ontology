@@ -100,7 +100,7 @@ standard form: `P42D` for six weeks (the form has no weeks, so write them as
 days), `P1D` for a day, `PT12H` for twelve hours. Put the source's own words
 in `date` as usual. It may be given with dates or without them.
 
-## People, objects and events
+## People, objects, events, images and records
 
 A place also has a part in things that are not places: the town where someone
 was born, the field where a hoard was found, the site of a battle. The person,
@@ -109,6 +109,14 @@ Wikidata or a museum catalogue. So a relations row can point to it by its web
 address, in `related_uri`, with a name to show it by in `related_label`, and
 `relation_type` `BirthplaceOf`, `DeathplaceOf`, `ResidenceOf`, `WorkplaceOf`,
 `FindspotOf` or `SettingOf`.
+
+The same goes for what an archive or collection holds about a place: a
+photograph, map or drawing that shows it (`DepictedIn`), or a file, site
+record, report or publication about it (`SubjectOf`). That is what lets a
+collection be explored by place. It is different from citing a source: a
+source you cite is the evidence for a statement, while "this photograph
+shows the site" is a statement in its own right, with its own source,
+usually the catalogue that identified it.
 
 Each relations row names exactly one thing it relates the place to: either a
 place in `related_place_id` or an address in `related_uri`, never both and

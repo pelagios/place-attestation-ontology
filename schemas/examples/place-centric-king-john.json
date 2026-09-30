@@ -4,7 +4,27 @@
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/king-john/",
     "title": "King John's itinerary, June and July 1215",
-    "description": "King John's movements from 1 June to 17 July 1215, the weeks around the sealing of Magna Carta, as T. D. Hardy traced them from the attestations to the King's letters (Itinerary of King John, 1835, pp. 108-110). A worked example of PLATO's itinerary pattern: each stop is a member of the itinerary, in order, with the dates Hardy gives; repeated stops, a stop in no order, a stated length of stay, and Hardy's denial that the King went to the Isle of Wight. Locations and identities from Wikidata."
+    "description": "King John's movements from 1 June to 17 July 1215, as T. D. Hardy traced them (1835): a worked example of PLATO's itinerary pattern. Locations and identities from Wikidata.",
+    "creator": [
+      {
+        "@id": "https://orcid.org/0000-0003-3060-0181"
+      }
+    ],
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "status": "draft",
+    "keywords": [
+      "itineraries",
+      "King John",
+      "Magna Carta"
+    ],
+    "spatial": [
+      "http://www.wikidata.org/entity/Q21"
+    ],
+    "temporal": {
+      "startDate": "1215-06-01",
+      "endDate": "1215-07-17"
+    },
+    "uriSpace": "https://whgazetteer.org/example/king-john/"
   },
   "spatialEntities": [
     {

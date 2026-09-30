@@ -28,7 +28,7 @@ processor converts them. With the reference implementation,
 [rdf-tabular](https://github.com/ruby-rdf/rdf-tabular):
 
 ```bash
-# with csv-metadata.json in the same folder as the nine CSV files
+# with csv-metadata.json in the same folder as the ten CSV files
 rdf serialize --validate --input-format tabular --minimal --output-format turtle csv-metadata.json
 ```
 

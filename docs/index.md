@@ -125,6 +125,10 @@ PLATO gives the structure; a few steps remain yours when you publish:
 - **deposit it** in a repository that gives it a DOI, such as Zenodo;
 - **describe it**: a title, who made it, and what it covers.
 
+In the spreadsheets, the licence, the base of your addresses and the
+description all go in one place, the [about sheet](spreadsheets/first-dataset.md#7-say-what-the-dataset-is);
+in JSON, in the document's `gazetteer` header.
+
 Taken together, those steps and PLATO's structure make a dataset FAIR.
 
 ## Where to start

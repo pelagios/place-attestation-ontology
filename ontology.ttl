@@ -454,6 +454,18 @@ plato:Gazetteer
         so using them would make the Gazetteer one of the Authorities it
         contains attestations about.
 
+        Described for discovery and citation (the FAIR principles), again in
+        the vocabularies a catalogue already reads: dcterms:creator for the
+        people to cite (plato:gazetteer_owner, its owner, is not necessarily
+        an author); dcat:keyword; dcterms:spatial for the area it covers, as
+        an address; dcterms:temporal for the years it covers, a
+        dcterms:PeriodOfTime with dcat:startDate and dcat:endDate;
+        dcat:landingPage; and void:uriSpace, the base from which its entities'
+        IRIs are made. A published Gazetteer (plato:gazetteer_status
+        'published') must state its dcterms:license: data others are to reuse
+        needs its terms stated. All the other descriptive properties are
+        optional.
+
         Versions, and so citations that reproduce. A SpatialEntity's evidence
         grows and is corrected while its identity stays the same, so a
         citation of it must say which state was meant. For the same reason
@@ -3296,6 +3308,39 @@ plato:WorkplaceOf
     plato:relation_domain "SpatialEntity" ;
     plato:relation_range "person or group" ;
     rdfs:comment "The target person or group worked, or held office, at the subject, for the attested timespan: Linked Traces' heldOffice, and work generally."@en .
+
+# -----------------------------------------------------------------------------
+# RelationTypes: images and records about a place
+# -----------------------------------------------------------------------------
+# Archives, excavation records and photographic collections hold things that
+# show a place or are about it: a photograph of a site, a survey file on a
+# village, a publication on an excavation. Linking the place to them is what
+# lets a collection be explored by place. It is not a citation: a cited source
+# is the evidence for a statement, while these are statements of their own
+# (this photograph shows that site), each with its own source, usually the
+# catalogue that identified it. The image or record is named by its IRI, as an
+# outside target, with a plato:related_label. Linked Places Format's
+# depictions carry the first.
+
+plato:DepictedIn
+    a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    plato:authority_title "depicted in"@en ;
+    plato:relation_label "depicted_in" ;
+    plato:inverse_label "depicts" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "image, map or drawing" ;
+    rdfs:comment "The subject is shown in the target: a photograph, map, plan, drawing or other image, identified by its address in a collection."@en .
+
+plato:SubjectOf
+    a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    plato:authority_title "subject of"@en ;
+    plato:relation_label "subject_of" ;
+    plato:inverse_label "about" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "record, document or publication" ;
+    rdfs:comment "The target is about the subject: an archival file, a site record, a report or a publication, identified by its address. Not a citation of the target as evidence for another statement, which is plato:has_citation."@en .
 
 # -----------------------------------------------------------------------------
 # Types: routes, itineraries, networks and segments

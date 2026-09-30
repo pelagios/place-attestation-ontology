@@ -124,7 +124,7 @@ def write_workbook(meta, path):
     rows = [
         ["temPlato: the PLATO spreadsheet template"],
         [""],
-        ["Fill in one sheet per kind of information. Keep all nine sheets, even the ones you leave empty."],
+        ["Fill in one sheet per kind of information. Keep all ten sheets, even the ones you leave empty."],
         ["Hover over a column heading to see what to put in it and an example."],
         ["Every row in names, locations, types, relations, connections and properties needs a place_id (from the places sheet), a source_id (from the sources sheet) and a date."],
         ["Write the date as your source gives it, or 'undated'. Put years in 'from' and 'to' with at least four digits: 0921, not 921."],

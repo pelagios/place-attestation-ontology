@@ -2,7 +2,7 @@
 
 You can put your data into PLATO's shape with an ordinary spreadsheet in
 Excel, LibreOffice or Google Sheets, using **temPlato**, PLATO's spreadsheet
-template. It has nine sheets, one for
+template. It has ten sheets, one for
 each kind of information, and filling them in is also a way of working out
 what your data is: which places it is about, which sources it rests on, and
 what each source actually says. Most datasets use only three or four of the
@@ -14,12 +14,13 @@ sheets.
   the easiest way to start. Hover over any column heading to see what to put
   in it; columns with a fixed list of values offer a drop-down.
 - {download}`temPlato as CSV files (.zip) <../_generated/downloads/plato-tables-template.zip>`:
-  the same nine sheets as separate CSV files, with the table definitions.
+  the same ten sheets as separate CSV files, with the table definitions.
 
-## The nine sheets
+## The ten sheets
 
 | Sheet | One row for each… | Needed? |
 |---|---|---|
+| [about](reference.md#about) | the dataset as a whole: its title, authors, licence and addresses (one row) | always |
 | [places](reference.md#places) | place your data is about | always |
 | [sources](reference.md#sources) | source you cite | always |
 | [names](reference.md#names) | time a source gives a name for a place | usually |
@@ -36,7 +37,7 @@ locations, types, relations, connections and properties becomes one attestation.
 
 ## Rules that apply everywhere
 
-1. **Keep all nine sheets**, even if you leave some empty apart from their
+1. **Keep all ten sheets**, even if you leave some empty apart from their
    headings. Do not rename, reorder or delete columns; leave a cell empty if
    you have nothing to put in it.
 2. **Identifiers are yours to choose.** `place_id` and `source_id` can be any
@@ -96,7 +97,7 @@ The spreadsheets cover most datasets, but a few things need the
 ## Checking your tables
 
 The temPlato workbook catches most mistakes as you type. For a full check,
-open **[PLATO tools](https://pelagios.org/plato-tools/)**, drop your nine CSV files (or the
+open **[PLATO tools](https://pelagios.org/plato-tools/)**, drop your ten CSV files (or the
 workbook, or a zip of the files) onto the page, and press **Check**. It runs
 in your browser, so nothing is uploaded, and it lists every problem with its
 sheet, row and column, in plain words. It also says what PLATO JSON could
@@ -107,7 +108,7 @@ tools runs there too, with the same checks and the same report. You need
 [Node.js](https://nodejs.org) 24 or later; then, in a terminal:
 
 ```bash
-# a folder holding your nine CSV files is one set of tables;
+# a folder holding your ten CSV files is one set of tables;
 # a zip of them, or the workbook, works the same way
 npx github:pelagios/plato-tools check my-tables/
 ```
@@ -123,7 +124,7 @@ For example, with Python installed:
 
 ```bash
 pip install csvw
-# put csv-metadata.json in the same folder as your nine CSV files, then:
+# put csv-metadata.json in the same folder as your ten CSV files, then:
 csvwvalidate csv-metadata.json
 ```
 
@@ -139,4 +140,4 @@ processor can turn it into linked data (see [Linked data](../linked-data.md)).
 Places Format in your browser.
 You can publish the tables as they are, for example in a repository such as
 Zenodo beside a publication, or load them into a platform that works with
-PLATO; platforms may prefer either the workbook or the nine CSV files.
+PLATO; platforms may prefer either the workbook or the ten CSV files.

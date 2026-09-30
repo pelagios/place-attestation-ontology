@@ -4,7 +4,27 @@
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/datini/",
     "title": "The Datini letters: a network of correspondence",
-    "description": "Eleven directed connections between the principal offices of Francesco di Marco Datini's firm (Florence, Pisa, Prato, Genoa, Barcelona, Valencia, Palma de Mallorca, Avignon), each with the number of letters sent and the median delivery time, worked out for this example from the Datini Correspondence Metadata (Franklin-Lyons 2024, CC BY 4.0). A worked example of PLATO's network pattern where the connections are relationships, not physical links: the figures belong to each connection."
+    "description": "Letters and median delivery times between the offices of Datini's firm, worked out from the Datini Correspondence Metadata (Franklin-Lyons 2024): a worked example of PLATO's network pattern for relationships.",
+    "creator": [
+      {
+        "@id": "https://orcid.org/0000-0003-3060-0181"
+      }
+    ],
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "status": "draft",
+    "keywords": [
+      "correspondence",
+      "merchants",
+      "networks"
+    ],
+    "spatial": [
+      "http://www.wikidata.org/entity/Q6008933"
+    ],
+    "temporal": {
+      "startDate": "1355",
+      "endDate": "1443"
+    },
+    "uriSpace": "https://whgazetteer.org/example/datini/"
   },
   "spatialEntities": [
     {

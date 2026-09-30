@@ -72,7 +72,7 @@ attributes it has). The full example is
 
 ## Spreadsheets
 
-PLATO's nine sheets are for evidence about places. A statistical table keeps
+PLATO's ten sheets are for evidence about places. A statistical table keeps
 its own shape: describe it with its own [CSV on the Web](https://www.w3.org/TR/tabular-data-primer/)
 metadata, and link its rows to the places in your PLATO sheets by `place_id`.
 

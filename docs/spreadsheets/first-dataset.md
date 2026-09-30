@@ -2,7 +2,7 @@
 
 This walkthrough builds a small dataset from one source: a London customs
 account of 1480 to 1485 that mentions Bristol and Deptford Strand. It uses
-five of the nine sheets. The finished tables are the *customs* example,
+seven of the ten sheets. The finished tables are the *customs* example,
 which you can {download}`download as CSV files <../_generated/downloads/plato-tables-example-customs.zip>`
 and open beside this page.
 
@@ -72,6 +72,24 @@ evidence join everyone else's.
 
 ```{include} ../_generated/examples/customs/identities.md
 ```
+
+## 7. Say what the dataset is
+
+The about sheet has one row, describing the dataset as a whole: its title,
+who made it, its licence, what it covers, and the base of its web addresses.
+It is what lets other people find your dataset, cite it and know what they
+may do with it. Only the title is required, and the licence too once you mark
+the dataset `published`, but fill in as much as you can.
+
+```{include} ../_generated/examples/customs/about.md
+```
+
+`base_uri` is the most important column to get right before you publish.
+Every place's permanent web address is made from it and the place's
+`place_id`: here, Bristol's is `https://whgazetteer.org/example/customs/place/bristol`.
+Choose a base you control and will keep, such as your project's own
+[w3id](https://w3id.org) address, so that the addresses still work in
+twenty years.
 
 ## What happens to your rows
 

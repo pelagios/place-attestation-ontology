@@ -4,9 +4,16 @@
   "gazetteer": {
     "@id": "https://whgazetteer.org/example/gazetteer/judgements",
     "title": "Denials, stances, alternatives and judged readings (illustrative)",
+    "creator": [
+      {
+        "@id": "https://orcid.org/0000-0003-3060-0181",
+        "name": "Stephen Gadd"
+      }
+    ],
     "contributor": "https://orcid.org/0000-0002-1234-5678",
     "version": "2026-09",
-    "status": "published"
+    "status": "published",
+    "licence": "https://creativecommons.org/licenses/by/4.0/"
   },
   "spatialEntities": [
     {

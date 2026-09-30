@@ -33,8 +33,40 @@
           "type": "string",
           "description": "Contributor name or URI."
         },
+        "creator": {
+          "type": "array",
+          "minItems": 1,
+          "description": "The people or organisations to cite as the dataset's authors (dcterms:creator), each with a web address such as an ORCID, a name, or both. Not the same as contributor, the gazetteer's owner.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "$ref": "plato.schema.json#/$defs/uri",
+                "description": "A persistent address for the person or organisation: an ORCID, a ROR."
+              },
+              "name": {
+                "type": "string",
+                "description": "Their name (foaf:name)."
+              }
+            },
+            "anyOf": [
+              {
+                "required": [
+                  "@id"
+                ]
+              },
+              {
+                "required": [
+                  "name"
+                ]
+              }
+            ],
+            "additionalProperties": false
+          }
+        },
         "licence": {
-          "$ref": "plato.schema.json#/$defs/uri"
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "The web address of the dataset's licence (dcterms:license), such as https://creativecommons.org/licenses/by/4.0/. Required once status is 'published'."
         },
         "version": {
           "type": "string",
@@ -55,12 +87,69 @@
         "previousVersion": {
           "$ref": "plato.schema.json#/$defs/uri",
           "description": "For a frozen snapshot: the snapshot before it (dcat:previousVersion)."
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Words a catalogue can find the dataset by (dcat:keyword)."
+        },
+        "spatial": {
+          "type": "array",
+          "items": {
+            "$ref": "plato.schema.json#/$defs/uri"
+          },
+          "description": "The area the dataset covers, as web addresses (dcterms:spatial): a Wikidata or GeoNames region."
+        },
+        "temporal": {
+          "type": "object",
+          "description": "The years the dataset covers (dcterms:temporal, a dcterms:PeriodOfTime).",
+          "properties": {
+            "startDate": {
+              "$ref": "plato.schema.json#/$defs/isoOrYear",
+              "description": "The earliest date covered (dcat:startDate)."
+            },
+            "endDate": {
+              "$ref": "plato.schema.json#/$defs/isoOrYear",
+              "description": "The latest date covered (dcat:endDate)."
+            }
+          },
+          "additionalProperties": false
+        },
+        "landingPage": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "The web page where people find and download the dataset (dcat:landingPage)."
+        },
+        "uriSpace": {
+          "type": "string",
+          "format": "uri",
+          "description": "The base from which the dataset's places, sources and other entities have their web addresses (void:uriSpace), e.g. https://w3id.org/whg-epns/. Choose one you control and will keep."
         }
       },
       "required": [
         "title"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "published"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "licence"
+            ]
+          }
+        }
+      ]
     },
     "dataSets": {
       "type": "array",

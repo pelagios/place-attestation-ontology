@@ -5,7 +5,9 @@
   "gazetteer": {
     "@id": "http://whgazetteer.org/gazetteer/678",
     "title": "London Customs Accounts 1480–1485",
-    "contributor": "https://orcid.org/0000-0002-1234-5678"
+    "contributor": "https://orcid.org/0000-0002-1234-5678",
+    "creator": [{"@id": "https://orcid.org/0000-0003-3060-0181", "name": "Stephen Gadd"}],
+    "licence": "https://creativecommons.org/licenses/by/4.0/"
   },
 
   "attestations": [

@@ -93,6 +93,15 @@ Wikidata, gives its web address in `relatesTo` and a name to show it by in
 in a `qualification`, marks a value software worked out, not a source's
 statement; data you record from sources never needs it.
 
+A document describes itself in its `gazetteer` header, so that it can be
+found and cited: `title` (required), `description`, `creator` (the authors
+to cite, each an ORCID or other address, a name, or both), `licence`
+(required once `status` is `published`), `version`, `keywords`, `spatial`
+(the regions it covers, as addresses), `temporal` (`startDate` and
+`endDate`), `landingPage`, and `uriSpace`, the base of its entities' web
+addresses. `contributor` is whoever owns or maintains it, who need not be
+an author.
+
 A project may need a relation PLATO does not name, such as "flows into" for a
 river. A document declares it once, in a `relationTypes` array beside its
 `gazetteer`, and then uses its address as any relation's `relationType`:

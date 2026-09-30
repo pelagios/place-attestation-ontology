@@ -11,7 +11,50 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
-## 0.6.0
+## Unreleased
+
+Dataset metadata, from a review of PLATO against the FAIR principles, and a
+licence correction.
+
+### Added
+
+- Describing a dataset, in the vocabularies catalogues read: `creator`
+  (`dcterms:creator`, the authors to cite, each an address, a name or both;
+  `contributor`, `plato:gazetteer_owner`, stays the owner), `keywords`
+  (`dcat:keyword`), `spatial` (`dcterms:spatial`), `temporal`
+  (`dcterms:temporal`, a `dcterms:PeriodOfTime` with `dcat:startDate` and
+  `dcat:endDate`), `landingPage` (`dcat:landingPage`) and `uriSpace`
+  (`void:uriSpace`, the base of the dataset's entity addresses). All
+  optional. No new PLATO terms.
+- A tenth sheet, `about`: one row describing the dataset, with those fields,
+  its title, licence, version and status, and `base_uri`, from which PLATO
+  tools makes every place's permanent address. In the tables, `creator` and
+  `spatial` hold addresses as text, since CSV on the Web cannot make several
+  links from one cell; PLATO tools turns them into links. Exactly one row,
+  which PLATO tools checks.
+- The ontology describes itself for FAIR: `owl:versionIRI`,
+  `owl:priorVersion`, `dcterms:issued`, the concept DOI and a citation,
+  keywords, and `rdfs:isDefinedBy` on every term.
+- `plato:DepictedIn` and `plato:SubjectOf`: a place shown in a photograph,
+  map or drawing, or the subject of an archival file, report or
+  publication, each named by its address as an outside target. Linking a
+  place to what a collection holds about it is what lets the collection be
+  explored by place; it is a statement with its own source, not a citation.
+  Raised by the draft Pelagios partnership with the British Institute at
+  Ankara, whose archives and photographic collections need it. Each release's ontology is
+  published at `releases/X.Y.Z/`, where `https://w3id.org/plato/X.Y.Z`
+  resolves.
+
+### Changed
+
+- A published dataset (`status` `published`) must state its licence, in
+  JSON and in the about sheet. Drafts need not. DEEP already does.
+- Sets of tables made with the 0.6.0 template need an `about.csv` with at
+  least a title.
+- `LICENSE.md` held the CC BY-NC 4.0 legal code, contradicting every other
+  statement of PLATO's licence; it is now CC BY 4.0, as PLATO has always
+  been declared.
+
 
 Two gaps found in encoding the markets corpus (the CAMPOP market and fair
 records: Blome's Britannia of 1673, Everitt's survey of 1967, and the
