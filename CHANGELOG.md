@@ -11,6 +11,15 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
+## Unreleased
+
+### Fixed
+
+- The core schema's description of `about` still said it was required in
+  every attestation-centric attestation; it now gives the meta-attestation
+  exception that 0.7.1 made in the attestation-centric schema. Description
+  only: validation is unchanged.
+
 ## 0.7.1
 
 Found by WHG's final pass on its documentation against 0.7.0, and a logo.

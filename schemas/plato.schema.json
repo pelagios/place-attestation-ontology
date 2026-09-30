@@ -739,7 +739,7 @@
         },
         "about": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the SpatialEntity this attestation is about. Required in attestation-centric submissions; implicit in place-centric submissions where the attestation is nested under its SpatialEntity."
+          "description": "URI of the SpatialEntity this attestation is about. Required in attestation-centric documents, except on a meta-attestation (one with meta), which is about its target attestation; implicit in place-centric documents, where the attestation is nested under its SpatialEntity."
         },
         "names": {
           "type": "array",
