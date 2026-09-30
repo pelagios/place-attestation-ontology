@@ -225,8 +225,10 @@ previous release with `--previous` (on the page, "Previous release"), and
 every attestation it published keeps the address it had there.
 
 Keep the identifiers of places and sources to letters, digits and
-`- . _ ~`, not starting with `.`, and never two that differ only in capital
-letters: a website cannot serve any other as a file. While the dataset is a
+`- . _ ~`, in one part (no `/`), not starting with `.`, not ending in
+`.jsonld`, `.ttl` or `.html` (w3id reads those endings as a request for that
+format), and never two that differ only in capital letters: a website cannot
+serve any other as a file. While the dataset is a
 draft the report counts any other as a problem; once it is published its
 addresses are frozen, and the site lists such places as held only in the
 downloads.
@@ -235,8 +237,7 @@ downloads.
 
 A dataset is published when its `status` is `published`. From then on:
 
-- its attestations are only ever added to: a correction or a withdrawal is a
-  new attestation that replaces or withdraws the old one, which stays (see
+- its attestations are only ever added to (see
   [comparing two versions](#comparing-two-versions));
 - the addresses of its places, sources and attestations are frozen;
 - minting with `--previous` checks the new version against the previous
@@ -311,9 +312,9 @@ npx github:pelagios/plato-tools publish site my-tables-with-ids.jsonl --repo my-
 The addresses of the places left out lead to the site's "not found" page,
 which points to the downloads, where every place is.
 
-### Where the addresses lead
+### How long your addresses last
 
-How long your addresses last depends on the base, and the report grades it:
+That depends on the base, and the report grades it:
 
 - **A w3id.org address** (`https://w3id.org/my-gazetteer/`) passes. It is a
   permanent redirect: if the site ever moves, the rules are changed and every
