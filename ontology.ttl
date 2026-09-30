@@ -193,6 +193,24 @@ plato:Geometry
         extent, a label position); a geometry from another source is
         another attestation, since it has another provenance. See
         examples/geometry-roles.ttl.
+
+        A geometry traced from a historical map, and placed in the world
+        through a georeference (a IIIF Georeference Annotation, such as one
+        made in Allmaps), is evidence of what the map shows, so it is
+        attested, not plato:computed. Its position depends on the map, on the
+        annotation, whose control points can be edited after the tracing,
+        and on the transformation fitted to them. So the attestation cites
+        both, and no new property is needed: the map as the evidence
+        (plato:citation_function cito:citesAsEvidence), with the canvas as
+        the plato:locator, and '#xywh=' added when the tracing is from a
+        region of it; and the annotation as a Source of its own, with the
+        annotation's IRI, plato:derived_from the map's Source, cited with
+        cito:usesMethodIn. The transformation (polynomial of order 1 to 3,
+        thin plate spline, projective, Helmert) and the number of control
+        points used go in the attestation's plato:notes, since the annotation
+        may since have changed. A position that is where the map writes a
+        name takes plato:geometry_role plato:LabelAnchor. See
+        schemas/examples/place-centric-georeference.json.
     """@en .
 
 
@@ -1109,7 +1127,9 @@ plato:computed
         finding (letters counted from a register, a median taken over them)
         is not computed in this sense: it is attested, citing the work that
         produced it as a Source or Dataset derived_from the material it was
-        worked out from.
+        worked out from. Nor is a geometry traced from a map and placed
+        through a georeference: software fits the transformation, but the
+        geometry is evidence of what the map shows (see plato:Geometry).
 
         It is not plato:form_status Normalised (a name form an editor
         derived from an attested one), nor a Candidate (a match an algorithm
@@ -2480,12 +2500,17 @@ plato:derived_from
     rdfs:label "derived from"@en ;
     rdfs:comment """
         This Source is a copy, transcript, edition, calendar or confirmation
-        of that one. A later cartulary copy of a charter, an inspeximus, or a
-        printed edition of a manuscript is a Source of its own, with its own
-        source_timespan, derived_from the document it transmits. An
-        attestation should cite the Source it was actually read in; the chain
-        of derived_from links records what that Source transmits. The kind of
-        derivation (copy, edition, calendar, inspeximus) is not yet
+        of that one, or a work made from it. A later cartulary copy of a
+        charter, an inspeximus, or a printed edition of a manuscript is a
+        Source of its own, with its own source_timespan, derived_from the
+        document it transmits. An attestation should cite the Source it was
+        actually read in; the chain of derived_from links records what that
+        Source transmits. A work made from a source, which transmits none of
+        it as evidence, is derived_from it too: a count a project takes from
+        a register (see plato:computed), or the georeference of a map (see
+        plato:Geometry). How it is cited says which it is: a copy is cited as
+        the evidence, a georeference as the method used. The kind of
+        derivation (copy, edition, calendar, inspeximus, analysis) is not yet
         distinguished; a sub-property or a small vocabulary can be added when
         a project needs it.
     """@en ;

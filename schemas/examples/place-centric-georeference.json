@@ -1,0 +1,101 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://example.org/gazetteer/forts",
+    "title": "Forts traced from a map of North America (illustrative)",
+    "description": "Illustrates how a geometry traced from a historical map, and placed in the world through a IIIF Georeference Annotation, records where it came from (PLATO issue #15; see plato:Geometry). The map and the annotation are real; the traced positions are illustrative.",
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "status": "draft"
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://example.org/gazetteer/forts/place/fort-duquesne",
+      "label": "Fort Duquesne",
+      "attestations": [
+        {
+          "@id": "https://example.org/gazetteer/forts/attestation/fort-duquesne-traced",
+          "names": [
+            {
+              "toponym": "Fort Du Quesne"
+            }
+          ],
+          "geometries": [
+            {
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -80.0114,
+                  40.4414
+                ]
+              },
+              "role": "https://w3id.org/plato#FeaturePoint",
+              "spatialPrecision": [
+                "approximate"
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/manifest",
+                "title": "A general map of North America; in which is express'd the several new roads, forts, engagements, &c. taken from actual surveys and observations made in the army employ'd there, from the year 1754, to 1761",
+                "authorityType": "source"
+              },
+              "locator": "https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/canvas/8623qf00m#xywh=7310,2890,60,60",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            },
+            {
+              "source": {
+                "@id": "https://annotations.allmaps.org/maps/56425c69f9cd4f1b",
+                "title": "Georeference of A general map of North America; in which is express'd the several new roads, forts, engagements, &c. taken from actual surveys and observations made in the army employ'd there, from the year 1754, to 1761, made in Allmaps",
+                "authorityType": "source",
+                "derivedFrom": "https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/manifest"
+              },
+              "citationFunction": "http://purl.org/spar/cito/usesMethodIn"
+            }
+          ],
+          "notes": "Georeferenced through https://annotations.allmaps.org/maps/56425c69f9cd4f1b (thin plate spline, 22 control points), retrieved 2026-09-30T13:55:00Z. On canvas https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/canvas/8623qf00m of manifest https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/manifest.",
+          "created": "2026-09-30T14:00:00Z"
+        },
+        {
+          "@id": "https://example.org/gazetteer/forts/attestation/fort-duquesne-label",
+          "geometries": [
+            {
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  -79.9632,
+                  40.5108
+                ]
+              },
+              "role": "https://w3id.org/plato#LabelAnchor"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/manifest",
+                "title": "A general map of North America; in which is express'd the several new roads, forts, engagements, &c. taken from actual surveys and observations made in the army employ'd there, from the year 1754, to 1761",
+                "authorityType": "source"
+              },
+              "locator": "https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/canvas/8623qf00m#xywh=7340,2800,230,70",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            },
+            {
+              "source": {
+                "@id": "https://annotations.allmaps.org/maps/56425c69f9cd4f1b",
+                "title": "Georeference of A general map of North America; in which is express'd the several new roads, forts, engagements, &c. taken from actual surveys and observations made in the army employ'd there, from the year 1754, to 1761, made in Allmaps",
+                "authorityType": "source",
+                "derivedFrom": "https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/manifest"
+              },
+              "citationFunction": "http://purl.org/spar/cito/usesMethodIn"
+            }
+          ],
+          "notes": "Georeferenced through https://annotations.allmaps.org/maps/56425c69f9cd4f1b (thin plate spline, 22 control points), retrieved 2026-09-30T13:55:00Z. On canvas https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/canvas/8623qf00m of manifest https://ark.digitalcommonwealth.org/ark:/50959/ks65px29g/manifest. The position is where the map writes the name, not necessarily where the place is.",
+          "created": "2026-09-30T14:00:00Z"
+        }
+      ]
+    }
+  ]
+}

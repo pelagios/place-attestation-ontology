@@ -51,11 +51,31 @@ were made under the earlier policy.
   `dcterms:identifier` literal on the Gazetteer, as they have since 0.7.0:
   it is the Gazetteer's IRI instead, so the literal only repeated it.
 
+- `plato:derived_from` now says what it already meant in `plato:computed`: a
+  Source may be derived from another as a copy or edition of it, or as a
+  work made from it (a count taken from a register, the georeference of a
+  map). How it is cited says which: a copy as the evidence, a georeference as
+  the method used.
+
 ### Added
 
 - A guide page, *Checking, converting and comparing*, on what PLATO tools
   checks, what each format keeps when converting, and what the version check
   reports.
+
+- How a geometry traced from a historical map records the georeference it
+  was placed through (issue #15), with no new term. The attestation cites the
+  map as the evidence (`cito:citesAsEvidence`), with the canvas as the
+  locator (and `#xywh=` for a region), and cites the IIIF Georeference
+  Annotation as a Source of its own, `derivedFrom` the map, with
+  `cito:usesMethodIn`. The transformation and the number of control points go
+  in the attestation's notes, since the annotation can be edited later. Such
+  a geometry is attested, not `computed`: software fits the transformation,
+  but the geometry is evidence of what the map shows. The pattern is given in
+  `plato:Geometry`, and shown in a new example,
+  `schemas/examples/place-centric-georeference.json`, on a real map and a
+  real Allmaps annotation. A structured property for the transformation can
+  follow if a consumer needs to query by it.
 
 ### Fixed
 
