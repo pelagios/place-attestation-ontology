@@ -45,6 +45,38 @@ licence correction.
   published at `releases/X.Y.Z/`, where `https://w3id.org/plato/X.Y.Z`
   resolves.
 
+- `plato:attests_identity` (JSON `identities` on an attestation): identity
+  relations asserted in one act, such as accepting a cluster of matches, are
+  bundled by one attestation, which gives them one provenance and is
+  withdrawn or amended as a unit by the existing Retracts and Supersedes.
+  With `negated`, bundling one `exactMatch`, it says two entities are not
+  the same, so that disagreement accumulates as well as agreement. Decided
+  by Stephen with the WHG team: clusters stay out of PLATO (they are query
+  results), and accepting one is evidence.
+- `plato:match_parameters`: the settings that produced a Candidate's score,
+  so it can be reproduced.
+
+### Clarified
+
+- An IdentityRelation is one attributed claim among many, never a canonical
+  fact: platforms must not materialise identity relations into merged
+  records or minted identifiers, nor let one outweigh contrary evidence. A
+  consumer may chain `exactMatch` relations only within one attestation, and
+  never chain `closeMatch`, `related` or `unspecified`: A~B and B~C asserted
+  by different people is nobody's assertion that A~C.
+- A Gazetteer may attest evidence about SpatialEntities defined in other
+  Gazetteers, by IRI, without redefining them; that changes neither the
+  entity's identity nor its owner, and in JSON uses the attestation-centric
+  profile. A place-centric document lists only its own entities
+  (`plato:contains_entity` now says "defines"). A published Gazetteer's
+  append-only rule covers its own attestations only.
+- A curated collection of places is a Gazetteer, not a SpatialEntity; the
+  SpatialEntity comment's "(as with a collection)" now reads "(as with a
+  route or a network)".
+- `plato:Candidate` covers suggested matches in general, such as
+  reconciliation review, not only the retired PLACE clustering pipeline.
+- A meta-attestation need not say what it is about: its target does.
+
 ### Changed
 
 - A published dataset (`status` `published`) must state its licence, in

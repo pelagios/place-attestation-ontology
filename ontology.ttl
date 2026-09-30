@@ -93,8 +93,13 @@ plato:SpatialEntity
         An entity whose identity is bound up with space, whether its spatial
         extent is attested directly, applies notionally (as with the region to
         which a period applies), or is derived from its constituents (as with a
-        collection). A SpatialEntity need not have any attested geometry: lost,
-        imagined and unlocated entities are admissible.
+        route or a network, whose extent is that of its members). A
+        SpatialEntity need not have any attested geometry: lost, imagined and
+        unlocated entities are admissible.
+
+        A curated selection of other places, such as a thematic collection, is
+        not a SpatialEntity: it is a Gazetteer, whose attestations are about
+        the places it selects.
 
         What kind of entity it is (settlement, route, region, administrative
         unit and so on) is not fixed by the class. It is established by
@@ -442,11 +447,25 @@ plato:Gazetteer
     rdfs:subClassOf dcat:Dataset ;
     rdfs:label "Gazetteer"@en ;
     rdfs:comment """
-        A mutable, versioned workspace of SpatialEntities and their associated
-        Attestations, owned by a contributor or team. Replaces the WHG v3
+        A mutable, versioned workspace of SpatialEntities and Attestations,
+        owned by a contributor or team. Replaces the WHG v3
         concepts of Dataset, Dataset Collection, and Place Collection.
         A Gazetteer can be incrementally edited, enriched, and corrected
         without re-ingestion.
+
+        A Gazetteer's attestations need not be about SpatialEntities it
+        defines. It may attest evidence about SpatialEntities defined in other
+        Gazetteers, identified by their IRIs, without redefining them: a
+        correction to another project's place, a link from a record to an
+        existing place, a curator's selection of places for a collection.
+        Such an attestation adds evidence. It does not change the entity's
+        identity or make this Gazetteer its owner, and its source, contributor
+        and status are this Gazetteer's. The append-only rule of a published
+        Gazetteer applies to the attestations it contains, not to everything
+        said elsewhere about its entities. In PLATO JSON such attestations go
+        in an attestation-centric document, whose 'about' gives the entity's
+        IRI; a place-centric document declares every SpatialEntity it lists
+        (plato:contains_entity), so it lists only its own.
 
         As a dcat:Dataset, a Gazetteer is titled with dcterms:title and
         licensed with dcterms:license. Not with plato:authority_title or
@@ -1518,6 +1537,24 @@ plato:IdentityRelation
         between different entities. They are also distinct from Candidates,
         which are algorithm-generated candidates not yet confirmed by
         human review.
+
+        An IdentityRelation is one attributed claim among many, never a
+        canonical statement of fact. A platform must not materialise identity
+        relations into merged records or minted identifiers, nor let one
+        outweigh contrary evidence by fiat: it is weighed like any other
+        evidence, and someone else may say the opposite (an attestation with
+        plato:negated bundling an exactMatch says two entities are not the
+        same).
+
+        Identity relations asserted together, as when a person accepts a
+        cluster of matches, are bundled by one Attestation
+        (plato:attests_identity), which carries their shared provenance and
+        is withdrawn or amended as a unit. A consumer may take the transitive
+        closure of exactMatch relations within one such attestation, and must
+        not chain identity relations across different attestations, nor
+        chain closeMatch, related or unspecified ones at all: A the same as B
+        and B the same as C, asserted by different people, is not anyone's
+        assertion that A is C.
     """@en .
 
 plato:identity_subject
@@ -1628,6 +1665,32 @@ plato:promoted_from
     """@en ;
     rdfs:domain plato:IdentityRelation ;
     rdfs:range plato:Candidate .
+
+# A person who accepts a cluster of matches asserts several identities in one
+# act. Bundling them in one Attestation gives them one provenance (who, when,
+# on what evidence, such as the locus that defined the cluster) and one way to
+# be withdrawn or corrected, by the meta-attestations that already withdraw
+# any attestation. It also lets a denial be stated with plato:negated, so that
+# disagreement accumulates as well as agreement.
+
+plato:attests_identity
+    a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "attests identity"@en ;
+    rdfs:comment """
+        Links an Attestation to an IdentityRelation it asserts, so that
+        identity relations asserted in one act share its provenance: accepting
+        a cluster of n records is one attestation bundling the n-1 exactMatch
+        relations of the matches actually made, with the person, the time and
+        the cluster's definition as its source. Retracting or superseding the
+        attestation withdraws or amends them together. With plato:negated,
+        bundling one exactMatch relation, it says the two entities are not the
+        same. Closure may be taken within one such attestation only (see
+        plato:IdentityRelation). An IdentityRelation's own identity_asserted_by
+        and identity_sourced_by remain for one asserted on its own.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:IdentityRelation .
 
 
 # =============================================================================
@@ -2626,7 +2689,7 @@ plato:contains_entity
     a owl:ObjectProperty ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "contains entity"@en ;
-    rdfs:comment "Links a Gazetteer to a SpatialEntity it contains."@en ;
+    rdfs:comment "Links a Gazetteer to a SpatialEntity it defines. A SpatialEntity defined elsewhere that this Gazetteer only attests evidence about is not contained in it."@en ;
     rdfs:domain plato:Gazetteer ;
     rdfs:range plato:SpatialEntity .
 
@@ -3380,7 +3443,7 @@ plato:TypeSegment
 
 
 # =============================================================================
-# Candidates (PLACE clustering candidates)
+# Candidates: suggested matches awaiting review
 # =============================================================================
 # Candidates are algorithm-generated match suggestions, kept strictly separate
 # from confirmed identity assertions. They are not Attestations and they are
@@ -3393,9 +3456,12 @@ plato:Candidate
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Candidate"@en ;
     rdfs:comment """
-        An algorithm-generated match candidate between two SpatialEntities, produced
-        by the PLACE clustering engine. Candidates carry a similarity score,
-        algorithm version, and review status. They are explicitly not
+        A match between two SpatialEntities suggested by software, for a
+        person to review: reconciliation against reference gazetteers (as in
+        WHG's Map your Data), record linkage, clustering. Candidates carry a
+        similarity score, the algorithm's version and, optionally, the
+        settings that produced the score (plato:match_parameters), and a
+        review status. They are explicitly not
         IdentityRelations — they become IdentityRelations only when confirmed
         by a human reviewer (linked back via plato:promoted_from).
     """@en .
@@ -3442,3 +3508,18 @@ plato:generated_at
     rdfs:label "generated at"@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range xsd:dateTime .
+
+plato:match_parameters
+    a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "match parameters"@en ;
+    rdfs:comment """
+        The settings that produced the Candidate's score, as text (JSON
+        suggested): a threshold, the weights given to name, place and type,
+        the reference sources searched. With plato:algorithm_version it lets
+        a score be reproduced or explained. Optional; its form is the
+        software's own, since it describes a run of that software rather
+        than making a claim about places.
+    """@en ;
+    rdfs:domain plato:Candidate ;
+    rdfs:range xsd:string .

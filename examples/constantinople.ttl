@@ -107,18 +107,18 @@ whgx:geometry\/ottoman-expanded
 
 whgx:timespan\/ancient-greek
     a plato:Timespan ;
-    plato:start_earliest "-670" ;
-    plato:start_latest "-664" ;
-    plato:end_earliest "330" ;
-    plato:end_latest "330" ;
+    plato:start_earliest "-0670" ;
+    plato:start_latest "-0664" ;
+    plato:end_earliest "0330" ;
+    plato:end_latest "0330" ;
     plato:start_precision "decade" ;
     plato:end_precision "year" ;
     plato:timespan_label "Ancient Greek period" .
 
 whgx:timespan\/byzantine
     a plato:Timespan ;
-    plato:start_earliest "330" ;
-    plato:start_latest "330" ;
+    plato:start_earliest "0330" ;
+    plato:start_latest "0330" ;
     plato:end_earliest "1453" ;
     plato:end_latest "1453" ;
     plato:start_precision "year" ;

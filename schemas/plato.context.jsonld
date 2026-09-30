@@ -583,6 +583,118 @@
               }
             },
             "relations": "@nest",
+            "identities": {
+              "@id": "plato:attests_identity",
+              "@context": {
+                "subject": {
+                  "@id": "plato:identity_subject",
+                  "@type": "@id"
+                },
+                "object": {
+                  "@id": "plato:identity_object",
+                  "@type": "@id"
+                },
+                "identityType": "plato:identity_type",
+                "certainty": "plato:identity_certainty",
+                "basis": "plato:identity_basis",
+                "assertedBy": {
+                  "@id": "plato:identity_asserted_by",
+                  "@type": "@id"
+                },
+                "assertedAt": {
+                  "@id": "plato:identity_asserted_at",
+                  "@type": "xsd:dateTime"
+                },
+                "source": {
+                  "@id": "plato:identity_sourced_by",
+                  "@type": "@id",
+                  "@context": {
+                    "title": "plato:authority_title",
+                    "uri": {
+                      "@id": "plato:authority_uri",
+                      "@type": "xsd:anyURI"
+                    },
+                    "licence": {
+                      "@id": "dcterms:license",
+                      "@type": "@id"
+                    },
+                    "citation": "plato:bibliographic_string",
+                    "timespan": {
+                      "@id": "plato:source_timespan",
+                      "@context": {
+                        "startEarliest": "plato:start_earliest",
+                        "startLatest": "plato:start_latest",
+                        "endEarliest": "plato:end_earliest",
+                        "endLatest": "plato:end_latest",
+                        "duration": {
+                          "@id": "plato:duration",
+                          "@type": "xsd:duration"
+                        },
+                        "label": "plato:timespan_label",
+                        "startPrecision": "plato:start_precision",
+                        "endPrecision": "plato:end_precision",
+                        "precisionValue": "plato:precision_value",
+                        "openStart": "plato:open_start",
+                        "openEnd": "plato:open_end",
+                        "periodoUri": {
+                          "@id": "plato:periodo_uri",
+                          "@type": "xsd:anyURI"
+                        },
+                        "edtfString": "plato:edtf_string",
+                        "qualification": "@nest",
+                        "certainty": "plato:certainty",
+                        "certaintyNote": "plato:certainty_note",
+                        "certaintyLevel": {
+                          "@id": "plato:certainty_level",
+                          "@type": "@id"
+                        },
+                        "computed": "plato:computed",
+                        "transcriptionAccuracy": {
+                          "@id": "plato:transcription_accuracy",
+                          "@type": "@id"
+                        },
+                        "transcriptionCompleteness": {
+                          "@id": "plato:transcription_completeness",
+                          "@type": "@id"
+                        },
+                        "fuzziness": "plato:fuzziness",
+                        "fuzzinessNote": "plato:fuzziness_note",
+                        "relativeTo": {
+                          "@id": "plato:relative_to",
+                          "@type": "@id"
+                        },
+                        "relativeBearing": "plato:relative_bearing",
+                        "relativeDistance": "plato:relative_distance",
+                        "relativeQualifier": {
+                          "@id": "plato:relative_qualifier",
+                          "@type": "@id"
+                        },
+                        "sourceLabel": "plato:source_label"
+                      }
+                    },
+                    "derivedFrom": {
+                      "@id": "plato:derived_from",
+                      "@type": "@id"
+                    },
+                    "authorityType": {
+                      "@id": "rdf:type",
+                      "@type": "@vocab",
+                      "@context": {
+                        "source": "plato:Source",
+                        "dataset": "plato:Dataset",
+                        "period": "plato:Period",
+                        "relationType": "plato:RelationType",
+                        "certaintyLevel": "plato:CertaintyLevel"
+                      }
+                    }
+                  }
+                },
+                "promotedFrom": {
+                  "@id": "plato:promoted_from",
+                  "@type": "@id"
+                }
+              }
+            },
             "relatesTo": {
               "@id": "plato:relates_to",
               "@type": "@id"
@@ -1247,6 +1359,118 @@
               }
             },
             "relations": "@nest",
+            "identities": {
+              "@id": "plato:attests_identity",
+              "@context": {
+                "subject": {
+                  "@id": "plato:identity_subject",
+                  "@type": "@id"
+                },
+                "object": {
+                  "@id": "plato:identity_object",
+                  "@type": "@id"
+                },
+                "identityType": "plato:identity_type",
+                "certainty": "plato:identity_certainty",
+                "basis": "plato:identity_basis",
+                "assertedBy": {
+                  "@id": "plato:identity_asserted_by",
+                  "@type": "@id"
+                },
+                "assertedAt": {
+                  "@id": "plato:identity_asserted_at",
+                  "@type": "xsd:dateTime"
+                },
+                "source": {
+                  "@id": "plato:identity_sourced_by",
+                  "@type": "@id",
+                  "@context": {
+                    "title": "plato:authority_title",
+                    "uri": {
+                      "@id": "plato:authority_uri",
+                      "@type": "xsd:anyURI"
+                    },
+                    "licence": {
+                      "@id": "dcterms:license",
+                      "@type": "@id"
+                    },
+                    "citation": "plato:bibliographic_string",
+                    "timespan": {
+                      "@id": "plato:source_timespan",
+                      "@context": {
+                        "startEarliest": "plato:start_earliest",
+                        "startLatest": "plato:start_latest",
+                        "endEarliest": "plato:end_earliest",
+                        "endLatest": "plato:end_latest",
+                        "duration": {
+                          "@id": "plato:duration",
+                          "@type": "xsd:duration"
+                        },
+                        "label": "plato:timespan_label",
+                        "startPrecision": "plato:start_precision",
+                        "endPrecision": "plato:end_precision",
+                        "precisionValue": "plato:precision_value",
+                        "openStart": "plato:open_start",
+                        "openEnd": "plato:open_end",
+                        "periodoUri": {
+                          "@id": "plato:periodo_uri",
+                          "@type": "xsd:anyURI"
+                        },
+                        "edtfString": "plato:edtf_string",
+                        "qualification": "@nest",
+                        "certainty": "plato:certainty",
+                        "certaintyNote": "plato:certainty_note",
+                        "certaintyLevel": {
+                          "@id": "plato:certainty_level",
+                          "@type": "@id"
+                        },
+                        "computed": "plato:computed",
+                        "transcriptionAccuracy": {
+                          "@id": "plato:transcription_accuracy",
+                          "@type": "@id"
+                        },
+                        "transcriptionCompleteness": {
+                          "@id": "plato:transcription_completeness",
+                          "@type": "@id"
+                        },
+                        "fuzziness": "plato:fuzziness",
+                        "fuzzinessNote": "plato:fuzziness_note",
+                        "relativeTo": {
+                          "@id": "plato:relative_to",
+                          "@type": "@id"
+                        },
+                        "relativeBearing": "plato:relative_bearing",
+                        "relativeDistance": "plato:relative_distance",
+                        "relativeQualifier": {
+                          "@id": "plato:relative_qualifier",
+                          "@type": "@id"
+                        },
+                        "sourceLabel": "plato:source_label"
+                      }
+                    },
+                    "derivedFrom": {
+                      "@id": "plato:derived_from",
+                      "@type": "@id"
+                    },
+                    "authorityType": {
+                      "@id": "rdf:type",
+                      "@type": "@vocab",
+                      "@context": {
+                        "source": "plato:Source",
+                        "dataset": "plato:Dataset",
+                        "period": "plato:Period",
+                        "relationType": "plato:RelationType",
+                        "certaintyLevel": "plato:CertaintyLevel"
+                      }
+                    }
+                  }
+                },
+                "promotedFrom": {
+                  "@id": "plato:promoted_from",
+                  "@type": "@id"
+                }
+              }
+            },
             "relatesTo": {
               "@id": "plato:relates_to",
               "@type": "@id"
@@ -1901,6 +2125,118 @@
           }
         },
         "relations": "@nest",
+        "identities": {
+          "@id": "plato:attests_identity",
+          "@context": {
+            "subject": {
+              "@id": "plato:identity_subject",
+              "@type": "@id"
+            },
+            "object": {
+              "@id": "plato:identity_object",
+              "@type": "@id"
+            },
+            "identityType": "plato:identity_type",
+            "certainty": "plato:identity_certainty",
+            "basis": "plato:identity_basis",
+            "assertedBy": {
+              "@id": "plato:identity_asserted_by",
+              "@type": "@id"
+            },
+            "assertedAt": {
+              "@id": "plato:identity_asserted_at",
+              "@type": "xsd:dateTime"
+            },
+            "source": {
+              "@id": "plato:identity_sourced_by",
+              "@type": "@id",
+              "@context": {
+                "title": "plato:authority_title",
+                "uri": {
+                  "@id": "plato:authority_uri",
+                  "@type": "xsd:anyURI"
+                },
+                "licence": {
+                  "@id": "dcterms:license",
+                  "@type": "@id"
+                },
+                "citation": "plato:bibliographic_string",
+                "timespan": {
+                  "@id": "plato:source_timespan",
+                  "@context": {
+                    "startEarliest": "plato:start_earliest",
+                    "startLatest": "plato:start_latest",
+                    "endEarliest": "plato:end_earliest",
+                    "endLatest": "plato:end_latest",
+                    "duration": {
+                      "@id": "plato:duration",
+                      "@type": "xsd:duration"
+                    },
+                    "label": "plato:timespan_label",
+                    "startPrecision": "plato:start_precision",
+                    "endPrecision": "plato:end_precision",
+                    "precisionValue": "plato:precision_value",
+                    "openStart": "plato:open_start",
+                    "openEnd": "plato:open_end",
+                    "periodoUri": {
+                      "@id": "plato:periodo_uri",
+                      "@type": "xsd:anyURI"
+                    },
+                    "edtfString": "plato:edtf_string",
+                    "qualification": "@nest",
+                    "certainty": "plato:certainty",
+                    "certaintyNote": "plato:certainty_note",
+                    "certaintyLevel": {
+                      "@id": "plato:certainty_level",
+                      "@type": "@id"
+                    },
+                    "computed": "plato:computed",
+                    "transcriptionAccuracy": {
+                      "@id": "plato:transcription_accuracy",
+                      "@type": "@id"
+                    },
+                    "transcriptionCompleteness": {
+                      "@id": "plato:transcription_completeness",
+                      "@type": "@id"
+                    },
+                    "fuzziness": "plato:fuzziness",
+                    "fuzzinessNote": "plato:fuzziness_note",
+                    "relativeTo": {
+                      "@id": "plato:relative_to",
+                      "@type": "@id"
+                    },
+                    "relativeBearing": "plato:relative_bearing",
+                    "relativeDistance": "plato:relative_distance",
+                    "relativeQualifier": {
+                      "@id": "plato:relative_qualifier",
+                      "@type": "@id"
+                    },
+                    "sourceLabel": "plato:source_label"
+                  }
+                },
+                "derivedFrom": {
+                  "@id": "plato:derived_from",
+                  "@type": "@id"
+                },
+                "authorityType": {
+                  "@id": "rdf:type",
+                  "@type": "@vocab",
+                  "@context": {
+                    "source": "plato:Source",
+                    "dataset": "plato:Dataset",
+                    "period": "plato:Period",
+                    "relationType": "plato:RelationType",
+                    "certaintyLevel": "plato:CertaintyLevel"
+                  }
+                }
+              }
+            },
+            "promotedFrom": {
+              "@id": "plato:promoted_from",
+              "@type": "@id"
+            }
+          }
+        },
         "relatesTo": {
           "@id": "plato:relates_to",
           "@type": "@id"

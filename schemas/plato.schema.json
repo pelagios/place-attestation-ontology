@@ -789,6 +789,22 @@
           },
           "description": "The entity-to-entity relation this attestation asserts: at most one. In RDF a relation's target, type and wording sit on the attestation itself, so two relations are two attestations."
         },
+        "identities": {
+          "type": "array",
+          "description": "Identity relations this attestation asserts together (plato:attests_identity), sharing its provenance: accepting a cluster of n records is one attestation with the n-1 exactMatch relations of the matches made. Retracting the attestation withdraws them together. With negated true and one exactMatch, it says the two are not the same. A consumer may chain exactMatch relations within one attestation only.",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/identityRelation"
+              },
+              {
+                "required": [
+                  "subject"
+                ]
+              }
+            ]
+          }
+        },
         "meta": {
           "$ref": "#/$defs/metaAttestation",
           "description": "If this attestation is a meta-attestation commenting on another."

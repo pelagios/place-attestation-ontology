@@ -130,6 +130,27 @@
             "metaType": "https://w3id.org/plato#AlternativeTo"
           },
           "notes": "The same mention read as the other Newton. With plato:AlternativeTo, the two are one piece of evidence, at most one of them right, not two."
+        },
+        {
+          "@id": "https://whgazetteer.org/example/attestation/newtons-distinct",
+          "negated": true,
+          "identities": [
+            {
+              "subject": "https://whgazetteer.org/example/entity/newton-on-the-hill",
+              "object": "https://whgazetteer.org/example/entity/newton-by-the-river",
+              "identityType": "exactMatch"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/editor-review",
+                "title": "Editor's review of the Newtons",
+                "authorityType": "source"
+              }
+            }
+          ],
+          "notes": "The editor's judgement that the two Newtons are different places: an identity denied (negated, bundling one exactMatch), attributed and dated like any claim, so that disagreement is recorded as well as agreement. It is about the places; the alternative readings above are about the mention."
         }
       ]
     },

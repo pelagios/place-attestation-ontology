@@ -102,6 +102,15 @@ to cite, each an ORCID or other address, a name, or both), `licence`
 addresses. `contributor` is whoever owns or maintains it, who need not be
 an author.
 
+Saying that records elsewhere are the same place is evidence like any other,
+never a settled fact. Identity relations asserted together, as when someone
+accepts a group of suggested matches, go in one attestation's `identities`,
+which gives them one source, date and author, and lets them be withdrawn
+together. The same attestation with `negated` set, and one `exactMatch`,
+says two records are *not* the same place. Software may join matches up
+(A is B and B is C, so A is C) only within one such attestation: two people's
+separate matches are not anyone's claim about the third pair.
+
 A project may need a relation PLATO does not name, such as "flows into" for a
 river. A document declares it once, in a `relationTypes` array beside its
 `gazetteer`, and then uses its address as any relation's `relationType`:
