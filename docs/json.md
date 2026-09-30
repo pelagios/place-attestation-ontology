@@ -110,7 +110,9 @@ code such as `PPL` or `stream`. A category of your source's own that no
 vocabulary holds goes in `label` and `sourceLabel`, with no identifier.
 Where a vocabulary has no such addresses, or changes what its terms mean
 from one version to the next, give its address in `scheme` and the version
-you used in `schemeVersion`.
+you used in `schemeVersion`. A type's own `@id`, if you give one, is your
+dataset's address for it, never the vocabulary's: otherwise every dataset's
+labels and versions would pile up on the one shared concept.
 
 Saying that records elsewhere are the same place is evidence like any other,
 never a settled fact. Identity relations asserted together, as when someone

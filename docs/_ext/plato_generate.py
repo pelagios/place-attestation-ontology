@@ -103,13 +103,6 @@ def write_vocabularies_md():
     for r in sorted(g.subjects(RDF.type, PL.RelationType), key=str):
         lines.append("| `{}` | {} | {} | {} |".format(str(r)[len(P):], _cell(g.value(r, PL.relation_label)),
                      _cell(g.value(r, PL.inverse_label)), _cell(" ".join(str(g.value(r, RDFS.comment)).split()))))
-    lines += ["", "## Routes, itineraries, networks and segments", "",
-              "Types that platforms act on: they draw a route from its ordered members, and may leave segments out of lists of places. "
-              "Put the full identifier in the `type_uri` column of the types sheet, or `identifier` of a type in JSON, with the value as the `type_label`.",
-              "", "| Value | Meaning | Full identifier |", "|---|---|---|"]
-    for t in sorted(g.subjects(RDF.type, PL.Type), key=str):
-        if str(t).startswith(P):
-            lines.append("| `{}` | {} | `{}` |".format(g.value(t, PL.type_label), _cell(g.value(t, RDFS.comment)), t))
     (OUT / "vocabularies.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

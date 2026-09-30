@@ -60,6 +60,11 @@ licence correction.
   versions (ecoregions of 2001 and 2017), as WHG's regions work needs. The
   version sits on the Type, not the scheme: a scheme's IRI is shared by
   every dataset, and versions recorded on it could not be told apart.
+  A Type node stands for one dataset's use of a concept: its IRI is the
+  dataset's own or none, never the concept's, which would merge every
+  dataset's versions onto it one level down (found by the WHG review). The
+  four route and network kinds, declared in 0.6.0 as Type instances, are
+  therefore concepts in `plato:EntityKindScheme` instead, with the same IRIs.
   `type_identifier` now says it should be a full IRI, never a bare code
   (WHG's index held 54 million of those), with a source's own category
   left as a label.
@@ -150,8 +155,9 @@ described elsewhere, which is what Linked Traces records.
   although the guide said it could; only RDF could. The WHG documentation
   review found the gap. It gets a link of its own, not `dcterms:hasPart`,
   which already joins a gazetteer to its statistical tables.
-- Four Types, `plato:TypeRoute`, `plato:TypeItinerary`, `plato:TypeNetwork` and
-  `plato:TypeSegment`, so that any consumer can tell these entities from
+- Four concepts in `plato:EntityKindScheme`, `plato:TypeRoute`,
+  `plato:TypeItinerary`, `plato:TypeNetwork` and `plato:TypeSegment`, named
+  in a Type's identifier, so that any consumer can tell these entities from
   places. A segment (a leg of a road, a reach of a river) is a SpatialEntity
   of its own, and platforms may leave segments out of lists of places.
 - Relation types for places in the history of people, objects and events, as

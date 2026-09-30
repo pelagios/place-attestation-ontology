@@ -454,7 +454,8 @@
       "description": "A classification from a controlled vocabulary (typically AAT).",
       "properties": {
         "@id": {
-          "$ref": "#/$defs/uri"
+          "$ref": "#/$defs/uri",
+          "description": "An address for this type as your dataset uses it, if you want to refer to it again: your own IRI. Never the vocabulary concept's IRI, which goes in identifier: were it used here, every dataset's labels and scheme versions would merge onto the one shared concept. Usually omitted."
         },
         "identifier": {
           "$ref": "#/$defs/uri",

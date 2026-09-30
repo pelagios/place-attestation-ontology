@@ -216,9 +216,12 @@ plato:Timespan
 # -----------------------------------------------------------------------------
 # Type
 # -----------------------------------------------------------------------------
-# A classification drawn from a controlled vocabulary (typically AAT).
-# Types are reusable: "inhabited place" can be referenced by attestations
-# for many different SpatialEntities.
+# A classification drawn from a controlled vocabulary (typically AAT), as one
+# dataset uses it. A Type node is that usage: it is reusable within its dataset
+# ("inhabited place" referenced by attestations for many SpatialEntities), but
+# it is not the vocabulary's concept. Were it the concept's own IRI, every
+# dataset's label, source wording, qualification and scheme_version would land
+# on one shared node in any combined graph, and could no longer be told apart.
 
 plato:Type
     a owl:Class ;
@@ -228,7 +231,12 @@ plato:Type
     rdfs:comment """
         A classification or category for a SpatialEntity, typically drawn from a
         controlled vocabulary such as the Getty Art & Architecture Thesaurus
-        (AAT). Types are independent, reusable entities.
+        (AAT), as one dataset uses it. A Type node stands for that usage and
+        may be reused within its dataset. Its IRI, if it has one, is the
+        dataset's own, or it is a blank node: never the vocabulary concept's
+        IRI, which goes in plato:type_identifier. Otherwise every dataset's
+        label, source wording and plato:scheme_version would merge onto the
+        concept in any combined graph.
     """@en .
 
 
@@ -3441,40 +3449,51 @@ plato:SubjectOf
     rdfs:comment "The target is about the subject: an archival file, a site record, a report or a publication, identified by its address. Not a citation of the target as evidence for another statement, which is plato:has_citation."@en .
 
 # -----------------------------------------------------------------------------
-# Types: routes, itineraries, networks and segments
+# Kinds of SpatialEntity: routes, itineraries, networks and segments
 # -----------------------------------------------------------------------------
 # What kind of entity a SpatialEntity is, is a Type attestation, and usually a
 # term from a vocabulary such as the AAT. These four are declared because a
 # platform's behaviour depends on them: it draws a route from its ordered
 # members, computes an itinerary's span, and may leave segments out of lists
-# of places, where "Londinium to Caesaromagus" would be a pseudo-place. A Type
-# attestation points at one with its IRI as the type identifier. The
+# of places, where "Londinium to Caesaromagus" would be a pseudo-place. They are
+# concepts in a scheme, like PLATO's other starter vocabularies, not Type nodes:
+# a Type attestation points at one with its IRI as the type identifier. The
 # distinction between a route and an itinerary is WHG's: a route is a way, and
 # an itinerary is a journey made along one, dated stop by stop.
 
-plato:TypeRoute
-    a plato:Type ;
+plato:EntityKindScheme
+    a skos:ConceptScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
-    plato:type_label "route"@en ;
-    rdfs:comment "An ordered set of places making a way: a road, a sea lane, a pilgrimage route. Its timespan, if any, is when it was in use, not when anyone travelled it."@en .
+    rdfs:label "kind of spatial entity"@en ;
+    rdfs:comment "Starter concepts for the kinds of SpatialEntity a platform treats specially: routes, itineraries, networks and segments. A Type attestation names one in its type identifier."@en .
+
+plato:TypeRoute
+    a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:inScheme plato:EntityKindScheme ;
+    skos:prefLabel "route"@en ;
+    skos:definition "An ordered set of places making a way: a road, a sea lane, a pilgrimage route. Its timespan, if any, is when it was in use, not when anyone travelled it."@en .
 
 plato:TypeItinerary
-    a plato:Type ;
+    a skos:Concept ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
-    plato:type_label "itinerary"@en ;
-    rdfs:comment "A journey made through places in order, each stop with its own timespan: a traveller's tour, a royal progress, a ship's voyage. Not plato:Itinerary, which is a geometry role (a line tracing a route or journey)."@en .
+    skos:inScheme plato:EntityKindScheme ;
+    skos:prefLabel "itinerary"@en ;
+    skos:definition "A journey made through places in order, each stop with its own timespan: a traveller's tour, a royal progress, a ship's voyage. Not plato:Itinerary, which is a geometry role (a line tracing a route or journey)."@en .
 
 plato:TypeNetwork
-    a plato:Type ;
+    a skos:Concept ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
-    plato:type_label "network"@en ;
-    rdfs:comment "A set of places and the connections between them, in no single order: a river system, a canal network, a correspondence network."@en .
+    skos:inScheme plato:EntityKindScheme ;
+    skos:prefLabel "network"@en ;
+    skos:definition "A set of places and the connections between them, in no single order: a river system, a canal network, a correspondence network."@en .
 
 plato:TypeSegment
-    a plato:Type ;
+    a skos:Concept ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
-    plato:type_label "segment"@en ;
-    rdfs:comment "A physical link with an existence of its own: a leg of a route between two stations, a reach of a river between confluences. Platforms may leave segments out of lists and searches of places."@en .
+    skos:inScheme plato:EntityKindScheme ;
+    skos:prefLabel "segment"@en ;
+    skos:definition "A physical link with an existence of its own: a leg of a route between two stations, a reach of a river between confluences. Platforms may leave segments out of lists and searches of places."@en .
 
 
 # =============================================================================
