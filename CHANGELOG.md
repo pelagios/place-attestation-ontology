@@ -124,6 +124,14 @@ Found by WHG's rewrite of its documentation against PLATO:
   three sources (Herodotus, the Notitia Urbis Constantinopolitanae,
   GeoNames), each dated to what it witnesses, with only the geometry a
   source gives; the Notitia's Latin form is attested as written.
+- `plato:Geometry` said to put different kinds of geometry in separate
+  attestations, which the schema (an array of geometries) and
+  `examples/geometry-roles.ttl` never required. It now says what they do: one
+  attestation may attest several geometries when one source gives them all,
+  each with a role where they depict different things; a geometry from
+  another source is another attestation. A GeometryCollection is not
+  accepted, and the schema now says so plainly rather than "not supported in
+  some implementations".
 - `examples/relation.ttl` uses `plato:Refines` rather than a concept of its
   own, and the customs example `https://w3id.org/plato#Near` rather than
   the retired `http://w3id.org/plato/vocab#` namespace.

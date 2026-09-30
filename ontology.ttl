@@ -185,10 +185,14 @@ plato:Geometry
         are independent, reusable entities. The same Geometry may be referenced
         by multiple Attestations across different SpatialEntities or time periods.
 
-        Note: GeometryCollection is not supported in some graph database
-        implementations. For heterogeneous geometry sets (e.g., both point and
-        polygon), use multiple Geometry entities linked through separate
-        attestations.
+        Each Geometry is one GeoJSON geometry; a GeometryCollection is not
+        accepted, so a set of different kinds (a point and a polygon) is
+        several Geometry nodes. One attestation may attest several
+        geometries when one source gives them all, each with a
+        plato:geometry_role where they depict different things (a built
+        extent, a label position); a geometry from another source is
+        another attestation, since it has another provenance. See
+        examples/geometry-roles.ttl.
     """@en .
 
 

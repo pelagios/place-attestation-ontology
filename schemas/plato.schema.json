@@ -164,7 +164,7 @@
         },
         "geojson": {
           "type": "object",
-          "description": "GeoJSON Geometry object (Point, Polygon, LineString, etc.). Note: GeometryCollection not supported in some implementations.",
+          "description": "GeoJSON Geometry object (Point, Polygon, LineString, etc.). A GeometryCollection is not accepted: record each geometry separately, several in one attestation when one source gives them all, with a role where they depict different things.",
           "properties": {
             "type": {
               "type": "string",
