@@ -11,7 +11,7 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
-## Unreleased
+## 0.7.1
 
 Found by WHG's final pass on its documentation against 0.7.0, and a logo.
 
@@ -22,8 +22,8 @@ Found by WHG's final pass on its documentation against 0.7.0, and a logo.
   between white and blue. `docs/_static/logo/` holds the mark, a one-colour
   version, the lockup with the name for light and dark grounds (lettering
   as outlines, so no font is needed), and favicons;
-  `scripts/build_logo.py` builds them from the guide's fonts. The guide
-  uses it as its favicon.
+  `scripts/build_logo.py` builds them from the guide's fonts. The README
+  opens with it, and the guide uses it as its favicon and in its sidebar.
 
 ### Fixed
 

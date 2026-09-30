@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/_static/logo/plato-logo-dark.svg">
+  <img src="docs/_static/logo/plato-logo.svg" alt="PLATO: Place Attestation Ontology" width="320">
+</picture>
+
 # PLATO — Place Attestation Ontology
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21688313.svg)](https://doi.org/10.5281/zenodo.21688313)
