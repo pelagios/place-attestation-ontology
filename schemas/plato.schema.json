@@ -458,7 +458,15 @@
         },
         "identifier": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the concept in a controlled vocabulary (e.g. an AAT concept URI). Strongly encouraged, since it is what lets types from different sources be compared, but not required: a source's own type word with no vocabulary match is recorded as a label alone."
+          "description": "The concept's full IRI in a controlled vocabulary: an AAT, Wikidata or GeoNames concept, an OpenStreetMap tag with its key (https://wiki.openstreetmap.org/wiki/Tag:waterway=stream). Not a bare code whose vocabulary is known only from elsewhere. Strongly encouraged, but not required: a source's own category that no vocabulary holds is recorded as a label (and sourceLabel) alone, not as a made-up code."
+        },
+        "scheme": {
+          "$ref": "#/$defs/uri",
+          "description": "The IRI of the vocabulary the type comes from (skos:inScheme). Unneeded when identifier is an IRI that names its vocabulary; useful for vocabularies without such IRIs (Koppen codes, WWF ecoregions, a project's own list)."
+        },
+        "schemeVersion": {
+          "type": "string",
+          "description": "The version of that vocabulary used (plato:scheme_version), where its terms change meaning between versions: '2017' for the RESOLVE ecoregions."
         },
         "label": {
           "type": "string",

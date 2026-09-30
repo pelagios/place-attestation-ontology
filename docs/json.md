@@ -102,6 +102,16 @@ to cite, each an ORCID or other address, a name, or both), `licence`
 addresses. `contributor` is whoever owns or maintains it, who need not be
 an author.
 
+A type's `identifier` should be the concept's full web address in a
+published vocabulary (an AAT, Wikidata or GeoNames concept; for an
+OpenStreetMap tag, its address with the key, such as
+`https://wiki.openstreetmap.org/wiki/Tag:waterway=stream`), never a bare
+code such as `PPL` or `stream`. A category of your source's own that no
+vocabulary holds goes in `label` and `sourceLabel`, with no identifier.
+Where a vocabulary has no such addresses, or changes what its terms mean
+from one version to the next, give its address in `scheme` and the version
+you used in `schemeVersion`.
+
 Saying that records elsewhere are the same place is evidence like any other,
 never a settled fact. Identity relations asserted together, as when someone
 accepts a group of suggested matches, go in one attestation's `identities`,

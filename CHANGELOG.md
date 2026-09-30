@@ -53,6 +53,16 @@ licence correction.
   the same, so that disagreement accumulates as well as agreement. Decided
   by Stephen with the WHG team: clusters stay out of PLATO (they are query
   results), and accepting one is evidence.
+- A type's vocabulary and version: JSON `scheme` (`skos:inScheme`, a Type
+  being a `skos:Concept`) and `schemeVersion` (new `plato:scheme_version`),
+  tables `type_scheme` and `type_scheme_version`. For vocabularies without
+  IRIs of their own, and for those whose terms change meaning between
+  versions (ecoregions of 2001 and 2017), as WHG's regions work needs. The
+  version sits on the Type, not the scheme: a scheme's IRI is shared by
+  every dataset, and versions recorded on it could not be told apart.
+  `type_identifier` now says it should be a full IRI, never a bare code
+  (WHG's index held 54 million of those), with a source's own category
+  left as a label.
 - `plato:match_parameters`: the settings that produced a Candidate's score,
   so it can be reproduced.
 

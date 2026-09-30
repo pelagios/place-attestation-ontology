@@ -1,2 +1,2 @@
-place_id,type_label,type_uri,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
-datini-network,network,https://w3id.org/plato#TypeNetwork,1355-1443,1355,1443,datini-metadata,,,citesAsDataSource,,,,,The span of sending dates the dataset gives for the letters counted here.
+place_id,type_label,type_uri,type_scheme,type_scheme_version,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+datini-network,network,https://w3id.org/plato#TypeNetwork,,,1355-1443,1355,1443,datini-metadata,,,citesAsDataSource,,,,,The span of sending dates the dataset gives for the letters counted here.

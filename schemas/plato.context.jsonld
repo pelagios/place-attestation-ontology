@@ -306,6 +306,11 @@
                   "@id": "plato:type_identifier",
                   "@type": "xsd:anyURI"
                 },
+                "scheme": {
+                  "@id": "skos:inScheme",
+                  "@type": "@id"
+                },
+                "schemeVersion": "plato:scheme_version",
                 "label": "plato:type_label",
                 "sourceLabel": "plato:source_label",
                 "qualification": "@nest",
@@ -1082,6 +1087,11 @@
                   "@id": "plato:type_identifier",
                   "@type": "xsd:anyURI"
                 },
+                "scheme": {
+                  "@id": "skos:inScheme",
+                  "@type": "@id"
+                },
+                "schemeVersion": "plato:scheme_version",
                 "label": "plato:type_label",
                 "sourceLabel": "plato:source_label",
                 "qualification": "@nest",
@@ -1848,6 +1858,11 @@
               "@id": "plato:type_identifier",
               "@type": "xsd:anyURI"
             },
+            "scheme": {
+              "@id": "skos:inScheme",
+              "@type": "@id"
+            },
+            "schemeVersion": "plato:scheme_version",
             "label": "plato:type_label",
             "sourceLabel": "plato:source_label",
             "qualification": "@nest",

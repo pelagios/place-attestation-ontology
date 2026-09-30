@@ -1,2 +1,2 @@
-place_id,type_label,type_uri,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
-bunsty,hundred,,1086,1086,1086,domesday,,,,,,,,
+place_id,type_label,type_uri,type_scheme,type_scheme_version,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+bunsty,hundred,,,,1086,1086,1086,domesday,,,,,,,,

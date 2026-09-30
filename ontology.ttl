@@ -2141,7 +2141,17 @@ plato:type_identifier
     a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "type identifier"@en ;
-    rdfs:comment "URI or identifier in a controlled vocabulary (e.g. AAT)."@en ;
+    rdfs:comment """
+        The concept's IRI in a controlled vocabulary: an AAT, Wikidata or
+        GeoNames concept, an OpenStreetMap tag. It should be a full IRI, not a
+        bare code ('PPL', 'Q687188', 'stream') whose vocabulary is known only
+        from somewhere else: that is what lets types from different sources be
+        compared. An OpenStreetMap tag's IRI carries its key
+        (https://wiki.openstreetmap.org/wiki/Tag:waterway=stream), since the
+        value alone is ambiguous. A source's own category that no vocabulary
+        holds is recorded as the Type's label and plato:source_label, with no
+        identifier, rather than as a code made up for it.
+    """@en ;
     rdfs:domain plato:Type ;
     rdfs:range xsd:anyURI .
 
@@ -2150,6 +2160,31 @@ plato:type_label
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "type label"@en ;
     rdfs:comment "Human-readable label for this type."@en ;
+    rdfs:domain plato:Type ;
+    rdfs:range xsd:string .
+
+# A type identifier usually names its scheme: an AAT IRI is plainly an AAT
+# concept. Some vocabularies have no such IRIs (Koppen climate codes, WWF
+# ecoregion codes, a project's own list), and some change what their terms mean
+# from one version to the next (ecoregions of 2001 and of 2017 share names, not
+# extents). So a Type can say its scheme, with skos:inScheme (a Type is a
+# skos:Concept), and which version of it was used. The version is recorded on
+# the Type, not on the scheme: the scheme's IRI is shared by every dataset that
+# uses it, and versions recorded there by different datasets could no longer be
+# told apart.
+
+plato:scheme_version
+    a owl:DatatypeProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "scheme version"@en ;
+    rdfs:comment """
+        The version of the vocabulary (the skos:inScheme of this Type) that the
+        type was taken from: '2017' for the RESOLVE ecoregions, a release date
+        for OpenStreetMap's tag definitions. Needed where a scheme's terms
+        change meaning between versions; otherwise optional. JSON
+        schemeVersion, tables type_scheme_version, beside the scheme (JSON
+        scheme, tables type_scheme).
+    """@en ;
     rdfs:domain plato:Type ;
     rdfs:range xsd:string .
 

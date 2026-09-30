@@ -1,2 +1,2 @@
-place_id,type_label,type_uri,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
-itinerary-1215,itinerary,https://w3id.org/plato#TypeItinerary,1215,1215-06-01,1215-07-17,hardy-1835,pp. 108-109,,citesAsEvidence,,,,,"Dated to the span Hardy's pages cover, which is the evidence for the type. It is not the journey's overall span entered as a fact: a platform works that out from the stops."
+place_id,type_label,type_uri,type_scheme,type_scheme_version,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+itinerary-1215,itinerary,https://w3id.org/plato#TypeItinerary,,,1215,1215-06-01,1215-07-17,hardy-1835,pp. 108-109,,citesAsEvidence,,,,,"Dated to the span Hardy's pages cover, which is the evidence for the type. It is not the journey's overall span entered as a fact: a platform works that out from the stops."

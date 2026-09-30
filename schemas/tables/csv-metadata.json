@@ -993,11 +993,29 @@
           {
             "name": "type_uri",
             "titles": "type_uri",
-            "dc:description": "The matching concept in a published vocabulary such as the Getty AAT, if you know it. Optional.",
+            "dc:description": "The matching concept's full web address in a published vocabulary, such as the Getty AAT, if you know it: not a bare code. For an OpenStreetMap tag, include its key (https://wiki.openstreetmap.org/wiki/Tag:waterway=stream). Leave it empty for a category of your source's own that no vocabulary holds. Optional.",
             "skos:example": "http://vocab.getty.edu/aat/300008347",
             "aboutUrl": "#row-{_row}-type",
             "propertyUrl": "https://w3id.org/plato#type_identifier",
             "datatype": "anyURI"
+          },
+          {
+            "name": "type_scheme",
+            "titles": "type_scheme",
+            "dc:description": "The web address of the vocabulary the type comes from, if type_uri does not already make it plain: for Köppen codes, WWF ecoregions or your project's own list. Optional.",
+            "skos:example": "https://example.org/vocabularies/ecoregions",
+            "aboutUrl": "#row-{_row}-type",
+            "propertyUrl": "http://www.w3.org/2004/02/skos/core#inScheme",
+            "valueUrl": "{+type_scheme}",
+            "datatype": "anyURI"
+          },
+          {
+            "name": "type_scheme_version",
+            "titles": "type_scheme_version",
+            "dc:description": "The version of that vocabulary you used, where its terms change meaning between versions ('2017'). Optional.",
+            "skos:example": "2017",
+            "aboutUrl": "#row-{_row}-type",
+            "propertyUrl": "https://w3id.org/plato#scheme_version"
           },
           {
             "name": "date",
