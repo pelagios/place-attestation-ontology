@@ -62,6 +62,14 @@ were made under the earlier policy.
 - A guide page, *Checking, converting and comparing*, on what PLATO tools
   checks, what each format keeps when converting, and what the version check
   reports.
+- A section of that page, *Publishing your dataset*, on preparing a dataset
+  for publishing with PLATO tools: the report on its description and the
+  deposit files (`.zenodo.json`, `CITATION.cff`, DataCite JSON), permanent
+  addresses for attestations (`<base>place/<id>#a-<hash>`), a website for
+  GitHub Pages with the workflow that publishes it, and the rules for a
+  w3id.org address; what `published` commits a dataset to; and why a
+  github.io base is not a permanent address. The linked-data page and the
+  guide's home page point to it.
 
 - How a geometry traced from a historical map records the georeference it
   was placed through (issue #15), with no new term. The attestation cites the

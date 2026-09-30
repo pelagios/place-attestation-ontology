@@ -130,6 +130,9 @@ description all go in one place, the [about sheet](spreadsheets/first-dataset.md
 in JSON, in the document's `gazetteer` header.
 
 Taken together, those steps and PLATO's structure make a dataset FAIR.
+[PLATO tools](tools.md#publishing-your-dataset) reports what your description
+still lacks, writes the files a repository needs, and makes a website and
+permanent addresses for your places.
 
 ## Where to start
 
@@ -151,6 +154,11 @@ Taken together, those steps and PLATO's structure make a dataset FAIR.
   [checking, converting and comparing](tools.md) for what it tells you. It runs in your
   browser, so nothing is uploaded, and it works at any size. To check many
   files at once, it also runs [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line).
+
+**My dataset is ready, and I want to publish it.**
+: See [publishing your dataset](tools.md#publishing-your-dataset): a report
+  on what its description lacks, the files for depositing it, a website for
+  every place, and permanent addresses.
 
 **I produce data with my own software, or work with RDF.**
 : See [JSON formats](json.md) and [Linked data](linked-data.md).

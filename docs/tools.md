@@ -3,14 +3,16 @@
 [PLATO tools](https://pelagios.org/plato-tools/) works on data in PLATO's
 shape. It checks a file for mistakes, converts it to another format, and shows
 whether a new version of a published dataset has kept what the earlier one
-said. It runs in your browser: your files are never uploaded, and it works for
+said, and it prepares a dataset for [publishing](#publishing-your-dataset).
+It runs in your browser: your files are never uploaded, and it works for
 datasets of any size your disk can hold. It also runs
 [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line),
 for many files at a time, with the same checks and the same reports.
 
 To use it, open the page and drop a file on it (or choose one), then press
-**Check**, choose a format and press **Convert**, or press **Compare with the
-earlier version**.
+**Check**, choose a format and press **Convert**, press **Compare with the
+earlier version**, or choose what to prepare for publishing and press
+**Prepare**.
 
 ## What it reads and writes
 
@@ -143,3 +145,219 @@ column for one, so this applies to data published as JSON or linked data.
 A comparison that could not read the whole of either version does not pass,
 and nor does one whose earlier version holds no attestations: in both cases
 nothing, or not everything, was compared.
+
+## Publishing your dataset
+
+Publishing a dataset means giving it addresses that will still work in
+twenty years, a website where people and software can find each place, and a
+record in a repository that gives it a DOI. PLATO tools prepares all of that
+from the dataset itself, in four parts. On the page, choose the part under
+*to publish it* and press **Prepare**; the release's name, the previous
+release, the GitHub repository and the rest are under *Options*. From the
+command line, each part is `publish` followed by its name.
+
+Nothing leaves your computer. Neither the page nor the command line sends
+anything anywhere: they write files, and uploading them, depositing them or
+opening a pull request is for you to do. The page gives each result as a file
+(a folder comes as a zip); the command line writes folders.
+
+Every part checks the dataset first, and writes nothing to publish from a
+dataset that has problems. It needs to know the dataset's base address:
+`base_uri` in the [about sheet](spreadsheets/first-dataset.md#7-say-what-the-dataset-is),
+or `uriSpace` in PLATO JSON. Record it there rather than giving it for each
+run (on the page, "Web address for your identifiers"; on the command line,
+`--base`), so that every part, and every later release, uses the same one.
+
+### The four parts, in order
+
+1. **Report** says what the dataset's description still lacks to be
+   [FAIR](index.md#plato-and-fair-data): a title, a description long enough
+   for search engines, authors with ORCIDs (whose check digits are tested),
+   a licence given as its web address, a version, what the dataset covers,
+   and a base address that will last. It counts the checks passed, and
+   writes the deposit files (below). Put right what it lists, in the about
+   sheet or the `gazetteer` header, and run it again.
+2. **Mint** writes a copy of the dataset in which every attestation has a
+   permanent address of its own, as PLATO JSON Lines (its name ends
+   `-with-ids.jsonl`). This copy is what you publish, and what the other
+   parts read.
+3. **Site** makes a website for GitHub Pages from that copy, with the
+   workflow that publishes it.
+4. **w3id** writes the redirect rules that send your w3id.org addresses to
+   the site. Only for a published dataset whose base is a w3id.org address.
+
+```bash
+npx github:pelagios/plato-tools publish report my-tables/
+npx github:pelagios/plato-tools publish mint my-tables/ --previous my-gazetteer-1.0.jsonl
+npx github:pelagios/plato-tools publish site my-tables-with-ids.jsonl --repo my-project/my-gazetteer
+npx github:pelagios/plato-tools publish w3id my-tables-with-ids.jsonl --repo my-project/my-gazetteer --maintainer my-github-name
+```
+
+A part that finds problems says so and ends with exit status 1, like
+**Check**.
+
+### Addresses
+
+Every address is made from the base, which always ends in `/`:
+
+| What | Address |
+|---|---|
+| The dataset, and its home page | `<base>` |
+| A place | `<base>place/<id>` |
+| A source | `<base>source/<id>` |
+| An attestation | `<base>place/<id>#a-<hash>` |
+| A frozen release | `<base>release/<name>` |
+| The latest dataset, to download | `<base>download/<file>` |
+
+The addresses of places and sources are PLATO's own rule, set out under
+[spreadsheets to RDF](linked-data.md#spreadsheets-to-rdf) and in
+[step 7 of a first dataset](spreadsheets/first-dataset.md#7-say-what-the-dataset-is);
+the rest are how PLATO tools lays out what it publishes. A release is named
+with `--release` (on the page, "Release name"); its dataset's own address
+(`@id`) should then be the release's, with `isVersionOf` the base, and the
+report says what to set.
+
+An attestation's address is part of its place's: `#a-` and the first eight
+digits of a hash of what the attestation says. So minting the same data again
+gives the same addresses, even from spreadsheet tables, which have no column
+for them. An address an attestation already has is never changed. Give the
+previous release with `--previous` (on the page, "Previous release"), and
+every attestation it published keeps the address it had there.
+
+Keep the identifiers of places and sources to letters, digits and
+`- . _ ~`, not starting with `.`, and never two that differ only in capital
+letters: a website cannot serve any other as a file. While the dataset is a
+draft the report counts any other as a problem; once it is published its
+addresses are frozen, and the site lists such places as held only in the
+downloads.
+
+### What "published" commits you to
+
+A dataset is published when its `status` is `published`. From then on:
+
+- its attestations are only ever added to: a correction or a withdrawal is a
+  new attestation that replaces or withdraws the old one, which stays (see
+  [comparing two versions](#comparing-two-versions));
+- the addresses of its places, sources and attestations are frozen;
+- minting with `--previous` checks the new version against the previous
+  release, as **Compare with the earlier version** does, and writes nothing
+  if anything published was deleted or changed. Against a previous release
+  that was still a draft, it writes the copy and warns you what would be
+  refused once that release is published.
+
+Until then, the site says on every page that the dataset is a draft and not
+to be cited, and asks search engines to leave it out.
+
+### The deposit files
+
+**Report** writes a folder (its name ends `-deposit`) of files made from the
+dataset's description, for a repository that gives it a DOI. Its
+`README.txt` says what to check and fill in before you deposit.
+
+| File | What it is for | Where it goes |
+|---|---|---|
+| `.zenodo.json` | Zenodo's description of the deposit | At the top of the GitHub repository the dataset is released from, where Zenodo reads it with each release |
+| `CITATION.cff` | How to cite the dataset | At the top of the same repository, where GitHub shows *Cite this repository* from it |
+| `datacite.json` | DataCite's description, for a repository that registers DOIs itself | Sent to that repository, with the DOI added |
+
+Once Zenodo has given the dataset a DOI for all its versions (the concept
+DOI), run the report again with it (`--concept-doi`, or "Concept DOI" on the
+page) to put it in `CITATION.cff` and `datacite.json`, and give it to
+**site** too, which shows it on the home page.
+
+### The site
+
+**Site** makes a website with a page and a JSON-LD document (`.jsonld`) for
+every place and source, at the paths the addresses above lead to, and
+optionally Turtle as well (`--turtle`). Each attestation with an address is
+marked on its place's page, so its address opens the page at it. The home
+page describes the dataset in the form search engines such as Google Dataset
+Search read, and offers the whole dataset to download as PLATO JSON Lines,
+N-Triples and spreadsheet tables.
+
+Beside the site, a second folder (its name ends `-repo`) holds what goes into
+your GitHub repository: a GitHub Actions workflow,
+`.github/workflows/pages.yml`, and a `README-agora.md` saying how to set it
+up. Once the workflow is committed and the repository's Pages settings have
+Source set to *GitHub Actions*, every push that changes the dataset rebuilds
+the site and publishes it. The workflow runs the same version of PLATO tools
+that made it, so the site is made the same way every time, and publishes
+nothing if the dataset has problems. The site itself is never committed.
+
+So what you commit is the copy that **mint** wrote, with its attestation
+addresses. The workflow never makes addresses: made there, they would be
+made again on every run, and an address that changes is no address at all.
+For a published dataset, the workflow stops if any attestation has no
+address. Before you push, look at the site on your own computer: the
+command line writes it to a folder (its name ends `-site`), which you can
+open through a local web server, such as `npx serve my-tables-with-ids-site`.
+
+If the dataset is not at the top of your repository, say where it is with
+`--dataset-path`. The page cannot tell which folder spreadsheet tables were
+chosen from, so for tables it guesses, and says so: correct the path in the
+workflow, or make the site from the command line.
+
+**Size.** GitHub Pages serves at most 1 GB for a site, and gives up on a
+deployment that takes more than ten minutes. PLATO tools estimates the site's
+size before it writes anything. Past the limit the page stops and says what
+to do; the command line writes the site anyway, with a warning, for hosting
+elsewhere. To stay within it, leave out Turtle, or publish a subset of the
+places with `--only`, a file listing their identifiers, one to a line:
+
+```bash
+npx github:pelagios/plato-tools publish site my-tables-with-ids.jsonl --repo my-project/my-gazetteer --only places-to-show.txt
+```
+
+The addresses of the places left out lead to the site's "not found" page,
+which points to the downloads, where every place is.
+
+### Where the addresses lead
+
+How long your addresses last depends on the base, and the report grades it:
+
+- **A w3id.org address** (`https://w3id.org/my-gazetteer/`) passes. It is a
+  permanent redirect: if the site ever moves, the rules are changed and every
+  address still works.
+- **A domain of your own** (`https://gazetteer.example.ac.uk/`) is a warning:
+  the addresses last as long as you keep the domain and its site. When the
+  base is at the root of the domain, the site carries the `CNAME` file GitHub
+  Pages needs; set the same domain in the repository's Pages settings and
+  point the domain at GitHub as GitHub's documentation says. GitHub Pages
+  serves a custom domain only from the root of a site, so a base further down
+  the domain gets no `CNAME`, and the report says why.
+- **A GitHub Pages address** (`https://my-project.github.io/my-gazetteer/`),
+  a local one or a stand-in such as `example.org` is a warning while the
+  dataset is a draft and a problem once it is published. A github.io address
+  changes if the repository is renamed or moves to another owner, and every
+  citation of it breaks. Use it to try things out; publish under a w3id.org
+  address instead, with the site still on github.io behind it.
+
+### Registering a w3id.org address
+
+[w3id.org](https://w3id.org) gives permanent addresses by redirecting them,
+under rules kept in a public GitHub repository, `perma-id/w3id.org`. A new
+name is added by a pull request there. **w3id** writes everything that pull
+request needs, into a folder whose name starts `w3id-`, and only for a
+dataset that is published and whose base is a w3id.org address. It needs the
+GitHub names of the people who will look after the name (`--maintainer`,
+once each; "w3id maintainers" on the page), and where the site is: the
+repository (`--repo`), or the site's address if it is somewhere else
+(`--site-url`).
+
+The folder holds the rules and a README for w3id.org, the pull request's
+title and text (`PULL_REQUEST.md`), a list of real addresses of the dataset
+with what each should answer, and a script, `test-w3id.sh`, that asks for
+each. `STEPS.md` goes through it in order:
+
+1. Test the rules on your own computer before anything else, in a local
+   copy of the web server w3id.org runs (with Docker), with
+   `sh test-w3id.sh http://localhost:8080`. Every line should say PASS.
+2. Open the pull request yourself, from your own GitHub account, with the
+   test results pasted into its text. PLATO tools never opens it: once it is
+   merged, the addresses are public and meant to be cited for good.
+3. Once it is merged, test the live addresses: `sh test-w3id.sh`.
+
+The rules send a browser to a place's page and any other client to its
+JSON-LD, and a request for `.jsonld`, `.ttl` or `.html` to that file. The
+site must be live before the rules are merged, since they only send people
+there.

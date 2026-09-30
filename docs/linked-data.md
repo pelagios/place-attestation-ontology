@@ -45,8 +45,9 @@ the dataset's is its `dataset_uri`, or the base if that is empty. The base is
 one given for the conversion, else the about sheet's `base_uri`, with a `/`
 added unless it ends in `/` or `#`; every character of an identifier other
 than the unreserved characters of RFC 3986 (`A-Z a-z 0-9 - . _ ~`) is
-percent-encoded as UTF-8. The attestations have no address of their own. The
-dataset node is already named by `dataset_uri` in the output, when it is
+percent-encoded as UTF-8. The attestations have no address of their own
+here; PLATO tools gives each one when you
+[publish the dataset](tools.md#publishing-your-dataset). The dataset node is already named by `dataset_uri` in the output, when it is
 given; when it is empty, a CSVW processor names it after the file,
 `about.csv`, since a URI template has no fallback value. See
 [converting](tools.md#converting) for how PLATO tools applies the rest.
@@ -88,7 +89,10 @@ three pieces for that.
 - **Addresses for attestations.** An attestation can only be withdrawn or
   replaced by pointing to it, so every attestation in a published dataset
   should have a permanent address of its own (`@id`). This is a
-  recommendation for now, and is meant to become a requirement.
+  recommendation for now, and is meant to become a requirement. PLATO tools
+  gives every attestation one, the same each time the same data is
+  published, and keeps those of the previous release: see
+  [publishing your dataset](tools.md#publishing-your-dataset).
 - **A state on request.** A platform can offer that state directly through
   datetime negotiation on the place's address ([RFC 7089, "Memento"](https://www.rfc-editor.org/rfc/rfc7089)):
   ask for the address as it stood at a moment, and get the attestations that
