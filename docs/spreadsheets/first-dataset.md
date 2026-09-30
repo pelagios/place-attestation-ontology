@@ -93,9 +93,11 @@ the same way with `source/`: the customs account's is
 Choose a base you control and will keep, such as your project's own
 [w3id](https://w3id.org) address, so that the addresses still work in
 twenty years, and do not change a `place_id` or `source_id` once the dataset
-is published, since that would change its address. `dataset_uri` is the
-address of the dataset itself; if you leave it empty, the dataset takes the
-base as its address.
+is published, since that would change its address. Keep to letters, digits
+and the characters `- . _ ~` in these identifiers: any other character, a
+space included, is written in the address as a code such as `%20`.
+`dataset_uri` is the address of the dataset itself; if you leave it empty,
+the dataset takes the base as its address, ending in `/`.
 
 ## What happens to your rows
 

@@ -77,16 +77,18 @@ as a market, or one figure from a table as a fact about the whole place.
 
 **Web addresses for your identifiers.** PLATO fixes how the spreadsheet
 tables' identifiers become web addresses, so that every tool gives the same
-ones: a place's address is the base, then `place/`, then its `place_id`
+ones. The base is the one given for the conversion, if any (on the page,
+"Web address for your identifiers"), and otherwise the `base_uri` of the
+[about sheet](spreadsheets/first-dataset.md#7-say-what-the-dataset-is), which
+is where it belongs; a `/` is added to it unless it already ends in `/` or
+`#`. A place's address is the base, then `place/`, then its `place_id`
 (`https://w3id.org/my-project/place/bristol`), and a source's is the base,
-then `source/`, then its `source_id`. The dataset's own address is the
-`dataset_uri` of the
-[about sheet](spreadsheets/first-dataset.md#7-say-what-the-dataset-is), or the
-base if that is empty. The base belongs in the about sheet's `base_uri`.
-Converting spreadsheet tables, PLATO tools uses the base you give on the page
-("Web address for your identifiers") if you give one, and otherwise
-`base_uri`; without either, a stand-in, `https://example.org/my-dataset/`,
-which is not a permanent address. Converting *to* the tables, an address is
+then `source/`, then its `source_id`. In both, every character other than a
+letter, a digit or one of `- . _ ~` is percent-encoded (written as a code such
+as `%20`), so keep identifiers to those characters. The dataset's own address
+is the about sheet's `dataset_uri`, or the base (with its `/`) if that is
+empty. Without any base, PLATO tools uses a stand-in,
+`https://example.org/my-dataset/`, which is not a permanent address. Converting *to* the tables, an address is
 kept only if reading the tables back would give the same one; otherwise the
 report says it is lost.
 

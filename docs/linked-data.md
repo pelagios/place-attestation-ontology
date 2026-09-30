@@ -39,11 +39,16 @@ input is valid.
 Identifiers in the output are relative to the files (`places.csv#bristol`,
 `names.csv#row-3`), because CSVW cannot build an address from a cell of
 another table. They are for checking the tables, not the dataset's addresses,
-which PLATO fixes: a place's is the about sheet's `base_uri`, then `place/`,
-then its `place_id`; a source's is `base_uri`, then `source/`, then its
-`source_id`; and the dataset's is its `dataset_uri` (or `base_uri`, if that is
-empty). The attestations have no address of their own. The dataset node is
-already named by `dataset_uri` in the output, when it is given; see
+which PLATO fixes: a place's is the base, then `place/`, then its
+`place_id`; a source's is the base, then `source/`, then its `source_id`; and
+the dataset's is its `dataset_uri`, or the base if that is empty. The base is
+one given for the conversion, else the about sheet's `base_uri`, with a `/`
+added unless it ends in `/` or `#`; every character of an identifier other
+than the unreserved characters of RFC 3986 (`A-Z a-z 0-9 - . _ ~`) is
+percent-encoded as UTF-8. The attestations have no address of their own. The
+dataset node is already named by `dataset_uri` in the output, when it is
+given; when it is empty, a CSVW processor names it after the file,
+`about.csv`, since a URI template has no fallback value. See
 [converting](tools.md#converting) for how PLATO tools applies the rest.
 Every node is typed, and every attestation has exactly one subject, source,
 date and citation, so the output is complete PLATO without further

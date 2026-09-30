@@ -137,7 +137,7 @@ whgx:contributor\/scholar-a
 whgx:contributor\/scholar-b
     a plato:Contributor ;
     plato:contributor_name "Thomas Allsen" ;
-    plato:contributor_orcid "https://orcid.org/0000-0002-3456-7890" ;
+    plato:contributor_orcid "https://orcid.org/0000-0002-1825-0097" ;
     plato:contributor_affiliation whgx:org\/tcnj ;
     plato:contributor_role "external_contributor" .
 

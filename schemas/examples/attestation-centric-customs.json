@@ -5,7 +5,7 @@
   "gazetteer": {
     "@id": "http://whgazetteer.org/gazetteer/678",
     "title": "London Customs Accounts 1480–1485",
-    "contributor": "https://orcid.org/0000-0002-1234-5678",
+    "contributor": "https://orcid.org/0000-0002-1825-0097",
     "creator": [{"@id": "https://orcid.org/0000-0003-3060-0181", "name": "Stephen Gadd"}],
     "licence": "https://creativecommons.org/licenses/by/4.0/"
   },
@@ -45,7 +45,7 @@
       ],
       "certainty": 0.95,
       "certaintyNote": "Clear manuscript hand; place identification confirmed by commodity context.",
-      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "contributor": "https://orcid.org/0000-0002-1825-0097",
       "created": "2026-02-16T14:00:00Z"
     },
 
@@ -90,7 +90,7 @@
       ],
       "certainty": 0.6,
       "certaintyNote": "Location inferred from cargo descriptions and known anchorages.",
-      "contributor": "https://orcid.org/0000-0002-1234-5678",
+      "contributor": "https://orcid.org/0000-0002-1825-0097",
       "created": "2026-02-16T14:00:00Z"
     }
   ],
@@ -102,7 +102,7 @@
       "identityType": "closeMatch",
       "certainty": 0.7,
       "basis": "Deptford Strand is likely a waterfront area within modern Deptford, but the historical extent is uncertain.",
-      "assertedBy": "https://orcid.org/0000-0002-1234-5678",
+      "assertedBy": "https://orcid.org/0000-0002-1825-0097",
       "assertedAt": "2026-02-16T14:00:00Z"
     }
   ]

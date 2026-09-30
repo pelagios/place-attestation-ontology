@@ -29,20 +29,27 @@ were made under the earlier policy.
   column for one, so it applies to data published as JSON or RDF. The
   examples that say they are published now give every attestation one.
 - The IRIs of a dataset made from the spreadsheet tables are now normative,
-  and are the ones PLATO tools already makes: a place is
-  `<base_uri>place/<place_id>`, a source `<base_uri>source/<source_id>`
-  (`base_uri` from the about sheet, with a `/` added when it ends in neither
-  `/` nor `#`), and the Gazetteer is named by `dataset_uri`, or by `base_uri`
-  when that is empty. Until now the table definitions left minting them to
-  the platform, so two tools could give the same tables different IRIs.
-  CSVW cannot build an IRI from a cell of another table, so a CSVW processor
-  alone still gives places and sources IRIs relative to their files
-  (`places.csv#bristol`); that graph is for validating the tables, and the
-  table definitions, the sheet reference and the guide now say so. The about
-  sheet's `dataset_uri` is now the Gazetteer's own IRI (the about table's
-  `aboutUrl`) rather than a `dcterms:identifier` literal on
-  `about.csv#dataset`; with `dataset_uri` empty, a CSVW processor names the
-  Gazetteer `about.csv` itself, since a URI template has no fallback value.
+  taken from the ones PLATO tools makes (which is to follow in two details:
+  the `/` on the Gazetteer's IRI, and encoding `! ' ( ) *`). The base is the one given for a
+  conversion, else the about sheet's `base_uri`, with a `/` added when it
+  ends in neither `/` nor `#`. A place is `<base>place/<place_id>` and a
+  source `<base>source/<source_id>`, with every character of the identifier
+  other than RFC 3986's unreserved characters (`A-Z a-z 0-9 - . _ ~`)
+  percent-encoded as UTF-8, so `! ' ( ) *` too; identifiers SHOULD use
+  unreserved characters only. The Gazetteer is named by `dataset_uri`, or by
+  the base (with its `/`) when that is empty. Until now the table
+  definitions left minting them to the platform, so two tools could give the
+  same tables different IRIs. CSVW cannot build an IRI from a cell of
+  another table, so a CSVW processor alone still gives places and sources
+  IRIs relative to their files (`places.csv#bristol`); that graph is for
+  validating the tables, and the table definitions, the sheet reference and
+  the guide now say so. In it, the Gazetteer is now named by `dataset_uri`
+  (the about table's `aboutUrl`) rather than `about.csv#dataset`; with
+  `dataset_uri` empty, it is named `about.csv` itself, since a URI template
+  has no fallback value.
+- The table definitions no longer write `dataset_uri` as a
+  `dcterms:identifier` literal on the Gazetteer, as they have since 0.7.0:
+  it is the Gazetteer's IRI instead, so the literal only repeated it.
 
 ### Added
 
@@ -52,6 +59,10 @@ were made under the earlier policy.
 
 ### Fixed
 
+- The invented ORCIDs in the examples failed ORCID's check digit (ISO 7064
+  MOD 11-2), so any checker that tests it rightly rejected them. They are now `0000-0002-1825-0097`, the fictitious
+  Josiah Carberry whom ORCID's own documentation uses, in the Turtle and the
+  JSON examples alike.
 - The core schema's description of `about` still said it was required in
   every attestation-centric attestation; it now gives the meta-attestation
   exception that 0.7.1 made in the attestation-centric schema. Description
