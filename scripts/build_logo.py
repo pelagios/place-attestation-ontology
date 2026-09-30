@@ -100,6 +100,17 @@ def main(font_dir):
     for px in (32, 180, 512):
         cairosvg.svg2png(bytestring=square.encode(), write_to=str(OUT / f"plato-{px}.png"),
                          output_width=px, output_height=px)
+    # A card for social-media previews (GitHub's repository preview is 1280 by 640): the lockup
+    # centred on white, with PLATO's address beneath, clear of the edges that services crop.
+    url, x3 = text_path(sans, "w3id.org/plato", 15.5, 0, 0)
+    scale = 780 / width
+    left = (1280 - 780) / 2
+    card = (f'<rect width="1280" height="640" fill="#ffffff"/>'
+            f'<g transform="translate({left:.1f} {300 - 50 * scale:.1f}) scale({scale:.4f}) translate(0 -2)">{body}</g>'
+            f'<g transform="translate({640 - x3 * 1.6 / 2:.1f} 520) scale(1.6)"><path d="{url}" fill="#5b6070"/></g>')
+    social = svg("0 0 1280 640", card, "PLATO: Place Attestation Ontology", desc)
+    cairosvg.svg2png(bytestring=social.encode(), write_to=str(OUT / "plato-social.png"),
+                     output_width=1280, output_height=640)
     print("wrote", ", ".join(sorted(p.name for p in OUT.iterdir())))
 
 
