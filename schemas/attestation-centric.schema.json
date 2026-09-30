@@ -175,9 +175,18 @@
           },
           {
             "type": "object",
-            "description": "In attestation-centric mode, 'about' is required — it identifies the existing SpatialEntity being attested.",
-            "required": [
-              "about"
+            "description": "In attestation-centric mode, 'about' is required, identifying the existing SpatialEntity being attested, except on a meta-attestation (one with 'meta'), which is about its target attestation.",
+            "anyOf": [
+              {
+                "required": [
+                  "about"
+                ]
+              },
+              {
+                "required": [
+                  "meta"
+                ]
+              }
             ]
           }
         ]

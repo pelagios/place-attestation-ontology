@@ -641,7 +641,12 @@ plato:attests_timespan
         Links an Attestation to the Timespan during which the attested
         properties (name, geometry, type) were applicable. Distinct from
         the attestation's creation date: this is the historical timespan
-        being asserted, not when the assertion was made.
+        being asserted, not when the assertion was made. It is no wider than
+        the source can witness: a source that shows a name in use only in its
+        own day (a letter, a survey, a gazetteer consulted now) supports a
+        timespan of that day, so the attested timespan then coincides with
+        the source's own date (plato:source_timespan), while remaining the
+        claim's.
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range plato:Timespan .
@@ -933,6 +938,10 @@ plato:meta_attestation_about
     rdfs:comment """
         Links a meta-Attestation to the Attestation it comments on or relates to.
         Used with plato:has_meta_type to specify the nature of the relationship.
+        A meta-attestation need not carry plato:attests_about: it is about its
+        target, and through it about the target's SpatialEntity. Where it does
+        carry one (as when nested under a place in place-centric JSON), that
+        should be the target's.
 
         Example: A meta-attestation might assert that one source's geometry
         attestation contradicts another source's geometry attestation for the

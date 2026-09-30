@@ -30,8 +30,8 @@
 #      entities are NOT the same, so disagreement is recorded as well as
 #      agreement.
 #
-# The same judgements in JSON, with the denial, are in
-# schemas/examples/place-centric-judgements.json.
+# schemas/examples/place-centric-judgements.json has a denial of the same
+# kind in JSON, made in a different review; its IRIs are its own.
 # =============================================================================
 
 
@@ -136,6 +136,10 @@ whgx:identity\/river-upland-1
 # -----------------------------------------------------------------------------
 # Act 2: the editor withdraws Act 1
 #
+# A meta-attestation need not say what it is about (plato:attests_about): its
+# target does. Nested under a place in place-centric JSON it is given that
+# place, which is the same entity.
+#
 # The gazetteer is published, so Act 1 is not deleted or changed. Its maker
 # withdraws it, both relations together, by a meta-attestation of type
 # plato:Retracts. A view of the gazetteer as of 11 September still shows
@@ -199,7 +203,7 @@ whgx:identity\/hill-upland
 # out and report it, never write it as a match.
 # -----------------------------------------------------------------------------
 
-whgx:attestation\/newtons-distinct
+whgx:attestation\/newtons-distinct-2026-09-12
     a plato:Attestation ;
     plato:attests_about whgx:entity\/newton-on-the-hill ;
     plato:negated true ;

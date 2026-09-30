@@ -49,8 +49,8 @@
           ],
           "certainty": 1.0,
           "certaintyNote": "The source names the city: Megabazus was 'at Byzantion' (ἐν Βυζαντίῳ). It gives no location, so no geometry is attested.",
-          "notes": "The timespan is the date of the source, not the span in which the name Byzantion was used. The Histories are usually dated about 440 BC; nothing in them can be dated with certainty after 430 BC, and Herodotus is thought to have died about 425 BC. The bounds are set wide enough to cover both.",
-          "created": "2026-02-16T10:00:00Z"
+          "notes": "The timespan is when this source witnesses the name Byzantion in use. A source witnesses only its own time, so that is the source's date, not the whole span in which the name was used. The Histories are usually dated about 440 BC; nothing in them can be dated with certainty after 430 BC, and Herodotus is thought to have died about 425 BC. The bounds are set wide enough to cover both.",
+          "created": "2026-02-15T10:00:00Z"
         },
         {
           "names": [
@@ -82,8 +82,8 @@
           ],
           "certainty": 1.0,
           "certaintyNote": "The preface names the city 'urbis Constantinopolitanae'. The source describes the city's fourteen regions but gives no coordinates, so no geometry is attested.",
-          "notes": "The timespan is the date of the source, not the span in which the name Constantinopolis was used. The Notitia was written under Theodosius II, who died in 450, and whom its preface praises; proposed dates run from about 425 to 447-450.",
-          "created": "2026-02-16T10:00:00Z"
+          "notes": "The timespan is when this source witnesses the name Constantinopolis in use. A source witnesses only its own time, so that is the source's date, not the whole span in which the name was used. The Notitia was written under Theodosius II, who died in 450, and whom its preface praises; proposed dates run from about 425 to 447-450.",
+          "created": "2026-02-15T10:00:00Z"
         },
         {
           "names": [
@@ -122,14 +122,14 @@
           "certainty": 1.0,
           "certaintyNote": "GeoNames gives İstanbul as the official Turkish name, and a single point for the city; the point stands for the whole city and marks no boundary.",
           "notes": "The timespan is the day GeoNames was consulted. A modern gazetteer witnesses the current name, not when the name came into use.",
-          "created": "2026-02-16T10:00:00Z"
+          "created": "2026-02-15T10:00:00Z"
         }
       ],
       "identityRelations": [
         {
           "object": "https://sws.geonames.org/745044/",
           "identityType": "closeMatch",
-          "basis": "GeoNames describes the modern city: the same settlement, with a different extent. Nested here, the relation needs no subject: it is this SpatialEntity."
+          "basis": "GeoNames describes the modern city: the same settlement, with a different extent."
         }
       ]
     }

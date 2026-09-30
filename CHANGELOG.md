@@ -11,6 +11,28 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
+## Unreleased
+
+Found by WHG's final pass on its documentation against 0.7.0.
+
+### Fixed
+
+- A meta-attestation need not say what it is about: its target does. 0.7.0
+  said so only here; the attestation-centric schema still required `about`
+  on every attestation. It now requires `about` or `meta`, and
+  `plato:meta_attestation_about` states the rule.
+- `plato:attests_timespan` says that the attested timespan is no wider than
+  the source can witness, so for a source that shows a name in use only in
+  its own day it coincides with the source's date while remaining the
+  claim's. The Constantinople example's notes said the timespan was "not the
+  span in which the name was used", which read as contradicting that.
+- The Constantinople example's Turtle and JSON now agree on their creation
+  dates and the GeoNames identity's basis.
+- `examples/identity-judgements.ttl` shared the IRI of its denial with the
+  different denial in `place-centric-judgements.json`, so a combined graph
+  gave one attestation two sources; its IRI is now its own, and its header
+  no longer claims the JSON holds the same judgements.
+
 ## 0.7.0
 
 Dataset metadata, from a review of PLATO against the FAIR principles, and a

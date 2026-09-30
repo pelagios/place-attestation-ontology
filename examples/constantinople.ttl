@@ -30,8 +30,9 @@
 #   - Names, Geometries, and Timespans are independent, reusable nodes.
 #   - Each Attestation bundles a specific combination with provenance.
 #   - No data is overwritten when a new source is added.
-#   - Each Timespan is the date its source witnesses, not the span of years
-#     in which the name was in use.
+#   - Each Timespan is when its source witnesses the name in use. These
+#     sources witness only their own time, so it is the source's date, not
+#     the whole span of years in which the name was in use.
 # =============================================================================
 
 
@@ -189,7 +190,7 @@ whgx:attestation\/byzantion-herodotus
     plato:contributed_by whgx:contributor\/historian ;
     plato:certainty 1.0 ;
     plato:certainty_note "The source names the city: Megabazus was 'at Byzantion' (ἐν Βυζαντίῳ). It gives no location, so no geometry is attested." ;
-    plato:notes "The timespan is the date of the source, not the span in which the name Byzantion was used. The Histories are usually dated about 440 BC; nothing in them can be dated with certainty after 430 BC, and Herodotus is thought to have died about 425 BC. The bounds are set wide enough to cover both." ;
+    plato:notes "The timespan is when this source witnesses the name Byzantion in use. A source witnesses only its own time, so that is the source's date, not the whole span in which the name was used. The Histories are usually dated about 440 BC; nothing in them can be dated with certainty after 430 BC, and Herodotus is thought to have died about 425 BC. The bounds are set wide enough to cover both." ;
     plato:created "2026-02-15T10:00:00Z"^^xsd:dateTime .
 
 
@@ -207,7 +208,7 @@ whgx:attestation\/constantinopolis-notitia
     plato:contributed_by whgx:contributor\/historian ;
     plato:certainty 1.0 ;
     plato:certainty_note "The preface names the city 'urbis Constantinopolitanae'. The source describes the city's fourteen regions but gives no coordinates, so no geometry is attested." ;
-    plato:notes "The timespan is the date of the source, not the span in which the name Constantinopolis was used. The Notitia was written under Theodosius II, who died in 450, and whom its preface praises; proposed dates run from about 425 to 447-450." ;
+    plato:notes "The timespan is when this source witnesses the name Constantinopolis in use. A source witnesses only its own time, so that is the source's date, not the whole span in which the name was used. The Notitia was written under Theodosius II, who died in 450, and whom its preface praises; proposed dates run from about 425 to 447-450." ;
     plato:created "2026-02-15T10:00:00Z"^^xsd:dateTime .
 
 
