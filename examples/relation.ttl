@@ -183,7 +183,8 @@ whgx:attestation\/karakorum-dispute
     plato:contributed_by whgx:contributor\/scholar-b ;
     plato:certainty 0.7 ;
     plato:notes """
-        Allsen argues that the capital function began shifting to Shangdu
+        (A hypothetical example.) Wilhelmina Placeholder argues, citing
+        Allsen (2001), that the capital function began shifting to Shangdu
         as early as 1256, before Kublai Khan's formal establishment there
         in 1263. The end date of 1260 for Karakorum's capital status may
         therefore be too late — the transition was gradual rather than a

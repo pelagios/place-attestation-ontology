@@ -170,7 +170,7 @@ whgx:org\/byzantine-institute
 
 whgx:contributor\/historian
     a plato:Contributor ;
-    plato:contributor_name "Maria Komnena" ;
+    plato:contributor_name "Josiah Carberry" ;
     plato:contributor_orcid "https://orcid.org/0000-0002-1825-0097" ;
     plato:contributor_affiliation whgx:org\/byzantine-institute ;
     plato:contributor_role "data_curator" .

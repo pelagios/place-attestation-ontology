@@ -94,7 +94,7 @@ whgx:org\/uofpitt
 
 whgx:contributor\/trade-historian
     a plato:Contributor ;
-    plato:contributor_name "Jane Smith" ;
+    plato:contributor_name "Josiah Carberry" ;
     plato:contributor_orcid "https://orcid.org/0000-0002-1825-0097" ;
     plato:contributor_affiliation whgx:org\/uofpitt ;
     plato:contributor_role "principal_investigator" .

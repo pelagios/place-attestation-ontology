@@ -92,6 +92,7 @@ were made under the earlier policy.
   Josiah Carberry whom ORCID's own documentation uses, in the Turtle and the
   JSON examples alike.
 - The relation example (`examples/relation.ttl`) named two real historians as the contributors making its claims; they are now fictitious (Josiah Carberry, with ORCID's test ORCID, and Wilhelmina Placeholder, with none), and Allsen's book stays cited only as a source.
+- The relation example no longer attributes its meta-attestation's argument about Shangdu to Allsen: it is now the fictitious Wilhelmina Placeholder's, marked as a hypothetical example and citing Allsen (2001) as its source; and the contributor carrying ORCID's test ORCID in the simple-attestation and Constantinople examples is now named Josiah Carberry, the fictitious person it belongs to, rather than another invented name.
 - The core schema's description of `about` still said it was required in
   every attestation-centric attestation; it now gives the meta-attestation
   exception that 0.7.1 made in the attestation-centric schema. Description
