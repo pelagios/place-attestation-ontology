@@ -6,7 +6,7 @@
     }
   ],
   "dc:title": "PLATO spreadsheet tables",
-  "dc:description": "CSV on the Web (CSVW) metadata for organising data about places in PLATO's shape with spreadsheets. It describes ten linked tables, how they refer to one another, and how each row becomes RDF in the PLATO ontology (https://w3id.org/plato#). Keep every table, even if you leave it empty apart from its header row. Guide: https://pelagios.org/place-attestation-ontology/guide/.",
+  "dc:description": "CSV on the Web (CSVW) metadata for organising data about places in PLATO's shape with spreadsheets. It describes ten linked tables, how they refer to one another, and how each row becomes RDF in the PLATO ontology (https://w3id.org/plato#). Keep every table, even if you leave it empty apart from its header row. The published addresses (IRIs) of a dataset made from these tables are normative, and are what PLATO tools makes: the dataset (the plato:Gazetteer) is named by about's dataset_uri, or by its base_uri when dataset_uri is empty; each place is <base_uri>place/<place_id> and each source <base_uri>source/<source_id>, with a '/' added to base_uri when it ends in neither '/' nor '#', and the identifier percent-encoded as in a URL path segment; every other node (each attestation, and its name, location, date and citation) has no address of its own. CSVW cannot build an address from a cell of another table, so converting the tables with a CSVW processor alone gives the places, sources and rows addresses relative to their CSV files (places.csv#bristol), and names the dataset about.csv itself when dataset_uri is empty: that graph is for validating the tables, and its addresses are not the dataset's. Guide: https://pelagios.org/place-attestation-ontology/guide/.",
   "dc:source": "https://w3id.org/plato/schemas/tables/csv-metadata.json",
   "tables": [
     {
@@ -14,7 +14,7 @@
       "dc:title": "About",
       "dc:description": "One row describing the dataset as a whole: its title, who made it, its licence, what it covers, and the base of its web addresses. It is what makes the dataset findable and citable (the FAIR principles). Exactly one row. Only the title is required, and the licence too once status is 'published'.",
       "tableSchema": {
-        "aboutUrl": "#dataset",
+        "aboutUrl": "{+dataset_uri}",
         "columns": [
           {
             "name": "title",
@@ -134,14 +134,14 @@
           {
             "name": "dataset_uri",
             "titles": "dataset_uri",
-            "dc:description": "The dataset's own permanent web address, if it has one. Optional.",
-            "propertyUrl": "http://purl.org/dc/terms/identifier",
+            "dc:description": "The dataset's own permanent web address, if it has one: the address that names the dataset itself when it is converted. Optional; if it is empty, the dataset is named by base_uri.",
+            "suppressOutput": true,
             "datatype": "anyURI"
           },
           {
             "name": "base_uri",
             "titles": "base_uri",
-            "dc:description": "The base of the web addresses of the dataset's places and sources, such as https://w3id.org/my-project/: choose one you control and will keep. PLATO tools makes each place's address from it and its place_id. Optional, but give it before publishing.",
+            "dc:description": "The base of the web addresses of the dataset's places and sources, such as https://w3id.org/my-project/: choose one you control and will keep. Each place's address is this base, then place/, then its place_id (https://w3id.org/my-project/place/bristol), and each source's is the base, then source/, then its source_id. Optional, but give it before publishing: without it the addresses are not permanent.",
             "skos:example": "https://w3id.org/my-project/",
             "propertyUrl": "http://rdfs.org/ns/void#uriSpace",
             "datatype": "anyURI"
@@ -179,7 +179,7 @@
           {
             "name": "place_id",
             "titles": "place_id",
-            "dc:description": "A short identifier for the place, unique in this sheet. Any text will do ('bristol', 'p1'); the other sheets use it to refer to this row. It is also kept in the data as the place's identifier, so a record can be traced back to your row.",
+            "dc:description": "A short identifier for the place, unique in this sheet. Any text will do ('bristol', 'p1'); the other sheets use it to refer to this row. It is also kept in the data as the place's identifier, so a record can be traced back to your row, and it ends the place's web address: the about sheet's base_uri, then place/, then this (https://w3id.org/my-project/place/bristol). So keep it once the dataset is published.",
             "skos:example": "bristol",
             "required": true,
             "propertyUrl": "https://w3id.org/plato#entity_identifier"
@@ -234,7 +234,7 @@
           {
             "name": "source_id",
             "titles": "source_id",
-            "dc:description": "A short identifier for the source, unique in this sheet ('domesday', 's1').",
+            "dc:description": "A short identifier for the source, unique in this sheet ('domesday', 's1'). It ends the source's web address: the about sheet's base_uri, then source/, then this (https://w3id.org/my-project/source/domesday). So keep it once the dataset is published.",
             "skos:example": "domesday",
             "required": true,
             "suppressOutput": true

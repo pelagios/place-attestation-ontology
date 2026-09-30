@@ -75,12 +75,17 @@ So a file in the tables or in Linked Places Format shows the dataset as it
 stands now. It never shows a withdrawn statement as current, a denied market
 as a market, or one figure from a table as a fact about the whole place.
 
-**Web addresses for your identifiers.** Converting spreadsheet tables, PLATO
-tools turns each place's and source's identifier (such as `bristol`) into a web
-address, under the base you give on the page ("Web address for your
-identifiers"). Without one, it uses the `base_uri` of the
-[about sheet](spreadsheets/first-dataset.md#7-say-what-the-dataset-is), which
-is where it belongs; without that, a stand-in, `https://example.org/my-dataset/`,
+**Web addresses for your identifiers.** PLATO fixes how the spreadsheet
+tables' identifiers become web addresses, so that every tool gives the same
+ones: a place's address is the base, then `place/`, then its `place_id`
+(`https://w3id.org/my-project/place/bristol`), and a source's is the base,
+then `source/`, then its `source_id`. The dataset's own address is the
+`dataset_uri` of the
+[about sheet](spreadsheets/first-dataset.md#7-say-what-the-dataset-is), or the
+base if that is empty. The base belongs in the about sheet's `base_uri`.
+Converting spreadsheet tables, PLATO tools uses the base you give on the page
+("Web address for your identifiers") if you give one, and otherwise
+`base_uri`; without either, a stand-in, `https://example.org/my-dataset/`,
 which is not a permanent address. Converting *to* the tables, an address is
 kept only if reading the tables back would give the same one; otherwise the
 report says it is lost.

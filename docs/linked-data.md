@@ -37,7 +37,14 @@ Use `serialize --validate` to check a set of tables: rdf-tabular's plain
 input is valid.
 
 Identifiers in the output are relative to the files (`places.csv#bristol`,
-`names.csv#row-3`); a platform accepting the tables mints permanent ones.
+`names.csv#row-3`), because CSVW cannot build an address from a cell of
+another table. They are for checking the tables, not the dataset's addresses,
+which PLATO fixes: a place's is the about sheet's `base_uri`, then `place/`,
+then its `place_id`; a source's is `base_uri`, then `source/`, then its
+`source_id`; and the dataset's is its `dataset_uri` (or `base_uri`, if that is
+empty). The attestations have no address of their own. The dataset node is
+already named by `dataset_uri` in the output, when it is given; see
+[converting](tools.md#converting) for how PLATO tools applies the rest.
 Every node is typed, and every attestation has exactly one subject, source,
 date and citation, so the output is complete PLATO without further
 processing.

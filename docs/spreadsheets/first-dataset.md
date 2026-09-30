@@ -86,10 +86,16 @@ the dataset `published`, but fill in as much as you can.
 
 `base_uri` is the most important column to get right before you publish.
 Every place's permanent web address is made from it and the place's
-`place_id`: here, Bristol's is `https://whgazetteer.org/example/customs/place/bristol`.
+`place_id`: the base, then `place/`, then the `place_id`. Here, Bristol's is
+`https://whgazetteer.org/example/customs/place/bristol`. Every source's is made
+the same way with `source/`: the customs account's is
+`https://whgazetteer.org/example/customs/source/tna-e122-19-10`.
 Choose a base you control and will keep, such as your project's own
 [w3id](https://w3id.org) address, so that the addresses still work in
-twenty years.
+twenty years, and do not change a `place_id` or `source_id` once the dataset
+is published, since that would change its address. `dataset_uri` is the
+address of the dataset itself; if you leave it empty, the dataset takes the
+base as its address.
 
 ## What happens to your rows
 

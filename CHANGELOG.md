@@ -28,6 +28,21 @@ were made under the earlier policy.
   the guide, meant to become a requirement. The spreadsheet tables have no
   column for one, so it applies to data published as JSON or RDF. The
   examples that say they are published now give every attestation one.
+- The IRIs of a dataset made from the spreadsheet tables are now normative,
+  and are the ones PLATO tools already makes: a place is
+  `<base_uri>place/<place_id>`, a source `<base_uri>source/<source_id>`
+  (`base_uri` from the about sheet, with a `/` added when it ends in neither
+  `/` nor `#`), and the Gazetteer is named by `dataset_uri`, or by `base_uri`
+  when that is empty. Until now the table definitions left minting them to
+  the platform, so two tools could give the same tables different IRIs.
+  CSVW cannot build an IRI from a cell of another table, so a CSVW processor
+  alone still gives places and sources IRIs relative to their files
+  (`places.csv#bristol`); that graph is for validating the tables, and the
+  table definitions, the sheet reference and the guide now say so. The about
+  sheet's `dataset_uri` is now the Gazetteer's own IRI (the about table's
+  `aboutUrl`) rather than a `dcterms:identifier` literal on
+  `about.csv#dataset`; with `dataset_uri` empty, a CSVW processor names the
+  Gazetteer `about.csv` itself, since a URI template has no fallback value.
 
 ### Added
 
