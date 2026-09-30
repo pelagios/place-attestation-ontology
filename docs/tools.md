@@ -109,13 +109,16 @@ each attestation says, not how the file writes it.
 
 - an attestation of the earlier version that is missing from the later one;
 - an attestation that says something different in the later one;
+- an attestation that says the same but has lost its web address, or has
+  been given another: later statements point to it by that address;
 - a name, location, date, type, property or citation, with a web address of
   its own, that attestations point to, and that the later version describes
   differently, or no longer describes at all though attestations still point to
   it. It is part of what those attestations say, so changing it changes them.
 
-For the first few of each, the report shows what changed: what one version
-says and the other does not. Each problem says how to put it right.
+For the first few attestations, names and other facets that changed, the
+report shows what changed: what one version says and the other does not.
+Each problem says how to put it right.
 
 **Warnings** do not break the rule:
 
