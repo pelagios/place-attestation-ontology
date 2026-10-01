@@ -1018,6 +1018,20 @@ plato:has_meta_type
 # it bundles. These include certainty assessment, contributor tracking,
 # temporal metadata, and special properties for routes/networks/itineraries.
 
+# Numbers. Seven properties take a number: certainty, fuzziness,
+# relative_bearing, relative_distance, identity_certainty, precision_km and
+# similarity_score. Up to 0.7.1 each declared rdfs:range xsd:float, which
+# nothing that writes PLATO honoured: JSON-LD writes a JSON number as
+# xsd:integer when it is whole and xsd:double otherwise, CSV on the Web writes
+# the spreadsheet tables' numbers as xsd:decimal, and the Turtle examples used
+# decimals (one xsd:float). In OWL 2 those value spaces are disjoint, so
+# "1"^^xsd:integer or "0.8"^^xsd:decimal is not an xsd:float, and a reasoner
+# that took the range seriously would find the data inconsistent. No single XSD
+# type fits all three, and the value matters, not its type, so the ranges are
+# dropped: any XSD numeric datatype is accepted, within the bounds each
+# comment states. A consumer compares values numerically. PLATO tools writes
+# a whole number as xsd:integer and any other as xsd:double, as JSON-LD does.
+
 plato:certainty
     a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
@@ -1035,8 +1049,12 @@ plato:certainty
 
         It is never the source's own confidence: how firmly a source asserts
         what it says (hedging, hearsay, doubt) is plato:source_stance.
-    """@en ;
-    rdfs:range xsd:float .
+
+        Any XSD numeric datatype is accepted, from 0 to 1 (xsd:decimal, xsd:double,
+        xsd:float, xsd:integer and the others), so it has no rdfs:range.
+        PLATO tools writes a whole number as xsd:integer and any other as
+        xsd:double, as JSON-LD does.
+    """@en .
 
 plato:certainty_note
     a owl:DatatypeProperty ;
@@ -1467,8 +1485,12 @@ plato:fuzziness
         fuzziness is a property of the thing itself, not of our knowledge
         of it. A regional boundary that was never precisely defined has
         high fuzziness regardless of how much evidence we have.
-    """@en ;
-    rdfs:range xsd:float .
+
+        Any XSD numeric datatype is accepted, from 0 to 1 (xsd:decimal, xsd:double,
+        xsd:float, xsd:integer and the others), so it has no rdfs:range.
+        PLATO tools writes a whole number as xsd:integer and any other as
+        xsd:double, as JSON-LD does.
+    """@en .
 
 plato:fuzziness_note
     a owl:DatatypeProperty ;
@@ -1522,8 +1544,12 @@ plato:relative_bearing
         Compass bearing from the anchor, in degrees (0–360).
         Primarily used for relative geometries: '90' means east of
         the anchor. May carry its own certainty or fuzziness.
-    """@en ;
-    rdfs:range xsd:float .
+
+        Any XSD numeric datatype is accepted, from 0 to 360 (xsd:decimal, xsd:double,
+        xsd:float, xsd:integer and the others), so it has no rdfs:range.
+        PLATO tools writes a whole number as xsd:integer and any other as
+        xsd:double, as JSON-LD does.
+    """@en .
 
 plato:relative_distance
     a owl:DatatypeProperty ;
@@ -1532,8 +1558,12 @@ plato:relative_distance
     rdfs:comment """
         Distance from the anchor, in metres. Primarily used for
         relative geometries. May carry its own certainty or fuzziness.
-    """@en ;
-    rdfs:range xsd:float .
+
+        Any XSD numeric datatype is accepted, zero or more (xsd:decimal, xsd:double,
+        xsd:float, xsd:integer and the others), so it has no rdfs:range.
+        PLATO tools writes a whole number as xsd:integer and any other as
+        xsd:double, as JSON-LD does.
+    """@en .
 
 plato:relative_qualifier
     a owl:ObjectProperty ;
@@ -1662,9 +1692,13 @@ plato:identity_certainty
         A closeMatch can have high certainty ('I'm confident these are
         close but not exact') and an exactMatch can have low certainty
         ('I think they're identical but I'm not sure').
+
+        Any XSD numeric datatype is accepted, from 0 to 1 (xsd:decimal, xsd:double,
+        xsd:float, xsd:integer and the others), so it has no rdfs:range.
+        PLATO tools writes a whole number as xsd:integer and any other as
+        xsd:double, as JSON-LD does.
     """@en ;
-    rdfs:domain plato:IdentityRelation ;
-    rdfs:range xsd:float .
+    rdfs:domain plato:IdentityRelation .
 
 plato:identity_basis
     a owl:DatatypeProperty ;
@@ -1981,15 +2015,19 @@ plato:spatial_precision
 plato:precision_km
     a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
-    rdfs:label "precision in kilometers"@en ;
+    rdfs:label "precision in kilometres"@en ;
     rdfs:comment """
-        Uncertainty radius in kilometers. For point geometries, indicates
+        Uncertainty radius in kilometres. For point geometries, indicates
         how far the true location might be from the stated coordinates.
         For polygons, indicates boundary uncertainty. Can be multiple values
         for heterogeneous geometries.
+
+        Any XSD numeric datatype is accepted, zero or more (xsd:decimal, xsd:double,
+        xsd:float, xsd:integer and the others), so it has no rdfs:range.
+        PLATO tools writes a whole number as xsd:integer and any other as
+        xsd:double, as JSON-LD does.
     """@en ;
-    rdfs:domain plato:Geometry ;
-    rdfs:range xsd:float .
+    rdfs:domain plato:Geometry .
 
 plato:source_crs
     a owl:DatatypeProperty ;
@@ -3598,8 +3636,17 @@ plato:similarity_score
     a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "similarity score"@en ;
-    rdfs:domain plato:Candidate ;
-    rdfs:range xsd:float .
+    rdfs:comment """
+        The matching algorithm's score for this candidate, on the scale
+        that algorithm uses (named by algorithm_version): higher is more
+        similar. It is not a certainty, since a Candidate asserts nothing.
+
+        Any XSD numeric datatype is accepted (xsd:decimal, xsd:double,
+        xsd:float, xsd:integer and the others), so it has no rdfs:range.
+        PLATO tools writes a whole number as xsd:integer and any other as
+        xsd:double, as JSON-LD does.
+    """@en ;
+    rdfs:domain plato:Candidate .
 
 plato:algorithm_version
     a owl:DatatypeProperty ;

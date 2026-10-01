@@ -65,6 +65,20 @@ were made under the earlier policy.
   and survey examples now give their author in this form. JSON is unchanged:
   a creator object already pairs `@id` and `name`.
 
+- `plato:certainty`, `plato:fuzziness`, `plato:relative_bearing`,
+  `plato:relative_distance`, `plato:identity_certainty`, `plato:precision_km`
+  and `plato:similarity_score` no longer declare `rdfs:range xsd:float`. No
+  one XSD type fits what writes PLATO: JSON-LD gives a whole number
+  `xsd:integer` and any other `xsd:double`, the spreadsheet tables give
+  `xsd:decimal`, and the examples used decimals and, once, `xsd:float`. In
+  OWL 2 those value spaces are disjoint, so the declared range made data
+  giving these numbers inconsistent for a reasoner that applied it. Any XSD
+  numeric datatype is now accepted, within the bounds each property states
+  (0 to 1 for the certainties and fuzziness), and each comment and the
+  guide's linked-data page (*Numbers*) say so. PLATO tools writes a whole
+  number as `xsd:integer` and any other as `xsd:double`. `plato:similarity_score`
+  gains a comment, and `plato:precision_km` is labelled in kilometres.
+
 - `plato:derived_from` now says what it already meant in `plato:computed`: a
   Source may be derived from another as a copy or edition of it, or as a
   work made from it (a count taken from a register, the georeference of a

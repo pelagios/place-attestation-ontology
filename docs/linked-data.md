@@ -111,3 +111,18 @@ three pieces for that.
 Add the JSON-LD context to a JSON document, as described under
 [JSON formats](json.md), and expand or convert it with any JSON-LD 1.1
 processor.
+
+## Numbers
+
+Seven properties take a number: `certainty`, `fuzziness` and
+`identity_certainty` (each from 0 to 1), `relative_bearing` (degrees, from 0
+to 360), `relative_distance` (metres) and `precision_km` (kilometres), both
+zero or more, and a match candidate's `similarity_score`. The ontology does
+not tie them to one kind of number, because each format writes numbers its
+own way: JSON-LD writes a whole number as `xsd:integer` and any other as
+`xsd:double`, a CSV on the Web processor writes the spreadsheets' numbers as
+`xsd:decimal`, and Turtle written by hand may use any of these or
+`xsd:float`. All are accepted, and a tool reading PLATO should compare the
+values, not their types: `1`, `1.0` and `1.0E0` are the same certainty.
+PLATO tools writes a whole number as `xsd:integer` and any other as
+`xsd:double`, as JSON-LD does.

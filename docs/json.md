@@ -76,7 +76,10 @@ written ('about 1841'), coordinates as printed. A timespan's `label` is for a
 named period ('Byzantine period'). Certainty stated in words goes in
 `certaintyLevel`, as the URI of a level such as
 `https://w3id.org/plato#LessCertain`, rather than as an invented number in
-`certainty`. Both are your confidence. How firmly the source itself says
+`certainty`. Both are your confidence. `certainty` is a number from 0 to 1,
+written as a JSON number (`0.8`, or `1`), not as text; any kind of number
+is accepted in RDF (see [Numbers](linked-data.md#numbers)). How firmly the
+source itself says
 something goes in an attestation's `sourceStance`, such as
 `https://w3id.org/plato#StanceReported` for a claim it only passes on ("it is
 said"). A source's `licence` is the web address of the licence of the copy you
