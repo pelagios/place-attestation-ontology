@@ -11,6 +11,53 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
+## Unreleased
+
+From testing PLATO against Trismegistos Places (#16), and Stephen's rulings
+on the issues it raised.
+
+### Added
+
+- `plato:timespan_role` (JSON `timespanRole`), on an attestation, with the
+  concepts `plato:WhenTrue` (the default) and `plato:EvidenceSpan` in a new
+  `plato:TimespanRoleScheme` (#20). Many gazetteers date a place by the span of
+  the documents that mention it, which is not the dates of the place:
+  `EvidenceSpan` says so. It is on the attestation, not the reusable Timespan,
+  so that it cannot carry over to other attestations sharing the node, and the
+  window is one attestation with only the timespan, never repeated on each
+  name. Where the evidence's own attestations are in the data, the window is
+  computed from them. A converter that cannot carry it reports the loss. The
+  spreadsheet tables have no column for it.
+- `plato:HomelandOf`, a relation type, for land a people lived in or held,
+  where the source describes the people separately (#22). A people is not a
+  SpatialEntity, and peoples as such are outside PLATO's scope. A gazetteer
+  that records a people as a place is recording the land, whose names are
+  typed both toponym and ethnonym. The relations sheet takes `HomelandOf`.
+- An example from Trismegistos Places,
+  `schemas/examples/place-centric-trismegistos.json` (CC BY-SA 4.0, credited),
+  showing an attestation window, a position between two places, a containment
+  known only by name, a Demotic name known only in transliteration and the land
+  of a people.
+
+### Changed
+
+- A relation may name its target by `relatedLabel` alone, with no `relatesTo`,
+  when the source names something there is nothing to point at ("in the
+  Delta") (#18). The schema requires `relationType` and one of the two; the
+  relations sheet takes `related_label` alone. A unit that recurs and can be
+  listed, such as a province, is better minted as a place of the dataset, so
+  that its places can be joined. RDF already allowed it.
+- `relativeTo` takes one anchor or a list (#19). `plato:BetweenXAndY` takes
+  exactly two, in no particular order, and a bearing or distance only one; the
+  schema checks both. A location given relative to several places at once is
+  several attestations, not one facet with many anchors.
+- `plato:toponym` is the name as the source gives it: in its original script
+  where that is known and can be written, otherwise in a scholarly
+  transliteration, with `script` and `transliterationSystem` saying which
+  (#21). A Demotic name known only in Egyptological transliteration is
+  tagged `egy-Latn-t-egy-egyd` (BCP 47, with the transform extension; checked
+  with a validator, including the extension's source tag).
+
 ## 0.8.0
 
 Candidate sets, normative IRIs for the spreadsheet tables, and what

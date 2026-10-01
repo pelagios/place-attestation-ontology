@@ -678,7 +678,9 @@ plato:attests_timespan
         own day (a letter, a survey, a gazetteer consulted now) supports a
         timespan of that day, so the attested timespan then coincides with
         the source's own date (plato:source_timespan), while remaining the
-        claim's.
+        claim's. Unless plato:timespan_role says otherwise (plato:EvidenceSpan,
+        the span of the evidence), the timespan dates what the attestation
+        records.
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range plato:Timespan .
@@ -890,6 +892,16 @@ plato:relates_to
         a plato:related_label. Platforms should show relations to entities
         that are not spatial apart from spatial ones, and leave them out of
         containment, clustering and matching.
+
+        A source sometimes names the target without anything to point at:
+        "in the Delta", "in the territory of the Agrianes". The attestation
+        then has plato:has_relation_type and plato:related_label, and no
+        relates_to, which says exactly what the source says. A unit that
+        recurs and can be listed (the provinces or nomes of a gazetteer, each
+        named in thousands of records) is better minted as a SpatialEntity of
+        the dataset, with a name attested from the source, so that the places
+        in it can be joined; a name alone suits a one-off. A consumer cannot
+        join on a name, and should show it as written.
     """@en ;
     rdfs:domain plato:Attestation .
 
@@ -906,6 +918,9 @@ plato:related_label
         whenever the target is not a SpatialEntity in the same dataset; it is
         harmless, but redundant, when the target is. It names the target; the
         source's own wording of the relation is plato:source_label.
+
+        It may also stand alone, with no plato:relates_to, when the source
+        names a target there is nothing to point at (see plato:relates_to).
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range xsd:string .
@@ -1218,6 +1233,33 @@ plato:source_stance
         attestation as asserted, which overstates the source but does not
         invert it. So, unlike plato:negated, no consumer is required to leave
         it out, but a converter should report the loss.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range skos:Concept .
+
+plato:timespan_role
+    a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "timespan role"@en ;
+    rdfs:comment """
+        What this attestation's timespans date: a concept in
+        plato:TimespanRoleScheme. plato:WhenTrue, the default and usually
+        omitted, is the period during which what the attestation bundles held,
+        according to the source (see plato:attests_timespan).
+        plato:EvidenceSpan is the span of the evidence: the dates of the
+        earliest and latest documents that mention the entity, as many
+        gazetteers date a place (Trismegistos Places, for one). It does not say
+        that the entity existed, or bore any name, throughout.
+
+        It is on the attestation, not the Timespan, because a Timespan is a
+        reusable node that other attestations may share, and the role of a
+        date belongs to the claim that uses it. An attestation window is one
+        attestation about the place that carries the timespan and nothing
+        else, with this role; it is never repeated on each name. Where the
+        attestations of the evidence are themselves in the data, the window
+        can be worked out from their dates, and is then plato:computed. A
+        consumer that cannot express an EvidenceSpan must report it as a
+        loss, and must not show the window as the dates of the place.
     """@en ;
     rdfs:domain plato:Attestation ;
     rdfs:range skos:Concept .
@@ -1536,6 +1578,16 @@ plato:relative_to
         - Spatial relativity: "20km east of Nanjing" (anchor is a SpatialEntity)
         - Temporal relativity: "during the reign of Justinian" (anchor is a Period)
         - Name relativity: "also known as Rome" (anchor is another Name)
+
+        A facet may have more than one anchor where its qualifier needs them:
+        "between the 5th cataract and Meroe" is plato:BetweenXAndY with
+        exactly two values of relative_to, in no particular order. A bearing
+        or a distance (plato:relative_bearing, plato:relative_distance) is
+        measured from one point, so a facet that has either has exactly one
+        anchor. A location given relative to several places at once ("in the
+        territory of Theadelpheia, Euhemeria and Philoteris") is several
+        attestations, a containment or a nearness for each place, not one
+        facet with many anchors.
     """@en ;
     rdfs:domain [
         a owl:Class ;
@@ -1553,7 +1605,8 @@ plato:relative_bearing
     rdfs:comment """
         Compass bearing from the anchor, in degrees (0–360).
         Primarily used for relative geometries: '90' means east of
-        the anchor. May carry its own certainty or fuzziness.
+        the anchor. May carry its own certainty or fuzziness. Only on a
+        facet with exactly one anchor (see plato:relative_to).
 
         Any XSD numeric datatype is accepted, from 0 to 360 (xsd:decimal, xsd:double,
         xsd:float, xsd:integer and the others), so it has no rdfs:range.
@@ -1567,7 +1620,8 @@ plato:relative_distance
     rdfs:label "distance"@en ;
     rdfs:comment """
         Distance from the anchor, in metres. Primarily used for
-        relative geometries. May carry its own certainty or fuzziness.
+        relative geometries. May carry its own certainty or fuzziness. Only on
+        a facet with exactly one anchor (see plato:relative_to).
 
         Any XSD numeric datatype is accepted, zero or more (xsd:decimal, xsd:double,
         xsd:float, xsd:integer and the others), so it has no rdfs:range.
@@ -1813,8 +1867,14 @@ plato:toponym
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "toponym"@en ;
     rdfs:comment """
-        The name string itself in its original script. This is the primary
-        property of a Name entity. Required for all Name instances.
+        The name as the source gives it, in its original script where that is
+        known and can be written; otherwise in a scholarly transliteration,
+        with plato:script giving the script of the transliteration (usually
+        Latn) and plato:transliteration_system saying which system it follows.
+        A Demotic name known only in Egyptological transliteration is a
+        toponym, not a romanised form: plato:romanized is a further form for
+        searching or display, beside a toponym in another script. This is the
+        primary property of a Name entity. Required for all Name instances.
     """@en ;
     rdfs:domain plato:Name ;
     rdfs:range xsd:string .
@@ -1886,8 +1946,8 @@ plato:transliteration_system
     rdfs:comment """
         The transliteration/romanization system used (e.g., 'Pinyin' for
         Chinese, 'BGN/PCGN' for Arabic, 'ISO 259' for Hebrew, 'Hepburn' for
-        Japanese). Enables proper interpretation and comparison of romanized
-        forms.
+        Japanese). Enables proper interpretation and comparison of a transliterated
+        toponym or a romanized form.
     """@en ;
     rdfs:domain plato:Name ;
     rdfs:range xsd:string .
@@ -3091,6 +3151,26 @@ plato:TranscriptionNonReconstructable
     skos:prefLabel "not reconstructable"@en ;
     skos:definition "Part of the value is lost and cannot be supplied."@en .
 
+plato:TimespanRoleScheme
+    a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "timespan role"@en ;
+    rdfs:comment "Starter concepts for plato:timespan_role. What an attestation's timespans date: when what it records held, or the span of the evidence for it."@en .
+
+plato:WhenTrue
+    a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:inScheme plato:TimespanRoleScheme ;
+    skos:prefLabel "when true"@en ;
+    skos:definition "The period during which what the attestation records held, according to the source. The default."@en .
+
+plato:EvidenceSpan
+    a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:inScheme plato:TimespanRoleScheme ;
+    skos:prefLabel "evidence span"@en ;
+    skos:definition "The span of the evidence: the dates of the earliest and latest documents that mention the entity. Not the dates of the entity itself."@en .
+
 plato:SourceStanceScheme
     a skos:ConceptScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
@@ -3205,7 +3285,7 @@ plato:BetweenXAndY
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:RelativeQualifierScheme ;
     skos:prefLabel "between"@en ;
-    skos:definition "Between the anchor and a second anchor."@en .
+    skos:definition "Between two anchors, given as two values of plato:relative_to, in no particular order."@en .
 
 plato:DuringReignOf
     a skos:Concept ;
@@ -3576,6 +3656,25 @@ plato:SubjectOf
     plato:relation_domain "SpatialEntity" ;
     plato:relation_range "record, document or publication" ;
     rdfs:comment "The target is about the subject: an archival file, a site record, a report or a publication, identified by its address. Not a citation of the target as evidence for another statement, which is plato:has_citation."@en .
+
+# A people is not a SpatialEntity: a population can move, divide and merge while
+# its identity holds, and it has no extent of its own. The land a source places
+# it in is a SpatialEntity, and a gazetteer that records a people as a place
+# (Trismegistos Places: status "people") is recording that land: its names are
+# typed both toponym and ethnonym, and its type keeps the source's word
+# ("people") in source_label. Where a source describes the people separately
+# (D-PLACE, a people's own record), the land relates_to it with plato:HomelandOf.
+# Peoples as such are outside PLATO's scope.
+
+plato:HomelandOf
+    a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    plato:authority_title "homeland of"@en ;
+    plato:relation_label "homeland_of" ;
+    plato:inverse_label "has_homeland" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "people" ;
+    rdfs:comment "The subject is land that the target people lived in or held, as the source says: the target is a people described elsewhere, identified by its address where it has one, and named by plato:related_label. A people is not itself a SpatialEntity."@en .
 
 # -----------------------------------------------------------------------------
 # Kinds of SpatialEntity: routes, itineraries, networks and segments

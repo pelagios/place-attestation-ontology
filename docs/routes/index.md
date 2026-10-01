@@ -118,10 +118,11 @@ source you cite is the evidence for a statement, while "this photograph
 shows the site" is a statement in its own right, with its own source,
 usually the catalogue that identified it.
 
-Each relations row names exactly one thing it relates the place to: either a
-place in `related_place_id` or an address in `related_uri`, never both and
-never neither. [PLATO tools](https://pelagios.org/plato-tools/) reports a row
-that breaks this rule.
+Each relations row names exactly one thing it relates the place to: a place in
+`related_place_id`, or an address in `related_uri`, never both. When the source
+only names the other thing, with nothing to point at ("in the Delta"), leave
+both empty and give the name in `related_label`. [PLATO
+tools](https://pelagios.org/plato-tools/) reports a row that fills in both.
 
 ## What not to enter
 

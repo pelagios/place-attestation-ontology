@@ -1211,7 +1211,7 @@
     {
       "url": "relations.csv",
       "dc:title": "Relations",
-      "dc:description": "One row for each time a source relates a place to something else: a parish lying in a hundred, a station on a road, a stop on a journey, one place leading to another, a place where a person was born. Each row becomes a plato:Attestation relating the place in place_id either to another place, in related_place_id, or to something described elsewhere (a person, an object, an event), in related_uri. Fill in exactly one of the two: CSVW cannot state that rule, so PLATO tools checks it.",
+      "dc:description": "One row for each time a source relates a place to something else: a parish lying in a hundred, a station on a road, a stop on a journey, one place leading to another, a place where a person was born. Each row becomes a plato:Attestation relating the place in place_id either to another place, in related_place_id, or to something described elsewhere (a person, an object, an event), in related_uri. Fill in one of the two, never both; or neither, when the source only names the other thing, in related_label. CSVW cannot state that rule, so PLATO tools checks it.",
       "tableSchema": {
         "aboutUrl": "#row-{_row}",
         "foreignKeys": [
@@ -1250,20 +1250,20 @@
           {
             "name": "relation_type",
             "titles": "relation_type",
-            "dc:description": "How they are related. Places within places: 'ContainedIn' (the place in place_id lies within the other). Routes, journeys and networks: 'MemberOf' (the place is a station, stop or member of the route, journey or network in related_place_id; give its position in sequence), 'ConnectedTo' (directly connected, either way), 'LeadsTo' (connected one way, from place_id to the other), 'BeginsAt' and 'EndsAt' (a segment, such as a leg of a road, begins or ends at the other place), 'HasEnd' (the other place is one end of a segment with no direction; give it for both ends). People, objects and events, in related_uri: 'BirthplaceOf', 'DeathplaceOf', 'ResidenceOf', 'FindspotOf', 'SettingOf', 'WorkplaceOf'. Images and records about a place, in related_uri: 'DepictedIn' (a photograph, map or drawing shows it), 'SubjectOf' (an archival file, report or publication is about it). Only PLATO's own relation types can be used here; a project's own (declared in JSON or RDF with broader_relation) cannot, and further types are added to PLATO's vocabulary on request.",
+            "dc:description": "How they are related. Places within places: 'ContainedIn' (the place in place_id lies within the other). Routes, journeys and networks: 'MemberOf' (the place is a station, stop or member of the route, journey or network in related_place_id; give its position in sequence), 'ConnectedTo' (directly connected, either way), 'LeadsTo' (connected one way, from place_id to the other), 'BeginsAt' and 'EndsAt' (a segment, such as a leg of a road, begins or ends at the other place), 'HasEnd' (the other place is one end of a segment with no direction; give it for both ends). People, objects and events, in related_uri: 'BirthplaceOf', 'DeathplaceOf', 'ResidenceOf', 'FindspotOf', 'SettingOf', 'WorkplaceOf'. Images and records about a place, in related_uri: 'DepictedIn' (a photograph, map or drawing shows it), 'SubjectOf' (an archival file, report or publication is about it). A people's land: 'HomelandOf' (the place is land the people lived in or held; name the people in related_label, and give its address in related_uri where it has one). Only PLATO's own relation types can be used here; a project's own (declared in JSON or RDF with broader_relation) cannot, and further types are added to PLATO's vocabulary on request.",
             "skos:example": "ContainedIn",
             "required": true,
             "propertyUrl": "https://w3id.org/plato#has_relation_type",
             "valueUrl": "https://w3id.org/plato#{relation_type}",
             "datatype": {
               "base": "string",
-              "format": "^(ContainedIn|MemberOf|ConnectedTo|LeadsTo|BeginsAt|EndsAt|HasEnd|BirthplaceOf|DeathplaceOf|ResidenceOf|FindspotOf|SettingOf|WorkplaceOf|DepictedIn|SubjectOf)$"
+              "format": "^(ContainedIn|MemberOf|ConnectedTo|LeadsTo|BeginsAt|EndsAt|HasEnd|BirthplaceOf|DeathplaceOf|ResidenceOf|FindspotOf|SettingOf|WorkplaceOf|DepictedIn|SubjectOf|HomelandOf)$"
             }
           },
           {
             "name": "related_place_id",
             "titles": "related_place_id",
-            "dc:description": "The other place: a place_id from the places sheet. Leave empty if the row relates the place to something that is not a place, in related_uri.",
+            "dc:description": "The other place: a place_id from the places sheet. Leave empty if the row relates the place to something that is not a place, in related_uri, or only names it, in related_label.",
             "skos:example": "buckinghamshire",
             "propertyUrl": "https://w3id.org/plato#relates_to",
             "valueUrl": "places.csv#{related_place_id}"
@@ -1271,7 +1271,7 @@
           {
             "name": "related_uri",
             "titles": "related_uri",
-            "dc:description": "The web address of what the place is related to, when it is not a place in your places sheet: a person, an object or an event described elsewhere, such as http://www.wikidata.org/entity/Q9441 for the Buddha. Leave empty if you filled in related_place_id.",
+            "dc:description": "The web address of what the place is related to, when it is not a place in your places sheet: a person, an object or an event described elsewhere, such as http://www.wikidata.org/entity/Q9441 for the Buddha. Leave empty if you filled in related_place_id. Leave both empty when the source only names the other thing, without anything to point at: then give the name in related_label.",
             "skos:example": "http://www.wikidata.org/entity/Q9441",
             "propertyUrl": "https://w3id.org/plato#relates_to",
             "valueUrl": "{+related_uri}",
@@ -1280,7 +1280,7 @@
           {
             "name": "related_label",
             "titles": "related_label",
-            "dc:description": "A name for what related_uri points to ('the Buddha'), so that it can be shown without looking the address up. Give it whenever you fill in related_uri.",
+            "dc:description": "A name for what related_uri points to ('the Buddha'), so that it can be shown without looking the address up. Give it whenever you fill in related_uri. On its own, it names something the source gives no address for ('in the Delta'); a unit that recurs, such as a province, is better added to the places sheet.",
             "skos:example": "the Buddha",
             "propertyUrl": "https://w3id.org/plato#related_label"
           },

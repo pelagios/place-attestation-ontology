@@ -66,8 +66,11 @@ locations, types, relations, connections and properties becomes one attestation.
 8. **A relations row names exactly one thing.** Fill in either
    `related_place_id`, for a place in your places sheet, or `related_uri`, for
    something described elsewhere such as a person, with a name for it in
-   `related_label`: never both, and never neither. PLATO tools reports a row
-   that breaks this rule. [Routes, journeys and networks](../routes/index.md)
+   `related_label`: never both. When the source only names the other thing,
+   with nothing to point at ("in the Delta"), leave both empty and give the
+   name in `related_label`. If the same unit comes up again and again, such as
+   a province, add it to your places sheet instead, so that its places can be
+   found together. PLATO tools reports a row that fills in both. [Routes, journeys and networks](../routes/index.md)
    explains the relations for them.
 
 :::{note}

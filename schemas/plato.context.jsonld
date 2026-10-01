@@ -781,6 +781,10 @@
             "sourceStance": {
               "@id": "plato:source_stance",
               "@type": "@id"
+            },
+            "timespanRole": {
+              "@id": "plato:timespan_role",
+              "@type": "@id"
             }
           }
         },
@@ -1562,6 +1566,10 @@
             "sourceStance": {
               "@id": "plato:source_stance",
               "@type": "@id"
+            },
+            "timespanRole": {
+              "@id": "plato:timespan_role",
+              "@type": "@id"
             }
           }
         },
@@ -2332,6 +2340,10 @@
         "negated": "plato:negated",
         "sourceStance": {
           "@id": "plato:source_stance",
+          "@type": "@id"
+        },
+        "timespanRole": {
+          "@id": "plato:timespan_role",
           "@type": "@id"
         }
       }
