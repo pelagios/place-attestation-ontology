@@ -86,6 +86,21 @@ were made under the earlier policy.
 
 ### Fixed
 
+- The guide's JSON example, and the README, tell readers to add the context
+  as the document's `@context`, but both profiles refused the key, so the
+  guide's own example failed validation. Both profiles now take an optional
+  `@context` (a URI, an object, or a list of them); any other unknown key is
+  still refused.
+- The profiles were titled "Submission Profile", and the place-centric one
+  called itself "the successor to LPF". They are now the place-centric and
+  attestation-centric profiles, describing a document, and LPF is described as
+  PLATO's single-object-attestation profile, still valid as it is. The
+  attestation-centric description gives the meta-attestation exception to
+  `about`. Descriptions only.
+- The vocabularies page named the attribution column as the only one whose
+  start the table definitions add. So do `stance`,
+  `transcription_accuracy` and `transcription_completeness`.
+
 - The invented ORCIDs in the examples failed ORCID's check digit (ISO 7064
   MOD 11-2), so any checker that tests it rightly rejected them. They are now `0000-0002-1825-0097`, the fictitious
   Josiah Carberry whom ORCID's own documentation uses, in the Turtle and the

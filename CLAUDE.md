@@ -66,7 +66,7 @@ The workflow's fragile parts are already commented in place: the Widoco release 
 
 ## The PLATO guide (Sphinx)
 
-`docs/` is a Sphinx site (MyST Markdown, Furo theme), built by the docs workflow into `guide/` on Pages: https://pelagios.org/place-attestation-ontology/guide/. It is written for non-technical researchers, so keep its prose plain and explain every term (British spelling, as everywhere). It opens with *why* PLATO: a structure that helps researchers think about what their data is and organise it, and reassurance that data in that shape can be consumed by any tool implementing the standard. Frame everything that way. Do not describe using PLATO as "contributing", a "contribution" or a "submission"; say organising data, a dataset, a JSON document. Those words are right only for the ontology's own `Contributor` class and `contributor` key, and for contributing to the PLATO project itself. `docs/_ext/plato_generate.py` generates, at build time and into the git-ignored `docs/_generated/`: the sheet reference from `schemas/tables/csv-metadata.json`, the vocabulary pages from `ontology.ttl`, the template workbook (`.xlsx`, with drop-downs and text-formatted columns), and zips of the template and each worked example. The walkthrough pages `{include}` tables rendered from the example CSVs rather than quoting them, so none of this can drift. Build locally with warnings as errors, as CI does, and run the link checker after changing links:
+`docs/` is a Sphinx site (MyST Markdown, Furo theme), built by the docs workflow into `guide/` on Pages: https://pelagios.org/place-attestation-ontology/guide/. It is written for non-technical researchers, so keep its prose plain and explain every term (British spelling, as everywhere). It opens with *why* PLATO: a structure that helps researchers think about what their data is and organise it, and reassurance that data in that shape can be consumed by any tool implementing the standard. Frame everything that way. Do not describe using PLATO as "contributing", a "contribution" or a "submission"; say organising data, a dataset, a JSON document. The same holds in the README and the schema descriptions. Those words are right only for the ontology's own `Contributor` class and `contributor` key, and for contributing to the PLATO project itself. `docs/_ext/plato_generate.py` generates, at build time and into the git-ignored `docs/_generated/`: the sheet reference from `schemas/tables/csv-metadata.json`, the vocabulary pages from `ontology.ttl`, the template workbook (`.xlsx`, with drop-downs and text-formatted columns), and zips of the template and each worked example. The walkthrough pages `{include}` tables rendered from the example CSVs rather than quoting them, so none of this can drift. Build locally with warnings as errors, as CI does, and run the link checker after changing links:
 
 ```bash
 python3 -m sphinx -W --keep-going -b html docs docs/_build/html
@@ -97,7 +97,7 @@ Zenodo archives the repository as it stands at the tag, so **never put a per-ver
 
 ### The attestation-as-bundle pattern
 
-The unit of contributed knowledge is the **Attestation**, not the place record. An `Attestation` is a lightweight node with no substantive content of its own — its meaning comes entirely from its outgoing relationships:
+The unit of recorded knowledge is the **Attestation**, not the place record. An `Attestation` is a lightweight node with no substantive content of its own — its meaning comes entirely from its outgoing relationships:
 
 ```
 Attestation ──attests_about──▶ SpatialEntity        (the stable identity)
@@ -109,7 +109,7 @@ Attestation ──attests_about──▶ SpatialEntity        (the stable identi
             ──has_citation────▶ Citation ──cites──▶ Authority  (+ locator)
 ```
 
-Everything on the right except `Citation` is a **reusable node**: one `Name` or `Geometry` can be referenced by attestations about many different SpatialEntities. This is the structural difference from LPF, where names and geometries are properties of a place record. Any subset of these relationships is valid — contributors attest only what their source supports.
+Everything on the right except `Citation` is a **reusable node**: one `Name` or `Geometry` can be referenced by attestations about many different SpatialEntities. This is the structural difference from LPF, where names and geometries are properties of a place record. Any subset of these relationships is valid — a dataset attests only what its source supports.
 
 Two consequences shape the rest of the model, and new work should preserve them:
 
@@ -128,8 +128,8 @@ Two consequences shape the rest of the model, and new work should preserve them:
 |---|---|---|
 | RDF/OWL | `ontology.ttl` | Normative; the conceptual model |
 | JSON Schema | `schemas/plato.schema.json` | Shared `$defs` for every object type |
-| Submission profiles | `schemas/place-centric.schema.json`, `schemas/attestation-centric.schema.json` | Two ingestion shapes composed from those `$defs` |
-| JSON-LD context | `schemas/plato.context.jsonld` | Maps every JSON key to its RDF term; expanding a submission with it yields the graph |
+| Profiles | `schemas/place-centric.schema.json`, `schemas/attestation-centric.schema.json` | Two ingestion shapes composed from those `$defs` |
+| JSON-LD context | `schemas/plato.context.jsonld` | Maps every JSON key to its RDF term; expanding a document with it yields the graph |
 | Spreadsheet tables | `schemas/tables/csv-metadata.json` (+ header-only `*.csv`) | CSVW metadata for ten linked CSV tables; converting them yields the graph |
 
 Adding or renaming a term means touching the ontology, the JSON `$defs`, the JSON-LD context (a key the context does not name is dropped silently on expansion), and usually an example in both `examples/` (Turtle) and `schemas/examples/` (JSON). A property-scoped context in the context file resolves keys that mean different things by parent (`label`, `source`, `contributor`, `identifier`); a new such key goes in the scoped context of its parent, not at the top level, or it will shadow nothing and map wrongly. Starter concepts for SKOS-valued properties are declared in the Starter Vocabularies section of the ontology, not only named in comments.

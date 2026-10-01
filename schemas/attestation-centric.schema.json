@@ -1,18 +1,26 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://w3id.org/plato/schemas/attestation-centric.schema.json",
-  "title": "PLATO Attestation-Centric Submission Profile",
-  "description": "Submit one or more attestations referencing existing SpatialEntities by URI. This profile is for incremental scholarly contribution: attesting evidence about SpatialEntities that already exist in the system without redefining them. Each attestation must specify its 'about' field.",
+  "title": "PLATO Attestation-Centric Profile",
+  "description": "A document of one or more attestations about SpatialEntities that already exist elsewhere, referred to by URI: the shape for adding evidence about other datasets' places without redefining them. Each attestation gives its 'about' field, except a meta-attestation, which is about the attestation it comments on.",
   "type": "object",
   "properties": {
     "$schema": {
       "type": "string",
       "const": "https://w3id.org/plato/schemas/attestation-centric.schema.json"
     },
+    "@context": {
+      "description": "The JSON-LD context, so that a JSON-LD processor reads the document as RDF in the PLATO ontology: https://w3id.org/plato/schemas/plato.context.jsonld, or a list or object that includes it. Optional: a tool that knows PLATO applies the context whether or not the document names it.",
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "object" },
+        { "type": "array", "items": { "anyOf": [{ "type": "string", "format": "uri" }, { "type": "object" }] } }
+      ]
+    },
     "profile": {
       "type": "string",
       "const": "attestation-centric",
-      "description": "Identifies this as an attestation-centric submission."
+      "description": "Identifies this as an attestation-centric document."
     },
     "gazetteer": {
       "type": "object",
@@ -195,7 +203,7 @@
     },
     "newSpatialEntities": {
       "type": "array",
-      "description": "Optional: new SpatialEntities that do not yet exist in the system. Use sparingly — only when no existing SpatialEntity matches. These follow the place-centric pattern (SpatialEntity with nested attestations) but are submitted alongside attestation-centric contributions.",
+      "description": "Optional: new SpatialEntities that do not yet exist elsewhere. Use sparingly — only when no existing SpatialEntity matches. These follow the place-centric pattern (SpatialEntity with nested attestations) within an attestation-centric document.",
       "items": {
         "allOf": [
           {

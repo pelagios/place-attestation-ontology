@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://w3id.org/plato/schemas/plato.schema.json",
   "title": "PLATO — Place Attestation Ontology: Core Definitions",
-  "description": "Shared object-type definitions for the PLATO data model. These definitions are composed by the place-centric and attestation-centric submission profiles.",
+  "description": "Shared object-type definitions for the PLATO data model. These definitions are composed by the place-centric and attestation-centric profiles.",
   "$defs": {
     "uri": {
       "type": "string",
@@ -1073,7 +1073,7 @@
           "items": {
             "$ref": "#/$defs/attestation"
           },
-          "description": "Attestations about this SpatialEntity (used in place-centric submissions)."
+          "description": "Attestations about this SpatialEntity (used in place-centric documents)."
         },
         "identityRelations": {
           "type": "array",

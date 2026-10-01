@@ -18,6 +18,7 @@ Citation
   source the evidence is, and, where known, why the source is cited: as the
   evidence, as a source of data, as related reading.
 
+(computed-value)=
 Computed value
 : A value software worked out from other data, such as a journey's overall
   dates from the dates of its stops. Platforms mark such values when they
@@ -39,6 +40,7 @@ Date, from, to
   the earliest and latest years or days it can mean, written with at least four-digit
   years.
 
+(denial)=
 Denial
 : A source's statement that something was not so, such as "no market here".
   It is recorded as an attestation marked as denied, about the real place,
@@ -137,6 +139,7 @@ SpatialEntity
   units or the regions historical periods apply to. What kind each is comes
   from type attestations.
 
+(stance)=
 Stance
 : How firmly a source itself says something. Most sources simply assert, but
   some pass a claim on without vouching for it ("it is said"), hedge it, or
