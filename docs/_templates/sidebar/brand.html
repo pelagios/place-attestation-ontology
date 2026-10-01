@@ -1,0 +1,14 @@
+{#- Furo's sidebar brand (furo/sidebar/brand.html), with the guide's status badge beneath it.
+    The badge sits outside the brand's link, since a link cannot hold another link. -#}
+<a class="sidebar-brand{% if logo %} centered{% endif %}" href="{{ pathto(master_doc) }}">
+  {%- if logo_url %}
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="{{ logo_url }}" alt="Logo"/>
+  </div>
+  {%- endif %}
+  <span class="sidebar-brand-text">{{ docstitle if docstitle else project }}</span>
+</a>
+<p class="plato-status">
+  <a class="plato-badge" href="{{ pathto('about') }}#under-development" aria-describedby="plato-status-tip">Under development</a>
+  <span class="plato-tip" id="plato-status-tip" role="tooltip">PLATO is developed in the open. Its terms and schemas may still change between releases, but a renamed or withdrawn term is kept, marked as deprecated, for at least one release before it is removed. Each release is archived on Zenodo with its own DOI. PLATO tools has its own badge.</span>
+</p>

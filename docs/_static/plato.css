@@ -32,3 +32,30 @@ dl dd > ul:last-child { margin-bottom: 1.25rem; }
    centred beneath it (Furo centres the logo but leaves the name flush left). */
 .sidebar-logo { max-width: 56px; }
 .sidebar-brand-text { text-align: center; }
+
+/* The status badge under the guide's name, in the logo's gold on its dark pupil, and the
+   styled tooltip that explains it (plato-tooltip.js). The tooltip is fixed-position and
+   placed by the script, so that it can stay within the viewport. */
+.plato-status { text-align: center; margin: -0.25rem 0 0.75rem; }
+.plato-badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; text-decoration: none; line-height: 1.4;
+  padding: 0.1rem 0.6rem; border-radius: 999px;
+  background: #f3c969; color: #101a3a; border: 1px solid #c99a2e;
+}
+.plato-badge:hover, .plato-badge:focus-visible { background: #f7d98e; color: #101a3a; }
+.plato-badge:focus-visible { outline: 2px solid #1f45b8; outline-offset: 2px; }
+.plato-tip {
+  position: fixed; z-index: 1000; top: 0; left: 0; box-sizing: border-box; max-width: min(22rem, calc(100vw - 16px));
+  padding: 0.6rem 0.8rem; border-radius: 6px; border-top: 3px solid #f3c969;
+  background: #101a3a; color: #ffffff; font-size: 0.85rem; line-height: 1.45;
+  text-align: left; text-transform: none; letter-spacing: normal;
+  box-shadow: 0 4px 14px rgba(16, 26, 58, 0.3);
+  visibility: hidden; opacity: 0; transition: opacity 120ms ease, visibility 0s 120ms;
+}
+.plato-tip.is-open { visibility: visible; opacity: 1; transition: opacity 120ms ease; }
+body[data-theme="dark"] .plato-tip { outline: 1px solid #7cc4f2; }
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) .plato-tip { outline: 1px solid #7cc4f2; }
+}
+@media (prefers-reduced-motion: reduce) { .plato-tip, .plato-tip.is-open { transition: none; } }

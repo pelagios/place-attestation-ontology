@@ -17,7 +17,7 @@ myst_enable_extensions = ["colon_fence", "deflist"]
 myst_heading_anchors = 3
 
 exclude_patterns = ["_build", "_generated", "_ext", "requirements.txt", "README.md"]
-templates_path = []
+templates_path = ["_templates"]
 
 html_theme = "furo"
 html_title = "PLATO guide"
@@ -29,6 +29,7 @@ html_css_files = [
     "&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap",
     "plato.css",
 ]
+html_js_files = ["plato-tooltip.js"]
 html_theme_options = {
     "source_repository": "https://github.com/pelagios/place-attestation-ontology/",
     "source_branch": "main",

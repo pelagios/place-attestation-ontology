@@ -6,8 +6,24 @@ PLATO, the Place Attestation Ontology, is developed by the
 University of Pittsburgh, and formalises the data model of the
 [World Historical Gazetteer](https://whgazetteer.org).
 
-It is an early draft, published for discussion and review, and not yet
-stable.
+## Under development
+
+PLATO is developed in the open. It is an early draft, published for
+discussion and review, and not yet stable: its terms, its JSON schemas and
+its spreadsheet tables may still change between releases.
+
+A term or JSON key that is renamed or withdrawn is not removed at once. It
+is kept, marked as deprecated and pointing to its replacement, for at least
+one release before it is removed. The
+[changelog](https://github.com/pelagios/place-attestation-ontology/blob/main/CHANGELOG.md)
+states this policy and records every change, release by release.
+
+Each release is archived on Zenodo with its own DOI (see
+[Citing PLATO](#citing-plato)), so data organised against one release can
+always name the exact version it follows.
+
+[PLATO tools](https://pelagios.org/plato-tools/), which checks and converts
+data in PLATO's shape, is developed separately and carries its own badge.
 
 ## PLATO and Linked Places Format
 
