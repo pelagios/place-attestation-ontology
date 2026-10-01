@@ -230,7 +230,8 @@ only, not how likely a match is, so the decision is still yours.
 page, or [straight to it](https://pelagios.org/plato-tools/chora.html)),
 shows a dataset's places on a map, with everything their attestations say of
 each one over time, and lets you add a location you have worked out
-yourself: a point, a line or an area, drawn on the map. It runs in your
+yourself: a point, a line or an area, drawn on the map, or traced from a
+historical map laid over it. It runs in your
 browser like the rest of PLATO tools, and reads the formats in
 [the table above](#what-it-reads-and-writes). A table of places of your own
 is read with its columns matched as PLATO tools guesses them; to correct the
@@ -248,7 +249,9 @@ Constantinople*. Capitals and accents make no difference, and letters such
 as œ, æ, þ, ð and ß, and ligatures such as ﬁ, match as they are spelt out
 (*Brabœuf* finds *braboeuf*). The list shows fifty places at a time, with
 **Previous** and **Next**, and marks a place with *no location* recorded. A IIIF Georeference Annotation, which places a map
-rather than describing places, is not a dataset, and Chora says so.
+rather than describing places, is not a dataset, and Chora says so: to lay
+the map over the basemap, paste it under **Historical maps** (see
+[tracing from a historical map](#tracing-from-a-historical-map)).
 
 Chora works in one tab at a time: a second Chora tab says that it is open
 in another. The main page and Chora can be open together.
@@ -289,6 +292,47 @@ places. To keep nothing between visits, turn off **Keep my working data
 between visits** in the **Permissions** panel: drawings not yet saved are
 then cleared the next time you open Chora, so save them before you leave.
 
+### Tracing from a historical map
+
+Under **Historical maps**, paste a georeference (a IIIF Georeference
+Annotation, such as one made in [Allmaps](https://allmaps.org)), or the
+address of one, of a IIIF manifest or of a IIIF image, and press **Add the
+map**. The map is laid over the basemap, placed on the earth by its
+georeference. Where it holds several georeferences of one image, made
+separately, Chora lists them, each with the date it was last changed and its
+number of control points, and you choose one (the most recently changed is
+chosen to begin with). A map that comes with no georeference can be looked
+for in Allmaps with **Look for a georeference**; or you can georeference it
+in the Allmaps Editor, from the link that says it sends the map's address,
+and paste here the georeference it makes.
+
+Each map shown names the site its image comes from, with its credit and
+licence, and has **Opacity**, **Show**, **Fit** and **Remove**. A map whose
+licence allows only non-commercial use has one line more, saying that this
+may bear on how what you trace from it can be reused. The maps you add are
+kept between visits, as drawings are, unless **Keep my working data between
+visits** is off.
+
+No map's site is asked until you allow it in the **Permissions** panel, as
+for a basemap: its image server, which sees which map you view and which
+parts of it, and Allmaps, which learns which map a georeference was looked
+for. Each has its own *Needs permission* line under the paste box, and one
+reload brings them all. An address that forwards to another site, as some
+archives' addresses do, is not followed: Chora offers it as a link to open in
+a new tab, so that you can paste the address it ends at. If your browser
+does not show that it enforces the page's protection, no map is shown.
+
+To trace, choose a place and draw over the map by hand, with the same tools.
+A drawing on a map is traced from it (from the topmost, where maps overlap),
+and *Traced from* in the place's card lets you choose another map it lies
+on, or the basemap. A traced point is, until you change it, *a point
+standing for it*, of approximate precision, since a map's symbol stands for
+a place rather than drawing it: choose *a feature of it* where the map draws
+the feature itself, such as a church drawn as such. A traced drawing can also
+mark *where the map writes its name*. A drawing moved or reshaped is traced
+again; if it no longer lies on the map, it no longer cites it, and the card
+says so.
+
 ### What a drawing records
 
 Each drawing becomes a **new attestation** of its place, holding one
@@ -309,6 +353,18 @@ new attestation records:
   tools (Chora)". A basemap you pasted in yourself is not named there, only
   called "a basemap pasted by the contributor", since its address may be a
   private one and the notes are published with the dataset.
+
+A drawing traced from a historical map records where it came from as PLATO
+sets out for a geometry traced from a map (`plato:Geometry`, in the
+[ontology reference](https://pelagios.org/place-attestation-ontology/)). It
+cites the map as its evidence (`cito:citesAsEvidence`), with the canvas and
+the area traced as the locator, and the map's licence where it is known; and
+it cites the georeference as the method used (`cito:usesMethodIn`), as a
+source of its own derived from the map. Its notes begin with the
+georeference's address, its transformation and number of control points, and
+when it was retrieved, and the canvas and manifest, since a georeference can
+be changed after you trace from it; then comes "Traced by hand from a
+georeferenced historical map at zoom 9 in PLATO tools (Chora)."
 
 It has no web address of its own yet: **Mint** gives it one when you
 [publish the dataset](#the-four-parts-in-order).
@@ -375,16 +431,16 @@ basemap that cannot be loaded gives way to Natural Earth, and the page says
 why.
 
 Your permissions, your choice of basemap, any address you paste (with any
-key in it), your name as the one drawing, and your working data are kept in
+key in it), your name as the one drawing, the historical maps you add, and
+your working data are kept in
 this browser. PLATO tools is on pelagios.org, which other Pelagios sites
 share, so, as the panel says, any Pelagios site can read them, on this
 computer only.
 
 ### Still to come
 
-- **Tracing from georeferenced maps**: laying a historical map, already
-  fitted to the earth, over the basemap, and tracing a place from it, with
-  the map cited as the source of what is traced.
+- **Assisted tracing**: help in following what a historical map draws,
+  rather than tracing it wholly by hand.
 - **Adopting a location from a match**: taking a location from a matching
   record in another gazetteer, such as the World Historical Gazetteer. That
   records two claims, kept apart as PLATO keeps them: that this place is
