@@ -72,7 +72,7 @@ Ibid. (ibidem), idem
 Identity match
 : A statement that a place in your data is the same as a record elsewhere,
   such as in Pleiades or Wikidata, and how closely: an exact match, a close
-  match, or only related. The spreadsheets record it in the identities sheet,
+  match, only related, or not said (*unspecified*). The spreadsheets record it in the identities sheet,
   JSON in `identityRelations`.
 
 Itinerary
@@ -91,9 +91,10 @@ Member
   relation `MemberOf`. Its position in the order is its *sequence*.
 
 Meta-attestation
-: An attestation about another attestation rather than about a place: one
-  scholar recording that another's evidence is supported, contradicted,
-  replaced or withdrawn. It lets corrections and disagreements be kept, not
+: An attestation about another attestation rather than about a place:
+  recording that some evidence, someone else's or your own, is supported,
+  contradicted, replaced, withdrawn, commented on, or an alternative reading
+  to another. It lets corrections and disagreements be kept, not
   written over.
 
 Network

@@ -731,7 +731,7 @@
     },
     "attestation": {
       "type": "object",
-      "description": "A bundle of evidence linking a SpatialEntity to Names, Geometries, Timespans, Types, and Sources. The core unit of contributed knowledge in PLATO.",
+      "description": "A bundle of evidence linking a SpatialEntity to Names, Geometries, Timespans, Types, and Sources. The core unit of recorded knowledge in PLATO.",
       "properties": {
         "@id": {
           "$ref": "#/$defs/uri",

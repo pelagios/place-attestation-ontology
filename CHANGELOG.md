@@ -58,6 +58,11 @@ were made under the earlier policy.
 
 ### Added
 
+- Both profiles take an optional `@context` (an address, which may be
+  relative, an object, or a list of them), so a document can carry PLATO's
+  context, as the guide and the README tell readers to do; any other unknown
+  key is still refused. Without it, the guide's own JSON example failed
+  validation.
 - A guide page, *Checking, converting and comparing*, on what PLATO tools
   checks, what each format keeps when converting, and what the version check
   reports.
@@ -86,11 +91,6 @@ were made under the earlier policy.
 
 ### Fixed
 
-- The guide's JSON example, and the README, tell readers to add the context
-  as the document's `@context`, but both profiles refused the key, so the
-  guide's own example failed validation. Both profiles now take an optional
-  `@context` (a URI, an object, or a list of them); any other unknown key is
-  still refused.
 - The profiles were titled "Submission Profile", and the place-centric one
   called itself "the successor to LPF". They are now the place-centric and
   attestation-centric profiles, describing a document, and LPF is described as

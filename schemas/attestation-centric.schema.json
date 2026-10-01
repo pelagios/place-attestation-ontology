@@ -10,11 +10,11 @@
       "const": "https://w3id.org/plato/schemas/attestation-centric.schema.json"
     },
     "@context": {
-      "description": "The JSON-LD context, so that a JSON-LD processor reads the document as RDF in the PLATO ontology: https://w3id.org/plato/schemas/plato.context.jsonld, or a list or object that includes it. Optional: a tool that knows PLATO applies the context whether or not the document names it.",
+      "description": "The JSON-LD context, so that a JSON-LD processor reads the document as RDF in the PLATO ontology: https://w3id.org/plato/schemas/plato.context.jsonld, or a list or object that includes it. A relative address is allowed, as in JSON-LD; null, which would clear the context, is not. Optional: a tool that knows PLATO applies the context whether or not the document names it.",
       "anyOf": [
-        { "type": "string", "format": "uri" },
+        { "type": "string", "format": "iri-reference" },
         { "type": "object" },
-        { "type": "array", "items": { "anyOf": [{ "type": "string", "format": "uri" }, { "type": "object" }] } }
+        { "type": "array", "items": { "anyOf": [{ "type": "string", "format": "iri-reference" }, { "type": "object" }] } }
       ]
     },
     "profile": {
