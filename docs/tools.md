@@ -12,7 +12,8 @@ for many files at a time, with the same checks and the same reports.
 To use it, open the page and drop a file on it (or choose one), then press
 **Check**, choose a format and press **Convert**, press **Compare with the
 earlier version**, or choose what to prepare for publishing and press
-**Prepare**.
+**Prepare**. A page of its own, Chora, shows a dataset's places on a map
+and adds the locations you draw there: see [placing on the map](#chora).
 
 ## What it reads and writes
 
@@ -147,6 +148,150 @@ column for one, so this applies to data published as JSON or linked data.
 A comparison that could not read the whole of either version does not pass,
 and nor does one whose earlier version holds no attestations: in both cases
 nothing, or not everything, was compared.
+
+(chora)=
+## Placing on the map
+
+**Chora**, a page of its own in PLATO tools (**Open Chora** on the main
+page, or [straight to it](https://pelagios.org/plato-tools/chora.html)),
+shows a dataset's places on a map, with everything their attestations say of
+each one over time, and lets you add a location you have worked out
+yourself: a point, a line or an area, drawn on the map. It runs in your
+browser like the rest of PLATO tools, and reads the formats in
+[the table above](#what-it-reads-and-writes). A table of places of your own
+is read with its columns matched as PLATO tools guesses them; to correct the
+matching, convert the table to PLATO JSON on the main page and open that.
+Files already chosen on the main page are offered when you open Chora.
+
+Drop a file on the page, or choose one. The map shows every place with a
+location, grouped where they crowd together (it shows the first 50,000; find
+others by name). Find a place by the name it is listed under, whatever its
+accents or capitals, or click it on the map. The list marks a place with
+*no location* recorded. A IIIF Georeference Annotation, which places a map
+rather than describing places, is not a dataset, and Chora says so.
+
+Chora works in one tab at a time: a second Chora tab says that it is open
+in another. The main page and Chora can be open together.
+
+**A place's card** lists what its attestations say: its names, types,
+locations, related places (click one the dataset has to go to it) and sources. *Over time*
+draws each dated statement as a bar from its start to its end, by year, and
+lists those dated only in words. A statement the source makes less than
+firmly is labelled: *denied* (the source says it was not so), *doubted*,
+*reported* (as said by others) or *tentative*. On the map, a place's
+locations are drawn in the same colours: a firm one solid, the others dashed
+(a point, hollow), and a denied one, where the place is said *not* to be,
+faint. A statement that a later one withdraws or replaces is left out, as
+PLATO requires of any view of the dataset as it stands; the card says how
+many were left out.
+
+**A place with no location** is shown by what the dataset says about it
+instead: the places it is related to, if they have locations, or else the
+outline of its country, from its country codes (`ccodes`). The card says
+which. Where there is neither, it says there is nothing to place it by.
+
+### Drawing a location
+
+Choose a place, then draw with the tools on the map: **Point**; **Line**,
+clicking each point and the last one again to finish; or **Area**, clicking
+each corner and the first one again to finish. **Edit** moves or reshapes a
+drawing, and **Stop** ends drawing. Each drawing appears under *Your
+drawings* in the place's card, where you can say what it marks (the whole
+place, a feature of it, or a point standing for it) and how well the
+location is known (exact, approximate, uncertain, historical approximate),
+or remove it. A drawing that crosses the 180° meridian, in the Pacific,
+cannot be recorded as it is drawn, so it is not kept, and the card says why.
+
+Drawings are kept in this browser until you save, even if you close the
+page: open the same file again, unchanged, and they come back, with their
+places.
+
+### What a drawing records
+
+Each drawing becomes a **new attestation** of its place, holding one
+location. An attestation already in the dataset is never changed, since a
+correction is a new attestation, not an edit (see
+[comparing two versions](#comparing-two-versions)). With the location, the
+new attestation records:
+
+- **who drew it** (`contributor`): your name, and your ORCID iD if you give
+  one. Chora asks before your first save, keeps the answer in this browser
+  only, and shows it as *Saving as* your name, with *change* and *forget me*.
+  It is never taken from the dataset, since the person drawing is not
+  necessarily the person who made it. A mistyped ORCID iD is caught, by its
+  last digit, before anything is saved;
+- **when it was drawn** (`created`);
+- **how it was drawn**, in its `notes`, since PLATO has no term for this,
+  such as "Drawn by hand on the Natural Earth basemap at zoom 9 in PLATO
+  tools (Chora)". A basemap you pasted in yourself is not named there, only
+  called "a basemap pasted by the contributor", since its address may be a
+  private one and the notes are published with the dataset.
+
+It has no web address of its own yet: **Mint** gives it one when you
+[publish the dataset](#the-four-parts-in-order).
+
+### Saving
+
+**Save as PLATO JSON** writes the whole dataset, not the drawings alone, as
+one PLATO JSON document (place-centric): every place and attestation as it
+was read, with the drawings added after each place's own attestations. A
+dataset in another format is converted, and the page lists anything the
+conversion reported. The file is named after yours, ending `.chora.json`.
+
+In the same run, the version check
+([comparing two versions](#comparing-two-versions)) compares it with the
+file you opened, and must find every attestation there exactly as it was,
+every place described as it was, and exactly as many new attestations as you
+drew, whether or not the dataset is published. A dataset with no attestations
+yet, such as a list of places still to be located, can be saved too: the
+check then finds only your drawings, as it must. Only when the check passes
+is the file offered to save; otherwise the page says what went wrong, and
+not to use it. Problems the dataset already had are listed even when the
+check passes, since the saved file has them too.
+
+Nothing is saved if a drawing is for a place whose attestations are not
+written as a list, as PLATO requires: the drawing could only replace them.
+The page names the place, to be corrected in the dataset first.
+
+Where your browser asks where to save a file, the drawings are no longer
+kept in the browser once it is saved. Where it simply downloads the file,
+the page cannot tell when the download is complete, so the drawings are
+kept, and the file still offered, until you press **The download is
+complete: let these drawings go**. Either way, to add more, open the saved
+file. If you change the drawings before saving the file, it is no longer
+offered: save again.
+
+### Which map, and who sees what
+
+The map you see first, from [Natural Earth](https://www.naturalearthdata.com/),
+comes from this site, so opening Chora sends nothing anywhere else. Its
+borders are Natural Earth's borders as they are in practice, not a statement
+on any dispute.
+
+Under **Basemap** you can choose another, fetched from its provider:
+OpenFreeMap (Liberty, Bright or Positron), OpenStreetMap, CARTO (Positron,
+Voyager or Dark Matter), or a style address or tile address of your own,
+pasted in, including one with a key. Before a basemap is first used, Chora
+names every site it will ask for the map, since one provider may serve it
+from several, and says what they will see: the part of the world you are
+looking at, and your address on the internet, as any website sees; never
+your data, which stays in the tab. A style you paste in is read first from
+its own site; if it names further sites, Chora asks about those too before
+the map uses them. The page refuses any request to a site other than this
+one and those you have agreed to, and says how many it refused. A basemap
+that cannot be loaded gives way to Natural Earth, and the page says why.
+Your choice, your agreement, and any address you paste are kept in this
+browser only.
+
+### Still to come
+
+- **Tracing from georeferenced maps**: laying a historical map, already
+  fitted to the earth, over the basemap, and tracing a place from it, with
+  the map cited as the source of what is traced.
+- **Adopting a location from a match**: taking a location from a matching
+  record in another gazetteer, such as the World Historical Gazetteer. That
+  records two claims, kept apart as PLATO keeps them: that this place is
+  that record, and, as a new attestation citing the gazetteer, where it is.
 
 ## Publishing your dataset
 
