@@ -239,9 +239,15 @@ Files already chosen on the main page are offered when you open Chora.
 
 Drop a file on the page, or choose one. The map shows every place with a
 location, grouped where they crowd together (it shows the first 50,000; find
-others by name). Find a place by the name it is listed under, whatever its
-accents or capitals, or click it on the map. The list marks a place with
-*no location* recorded. A IIIF Georeference Annotation, which places a map
+others by name). Find a place by any part of a name, or click it on the
+map. The search looks in the name each place is listed under and in every
+name its attestations give it, as written and in Latin letters (`toponym`
+and `romanized`), except names denied or in a statement withdrawn or
+replaced. A place found by another name is listed with it: *Byzantium — also
+Constantinople*. Capitals and accents make no difference, and letters such
+as œ, æ, þ, ð and ß, and ligatures such as ﬁ, match as they are spelt out
+(*Brabœuf* finds *braboeuf*). The list shows fifty places at a time, with
+**Previous** and **Next**, and marks a place with *no location* recorded. A IIIF Georeference Annotation, which places a map
 rather than describing places, is not a dataset, and Chora says so.
 
 Chora works in one tab at a time: a second Chora tab says that it is open
@@ -269,7 +275,8 @@ which. Where there is neither, it says there is nothing to place it by.
 Choose a place, then draw with the tools on the map: **Point**; **Line**,
 clicking each point and the last one again to finish; or **Area**, clicking
 each corner and the first one again to finish. **Edit** moves or reshapes a
-drawing, and **Stop** ends drawing. Each drawing appears under *Your
+drawing, and **Stop** ends drawing. Point at a tool, or reach it with the
+keyboard, and it says what it does. Each drawing appears under *Your
 drawings* in the place's card, where you can say what it marks (the whole
 place, a feature of it, or a point standing for it) and how well the
 location is known (exact, approximate, uncertain, historical approximate),
@@ -278,7 +285,9 @@ cannot be recorded as it is drawn, so it is not kept, and the card says why.
 
 Drawings are kept in this browser until you save, even if you close the
 page: open the same file again, unchanged, and they come back, with their
-places.
+places. To keep nothing between visits, turn off **Keep my working data
+between visits** in the **Permissions** panel: drawings not yet saved are
+then cleared the next time you open Chora, so save them before you leave.
 
 ### What a drawing records
 
@@ -290,7 +299,7 @@ new attestation records:
 
 - **who drew it** (`contributor`): your name, and your ORCID iD if you give
   one. Chora asks before your first save, keeps the answer in this browser
-  only, and shows it as *Saving as* your name, with *change* and *forget me*.
+  (see [who sees what](#which-map-and-who-sees-what)), and shows it as *Saving as* your name, with *change* and *forget me*.
   It is never taken from the dataset, since the person drawing is not
   necessarily the person who made it. A mistyped ORCID iD is caught, by its
   last digit, before anything is saved;
@@ -345,17 +354,31 @@ on any dispute.
 Under **Basemap** you can choose another, fetched from its provider:
 OpenFreeMap (Liberty, Bright or Positron), OpenStreetMap, CARTO (Positron,
 Voyager or Dark Matter), or a style address or tile address of your own,
-pasted in, including one with a key. Before a basemap is first used, Chora
-names every site it will ask for the map, since one provider may serve it
-from several, and says what they will see: the part of the world you are
-looking at, and your address on the internet, as any website sees; never
-your data, which stays in the tab. A style you paste in is read first from
-its own site; if it names further sites, Chora asks about those too before
-the map uses them. The page refuses any request to a site other than this
-one and those you have agreed to, and says how many it refused. A basemap
-that cannot be loaded gives way to Natural Earth, and the page says why.
-Your choice, your agreement, and any address you paste are kept in this
-browser only.
+pasted in, including one with a key. No other site is asked until you allow
+it in the **Permissions** panel, from the button at the top of the page, the
+same panel as on the main page. A basemap not yet allowed is not used: one
+line, *Needs permission*, opens the panel at it. The panel names every site
+the basemap will ask, since one provider may serve it from several, and says
+what they will see: the part of the world you are looking at, and your
+address on the internet, as any website does; never your files, which stay
+on your computer. There you can allow it, or allow it for this tab only, or
+choose *Never*, and it is no longer offered. A basemap allowed is used once
+the page is reloaded: the panel offers the reload, keeping the dataset, the
+place and the view, and asks first if something would be lost, such as a
+line half drawn. One withdrawn gives way to Natural Earth at once. A style
+you paste in is read from its own site once you allow that; if it names
+further sites, each needs your permission too before the map uses them. The
+page refuses any request to a site other than this one and those you have
+allowed, and says how many it refused. If your browser does not show that it
+enforces this protection, no other site is asked, and the page says so. A
+basemap that cannot be loaded gives way to Natural Earth, and the page says
+why.
+
+Your permissions, your choice of basemap, any address you paste (with any
+key in it), your name as the one drawing, and your working data are kept in
+this browser. PLATO tools is on pelagios.org, which other Pelagios sites
+share, so, as the panel says, any Pelagios site can read them, on this
+computer only.
 
 ### Still to come
 
