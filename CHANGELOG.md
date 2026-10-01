@@ -124,8 +124,9 @@ were made under the earlier policy.
 - `plato:CandidateSet` (a `dcat:Dataset`, disjoint from Gazetteer),
   `plato:contains_candidate` and `plato:candidates_for`, and the context
   terms `candidateSet`, `issued`, `candidatesFor` and `candidates`, with
-  `subject`, `object` and `status` scoped inside `candidates` so that they
-  cannot become an identity relation's or a gazetteer's. The similarity
+  `subject`, `object`, `status`, `similarityScore`, `algorithmVersion`,
+  `matchParameters` and `generatedAt` scoped inside `candidates`, so that the
+  first three cannot become an identity relation's or a gazetteer's. The similarity
   score is written as JSON-LD writes any number, as the other numbers are
   (see the change to the seven numeric properties above).
 - An optional `candidateSets` in both dataset profiles' `gazetteer` header:
