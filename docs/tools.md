@@ -4,8 +4,9 @@
 shape. It checks a file for mistakes, converts it to another format, and shows
 whether a new version of a published dataset has kept what the earlier one
 said, and it prepares a dataset for [publishing](#publishing-your-dataset).
-It runs in your browser: your files are never uploaded, and it works for
-datasets of any size your disk can hold. It also runs
+It runs in your browser: your files are never uploaded. A dataset of a million
+places has been checked and converted there, within the storage the browser
+allows the page (see [large datasets](#large-datasets)). It also runs
 [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line),
 for many files at a time, with the same checks and the same reports.
 
@@ -28,6 +29,35 @@ and adds the locations you draw there: see [placing on the map](#chora).
 | [Your own table of places](tables-of-places.md): any CSV, or GeoJSON | yes, with the columns matched to PLATO's fields | no |
 
 A gzipped file (ending `.gz`) is read as it is.
+
+(large-datasets)=
+## Large datasets
+
+These figures come from PLATO tools' own test runs. In the browser
+(Chromium), a million places in the spreadsheet tables, a CSV of 296 MB, were
+checked, converted and saved in about 17½ minutes, using about 1.3 GB of
+memory and, at the peak, 3.6 GB of the browser's storage. All of DEEP, 24.8
+million triples in 2.6 GB, was read in about 10 minutes, with 756 MB of memory
+and 5.2 GB of storage.
+
+In the browser, the limit is the storage the browser allows the site. Before
+it starts, the page estimates what a file will need and warns if that looks
+like too much: roughly four times the file for most formats, forty times a
+gzipped file, and twelve times the text of spreadsheet tables. Private windows
+allow very little, so use an ordinary window. How much other browsers, such as
+Safari, allow has not been measured.
+
+If the page warns, use the
+[command line](https://github.com/pelagios/plato-tools#from-the-command-line).
+It has no storage allowance and no memory ceiling of its own: the same million
+places converted in 6 minutes 38 seconds with 367 MB of memory. It still needs
+disk, about one and a half to two times the uncompressed input, so give
+`--work-dir` a folder on a disk with room if the temporary folder is small. It
+needs memory wherever the whole of something must be held: a workbook (`.xlsx`
+or `.ods`) is read whole, so save very large tables as CSV files instead; the
+Data Cube check holds the whole graph; and a match review holds the places of
+both datasets. Gzipping a file makes it smaller to keep and send, but not
+smaller to work on. The command line also takes many files at once.
 
 ## Checking
 
