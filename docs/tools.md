@@ -179,6 +179,50 @@ A comparison that could not read the whole of either version does not pass,
 and nor does one whose earlier version holds no attestations: in both cases
 nothing, or not everything, was compared.
 
+(match-review)=
+## Reviewing matches
+
+A match review asks, place by place: is this Newton that Newton? Choose your
+dataset, press **Match with another dataset…**, and choose the other one, in
+any format PLATO tools reads. Places whose names are alike, and that are near
+each other, are suggested as possible matches; you accept or reject each, and
+your decisions are written as [attestations](glossary.md), like any other.
+Matching two files on your computer sends nothing anywhere.
+
+A suggestion is a claim by no one until a person decides (see
+[candidate sets](json.md#candidate-sets)), so none goes into your dataset:
+only your decisions do. For each suggestion, choose one of:
+
+- **Same place**: the suggestion is your place. The matches you accept for
+  one place are written together as one attestation, so they stand or fall
+  together.
+- **Not this one**: the suggestion is wrong, and there is no more to say.
+  Nothing is written.
+- **Different places**: you can say why the two are *not* the same place.
+  Your reason is written with a [denial](glossary.md): an attestation that
+  the two are not the same place.
+
+**Save the review** keeps the suggestions and your decisions so far in a
+file of their own, the work file. To carry on, choose the same dataset,
+press **Resume a review…** and choose the work file. It is yours: a working
+file of PLATO tools, not PLATO data, and it is not published.
+
+When you have done, press **Finish**. By default you get your dataset with
+the new attestations added, as a PLATO JSON document, offered to save only
+once the [version check](#comparing-two-versions) has found nothing of the
+original deleted or changed. Or you can choose a PLATO file of only the new
+attestations, each naming its place by its web address.
+
+**Still to come: looking places up in the World Historical Gazetteer.** A
+later version will also look your places up in the
+[World Historical Gazetteer](https://whgazetteer.org/) (WHG), online and only
+if you choose, for the same review. You will use a WHG token of your own,
+and allow the lookup in the **Permissions** panel of PLATO tools, which
+also says where the token is kept. Only the names
+shown in the preview are sent, with their coordinates if you choose, and
+nothing else of your dataset. WHG's scores rank the answers to one search
+only, not how likely a match is, so the decision is still yours.
+
 (chora)=
 ## Placing on the map
 
