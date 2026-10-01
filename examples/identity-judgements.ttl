@@ -1,5 +1,7 @@
 @prefix plato: <https://w3id.org/plato#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix whgx: <https://whgazetteer.org/example/> .
 
@@ -17,10 +19,12 @@
 # river)" is the same place as two of the survey's records. The editor accepts
 # both suggestions in one act, finds two days later that one of them is wrong,
 # withdraws the act and states the correct matches, and records that the two
-# Newtons of the parishes gazetteer are different places.
+# Newtons of the parishes gazetteer are different places, and that the river
+# Newton is not Newton Upland, as the software had suggested.
 #
 # This demonstrates:
-#   1. Candidates: software's suggestions, which are not claims.
+#   1. Candidates: software's suggestions, which are not claims, published in
+#      a candidate set and never changed afterwards.
 #   2. plato:attests_identity: identity relations asserted in one act are
 #      bundled in one Attestation, which gives them one author, date and
 #      source, and lets them be withdrawn together.
@@ -29,9 +33,15 @@
 #   4. plato:negated: an attestation bundling one exactMatch that says two
 #      entities are NOT the same, so disagreement is recorded as well as
 #      agreement.
+#   5. plato:promoted_from: each answer to a suggestion, yes or no, points
+#      back at the Candidate it answers; what became of a Candidate is read
+#      from those answers, not from the Candidate.
 #
 # schemas/examples/place-centric-judgements.json has a denial of the same
 # kind in JSON, made in a different review; its IRIs are its own.
+# schemas/examples/attestation-centric-judgements.json gives the two answers
+# that stand from 12 September (Act 3's match and the second denial) in JSON,
+# with the same IRIs, and links the gazetteer to its candidate set.
 # =============================================================================
 
 
@@ -61,27 +71,50 @@ whgx:county-survey\/newton-upland
 #
 # Not claims by anyone. They record the score and the settings that produced
 # it, so that a reviewer, or a later reader, can see why a match was offered.
+# They are published in a candidate set of their own, beside the gazetteer and
+# not inside it, and are never changed: each keeps the status it had when the
+# set was issued, 'suggested'. Each IRI is a fragment of the candidate set's,
+# #c- and the first 8 hex digits of the SHA-256 of the JSON array [subject,
+# candidate, algorithm version, match parameters] in the JSON Canonicalization
+# Scheme. A later set leaves out a candidate already published here, so each
+# keeps this one IRI.
+# (schemas/examples/candidate-set-judgements.json is the same set in JSON.)
 # -----------------------------------------------------------------------------
 
-whgx:candidate\/c1
+whgx:candidates\/county-survey-2026-09-09\#c-8ed2901c
     a plato:Candidate ;
     plato:candidate_source whgx:entity\/newton-by-the-river ;
     plato:candidate_candidate whgx:county-survey\/newton-mill ;
     plato:similarity_score "0.93"^^xsd:float ;
     plato:algorithm_version "matcher 2.1" ;
-    plato:match_parameters """{"threshold": 0.8, "weights": {"name": 0.5, "distance": 0.4, "type": 0.1}}""" ;
+    plato:match_parameters """{"threshold":0.8,"weights":{"distance":0.4,"name":0.5,"type":0.1}}""" ;
     plato:generated_at "2026-09-09T18:00:00Z"^^xsd:dateTime ;
-    plato:candidate_status "confirmed" .
+    plato:candidate_status "suggested" .
 
-whgx:candidate\/c2
+whgx:candidates\/county-survey-2026-09-09\#c-1ec753bb
     a plato:Candidate ;
     plato:candidate_source whgx:entity\/newton-by-the-river ;
     plato:candidate_candidate whgx:county-survey\/newton-upland ;
     plato:similarity_score "0.84"^^xsd:float ;
     plato:algorithm_version "matcher 2.1" ;
-    plato:match_parameters """{"threshold": 0.8, "weights": {"name": 0.5, "distance": 0.4, "type": 0.1}}""" ;
+    plato:match_parameters """{"threshold":0.8,"weights":{"distance":0.4,"name":0.5,"type":0.1}}""" ;
     plato:generated_at "2026-09-09T18:00:00Z"^^xsd:dateTime ;
-    plato:candidate_status "confirmed" .
+    plato:candidate_status "suggested" .
+
+
+whgx:gazetteer\/fen-parishes
+    a plato:Gazetteer ;
+    dcterms:title "Fen parishes (illustrative)" .
+
+whgx:candidates\/county-survey-2026-09-09
+    a plato:CandidateSet ;
+    dcterms:title "Matches suggested between the fen parishes and the county survey, 9 September 2026 (illustrative)" ;
+    dcterms:description "What matcher 2.1 suggested, as it suggested it. What the editor made of each suggestion is in the parishes gazetteer, in the attestations whose identity relations point here through promotedFrom." ;
+    dcterms:creator [ foaf:name "The parishes gazetteer's editor" ] ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:issued "2026-09-09"^^xsd:date ;
+    plato:candidates_for whgx:gazetteer\/fen-parishes ;
+    plato:contains_candidate whgx:candidates\/county-survey-2026-09-09\#c-8ed2901c , whgx:candidates\/county-survey-2026-09-09\#c-1ec753bb .
 
 
 # -----------------------------------------------------------------------------
@@ -123,14 +156,14 @@ whgx:identity\/river-mill-1
     plato:identity_subject whgx:entity\/newton-by-the-river ;
     plato:identity_object whgx:county-survey\/newton-mill ;
     plato:identity_type "exactMatch" ;
-    plato:promoted_from whgx:candidate\/c1 .
+    plato:promoted_from whgx:candidates\/county-survey-2026-09-09\#c-8ed2901c .
 
 whgx:identity\/river-upland-1
     a plato:IdentityRelation ;
     plato:identity_subject whgx:entity\/newton-by-the-river ;
     plato:identity_object whgx:county-survey\/newton-upland ;
     plato:identity_type "exactMatch" ;
-    plato:promoted_from whgx:candidate\/c2 .
+    plato:promoted_from whgx:candidates\/county-survey-2026-09-09\#c-1ec753bb .
 
 
 # -----------------------------------------------------------------------------
@@ -176,7 +209,7 @@ whgx:identity\/river-mill-2
     plato:identity_subject whgx:entity\/newton-by-the-river ;
     plato:identity_object whgx:county-survey\/newton-mill ;
     plato:identity_type "exactMatch" ;
-    plato:promoted_from whgx:candidate\/c1 .
+    plato:promoted_from whgx:candidates\/county-survey-2026-09-09\#c-8ed2901c .
 
 whgx:attestation\/newton-hill-upland
     a plato:Attestation ;
@@ -201,6 +234,9 @@ whgx:identity\/hill-upland
 # relation: it says the two entities are NOT the same. It is attributed and
 # dated like any claim. A consumer that cannot express a denial must leave it
 # out and report it, never write it as a match.
+#
+# The second denial answers the second candidate, and says so with
+# plato:promoted_from: an answer to a suggestion may be no as well as yes.
 # -----------------------------------------------------------------------------
 
 whgx:attestation\/newtons-distinct-2026-09-12
@@ -219,20 +255,43 @@ whgx:identity\/hill-river-denied
     plato:identity_type "exactMatch" .
 
 
+whgx:attestation\/river-upland-distinct-2026-09-12
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/newton-by-the-river ;
+    plato:negated true ;
+    plato:attests_identity whgx:identity\/river-upland-denied ;
+    plato:sourced_by whgx:source\/review-2026-09-12 ;
+    plato:contributed_by whgx:contributor\/editor ;
+    plato:created "2026-09-12T09:10:00Z"^^xsd:dateTime .
+
+whgx:identity\/river-upland-denied
+    a plato:IdentityRelation ;
+    plato:identity_subject whgx:entity\/newton-by-the-river ;
+    plato:identity_object whgx:county-survey\/newton-upland ;
+    plato:identity_type "exactMatch" ;
+    plato:promoted_from whgx:candidates\/county-survey-2026-09-09\#c-1ec753bb .
+
+
 # =============================================================================
 # Observations
 #
 # 1. The current state, leaving out the retracted Act 1, is: Newton (by the
-#    river) is Newton Mill; Newton (on the hill) is Newton Upland; and the two
-#    Newtons are different places. No inference crosses from one attestation
+#    river) is Newton Mill and is not Newton Upland; Newton (on the hill) is
+#    Newton Upland; and the two Newtons are different places. No inference crosses from one attestation
 #    to another, so the two matches never join the two Newtons into one.
 #
 # 2. The history is kept: anyone can see that the editor once matched Newton
 #    Upland to the river Newton, when, and why it was withdrawn.
 #
-# 3. Candidate c1 was confirmed twice, by Acts 1 and 3. The candidate's status
-#    records only that a person accepted it; who, when and on what evidence
-#    is carried by the attestations.
+# 3. Neither candidate changed: both still say 'suggested', as when the set
+#    was issued. What became of each is read from the attestations whose
+#    identity relations point at it (plato:promoted_from), less the retracted
+#    ones. The first (Newton Mill) was accepted by Acts 1 and 3; Act 1 is
+#    withdrawn, so it stands accepted by Act 3. The second (Newton Upland)
+#    was accepted by Act 1 alone; from 12 September Act 1 is withdrawn and the
+#    second denial answers it, so it stands rejected. A view as of 11
+#    September reads both as accepted. Who answered, when and on what
+#    evidence is carried by the attestations, never by the candidate.
 #
 # 4. Identity is evidence, never fact: these are one editor's attributed
 #    judgements, and another project may state others about the same

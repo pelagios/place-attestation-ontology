@@ -9,7 +9,7 @@ the JSON formats, is a way of producing RDF in it.
 |---|---|
 | The ontology | <https://w3id.org/plato> (namespace `https://w3id.org/plato#`) |
 | Ontology reference documentation | <https://pelagios.org/place-attestation-ontology/> |
-| JSON Schemas | `https://w3id.org/plato/schemas/plato.schema.json`, `…/place-centric.schema.json`, `…/attestation-centric.schema.json` |
+| JSON Schemas | `https://w3id.org/plato/schemas/plato.schema.json`, `…/place-centric.schema.json`, `…/attestation-centric.schema.json`, `…/candidate-set.schema.json` |
 | JSON-LD context | <https://w3id.org/plato/schemas/plato.context.jsonld> |
 | Spreadsheet table definitions (CSVW) | <https://w3id.org/plato/schemas/tables/csv-metadata.json> |
 

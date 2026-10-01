@@ -1,18 +1,22 @@
 # JSON formats
 
-If you produce data with your own software, PLATO has two JSON formats,
-each defined by a JSON Schema. They carry everything the spreadsheets do and
-more: several facts or several sources in one attestation, shared names and
-geometries, comments on other people's evidence.
+If you produce data with your own software, PLATO has two JSON formats for
+a dataset, each defined by a JSON Schema. They carry everything the
+spreadsheets do and more: several facts or several sources in one
+attestation, shared names and geometries, comments on other people's
+evidence. A third format, the candidate set, holds the matches that
+matching software suggests, kept beside a dataset rather than in it (see
+[Candidate sets](#candidate-sets)).
 
 | Format | Use it when… | Schema |
 |---|---|---|
 | **place-centric** | you are describing your own places: each place carries its attestations inside it | [place-centric.schema.json](https://w3id.org/plato/schemas/place-centric.schema.json) |
 | **attestation-centric** | you are adding evidence about places that already exist elsewhere, referring to them by URI | [attestation-centric.schema.json](https://w3id.org/plato/schemas/attestation-centric.schema.json) |
+| **candidate set** | you are publishing the matches your matching software suggested for a dataset, for people to review | [candidate-set.schema.json](https://w3id.org/plato/schemas/candidate-set.schema.json) |
 
-Both are built from the shared definitions in
+All three are built from the shared definitions in
 [plato.schema.json](https://w3id.org/plato/schemas/plato.schema.json), which
-they refer to by relative path, so keep the three files together when
+they refer to by relative path, so keep the files together when
 validating. Worked examples are in the repository's
 [schemas/examples](https://github.com/pelagios/place-attestation-ontology/tree/main/schemas/examples)
 folder.
@@ -59,7 +63,7 @@ it into RDF in the PLATO ontology:
 }
 ```
 
-The context's own opening comment explains how the two formats are read and
+The context's own opening comment explains how the formats are read and
 what a triplifier must add itself. See [Linked data](linked-data.md) for the
 URLs.
 
@@ -143,3 +147,46 @@ river. A document declares it once, in a `relationTypes` array beside its
 
 `broaderRelation` names the PLATO relation it narrows, so software that knows
 only `LeadsTo` still reads "flows into" as a connection running one way.
+
+## Candidate sets
+
+Matching software, such as a reconciliation service, suggests that a place in
+your dataset may be the same as a record elsewhere. Such a suggestion is a
+*candidate*. It is not anyone's claim: it records what the software
+suggested, with its score and the settings that produced it, so that a
+reviewer, or a later reader, can see why the match was offered.
+
+Candidates are published in a document of their own, a *candidate set*,
+beside the dataset and never inside it, because a dataset holds claims and a
+candidate is a claim by no one. A candidate set has a header,
+`candidateSet`, with its address (`@id`), a `title`, the date it was
+`issued`, and `candidatesFor`, the address of the dataset the matches were
+sought for; and a `candidates` list. Each candidate gives its `subject` (the
+place in your dataset), its `object` (the suggested match), the
+`similarityScore`, the `algorithmVersion`, the `matchParameters` if any, the
+time it was `generatedAt`, and its `status`, which is always `suggested`.
+
+Once issued, a candidate set never changes: no candidate in it is altered or
+removed, and a later run of the software is a new set, which leaves out any
+candidate an earlier set has already published. Each candidate's address is
+the set's address followed by `#c-` and a short code worked out from what the
+candidate says, so the same suggestion always gets the same address.
+
+A person's answer to a candidate goes in the dataset, as an attestation like
+any other identity match, whose identity relation points back to the
+candidate with `promotedFrom`. A yes is an ordinary attestation; a no is an
+attestation with `negated` set, saying the two are *not* the same place. What
+became of a candidate is read from these attestations, never from the
+candidate, so a decision can be withdrawn and made again without changing
+the published set. Software that accepts matches with no one reviewing them
+should publish its own attestations in the same way, not mark candidates as
+confirmed. A dataset can list its candidate sets in its `gazetteer` header,
+in `candidateSets`, and should be published together with them, so that
+anyone can follow `promotedFrom` to the suggestion it answers.
+
+Candidate sets are written by software, so they are published as JSON (or
+RDF) only: the spreadsheet template has no sheet for them. The repository's
+[candidate-set-judgements.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/candidate-set-judgements.json)
+is a small candidate set, and
+[attestation-centric-judgements.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/attestation-centric-judgements.json)
+answers it.

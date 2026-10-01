@@ -133,6 +133,14 @@
           "type": "string",
           "format": "uri",
           "description": "The base from which the dataset's places, sources and other entities have their web addresses (void:uriSpace), e.g. https://w3id.org/whg-epns/. Choose one you control and will keep."
+        },
+        "candidateSets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "plato.schema.json#/$defs/uri"
+          },
+          "description": "The candidate sets made for this dataset (the reverse of plato:candidates_for): the IRIs of the sets whose candidates its identity relations answer through promotedFrom. Each set's own candidatesFor must be this gazetteer's @id, which is therefore required with this key. Optional: a validator given the sets checks that both ends agree."
         }
       },
       "required": [
@@ -157,7 +165,12 @@
             ]
           }
         }
-      ]
+      ],
+      "dependentRequired": {
+        "candidateSets": [
+          "@id"
+        ]
+      }
     },
     "dataSets": {
       "type": "array",

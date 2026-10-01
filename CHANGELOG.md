@@ -94,7 +94,58 @@ were made under the earlier policy.
   `RepresentativePoint` (still of approximate precision), not a
   `FeaturePoint`. The `geometry_role` column's description says so too.
 
+- A published Candidate is frozen: never changed or deleted.
+  `plato:candidate_status` is its status when its set was issued,
+  'suggested', and no longer a review status that moves on. What became of
+  a candidate is derived from the live attestations whose identity
+  relations point at it (`promoted_from`): accepted, rejected (by a negated
+  attestation), both, or unanswered. The lifecycle comment and the
+  Candidate, IdentityRelation and promoted_from comments say so, and the
+  lifecycle no longer mentions a "deferred" status that was never a value.
+- `plato:promoted_from` may come from a relation in a negated attestation:
+  it means "made in response to this candidate", whether the answer was yes
+  or no.
+- `plato:match_parameters` suggests JSON in the JSON Canonicalization
+  Scheme, since the text is hashed into the candidate's IRI.
+
 ### Added
+
+- **Candidate sets.** A third JSON profile, the candidate set
+  (`schemas/candidate-set.schema.json`, `"profile": "candidate-set"`), for
+  the matches matching software suggests: a header (`candidateSet`: `@id`,
+  `title`, `issued`, `candidatesFor`, and optionally `description`,
+  `creator`, `licence`) and a `candidates` array, each candidate with `@id`,
+  `subject`, `object`, `similarityScore`, `algorithmVersion`, `generatedAt`,
+  `status` and optionally `matchParameters` (`$defs/candidate`). Until now
+  `plato:Candidate` had no JSON form. Candidates never go in a place-centric
+  or attestation-centric dataset: a dataset holds claims, and a candidate is
+  a claim by no one; an identity relation's `promotedFrom` points into a
+  candidate set, which should be published wherever the dataset is.
+- `plato:CandidateSet` (a `dcat:Dataset`, disjoint from Gazetteer),
+  `plato:contains_candidate` and `plato:candidates_for`, and the context
+  terms `candidateSet`, `issued`, `candidatesFor` and `candidates`, with
+  `subject`, `object` and `status` scoped inside `candidates` so that they
+  cannot become an identity relation's or a gazetteer's. The similarity
+  score is written as JSON-LD writes any number, as the other numbers are
+  (see the change to the seven numeric properties above).
+- An optional `candidateSets` in both dataset profiles' `gazetteer` header:
+  the IRIs of the dataset's candidate sets, mapped to the reverse of
+  `plato:candidates_for` (no new property), and requiring the gazetteer's
+  `@id`.
+- A candidate's IRI is a fragment of its candidate set's IRI, minted from
+  what it says: `#c-` and the first 8 hex digits of the SHA-256 of the JCS
+  (RFC 8785) text of the array [subject, object, algorithm version, match
+  parameters], lengthened only where it would begin like another in the
+  set or in earlier sets. A new set leaves out a candidate an earlier set
+  already published, so a candidate has one IRI for good. The schema
+  refuses any form but `#c-` and 8, 12, 16 … hex digits, `#a-` included.
+- `schemas/examples/candidate-set-judgements.json`, the candidate set of the
+  identity-judgements example in JSON, and
+  `schemas/examples/attestation-centric-judgements.json`, two answers to it
+  (a match and a denial, each with `promotedFrom`) from a dataset that lists
+  the set in `candidateSets`.
+- The guide's JSON page describes candidate sets, and the glossary gains
+  *Candidate* and *Candidate set*.
 
 - **An editorial form.** `plato:Editorial` joins the FormStatusScheme: a form
   written by the editors of the cited edition in their own words
@@ -149,6 +200,12 @@ were made under the earlier policy.
   release under the deprecation policy and is to be withdrawn in the release
   after; the survey example keeps one name in it, so that both stay tested.
 
+- The `plato:candidate_status` values 'confirmed' and 'rejected', for one
+  release (to be removed from the comment in the release after); the JSON
+  Schema accepts only 'suggested'. A producer that accepts matches
+  automatically should publish identity attestations (pointing back through
+  `promoted_from`) instead of 'confirmed' candidates.
+
 ### Fixed
 
 - The profiles were titled "Submission Profile", and the place-centric one
@@ -171,6 +228,15 @@ were made under the earlier policy.
   every attestation-centric attestation; it now gives the meta-attestation
   exception that 0.7.1 made in the attestation-centric schema. Description
   only: validation is unchanged.
+
+- `examples/identity-judgements.ttl` stored both candidates as 'confirmed',
+  but its Act 2 withdraws the attestation that confirmed them, so the stored
+  status went stale. Both now say 'suggested', as when their set was issued;
+  they are published in a candidate set with minted IRIs; and a new denial
+  answers the second candidate through `promoted_from`, so the observations
+  read each outcome from the attestations.
+- The README described a Candidate as not an IdentityRelation "until a human
+  reviewer confirms it"; a Candidate never becomes one.
 
 ## 0.7.1
 

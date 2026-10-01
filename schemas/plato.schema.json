@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://w3id.org/plato/schemas/plato.schema.json",
   "title": "PLATO — Place Attestation Ontology: Core Definitions",
-  "description": "Shared object-type definitions for the PLATO data model. These definitions are composed by the place-centric and attestation-centric profiles.",
+  "description": "Shared object-type definitions for the PLATO data model. These definitions are composed by the place-centric, attestation-centric and candidate set profiles.",
   "$defs": {
     "uri": {
       "type": "string",
@@ -985,7 +985,7 @@
     },
     "identityRelation": {
       "type": "object",
-      "description": "An assertion that two SpatialEntities refer to the same real-world entity. Distinct from scholarly entity-to-entity relations and from algorithm-generated Candidates.",
+      "description": "An assertion that two SpatialEntities refer to the same real-world entity. Distinct from scholarly entity-to-entity relations, and from Candidates, which are suggestions made by software and claims by no one.",
       "properties": {
         "@id": {
           "$ref": "#/$defs/uri"
@@ -1030,7 +1030,7 @@
         },
         "promotedFrom": {
           "$ref": "#/$defs/uri",
-          "description": "URI of the Candidate from which this was promoted, if any."
+          "description": "The Candidate this relation was made in response to (plato:promoted_from), whether the answer was yes or, in an attestation marked negated, no. Its subject and object should be the candidate's, in either order. The candidate is in a published candidate set, which should be published wherever this dataset is."
         }
       },
       "required": [
@@ -1150,6 +1150,61 @@
       },
       "required": [
         "@id"
+      ],
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "object",
+      "description": "A match between two SpatialEntities suggested by software, for a person to review (plato:Candidate). A claim by no one, and it never becomes one: a reviewer's answer is an identity relation in an attestation that points here through promotedFrom, a match or, in a negated attestation, a denial. Published only in a candidate set, and frozen from then on: never changed, never deleted. What became of it is read from the live attestations that answer it, not from its status.",
+      "properties": {
+        "@id": {
+          "$ref": "#/$defs/uri",
+          "pattern": "#c-(?:[0-9a-f]{4}){2,}$",
+          "description": "The candidate's permanent IRI, minted from what it says: the IRI of the candidate set that publishes it, without any fragment, then #c- and the first 8 hex digits (lower case) of the SHA-256 of the JSON array [subject, object, algorithmVersion, matchParameters] (an empty string when matchParameters is absent), written in the JSON Canonicalization Scheme (RFC 8785) and hashed as UTF-8 with no Unicode normalisation. Where 8 digits would begin like another candidate's hash, in this set or in an earlier set given to the minter, the shortest prefix, in steps of 4, that differs from every other. An IRI once published is never changed. A candidate already published in an earlier set is left out of a later one, so it keeps its one IRI, under the set that first published it. Never the #a- form, which is an attestation's."
+        },
+        "subject": {
+          "$ref": "#/$defs/uri",
+          "description": "The SpatialEntity a match was sought for (plato:candidate_source), normally one of the dataset's own."
+        },
+        "object": {
+          "$ref": "#/$defs/uri",
+          "description": "The SpatialEntity the software suggested as its match (plato:candidate_candidate)."
+        },
+        "similarityScore": {
+          "type": "number",
+          "description": "The software's score for the match (plato:similarity_score), on its own scale: matchParameters says what it means."
+        },
+        "algorithmVersion": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The software and version that made the suggestion (plato:algorithm_version), such as 'krisis-names 1'."
+        },
+        "matchParameters": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The settings that produced the score, as text (plato:match_parameters): JSON is suggested, written in the JSON Canonicalization Scheme (RFC 8785) so that the same settings are always the same text. Hashed into @id exactly as written here."
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the software made the suggestion (plato:generated_at). Not part of @id, so a rerun of the same software with the same settings gives the same candidates."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "suggested"
+          ],
+          "description": "The status when the candidate set was issued (plato:candidate_status): always 'suggested'. It is not the outcome of a review, which is read from the attestations whose identity relations point here through promotedFrom. 'confirmed' and 'rejected' are deprecated: a producer that accepts a match without review publishes an identity attestation instead."
+        }
+      },
+      "required": [
+        "@id",
+        "subject",
+        "object",
+        "similarityScore",
+        "algorithmVersion",
+        "generatedAt",
+        "status"
       ],
       "additionalProperties": false
     }

@@ -6,6 +6,17 @@ Attestation
   location, type, relation or other fact for a place. Each evidence row of the
   spreadsheets becomes one attestation.
 
+Candidate
+: A match suggested by software between a place in your data and a record
+  elsewhere, for a person to review. It is no one's claim, and it never
+  changes once published: a reviewer's yes or no is an identity match that
+  points back to it. See [Candidate sets](json.md#candidate-sets).
+
+Candidate set
+: The candidates one run of matching software suggested for a dataset,
+  published together beside the dataset, never inside it, and never changed
+  afterwards. A later run is a new set.
+
 Certainty
 : How sure whoever recorded a statement is of it, from 0 to 1. It reflects the
   evidence: better evidence could change it. Not the same as fuzziness. Where

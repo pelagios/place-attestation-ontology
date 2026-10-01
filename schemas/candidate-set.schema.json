@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/plato/schemas/candidate-set.schema.json",
+  "title": "PLATO Candidate Set Profile",
+  "description": "A candidate set: the matches one run of matching software suggested for a dataset's SpatialEntities, published for people to review and for the dataset's identity relations to point at (promotedFrom). Never inside a place-centric or attestation-centric dataset: a candidate is a claim by no one, and a dataset holds claims. Published once and frozen: no candidate in it is ever changed or deleted, and a later run is a new set. A dataset whose identity relations cite a candidate set should have that set published wherever the dataset is, so that promotedFrom can be followed; a validator that has the set should warn when a promotedFrom names no candidate in it.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://w3id.org/plato/schemas/candidate-set.schema.json"
+    },
+    "@context": {
+      "description": "The JSON-LD context, so that a JSON-LD processor reads the document as RDF in the PLATO ontology: https://w3id.org/plato/schemas/plato.context.jsonld, or a list or object that includes it. A relative address is allowed, as in JSON-LD; null, which would clear the context, is not. Optional: a tool that knows PLATO applies the context whether or not the document names it.",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "iri-reference"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "iri-reference"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "profile": {
+      "type": "string",
+      "const": "candidate-set",
+      "description": "Identifies this as a candidate set."
+    },
+    "candidateSet": {
+      "type": "object",
+      "description": "About the candidate set itself (plato:CandidateSet, a dcat:Dataset). Its keys are properties of the document node, as a dataset's 'gazetteer' keys are.",
+      "properties": {
+        "@id": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "The candidate set's permanent IRI."
+        },
+        "title": {
+          "type": "string",
+          "description": "The candidate set's title (dcterms:title)."
+        },
+        "description": {
+          "type": "string",
+          "description": "What was matched against what, in words; the run's settings are on each candidate (matchParameters)."
+        },
+        "creator": {
+          "type": "array",
+          "minItems": 1,
+          "description": "The people or organisations to cite as the candidate set's authors (dcterms:creator), each with a web address such as an ORCID, a name, or both.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "$ref": "plato.schema.json#/$defs/uri",
+                "description": "A persistent address for the person or organisation: an ORCID, a ROR."
+              },
+              "name": {
+                "type": "string",
+                "description": "Their name (foaf:name)."
+              }
+            },
+            "anyOf": [
+              {
+                "required": [
+                  "@id"
+                ]
+              },
+              {
+                "required": [
+                  "name"
+                ]
+              }
+            ],
+            "additionalProperties": false
+          }
+        },
+        "licence": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "The web address of the candidate set's licence (dcterms:license)."
+        },
+        "issued": {
+          "type": "string",
+          "format": "date",
+          "description": "The date the set was issued (dcterms:issued), from which it is frozen. Each candidate's status is its status on this date."
+        },
+        "candidatesFor": {
+          "$ref": "plato.schema.json#/$defs/uri",
+          "description": "The dataset (Gazetteer) whose SpatialEntities matches were sought for (plato:candidates_for): its @id."
+        }
+      },
+      "required": [
+        "@id",
+        "title",
+        "issued",
+        "candidatesFor"
+      ],
+      "additionalProperties": false
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "description": "The candidates, each with its own @id under this set's IRI. A candidate is listed once: two with the same subject, object, algorithmVersion and matchParameters are the same candidate. A candidate already published in an earlier set is left out of this one: it keeps the one IRI it was given there, and the answers to it keep pointing at that.",
+      "items": {
+        "$ref": "plato.schema.json#/$defs/candidate"
+      }
+    }
+  },
+  "required": [
+    "profile",
+    "candidateSet",
+    "candidates"
+  ],
+  "additionalProperties": false
+}

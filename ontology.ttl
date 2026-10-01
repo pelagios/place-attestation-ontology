@@ -1605,14 +1605,18 @@ plato:relative_qualifier
 # assert that two identifiers, potentially from different authority systems
 # or contributed gazetteers, refer to the same real-world entity.
 #
-# Identity relations are also distinct from Candidates: a Candidate is an
-# algorithm-generated candidate that awaits human review. An IdentityRelation
-# is a human-asserted (or human-confirmed) claim about identity, with its
-# own provenance, certainty, and evidence.
+# Identity relations are also distinct from Candidates: a Candidate is a match
+# suggested by software, published in a CandidateSet and never changed, and it
+# is a claim by no one. An IdentityRelation is a person's attributed claim
+# about identity, with its own provenance, certainty and evidence.
 #
 # The lifecycle is:
-#   Candidate (algorithm suggests) → human reviews →
-#     IdentityRelation (confirmed) or Candidate (rejected/deferred)
+#   Candidate (software suggests; published, frozen, in a CandidateSet)
+#     → a person reviews → an Attestation bundling an IdentityRelation that
+#       points back through plato:promoted_from: a match, or, with
+#       plato:negated, a denial.
+# The Candidate itself never changes. What became of it is read from the live
+# attestations that answer it (see plato:Candidate).
 
 plato:IdentityRelation
     a owl:Class ;
@@ -1627,8 +1631,8 @@ plato:IdentityRelation
         Identity relations are distinct from scholarly entity-to-entity
         relations, which describe substantive historical relationships
         between different entities. They are also distinct from Candidates,
-        which are algorithm-generated candidates not yet confirmed by
-        human review.
+        which are matches suggested by software and are claims by no one; a
+        relation made in answer to one points to it (plato:promoted_from).
 
         An IdentityRelation is one attributed claim among many, never a
         canonical statement of fact. A platform must not materialise identity
@@ -1754,10 +1758,19 @@ plato:promoted_from
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "promoted from"@en ;
     rdfs:comment """
-        Links an IdentityRelation to the Candidate from which it was
-        promoted, preserving the algorithmic provenance. Optional:
-        identity relations can also be created directly by human
-        assertion without a prior Candidate.
+        Links an IdentityRelation to the Candidate it was made in response to,
+        preserving the algorithmic provenance. The answer may be yes or no: a
+        relation bundled by an Attestation marked plato:negated may point at the
+        Candidate it denies, as one in an accepting Attestation points at the
+        Candidate it accepts, so that a rejection is recorded, attributed and
+        dated like an acceptance. Its subject and object should be the Candidate's
+        source and candidate, in either order. Several relations, in different
+        attestations, may point at one Candidate (it was accepted, withdrawn and
+        accepted again, or two reviewers answered it); none of them changes it.
+        The Candidate is published in a CandidateSet, which should be published
+        wherever the dataset citing it is; a validator that has the set should
+        warn when promoted_from names no Candidate in it. Optional: identity
+        relations can also be asserted directly, without a prior Candidate.
     """@en ;
     rdfs:domain plato:IdentityRelation ;
     rdfs:range plato:Candidate .
@@ -3613,27 +3626,55 @@ plato:TypeSegment
 
 
 # =============================================================================
-# Candidates: suggested matches awaiting review
+# Candidates: matches suggested by software
 # =============================================================================
-# Candidates are algorithm-generated match suggestions, kept strictly separate
-# from confirmed identity assertions. They are not Attestations and they are
-# not IdentityRelations — they are candidates awaiting human review. When
-# confirmed, a Candidate is promoted to an IdentityRelation (which preserves
-# the algorithmic provenance via plato:promoted_from).
+# Candidates are match suggestions made by software, kept strictly separate
+# from identity claims. They are not Attestations and not IdentityRelations,
+# and never become either: a person's answer to one is an Attestation bundling
+# an IdentityRelation that points back through plato:promoted_from. They are
+# published in CandidateSets, outside the datasets whose identity relations
+# answer them, and are frozen once published.
 
 plato:Candidate
     a owl:Class ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "Candidate"@en ;
     rdfs:comment """
-        A match between two SpatialEntities suggested by software, for a
-        person to review: reconciliation against reference gazetteers (as in
-        WHG's Map your Data), record linkage, clustering. Candidates carry a
-        similarity score, the algorithm's version and, optionally, the
-        settings that produced the score (plato:match_parameters), and a
-        review status. They are explicitly not
-        IdentityRelations — they become IdentityRelations only when confirmed
-        by a human reviewer (linked back via plato:promoted_from).
+        A match between two SpatialEntities suggested by software, for a person
+        to review: reconciliation against reference gazetteers (as in WHG's Map
+        your Data), record linkage, clustering. A Candidate carries a similarity
+        score, the algorithm's version, optionally the settings that produced
+        the score (plato:match_parameters), when it was generated, and the status
+        it had when its CandidateSet was issued, 'suggested'. It is a
+        claim by no one, and never becomes an IdentityRelation: a reviewer's
+        answer is an Attestation bundling an IdentityRelation that points back
+        through plato:promoted_from, a match or, with plato:negated, a denial.
+
+        A Candidate is published only in a CandidateSet, and is frozen from then
+        on, like a published attestation: never changed, never deleted, so that
+        a promoted_from pointing at it keeps its meaning. What became of it is
+        therefore derived, not stored. Take the attestations as of a moment
+        (those created by then, less those retracted or superseded; see
+        plato:Gazetteer) whose identity relations point at the Candidate: it is
+        accepted where some are and none is negated, rejected where some are
+        negated and none is not, answered both ways where there are both, and
+        unanswered where there are none. Identity is attributed, so a consumer
+        may ask this of one reviewer's or one gazetteer's attestations only.
+
+        Its IRI is a fragment of the IRI of the CandidateSet that publishes it,
+        minted from what it says: the set's IRI without any fragment, then '#c-'
+        and the first 8 hex digits (lower case) of the SHA-256 of a JSON array of
+        four strings, the source's IRI, the candidate's IRI, the algorithm
+        version and the match parameters (empty when there are none), written in
+        the JSON Canonicalization Scheme (RFC 8785) and hashed as UTF-8 with no
+        Unicode normalisation. Where 8 digits would begin like another
+        Candidate's hash, in its set or in an earlier set given to the minter,
+        it takes the shortest prefix, in steps of 4 digits, that differs from
+        every other. An IRI once published is never changed. A later set leaves
+        out a Candidate an earlier set already published, so each Candidate has
+        one IRI, under the set that first published it. The time it was
+        generated is not hashed. '#a-' is the form of an attestation's IRI,
+        never a Candidate's.
     """@en .
 
 plato:candidate_source
@@ -3677,7 +3718,23 @@ plato:candidate_status
     a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "status"@en ;
-    rdfs:comment "Review status: 'suggested', 'confirmed', 'rejected'."@en ;
+    rdfs:comment """
+        The Candidate's status when its CandidateSet was issued: 'suggested'.
+        Fixed from then on, since a published Candidate is never changed. It is
+        not the outcome of a review, which is read from the attestations
+        pointing at the Candidate through plato:promoted_from (see
+        plato:Candidate).
+
+        Deprecated: the values 'confirmed' and 'rejected', kept in this comment
+        for one release so that existing data still reads, and removed in the
+        release after; the JSON Schema refuses them already. A producer that accepts matches automatically, with
+        no person reviewing them, should not publish them as 'confirmed'
+        Candidates: it should publish identity attestations (an Attestation
+        bundling IdentityRelations, attributed to the producer, each pointing
+        back through plato:promoted_from), which are claims, attributed and
+        withdrawable; a producer that rejects a match should leave it out of
+        the set, or publish a negated attestation if the rejection is a claim.
+    """@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range xsd:string .
 
@@ -3694,7 +3751,9 @@ plato:match_parameters
     rdfs:label "match parameters"@en ;
     rdfs:comment """
         The settings that produced the Candidate's score, as text (JSON
-        suggested): a threshold, the weights given to name, place and type,
+        suggested, written in the JSON Canonicalization Scheme (RFC 8785), so
+        that the same settings are always the same text, since the text is
+        hashed into the Candidate's IRI): a threshold, the weights given to name, place and type,
         the reference sources searched. With plato:algorithm_version it lets
         a score be reproduced or explained. Optional; its form is the
         software's own, since it describes a run of that software rather
@@ -3702,3 +3761,63 @@ plato:match_parameters
     """@en ;
     rdfs:domain plato:Candidate ;
     rdfs:range xsd:string .
+
+# A candidate set is the unit in which candidates are published: one run of matching software for
+# one dataset. It is kept out of the dataset itself because a dataset holds claims and a candidate
+# is a claim by no one; a dataset's identity relations point into it (plato:promoted_from). It is
+# disjoint from Gazetteer so that a header term with a Gazetteer domain, used on a candidate set by
+# mistake, shows up as a node in two disjoint classes rather than passing unnoticed.
+
+plato:CandidateSet
+    a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:subClassOf dcat:Dataset ;
+    owl:disjointWith plato:Gazetteer ;
+    rdfs:label "Candidate Set"@en ;
+    rdfs:comment """
+        The matches one run of matching software suggested for a dataset's
+        SpatialEntities (plato:candidates_for), published together for people
+        to review and for the dataset's identity relations to point at
+        (plato:promoted_from). A Candidate is published only in a candidate
+        set, never in a Gazetteer: a Gazetteer holds claims, and a Candidate
+        is a claim by no one.
+
+        A candidate set is issued once (dcterms:issued) and frozen from then
+        on: no Candidate in it is changed or deleted, and a later run is a new
+        set. A dataset whose identity relations cite a candidate set should
+        have that set published wherever the dataset is, so that
+        promoted_from can be followed; a validator that has the set should
+        warn when a promoted_from names no Candidate in it.
+
+        As a dcat:Dataset it is titled with dcterms:title and licensed with
+        dcterms:license, as a Gazetteer is. It is disjoint from Gazetteer, so
+        it carries none of a Gazetteer's own properties (a status, an owner):
+        its date of issue says from when it is frozen.
+    """@en .
+
+plato:contains_candidate
+    a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "contains candidate"@en ;
+    rdfs:comment """
+        Links a CandidateSet to a Candidate it publishes. The candidate set
+        profile carries these in its top-level candidates array, and this is
+        the property that array maps to.
+    """@en ;
+    rdfs:domain plato:CandidateSet ;
+    rdfs:range plato:Candidate .
+
+plato:candidates_for
+    a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "candidates for"@en ;
+    rdfs:comment """
+        Links a CandidateSet to the Gazetteer whose SpatialEntities matches
+        were sought for: the dataset its Candidates' sources normally belong
+        to, and whose identity relations answer them. A dataset may name its
+        candidate sets from its own side (in JSON, the gazetteer's
+        candidateSets, which maps to the reverse of this property); no
+        inverse property is defined, and both ends should agree.
+    """@en ;
+    rdfs:domain plato:CandidateSet ;
+    rdfs:range plato:Gazetteer .
