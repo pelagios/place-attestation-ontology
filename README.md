@@ -140,6 +140,10 @@ Machine-readable citation metadata is in [CITATION.cff](CITATION.cff).
 
 The [Pelagios Network](https://pelagios.org) Place Working Group, led by the [Institute for Spatial History Innovation (ISHI)](https://www.ishi.pitt.edu/) at the University of Pittsburgh.
 
+## Acknowledgements
+
+The development of PLATO has been supported by the [Institute for Spatial History Innovation (ISHI)](https://www.ishi.pitt.edu/) at the University of Pittsburgh, through Stephen Gadd's work as a contractor for the [World Historical Gazetteer](https://whgazetteer.org), and through ISHI's collaboration with the [Pelagios Network](https://pelagios.org).
+
 ## Licence
 
 This work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

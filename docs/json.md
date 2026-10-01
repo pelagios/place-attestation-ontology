@@ -172,6 +172,13 @@ candidate an earlier set has already published. Each candidate's address is
 the set's address followed by `#c-` and a short code worked out from what the
 candidate says, so the same suggestion always gets the same address.
 
+A candidate's score therefore records what the software said when it first
+suggested the pair. If the places' names change and the same algorithm, run
+with the same settings, would now score the pair differently, the first
+score stands. To record a new score, publish it under a new
+`algorithmVersion` or new `matchParameters`, which gives the candidate a new
+address.
+
 A person's answer to a candidate goes in the dataset, as an attestation like
 any other identity match, whose identity relation points back to the
 candidate with `promotedFrom`. A yes is an ordinary attestation; a no is an
