@@ -184,6 +184,12 @@ guide is the friendlier way in.
 
 ```{toctree}
 :hidden:
+
+Why PLATO <self>
+```
+
+```{toctree}
+:hidden:
 :caption: Getting started
 
 ideas
