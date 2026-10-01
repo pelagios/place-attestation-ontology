@@ -51,6 +51,13 @@ Someone computing "the earliest spelling" or "how many independent spellings"
 can now leave out the headword, the search form and the personal name without
 having to know the survey's conventions.
 
+One more `form_status` matters when you cite an edition: `Editorial`, for a
+name that only the editors write, in their commentary or notes, and that the
+text they edit does not contain. Left empty, such a name would read as the
+source's own, since an empty `form_status` means an ordinary reading. It says
+nothing about whether the name is found in other sources. The
+[vocabularies](../vocabularies.md) page lists every form status.
+
 ## Types and relations
 
 ```{include} ../_generated/examples/survey/types.md

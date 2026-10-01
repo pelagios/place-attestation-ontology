@@ -114,6 +114,26 @@
       "notes": "The source: 'a market is said to be kept here'.",
       "contributor": "https://orcid.org/0000-0002-1825-0097",
       "created": "2026-09-26T12:00:00Z"
+    },
+
+    {
+      "about": "https://whgazetteer.org/example/entity/kingsbury",
+      "names": [
+        { "toponym": "Kingsbury Regis", "language": "en", "script": "Latn", "nameType": ["toponym"] }
+      ],
+      "citations": [
+        {
+          "source": {
+            "@id": "https://whgazetteer.org/example/source/kingsbury-charters-edition",
+            "title": "The Kingsbury charters (illustrative edition)"
+          },
+          "locator": "no. 12, commentary, n. 3"
+        }
+      ],
+      "formStatus": "https://w3id.org/plato#Editorial",
+      "notes": "The editors' note on charter 12 names the place; the charter does not.",
+      "contributor": "https://orcid.org/0000-0002-1825-0097",
+      "created": "2026-09-26T12:00:00Z"
     }
   ]
 }

@@ -29,7 +29,7 @@
                   40.4414
                 ]
               },
-              "role": "https://w3id.org/plato#FeaturePoint",
+              "role": "https://w3id.org/plato#RepresentativePoint",
               "spatialPrecision": [
                 "approximate"
               ]

@@ -424,13 +424,13 @@
           {
             "name": "form_status",
             "titles": "form_status",
-            "dc:description": "What kind of form this is: 'Attested' (read in the source; the default), 'Headword' (the form an editor files the entry under), 'Normalised' (a spelling made up for searching), 'Reconstructed' (inferred, not found), 'Preferred' (the form your project prefers for display and search, which the source may not show). Leave empty for an ordinary reading.",
+            "dc:description": "What kind of form this is: 'Attested' (read in the source; the default), 'Headword' (the form an editor files the entry under), 'Normalised' (a spelling made up for searching), 'Reconstructed' (inferred, not found), 'Preferred' (the form your project prefers for display and search, which the source may not show), 'Editorial' (written by the editors of the edition you cite, in their commentary or notes, not in the text they edit). Leave empty for an ordinary reading.",
             "skos:example": "Headword",
             "propertyUrl": "https://w3id.org/plato#form_status",
             "valueUrl": "https://w3id.org/plato#{form_status}",
             "datatype": {
               "base": "string",
-              "format": "^(Attested|Headword|Normalised|Reconstructed|Preferred)$"
+              "format": "^(Attested|Headword|Normalised|Reconstructed|Preferred|Editorial)$"
             }
           },
           {
@@ -742,7 +742,7 @@
           {
             "name": "geometry_role",
             "titles": "geometry_role",
-            "dc:description": "What the location marks: 'Extent' (the whole place), 'FeaturePoint' (a particular feature, such as the church), 'RepresentativePoint' (a point standing in for the place), 'LabelAnchor', 'Itinerary'. Optional.",
+            "dc:description": "What the location marks: 'Extent' (the whole place), 'FeaturePoint' (a particular feature, such as the church), 'RepresentativePoint' (a point standing in for the place, as a symbol on a map usually is), 'LabelAnchor', 'Itinerary'. Optional.",
             "skos:example": "FeaturePoint",
             "aboutUrl": "#row-{_row}-geometry",
             "propertyUrl": "https://w3id.org/plato#geometry_role",

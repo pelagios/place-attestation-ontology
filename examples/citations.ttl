@@ -22,6 +22,8 @@
 #      place-name surveys' "1252 Cl et passim to 1346 Harl".
 #   3. An attribution given as "ib." in the survey and resolved editorially.
 #   4. A source that passes a claim on without vouching for it.
+#   5. A name that occurs only in an edition's commentary, not in the text
+#      it edits.
 #
 # In every case sourced_by is asserted directly as well as through the
 # Citation. The ontology declares sourced_by as the chain has_citation o
@@ -213,6 +215,43 @@ whgx:attestation\/kingsbury-market-1673
     plato:source_stance plato:StanceReported ;
     plato:certainty 1.0 ;
     plato:notes "The source: 'a market is said to be kept here'." .
+
+
+# -----------------------------------------------------------------------------
+# 5. A name in the editors' commentary
+#
+# The citation is to an edition of a charter. The charter itself does not
+# name the place; the editors' note on it does, in their own words. Recorded
+# with no form status, the name would read as the charter's, since Attested
+# is the default. plato:Editorial says whose words these are. It says nothing
+# about whether the name is attested elsewhere. The edition, its numbering
+# and the note are invented for illustration.
+# -----------------------------------------------------------------------------
+
+whgx:source\/kingsbury-charters-edition
+    a plato:Source ;
+    plato:authority_title "The Kingsbury charters (illustrative edition)" .
+
+whgx:name\/kingsbury-regis
+    a plato:Name ;
+    plato:toponym "Kingsbury Regis"@en ;
+    plato:language "en" ;
+    plato:script "Latn" ;
+    plato:name_type "toponym" .
+
+whgx:citation\/kingsbury-regis-commentary
+    a plato:Citation ;
+    plato:cites whgx:source\/kingsbury-charters-edition ;
+    plato:locator "no. 12, commentary, n. 3" .
+
+whgx:attestation\/kingsbury-regis-commentary
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/kingsbury ;
+    plato:attests_name whgx:name\/kingsbury-regis ;
+    plato:sourced_by whgx:source\/kingsbury-charters-edition ;
+    plato:has_citation whgx:citation\/kingsbury-regis-commentary ;
+    plato:form_status plato:Editorial ;
+    plato:notes "The editors' note on charter 12 names the place; the charter does not." .
 
 
 # =============================================================================

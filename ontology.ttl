@@ -209,7 +209,10 @@ plato:Geometry
         thin plate spline, projective, Helmert) and the number of control
         points used go in the attestation's plato:notes, since the annotation
         may since have changed. A position that is where the map writes a
-        name takes plato:geometry_role plato:LabelAnchor. See
+        name takes plato:geometry_role plato:LabelAnchor. The position of a
+        map symbol is a plato:RepresentativePoint, unless the map shows the
+        specific feature (a church drawn as such), when it is a
+        plato:FeaturePoint. See
         schemas/examples/place-centric-georeference.json.
     """@en .
 
@@ -1406,6 +1409,13 @@ plato:form_status
         - plato:Preferred: the form the contributing project prefers for
           display and search ('Ranny (Fort)'). A project decision, so the cited
           source may show a different form.
+        - plato:Editorial: a form written by the editors of the cited
+          edition in their own words, in its commentary, apparatus or notes,
+          and not in the text they edit. Without it, a name converted from
+          an editor's note would read as the source's own: Attested is the
+          default. Unlike a Headword, it is not the form an entry is filed
+          under but a mention, and it says nothing about whether the name is
+          attested elsewhere.
 
         A different axis from plato:name_type, which classifies what the name
         denotes: a headword is still a toponym. It sits on the Attestation,
@@ -2958,6 +2968,14 @@ plato:Preferred
     skos:inScheme plato:FormStatusScheme ;
     skos:prefLabel "preferred"@en ;
     skos:definition "The form the contributing project prefers for display and search: a project decision, so the cited source may show a different form."@en .
+
+plato:Editorial
+    a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "editorial"@en ;
+    skos:definition "A form written by the editors of the cited edition in their own words (commentary, apparatus, notes), not a form the edited source itself contains."@en ;
+    skos:scopeNote "Use it when the citation is to an edition and the name occurs in the editors' text, not in the edited text. It says nothing about whether the place's name is attested elsewhere. Attested remains the default for forms the source contains."@en .
 
 plato:OccurrenceContextScheme
     a skos:ConceptScheme ;

@@ -50,6 +50,11 @@ Duration
 : How long something lasted, where the source says so: a stay of six weeks,
   written `P42D`. It may be given with dates or without them.
 
+Editorial form
+: A name written by the editors of an edition in their own words, in its
+  commentary or notes, rather than in the text they edit. Recorded with the
+  form status *Editorial*, so that it is not read as the source's own.
+
 Fuzziness
 : The sense in which something genuinely has no sharp edge, such as "the
   Levant" or a gradual change of rule. It is a property of the thing, not of

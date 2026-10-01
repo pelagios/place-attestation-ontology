@@ -85,7 +85,31 @@ were made under the earlier policy.
   map). How it is cited says which: a copy as the evidence, a georeference as
   the method used.
 
+- The georeference pattern in `plato:Geometry` now says which role a traced
+  map symbol takes: its position is a `plato:RepresentativePoint`, unless the
+  map shows the specific feature (a church drawn as such), when it is a
+  `plato:FeaturePoint`. A fort's symbol on a small-scale map stands for the
+  fort rather than depicting any part of it, so the traced Fort Duquesne in
+  `schemas/examples/place-centric-georeference.json` is now a
+  `RepresentativePoint` (still of approximate precision), not a
+  `FeaturePoint`. The `geometry_role` column's description says so too.
+
 ### Added
+
+- **An editorial form.** `plato:Editorial` joins the FormStatusScheme: a form
+  written by the editors of the cited edition in their own words
+  (commentary, apparatus, notes), not one the edited source contains. A
+  scope note says to use it when the citation is to an edition and the name
+  occurs in the editors' text; it says nothing about whether the name is
+  attested elsewhere, and `Attested` remains the default. Without it, a name
+  converted from an editor's note, with no form status, read as the source's
+  own, and no existing concept fitted: a headword is the form an entry is
+  filed under, not a mention. The tables' `form_status` accepts it, the
+  JSON Schema's `formStatus` description names it, the citations examples
+  (Turtle and attestation-centric JSON) show it on an invented edition's
+  commentary, and the guide's glossary and survey example explain it. The
+  guide's vocabulary pages now show a concept's scope note after its
+  definition.
 
 - Both profiles take an optional `@context` (an address, which may be
   relative, an object, or a list of them), so a document can carry PLATO's

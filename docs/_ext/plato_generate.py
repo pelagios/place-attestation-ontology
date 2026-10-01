@@ -96,7 +96,8 @@ def write_vocabularies_md():
         lines += [f"## {str(label).capitalize()}", "", str(g.value(scheme, RDFS.comment)), "",
                   "| Value | Meaning | Full identifier |", "|---|---|---|"]
         for c in sorted(g.subjects(SKOS.inScheme, scheme), key=str):
-            lines.append("| `{}` | {} | `{}` |".format(str(c)[len(P):], _cell(g.value(c, SKOS.definition)), c))
+            meaning = " ".join(str(v) for v in (g.value(c, SKOS.definition), g.value(c, SKOS.scopeNote)) if v)
+            lines.append("| `{}` | {} | `{}` |".format(str(c)[len(P):], _cell(meaning), c))
         lines.append("")
     lines += ["## Certainty levels", "",
               "The words that the `certainty_level` column, and `certaintyLevel` in JSON, can name, for certainty given in words rather than as a number.",
