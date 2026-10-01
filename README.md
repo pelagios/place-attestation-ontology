@@ -142,7 +142,7 @@ The [Pelagios Network](https://pelagios.org) Place Working Group, led by the [In
 
 ## Acknowledgements
 
-The development of PLATO has been supported by the [Institute for Spatial History Innovation (ISHI)](https://www.ishi.pitt.edu/) at the University of Pittsburgh, through Stephen Gadd's work as a contractor for the [World Historical Gazetteer](https://whgazetteer.org), and through ISHI's collaboration with the [Pelagios Network](https://pelagios.org).
+Development has been supported by the [Institute for Spatial History Innovation (ISHI)](https://www.ishi.pitt.edu/) at the University of Pittsburgh.
 
 ## Licence
 

@@ -6,11 +6,9 @@ PLATO, the Place Attestation Ontology, is developed by the
 University of Pittsburgh, and formalises the data model of the
 [World Historical Gazetteer](https://whgazetteer.org).
 
-Its development has been supported by the
+Development has been supported by the
 [Institute for Spatial History Innovation (ISHI)](https://www.ishi.pitt.edu/)
-at the University of Pittsburgh, through Stephen Gadd's work as a contractor
-for the World Historical Gazetteer, and through ISHI's collaboration with the
-Pelagios Network.
+at the University of Pittsburgh.
 
 ## Under development
 
