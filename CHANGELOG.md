@@ -50,6 +50,21 @@ were made under the earlier policy.
   `dcterms:identifier` literal on the Gazetteer, as they have since 0.7.0:
   it is the Gazetteer's IRI instead, so the literal only repeated it.
 
+- The about sheet's `creator` cell now takes an author's name and address
+  together, as `Name <address>` (`Stephen Gadd
+  <https://orcid.org/0000-0003-3060-0181>`), as well as an address alone or
+  a name alone, several separated by `;` as before. Until now a name and its
+  ORCID could not be paired in the tables: names went in `creator_name`, so
+  converting gave a name-only author and an address-only author where the
+  JSON has one author with both. The column is now text with a pattern
+  (`format`) rather than `anyURI`, since `Name <address>` is not an address.
+  CSV on the Web can split the cell but not parse it, so a CSVW processor
+  writes each author as the text of the cell (`dcterms:creator "Stephen Gadd
+  <https://orcid.org/…>"`); PLATO tools writes `dcterms:creator` with the
+  address as a link, and that link's `foaf:name`, as from JSON. The customs
+  and survey examples now give their author in this form. JSON is unchanged:
+  a creator object already pairs `@id` and `name`.
+
 - `plato:derived_from` now says what it already meant in `plato:computed`: a
   Source may be derived from another as a copy or edition of it, or as a
   work made from it (a count taken from a register, the georeference of a
@@ -88,6 +103,13 @@ were made under the earlier policy.
   `schemas/examples/place-centric-georeference.json`, on a real map and a
   real Allmaps annotation. A structured property for the transformation can
   follow if a consumer needs to query by it.
+
+### Deprecated
+
+- The about sheet's `creator_name` column, replaced by `creator`, which now
+  takes a name alone as well as a name with its address. It stays for one
+  release under the deprecation policy and is to be withdrawn in the release
+  after; the survey example keeps one name in it, so that both stay tested.
 
 ### Fixed
 

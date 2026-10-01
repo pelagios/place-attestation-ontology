@@ -84,6 +84,16 @@ the dataset `published`, but fill in as much as you can.
 ```{include} ../_generated/examples/customs/about.md
 ```
 
+`creator` names the authors to cite. Write each one as a name followed by
+a web address in angle brackets, as here: `Stephen Gadd
+<https://orcid.org/0000-0003-3060-0181>`. The address is best an
+[ORCID](https://orcid.org), which identifies a researcher whatever their
+name is written as. An author with no address can be given by name alone,
+and an address can be given alone too. Separate several authors with `;`.
+Older tables may have a `creator_name` column for names without
+addresses: it still works, but it is deprecated and will be withdrawn in a
+later release, so put those names in `creator` instead.
+
 `base_uri` is the most important column to get right before you publish.
 Every place's permanent web address is made from it and the place's
 `place_id`: the base, then `place/`, then the `place_id`. Here, Bristol's is

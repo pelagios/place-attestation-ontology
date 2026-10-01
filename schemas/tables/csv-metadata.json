@@ -12,7 +12,7 @@
     {
       "url": "about.csv",
       "dc:title": "About",
-      "dc:description": "One row describing the dataset as a whole: its title, who made it, its licence, what it covers, and the base of its web addresses. It is what makes the dataset findable and citable (the FAIR principles). Exactly one row. Only the title is required, and the licence too once status is 'published'.",
+      "dc:description": "One row describing the dataset as a whole: its title, who made it, its licence, what it covers, and the base of its web addresses. It is what makes the dataset findable and citable (the FAIR principles). Exactly one row. Only the title is required, and the licence too once status is 'published'. The creator_name column is deprecated: names go in creator, which takes a name, a web address, or a name with its address.",
       "tableSchema": {
         "aboutUrl": "{+dataset_uri}",
         "columns": [
@@ -33,16 +33,19 @@
           {
             "name": "creator",
             "titles": "creator",
-            "dc:description": "The web addresses of the people or organisations to cite as its authors, such as ORCIDs, separated by ';'. Optional; give an ORCID where you can. In the tables these are recorded as web addresses in text form; converting with PLATO tools turns them into links.",
-            "skos:example": "https://orcid.org/0000-0003-3060-0181",
+            "dc:description": "The people or organisations to cite as its authors, separated by ';'. Write each as a name and its web address together, the address in angle brackets (Josiah Carberry <https://orcid.org/0000-0002-1825-0097>), or as a web address alone, or as a name alone. Optional; give an ORCID where you can. In the tables each author is recorded as text, as written; converting with PLATO tools turns the address into a link and gives it the name.",
+            "skos:example": "Stephen Gadd <https://orcid.org/0000-0003-3060-0181>",
             "propertyUrl": "http://purl.org/dc/terms/creator",
             "separator": ";",
-            "datatype": "anyURI"
+            "datatype": {
+              "base": "string",
+              "format": "^(?:[^<>;]*[^<>;\\s]\\s+<[A-Za-z][A-Za-z0-9+.\\-]*:[^<>\\s]+>|[^<>;]+)$"
+            }
           },
           {
             "name": "creator_name",
             "titles": "creator_name",
-            "dc:description": "The names of authors who have no web address, separated by ';'. Optional.",
+            "dc:description": "Deprecated: write these names in creator instead, which now takes a name alone as well as a name with its address. The names of authors who have no web address, separated by ';'. Optional. Kept for one release, and to be withdrawn after it.",
             "skos:example": "Anne Annotator",
             "propertyUrl": "http://purl.org/dc/elements/1.1/creator",
             "separator": ";"

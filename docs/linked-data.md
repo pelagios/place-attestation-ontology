@@ -55,6 +55,14 @@ Every node is typed, and every attestation has exactly one subject, source,
 date and citation, so the output is complete PLATO without further
 processing.
 
+The about sheet's authors are an exception. CSV on the
+Web can split the `creator` cell into authors but cannot take one apart, so
+an author written with a name and an address, `Stephen Gadd
+<https://orcid.org/0000-0003-3060-0181>`, becomes that text as the dataset's
+`dcterms:creator`. PLATO tools makes the address a link, the
+`dcterms:creator`, and gives it the name as its `foaf:name`, as a JSON
+document's `creator` does.
+
 ## Without installing anything
 
 [PLATO tools](https://pelagios.org/plato-tools/) converts between PLATO JSON, RDF (it reads N-Triples,

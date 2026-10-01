@@ -18,8 +18,14 @@ METADATA_URL = "https://w3id.org/plato/schemas/tables/csv-metadata.json"
 NUMERIC = {"decimal", "nonNegativeInteger", "integer"}
 
 
-def _cell(text):
+def _code(text):
     return str(text).replace("|", "\\|").replace("\n", " ")
+
+
+def _cell(text):
+    # Escape '<' so that an author written 'Name <https://...>' keeps its angle brackets
+    # rather than becoming a bare link (Markdown reads <https://...> as an autolink).
+    return _code(text).replace("<", "\\<")
 
 
 def allowed_values(column):
@@ -48,6 +54,8 @@ def value_hint(column):
         if base == "decimal":
             lo, hi = dt.get("minInclusive"), dt.get("maxInclusive")
             hint = "A number" + (f" from {lo} to {hi}" if lo is not None and hi is not None else f", at least {lo}" if lo is not None else "")
+        elif "\\s+<" in dt.get("format", ""):
+            hint = "A name, a web address, or a name then its address in angle brackets"
         elif "-?\\d{4" in dt.get("format", ""):
             hint = "Year of at least four digits, or YYYY-MM-DD"
         elif dt.get("@id", "").endswith("wktLiteral"):
@@ -71,7 +79,7 @@ def write_sheets_md(meta):
             ex = c.get("skos:example")
             lines.append("| `{}` | {} | {} | {} | {} |".format(
                 c["name"], "**required**" if c.get("required") else "optional",
-                _cell(c["dc:description"]), f"`{_cell(ex)}`" if ex else "", _cell(value_hint(c))))
+                _cell(c["dc:description"]), f"`{_code(ex)}`" if ex else "", _cell(value_hint(c))))
         lines.append("")
     (OUT / "sheets.md").write_text("\n".join(lines), encoding="utf-8")
 
