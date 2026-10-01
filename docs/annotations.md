@@ -37,6 +37,33 @@ Nothing leaves your computer: PLATO tools works entirely in your browser.
 A passage linked to two places becomes two attestations, each with a note
 naming the other.
 
+## Gazetteer addresses in one form
+
+Recogito's first version writes Pleiades and GeoNames addresses with `http`
+(`http://pleiades.stoa.org/places/423025`, `http://sws.geonames.org/2629833`),
+while the gazetteers themselves, and many other datasets, write
+`https://pleiades.stoa.org/places/423025` and
+`https://sws.geonames.org/2629833/`. To a computer these are different
+addresses, so the same place would become two, and your evidence would not
+meet anyone else's. PLATO tools therefore writes each Pleiades, GeoNames and
+Wikidata address in the one form its gazetteer gives it, by the rules listed
+in [Place names in a TEI edition](tei.md#gazetteer-addresses-in-one-form),
+and says so in the attestation's notes, with what Recogito wrote, the rule,
+and the version of the rules:
+
+```text
+Place address given as http://sws.geonames.org/2629833 (rule geonames-sws-https, hermes-addresses 1)
+```
+
+In PLATO tools' test file of a Recogito download of Pliny's text, 48 of its 55
+attestations have their address rewritten so. A Pleiades address that names
+part of a place's record (a location, a name, `/json`), or ends `#this`, is
+carried as written, and the report asks you to check it.
+
+If you converted the same download before these rules, the
+[version check](tools.md#comparing-two-versions) will show the rewritten
+attestations as changed; the version in their notes says why.
+
 ## What is left out, and why
 
 **Links a person never confirmed.** Recogito can suggest place links by

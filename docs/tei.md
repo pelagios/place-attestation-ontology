@@ -24,7 +24,9 @@ to Linked Places Format, and add to. It reads TEI; it does not write it.
    it, and choose **Convert**, with the format you want. It also runs
    [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line),
    for many editions at a time.
-3. Read the report. It lists everything that was not carried over, and why.
+3. If you want more than the place names of the text, choose it in
+   **Reading options** (see [below](#reading-options)) before you convert.
+4. Read the report. It lists everything that was not carried over, and why.
 
 Nothing leaves your computer: PLATO tools works entirely in your browser.
 
@@ -53,9 +55,13 @@ name whose `ref` points to a place becomes one attestation about that place.
 | The edition itself, as its `teiHeader` describes it: title, author or editor, publisher, date, licence, and its web address or DOI | The **source** |
 | The original the edition was made from (the `sourceDesc`'s bibliographic description, or a manuscript's or inscribed object's identifier) | The source it is **derived from** |
 | Where in the edition: divisions, milestones, pages, lines, a note, the element's `xml:id` | The citation's **locator**, in words ("book 2, chapter 1, section 1, page 12", "line 6", "in a note") |
-| A `key` | The attestation's **notes** ("Key: …") |
+| A `key`, beside a `ref` | The attestation's **notes** ("Key: …") |
+| A `key` with no `ref` | With a pattern you give, what the attestation is **about** (see [Keys](#keys-in-place-of-refs)) |
 
-Place names in notes, commentary and translations are read too: the source is
+In an edition with a `<div type="edition">`, the commentary, translation and
+notes are the editors' words, and are not converted unless you ask for them:
+see [Whose words](#whose-words-the-editors-parts). In an edition without one,
+place names in notes, commentary and translations are read too: the source is
 the edition, and the locator says where in it the words stand.
 
 The dataset is called "Place names in" followed by the edition's main title.
@@ -69,7 +75,9 @@ PLATO identifies places by their web addresses, so every place name must lead
 to one.
 
 **A web address.** `ref="https://pleiades.stoa.org/places/579885"` is used as
-it is. A `ref` with several addresses, separated by spaces, gives one
+it is, except that an address of Pleiades, GeoNames or Wikidata is written in
+the one form its gazetteer gives it (see
+[Gazetteer addresses in one form](#gazetteer-addresses-in-one-form)). A `ref` with several addresses, separated by spaces, gives one
 attestation for each, with a note naming them all, and the report warns you.
 That the addresses may be the same place in two gazetteers is not recorded:
 PLATO says that with an identity match, not with a place name.
@@ -99,16 +107,77 @@ A list of places later in the file than the place name, such as one in
 `<back>`, is waited for.
 
 The list's own description of each place, its names and its location (its
-coordinates), is not converted, for now. It is the edition's description of the
-place, not a passage of the text that names it: converting it raises the
-question of whom such an attestation cites (the edition, or its editors), which
-is still to be decided. Meanwhile the place's web address leads to the
-gazetteer's own names and coordinates. The report names what was left out,
-once for each place. A `<desc>`, a `<note>` or an `<idno>` that is not a web
-address is reported in the same way.
+coordinates), is not converted unless you ask for it. It is the edition's
+description of the place, not a passage of the text that names it, and the
+place's web address already leads to the gazetteer's own names and
+coordinates. The report names what was left out, once for each place, and
+says how to convert it: see [The list of places](#the-list-of-places). A
+`<desc>`, a `<note>` or an `<idno>` that is not a web address is reported in
+the same way, and is never converted.
 
 **Anything else.** A `ref` into another file (`places.xml#delphi`), a `urn:`,
 or a single word cannot be followed from here, and is reported.
+
+## Gazetteer addresses in one form
+
+The same place can be written in several ways. Pleiades' Athens is
+`https://pleiades.stoa.org/places/579885`, but older tools write
+`http://pleiades.stoa.org/places/579885`, and some add a closing `/`. To a
+computer these are different addresses, so one place would become two, and
+nothing would join the evidence about it. PLATO tools therefore writes each
+address of Pleiades, GeoNames and Wikidata in the one form that gazetteer
+itself gives as its place's address:
+
+| Written in the source as | Carried as | Rule |
+|---|---|---|
+| `http://pleiades.stoa.org/places/579885` | `https://pleiades.stoa.org/places/579885` | `pleiades-https` |
+| `https://pleiades.stoa.org/places/579885/` | `https://pleiades.stoa.org/places/579885` | `pleiades-slash` |
+| A GeoNames page, such as `https://www.geonames.org/2523083/siracusa.html` | `https://sws.geonames.org/2523083/` | `geonames-page` |
+| `https://sws.geonames.org/2523083`, without its closing `/` | `https://sws.geonames.org/2523083/` | `geonames-https` |
+| `http://sws.geonames.org/2523083`, with or without its closing `/` | `https://sws.geonames.org/2523083/` | `geonames-sws-https` |
+| A Wikidata page, such as `https://www.wikidata.org/wiki/Q1524` | `http://www.wikidata.org/entity/Q1524` | `wikidata-page` |
+| `https://www.wikidata.org/entity/Q1524`, or the same without `www.` | `http://www.wikidata.org/entity/Q1524` | `wikidata-https` |
+
+GeoNames' form keeps its closing `/`, and Wikidata's is `http`, not `https`:
+in each case it is the address the gazetteer's own linked data uses. An
+address already in its gazetteer's form, or of another gazetteer, is carried
+as it is written, except the World Historical Gazetteer's
+([below](#world-historical-gazetteer-addresses)).
+
+Each attestation whose address was rewritten says so in its notes, with what
+the edition wrote and the rule that changed it:
+
+```text
+Place address given as http://pleiades.stoa.org/places/462503 (rule pleiades-https, hermes-addresses 1)
+```
+
+`hermes-addresses 1` is the version of the rules. If a rule is ever changed or
+added, the version changes with it, so you can always tell which rules a
+conversion followed. If you compare a new conversion with one made before
+these rules, [the version check](tools.md#comparing-two-versions) will show
+the rewritten attestations as changed; their notes say why. The rules are
+listed for developers in PLATO tools'
+[DEVELOPERS.md](https://github.com/pelagios/plato-tools/blob/main/DEVELOPERS.md#address-rules-hermes-addresses-1-2026-10-01).
+
+Because both forms become one, a `ref` that gives both the `http` and the
+`https` form of one Pleiades address gives one attestation, not two, and no
+warning.
+
+**Parts of a Pleiades record are left as they are.** An address that names
+part of a place's record in Pleiades, a location or a name
+(`https://pleiades.stoa.org/places/579885/athenae`) or a format
+(`…/579885/json`), is not the place itself, so it is not changed to the
+place's address: it is carried as written, and the report asks you to check
+that it is the place you mean. An address ending `#this`
+(`https://pleiades.stoa.org/places/579885#this`) is the place, as Pleiades'
+own data names it, but it is a different address from the plain one, and it
+too is carried as written and reported, rather than changed silently. In
+the output it is then a place of its own, apart from the plain address: if you
+mean the same place, write the plain address in the edition.
+
+The same rules apply in every reader: to
+[annotations from Recogito](annotations.md) and to
+[your own table of places](tables-of-places.md) as well.
 
 ## World Historical Gazetteer addresses
 
@@ -154,16 +223,216 @@ Where both parts of a `<choice>` hold a place name with the same `ref`, such as
 there is one attestation, not two: its name is the part taken ("Athenae"), and
 its source label the part as printed ("Athenas"). Nothing is reported.
 
+## Reading options
+
+By default PLATO tools converts only what the edited text attests: the place
+names of the text that point to a place. An edition holds more, and four
+reading options convert more of it. Each is off until you choose it.
+
+| Reading option | On the page | On the command line |
+|---|---|---|
+| Place names in the editors' parts: commentary, translation, apparatus, notes | *Read place names in the commentary and notes, as the editors' words* | `--commentary-places` |
+| The list of places: each place's first name, and its coordinates on the edition's own site | *Read the list of places, each place's first name as its headword* | `--list-places` |
+| Places in the header: where the object was found, and where it was made | *Read the places in the header (found at, made at), as the editors' words* | `--header-places` |
+| Keys: a place's address made from its `key`, where it has no `ref` | A row for each prefix of the keys, under *Keys with no web address* | `--key-pattern PREFIX=PATTERN` |
+
+**On the page**, once you have chosen a TEI file, the options are under
+**Reading options**, above the **Check** and **Convert** buttons; the table of
+keys is shown only when the file has place names with a key and no `ref`.
+**On the command line**, give the flags to `check` or `convert`, as in
+
+```text
+plato-tools convert --to plato-jsonl --list-places --commentary-places edition.xml
+```
+
+A flag for something the input is not (`--list-places` with no TEI edition
+among the inputs) is refused, with the reason, and nothing is read.
+
+Each option's report entry, when the option is off, says what it would
+convert and how to choose it, so the report of a first conversion tells you
+which options are worth a look.
+
+### Whose words: the editors' parts
+
+An EpiDoc edition usually puts the edited text in a `<div type="edition">`,
+and the editors' own writing beside it: an apparatus, a translation, a
+commentary, a bibliography. A place name in the commentary is evidence of
+what the editors think, not of what the inscription says, and PLATO keeps the
+two apart.
+
+So, **when the file has a `<div type="edition">`**, every other top-level
+division (a commentary, translation, apparatus, bibliography or introduction,
+or a division with no type, before the edition or after it), and every
+`<note>` anywhere, is the editors' words. The divisions inside the edition
+(its `textpart`s) are the edition. **A file with no edition division** is
+read as before: its notes, commentary and translations are the edition's
+text.
+
+By default, a place name in the editors' words is not converted. The report
+lists each, with the part it is in, its words, its `ref` and its line. With
+the reading option, it becomes an attestation like any other, except that:
+
+- its name has the form status [*Editorial*](glossary.md), not *Attested*:
+  the editors wrote it, the source did not;
+- its locator begins with the part, such as "commentary";
+- its notes say "The editors' words, not the source's."
+
+To know whether the file has an edition division, PLATO tools may have to
+hold back the place names it meets before one. It holds up to 10,000; if the
+edition division comes later than that, the report says so, and which names
+were converted as the source's words though they were the editors'.
+
+### The list of places
+
+A `<listPlace>` is the editors' index of the places in the edition. By
+default only its web addresses are used, to resolve a `ref="#athens"` (see
+[above](#where-a-ref-can-point)). With the reading option, each `<place>`
+that has a web address in its `<idno>` also becomes an attestation of its
+own, citing the edition:
+
+- **about** the place's web address. A place with no web address is reported,
+  and not converted; one with several different web addresses is ambiguous,
+  reported, and nothing is converted from it (two forms of one address, such
+  as `http` and `https` for Pleiades, count as one).
+- **name**: its first `<placeName>`, with the form status
+  [*Headword*](glossary.md): the form under which the editors list the place,
+  an editorial choice rather than a reading. Its other names are reported and
+  not converted, as one attestation has one form status for all its names,
+  and the others may be variants, translations or modern forms.
+- **locator**: "list of places, place" and the place's `xml:id`.
+- **coordinates**, from its `<location><geo>`, written "latitude longitude"
+  (`37.97 23.72`) or with a comma (`37.08415, 15.27628`), but only where they
+  are the editors' own. That is taken to be so only when the place's address
+  is on the edition's own site, the host of the edition's `<idno type="URI">`.
+  Coordinates beside a Pleiades or Wikidata address are most likely that
+  gazetteer's, copied, and the address already leads to them, so they are
+  reported and not converted; an edition known only by a DOI therefore never
+  has its coordinates converted. PLATO's coordinates are longitude and
+  latitude in WGS 84, so they are read only when the header declares no datum
+  (TEI's default is WGS 84) or a `<geoDecl datum="WGS84">`; in any other datum
+  they are reported. Coordinates that are not two numbers in range are
+  reported too.
+
+A list of places in the header waits for the end of the header, so that the
+edition's title and address are known; one in the text or in `<back>` is
+converted where it stands.
+
+For example, PLATO tools' test file `pointers-constructed.xml` has this list
+in its header, and the edition's own address is
+`https://example.org/editions/pointers`:
+
+```xml
+<place xml:id="athens">
+  <placeName>Athenae</placeName>
+  <idno type="pleiades">https://pleiades.stoa.org/places/579885</idno>
+  <location><geo>37.97 23.72</geo></location>
+</place>
+<place xml:id="thebes">
+  <idno>https://pleiades.stoa.org/places/541138</idno>
+  <idno type="URI">https://www.wikidata.org/entity/Q192393</idno>
+</place>
+<place xml:id="nowhere">
+  <placeName>Nephelokokkygia</placeName>
+  <idno type="local">N1</idno>
+</place>
+```
+
+With `--list-places`, Athens becomes an attestation about
+`https://pleiades.stoa.org/places/579885` with the headword *Athenae* and the
+locator "list of places, place athens", but without the coordinates, which
+are reported, since the address is Pleiades', not the edition's. Thebes has
+two different addresses, and is reported as ambiguous. Nephelokokkygia has no
+web address, and is reported.
+
+### Places in the header
+
+An inscription's header often says where the stone was found, in a
+`<provenance type="found">`, and where it was made, in an `<origin>` with an
+`<origPlace>`. These are the editors' statements about the object, not words
+of the text, so by default they are reported and not converted. With the
+reading option, a place name with a `ref` in either becomes an attestation
+whose name has the form status [*Editorial*](glossary.md), with the note "The
+name is the editors' form, in the edition's header, not words of the source."
+
+- **Where it was found.** The attestation says that the place is the
+  *findspot of* the object (PLATO's relation `plato:FindspotOf`), naming the
+  object by its web address and its title. The object's address is the
+  `<idno type="URI">` in the manuscript's or object's `<msIdentifier>`, or else
+  the edition's own `<idno type="URI">`, never its DOI, which names a deposit
+  of the edition, not the object. A header with neither gives an attestation
+  without the relation, and the report says so. The locator is "teiHeader,
+  provenance (found)".
+- **Where it was made.** PLATO has no relation for a place of origin, so the
+  attestation is a plain one, with the locator "teiHeader, origin" and a note
+  that the header gives this as the place of origin; the report says so.
+
+Place names elsewhere in the header are still not converted.
+
+### Keys in place of refs
+
+Some editions name places with a `key` and no `ref`: EpiDoc projects write
+`key="pleiades:579885"`, and the Perseus texts `key="tgn,7011179"` (a place in
+the Getty Thesaurus of Geographic Names). A key is not a web address, so by
+default such a place name is reported, with its key. You can give a
+**pattern** that makes the address from the key:
+
+- the **prefix** is what comes before the key's first `:` or `,` (`pleiades`,
+  `tgn`); a key with neither has no prefix;
+- the rest of the key replaces `{id}` in the pattern:
+  `http://vocab.getty.edu/tgn/{id}` makes `tgn,7011179` into
+  `http://vocab.getty.edu/tgn/7011179`.
+
+The report lists each prefix once, with how many keys have it and a few of
+them, and suggests a pattern where it knows the gazetteer. **On the page**, a
+table under *Keys with no web address* has a row for each prefix, with the
+suggested pattern filled in, which you can change; a pattern is used only
+when you tick *Use* in its row. **On the
+command line**, give `--key-pattern PREFIX=PATTERN` once for each prefix, or
+`--key-pattern PATTERN` for keys with no prefix.
+
+The rest of each key must have the shape the gazetteer's ids have: digits for
+Pleiades and GeoNames, `Q` and digits for Wikidata, and for a pattern of your
+own, only letters, digits and `. _ ~ -`. A key of another shape is reported,
+and not converted. The address made then follows the
+[rules above](#gazetteer-addresses-in-one-form), and the attestation's notes
+say how it was made: "Place address made from the key pleiades:579885 with the
+pattern https://pleiades.stoa.org/places/{id}". A place name that has a `ref`
+uses its `ref`; its key is only noted. A pattern that makes a World Historical
+Gazetteer address is refused, as WHG's short codes do not name one record.
+
+For example, PLATO tools' test file
+[`keys-constructed.xml`](https://github.com/pelagios/plato-tools/blob/main/test/fixtures/tei/keys-constructed.xml)
+has keys of four prefixes. Checked with no patterns, the report suggests
+
+```text
+prefix "tgn": 3 keys, such as tgn,7011179, tgn,7010720, tgn,7001393; try --key-pattern tgn=http://vocab.getty.edu/tgn/{id}
+prefix "pleiades": 2 keys, such as pleiades:579885, pleiades:athens; try --key-pattern pleiades=https://pleiades.stoa.org/places/{id}
+no prefix: 1 key, such as Q1524; try --key-pattern http://www.wikidata.org/entity/{id}
+prefix "perseus": 1 key, such as perseus,Argos; give a pattern, such as --key-pattern perseus=https://…/{id}
+```
+
+Given those three patterns, five of the key-only place names become
+attestations; `pleiades:athens` is reported, as `athens` is not a Pleiades id,
+and `perseus,Argos`, with no pattern, is reported again.
+
 ## What is left out, and why
 
 **Place names with no ref.** A place name that points to no place has nothing
 for an attestation to be about. The report lists each, with its key if it has
-one. Give it a `ref` to keep it.
+one. Give it a `ref` to keep it, or, if it has a key, a pattern for the key
+(see [Keys in place of refs](#keys-in-place-of-refs)).
+
+**The editors' words.** In an edition with a `<div type="edition">`, a place
+name in the commentary, translation, apparatus or another of the editors'
+parts, or in a note, is reported, and converted only with the reading option:
+see [Whose words](#whose-words-the-editors-parts).
 
 **Place names outside the text.** A place name in the `teiHeader`, such as
 where an inscription was found, or in a `<standOff>` or `<facsimile>`, is the
 edition's description of the document, not a name the text attests. It is
-reported, not converted.
+reported, not converted, except that the reading option for
+[places in the header](#places-in-the-header) converts where the object was
+found and where it was made.
 
 **Variant readings.** A place name in an `<rdg>`, or in the part of a
 `<choice>` not taken, is listed and not converted: see
@@ -235,3 +504,38 @@ text it was made from. The place name becomes one attestation:
 A second place name in the same passage, `<placeName ref="… …">Kenchreai</placeName>`
 with two addresses, becomes two attestations and a warning; a third,
 `<placeName>Lechaeum</placeName>`, has no `ref`, and the report lists it.
+
+## A second example: an inscription, with reading options
+
+PLATO tools' tests also use a real EpiDoc file, unchanged: I.Sicily's edition
+of the epitaph of Zodoros from Syracuse
+([ISic000934](https://github.com/pelagios/plato-tools/blob/main/test/fixtures/tei/isicily-ISic000934.xml),
+edited by Jonathan Prag, CC BY 4.0). Its edition division names the village
+Zodoros came from, Μάκρης κώμης, over three lines; its commentary names
+*Sarepta*; and its header says the stone was made at Syracuse, `<origPlace>`
+naming it twice (as Pleiades' *Syracusae*, written
+`http://pleiades.stoa.org/places/462503`, and GeoNames' *Siracusa*, written
+`http://sws.geonames.org/2523083`), and found in the catacomb of S. Giovanni.
+
+Converted with no reading options, it gives one attestation: Μάκρης κώμης,
+attested, in Greek, with the locator "edition, lines 2 to 4". The report lists
+*Sarepta* as in the editors' words ("commentary: Sarepta … on line 205") and
+the three header names as outside the text.
+
+Converted with `--commentary-places` and `--header-places` (on the page, the
+two boxes ticked), it gives five:
+
+- Μάκρης κώμης, as before;
+- *Sarepta*, form status *Editorial*, the locator "commentary", the note "The
+  editors' words, not the source's.";
+- *catacomb of S. Giovanni*, form status *Editorial*, the locator "teiHeader,
+  provenance (found)", the *findspot of* the inscription, named by its address
+  `http://sicily.classics.ox.ac.uk/inscription/ISic000934` and its title
+  *Epitaph of Zodoros*;
+- *Syracusae* and *Siracusa*, form status *Editorial*, the locator
+  "teiHeader, origin", each with a note that the header gives it as the place
+  of origin. Their addresses are carried in their gazetteers' forms,
+  `https://pleiades.stoa.org/places/462503` and
+  `https://sws.geonames.org/2523083/`, with notes such as "Place address given
+  as http://sws.geonames.org/2523083 (rule geonames-sws-https,
+  hermes-addresses 1)".

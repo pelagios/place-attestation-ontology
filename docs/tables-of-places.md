@@ -103,9 +103,12 @@ Save that line to a file, correct it, and give it back with
 `--columns FILE`. It is the same JSON the page saves. The fields are named in
 it as `name`, `alternativeNames`, `latitude`, `longitude`, `wkt`, `geometry`,
 `id`, `address`, `type`, `language`, `source`, `date`, `start` and `end`, or
-`note` and `skip`. A column the file names that the table does not have, or a
-column the file leaves out, is reported, and a column left out is kept as a
-note.
+`note` and `skip`. A column of a gazetteer's ids, made into web addresses
+with a pattern, is written
+`{"field": "address", "pattern": "https://pleiades.stoa.org/places/{id}"}` in
+place of the field's name (see [A column of gazetteer ids](#a-column-of-gazetteer-ids)).
+A column the file names that the table does not have, or a column the file
+leaves out, is reported, and a column left out is kept as a note.
 
 ## Places, or evidence about places
 
@@ -142,12 +145,116 @@ for how to choose a base.
   ids that will not change, or match an existing column as the id.
 - **A row with no id** in the id column: that place has no web address, with
   a warning.
-- **Two rows with the same id**: refused. Each id becomes a place's address,
-  so reading stops at the second row, the report names the id and both rows,
-  and you correct the duplicate or match another column as the id.
+- **Two rows with the same id**: refused, unless you choose to read them as
+  one place (see [Rows that share an id](#rows-that-share-an-id)). Each id
+  becomes a place's address, so reading stops at the second row, the report
+  names the id and both rows, and you correct the duplicate, match another
+  column as the id, or choose that reading option.
 
 A column headed as an id that holds web addresses, such as Pleiades
 addresses, is guessed to be the places' web addresses instead.
+
+### Rows that share an id
+
+Some tables have a row for each piece of evidence, not for each place: three
+rows from three sources, all with the id of one place. Read as they stand,
+the repeated id is refused, as above. If every row with the same id really is
+evidence about the same place, choose the **reading option** *Rows with the
+same id are one place* (on the page, under **Reading options**, below the
+table of columns), or give `--same-id` on the command line. Then:
+
+- each id is one place, with its address made from the id under the base
+  address, as before;
+- each row is one attestation about that place, with its own names, location,
+  dates and notes, citing its row;
+- the place's label is the name its rows agree on. Where their names differ,
+  none is picked: the label is the id, every name stays in its own row's
+  attestation, and the report lists the names, so that you can check the rows
+  are one place;
+- a row with no id names no place, so it is reported and left out.
+
+The option needs a column read as the place id; without one it is refused,
+on the page and on the command line, with the reason. It is for tables of
+places only: `--same-id` with no CSV or GeoJSON among the inputs is refused.
+
+For example, PLATO tools' test file `duplicate-ids.csv` is
+
+```text
+id,name,lat,lon
+a,Alpha,50.1,-1.1
+b,Beta,50.2,-1.2
+a,Alpha again,50.3,-1.3
+```
+
+Read as it stands, it is refused at row 4: "The id "a" is used by more than
+one row (row 2 and row 4)…", ending with the advice to read rows with the same
+id as one place (Reading options, or `--same-id`). With `--same-id` and the
+base `https://example.org/demo/`, it gives two places.
+`https://example.org/demo/place/a` has two attestations, *Alpha* (row 2) and
+*Alpha again* (row 4), each with its own point; as the names differ, its label
+is `a`, and the report warns: `"a": Alpha / Alpha again`.
+`https://example.org/demo/place/b`, *Beta*, has one.
+
+### A column of gazetteer ids
+
+A table may hold a gazetteer's ids, not its web addresses: a column
+`pleiades_id` of numbers such as `579885`. An id is not an address, and the
+same number can mean different places in different gazetteers, so such a
+column is kept as a note until you say which gazetteer it is. PLATO tools
+**suggests** a pattern when the column's heading names Pleiades, GeoNames or
+Wikidata and at least half its values have the shape of that gazetteer's ids:
+
+| Gazetteer | Its ids | The pattern suggested |
+|---|---|---|
+| Pleiades | digits | `https://pleiades.stoa.org/places/{id}` |
+| GeoNames | digits | `https://sws.geonames.org/{id}/` |
+| Wikidata | `Q` and digits | `http://www.wikidata.org/entity/{id}` |
+
+A suggestion is never used until you **confirm** it. On the page, tick *Make
+web addresses* in the column's row of the table of columns. On the command
+line, the guess and a note print the pattern; give it back in the file for
+`--columns`, as
+`"pleiades_id": {"field": "address", "pattern": "https://pleiades.stoa.org/places/{id}"}`.
+Once confirmed, the column is read as the places' web addresses: each id
+replaces `{id}`, each row becomes an attestation about the place at that
+address, and its notes say how the address was made.
+
+You may also write a pattern of your own for another gazetteer. It must hold
+`{id}` once, after the address's host, and make a web address (`http` or
+`https`); its ids may hold only letters, digits and `. _ ~ -`. A pattern for
+the World Historical Gazetteer is refused, as WHG's short codes do not name
+one record, and `whg:` followed by a number is never made into an address.
+
+A value of the wrong shape (not digits, for Pleiades) makes no address, and is
+reported; the row is then read without it, so with an id it becomes a place of
+its own, keeping the value in its notes. A value that is already a full web
+address is read as one.
+
+For example, PLATO tools' test file
+[`gazetteer-ids.csv`](https://github.com/pelagios/plato-tools/blob/main/test/fixtures/generic/gazetteer-ids.csv)
+is
+
+```text
+id,name,pleiades_id
+1,Athenae,579885
+2,Roma,423025
+3,Ostia,422995
+4,Somewhere,whg:12345
+5,Bad id,57-9885
+6,No address,
+```
+
+Checked as it is, the column `pleiades_id` is kept as a note, with the
+suggestion: "3 of its 5 sampled values have the form of Pleiades ids, so it
+can be read as the place's web address, made with the pattern
+https://pleiades.stoa.org/places/{id}, once you confirm that pattern". With
+the pattern confirmed, Athenae is an attestation about
+`https://pleiades.stoa.org/places/579885`, with the note "Place address made
+from the value 579885 in the column "pleiades_id" with the pattern
+https://pleiades.stoa.org/places/{id}", and so are Roma and Ostia. `whg:12345`
+and `57-9885` are reported as not the shape of a Pleiades id, and rows 4, 5
+and 6, which have ids of their own, become places of their own under the base
+address.
 
 ### World Historical Gazetteer addresses
 
@@ -158,6 +265,21 @@ reconciliation id (`place:gn:2988507`) or an entity page is written as
 and a `/places/<number>/portal/` address holding a database record, or an
 address on WHG's staging copy, is refused and reported.
 
+### Pleiades, GeoNames and Wikidata addresses
+
+So that one place does not become two addresses, an address of Pleiades,
+GeoNames or Wikidata is written in the one form that gazetteer gives it, as
+in a [TEI edition](tei.md#gazetteer-addresses-in-one-form):
+`http://pleiades.stoa.org/places/579885` becomes
+`https://pleiades.stoa.org/places/579885`, a Wikidata page
+`https://www.wikidata.org/wiki/Q90` becomes
+`http://www.wikidata.org/entity/Q90`, and so on. The attestation's notes give
+what the table said, the rule, and the version of the rules, such as "Place
+address given as https://www.wikidata.org/wiki/Q90 (rule wikidata-page,
+hermes-addresses 1)". An address made from an id through a pattern follows
+the same rules. A Pleiades address that names part of a place's record, or
+ends `#this`, is carried as written and reported.
+
 ## What each column becomes
 
 | Matched as | In PLATO |
@@ -167,7 +289,8 @@ address on WHG's staging copy, is refused and reported.
 | Latitude and longitude | A **location**, made exactly as the locations sheet makes one |
 | WKT, GeoJSON geometry, or a GeoJSON feature's own geometry | A **location** with that shape |
 | Place id | The place's **address**, under the base address, and its own identifier |
-| Place's web address | What the attestation is **about** |
+| Place's web address | What the attestation is **about**, in its gazetteer's one form |
+| A gazetteer's ids, with a pattern you confirmed | What the attestation is **about**, made from the id |
 | Kind of place | A **type** (with its address, when the value is a web address) |
 | Language of the name | The name's **language** |
 | Source | The citation's **source**; with no source, the file is cited, with the row ("row 2", "feature 3") as the locator |
@@ -243,9 +366,12 @@ Lutetia Parisiorum,48.85,2.35,https://www.wikidata.org/wiki/Q90,,,,a second row 
 
 `Place Name`, `LAT`, `Long`, `Feature Type` and `Alt. names` are recognised
 despite their case and punctuation; `wikidata` holds web addresses, so each
-row is an attestation about the place at its address. Roma's attestation has
-the names *Roma*, *Rome* and *Urbs*, a point, the type "city", the
-*Itinerarium Antonini* as its source, and the note "Remarks: the capital". The
-two Lutetia rows are two attestations about one place, Q90. Because the rows
-give names but not labels for Wikidata's places, the report warns that each
-place's address is used as its label.
+row is an attestation about the place at its address, written in Wikidata's
+own form, `http://www.wikidata.org/entity/Q220`. Roma's attestation has the
+names *Roma*, *Rome* and *Urbs*, a point, the type "city", the
+*Itinerarium Antonini* as its source, and the notes "Remarks: the capital"
+and "Place address given as https://www.wikidata.org/wiki/Q220 (rule
+wikidata-page, hermes-addresses 1)". The two Lutetia rows are two attestations
+about one place, `http://www.wikidata.org/entity/Q90`. Because the rows give
+names but not labels for Wikidata's places, the report warns that each place's
+address is used as its label.
