@@ -49,7 +49,7 @@ Safari, allow has not been measured.
 
 If the page warns, use the
 [command line](https://github.com/pelagios/plato-tools#from-the-command-line).
-It has no storage allowance and no memory ceiling of its own: the same million
+It has no storage allowance and is not held to a browser tab's memory: the same million
 places converted in 6 minutes 38 seconds with 367 MB of memory. It still needs
 disk, about one and a half to two times the uncompressed input, so give
 `--work-dir` a folder on a disk with room if the temporary folder is small. It
