@@ -11,7 +11,10 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
-## Unreleased
+## 0.8.0
+
+Candidate sets, normative IRIs for the spreadsheet tables, and what
+building PLATO tools' version check, map placement and match review found.
 
 ### Changed
 
@@ -238,6 +241,32 @@ were made under the earlier policy.
   read each outcome from the attestations.
 - The README described a Candidate as not an IdentityRelation "until a human
   reviewer confirms it"; a Candidate never becomes one.
+
+### Guide
+
+- Pages on bringing a TEI edition whose place names point at a gazetteer,
+  and a project's own table of places (CSV or plain GeoJSON), into PLATO
+  with PLATO tools: what each part becomes, what is left out and why, and
+  for a table how the columns are matched and how places get addresses.
+- On the *Checking, converting and comparing* page: *Reviewing matches*
+  (suggested matches and the reviewer's answers as attestations, with
+  looking places up in the World Historical Gazetteer marked as still to
+  come), *Placing on the map* (Chora: search over every name a place has,
+  and basemaps chosen through the Permissions panel), and *Large datasets*
+  (measured limits in the browser and on the command line).
+- An "Under development" badge in the sidebar of every page, linking to a
+  section of that name on the About page that states the deprecation
+  policy; "Why PLATO", the opening page, now heads the sidebar.
+- The JSON page says that a candidate's first score stands: a new score
+  needs a new `algorithmVersion` or `matchParameters`, and so a new
+  candidate.
+- The glossary gains *Gazetteer*, *Identity match*, *Meta-attestation* and
+  *Type*; "Where to start" now leads somewhere for Recogito annotations and
+  for routes, journeys and networks; and the README lists the current
+  examples and every concept scheme.
+- The README and the About page acknowledge the support of the Institute
+  for Spatial History Innovation (ISHI), and the logo files include a
+  social-media preview card (`docs/_static/logo/plato-social.png`).
 
 ## 0.7.1
 
