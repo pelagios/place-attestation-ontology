@@ -333,6 +333,74 @@ mark *where the map writes its name*. A drawing moved or reshaped is traced
 again; if it no longer lies on the map, it no longer cites it, and the card
 says so.
 
+### Tracing with assistance from the map's ink
+
+Once a map shown has drawn a tile, two more tools are offered beside the
+drawing tools, **Trace area** and **Trace line**; until then they say in a
+tooltip why not. The tracing itself is loaded when one is first pressed, and
+a click made on the map before it has loaded is acted on once it has. With
+**Trace area**, click inside an area the map draws, such as a wash or an
+outlined field, and its outline is proposed from the map's own ink; with
+**Trace line**, click on a line, such as a road or a river, and it is
+followed both ways from the click, as far as the ink goes, and proposed.
+The proposal is shown on the map, with a panel of settings. For an area:
+the colour tolerance, **Bridge gaps in the outline** and how far, and
+**Leave out small holes (lettering)**, which keeps holes no bigger than the
+map's lettering out of the proposal. For a line: **Match the colour clicked
+(else: the darkest ink)**, which follows the colour under the click, within
+the colour tolerance, rather than the darkest ink (the tolerance counts only
+when this is ticked); the thickness of line to follow; and **Jump gaps in
+the line**. For both, how closely to keep to the ink. Moving one proposes
+again, from the part of the map already read, so the map's server is asked
+nothing more. A proposal is not yet a drawing: **Accept** (or Enter)
+makes it one, to edit or remove like any other, and **Let go** (or Esc)
+drops it. Accepting before a place is chosen keeps the proposal and asks you
+to choose one.
+
+A line may stop where the ink does, or where it meets a fork it cannot judge;
+Shift-click further along carries it on, keeping what was proposed and
+tracing the new click alone. Whatever holes an area still has are left out
+when it is accepted, since a drawing is an outline: the page says how many.
+A fill that covers most of the part of the map read is refused in words, as
+the area is not closed: bridge its gaps, or lower the tolerance. One that
+runs out to the edge of the part read is tried again from a larger part,
+and then once at a coarser scale; if it still runs out, the page says it is
+too large to trace at once: zoom out, or trace it in parts.
+
+**Snap to ink**, offered while you draw a line or an area by hand (not a
+point), once a map shown has drawn a tile, helps tracing by hand: a vertex
+you place within 10 screen pixels of the map's ink
+goes onto it, the centre of a line or the edge of an area. Hold Alt to
+place a vertex where you click.
+
+What is proposed is read from the map's image tiles, fetched from the map's
+own image server under the permission you gave it under **Historical
+maps**, and nothing else is asked; withdraw that permission and everything
+read from that server is let go, the proposal with it. The work is done in
+your browser.
+
+A shape traced this way is attested, not computed: you accepted it. Its
+notes say so, after the georeference's sentences: that it was proposed from
+the map's ink, by filling an area or following a line, with the settings
+used; for an area, how many holes were left out; then whether it was
+accepted as proposed or edited by hand, counting the vertices moved, added
+and removed against those proposed. Moved off its map, it keeps saying how
+it was proposed, and that the citation was dropped.
+
+The assistance has limits, which it is better to know than to meet. It
+reads the map at the resolution shown, so a fine line is best traced zoomed
+in: a line about three pixels wide in the image read, running diagonally,
+may be placed a few pixels short at its ends, and a very short stroke of
+that width may not be followed at all. A line narrower than six pixels
+that ends square-cut, but runs at a slant to the image's pixels, has that
+end placed as if rounded, half a line's width short; an end square to the
+pixels is placed where the ink stops. A line ending on
+a bar twice its width may run on along the bar; on one of its own width it
+stops. A map's server that refuses its pixels (one that asks you to log in,
+or lets no other site read it) cannot be traced from, and the page says so.
+Check every proposal against the map before accepting it, as you would a
+drawing of your own.
+
 ### What a drawing records
 
 Each drawing becomes a **new attestation** of its place, holding one
@@ -364,7 +432,9 @@ source of its own derived from the map. Its notes begin with the
 georeference's address, its transformation and number of control points, and
 when it was retrieved, and the canvas and manifest, since a georeference can
 be changed after you trace from it; then comes "Traced by hand from a
-georeferenced historical map at zoom 9 in PLATO tools (Chora)."
+georeferenced historical map at zoom 9 in PLATO tools (Chora)", or, for one
+[traced with assistance](#tracing-with-assistance-from-the-maps-ink), how it
+was proposed and what was done to it by hand.
 
 It has no web address of its own yet: **Mint** gives it one when you
 [publish the dataset](#the-four-parts-in-order).
@@ -439,8 +509,6 @@ computer only.
 
 ### Still to come
 
-- **Assisted tracing**: help in following what a historical map draws,
-  rather than tracing it wholly by hand.
 - **Adopting a location from a match**: taking a location from a matching
   record in another gazetteer, such as the World Historical Gazetteer. That
   records two claims, kept apart as PLATO keeps them: that this place is
