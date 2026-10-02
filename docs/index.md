@@ -186,6 +186,7 @@ guide is the friendlier way in.
 :hidden:
 
 Why PLATO <self>
+PLATO tools <https://pelagios.org/plato-tools/>
 ```
 
 ```{toctree}
