@@ -1,0 +1,18 @@
+place_id,same_as,match_type,certainty,basis,source_id
+windsor,http://www.wikidata.org/entity/Q464955,exactMatch,,The place Hardy names,wikidata
+odiham,http://www.wikidata.org/entity/Q928816,exactMatch,,The place Hardy names,wikidata
+winchester,http://www.wikidata.org/entity/Q172157,exactMatch,,The place Hardy names,wikidata
+runnymede,http://www.wikidata.org/entity/Q1483542,exactMatch,,The place Hardy names,wikidata
+marlborough,http://www.wikidata.org/entity/Q539528,exactMatch,,The place Hardy names,wikidata
+devizes,http://www.wikidata.org/entity/Q1026699,exactMatch,,The place Hardy names,wikidata
+bradenstoke,http://www.wikidata.org/entity/Q4954492,exactMatch,,The place Hardy names,wikidata
+calne,http://www.wikidata.org/entity/Q1235307,exactMatch,,The place Hardy names,wikidata
+cirencester,http://www.wikidata.org/entity/Q852772,exactMatch,,The place Hardy names,wikidata
+ludgershall,http://www.wikidata.org/entity/Q643318,exactMatch,,The place Hardy names,wikidata
+clarendon,http://www.wikidata.org/entity/Q404530,closeMatch,,"Hardy writes ""Clarendon""; the royal palace there",wikidata
+corfe,http://www.wikidata.org/entity/Q1236511,closeMatch,,"Hardy writes ""Corfe-Castle""; the royal castle, not the village",wikidata
+newbury,http://www.wikidata.org/entity/Q655874,exactMatch,,The place Hardy names,wikidata
+abingdon,http://www.wikidata.org/entity/Q321381,exactMatch,,The place Hardy names,wikidata
+woodstock,http://www.wikidata.org/entity/Q752111,exactMatch,,The place Hardy names,wikidata
+oxford,http://www.wikidata.org/entity/Q34217,exactMatch,,The place Hardy names,wikidata
+isle-of-wight,http://www.wikidata.org/entity/Q9679,exactMatch,,The place Hardy names,wikidata

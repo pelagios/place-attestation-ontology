@@ -1,0 +1,3 @@
+place_id,name,language,script,romanized,name_type,form_status,occurrence_context,occurrence_count,transcription_accuracy,transcription_completeness,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+runnymede,Runnemead,en,Latn,,,Attested,,,,,1835,1835,1835,hardy-1835,p. 108,,citesAsEvidence,,,,,Hardy's spelling.
+corfe,Corfe-Castle,en,Latn,,,Attested,,,,,1835,1835,1835,hardy-1835,p. 109,,citesAsEvidence,,,,,Hardy's spelling.

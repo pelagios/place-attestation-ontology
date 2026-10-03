@@ -1,0 +1,281 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/gazetteer/judgements",
+    "title": "Denials, stances, alternatives and judged readings (illustrative)",
+    "creator": [
+      {
+        "@id": "https://orcid.org/0000-0003-3060-0181",
+        "name": "Stephen Gadd"
+      }
+    ],
+    "contributor": "https://orcid.org/0000-0002-1825-0097",
+    "version": "2026-09",
+    "status": "published",
+    "licence": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/example/entity/littleworth",
+      "label": "Littleworth",
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/example/attestation/littleworth-no-market",
+          "types": [
+            {
+              "label": "market"
+            }
+          ],
+          "negated": true,
+          "timespans": [
+            {
+              "startEarliest": "1886",
+              "endLatest": "1886",
+              "sourceLabel": "1886"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/market-rights-1886",
+                "title": "Return of market rights and tolls, 1886"
+              },
+              "locator": "vol. XIII, p. 88",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The return answered for every district it covered, so 'no market here' is a statement, certain, not a gap. The attestation is about the real town, with the one thing denied; no market is invented."
+        },
+        {
+          "@id": "https://whgazetteer.org/example/attestation/littleworth-bad-import",
+          "geometries": [
+            {
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          ],
+          "sources": [
+            {
+              "title": "Batch import, 2026-09-01"
+            }
+          ],
+          "created": "2026-09-01T09:00:00Z",
+          "notes": "A bad import put Littleworth at 0°, 0°. In a published gazetteer it is not deleted: the next attestation retracts it."
+        },
+        {
+          "@id": "https://whgazetteer.org/example/attestation/littleworth-bad-import-retracted",
+          "meta": {
+            "targetAttestation": "https://whgazetteer.org/example/attestation/littleworth-bad-import",
+            "metaType": "https://w3id.org/plato#Retracts"
+          },
+          "sources": [
+            {
+              "title": "Batch import, 2026-09-01"
+            }
+          ],
+          "created": "2026-09-02T10:00:00Z",
+          "notes": "Withdrawn by whoever made it. The state as of 1 September still shows the point; the state from 2 September on does not."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/newton-by-the-river",
+      "label": "Newton (by the river)",
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/example/attestation/newton-a",
+          "names": [
+            {
+              "toponym": "Neuton"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/charter-c1200",
+                "title": "Charter, c. 1200"
+              },
+              "locator": "witness list"
+            }
+          ],
+          "certainty": 0.6,
+          "notes": "The charter names Neuton without saying which of two Newtons it means."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/newton-on-the-hill",
+      "label": "Newton (on the hill)",
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/example/attestation/newton-b",
+          "names": [
+            {
+              "toponym": "Neuton"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/source/charter-c1200",
+              "locator": "witness list"
+            }
+          ],
+          "certainty": 0.4,
+          "meta": {
+            "targetAttestation": "https://whgazetteer.org/example/attestation/newton-a",
+            "metaType": "https://w3id.org/plato#AlternativeTo"
+          },
+          "notes": "The same mention read as the other Newton. With plato:AlternativeTo, the two are one piece of evidence, at most one of them right, not two."
+        },
+        {
+          "@id": "https://whgazetteer.org/example/attestation/newtons-distinct",
+          "negated": true,
+          "identities": [
+            {
+              "subject": "https://whgazetteer.org/example/entity/newton-on-the-hill",
+              "object": "https://whgazetteer.org/example/entity/newton-by-the-river",
+              "identityType": "exactMatch"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/editor-review",
+                "title": "Editor's review of the Newtons",
+                "authorityType": "source"
+              }
+            }
+          ],
+          "notes": "The editor's judgement that the two Newtons are different places: an identity denied (negated, bundling one exactMatch), attributed and dated like any claim, so that disagreement is recorded as well as agreement. It is about the places; the alternative readings above are about the mention."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/fenland-hundred",
+      "label": "Fenland Hundred",
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/example/attestation/fenland-hundred-name",
+          "names": [
+            {
+              "toponym": "Fenl[and]",
+              "qualification": {
+                "transcriptionAccuracy": "https://w3id.org/plato#TranscriptionAccurate",
+                "transcriptionCompleteness": "https://w3id.org/plato#TranscriptionReconstructable"
+              }
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/bibliography#André-1980",
+                "title": "André 1980"
+              },
+              "locator": "p. 12",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The form is damaged at its end but can be supplied: read accurately as far as it goes. The source's identifier keeps its accented letter; it is an IRI, not percent-encoded."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/cave-site",
+      "label": "Cave site",
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/example/attestation/cave-site-rock-shelter",
+          "types": [
+            {
+              "label": "rock shelter"
+            }
+          ],
+          "timespans": [
+            {
+              "startEarliest": "-12000",
+              "endLatest": "-10000",
+              "sourceLabel": "c. 12,000–10,000 BCE"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/excavation-report",
+                "title": "Excavation report"
+              },
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "A deep-time date in the structured bounds: years have as many digits as they need."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/kingsbury",
+      "label": "Kingsbury",
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/example/attestation/kingsbury-market-reported",
+          "types": [
+            {
+              "label": "market"
+            }
+          ],
+          "sourceStance": "https://w3id.org/plato#StanceReported",
+          "timespans": [
+            {
+              "startEarliest": "1673",
+              "endLatest": "1673",
+              "sourceLabel": "1673"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/county-description-1673",
+                "title": "A county description, 1673",
+                "licence": "https://creativecommons.org/publicdomain/mark/1.0/"
+              },
+              "locator": "p. 212",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The source says only that a market 'is said to be kept' here, passing the claim on without vouching for it. The stance is the source's: the encoder is certain that this is what it says, so certainty is not lowered to record it. The copy cited is marked public domain, and the licence travels with the citation."
+        },
+        {
+          "@id": "https://whgazetteer.org/example/attestation/kingsbury-market-doubted",
+          "types": [
+            {
+              "label": "market"
+            }
+          ],
+          "sourceStance": "https://w3id.org/plato#StanceDoubted",
+          "timespans": [
+            {
+              "startEarliest": "1500",
+              "endLatest": "1640",
+              "sourceLabel": "1500-1640"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/market-survey-1967",
+                "title": "A survey of markets, 1967"
+              },
+              "locator": "p. 470",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The survey raises the market and declines to settle whether there was one. That is doubt, not denial: negated would say there was no market."
+        }
+      ]
+    }
+  ]
+}

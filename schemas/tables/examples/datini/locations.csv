@@ -1,0 +1,9 @@
+place_id,latitude,longitude,wkt,geometry_role,precision_km,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+florence,43.7695604,11.2558136,,RepresentativePoint,,undated,,,datini-metadata,"City List with Coordinates, FIRENZE",,citesAsDataSource,,,,,
+pisa,43.7228386,10.4016888,,RepresentativePoint,,undated,,,datini-metadata,"City List with Coordinates, PISA",,citesAsDataSource,,,,,
+prato,43.8777049,11.102228,,RepresentativePoint,,undated,,,datini-metadata,"City List with Coordinates, PRATO",,citesAsDataSource,,,,,
+genoa,44.4056499,8.946256,,RepresentativePoint,,undated,,,datini-metadata,"City List with Coordinates, GENOVA",,citesAsDataSource,,,,,
+barcelona,41.3850639,2.1734035,,RepresentativePoint,,undated,,,datini-metadata,"City List with Coordinates, BARCELLONA",,citesAsDataSource,,,,,
+valencia,39.4699075,-0.3762881,,RepresentativePoint,,undated,,,datini-metadata,"City List with Coordinates, VALENZA",,citesAsDataSource,,,,,
+palma,39.570023,2.650706,,RepresentativePoint,,undated,,,datini-metadata,"City List with Coordinates, MAIORCA",,citesAsDataSource,,,,,
+avignon,43.949947,4.8086864,,RepresentativePoint,,undated,,,datini-metadata,"City List with Coordinates, AVIGNONE",,citesAsDataSource,,,,,

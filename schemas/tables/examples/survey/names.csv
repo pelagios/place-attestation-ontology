@@ -1,0 +1,8 @@
+place_id,name,language,script,romanized,name_type,form_status,occurrence_context,occurrence_count,transcription_accuracy,transcription_completeness,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+cambridge,Grantanbrycg,ang,Latn,,,,,,,,921 (c. 925),0921,0921,asc-ms-a,,,,1,,,,"The annal is for 921; the spelling is read in the A manuscript, written c. 925, whose date is on its source row."
+bunsty,Bonestou,,,,,,,3,,,1086,1086,1086,domesday,,,,1,,,,
+bunsty,Bonestou,,,,,,InPersonalName,,,,c. 1200,1190,1210,deed-c1200,,,,1,,,,"Willelmus de Bonestou, witness. The hundred is not named; a man from it is."
+bunsty,Bonestou,,,,,,,,,,1254,1254,1254,close-rolls,"1253-54, p. 31",Inferred,,1,,,,Source given as ib. in the survey and resolved editorially.
+bunsty,Bunstow(e),,,,,,,,,,c. 1240,1235,1245,fine-c1240,,,,,,,,
+bunsty,Bunsty Hundred,en,,,,Headword,,,,,1925,1925,1925,pn-bk,,,,,,,,The editorial headword under which the survey files the entry.
+bunsty,Bunstowe,,,,,Normalised,,,,,2013,2013,2013,deep,,,,,,,,Search form derived from Bunstow(e); attested by no source.

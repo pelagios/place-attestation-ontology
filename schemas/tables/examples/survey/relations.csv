@@ -1,0 +1,2 @@
+place_id,relation_type,related_place_id,related_uri,related_label,sequence,date,from,to,duration,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+bunsty,ContainedIn,buckinghamshire,,,,1086,1086,,,domesday,,,,,,,,Domesday lists the hundred under Buckinghamshire; no end date is asserted.
