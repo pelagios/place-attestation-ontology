@@ -46,8 +46,7 @@
           "relations": [
             {
               "relationType": "https://w3id.org/plato#ContainedIn",
-              "relatesTo": "https://whgazetteer.org/example/entity/region/england/surrey",
-              "relationLabel": "Surrey"
+              "relatesTo": "https://whgazetteer.org/example/entity/region/england/surrey"
             }
           ]
         }
@@ -88,8 +87,7 @@
           "relations": [
             {
               "relationType": "https://w3id.org/plato#ContainedIn",
-              "relatesTo": "https://whgazetteer.org/example/entity/region/england",
-              "relationLabel": "England"
+              "relatesTo": "https://whgazetteer.org/example/entity/region/england"
             }
           ]
         },

@@ -210,6 +210,10 @@ gazetteer, two different things have been said, and PLATO keeps them apart.
   name as your source writes it. Make one region for each whole chain of
   containers (England, then Surrey), not one for each name, so that a Newport
   in Shropshire and a Newport in Monmouthshire stay two regions.
+  The region's name goes in that region's own name attestation. Use
+  `relationLabel` only when your source words the relation itself ("in the
+  county of Surrey"); `relatedLabel` is not needed, since the region is a
+  place in your dataset.
 - **What the reviewer decided.** That your Surrey is the gazetteer's Surrey
   is an identity match, made like any other: an attestation with the
   reviewer's source and certainty, whose identity relation points back with
