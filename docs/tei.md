@@ -26,17 +26,17 @@ to Linked Places Format, and add to. It reads TEI; it does not write it.
    for many editions at a time.
 3. If you want more than the place names of the text, choose it in
    **Reading options** (see [below](#reading-options)) before you convert.
-4. Read the report. It lists everything that was not carried over, and why.
+4. To see what the first place names will become before you convert a long
+   edition, choose **Preview the first 10 records**. It writes nothing: see
+   [Previewing the first records](tables-of-places.md#previewing-the-first-records).
+5. Read the report. It lists everything that was not carried over, and why.
 
 Nothing leaves your computer: PLATO tools works entirely in your browser.
 
-**Entities.** An entity such as `&nbsp;` is read when the file's own DOCTYPE
-declares it with its text, as in `<!DOCTYPE TEI [<!ENTITY nbsp "&#160;">]>`.
-An entity the file does not declare, or one whose declared text holds markup,
-cannot be read yet, and stops the file where it is used. An entity declared
-as another file (with `SYSTEM` or `PUBLIC`, as from an external DTD) is never
-fetched or read, for safety: a file that uses one is refused, and the message
-names it. Write the character itself, or declare the entity with its text.
+PLATO tools reads TEI P5, EpiDoc included, and the older TEI P4, such as the
+Perseus Digital Library's texts: see [TEI P4](#tei-p4). An entity such as
+`&nbsp;` is read when the file declares it, and in some files from the
+standard table of character entities: see [Entities](#entities).
 
 ## What each part of the edition becomes
 
@@ -415,6 +415,188 @@ Given those three patterns, five of the key-only place names become
 attestations; `pleiades:athens` is reported, as `athens` is not a Pleiades id,
 and `perseus,Argos`, with no pattern, is reported again.
 
+## TEI P4
+
+TEI P4 is the version of TEI before P5, and many older editions are in it,
+among them the Perseus Digital Library's texts. PLATO tools reads a P4 file as
+it reads P5, with P4's own names for things. A file is read as P4 only when
+its root element is `<TEI.2>` or `<teiCorpus.2>`, and the report says so once,
+as a warning. Everything else on this page applies to it too, with these
+differences:
+
+- **Ids and languages.** P4's `id` is read as P5's `xml:id`, and its `lang` as
+  `xml:lang`.
+- **A language is named in the header.** In P4, `lang` names one of the
+  `<language>` elements of the header: `lang="la"` names
+  `<language id="la">Latin</language>`. The place name's language is that
+  element's `ident`, if it is a language code, or else its `id`, if that is
+  one. `<language id="greek">Greek</language>` gives neither, so the name is
+  converted without a language, and the report names the `<language>`, so
+  that you can give it an `ident`. In a `<teiCorpus.2>`, each `<TEI.2>` has
+  its own languages, and the corpus header's hold for every text in it.
+- **Numbered divisions.** `<div1>` to `<div7>` are read as `<div>` is, for the
+  locator: "book 1, chapter 1, section 2".
+- **Notes.** A P4 text has no `<div type="edition">`, so its notes are read as
+  the source's words, unless a note is marked as the editors' own, such as
+  with `resp="ed"`: see [Whose words](#whose-words-the-editors-parts).
+- **A regularised form.** A place name's `reg`, the editors' regularised form,
+  as in `<placeName reg="Roma">Romae</placeName>`, is the editors' words, not
+  the text's. It is reported and not carried: the name is *Romae*, as the text
+  has it.
+- **Keys.** Perseus names places with keys such as `key="tgn,7000874"`, a place
+  in the Getty Thesaurus of Geographic Names. Give a pattern for them, as for
+  any key: see [Keys in place of refs](#keys-in-place-of-refs). The report
+  suggests `--key-pattern tgn=http://vocab.getty.edu/tgn/{id}`.
+
+These rules are for P4 only. A file whose root is `<TEI>` with no namespace is
+not P4: it is read as P5 written without its `xmlns`, with a warning, and its
+`id` and `lang`, which P5 does not have, are reported, not read. Add
+`xmlns="http://www.tei-c.org/ns/1.0"` to its root to make it P5 as written.
+
+### Greek in Beta Code
+
+Perseus's P4 texts write Greek in Beta Code, which spells Greek in Latin
+letters and signs: `*)aqh=nai` is Ἀθῆναι. PLATO tools does not convert Beta
+Code to Greek letters, as a conversion that is not exact would put words in
+the source's mouth.
+
+A P4 place name whose language is Greek, written in plain Latin letters with
+at least one of Beta Code's signs (`*`, `(`, `)`, `/`, `\`, `=`, `|`, `+` or a
+digit), is taken to be Beta Code. It still becomes an attestation, with its
+place, its citation and its locator, but with no name; its notes say why, and
+the report lists the Beta Code as written, with its line.
+
+A Greek place name in plain Latin letters with none of those signs, such as
+`Rwmh`, is **possible Beta Code**: it may be Greek written without accents or
+capitals, or a name in another language whose element only inherits Greek from
+around it, such as an English note in a Greek passage. Which it is cannot be
+told, so the name is carried as written, with no language, and the report
+lists it, as a warning. Check each, and give the note or the name its own
+`lang` where it is not Greek.
+
+A Greek name written in Greek letters, or with entities for them (below), is
+read as any name is.
+
+### An example: a P4 text
+
+PLATO tools' test file `p4-constructed.xml` is a small P4 text, made up in the
+manner of a digital library's Latin prose. Its text begins
+
+```xml
+<text lang="la">
+<body>
+<div1 type="book" n="1">
+<div2 type="chapter" n="1">
+<milestone unit="section" n="1"/>
+<p>Primum <placeName key="tgn,7000874" reg="Roma">Romae</placeName> fuimus, deinde
+<placeName id="pn-athenae" key="tgn,7001393">Athenas</placeName> navigavimus, ubi Graeci urbem
+<foreign lang="greek"><placeName key="tgn,7001393">*)aqh=nai</placeName></foreign> vocant, alii
+<foreign lang="greek"><placeName key="tgn,7001393">&Agr;&thgr;&eegr;&ngr;&agr;&igr;</placeName></foreign>
+scribunt.</p>
+```
+
+Checked with `--key-pattern tgn=http://vocab.getty.edu/tgn/{id}`, it gives
+eight attestations. *Romae* is in Latin, about
+`http://vocab.getty.edu/tgn/7000874`, with the locator "book 1, chapter 1,
+section 1"; *Athenas* has the same locator, with "xml:id pn-athenae" after it.
+The Beta Code `*)aqh=nai` gives an attestation about Athens with no name.
+The name in entities is read from the ISO sets as *Αθηναι*, with no language,
+since `<language id="greek">` is not a language code. The report says, among
+other things:
+
+```text
+The file is TEI P4 (<TEI.2> or <teiCorpus.2>), which is read as P5 would be …
+    <TEI.2> in p4-constructed.xml
+… which were read from the ISO entity sets …
+    isogrk1: Agr (1), thgr (1), eegr (1), ngr (1), agr (1), igr (1)
+    isolat1: aelig (1)
+A language (xml:lang) that is not a language tag …
+    greek (<language id="greek">Greek</language>)
+    latine (<language id="latine">Latin, with no tag</language>)
+A place name's reg …
+    Romae (reg="Roma") on line 73
+A Greek place name written in Beta Code …
+    *)aqh=nai (<placeName> on line 75)
+```
+
+A place name in the text's footnote, marked `resp="ed"`, is reported as the
+editors' words.
+
+## Entities
+
+An entity, such as `&nbsp;` or `&aelig;`, stands for text declared somewhere
+else. What PLATO tools does with one depends on where it is declared.
+
+**Declared in the file.** An entity that the file's own DOCTYPE declares with
+its text, as in `<!DOCTYPE TEI [<!ENTITY nbsp "&#160;">]>`, is read. One whose
+declared text holds markup cannot be read yet, and stops the file where it is
+used. An entity declared as another file (with `SYSTEM` or `PUBLIC`) is never
+fetched or read, for safety: a file that uses one is refused, and the message
+names it.
+
+**From the standard table, in a file that names an outside DTD.** A P4 file
+often begins with a DOCTYPE that names TEI's DTD, and the ISO entity sets as
+well:
+
+```xml
+<!DOCTYPE TEI.2 PUBLIC "-//TEI P4//DTD Main Document Type//EN" "http://www.tei-c.org/Guidelines/DTD/tei2.dtd" [
+<!ENTITY % ISOgrk1 PUBLIC "ISO 8879:1986//ENTITIES Greek Letters//EN//XML" "isogrk1.ent">
+%ISOgrk1;
+]>
+```
+
+Such a file relies on entities declared in those other files, which PLATO
+tools never fetches. So, for such a file only, an entity the file does not
+declare itself is looked up in the standard table of character entities, the
+ISO sets as the W3C publishes them
+([XML Entity Definitions for Characters](https://www.w3.org/2003/entities/2007/)):
+`&aelig;` is *æ*, `&agr;` is *α*. The file's own declarations come first. The
+report lists each set used once, with each name and how many times it was
+used, as a warning: a few names have stood for different characters over the
+years (ISOgrk3's `phiv` and `epsiv`), so check the characters read. This
+applies to a P5 file that names an outside DTD as well.
+
+**A publisher's own entities.** A digital library's DTD often declares
+entities of its own for its standard wording, such as `&responsibility;` or
+`&fund.NEH;`. They are not in the table, and the DTD is never read, so what
+they stand for is not known. In a file that names an outside DTD, each is left
+out, with nothing in its place, and the report lists them once, with how many
+times each was used: words in the header, such as who funded or published the
+edition, may be missing. Where leaving one out would make something wrong
+rather than shorter:
+
+- a **place name** whose words, `ref` or `key` hold one is not converted, as
+  its name or address would be incomplete; the report gives the entity, the
+  name as read without it, and its line. So is a place in a list of places
+  whose address or name holds one;
+- a **number** (`n`) of a division, milestone, page or line that holds one is
+  left out of the locators of the place names under it, rather than given
+  incomplete, and reported;
+- the edition's **title** or its **web address** holding one stops the file,
+  as every citation of it would be incomplete.
+
+For example, PLATO tools' test file `p4-boilerplate-constructed.xml` uses
+three such entities in its header. Checked with the pattern for its `tgn`
+keys, it gives both its place names, and warns:
+
+```text
+&responsibility; (2), &fund.NEH; (1), &Perseus.publish; (1): left out, with nothing in their place; the outside DTD that may declare them was never read
+```
+
+If its second place name is changed to `Ath&lib.emacr;nas`, that place name is
+not converted, and the report says:
+
+```text
+&lib.emacr; in "Athnas" (<placeName key="tgn,7001393">) on line 34
+```
+
+To keep such a name, declare the entity in the file's DOCTYPE with its text,
+or write the text in its place.
+
+**Anything else.** In a file that names no outside DTD, an entity the file
+does not declare stops the file where it is used, and the message names it.
+Write the character itself, or declare the entity with its text.
+
 ## What is left out, and why
 
 **Place names with no ref.** A place name that points to no place has nothing
@@ -442,6 +624,16 @@ found and where it was made.
 `<placeName>` are reported, once for each attribute and value. TEI's `cert`
 does not say what it is certain of (the reading, or which place is meant), so
 it is not taken for the certainty of the attestation.
+
+**Greek in Beta Code.** In a P4 text, a Greek place name in Beta Code is
+converted with no name, and one that may be Beta Code is carried as written,
+with no language; the report lists each: see
+[Greek in Beta Code](#greek-in-beta-code). A P4 place name's `reg` is
+reported, not carried.
+
+**Entities no one declares.** In a file that names an outside DTD, an entity
+that neither the file nor the standard table declares is left out, and a place
+name holding one is not converted: see [Entities](#entities).
 
 **A language that is not a language code.** `xml:lang="grc"` is carried;
 `xml:lang="Latin"` is reported, and the name converted without a language.

@@ -25,8 +25,8 @@ and adds the locations you draw there: see [placing on the map](#chora).
 | [Linked data](linked-data.md): N-Triples, N-Quads or Turtle | yes | N-Triples |
 | Linked Places Format, version 1 | yes | yes |
 | [Annotations from Recogito](annotations.md) | yes | no |
-| [Place names in a TEI edition](tei.md) | yes | no |
-| [Your own table of places](tables-of-places.md): any CSV, or GeoJSON | yes, with the columns matched to PLATO's fields | no |
+| [Place names in a TEI edition](tei.md), TEI P5 or P4 | yes | no |
+| [Your own table of places](tables-of-places.md): any CSV, GeoJSON, or a sheet of a workbook (`.xlsx`, `.ods`) that is not the spreadsheet tables | yes, with the columns matched to PLATO's fields | no |
 
 A gzipped file (ending `.gz`) is read as it is.
 

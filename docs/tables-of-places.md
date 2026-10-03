@@ -1,9 +1,10 @@
-# Your own table of places: CSV and GeoJSON
+# Your own table of places: CSV, GeoJSON or a workbook
 
-Many projects keep their places in a table of their own: a spreadsheet saved
-as CSV, with a column for the name, one for latitude, one for longitude and
-so on, or a GeoJSON file of features exported from a GIS. Such a table is not
-yet in PLATO's shape, but most of what it holds has a place there.
+Many projects keep their places in a table of their own: a spreadsheet, as an
+Excel or OpenDocument workbook or saved as CSV, with a column for the name, one
+for latitude, one for longitude and so on, or a GeoJSON file of features
+exported from a GIS. Such a table is not yet in PLATO's shape, but most of
+what it holds has a place there.
 
 [PLATO tools](https://pelagios.org/plato-tools/) reads such a table, works out
 which column holds what, lets you correct that, and turns each row into
@@ -20,6 +21,8 @@ add to.
   is not the sheet's own (a `places.csv` of your own that does not begin with
   `place_id`) is read as a table of places. Several CSV files not named after
   the sheets are not read together: choose one at a time.
+- **A workbook** (`.xlsx` or `.ods`) that is not PLATO's own spreadsheet
+  tables, one sheet at a time: see [A workbook of your own](#a-workbook-of-your-own).
 - **Plain GeoJSON**: a FeatureCollection, or a single Feature, that is not
   Linked Places Format. Each feature's properties are read as the columns of a
   row, its `id` as one more column, and its geometry is carried if it is well
@@ -40,6 +43,79 @@ own to be sure which is which.
 Coordinates must be decimal degrees of longitude and latitude (WGS 84), as
 GeoJSON requires. A GeoJSON file that names another coordinate reference
 system is refused, rather than read as degrees it is not.
+
+### A workbook of your own
+
+A workbook is read as PLATO's [spreadsheet tables](spreadsheets/index.md), as
+before, when its sheets are named after the tables' sheets: two or more of
+them, or a single one that begins as that sheet does (a `places` sheet whose
+first column is `place_id`). Any other `.xlsx` or `.ods` workbook is a table of
+places, and its columns are matched as a CSV file's are.
+
+**One sheet is read.** It is the first sheet that is not hidden, unless you
+choose another. **On the page**, choose it in *Sheet to read*, above the table
+of columns: its columns are then read and guessed afresh. **On the command
+line**, give `--sheet NAME` to `check`, `convert` or `preview`; a name the
+workbook does not have is refused, and the message names the sheets it has.
+The report names the sheets not read. To read several, read each in turn, or
+put their rows on one sheet.
+
+**The report also names**
+
+- a **hidden sheet**, whether or not it is the one read. Only an Excel
+  workbook's hidden sheets are known: an OpenDocument (`.ods`) workbook's are
+  not marked as hidden when it is read, so a hidden first sheet is the one
+  read. Check the report's *read "…"* line;
+- a **formula saved without its value**, as a program that does not calculate
+  may save it. The cell is read as empty. Open the workbook in a spreadsheet
+  program, let it calculate, and save it again;
+- a **cell holding an error**, such as `#DIV/0!`, `#N/A` or `#REF!`. It carries
+  nothing: it is read as empty, never as the error's text;
+- an **empty sheet**, which is an error: choose the sheet that holds the table.
+
+**Each cell is read as it is stored, not as the workbook shows it**, exactly
+as the spreadsheet tables reader reads a workbook:
+
+| In the workbook | Read as |
+|---|---|
+| A coordinate formatted to show `51.38` | every digit it has: `51.381088` |
+| A very small or very large number | written out in full, never with an exponent: `0.0000001`, not `1e-7` |
+| A percentage shown as `95%` | the number, `0.95` |
+| A date | an ISO date, `1990-05-06` |
+| A date with a time of day | `1991-07-02T10:30:00`, with no time zone, as the workbook gives none |
+| A time of day alone | `12:00:00` |
+| Text, such as `007` | the text as it is: `007` |
+
+A workbook is read whole into memory, and one over 50 MB is warned of: save a
+very large sheet as CSV (UTF-8), which is read a row at a time.
+
+For example, a workbook `sites.xlsx` made for this guide has three sheets: a
+hidden one, *Old list*; *Sites*; and *Notes*. *Sites* is
+
+| id | name | latitude | longitude | surveyed | finds |
+|---|---|---|---|---|---|
+| bath | Aquae Sulis | 51.38 | -2.36 | 1990-05-06 | 120 |
+| york | Eboracum | 53.96 | -1.08 | 1991-07-02 10:30 | `=F2*2`, saved without its value |
+| wroxeter | Viroconium | 52.6744 | `#N/A` | 1992-04-01 | `#DIV/0!` |
+
+with the coordinates of the first two rows formatted to show two decimal
+places. Checked with the base `https://example.org/survey/`, *Sites* is read,
+as the first sheet not hidden, and gives three places. Aquae Sulis has its
+point at every digit stored, `51.381088, -2.359019`, and the notes "surveyed:
+1990-05-06" and "finds: 120"; Eboracum's note is "surveyed:
+1991-07-02T10:30:00". The report says:
+
+```text
+sites.xlsx: read "Sites"; not read "Old list", "Notes"
+"Old list" in sites.xlsx, not read
+row 4, column "longitude", cell D4: #N/A
+row 4, column "finds", cell F4: #DIV/0!
+cell F3 of "Sites", column "finds": =F2*2
+row 4: latitude 52.6744 with no longitude
+```
+
+Saved as `sites.ods`, the same workbook reads *Old list* first, as its hidden
+flag is not known, and `--sheet Sites` reads *Sites*.
 
 ### Plain GeoJSON or Linked Places Format?
 
@@ -109,6 +185,63 @@ with a pattern, is written
 place of the field's name (see [A column of gazetteer ids](#a-column-of-gazetteer-ids)).
 A column the file names that the table does not have, or a column the file
 leaves out, is reported, and a column left out is kept as a note.
+
+## Previewing the first records
+
+Before you check or convert a whole file, you can see what its first records
+become. **On the page**, choose **Preview the first 10 records**, once the
+columns are matched (for a TEI edition, once the file is chosen). **On the
+command line**, give
+
+```text
+plato-tools preview --limit 3 my-places.csv
+```
+
+with `--limit N` for how many records (10 if you leave it out), and the same
+`--columns`, `--sheet`, `--base` and reading options a conversion would take.
+The records are shown in PLATO JSON, as a conversion reads them, with what was
+lost from them so far, grouped as the report groups it. On the command line,
+the records go to the standard output, one a line, and the rest to the
+standard error; `--json` prints it all as one JSON object.
+
+A preview is made of a table of places (a CSV file, plain GeoJSON or a sheet of
+a workbook), a [TEI edition](tei.md), or [annotations from
+Recogito](annotations.md). Any other format is refused, since the first part of
+a set of spreadsheet tables or of a PLATO JSON file could be taken for the
+whole.
+
+- **It writes nothing**, and checks nothing as a whole: a problem further on,
+  such as an id used again after the records shown, is not found. If the file
+  cannot be read past a problem among the first records, the preview stops
+  there, and says why.
+- **It stops early.** Reading stops at the first record past the limit, so a
+  preview of a large file is quick.
+- **It says how many records there are only when it has read them all.** The
+  line above the records says *first 3 of 3 records* only when the whole file
+  was read; otherwise *the first 3 records read; the rest not read*, as a file
+  is never read to its end to count it.
+
+It also says why the records shown may not be all there are, or not in the
+order a conversion writes them: the rest of the file was not read; a
+conversion gathers attestations by the place each is about once the whole
+file is read; places made from rows that share an id are made only at the end
+(so none is shown); and in a TEI edition, a place name that points to a
+`<place>` later in the file, or that may be in the editors' words, waits, and
+is not shown.
+
+For example, `plato-tools preview --limit 2 --base https://example.org/survey/ sites.xlsx`,
+with the workbook [above](#a-workbook-of-your-own), prints Aquae Sulis and
+Eboracum as two places, and says
+
+```text
+sites.xlsx: a table of places (the sheet “Sites” of a workbook), its columns matched to PLATO (place-centric): the first 2 records read; the rest not read; nothing checked or written
+  Reading stopped after the first 2 records: the rest of the file was not read, so nothing after them, and no problem in it, is shown.
+```
+
+with, as losses so far, the sheets not read, the hidden sheet and the formula
+saved without its value, but not the error cells of row 4, which was not
+read. Without `--limit`, it reads all three rows, and the line says *first 3 of
+3 records*.
 
 ## Places, or evidence about places
 
@@ -329,6 +462,8 @@ happened.
 - **A row with no name (and no alternative name) and no web address**, which
   has nothing to be a place or to be about. With a column of web addresses, a row with a name but no
   usable address, and no id, is left out too.
+- **A workbook's error cells, and formulas saved without their values**,
+  which are read as empty: see [A workbook of your own](#a-workbook-of-your-own).
 - **Cells beyond the last column** of a CSV row, and members of a GeoJSON
   feature besides its `type`, `id`, `geometry` and `properties`, such as a
   `bbox`.
