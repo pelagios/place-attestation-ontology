@@ -226,7 +226,9 @@ Linked Places Format (LPF) writes the two claims as one: a
 `gvp:broaderPartitive` relation for each container, whose `relationTo` is the
 identity match's gazetteer address, whose `certainty` is the reviewer's
 certainty level, whose `whg_match_score` is the suggestion's score and whose
-`label` is the region's name. So nothing is lost in either direction. The
+`label` is the region's name. Reading such LPF back gives the simpler
+shape, a containment straight to the gazetteer's address: the region made from
+your data, the separate match and the score are not in LPF to be recovered. The
 repository's
 [place-centric-regions.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-regions.json)
 shows a parish in Surrey in England, and
