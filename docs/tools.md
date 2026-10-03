@@ -540,25 +540,28 @@ run (on the page, "Web address for your identifiers"; on the command line,
 
 ### The four parts, in order
 
-1. **Report** says what the dataset's description still lacks to be
+1. **Mint** writes a copy of the dataset in which every attestation has a
+   permanent address of its own, as PLATO JSON Lines (its name ends
+   `-with-ids.jsonl`). This copy is what you publish, and what the other
+   parts read. It needs the base address (above).
+2. **Report** says what the dataset's description still lacks to be
    [FAIR](index.md#plato-and-fair-data): a title, a description long enough
    for search engines, authors with ORCIDs (whose check digits are tested),
    a licence given as its web address, a version, what the dataset covers,
    and a base address that will last. It counts the checks passed, and
    writes the deposit files (below). Put right what it lists, in the about
-   sheet or the `gazetteer` header, and run it again.
-2. **Mint** writes a copy of the dataset in which every attestation has a
-   permanent address of its own, as PLATO JSON Lines (its name ends
-   `-with-ids.jsonl`). This copy is what you publish, and what the other
-   parts read.
+   sheet or the `gazetteer` header, and run it again. Run it on the minted
+   copy: for a published dataset it refuses attestations without addresses.
+   You can run it on the draft first, to see what the description still
+   lacks before you mint.
 3. **Site** makes a website for GitHub Pages from that copy, with the
    workflow that publishes it.
 4. **w3id** writes the redirect rules that send your w3id.org addresses to
    the site. Only for a published dataset whose base is a w3id.org address.
 
 ```bash
-npx github:pelagios/plato-tools publish report my-tables/
 npx github:pelagios/plato-tools publish mint my-tables/ --previous my-gazetteer-1.0.jsonl
+npx github:pelagios/plato-tools publish report my-tables-with-ids.jsonl
 npx github:pelagios/plato-tools publish site my-tables-with-ids.jsonl --repo my-project/my-gazetteer
 npx github:pelagios/plato-tools publish w3id my-tables-with-ids.jsonl --repo my-project/my-gazetteer --maintainer my-github-name
 ```
