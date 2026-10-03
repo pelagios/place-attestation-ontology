@@ -58,6 +58,20 @@ on the issues it raised.
   tagged `egy-Latn-t-egy-egyd` (BCP 47, with the transform extension; checked
   with a validator, including the extension's source tag).
 
+
+### Documented
+
+- How to record regions matched to a gazetteer (#23, Stephen's decision of 2
+  October, for PLATO tools' *Map your data* workflow), with no new term. The
+  source's containment points with `ContainedIn` at a region made from the
+  dataset itself, one per whole chain of containers so that like-named regions
+  in different chains are not merged; the reviewer's match of that region to the
+  gazetteer is a separate identity relation, `promotedFrom` the candidate that
+  holds the software's score. LPF's `gvp:broaderPartitive` (`relationTo`,
+  `certainty`, `whg_match_score`, `label`) is derived from the two. In the
+  `ContainedIn` comment and the JSON guide, with the examples
+  `place-centric-regions.json` and `candidate-set-regions.json`.
+
 ## 0.8.0
 
 Candidate sets, normative IRIs for the spreadsheet tables, and what

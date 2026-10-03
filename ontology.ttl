@@ -3426,6 +3426,23 @@ plato:ContainedIn
         the attested timespan: a parish in a hundred, a hundred in a county.
         Not an identity relation and not fixed by the class model; it is a
         claim, with a source and a certainty, like any other attestation.
+
+        When a dataset's containing regions are matched to a gazetteer (a
+        parish's county and country, looked up level by level), two claims
+        are made, and kept apart. The dataset's own claim is ContainedIn,
+        pointing at a region minted from the dataset itself, one for each
+        full chain of containers (England, Surrey), never for the name
+        alone, so that two regions with one name in different chains are not
+        merged. The reviewer's decision that this region is the gazetteer's is
+        an IdentityRelation from it, whose promoted_from names the Candidate
+        that holds the matching software's similarity_score. A match score is
+        not a certainty, so it is never put on the containment. In Linked
+        Places Format the two are written together as one
+        gvp:broaderPartitive relation: its relationTo is the identity's
+        object, its certainty the identity attestation's certainty level, its
+        whg_match_score the Candidate's score and its label the region's
+        name. A region assigned by hand, with no software suggestion, may be
+        stated directly against the gazetteer's address instead.
     """@en .
 
 # -----------------------------------------------------------------------------

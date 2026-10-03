@@ -197,3 +197,38 @@ RDF) only: the spreadsheet template has no sheet for them. The repository's
 is a small candidate set, and
 [attestation-centric-judgements.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/attestation-centric-judgements.json)
 answers it.
+
+### Regions matched to a gazetteer
+
+A table of places often gives, beside each place, the regions it lies in: a
+parish, its county, its country. When those regions are matched to a
+gazetteer, two different things have been said, and PLATO keeps them apart.
+
+- **What your source says.** The parish is *contained in* the county, and the
+  county in the country. Each of these is a relation with `relationType`
+  `ContainedIn`, and it points at a region made from your own data, with the
+  name as your source writes it. Make one region for each whole chain of
+  containers (England, then Surrey), not one for each name, so that a Newport
+  in Shropshire and a Newport in Monmouthshire stay two regions.
+- **What the reviewer decided.** That your Surrey is the gazetteer's Surrey
+  is an identity match, made like any other: an attestation with the
+  reviewer's source and certainty, whose identity relation points back with
+  `promotedFrom` to the suggestion it answers. The matching software's score
+  stays on that suggestion, in the candidate set. It is not a certainty, so
+  it is never written on the containment.
+
+If the match is later changed, that is a new identity attestation, and what
+your source said is untouched. A region you assign by hand, with no
+suggestion from software, may simply point its `ContainedIn` at the
+gazetteer's address.
+
+Linked Places Format (LPF) writes the two claims as one: a
+`gvp:broaderPartitive` relation for each container, whose `relationTo` is the
+identity match's gazetteer address, whose `certainty` is the reviewer's
+certainty level, whose `whg_match_score` is the suggestion's score and whose
+`label` is the region's name. So nothing is lost in either direction. The
+repository's
+[place-centric-regions.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-regions.json)
+shows a parish in Surrey in England, and
+[candidate-set-regions.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/candidate-set-regions.json)
+holds the suggestions it answers.
