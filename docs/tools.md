@@ -213,15 +213,17 @@ once the [version check](#comparing-two-versions) has found nothing of the
 original deleted or changed. Or you can choose a PLATO file of only the new
 attestations, each naming its place by its web address.
 
-**Still to come: looking places up in the World Historical Gazetteer.** A
-later version will also look your places up in the
-[World Historical Gazetteer](https://whgazetteer.org/) (WHG), online and only
-if you choose, for the same review. You will use a WHG token of your own,
-and allow the lookup in the **Permissions** panel of PLATO tools, which
-also says where the token is kept. Only the names
-shown in the preview are sent, with their coordinates if you choose, and
-nothing else of your dataset. WHG's scores rank the answers to one search
-only, not how likely a match is, so the decision is still yours.
+**Looking places up in the World Historical Gazetteer.** The review can also
+look your places up in the [World Historical Gazetteer](https://whgazetteer.org/)
+(WHG), or another gazetteer that offers the same kind of search, online and
+only if you choose. You use a WHG token of your own, and allow the lookup in
+the **Permissions** panel of PLATO tools, which also says where the token is
+kept. A preview shows exactly what will be sent before anything goes: each
+place's name, its other names only if you ask, and its coordinates only if you
+choose to search near it; nothing else of your dataset. What comes back joins
+the review beside your own matches, nearest first, with each record's licence.
+WHG's scores rank the answers to one search only, not how likely a match is,
+so the decision is still yours.
 
 (chora)=
 ## Placing on the map
