@@ -82,6 +82,8 @@ The workflow also inserts a "Start with the guide" banner after the first `</h1>
 
 ## Releases
 
+PLATO is alpha. From 0.9.0, releases are SemVer pre-releases: `0.9.0-alpha.1`, `alpha.2` and so on, then `beta.N` once beta testing starts, each marked as a GitHub pre-release. `v0.8.0` and earlier tags are never retagged or altered, because their DOIs point at them. Below, `X.Y.Z` includes any pre-release suffix (`0.9.0-alpha.1`).
+
 A release bumps the version in these places, which must stay in step:
 
 - `ontology.ttl` — `owl:versionInfo`, `owl:versionIRI` (`https://w3id.org/plato/X.Y.Z`), `owl:priorVersion` (the previous release's version IRI), `dcterms:issued` (the release date) and the version in `dcterms:bibliographicCitation`
@@ -89,7 +91,9 @@ A release bumps the version in these places, which must stay in step:
 - `.zenodo.json` — `version`
 - `schemas/plato.context.jsonld` — the "Written against" line of its `$comment`
 - `badges/*.svg` — the README's DOI, status and version badges, static files made from `CITATION.cff` (its `version` and the concept DOI under `identifiers`): after updating `CITATION.cff`, run `node scripts/badges.mjs` and commit what it writes. `node scripts/badges.mjs --check` exits 1, naming each badge, while a committed one differs from what the script makes. No badge service is used: they can break
-- the git tag (`v0.1.1` style); pushing it rebuilds the docs, which publish that release's ontology under `releases/X.Y.Z/`, where `https://w3id.org/plato/X.Y.Z` resolves
+- the git tag (`v0.9.0-alpha.1` style); pushing it rebuilds the docs, which publish that release's ontology under `releases/X.Y.Z/`, where `https://w3id.org/plato/X.Y.Z` resolves. `scripts/build_releases.py` accepts pre-release tags and orders releases by SemVer precedence
+
+The order matters. w3id's version rules (`ids/plato/.htaccess` in perma-id/w3id.org) must admit the version before the tag is pushed, or the version IRI will not resolve. Since 0.9.0-alpha.1 they need the pre-release pattern `^(\d+\.\d+\.\d+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?)/?$` in all five rules. Merge that PR, then tag, then mark the GitHub release as a pre-release.
 
 Every term carries `rdfs:isDefinedBy <https://w3id.org/plato>`: give a new term one too.
 
