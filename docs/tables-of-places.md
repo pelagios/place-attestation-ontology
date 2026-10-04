@@ -27,6 +27,10 @@ add to.
   Linked Places Format. Each feature's properties are read as the columns of a
   row, its `id` as one more column, and its geometry is carried if it is well
   formed.
+- **A list of names, pasted** into *Or paste a list of names*, under the drop
+  zone on the page: one name a line. It is read as a table of places with one
+  column, `name`. On the command line, save the list as a CSV file headed
+  `name`.
 
 A IIIF Georeference Annotation, as [Allmaps](https://allmaps.org) makes them,
 is refused if it is dropped on its own, and the message says why: it places a
@@ -42,7 +46,9 @@ own to be sure which is which.
 
 Coordinates must be decimal degrees of longitude and latitude (WGS 84), as
 GeoJSON requires. A GeoJSON file that names another coordinate reference
-system is refused, rather than read as degrees it is not.
+system is refused, rather than read as degrees it is not. The one exception is
+a column of British or Irish grid references, which are converted (see
+[Grid references](#grid-references)).
 
 ### A workbook of your own
 
@@ -145,6 +151,7 @@ addresses. Every column is matched to exactly one of these:
 | Latitude, Longitude | A point, in decimal degrees |
 | Point or shape, as WKT text | A geometry in Well-Known Text |
 | Point or shape, as GeoJSON | A GeoJSON geometry written out in the cell |
+| Grid reference (Ordnance Survey, Irish Grid) | A grid reference, such as `TQ 33760 80560` or `O 15 34` (see [Grid references](#grid-references)) |
 | Place id | The place's own identifier in the table, from which its web address is made |
 | Place's web address | The place's address in a gazetteer (Wikidata, Pleiades, GeoNames, WHG…) |
 | Kind of place | A type; several in one cell separated by `;` or `\|` |
@@ -152,6 +159,8 @@ addresses. Every column is matched to exactly one of these:
 | Source | The source the row comes from: a title, or a web address |
 | Date, as the source writes it | The date in the source's own words |
 | Earliest date, Latest date | A year (such as `-0500` or `1066`) or an ISO date |
+| Region it lies in | A region the place lies in, such as its parish or county, at a level (see [The regions a place lies in](#the-regions-a-place-lies-in)) |
+| Regions, to split into levels | Several regions in one cell, such as "Rotherhithe, Surrey, England" |
 | Keep as a note | Carried in the attestation's notes, as "column: value" |
 | Don't carry over | Left out, and named in the report |
 
@@ -178,8 +187,8 @@ reason, and then as JSON:
 Save that line to a file, correct it, and give it back with
 `--columns FILE`. It is the same JSON the page saves. The fields are named in
 it as `name`, `alternativeNames`, `latitude`, `longitude`, `wkt`, `geometry`,
-`id`, `address`, `type`, `language`, `source`, `date`, `start` and `end`, or
-`note` and `skip`. A column of a gazetteer's ids, made into web addresses
+`gridref`, `id`, `address`, `type`, `language`, `source`, `date`, `start`,
+`end`, `within` and `split`, or `note` and `skip`. A column of a gazetteer's ids, made into web addresses
 with a pattern, is written
 `{"field": "address", "pattern": "https://pleiades.stoa.org/places/{id}"}` in
 place of the field's name (see [A column of gazetteer ids](#a-column-of-gazetteer-ids)).
@@ -413,6 +422,129 @@ hermes-addresses 1)". An address made from an id through a pattern follows
 the same rules. A Pleiades address that names part of a place's record, or
 ends `#this`, is carried as written and reported.
 
+## The regions a place lies in
+
+Many tables give, beside each place, the regions it lies in: a column for the
+parish, one for the county, one for the country. PLATO tools can read these
+as a chain of regions, each inside the next.
+
+Each such column is matched as *Region it lies in*, with a *Level* beside it.
+Levels are numbered from the widest: 1 is the widest region (the country,
+say), 2 the next (the county), and so on. PLATO tools guesses these columns
+from their headings (`country`, `county`, `shire`, `parish`, `township`,
+`admin1` and the like) and puts them in order, widest first. Check the order,
+and change a level if it is wrong. Two columns cannot share a level. A column
+of numbers under such a heading (`admin1` holding `12`) is taken to be codes,
+not names, and is kept as a note.
+
+**Several regions in one cell.** Some tables write the whole chain in one
+cell, narrowest first: "Rotherhithe, Surrey, England". Match that column as
+*Regions, to split into levels*, and say what separates the parts (here a
+comma), which level each part goes to, and whether *The first part is the
+place's name*. A row with fewer parts leaves its widest levels empty. Parts
+beyond the levels you gave are named in the report.
+
+**With a base address** of your own (see
+[Place ids and the base address](#place-ids-and-the-base-address)), each
+region becomes a place in your dataset, with its name as the table gives it.
+Each region is `plato:ContainedIn` the next wider one, and each row's place is
+`ContainedIn` its narrowest region. One region is made for each whole chain,
+not for each name: a parish called Newton in Lancashire and one in Cheshire
+are two regions, never merged. Each region cites the file and the row where it
+was first met. This is the shape described in
+[Regions matched to a gazetteer](json.md#regions-matched-to-a-gazetteer),
+which also says how to record, separately, that one of your regions is a
+gazetteer's region.
+
+**Without a base address**, no region can be given a web address, so none is
+made and no relation is written. Each attestation instead gets a note giving
+the chain, widest first, then the place's name, such as "Within (as the
+source gives it): England > Surrey > Rotherhithe", and the report says so
+once.
+
+**On the command line**, a region column is written in the file for
+`--columns` as `{"field": "within", "level": 2}`. A column to split is given
+with `--split`, such as
+
+```text
+--split 'Place=, :name,3,2,1'
+```
+
+which splits the column `Place` at each comma, gives its first part as the
+place's name, and its other parts to levels 3, 2 and 1, narrowest first.
+Without the levels, there are as many as the most parts in the first rows.
+
+## Grid references
+
+A table may give its locations as grid references of the Ordnance Survey
+National Grid of Great Britain (`TQ 33760 80560`, `SU1234`) or of the Irish
+Grid (`O 15 34`): letters, then digits, with or without spaces. PLATO tools
+reads them when a column is matched as *Grid reference*. It guesses such a
+column from its heading (`grid ref`, `NGR`, `OS grid`, `Irish grid` and the
+like), or from its values when at least half are references of a 1 km square
+or finer.
+
+A grid reference names a square, not a point. Each is converted to latitude
+and longitude (WGS 84) at the centre of its square, and its precision is set
+from the number of digits: a four-figure reference such as `SU1234` is a 1 km
+square, a ten-figure one a 1 m square. The conversion uses a Helmert
+transformation: the Ordnance Survey's for Great Britain, good to about 3.5 m,
+and, for the Irish Grid, EPSG 1641, good to about 1 m. Where the
+transformation is less exact than the square, the precision given is the
+transformation's. OSTN15, the Ordnance Survey's more exact transformation, is
+not used. The reference is kept as written beside the point, and the
+attestation's notes say which transformation was used.
+
+- **If a row also has a latitude and longitude**, or a point written as WKT or
+  GeoJSON, that is its location, and the grid reference is kept in the notes.
+  If the two are farther apart than the square and the transformation allow,
+  the report warns.
+- **A cell holding `NA`, `N/A`, `NULL`, a dash or the like** is read as empty,
+  with nothing reported. (`NA` is otherwise a 100 km square of the National
+  Grid, in the Atlantic.)
+- **A reference of letters alone**, such as `SU`, is read as a 100 km square,
+  with a warning, since a column of them may be codes rather than references.
+  A reference that cannot be read is reported, with its value.
+- **Irish Transverse Mercator coordinates**, which are numbers with no
+  letters, are not read.
+
+On the command line, the field is written `gridref` in the file for
+`--columns`.
+
+## Grouping similar spellings
+
+A table often writes one name several ways: `Rotherhithe`, `Rotherhith`,
+`ROTHERHITHE.`. Before the places are looked up in a gazetteer, PLATO tools
+can propose grouping such spellings, so that each group is looked up by one
+spelling.
+
+On the page, *Group similar spellings…*, below the Reading options, proposes
+groups for the column you choose. There are three ways of grouping: case,
+accents, punctuation, spacing and word order not counting (the default, so
+`Newton, Upper` and `upper newton` are one); the same pairs of letters, which
+groups more, some wrongly; and names that sound alike, which groups the
+most, some wrongly (to it, `Rotherhithe` and `Redruth` sound alike). Each
+group lists its spellings, with how many rows have each, and suggests the
+commonest as the spelling to look it up by, which you can change.
+
+**Nothing is grouped unless you tick it.** Every group starts unticked, and
+only the groups you tick are used. Your ticked groups are saved with the
+matching (**Save this matching**), and come back ticked when it is used again.
+
+**The source's spelling is always kept.** In PLATO, each row's name is
+written as the source spells it. The chosen spelling is used only for looking
+the place up, and the row's attestation gets a note such as "Grouped for
+lookup with: Rotherhith, ROTHERHITHE. (spelling chosen: Rotherhithe)".
+
+On the command line, `plato-tools cluster --column name places.csv` prints the
+proposed groups as JSON, for review, and applies nothing; `--method` chooses
+`fingerprint` (the default), `ngram-fingerprint` or `phonetic`. Keep the
+groups you want, and give them back with `--clusters FILE` to `check`,
+`convert` or `preview`. The file may be a matching saved on the page with
+groups ticked, or the groups alone. Groups in a file given only as
+`--columns` are not used, and the command says so: they are never applied
+without being asked for.
+
 ## What each column becomes
 
 | Matched as | In PLATO |
@@ -421,6 +553,7 @@ ends `#this`, is carried as written and reported.
 | Alternative names | Further **names** of the attestation |
 | Latitude and longitude | A **location**, made exactly as the locations sheet makes one |
 | WKT, GeoJSON geometry, or a GeoJSON feature's own geometry | A **location** with that shape |
+| Grid reference | A **location** at the centre of its square, with a precision from its size |
 | Place id | The place's **address**, under the base address, and its own identifier |
 | Place's web address | What the attestation is **about**, in its gazetteer's one form |
 | A gazetteer's ids, with a pattern you confirmed | What the attestation is **about**, made from the id |
@@ -428,6 +561,7 @@ ends `#this`, is carried as written and reported.
 | Language of the name | The name's **language** |
 | Source | The citation's **source**; with no source, the file is cited, with the row ("row 2", "feature 3") as the locator |
 | Date; earliest and latest dates | The **timespan**: the date in the source's words, the earliest start, the latest end |
+| Region it lies in, or regions split into levels | With a base address, regions of your own, and a **ContainedIn** relation to the narrowest; without one, a note |
 | Anything else | The attestation's **notes** |
 
 The full mapping, for developers, is beside PLATO tools'
