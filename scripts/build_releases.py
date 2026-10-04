@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Publish a fixed copy of the ontology for every PLATO release tag.
 
-For each git tag vX.Y.Z this writes <publish_dir>/releases/X.Y.Z/ with
+For each git tag vX.Y.Z (or vX.Y.Z-pre) this writes <publish_dir>/releases/X.Y.Z[-pre]/ with
 
     ontology.ttl     byte-identical to `git show vX.Y.Z:ontology.ttl`
     ontology.nt      N-Triples  } serialised from that Turtle by rdflib and
@@ -31,7 +31,9 @@ from pathlib import Path
 from rdflib import Graph
 from rdflib.compare import to_isomorphic
 
-TAG = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
+# vX.Y.Z, or a SemVer pre-release such as v0.9.0-alpha.1 (PLATO's releases
+# from 0.9.0 on are alphas, then betas). Build metadata (+...) is not used.
+TAG = re.compile(r"^v(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$")
 FORMATS = [("ontology.nt", "nt"), ("ontology.owl", "xml"), ("ontology.jsonld", "json-ld")]
 
 
@@ -85,6 +87,17 @@ def build(tag: str, version: str, releases: Path) -> list[str] | None:
     return ["ontology.ttl"] + [name for name, _ in FORMATS]
 
 
+def precedence(tag: str) -> tuple:
+    """SemVer 2.0.0 precedence: 0.9.0-alpha.1 < 0.9.0-alpha.2 < 0.9.0-beta.1
+    < 0.9.0. Numeric identifiers sort as numbers and below alphanumeric ones;
+    a release sorts after all its pre-releases."""
+    major, minor, patch, pre = TAG.match(tag).groups()
+    if pre is None:
+        return (int(major), int(minor), int(patch), 1, ())
+    ids = tuple((0, int(p), "") if p.isdigit() else (1, 0, p) for p in pre.split("."))
+    return (int(major), int(minor), int(patch), 0, ids)
+
+
 def main() -> int:
     publish = Path(sys.argv[1])
     releases = publish / "releases"
@@ -94,8 +107,8 @@ def main() -> int:
     if not tags:
         # Almost always a shallow checkout rather than a repository with no
         # releases: say so rather than publish an empty index silently.
-        warn("no vX.Y.Z tags found; is the checkout shallow (fetch-depth: 0)?")
-    tags.sort(key=lambda t: tuple(int(n) for n in TAG.match(t).groups()))
+        warn("no vX.Y.Z release tags found; is the checkout shallow (fetch-depth: 0)?")
+    tags.sort(key=precedence)
 
     index, skipped = [], []
     for tag in tags:

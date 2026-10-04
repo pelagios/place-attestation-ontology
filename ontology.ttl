@@ -20,10 +20,10 @@
 
 <https://w3id.org/plato>
     a owl:Ontology ;
-    owl:versionInfo "0.8.0" ;
-    owl:versionIRI <https://w3id.org/plato/0.8.0> ;
-    owl:priorVersion <https://w3id.org/plato/0.7.1> ;
-    dcterms:issued "2026-10-01"^^xsd:date ;
+    owl:versionInfo "0.9.0-alpha.1" ;
+    owl:versionIRI <https://w3id.org/plato/0.9.0-alpha.1> ;
+    owl:priorVersion <https://w3id.org/plato/0.8.0> ;
+    dcterms:issued "2026-10-04"^^xsd:date ;
     dcterms:title "PLATO — Place Attestation Ontology"@en ;
     dcterms:description """
         An ontology for representing historical place knowledge as attestations:
@@ -48,7 +48,7 @@
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:created "2026-02-16"^^xsd:date ;
     bibo:doi "10.5281/zenodo.21688313" ;
-    dcterms:bibliographicCitation "Gadd, Stephen, and the Pelagios Network Place Working Group. PLATO — Place Attestation Ontology, version 0.8.0. Zenodo, 2026. https://doi.org/10.5281/zenodo.21688313" ;
+    dcterms:bibliographicCitation "Gadd, Stephen, and the Pelagios Network Place Working Group. PLATO — Place Attestation Ontology, version 0.9.0-alpha.1. Zenodo, 2026. https://doi.org/10.5281/zenodo.21688313" ;
     dcat:keyword "ontology"@en, "historical gazetteer"@en, "place"@en, "attestation"@en,
         "provenance"@en, "linked open data"@en, "digital humanities"@en ;
     rdfs:seeAlso <https://pelagios.org/place-attestation-ontology/index-en.html> ;

@@ -11,10 +11,15 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
-## Unreleased
+## 0.9.0-alpha.1
 
-From testing PLATO against Trismegistos Places (#16), and Stephen's rulings
-on the issues it raised.
+Released 2026-10-04. The first release under SemVer pre-release versions:
+PLATO is alpha, so releases are numbered 0.9.0-alpha.1, alpha.2 and so on,
+then beta.N once beta testing starts, and each is marked as a pre-release.
+Earlier releases keep their numbers and tags. This one brings what testing
+PLATO against Trismegistos Places (#16) found, with Stephen's rulings on the
+issues it raised, how to record regions matched to a gazetteer (#23), and
+the guide's pages for Methodos.
 
 ### Added
 
@@ -76,6 +81,29 @@ on the issues it raised.
   `certainty`, `whg_match_score`, `label`) is derived from the two. In the
   `ContainedIn` comment and the JSON guide, with the examples
   `place-centric-regions.json` and `candidate-set-regions.json`.
+
+### Guide
+
+- Methodos, the guided workflows of PLATO tools: what it is for, its base
+  address question, "Ready to download", and the warning at Finish.
+- Hermes's tables: the regions a place lies in, grid references, grouping
+  similar spellings, reading options and canonical gazetteer addresses.
+- Krisis: looking places up in the World Historical Gazetteer, and reviewing
+  regions level by level.
+- Chora: tracing from a historical map, with assistance from the map's ink.
+- Publishing's four parts, with Mint before Report: the report refuses a
+  published dataset whose attestations have no addresses.
+- TEI P4 editions, a workbook of one's own, and the preview.
+- PLATO tools is linked from every page's navigation.
+- The regions section says what reading LPF back gives (not that nothing is
+  lost), and keeps a region's name on the region rather than as the
+  relation's wording.
+
+### Release tooling
+
+- `scripts/build_releases.py` publishes `releases/X.Y.Z-pre/` for a
+  pre-release tag such as `v0.9.0-alpha.1`, and orders releases by SemVer
+  precedence, so that an alpha comes before its release.
 
 ## 0.8.0
 
