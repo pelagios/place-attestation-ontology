@@ -842,7 +842,9 @@ a workflow:
    dataset, checked; a file in another format; a match of two datasets;
    figures as a Data Cube; or *I am not sure: show me what the tools can do*.
 3. **Anything of these?** Only the yes-or-no questions the workflow needs and
-   the first two answers left open.
+   the first two answers left open; and, for a workflow that gives places
+   addresses of their own, the base address they are given under (see
+   [below](#methodos-base-address)).
 
 The same answers always give the same workflow. Two workflows exist so far:
 
@@ -900,6 +902,10 @@ The questions under 3 are:
 - *Does the table say which region each place is in (a parish, a county)?*
 - *Will you draw or trace places that the gazetteer cannot locate?*
 - *Will you publish the result?* (asked only when you wanted places on a map)
+- When the table gives regions, *Under what base address will your places and
+  regions have web addresses of their own?*: needed, since the regions are
+  given addresses under it, so **Follow** waits for it (see
+  [the base address](#methodos-base-address)).
 
 The steps, with the tool that does each:
 
@@ -910,9 +916,10 @@ The steps, with the tool that does each:
 2. **Elenchos: Check the table.** Run the [check](#checking).
 3. **Metaphrasis: Make a PLATO dataset of it.** Run the
    [conversion](#converting) to PLATO JSON. Where the table gives regions,
-   give a base address first (**Options**, *Web address for your
-   identifiers*): the regions are made from the table when it is converted,
-   and need it to have addresses of their own (see
+   the conversion uses the base address you gave (it is the one in
+   **Options**, *Web address for your identifiers*): the regions are made
+   from the table when it is converted, and need it to have addresses of
+   their own (see
    [the base address](tables-of-places.md#place-ids-and-the-base-address)).
 4. **Krisis: Identify the regions, the widest first.** Only if the table gives
    regions. Yours, in the region review (**Review the regions level by
@@ -935,7 +942,10 @@ The steps, with the tool that does each:
      answers (`promotedFrom`). The places stay `ContainedIn` the regions made
      from the table, and each region gets your identification of it with the
      gazetteer's record, as described under
-     [what is written](#region-review).
+     [what is written](#region-review). If the base address in **Options**
+     is no longer the one the review was saved with, **Finish** says so, and
+     still writes, for the review's own address: set **Options** back if
+     your places keep that address.
 8. **Chora: Draw or trace the places still without a location.** Only if you
    said you would. Yours: **Open Chora** opens [Chora](#chora) for this
    workflow. Draw or trace the places there, or take a location from a
@@ -948,10 +958,12 @@ The steps, with the tool that does each:
 9. **Elenchos: Check the result.**
 10. **Mneme: Compare the result with the dataset made from the table**, as in
     [comparing two versions](#comparing-two-versions).
-11. **Metaphrasis: Write it out.** The dataset is PLATO JSON by now, and a
-    file is not converted into its own format: it is already the PLATO JSON
-    result, and this step writes it in another format you choose (PLATO
-    JSON Lines, N-Triples, the tables or Linked Places).
+11. **Metaphrasis: Write it out**, in the format the workflow was given
+    (PLATO JSON). The dataset is PLATO JSON by now, and a file is not
+    converted into its own format: the step says **Ready to download**, with
+    a **Download** button for the file chosen in step 1, and is done once you
+    have downloaded it. A dataset in another format is converted, as any
+    step done by the tools.
 12. Only if you will publish, the four parts of
     [publishing your dataset](#publishing-your-dataset), by **Agora**:
     **Give every place and source a permanent address**, **Write the FAIR
@@ -965,7 +977,18 @@ For a dataset already in a PLATO format: **Elenchos: Check the dataset**, then
 Agora's four parts in order, **Give every place and source a permanent
 address**, **Write the FAIR report**, **Build the web site** and **Write the
 permanent-address rules** (see [publishing your dataset](#publishing-your-dataset)).
-It asks no questions under 3.
+Under 3 it asks only for the base address, which is optional: minting uses it
+where the dataset has none of its own (see
+[the base address](#methodos-base-address)).
+
+(methodos-base-address)=
+### The base address
+
+A workflow that gives places addresses of their own (Map your data when the
+table gives regions, and Publish a dataset) asks under 3 for the base address
+they are given under. The field shows the base address already in **Options**
+(*Web address for your identifiers*), and what you type there is written to
+**Options** too: there is one base address, used by every tool on the page.
 
 ### Saving and resuming
 
