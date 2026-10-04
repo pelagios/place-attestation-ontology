@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to PLATO are recorded here. The ontology is an early draft.
+All notable changes to PLATO are recorded here. The ontology is experimental.
 
 Until 0.5.0 it had no implementations and no data published in its namespace,
 so a renamed term was removed outright rather than kept as a deprecated
@@ -41,6 +41,11 @@ on the issues it raised.
 
 ### Changed
 
+- PLATO is called *experimental* wherever a reader sees its status: the
+  README, the Zenodo description, and the guide's sidebar badge ("Under
+  development" before) and its About page. The README's DOI badge is now a
+  static file, with a status and a version badge beside it, all three made
+  from `CITATION.cff` by `scripts/badges.mjs` rather than by a badge service.
 - A relation may name its target by `relatedLabel` alone, with no `relatesTo`,
   when the source names something there is nothing to point at ("in the
   Delta") (#18). The schema requires `relationType` and one of the two; the

@@ -88,6 +88,7 @@ A release bumps the version in these places, which must stay in step:
 - `CITATION.cff` — `version` and `date-released`
 - `.zenodo.json` — `version`
 - `schemas/plato.context.jsonld` — the "Written against" line of its `$comment`
+- `badges/*.svg` — the README's DOI, status and version badges, static files made from `CITATION.cff` (its `version` and the concept DOI under `identifiers`): after updating `CITATION.cff`, run `node scripts/badges.mjs` and commit what it writes. `node scripts/badges.mjs --check` exits 1, naming each badge, while a committed one differs from what the script makes. No badge service is used: they can break
 - the git tag (`v0.1.1` style); pushing it rebuilds the docs, which publish that release's ontology under `releases/X.Y.Z/`, where `https://w3id.org/plato/X.Y.Z` resolves
 
 Every term carries `rdfs:isDefinedBy <https://w3id.org/plato>`: give a new term one too.

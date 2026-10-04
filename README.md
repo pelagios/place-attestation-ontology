@@ -5,9 +5,11 @@
 
 # PLATO — Place Attestation Ontology
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21688313.svg)](https://doi.org/10.5281/zenodo.21688313)
+[![DOI: 10.5281/zenodo.21688313](badges/doi.svg)](https://doi.org/10.5281/zenodo.21688313)
+[![status: experimental](badges/status.svg)](#status)
+[![version](badges/version.svg)](CITATION.cff)
 
-**Status: Early draft — published for discussion and review. Not yet stable.**
+<a id="status"></a>**Status: experimental — published for discussion and review; not yet stable.**
 
 ## What is this?
 

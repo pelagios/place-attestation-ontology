@@ -10,11 +10,12 @@ Development has been supported by the
 [Institute for Spatial History Innovation (ISHI)](https://www.ishi.pitt.edu/)
 at the University of Pittsburgh.
 
-## Under development
+## Experimental
 
-PLATO is developed in the open. It is an early draft, published for
-discussion and review, and not yet stable: its terms, its JSON schemas and
-its spreadsheet tables may still change between releases.
+PLATO is developed in the open. It is experimental, published for
+discussion and review, and not yet fully tested or stable: its terms, its
+JSON schemas and its spreadsheet tables may change, or break, between
+releases.
 
 A term or JSON key that is renamed or withdrawn is not removed at once. It
 is kept, marked as deprecated and pointing to its replacement, for at least
