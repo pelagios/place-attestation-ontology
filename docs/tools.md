@@ -225,6 +225,87 @@ the review beside your own matches, nearest first, with each record's licence.
 WHG's scores rank the answers to one search only, not how likely a match is,
 so the decision is still yours.
 
+(region-review)=
+## Reviewing regions, level by level
+
+Many tables give, beside each place, the regions it lies in: a country, a
+county, a parish (the columns read as *within*). **Review the regions level by
+level** looks these up in the World Historical Gazetteer before the places,
+widest first, each inside the one above it. Every row naming Surrey in England
+is one region; a Newport in Shropshire and a Newport in Monmouthshire are two.
+
+**How a match narrows the next search.** A region waits until the region above
+it is settled, with a match or with **None of these**. Its search is then kept
+within the gazetteer's record for the region above, or within all its records
+taken together when it was matched to more than one. Where that cannot be
+asked, it is kept to the area they cover. Either way, the match's countries
+are added. A constraint only ever takes candidates away: a country filter even
+drops one with no country recorded. Each region says what it was looked up
+within. A search WHG could not narrow returns nothing, and the review says so:
+that is not a finding that there is no match.
+
+**Asking again.** When the right region is missing, ask again, for one region
+or a whole level: **Again without the countries**, **Within the area
+instead**, within the region above that instead, or **With no constraint**.
+Each button says how many queries and requests it will cost. Changing a
+settled region clears the decisions and candidates below it, after asking, and
+**Undo** puts them back. Once a place's regions are settled, the places are
+looked up within them and reviewed one at a time, as in
+[reviewing matches](#match-review). A place still waiting can be looked up
+without its regions.
+
+**WHG's guards.** WHG's own page accepts a candidate only when it tops its
+answer, its title is an exact match or its score is 90 or more, it is not held
+back, and there is no tie. It is held back when WHG gives it a confidence
+below 30, or, where WHG gives none, when its names are too unlike the name
+sent, by WHG's own measure. It is tied when another candidate scores as high,
+unless that one is the same record repeated. In the review of places,
+**Accept the N that pass WHG's guards** accepts each place's one passing
+candidate, as the kind of match you choose (close match by default). A
+candidate too far from the place, or in another country, is left out and
+counted, for you to decide. Each acceptance is recorded as your decision,
+naming the guard; **Undo** takes them back. Nothing is ever accepted
+automatically.
+
+**What is written.** Two separate claims, as in
+[regions matched to a gazetteer](json.md#regions-matched-to-a-gazetteer). Your
+source's containment stays as it is: each place is `ContainedIn` a region made
+from your data, one for each whole chain of regions. Your decision is an
+attestation about that region, with you, the date and your certainty,
+bundling an identity relation (a close or an exact match, with its basis) to
+each gazetteer record you matched it to. When the suggestions are published as
+a [candidate set](json.md#candidate-sets), each relation points back to its
+suggestion with `promotedFrom`, and the suggestion's `matchParameters` record
+what it was looked up within. The containment is never rewritten: a match
+changed later is a new attestation. Regions need addresses of their own, so
+the dataset needs a
+[base address](tables-of-places.md#place-ids-and-the-base-address). The
+repository's
+[place-centric-regions.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-regions.json)
+and
+[candidate-set-regions.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/candidate-set-regions.json)
+show both claims. Linked Places Format writes them as one `broaderPartitive`
+relation.
+
+**Rows set aside.** A place can be marked **Keep without reconciling** (never
+looked up, still in the dataset) or **Leave out of the dataset** (and the
+version check is told to expect exactly those missing). Notes stay in the work
+file, never in the dataset.
+
+**From the command line.** With your WHG token in `WHG_TOKEN`:
+
+```bash
+npx github:pelagios/plato-tools lookup --levels --dry-run parishes.csv
+npx github:pelagios/plato-tools lookup --levels --reviewer "Your Name" parishes.csv
+```
+
+The first shows the plan, level by level, and sends nothing. The second looks
+up the first level with regions ready (or `--level N`) and writes a work file,
+given back with `--review` to carry on. `--relax` takes `countries`, `area`,
+`ancestor` or `all`; `--only` one region or place; `--unconstrained` also
+looks up places whose regions are unsettled. The regions are decided on the
+page.
+
 (chora)=
 ## Placing on the map
 
