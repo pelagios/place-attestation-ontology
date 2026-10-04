@@ -15,6 +15,8 @@ To use it, open the page and drop a file on it (or choose one), then press
 earlier version**, or choose what to prepare for publishing and press
 **Prepare**. A page of its own, Chora, shows a dataset's places on a map
 and adds the locations you draw there: see [placing on the map](#chora).
+Not sure where to start? [Methodos](#methodos) leads you through a whole
+workflow, step by step, from three questions.
 
 ## What it reads and writes
 
@@ -816,3 +818,195 @@ The rules send a browser to a place's page and any other client to its
 JSON-LD, and a request for `.jsonld`, `.ttl` or `.html` to that file. The
 site must be live before the rules are merged, since they only send people
 there.
+
+(methodos)=
+## Following a workflow: Methodos
+
+**Methodos** is the part of PLATO tools that leads you through a whole
+workflow, step by step, with your place kept. It does no work of its own:
+each step is one of the tools described above, named with what it does, and
+Methodos keeps track of which steps are done. The workflows are named in plain
+English; the tools keep their Greek names.
+
+### The three questions
+
+Press **Not sure where to start? Answer three questions** at the top of the
+page, or choose the **Methodos** card among the tools. Three questions choose
+a workflow:
+
+1. **What do you have?** A list of place names (a spreadsheet or CSV), a text
+   that names places, an edition in TEI, annotations from Recogito, a dataset
+   already in a PLATO format, a map image, or nothing yet.
+2. **What do you want at the end?** Places on a map, each identified in a
+   gazetteer; a citable, published dataset; a new version of a published
+   dataset, checked; a file in another format; a match of two datasets;
+   figures as a Data Cube; or *I am not sure: show me what the tools can do*.
+3. **Anything of these?** Only the yes-or-no questions the workflow needs and
+   the first two answers left open.
+
+The same answers always give the same workflow. Two workflows exist so far:
+
+| You have | You want | The workflow |
+|---|---|---|
+| A list of place names | Places on a map, each identified in a gazetteer | [Map your data](#methodos-map-your-data) |
+| A list of place names | A citable, published dataset | Map your data, with its publishing steps |
+| A dataset already in a PLATO format | A citable, published dataset | [Publish a dataset](#methodos-publish-a-dataset) |
+
+Once the questions are answered, the workflow's steps are listed, with any
+steps your answers leave out; **Follow** with the workflow's name begins it.
+*I am not sure* leads instead to the tools' cards (**Show me the tools**):
+each card says what its tool does. Any other answers say that there is no
+workflow for this yet, why, and which tools do the work meanwhile, with a
+link, **Tell us what you wanted to do** (see [below](#methodos-feedback)).
+
+### The tracker
+
+A workflow you follow is shown above step 1 of the page, under **Your
+workflow**, as a list of its steps. Each step says its state, the tool that
+does it, and what it does:
+
+- **Done**: the step is finished.
+- **Now**: the step at hand.
+- **To come**: a step still ahead.
+- **Not yet available**: a step the tools cannot do yet, with the reason. It
+  is skipped, not counted among the workflow's steps, and never refused: the
+  workflow goes on without it, and its end says what was not done.
+
+The workflow begins when you choose its file in step 1 (or with **Choose the
+file** in the tracker). Steps are of two kinds:
+
+- **Done by the tools.** You run the step's tool on the page, as you would
+  without a workflow, and the step is done when the run finishes. The run
+  must be on the step's file: a run on another file is not counted, and the
+  tracker says which file to choose. A run that finds problems is
+  **Stopped**, one that goes wrong **Failed**, and one you stop **Stopped by
+  you**; in each case, put it right and run the step again.
+- **Yours.** The tracker says what the step waits for (matching the columns,
+  deciding on the candidates, drawing in Chora). When you have done it, press
+  **This step is done**.
+
+**Back a step** undoes the last step done, so that it is to do again.
+**Leave the workflow** ends it and lets go of everything Methodos kept for it
+in this browser. A workflow chosen but not yet begun can be let go with
+**Discard this workflow**.
+
+(methodos-map-your-data)=
+### Map your data
+
+From a list of place names to places identified in the World Historical
+Gazetteer, located, checked and written out, and published if you say so.
+The questions under 3 are:
+
+- *Does the table say which region each place is in (a parish, a county)?*
+- *Will you draw or trace places that the gazetteer cannot locate?*
+- *Will you publish the result?* (asked only when you wanted places on a map)
+
+The steps, with the tool that does each:
+
+1. **Hermes: Match the columns to PLATO.** Yours: match the table's columns
+   to PLATO's fields in the Columns panel (see
+   [your own table of places](tables-of-places.md)), then say the step is
+   done.
+2. **Elenchos: Check the table.** Run the [check](#checking).
+3. **Metaphrasis: Make a PLATO dataset of it.** Run the
+   [conversion](#converting) to PLATO JSON. Where the table gives regions,
+   give a base address first (**Options**, *Web address for your
+   identifiers*): the regions are made from the table when it is converted,
+   and need it to have addresses of their own (see
+   [the base address](tables-of-places.md#place-ids-and-the-base-address)).
+4. **Krisis: Identify the regions, the widest first.** Only if the table gives
+   regions. Yours, in the region review (**Review the regions level by
+   level**): the regions are looked up level by level, from the widest, each
+   level within the match of the level above. The step is done only when
+   every region is settled. The detail of the region review is in
+   [reviewing regions, level by level](#region-review).
+5. **Krisis: Look the places up in the World Historical Gazetteer.** Where
+   the table gives regions, the places are looked up within their regions.
+   The lookup needs your WHG token and your permission (see
+   [reviewing matches](#match-review)).
+6. **Krisis: Decide which candidates are the same place.** Yours: review the
+   candidates, as in [reviewing matches](#match-review).
+7. Recording the decisions, by **Finish** in the review, as one of:
+   - **Krisis: Record the decisions in the dataset**, where the table gives
+     no regions;
+   - **Krisis: Record the decisions, with the region each place is in**,
+     where it does. Export the candidates first (**Export the suggestions as
+     a candidate set**), so that each identity records the candidate it
+     answers (`promotedFrom`). The places stay `ContainedIn` the regions made
+     from the table, and each region gets your identification of it with the
+     gazetteer's record, as described under
+     [what is written](#region-review).
+8. **Chora: Draw or trace the places still without a location.** Only if you
+   said you would. Yours: **Open Chora** opens [Chora](#chora) for this
+   workflow. Draw or trace the places there, or take a location from a
+   gazetteer's match (**Adopt**), and save the dataset. Chora then offers
+   **Back to the workflow**. On the main page, press **Take the dataset back
+   from Chora** and choose the saved file in step 1: it is checked to be the
+   file Chora saved, by size and SHA-256, and then the step is done. If
+   nothing usable comes back, choose the dataset you saved in Chora in step 1
+   and press **This step is done**.
+9. **Elenchos: Check the result.**
+10. **Mneme: Compare the result with the dataset made from the table**, as in
+    [comparing two versions](#comparing-two-versions).
+11. **Metaphrasis: Write it out.** The dataset is PLATO JSON by now, and a
+    file is not converted into its own format: it is already the PLATO JSON
+    result, and this step writes it in another format you choose (PLATO
+    JSON Lines, N-Triples, the tables or Linked Places).
+12. Only if you will publish, the four parts of
+    [publishing your dataset](#publishing-your-dataset), by **Agora**:
+    **Give every place and source a permanent address**, **Write the FAIR
+    report**, **Build the web site** and **Write the permanent-address
+    rules**.
+
+(methodos-publish-a-dataset)=
+### Publish a dataset
+
+For a dataset already in a PLATO format: **Elenchos: Check the dataset**, then
+Agora's four parts in order, **Give every place and source a permanent
+address**, **Write the FAIR report**, **Build the web site** and **Write the
+permanent-address rules** (see [publishing your dataset](#publishing-your-dataset)).
+It asks no questions under 3.
+
+### Saving and resuming
+
+A workflow is kept in this browser at every step: which workflow it is, your
+answers, the state of each step, and references to the files (each file's
+name, size and SHA-256), never your own files. Reload the page, or come back
+later, and it is taken up where it was left. A workflow chosen before any
+file is kept too.
+
+A step that takes the file the workflow began with asks for it to be chosen
+again in step 1 (in Chromium, a button **Open** *the file's name* **again**
+opens it in one click). The file is checked to be the one the workflow recorded:
+a different file is refused, with what differs, and is not counted. A page
+closed while a step was running leaves that step failed, to run again.
+
+If the workflow's recipe has changed since it was saved, the tracker says
+so. A change of words only carries on. Otherwise it stays at its last
+finished step, and you can **Start the remaining steps under the new
+recipe**, or leave it.
+
+### What is kept in the browser, and clearing it
+
+- **The workflow's record**, in the browser's IndexedDB.
+- **The files the steps made** (the matching of the columns, the dataset,
+  the review's work file), in the browser's private file storage (OPFS), so
+  that after a reload the next step takes them without their being chosen
+  again. The tracker says how many there are and their size, beside
+  **Clear them**. Once cleared, a step that takes one asks for it to be
+  chosen.
+
+Your own files are never copied there. To keep nothing between visits, turn
+off **Keep my working data between visits** under *Your working data* in the
+**Permissions** panel: the workflow and its files then last only as long as
+the tab, and what was kept is cleared at once. **Leave the workflow** lets go
+of everything kept for that workflow. A browser that refuses storage (a
+private window, say) keeps the workflow for the tab only.
+
+(methodos-feedback)=
+### A workflow that is not there
+
+When your answers lead to no workflow, **Tell us what you wanted to do** opens
+a new issue on [PLATO tools' GitHub](https://github.com/pelagios/plato-tools/issues),
+in a new tab, labelled *Methodos* and titled with your two answers. Nothing
+else is put in it: say there what you were trying to do.
