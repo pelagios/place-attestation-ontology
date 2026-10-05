@@ -13,7 +13,7 @@ were made under the earlier policy.
 
 ## 0.9.0-alpha.1
 
-Released 2026-10-04. The first release under SemVer pre-release versions:
+Released 2026-10-05. The first release under SemVer pre-release versions:
 PLATO is alpha, so releases are numbered 0.9.0-alpha.1, alpha.2 and so on,
 then beta.N once beta testing starts, and each is marked as a pre-release.
 Earlier releases keep their numbers and tags. This one brings what testing

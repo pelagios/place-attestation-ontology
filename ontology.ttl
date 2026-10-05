@@ -23,7 +23,7 @@
     owl:versionInfo "0.9.0-alpha.1" ;
     owl:versionIRI <https://w3id.org/plato/0.9.0-alpha.1> ;
     owl:priorVersion <https://w3id.org/plato/0.8.0> ;
-    dcterms:issued "2026-10-04"^^xsd:date ;
+    dcterms:issued "2026-10-05"^^xsd:date ;
     dcterms:title "PLATO — Place Attestation Ontology"@en ;
     dcterms:description """
         An ontology for representing historical place knowledge as attestations:
