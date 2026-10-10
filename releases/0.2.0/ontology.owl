@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+>
+  <rdf:Description rdf:about="https://w3id.org/plato#start_earliest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">start earliest</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The earliest possible start date for this timespan. Together with
+        start_latest, defines the uncertainty range for when the interval began.
+        Use ISO 8601 format (e.g., '1453-05-29') or integer year for year-level
+        precision. May be null for unknown or deliberately open-beginning intervals.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#identity_object">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">identity object</rdfs:label>
+    <rdfs:comment xml:lang="en">The second Thing in an identity assertion.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Source">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/plato#Authority"/>
+    <rdfs:label xml:lang="en">Source</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A citable source of evidence: a manuscript, chronicle, tax record,
+        map, scholarly article, or other document. Sources are the primary
+        provenance anchor for attestations. A Source may reference its parent
+        Dataset via plato:partOf.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#meta_attestation_about">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">meta-attestation about</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links a meta-Attestation to the Attestation it comments on or relates to.
+        Used with plato:has_meta_type to specify the nature of the relationship.
+
+        Example: A meta-attestation might assert that one source's geometry
+        attestation contradicts another source's geometry attestation for the
+        same Thing.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Attestation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#relative_distance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">distance</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Distance from the anchor, in metres. Primarily used for
+        relative geometries. May carry its own uncertainty or fuzziness.
+    </rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#end_precision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">end precision</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Temporal granularity of the end bound. Values: 'year', 'decade',
+        'century', 'era', 'geological_period'.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#authority_uri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">authority URI</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Authority"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#value_literal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The value, where it is a literal: a number, a string, a date. Use
+        plato:value_json instead where the value is structured.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#PropertyValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#identity_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">identity type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The semantic strength of the identity assertion:
+        'exactMatch'  — the two Things are unambiguously the same entity.
+        'closeMatch'  — the two Things are believed to be the same entity
+                        but with some residual ambiguity (e.g. differing
+                        granularity, overlapping but not identical scope).
+        'related'     — the two Things are closely associated but may not
+                        be strictly identical (e.g. a settlement and its
+                        administrative district, or successive phases of
+                        a site that might or might not constitute continuity).
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributor_email">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">email</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Contact email address for the contributor. Useful for collaboration
+        and correspondence about contributed data.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Contributor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#source_label">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">source label</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The original label as given in the contributing source, before
+        vocabulary mapping. For a structured PropertyValue this preserves the
+        unparsed original — 'Monday after Whitsun, 3 days' — which is what a
+        future reader will want to check against the document.
+    </rdfs:comment>
+    <rdfs:domain rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b22"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#value_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">value type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        URI declaring the shape of a structured value, so that a consumer can
+        tell whether it understands the value before attempting to read it.
+        Omitted for literal values.
+
+        Not every attribute a source states is scalar. A market's trading day
+        — 'the Monday after Whitsun, for three days' — is a recurrence rule
+        anchored to a moveable feast, and flattening it to a string would
+        reproduce the loss this class exists to prevent. The ontology stays
+        agnostic about such shapes: it records which shape is in use and
+        leaves the definition to the vocabulary that owns it.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#PropertyValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#ccodes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">country codes</rdfs:label>
+    <rdfs:comment xml:lang="en">ISO 3166-1 alpha-2 country codes associated with this Thing.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#has_relation_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has relation type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Specifies the semantic type of a Thing-to-Thing relationship
+        attested by an Attestation. References a RelationType authority
+        which defines the relationship's label, inverse, and domain/range
+        constraints. Examples: 'capital_of', 'successor_to',
+        'connected_by_trade_route_to'.
+
+        The extensible vocabulary pattern allows new relationship types to
+        be added as Authority records without modifying the ontology.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#RelationType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#name_embedding">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">name embedding</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Vector embedding for phonetic similarity search. Typically a
+        256-dimensional vector generated from the name's phonetic form,
+        enabling fuzzy matching and transliteration-variant detection.
+        Format is implementation-specific but should be documented in
+        gazetteer metadata. WHG v4 uses Symphonym embeddings.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Name"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b5">
+    <rdf:first rdf:resource="https://w3id.org/plato#CertaintyLevel"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#end_earliest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">end earliest</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The earliest possible end date for this timespan. Together with
+        end_latest, defines the uncertainty range for when the interval ended.
+        May be null for unknown or deliberately open-end intervals.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#attests_geometry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">attests geometry</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an Attestation to a Geometry it asserts for the Thing. An
+        attestation may assert multiple geometries (e.g., point and polygon)
+        or no geometry at all (e.g., name-only attestations from textual sources).
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Geometry"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b24">
+    <rdf:first rdf:resource="https://w3id.org/plato#PropertyValue"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b2">
+    <rdf:first rdf:resource="https://w3id.org/plato#Dataset"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#relation_domain">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">domain constraint</rdfs:label>
+    <rdfs:comment xml:lang="en">Valid subject type for this relation.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#RelationType"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="en">Type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A classification or category for a Thing, typically drawn from a
+        controlled vocabulary such as the Getty Art &amp; Architecture Thesaurus
+        (AAT). Types are independent, reusable entities.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#bbox">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">bounding box</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Bounding box as array: [min_lon, min_lat, max_lon, max_lat].
+        Enables fast spatial filtering. Format: comma-separated string
+        or JSON array depending on serialization context.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#attests_property">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">attests property</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an Attestation to a PropertyValue it asserts of the Thing — a
+        population, a valuation, an elevation, a market's trading day. An
+        attestation may assert several properties or none.
+
+        These are among the commonest things a source says about a place, and
+        they carry exactly the provenance and temporal scoping the attestation
+        pattern exists to handle: a population figure is a claim, by a named
+        source, about one Thing, over a Timespan, with a certainty. The
+        attestation's own timespans scope the property as they scope every
+        other facet in the bundle.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#PropertyValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#type_label">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">type label</rdfs:label>
+    <rdfs:comment xml:lang="en">Human-readable label for this type.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Type"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#candidate_status">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">status</rdfs:label>
+    <rdfs:comment xml:lang="en">Review status: 'suggested', 'confirmed', 'rejected'.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Candidate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#certainty_note">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">certainty note</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Free-text explanation of the certainty assessment. Should describe
+        the basis for the certainty value: quality of evidence, degree of
+        scholarly consensus, reliability of source, etc.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b9">
+    <rdf:first rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b10"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#identity_subject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">identity subject</rdfs:label>
+    <rdfs:comment xml:lang="en">The first Thing in an identity assertion.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#hull">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">convex hull</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Convex hull of the geometry as WKT Polygon. Used for quick spatial
+        filtering before more expensive exact geometry operations. Optional
+        but recommended for complex geometries.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#wktLiteral"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#spatial_precision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">spatial precision</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Precision qualifier for this geometry: 'exact' (surveyed or GPS),
+        'approximate' (estimated from maps or descriptions), 'uncertain'
+        (multiple possible locations), 'historical_approximate' (based on
+        historical sources with inherent imprecision). Multiple values
+        possible for heterogeneous geometries.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#value_unit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">value unit</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        URI of the unit of measurement, where the value has one — a QUDT unit
+        or a Wikidata unit item. Omitted for counts and dimensionless values.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#PropertyValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b7">
+    <rdf:first rdf:resource="https://w3id.org/plato#Name"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b8"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#relative_qualifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">relative qualifier</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A controlled-vocabulary term describing the relative relationship
+        when bearing and distance are not applicable or not sufficient.
+        Should point to a concept in a SKOS concept scheme (e.g.
+        plato:Near, plato:Within, plato:Beyond, plato:UpstreamOf,
+        plato:BetweenXAndY, plato:DuringReignOf, plato:VariantOf).
+        Using URIs rather than free text enables machine reconciliation
+        across gazetteers that describe relativity differently.
+    </rdfs:comment>
+    <rdfs:domain rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b17"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#has_timespan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has timespan</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links a Period authority to its temporal extent, represented as a
+        Timespan node. Used for locally-defined periods or when more detailed
+        temporal modeling is needed than provided by external period definitions.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Period"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Timespan"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributor_identifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">contributor identifier</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Additional persistent identifier for the contributor. Can be used
+        for identifiers other than ORCID, such as:
+        - ISNI (International Standard Name Identifier)
+        - VIAF (Virtual International Authority File)
+        - Wikidata QID (for persons or organizations)
+        - Internal system identifiers
+
+        When using this property, specify the identifier type in the value
+        (e.g., "ISNI:0000000121032683" or "VIAF:12345678").
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Contributor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contains_thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">contains thing</rdfs:label>
+    <rdfs:comment xml:lang="en">Links a Gazetteer to a Thing it contains.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Gazetteer"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#geo_json">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">geometry GeoJSON</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        GeoJSON representation of the geometry. Used for web mapping
+        applications and LPF export. Should be a valid GeoJSON geometry
+        object (not a Feature or FeatureCollection).
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#value_json">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">structured value</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A structured value serialised as JSON, whose shape is declared by
+        plato:value_type. Use plato:value_literal instead for scalar values.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#PropertyValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0000-0003-3060-0181">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:name>Stephen Gadd</foaf:name>
+    <foaf:account rdf:resource="https://github.com/docuracy"/>
+    <foaf:mbox rdf:resource="mailto:stephen.gadd@pitt.edu"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#attests_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">attests type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an Attestation to a Type classification it assigns to the Thing.
+        An attestation may assert multiple types or no type at all.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Type"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b12">
+    <rdf:first rdf:resource="https://w3id.org/plato#Thing"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b13"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#type_identifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">type identifier</rdfs:label>
+    <rdfs:comment xml:lang="en">URI or identifier in a controlled vocabulary (e.g. AAT).</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Type"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#notes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">notes</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Free-text notes providing additional context about this attestation.
+        Can include transcriptions, translations, editorial comments, or
+        other information that doesn't fit structured fields.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#member_of_group">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">member of group</rdfs:label>
+    <rdfs:comment xml:lang="en">Links a Gazetteer to a GazetteerGroup.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Gazetteer"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#GazetteerGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#period_periodo_uri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">PeriodO URI</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Link to a PeriodO period definition for this Period authority.
+        When present, indicates this Period aligns with a standardized PeriodO
+        definition. The PeriodO record provides authoritative temporal bounds,
+        spatial extent, and cultural context. Example: 'https://n2t.net/ark:/99152/p06v8w4rb38'
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Period"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#thing_identifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">identifier</rdfs:label>
+    <rdfs:comment xml:lang="en">The stable, persistent identifier for this Thing.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#start_latest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">start latest</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The latest possible start date for this timespan. For certain dates,
+        this equals start_earliest. For uncertain dates, defines the end of
+        the uncertainty range for when the interval began.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#end_latest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">end latest</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The latest possible end date for this timespan. For certain dates,
+        this equals end_earliest. For uncertain dates, defines the end of
+        the uncertainty range for when the interval ended.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contains_attestation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">contains attestation</rdfs:label>
+    <rdfs:comment xml:lang="en">Links a Gazetteer to an Attestation contributed within it.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Gazetteer"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Attestation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#promoted_from">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">promoted from</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an IdentityRelation to the Candidate from which it was
+        promoted, preserving the algorithmic provenance. Optional:
+        identity relations can also be created directly by human
+        assertion without a prior Candidate.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Candidate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#certainty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">certainty</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Overall certainty of this attestation, from 0.0 (completely uncertain)
+        to 1.0 (completely certain). This represents the contributor's
+        confidence in the bundle as a whole. Individual facets (Name, Geometry,
+        Timespan) can have their own uncertainty values that may differ from
+        the attestation's overall certainty.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#uncertainty_note">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">uncertainty note</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Free-text explanation of the nature and source of epistemic
+        uncertainty (e.g. 'manuscript partially illegible', 'coordinates
+        extrapolated from itinerary distances').
+    </rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributor_affiliation_string">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">affiliation (string)</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Free-text organizational affiliation when a structured Organization
+        entity is not available. Example: "University of Pittsburgh,
+        Institute for Spatial History Innovation"
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Contributor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#attests_timespan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">attests timespan</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an Attestation to the Timespan during which the attested
+        properties (name, geometry, type) were applicable. Distinct from
+        the attestation's creation date: this is the historical timespan
+        being asserted, not when the assertion was made.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Timespan"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#authority_version">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">version</rdfs:label>
+    <rdfs:comment xml:lang="en">Version identifier for tracking upstream authority updates.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Authority"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b21">
+    <rdf:first rdf:resource="https://w3id.org/plato#Type"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#identity_asserted_at">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">asserted at</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b19">
+    <rdf:first rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b20"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#property_label">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">property label</rdfs:label>
+    <rdfs:comment xml:lang="en">Human-readable label for the property (e.g. 'population').</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#PropertyValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b23">
+    <rdf:first rdf:resource="https://w3id.org/plato#Type"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b24"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#candidate_source">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">source thing</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Candidate"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#source_crs">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">source CRS</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Original coordinate reference system. Typically 'EPSG:4326' (WGS84),
+        but may reference historical or custom CRS identifiers for historical
+        maps. Enables proper interpretation of coordinate values.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#namespace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">namespace</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The authority namespace for this Thing (e.g. 'geonames', 'wikidata',
+        'tgn', 'osm', 'pleiades', 'whg'). Authority-sourced Things carry
+        their origin namespace; contributed Things that cannot be linked to
+        any authority receive the 'whg' namespace.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#has_meta_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">meta-attestation type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The nature of a meta-attestation's relationship to its target attestation.
+        Should reference a controlled vocabulary concept defining the relationship
+        type. Standard values include:
+
+        - 'contradicts': asserts the target attestation is incorrect
+        - 'supports': provides additional evidence for the target attestation
+        - 'supersedes': replaces the target attestation with newer information
+        - 'refines': provides more precise information than the target
+        - 'challenges': questions the target attestation's validity
+        - 'bundles': groups the target with other related attestations
+
+        Using SKOS concepts rather than strings enables vocabulary management
+        and multilingual labels.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributor_orcid">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">ORCID</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        ORCID identifier for person contributors. Can be provided in two formats:
+
+        1. Compact format: 0000-0000-0000-0000 (sixteen digits in groups of four)
+        2. URI format: https://orcid.org/0000-0000-0000-0000 (preferred)
+
+        The URI format (https://orcid.org/...) is preferred and required for
+        proper linked data representation. ORCID is particular about always
+        including the https:// protocol and domain prefix.
+
+        While optional in the general ontology, specific implementations
+        (e.g., WHG) may require ORCID for person contributors to ensure
+        proper attribution and citation.
+
+        ORCID provides persistent identification for researchers, enabling
+        proper credit and reducing name ambiguity.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Contributor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#relation_range">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">range constraint</rdfs:label>
+    <rdfs:comment xml:lang="en">Valid object type for this relation.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#RelationType"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#gazetteer_owner">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">owner</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Gazetteer"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Contributor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#bibliographic_string">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">bibliographic string</rdfs:label>
+    <rdfs:comment xml:lang="en">A formatted citation string for this source.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Source"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#identity_certainty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">identity certainty</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Confidence in the identity assertion, from 0.0 to 1.0. This is
+        the epistemic certainty of the asserter, distinct from identity_type
+        which describes the semantic nature of the relationship.
+        A closeMatch can have high certainty ('I'm confident these are
+        close but not exact') and an exactMatch can have low certainty
+        ('I think they're identical but I'm not sure').
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#value_datatype">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">value datatype</rdfs:label>
+    <rdfs:comment xml:lang="en">Datatype of the literal value (e.g. xsd:integer, xsd:decimal, xsd:string).</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#PropertyValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#start_precision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">start precision</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Temporal granularity of the start bound. Values: 'year', 'decade',
+        'century', 'era', 'geological_period'. This describes the resolution
+        of the date specification, distinct from uncertainty (which describes
+        the confidence in that specification).
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Contributor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+    <rdfs:label xml:lang="en">Contributor</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A person, team, or automated process that creates attestations.
+        Aligned with both foaf:Agent and prov:Agent for provenance
+        chain-of-custody tracking.
+
+        Contributors should be identified using persistent identifiers where
+        possible. For persons, ORCID (https://orcid.org/) is strongly
+        recommended and may be required by specific implementations. ORCID
+        identifiers should use the full URI format (https://orcid.org/0000-0000-0000-0000)
+        rather than just the numeric portion, as ORCID is particular about
+        proper URI formatting for linked data interoperability.
+
+        For organizations, ROR (https://ror.org/) or ISNI identifiers are
+        recommended. Proper identification ensures accurate attribution,
+        enables citation, and supports research assessment.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#algorithm_version">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">algorithm version</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Candidate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:versionInfo>0.2.0</owl:versionInfo>
+    <dcterms:title xml:lang="en">PLATO — Place Attestation Ontology</dcterms:title>
+    <dcterms:description xml:lang="en">
+        An ontology for representing historical place knowledge as attestations:
+        bundles of evidence linking Things (places, routes, networks, and other
+        entities related to place) to Names, Geometries, Timespans, Types, and
+        Authorities with full provenance.
+
+        Developed by the Pelagios Network's Place Working Group, led by the
+        Institute for Spatial History Innovation (ISHI), University of Pittsburgh.
+
+        PLATO formalises the WHG v4 data model, in which the Attestation is
+        the fundamental unit of contributed knowledge. It unifies and supersedes
+        the Linked Places Format (LPF) and Linked Traces.
+    </dcterms:description>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0003-3060-0181"/>
+    <dcterms:contributor>Pelagios Network Place Working Group</dcterms:contributor>
+    <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-16</dcterms:created>
+    <rdfs:seeAlso rdf:resource="https://pelagios.org/place-attestation-ontology/index-en.html"/>
+    <vann:preferredNamespacePrefix>plato</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>https://w3id.org/plato#</vann:preferredNamespaceUri>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Timespan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+    <rdfs:label xml:lang="en">Timespan</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A temporal interval with start and end bounds. Timespans are
+        independent, reusable entities that may be shared across multiple
+        Attestations. Precision and uncertainty are expressed through
+        the start and end bound properties. Aligned with W3C Time Ontology
+        and compatible with PeriodO period definitions.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#precision_km">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">precision in kilometers</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Uncertainty radius in kilometers. For point geometries, indicates
+        how far the true location might be from the stated coordinates.
+        For polygons, indicates boundary uncertainty. Can be multiple values
+        for heterogeneous geometries.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b14">
+    <rdf:first rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b15"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#GazetteerGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Gazetteer Group</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A thematic or organisational grouping of Gazetteers (e.g.
+        'EMEW — Gazetteer of Early Modern England and Wales').
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#toponym">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="en">toponym</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The name string itself in its original script. This is the primary
+        property of a Name entity. Required for all Name instances.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Name"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#CertaintyLevel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/plato#Authority"/>
+    <rdfs:label xml:lang="en">Certainty Level</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A defined level of certainty for use in attestations, allowing
+        projects to standardise their confidence vocabulary.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#publisher">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">publisher</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Dataset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#licence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">licence</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Dataset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#precision_value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">precision value</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Numeric precision indicator in years. For example, a decade-level
+        precision would have value 10, century-level would be 100. Enables
+        computational comparison of precision across timespans.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#period_label">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">period label</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Human-readable label for this period (e.g., 'Byzantine period',
+        'Han Dynasty', 'Early Bronze Age'). Distinct from authority_title,
+        which may be more formal.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Period"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#fuzziness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">fuzziness</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Ontological fuzziness: a measure of how inherently vague or
+        indeterminate the facet's referent is, from 0.0 (crisp, sharply
+        bounded) to 1.0 (maximally vague). Distinct from uncertainty:
+        fuzziness is a property of the thing itself, not of our knowledge
+        of it. A regional boundary that was never precisely defined has
+        high fuzziness regardless of how much evidence we have.
+    </rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#periodo_uri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">PeriodO URI</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Link to a PeriodO period definition (https://perio.do/). When a timespan
+        corresponds to a standardized period in PeriodO, this property enables
+        alignment and allows PLATO to inherit PeriodO's temporal bounds, spatial
+        coverage, and cultural context. Example: 'https://n2t.net/ark:/99152/p06v8w4rb38'
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#generated_at">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">generated at</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Candidate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#identity_asserted_by">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">asserted by</rdfs:label>
+    <rdfs:comment xml:lang="en">The agent who made or confirmed this identity assertion.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Contributor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#attests_about">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="en">attests about</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an Attestation to the Thing it is about. Every attestation must
+        have exactly one subject Thing. This is the primary entity being
+        described by the bundled name, geometry, timespan, and type assertions.
+
+        Functional property: each attestation has exactly one subject Thing.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Authority">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointUnionOf rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b1"/>
+    <rdfs:label xml:lang="en">Authority</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Abstract superclass for all reference entities that provide provenance
+        or semantic grounding for attestations. Subtypes include Source,
+        Dataset, Period, RelationType, and CertaintyLevel.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Period">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/plato#Authority"/>
+    <rdfs:label xml:lang="en">Period</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A named historical period (e.g. 'Byzantine', 'Early Modern'),
+        optionally linked to PeriodO or defined locally. Includes temporal
+        bounds for period-based querying.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Dataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/plato#Authority"/>
+    <rdfs:label xml:lang="en">Dataset</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A collection-level authority: a published gazetteer, a contributed
+        dataset, or an external authority corpus (GeoNames, Wikidata, TGN,
+        OSM, Pleiades). Carries metadata such as title, version, publisher,
+        licence, and URI.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#language">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">language</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        BCP 47 language tag for this name (e.g., 'ar' for Arabic, 'zh-Hans'
+        for Simplified Chinese). Recommended: use ISO 639-3 three-letter codes
+        within BCP 47 for better granularity (e.g., 'ara', 'cmn').
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Name"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b18">
+    <rdf:first rdf:resource="https://w3id.org/plato#Name"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b19"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#relation_label">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">relation label</rdfs:label>
+    <rdfs:comment xml:lang="en">Forward label for the relationship (e.g. 'capital_of').</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#RelationType"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b18"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributed_by">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">contributed by</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The agent (person, team, or process) who created this attestation.
+
+        Semantically equivalent to PROV-O's prov:wasAttributedTo for provenance
+        tracking. We don't use formal rdfs:subPropertyOf to avoid importing
+        PROV-O's domain/range constraints. Distinct from sourced_by, which
+        indicates the historical source being cited.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Contributor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#fuzziness_note">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">fuzziness note</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Free-text explanation of the nature of ontological fuzziness
+        (e.g. 'regional boundary was never formally demarcated',
+        'name used inconsistently across contemporary sources',
+        'transition was gradual rather than a discrete event').
+    </rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#relates_to">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">relates to</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an Attestation to a second Thing, asserting a relationship
+        between the Attestation's subject Thing (via attests_about) and this
+        target Thing. The semantic nature of the relationship is specified by
+        plato:has_relation_type, which references a RelationType authority.
+
+        Example: An attestation about Constantinople that relates_to the
+        Byzantine Empire with relation_type "capital_of" asserts that
+        "Constantinople was the capital of the Byzantine Empire".
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Organization">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Organization</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        An organization to which a Contributor is affiliated. This is a
+        lightweight class defined primarily to avoid ambiguity in ontology
+        visualizations. Organizations can be further described using properties
+        from FOAF, schema.org, or other ontologies.
+
+        Organizations should use persistent identifiers where possible:
+        - ROR (Research Organization Registry): https://ror.org/
+        - ISNI (International Standard Name Identifier)
+        - Wikidata QIDs
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#attests_name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">attests name</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an Attestation to a Name it asserts for the Thing. An attestation
+        may assert multiple names (e.g., primary name and variants) or no name
+        at all (e.g., geometry-only attestations).
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Name"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#similarity_score">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">similarity score</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Candidate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#sourced_by">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">sourced by</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links an Attestation to the Authority (typically a Source or Dataset)
+        that grounds it. This provides the provenance chain for the attestation.
+
+        Semantically equivalent to PROV-O's prov:wasDerivedFrom, indicating the
+        authority is the origin of the attested knowledge. We don't use formal
+        rdfs:subPropertyOf to avoid importing PROV-O's domain/range constraints
+        which conflict with PLATO's class structure.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Authority"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#name_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">name type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Type of name: 'toponym' (place name), 'chrononym' (period/era name),
+        'ethnonym' (people/ethnic group), 'demonym' (inhabitants), 'odonym'
+        (street/road name), 'hydronym' (water body name). Multiple types
+        possible (e.g., a name that functions as both toponym and ethnonym).
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Name"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#gazetteer_status">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">status</rdfs:label>
+    <rdfs:comment xml:lang="en">Publication status: 'draft' or 'published'.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Gazetteer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Gazetteer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">Gazetteer</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A mutable, versioned workspace of Things and their associated
+        Attestations, owned by a contributor or team. Replaces the WHG v3
+        concepts of Dataset, Dataset Collection, and Place Collection.
+        A Gazetteer can be incrementally edited, enriched, and corrected
+        without re-ingestion.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#property_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">property type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        URI of the property in an external vocabulary — a Wikidata property,
+        a CIDOC-CRM property, or a project vocabulary term (e.g.
+        &lt;https://www.wikidata.org/wiki/Property:P1082&gt; for population).
+        Keeping the vocabulary external rather than enumerating attributes in
+        this ontology is what allows the model to carry attributes it has
+        never heard of.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#PropertyValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#authority_title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">title</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Authority"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#identity_basis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">identity basis</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Free-text explanation of the evidence or reasoning supporting
+        this identity assertion (e.g. 'coordinates within 500m and
+        name forms are cognate', 'identified by contributor during
+        reconciliation review', 'confirmed via TGN cross-reference').
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#ipa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">IPA</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        International Phonetic Alphabet representation of the name's
+        pronunciation. Enables phonetic search and comparison across scripts
+        and languages.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Name"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#repr_point">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">representative point</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A single representative point (centroid, label point, or best
+        estimate) for spatial indexing and distance queries. Stored as WKT
+        Point. Required for all geometries to enable spatial search.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#wktLiteral"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#open_end">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">open end</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Boolean flag indicating that the end of this interval is deliberately
+        unspecified (not merely unknown). True for ongoing periods like 'Modern
+        era (1800-present)' or situations where the end does not exist. Aligns
+        with PeriodO's OpenEndInterval.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#relative_to">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">relative to</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Links a facet node to its anchor entity, indicating that this
+        facet is defined relationally rather than absolutely. The anchor
+        is typically a Thing, Period, or another facet (Name, Timespan, etc.).
+
+        Common patterns:
+        - Spatial relativity: "20km east of Nanjing" (anchor is a Thing)
+        - Temporal relativity: "during the reign of Justinian" (anchor is a Period)
+        - Name relativity: "also known as Rome" (anchor is another Name)
+    </rdfs:comment>
+    <rdfs:domain rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b6"/>
+    <rdfs:range rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b11"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#partOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">part of</rdfs:label>
+    <rdfs:comment xml:lang="en">Links a Source to its parent Dataset.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Source"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#connection_metadata">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">connection metadata</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Structured metadata for network-type attestations. Can encode
+        information about trade goods, flow direction, capacity, frequency,
+        or other properties of network connections. Format is implementation-
+        specific (JSON recommended) but should be documented in the gazetteer's
+        metadata.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#PropertyValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Property Value</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A quantitative or descriptive attribute of a Thing, expressed as a
+        property drawn from an external vocabulary together with its value.
+        Covers the many things a historical source says that are neither a
+        name, a location, a period nor a classification — populations,
+        valuations, elevations, recurrence rules for markets and fairs.
+
+        The property itself is identified by URI rather than enumerated here,
+        so the vocabulary stays open and delegated (Wikidata properties,
+        CIDOC-CRM, project vocabularies), in the same way that Type delegates
+        its classifications to AAT.
+
+        Values may be literals (with a datatype and optional unit) or
+        structured objects whose shape is declared by plato:value_type. As a
+        facet node, a PropertyValue may carry the qualification properties
+        (uncertainty, fuzziness) like any other.
+
+        Where the value is itself an entity, use a Thing-to-Thing relation
+        instead; this class is for attributes, not relationships.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#romanized">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">romanized</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Romanized (Latin-script) form of the name for searchability and
+        display in contexts requiring ASCII. Should specify transliteration
+        system used via plato:transliteration_system.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Name"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b16">
+    <rdf:first rdf:resource="https://w3id.org/plato#Period"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#modified">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">modified</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Timestamp when this attestation was last modified. Enables tracking
+        of editorial changes and versioning.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#RelationType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/plato#Authority"/>
+    <rdfs:label xml:lang="en">Relation Type</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A vocabulary entry defining a semantic relationship between Things:
+        'capital_of', 'successor_to', 'connected_by_trade_route_to', etc.
+        Carries a label, an inverse label, and domain/range constraints.
+        This allows the vocabulary of historical relationships to grow
+        without modifying the core ontology.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributor_affiliation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">affiliation</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Organizational affiliation of the contributor. Links to a
+        plato:Organization entity, which can be further described using
+        FOAF, schema.org, or other ontology properties. Organizations
+        should ideally use persistent identifiers (ROR, ISNI, etc.).
+
+        For simple cases, use contributor_affiliation_string for free-text
+        affiliation names.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Contributor"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Geometry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+    <rdfs:label xml:lang="en">Geometry</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A spatial representation of a Thing's extent or location. Geometries
+        are independent, reusable entities. The same Geometry may be referenced
+        by multiple Attestations across different Things or time periods.
+
+        Note: GeometryCollection is not supported in some graph database
+        implementations. For heterogeneous geometry sets (e.g., both point and
+        polygon), use multiple Geometry entities linked through separate
+        attestations.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Name</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A toponym or appellation for a Thing. Names are independent, reusable
+        entities. The association between a Name and a Thing is always mediated
+        by an Attestation, which provides temporal scope and provenance.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#geometry_role">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">geometry role</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        What this geometry depicts, as distinct from how precisely it is known
+        (plato:spatial_precision) or where its indexing point falls
+        (plato:repr_point). A Thing may be attested with several geometries at
+        once — a built extent, the location of a specific central feature, a
+        proxy standing in for the whole, the anchor of a map label — and without
+        a declared role a consumer cannot tell them apart, nor state which one
+        an analysis used.
+
+        Should point to a concept in a SKOS concept scheme (e.g. plato:Extent,
+        plato:FeaturePoint, plato:RepresentativePoint, plato:LabelAnchor,
+        plato:Itinerary). Using URIs rather than free text lets gazetteers that
+        record geometry differently be compared.
+
+        Note that role is orthogonal to precision: a proxy locator may be
+        surveyed to the metre and still not depict the Thing it stands for. A
+        parish church's coordinates contributed as a locator for a town are a
+        representative point of high precision, not an imprecise feature point.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#inverse_label">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">inverse label</rdfs:label>
+    <rdfs:comment xml:lang="en">Inverse label (e.g. 'has_capital').</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#RelationType"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#geo_wkt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.opengis.net/ont/geosparql#asWKT"/>
+    <rdfs:label xml:lang="en">geometry WKT</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Well-Known Text representation of the geometry, following OGC/ISO
+        standards. Used for GeoSPARQL queries and RDF serialization.
+        Supports Point, LineString, Polygon, MultiPoint, MultiLineString,
+        MultiPolygon.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#wktLiteral"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#identity_sourced_by">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">identity sourced by</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The Authority (Source or Dataset) that provides evidence for
+        this identity assertion, if any.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#IdentityRelation"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Authority"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Thing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:label xml:lang="en">Thing</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A stable, persistent identity representing a place or other historical
+        entity related to place (routes, networks, administrative units, etc.).
+        Things are not defined by any single attestation; they are the point of
+        convergence for multiple attestations from different sources, periods,
+        and contributors.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b4">
+    <rdf:first rdf:resource="https://w3id.org/plato#RelationType"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#edtf_string">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">EDTF string</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Extended Date/Time Format (EDTF) representation of this timespan.
+        Provides standardized string encoding for interchange with systems
+        using EDTF. Optional but recommended for interoperability with library
+        and archival systems. Example: '1453-05-29/1453-05-29' or '1450~/1453~'
+        for approximate dates.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#transliteration_system">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">transliteration system</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The transliteration/romanization system used (e.g., 'Pinyin' for
+        Chinese, 'BGN/PCGN' for Arabic, 'ISO 259' for Hebrew, 'Hepburn' for
+        Japanese). Enables proper interpretation and comparison of romanized
+        forms.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Name"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributor_role">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">contributor role</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Role of the contributor in the project or gazetteer. Examples:
+        'principal_investigator', 'data_curator', 'student_researcher',
+        'automated_process', 'external_contributor'. Helps understand the
+        context and authority of contributions.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Contributor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributor_url">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">contributor URL</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Website or profile URL for the contributor (personal website,
+        institutional page, project page, GitHub profile, etc.). Provides
+        additional context about the contributor's work and identity.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Contributor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b13">
+    <rdf:first rdf:resource="https://w3id.org/plato#Name"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#sequence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">sequence</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Ordering index for attestations in routes or itineraries. Defines
+        the position of this attestation in an ordered sequence. Used when
+        the Thing being attested (via attests_about) is a Route or Itinerary.
+        Lower numbers come first in the sequence.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b8">
+    <rdf:first rdf:resource="https://w3id.org/plato#Geometry"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b23"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#open_start">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">open start</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Boolean flag indicating that the start of this interval is deliberately
+        unspecified (not merely unknown). True for intervals like 'everything
+        before 1453' or 'prehistory until...'. Distinct from null start_earliest,
+        which indicates unknown start. Aligns with PeriodO's OpenBeginningInterval.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Attestation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:label xml:lang="en">Attestation</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        A bundle of evidence asserting that a particular Thing had a particular
+        Name, Geometry, Type, or combination thereof, during a particular
+        Timespan, according to a particular Authority. The Attestation node
+        carries only metadata; its semantic content is defined entirely by its
+        outgoing relationships.
+
+        IMPORTANT: Attestations are document nodes in the graph, not edges.
+        They are instances of plato:Attestation (a class), not instances of
+        owl:ObjectProperty. This design enables meta-attestations and full
+        provenance tracking.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b15">
+    <rdf:first rdf:resource="https://w3id.org/plato#Type"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b16"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#candidate_candidate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">candidate thing</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Candidate"/>
+    <rdfs:range rdf:resource="https://w3id.org/plato#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#contributor_name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">contributor name</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        The name of the contributor (person, team, or automated process).
+        For persons, should be the full name as preferred by the contributor.
+        For teams, the team name. For automated processes, a descriptive name.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Contributor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#Candidate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Candidate</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        An algorithm-generated match candidate between two Things, produced
+        by the PLACE clustering engine. Candidates carry a similarity score,
+        algorithm version, and review status. They are explicitly not
+        IdentityRelations — they become IdentityRelations only when confirmed
+        by a human reviewer (linked back via plato:promoted_from).
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#relative_bearing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">bearing</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Compass bearing from the anchor, in degrees (0–360).
+        Primarily used for relative geometries: '90' means east of
+        the anchor. May carry its own uncertainty or fuzziness.
+    </rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#uncertainty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">uncertainty</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Epistemic uncertainty: a measure of how precisely the facet value
+        is known, from 0.0 (completely unknown) to 1.0 (no uncertainty).
+        Distinct from fuzziness: uncertainty reflects the limits of evidence,
+        not the inherent vagueness of the referent.
+    </rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#IdentityRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Identity Relation</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        An assertion that two Things refer to the same real-world entity.
+        Carries its own provenance (who asserted it, on what basis),
+        certainty (how confident the assertion is), and identity semantics
+        (exactMatch, closeMatch, related).
+
+        Identity relations are distinct from scholarly Thing-to-Thing
+        relations, which describe substantive historical relationships
+        between different entities. They are also distinct from Candidates,
+        which are algorithm-generated candidates not yet confirmed by
+        human review.
+    </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#spatial_coverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">spatial coverage</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Geographic or cultural region to which this period applies.
+        Free text or URI to a place/region. Useful because periods like
+        'Medieval' have different temporal bounds in different regions.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Period"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b20">
+    <rdf:first rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b21"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b10">
+    <rdf:first rdf:resource="https://w3id.org/plato#Type"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b12"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#created">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">created</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Timestamp when this attestation was created. This is the contribution
+        date, not the historical timespan being attested (use attests_timespan
+        for that).
+
+        Semantically equivalent to PROV-O's prov:generatedAtTime. We don't use
+        formal rdfs:subPropertyOf to avoid importing PROV-O constraints.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Attestation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#script">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">script</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        ISO 15924 script code (e.g., 'Arab' for Arabic script, 'Latn' for
+        Latin script, 'Hant' for Traditional Han characters). Important for
+        names that may appear in multiple scripts.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Name"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/plato#timespan_label">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">timespan label</rdfs:label>
+    <rdfs:comment xml:lang="en">
+        Human-readable label for this timespan (e.g., 'Byzantine period',
+        'Early Bronze Age', 'Ming Dynasty'). Particularly useful for named
+        periods referenced across multiple attestations.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/plato#Timespan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b1">
+    <rdf:first rdf:resource="https://w3id.org/plato#Source"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b3">
+    <rdf:first rdf:resource="https://w3id.org/plato#Period"/>
+    <rdf:rest rdf:nodeID="nf78c1a0003ab477a8025fd302fd4b884b4"/>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,602 @@
+<!doctype html>
+<html class="no-js" lang="en-GB" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="about.html"><link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Statistical tables" href="statistics.html"><link rel="prev" title="Glossary" href="glossary.html">
+        <link rel="prefetch" href="_static/plato-mark.svg" as="image">
+
+    <link rel="shortcut icon" href="_static/favicon.svg"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>JSON formats - PLATO guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" type="text/css" href="_static/plato.css?v=0c54fe58" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">PLATO guide</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/plato-mark.svg" alt="Logo"/>
+  </div>
+  <span class="sidebar-brand-text">PLATO guide</span>
+</a>
+<p class="plato-status">
+  <a class="plato-badge" href="about.html#experimental" aria-describedby="plato-status-tip">Experimental</a>
+  <span class="plato-tip" id="plato-status-tip" role="tooltip">PLATO is experimental: it is developed in the open and not yet fully tested, and its terms and schemas may change, or break, between releases. A renamed or withdrawn term is kept, marked as deprecated, for at least one release before it is removed. Each release is archived on Zenodo with its own DOI. PLATO tools has its own badge.</span>
+</p><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Why PLATO</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ideas.html">The ideas in five minutes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/index.html">Organising data in spreadsheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/first-dataset.html">A first dataset, step by step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/survey-example.html">A place-name survey example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations from Recogito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tei.html">Place names in a TEI edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-of-places.html">Your own table of places: CSV, GeoJSON or a workbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Checking, converting and comparing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Routes, journeys and networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routes/index.html">Routes, journeys and networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/antonine.html">A route: the Antonine Itinerary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/king-john.html">A journey: King John in 1215</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/river-idle.html">A river network: the lower Idle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/datini.html">A network of correspondence: the Datini letters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/reference.html">Sheet reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vocabularies.html">Vocabularies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">JSON formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistical tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-data.html">Linked data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About PLATO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/blob/main/docs/json.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/edit/main/docs/json.md" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="json-formats">
+<h1>JSON formats<a class="headerlink" href="#json-formats" title="Link to this heading">¶</a></h1>
+<p>If you produce data with your own software, PLATO has two JSON formats for
+a dataset, each defined by a JSON Schema. They carry everything the
+spreadsheets do and more: several facts or several sources in one
+attestation, shared names and geometries, comments on other people’s
+evidence. A third format, the candidate set, holds the matches that
+matching software suggests, kept beside a dataset rather than in it (see
+<a class="reference internal" href="#candidate-sets">Candidate sets</a>).</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Use it when…</p></th>
+<th class="head"><p>Schema</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>place-centric</strong></p></td>
+<td><p>you are describing your own places: each place carries its attestations inside it</p></td>
+<td><p><a class="reference external" href="https://w3id.org/plato/schemas/place-centric.schema.json">place-centric.schema.json</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>attestation-centric</strong></p></td>
+<td><p>you are adding evidence about places that already exist elsewhere, referring to them by URI</p></td>
+<td><p><a class="reference external" href="https://w3id.org/plato/schemas/attestation-centric.schema.json">attestation-centric.schema.json</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>candidate set</strong></p></td>
+<td><p>you are publishing the matches your matching software suggested for a dataset, for people to review</p></td>
+<td><p><a class="reference external" href="https://w3id.org/plato/schemas/candidate-set.schema.json">candidate-set.schema.json</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All three are built from the shared definitions in
+<a class="reference external" href="https://w3id.org/plato/schemas/plato.schema.json">plato.schema.json</a>, which
+they refer to by relative path, so keep the files together when
+validating. Worked examples are in the repository’s
+<a class="reference external" href="https://github.com/pelagios/place-attestation-ontology/tree/main/schemas/examples">schemas/examples</a>
+folder.</p>
+<section id="checking-and-converting">
+<h2>Checking and converting<a class="headerlink" href="#checking-and-converting" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a> checks a JSON document against these schemas and
+converts it to RDF, to the spreadsheet tables or to Linked Places Format, in
+the browser and at any size. It reads JSON Lines too: a header line, then one
+place per line, which is the easiest shape to write and to stream.</p>
+<p>For batch jobs and pipelines it also runs <a class="reference external" href="https://github.com/pelagios/plato-tools#from-the-command-line">from the command line</a>,
+with Node.js 24 or later. It uses the same engine as the page, so it gives
+the same results:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>check<span class="w"> </span>data/*.jsonl<span class="w">            </span><span class="c1"># a report per file, then a total</span>
+npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>check<span class="w"> </span>--json<span class="w"> </span>data/*.json<span class="w"> </span>&gt;<span class="w"> </span>report.jsonl
+npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>convert<span class="w"> </span>--to<span class="w"> </span>ntriples<span class="w"> </span>--out<span class="w"> </span>rdf/<span class="w"> </span>data/*.jsonl
+</pre></div>
+</div>
+<p>It exits with 0 when no file has problems, 1 when any has, and 2 when a file
+cannot be read or the command is wrong, so a script can stop on invalid data.</p>
+</section>
+<section id="from-json-to-linked-data">
+<h2>From JSON to linked data<a class="headerlink" href="#from-json-to-linked-data" title="Link to this heading">¶</a></h2>
+<p>Add the PLATO JSON-LD context to a JSON document and any JSON-LD processor turns
+it into RDF in the PLATO ontology:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"@context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://w3id.org/plato/schemas/plato.context.jsonld"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://w3id.org/plato/schemas/attestation-centric.schema.json"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attestation-centric"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"gazetteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My dataset"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"attestations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"about"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.geonames.org/2654675/"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"toponym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bristowe"</span><span class="p">,</span><span class="w"> </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enm"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"timespans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"startEarliest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1480"</span><span class="p">,</span><span class="w"> </span><span class="nt">"endLatest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sourceLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1480-1485"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TNA E 122/19/10"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The context’s own opening comment explains how the formats are read and
+what a triplifier must add itself. See <a class="reference internal" href="linked-data.html"><span class="std std-doc">Linked data</span></a> for the
+URLs.</p>
+</section>
+<section id="keys-and-terms">
+<h2>Keys and terms<a class="headerlink" href="#keys-and-terms" title="Link to this heading">¶</a></h2>
+<p>JSON keys are camelCase (<code class="docutils literal notranslate"><span class="pre">startEarliest</span></code>, <code class="docutils literal notranslate"><span class="pre">formStatus</span></code>); the ontology’s
+properties are snake_case (<code class="docutils literal notranslate"><span class="pre">start_earliest</span></code>, <code class="docutils literal notranslate"><span class="pre">form_status</span></code>). The context maps
+one to the other. The fixed values for keys such as <code class="docutils literal notranslate"><span class="pre">formStatus</span></code> are the full
+identifiers listed under <a class="reference internal" href="vocabularies.html"><span class="std std-doc">Vocabularies</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sourceLabel</span></code>, on a name, geometry, timespan, type or property value, is the
+source’s own wording where the structured value normalises it: a date as
+written (‘about 1841’), coordinates as printed. A timespan’s <code class="docutils literal notranslate"><span class="pre">label</span></code> is for a
+named period (‘Byzantine period’). Certainty stated in words goes in
+<code class="docutils literal notranslate"><span class="pre">certaintyLevel</span></code>, as the URI of a level such as
+<code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#LessCertain</span></code>, rather than as an invented number in
+<code class="docutils literal notranslate"><span class="pre">certainty</span></code>. Both are your confidence. <code class="docutils literal notranslate"><span class="pre">certainty</span></code> is a number from 0 to 1,
+written as a JSON number (<code class="docutils literal notranslate"><span class="pre">0.8</span></code>, or <code class="docutils literal notranslate"><span class="pre">1</span></code>), not as text; any kind of number
+is accepted in RDF (see <a class="reference internal" href="linked-data.html#numbers"><span class="std std-ref">Numbers</span></a>). How firmly the
+source itself says
+something goes in an attestation’s <code class="docutils literal notranslate"><span class="pre">sourceStance</span></code>, such as
+<code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#StanceReported</span></code> for a claim it only passes on (“it is
+said”). A source’s <code class="docutils literal notranslate"><span class="pre">licence</span></code> is the web address of the licence of the copy you
+cite, written as the gazetteer’s is.</p>
+<p>Routes, journeys and networks use a few more keys (see
+<a class="reference internal" href="routes/index.html"><span class="std std-doc">Routes, journeys and networks</span></a>). An attestation that makes a
+place a member of a route, with <code class="docutils literal notranslate"><span class="pre">relationType</span></code>
+<code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#MemberOf</span></code>, gives its position in <code class="docutils literal notranslate"><span class="pre">sequence</span></code>, a whole
+number. A relation to something that is not a place, such as a person in
+Wikidata, gives its web address in <code class="docutils literal notranslate"><span class="pre">relatesTo</span></code> and a name to show it by in
+<code class="docutils literal notranslate"><span class="pre">relatedLabel</span></code>. A timespan’s <code class="docutils literal notranslate"><span class="pre">duration</span></code> is a length the source states, as an
+<code class="docutils literal notranslate"><span class="pre">xsd:duration</span></code> such as <code class="docutils literal notranslate"><span class="pre">P42D</span></code> for six weeks. <code class="docutils literal notranslate"><span class="pre">computed</span></code>, on an attestation or
+in a <code class="docutils literal notranslate"><span class="pre">qualification</span></code>, marks a value software worked out, not a source’s
+statement; data you record from sources never needs it.</p>
+<p>A document describes itself in its <code class="docutils literal notranslate"><span class="pre">gazetteer</span></code> header, so that it can be
+found and cited: <code class="docutils literal notranslate"><span class="pre">title</span></code> (required), <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">creator</span></code> (the authors
+to cite, each an ORCID or other address, a name, or both), <code class="docutils literal notranslate"><span class="pre">licence</span></code>
+(required once <code class="docutils literal notranslate"><span class="pre">status</span></code> is <code class="docutils literal notranslate"><span class="pre">published</span></code>), <code class="docutils literal notranslate"><span class="pre">version</span></code>, <code class="docutils literal notranslate"><span class="pre">keywords</span></code>, <code class="docutils literal notranslate"><span class="pre">spatial</span></code>
+(the regions it covers, as addresses), <code class="docutils literal notranslate"><span class="pre">temporal</span></code> (<code class="docutils literal notranslate"><span class="pre">startDate</span></code> and
+<code class="docutils literal notranslate"><span class="pre">endDate</span></code>), <code class="docutils literal notranslate"><span class="pre">landingPage</span></code>, and <code class="docutils literal notranslate"><span class="pre">uriSpace</span></code>, the base of its entities’ web
+addresses. <code class="docutils literal notranslate"><span class="pre">contributor</span></code> is whoever owns or maintains it, who need not be
+an author.</p>
+<p>A type’s <code class="docutils literal notranslate"><span class="pre">identifier</span></code> should be the concept’s full web address in a
+published vocabulary (an AAT, Wikidata or GeoNames concept; for an
+OpenStreetMap tag, its address with the key, such as
+<code class="docutils literal notranslate"><span class="pre">https://wiki.openstreetmap.org/wiki/Tag:waterway=stream</span></code>), never a bare
+code such as <code class="docutils literal notranslate"><span class="pre">PPL</span></code> or <code class="docutils literal notranslate"><span class="pre">stream</span></code>. A category of your source’s own that no
+vocabulary holds goes in <code class="docutils literal notranslate"><span class="pre">label</span></code> and <code class="docutils literal notranslate"><span class="pre">sourceLabel</span></code>, with no identifier.
+Where a vocabulary has no such addresses, or changes what its terms mean
+from one version to the next, give its address in <code class="docutils literal notranslate"><span class="pre">scheme</span></code> and the version
+you used in <code class="docutils literal notranslate"><span class="pre">schemeVersion</span></code>. A type’s own <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>, if you give one, is your
+dataset’s address for it, never the vocabulary’s: otherwise every dataset’s
+labels and versions would pile up on the one shared concept.</p>
+<p>Saying that records elsewhere are the same place is evidence like any other,
+never a settled fact. Identity relations asserted together, as when someone
+accepts a group of suggested matches, go in one attestation’s <code class="docutils literal notranslate"><span class="pre">identities</span></code>,
+which gives them one source, date and author, and lets them be withdrawn
+together. The same attestation with <code class="docutils literal notranslate"><span class="pre">negated</span></code> set, and one <code class="docutils literal notranslate"><span class="pre">exactMatch</span></code>,
+says two records are <em>not</em> the same place. Software may join matches up
+(A is B and B is C, so A is C) only within one such attestation: two people’s
+separate matches are not anyone’s claim about the third pair.</p>
+<p>A project may need a relation PLATO does not name, such as “flows into” for a
+river. A document declares it once, in a <code class="docutils literal notranslate"><span class="pre">relationTypes</span></code> array beside its
+<code class="docutils literal notranslate"><span class="pre">gazetteer</span></code>, and then uses its address as any relation’s <code class="docutils literal notranslate"><span class="pre">relationType</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"relationTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"@id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org/vocab/flows-into"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flows into"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"inverseLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"receives"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"broaderRelation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://w3id.org/plato#LeadsTo"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">broaderRelation</span></code> names the PLATO relation it narrows, so software that knows
+only <code class="docutils literal notranslate"><span class="pre">LeadsTo</span></code> still reads “flows into” as a connection running one way.</p>
+</section>
+<section id="candidate-sets">
+<h2>Candidate sets<a class="headerlink" href="#candidate-sets" title="Link to this heading">¶</a></h2>
+<p>Matching software, such as a reconciliation service, suggests that a place in
+your dataset may be the same as a record elsewhere. Such a suggestion is a
+<em>candidate</em>. It is not anyone’s claim: it records what the software
+suggested, with its score and the settings that produced it, so that a
+reviewer, or a later reader, can see why the match was offered.</p>
+<p>Candidates are published in a document of their own, a <em>candidate set</em>,
+beside the dataset and never inside it, because a dataset holds claims and a
+candidate is a claim by no one. A candidate set has a header,
+<code class="docutils literal notranslate"><span class="pre">candidateSet</span></code>, with its address (<code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>), a <code class="docutils literal notranslate"><span class="pre">title</span></code>, the date it was
+<code class="docutils literal notranslate"><span class="pre">issued</span></code>, and <code class="docutils literal notranslate"><span class="pre">candidatesFor</span></code>, the address of the dataset the matches were
+sought for; and a <code class="docutils literal notranslate"><span class="pre">candidates</span></code> list. Each candidate gives its <code class="docutils literal notranslate"><span class="pre">subject</span></code> (the
+place in your dataset), its <code class="docutils literal notranslate"><span class="pre">object</span></code> (the suggested match), the
+<code class="docutils literal notranslate"><span class="pre">similarityScore</span></code>, the <code class="docutils literal notranslate"><span class="pre">algorithmVersion</span></code>, the <code class="docutils literal notranslate"><span class="pre">matchParameters</span></code> if any, the
+time it was <code class="docutils literal notranslate"><span class="pre">generatedAt</span></code>, and its <code class="docutils literal notranslate"><span class="pre">status</span></code>, which is always <code class="docutils literal notranslate"><span class="pre">suggested</span></code>.</p>
+<p>Once issued, a candidate set never changes: no candidate in it is altered or
+removed, and a later run of the software is a new set, which leaves out any
+candidate an earlier set has already published. Each candidate’s address is
+the set’s address followed by <code class="docutils literal notranslate"><span class="pre">#c-</span></code> and a short code worked out from what the
+candidate says, so the same suggestion always gets the same address.</p>
+<p>A candidate’s score therefore records what the software said when it first
+suggested the pair. If the places’ names change and the same algorithm, run
+with the same settings, would now score the pair differently, the first
+score stands. To record a new score, publish it under a new
+<code class="docutils literal notranslate"><span class="pre">algorithmVersion</span></code> or new <code class="docutils literal notranslate"><span class="pre">matchParameters</span></code>, which gives the candidate a new
+address.</p>
+<p>A person’s answer to a candidate goes in the dataset, as an attestation like
+any other identity match, whose identity relation points back to the
+candidate with <code class="docutils literal notranslate"><span class="pre">promotedFrom</span></code>. A yes is an ordinary attestation; a no is an
+attestation with <code class="docutils literal notranslate"><span class="pre">negated</span></code> set, saying the two are <em>not</em> the same place. What
+became of a candidate is read from these attestations, never from the
+candidate, so a decision can be withdrawn and made again without changing
+the published set. Software that accepts matches with no one reviewing them
+should publish its own attestations in the same way, not mark candidates as
+confirmed. A dataset can list its candidate sets in its <code class="docutils literal notranslate"><span class="pre">gazetteer</span></code> header,
+in <code class="docutils literal notranslate"><span class="pre">candidateSets</span></code>, and should be published together with them, so that
+anyone can follow <code class="docutils literal notranslate"><span class="pre">promotedFrom</span></code> to the suggestion it answers.</p>
+<p>Candidate sets are written by software, so they are published as JSON (or
+RDF) only: the spreadsheet template has no sheet for them. The repository’s
+<a class="reference external" href="https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/candidate-set-judgements.json">candidate-set-judgements.json</a>
+is a small candidate set, and
+<a class="reference external" href="https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/attestation-centric-judgements.json">attestation-centric-judgements.json</a>
+answers it.</p>
+<section id="regions-matched-to-a-gazetteer">
+<h3>Regions matched to a gazetteer<a class="headerlink" href="#regions-matched-to-a-gazetteer" title="Link to this heading">¶</a></h3>
+<p>A table of places often gives, beside each place, the regions it lies in: a
+parish, its county, its country. When those regions are matched to a
+gazetteer, two different things have been said, and PLATO keeps them apart.</p>
+<ul class="simple">
+<li><p><strong>What your source says.</strong> The parish is <em>contained in</em> the county, and the
+county in the country. Each of these is a relation with <code class="docutils literal notranslate"><span class="pre">relationType</span></code>
+<code class="docutils literal notranslate"><span class="pre">ContainedIn</span></code>, and it points at a region made from your own data, with the
+name as your source writes it. Make one region for each whole chain of
+containers (England, then Surrey), not one for each name, so that a Newport
+in Shropshire and a Newport in Monmouthshire stay two regions.
+The region’s name goes in that region’s own name attestation. Use
+<code class="docutils literal notranslate"><span class="pre">relationLabel</span></code> only when your source words the relation itself (“in the
+county of Surrey”); <code class="docutils literal notranslate"><span class="pre">relatedLabel</span></code> is not needed, since the region is a
+place in your dataset.</p></li>
+<li><p><strong>What the reviewer decided.</strong> That your Surrey is the gazetteer’s Surrey
+is an identity match, made like any other: an attestation with the
+reviewer’s source and certainty, whose identity relation points back with
+<code class="docutils literal notranslate"><span class="pre">promotedFrom</span></code> to the suggestion it answers. The matching software’s score
+stays on that suggestion, in the candidate set. It is not a certainty, so
+it is never written on the containment.</p></li>
+</ul>
+<p>If the match is later changed, that is a new identity attestation, and what
+your source said is untouched. A region you assign by hand, with no
+suggestion from software, may simply point its <code class="docutils literal notranslate"><span class="pre">ContainedIn</span></code> at the
+gazetteer’s address.</p>
+<p>Linked Places Format (LPF) writes the two claims as one: a
+<code class="docutils literal notranslate"><span class="pre">gvp:broaderPartitive</span></code> relation for each container, whose <code class="docutils literal notranslate"><span class="pre">relationTo</span></code> is the
+identity match’s gazetteer address, whose <code class="docutils literal notranslate"><span class="pre">certainty</span></code> is the reviewer’s
+certainty level, whose <code class="docutils literal notranslate"><span class="pre">whg_match_score</span></code> is the suggestion’s score and whose
+<code class="docutils literal notranslate"><span class="pre">label</span></code> is the region’s name. Reading such LPF back gives the simpler
+shape, a containment straight to the gazetteer’s address: the region made from
+your data, the separate match and the score are not in LPF to be recovered. The
+repository’s
+<a class="reference external" href="https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-regions.json">place-centric-regions.json</a>
+shows a parish in Surrey in England, and
+<a class="reference external" href="https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/candidate-set-regions.json">candidate-set-regions.json</a>
+holds the suggestions it answers.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="statistics.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Statistical tables</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="glossary.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Glossary</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Pelagios Network Place Working Group (CC BY 4.0)
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">JSON formats</a><ul>
+<li><a class="reference internal" href="#checking-and-converting">Checking and converting</a></li>
+<li><a class="reference internal" href="#from-json-to-linked-data">From JSON to linked data</a></li>
+<li><a class="reference internal" href="#keys-and-terms">Keys and terms</a></li>
+<li><a class="reference internal" href="#candidate-sets">Candidate sets</a><ul>
+<li><a class="reference internal" href="#regions-matched-to-a-gazetteer">Regions matched to a gazetteer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=809ddda4"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/translations.js?v=8fd896e3"></script>
+    <script src="_static/plato-tooltip.js?v=d3050378"></script>
+    </body>
+</html>

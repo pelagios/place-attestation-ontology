@@ -1,0 +1,530 @@
+<!doctype html>
+<html class="no-js" lang="en-GB" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="about.html"><link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="The ideas in five minutes" href="ideas.html">
+        <link rel="prefetch" href="_static/plato-mark.svg" as="image">
+
+    <link rel="shortcut icon" href="_static/favicon.svg"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>PLATO guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" type="text/css" href="_static/plato.css?v=0c54fe58" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">PLATO guide</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/plato-mark.svg" alt="Logo"/>
+  </div>
+  <span class="sidebar-brand-text">PLATO guide</span>
+</a>
+<p class="plato-status">
+  <a class="plato-badge" href="about.html#experimental" aria-describedby="plato-status-tip">Experimental</a>
+  <span class="plato-tip" id="plato-status-tip" role="tooltip">PLATO is experimental: it is developed in the open and not yet fully tested, and its terms and schemas may change, or break, between releases. A renamed or withdrawn term is kept, marked as deprecated, for at least one release before it is removed. Each release is archived on Zenodo with its own DOI. PLATO tools has its own badge.</span>
+</p><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Why PLATO</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ideas.html">The ideas in five minutes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/index.html">Organising data in spreadsheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/first-dataset.html">A first dataset, step by step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/survey-example.html">A place-name survey example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations from Recogito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tei.html">Place names in a TEI edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-of-places.html">Your own table of places: CSV, GeoJSON or a workbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Checking, converting and comparing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Routes, journeys and networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routes/index.html">Routes, journeys and networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/antonine.html">A route: the Antonine Itinerary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/king-john.html">A journey: King John in 1215</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/river-idle.html">A river network: the lower Idle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/datini.html">A network of correspondence: the Datini letters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/reference.html">Sheet reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vocabularies.html">Vocabularies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistical tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-data.html">Linked data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About PLATO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/blob/main/docs/index.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/edit/main/docs/index.md" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="plato-a-guide-to-organising-data-about-places">
+<h1>PLATO: a guide to organising data about places<a class="headerlink" href="#plato-a-guide-to-organising-data-about-places" title="Link to this heading">¶</a></h1>
+<img alt="A line drawing of the philosopher Plato, chin in hand, thinking about a network of linked data: Wikidata, GeoNames, the Getty AAT, PeriodO and linked open data." class="plato-hero" src="_images/plato-thinking.png" />
+<section id="why-plato">
+<h2>Why PLATO<a class="headerlink" href="#why-plato" title="Link to this heading">¶</a></h2>
+<p>Research on historical places produces a great deal of evidence: names read
+in documents, positions taken from maps, statements about what kind of place
+something was and what it belonged to. That evidence is usually kept in
+whatever shape one project needed at the time, which makes it hard to reuse,
+to combine with other projects’ work, or to hand on to others.</p>
+<p>PLATO, the <strong>PL</strong>ace <strong>AT</strong>testation <strong>O</strong>ntology, gives that evidence a
+shape. It is a published standard for recording
+what sources say about places, designed so that data in its shape can meet the
+<a class="reference internal" href="#plato-and-fair-data">FAIR principles</a>, and organising your data in its shape
+gives you three things.</p>
+<dl class="simple myst">
+<dt><strong>A structure to think with.</strong></dt><dd><p>PLATO asks the same few questions of every piece of data: <em>what is it
+about, what does it say, which source says so, and when does it apply?</em>
+Answering them is often the most useful step in organising a dataset,
+because it separates what your sources say from your own interpretation of
+them, and shows where your evidence is thin.</p>
+<p>It also leaves room for what historical evidence is really like. Sources
+that disagree are recorded side by side, and nothing forces you to choose
+between them; a scholar’s judgement that one statement contradicts,
+supports or supersedes another can be recorded as evidence in its own
+right. And PLATO keeps apart the different ways of not knowing, rather
+than collapsing them all into “uncertain”:</p>
+<ul class="simple">
+<li><p>how sure you are of a statement, which better evidence could change;</p></li>
+<li><p>how firmly the source itself says it: a claim it only reports (“it is
+said”), hedges, or raises and leaves undecided;</p></li>
+<li><p>a date known only within limits, or given only as “c. 925” or “before
+1300”;</p></li>
+<li><p>a place with no sharp edge, such as “the Levant”, which no evidence will
+make crisp;</p></li>
+<li><p>a location given only relative to somewhere else, such as “two leagues
+north of the ford”;</p></li>
+<li><p>evidence that is certain but weaker in kind, such as a name found only
+inside a person’s name;</p></li>
+<li><p>a reference an editor has had to work out from “ibid.”;</p></li>
+<li><p>a form read from a damaged or misread document, judged for how well it
+was read;</p></li>
+<li><p>a mention that could be one of two places, recorded as alternatives, at
+most one of them right, rather than as two separate claims;</p></li>
+<li><p>a match with a record elsewhere that is close, but perhaps not exact.</p></li>
+</ul>
+<p>A source can also say that something was <em>not</em> so, such as “no market
+here”, and that is recorded as a denial, not left out.</p>
+</dd>
+<dt><strong>Ready for other systems.</strong></dt><dd><p>Data in PLATO’s shape can be read by any software that implements the PLATO
+standard, without a conversion written for your project alone. You do not
+need to know in advance which systems those will be.</p>
+<div class="tip admonition">
+<p class="admonition-title">The World Historical Gazetteer</p>
+<p>The <a class="reference external" href="https://whgazetteer.org">World Historical Gazetteer</a> (WHG) is moving
+towards implementing PLATO, so that data organised this way can more easily
+be welcomed there.</p>
+<p>Its <em>Map your Data</em> tool, reached from the WHG site, <em>reconciles</em> your
+places with established reference gazetteers such as Pleiades, GeoNames
+and Wikidata: it finds the record for the same place, so that you can take
+its coordinates where yours have none. With WHG’s agreement, <em>Map your
+Data</em> is moving out of WHG and into <a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a>,
+and the PLATO tools version is the one now being tested. There it is the
+first guided workflow in <a class="reference internal" href="tools.html#methodos"><span class="std std-ref">Methodos</span></a>: the regions your places lie in are matched
+level by level, then the places themselves, and each place is located from
+its match or drawn, including over a georeferenced historical map, before
+the result is checked and written out in PLATO. Like the rest of PLATO
+tools it is experimental, runs entirely in your browser without uploading
+anything to WHG, and can be used whether or not you contribute to WHG.</p>
+</div>
+</dd>
+<dt><strong>Nothing is flattened.</strong></dt><dd><p>Every statement keeps its source and its date, so your data can sit
+alongside other people’s evidence about the same places without either
+overwriting the other, and a reader can always ask <em>who says so, and when?</em></p>
+</dd>
+</dl>
+<p>This guide shows how to put your data into that shape. You do not need to
+know anything about ontologies, JSON or linked data: if you can fill in a
+spreadsheet, you can use PLATO.</p>
+</section>
+<section id="plato-and-fair-data">
+<h2>PLATO and FAIR data<a class="headerlink" href="#plato-and-fair-data" title="Link to this heading">¶</a></h2>
+<p>The <a class="reference external" href="https://www.gofair.foundation/fair-principles">FAIR principles</a> ask that
+research data be <strong>Findable, Accessible, Interoperable and Reusable</strong>, by
+people and by software. Funders and repositories increasingly expect them.
+PLATO is built to help, and here is how, principle by principle.</p>
+<dl class="simple myst">
+<dt><strong>Findable.</strong></dt><dd><p>Every place, source and statement in PLATO’s shape can have a permanent
+web address of its own, so it can be found, cited and linked to. PLATO
+itself has one, <code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato</span></code>, and each release is archived on
+Zenodo with its own DOI.</p>
+</dd>
+<dt><strong>Accessible.</strong></dt><dd><p>PLATO’s definitions are openly licensed (CC BY 4.0) and published at that
+address in the standard formats software asks for. Data in PLATO’s shape
+is plain spreadsheet tables, JSON or linked data: open formats that anyone
+can read without special software, and that
+<a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a> checks and converts.</p>
+</dd>
+<dt><strong>Interoperable.</strong></dt><dd><p>PLATO is a formal standard (an OWL ontology) built on widely used
+vocabularies, among them PROV for provenance, DCAT for datasets, SKOS for
+vocabularies and CiTO for citations. Your places can be matched to shared
+gazetteers such as Pleiades, GeoNames and Wikidata, so your data joins
+up with other people’s.</p>
+</dd>
+<dt><strong>Reusable.</strong></dt><dd><p>Every statement keeps its source, its date, how sure anyone is of it, and
+how firmly the source itself says it. That is the provenance someone else
+needs before they can trust and reuse your data. A licence can be stated
+for the dataset and for each source.</p>
+</dd>
+</dl>
+<p>PLATO gives the structure; a few steps remain yours when you publish:</p>
+<ul class="simple">
+<li><p><strong>choose a licence</strong> for your dataset and state it;</p></li>
+<li><p><strong>give it permanent addresses</strong>, under a base you control and will keep,
+such as your own w3id address or a DOI, not a temporary one;</p></li>
+<li><p><strong>deposit it</strong> in a repository that gives it a DOI, such as Zenodo;</p></li>
+<li><p><strong>describe it</strong>: a title, who made it, and what it covers.</p></li>
+</ul>
+<p>In the spreadsheets, the licence, the base of your addresses and the
+description all go in one place, the <a class="reference internal" href="spreadsheets/first-dataset.html#say-what-the-dataset-is"><span class="std std-ref">about sheet</span></a>;
+in JSON, in the document’s <code class="docutils literal notranslate"><span class="pre">gazetteer</span></code> header.</p>
+<p>Taken together, those steps and PLATO’s structure make a dataset FAIR.
+<a class="reference internal" href="tools.html#publishing-your-dataset"><span class="std std-ref">PLATO tools</span></a> reports what your description
+still lacks, writes the files a repository needs, and makes a website and
+permanent addresses for your places.</p>
+</section>
+<section id="where-to-start">
+<h2>Where to start<a class="headerlink" href="#where-to-start" title="Link to this heading">¶</a></h2>
+<dl class="simple myst">
+<dt><strong>I have a list of places, or notes about places, to organise.</strong></dt><dd><p>Read <a class="reference internal" href="spreadsheets/index.html"><span class="std std-doc">Organising data in spreadsheets</span></a>, then follow
+<a class="reference internal" href="spreadsheets/first-dataset.html"><span class="std std-doc">a first dataset</span></a> step by step.</p>
+</dd>
+<dt><strong>I want to understand the ideas first.</strong></dt><dd><p><a class="reference internal" href="ideas.html"><span class="std std-doc">The ideas in five minutes</span></a> explains places, attestations,
+sources and dates with one example.</p>
+</dd>
+<dt><strong>My sources are philological or archival, with copies, editions and “ibid.”</strong></dt><dd><p>The <a class="reference internal" href="spreadsheets/survey-example.html"><span class="std std-doc">place-name survey example</span></a> shows how
+to record manuscripts copied later, names found only inside personal names,
+editorial headwords and inferred references.</p>
+</dd>
+<dt><strong>I have annotated texts or maps in Recogito.</strong></dt><dd><p><a class="reference internal" href="annotations.html"><span class="std std-doc">Annotations from Recogito</span></a> shows how the places you linked
+become a PLATO dataset.</p>
+</dd>
+<dt><strong>My data is a road, a journey, or a network of rivers or letters.</strong></dt><dd><p>See <a class="reference internal" href="routes/index.html"><span class="std std-doc">Routes, journeys and networks</span></a>, with four worked
+examples.</p>
+</dd>
+<dt><strong>I want to check a file, or convert it to another format.</strong></dt><dd><p>Use <a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a>: drop the file on the page, and see
+<a class="reference internal" href="tools.html"><span class="std std-doc">checking, converting and comparing</span></a> for what it tells you. It runs in your
+browser, so nothing is uploaded, and it works at any size. To check many
+files at once, it also runs <a class="reference external" href="https://github.com/pelagios/plato-tools#from-the-command-line">from the command line</a>.</p>
+</dd>
+<dt><strong>My dataset is ready, and I want to publish it.</strong></dt><dd><p>See <a class="reference internal" href="tools.html#publishing-your-dataset"><span class="std std-ref">publishing your dataset</span></a>: a report
+on what its description lacks, the files for depositing it, a website for
+every place, and permanent addresses.</p>
+</dd>
+<dt><strong>I produce data with my own software, or work with RDF.</strong></dt><dd><p>See <a class="reference internal" href="json.html"><span class="std std-doc">JSON formats</span></a> and <a class="reference internal" href="linked-data.html"><span class="std std-doc">Linked data</span></a>.</p>
+</dd>
+<dt><strong>My sources are statistical tables: census volumes, returns.</strong></dt><dd><p>See <a class="reference internal" href="statistics.html"><span class="std std-doc">Statistical tables</span></a>.</p>
+</dd>
+<dt><strong>I have met a word I do not know.</strong></dt><dd><p>The <a class="reference internal" href="glossary.html"><span class="std std-doc">glossary</span></a> explains the terms used in this guide.</p>
+</dd>
+</dl>
+<p>PLATO is developed by the Pelagios Network’s Place Working Group and the World
+Historical Gazetteer. The formal definition of every term is in the
+<a class="reference external" href="https://pelagios.org/place-attestation-ontology/">ontology reference</a>; this
+guide is the friendlier way in.</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="ideas.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">The ideas in five minutes</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Pelagios Network Place Working Group (CC BY 4.0)
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">PLATO: a guide to organising data about places</a><ul>
+<li><a class="reference internal" href="#why-plato">Why PLATO</a></li>
+<li><a class="reference internal" href="#plato-and-fair-data">PLATO and FAIR data</a></li>
+<li><a class="reference internal" href="#where-to-start">Where to start</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=809ddda4"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/translations.js?v=8fd896e3"></script>
+    <script src="_static/plato-tooltip.js?v=d3050378"></script>
+    </body>
+</html>

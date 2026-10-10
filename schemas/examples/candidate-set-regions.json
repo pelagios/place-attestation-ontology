@@ -1,0 +1,33 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/candidate-set.schema.json",
+  "profile": "candidate-set",
+  "candidateSet": {
+    "@id": "https://whgazetteer.org/example/candidates/regions-2026-10-03",
+    "title": "Regions suggested for the parish list, 3 October 2026 (illustrative)",
+    "description": "What the gazetteer lookup suggested for each region of the parish list, level by level from the widest: Surrey was sought within the match already made for England. The reviewer's answers are in the parish list's dataset, in attestations whose identity relations point here through promotedFrom.",
+    "issued": "2026-10-03",
+    "candidatesFor": "https://whgazetteer.org/example/gazetteer/parish-regions"
+  },
+  "candidates": [
+    {
+      "@id": "https://whgazetteer.org/example/candidates/regions-2026-10-03#c-f129572e",
+      "subject": "https://whgazetteer.org/example/entity/region/england",
+      "object": "https://whgazetteer.org/example/whg/place/england",
+      "similarityScore": 98,
+      "algorithmVersion": "WHG reconciliation (illustrative)",
+      "matchParameters": "{\"ccodes\":[\"GB\"]}",
+      "generatedAt": "2026-10-03T10:00:00Z",
+      "status": "suggested"
+    },
+    {
+      "@id": "https://whgazetteer.org/example/candidates/regions-2026-10-03#c-95321738",
+      "subject": "https://whgazetteer.org/example/entity/region/england/surrey",
+      "object": "https://whgazetteer.org/example/whg/place/surrey",
+      "similarityScore": 93,
+      "algorithmVersion": "WHG reconciliation (illustrative)",
+      "matchParameters": "{\"ccodes\":[\"GB\"],\"within\":\"https://whgazetteer.org/example/whg/place/england\"}",
+      "generatedAt": "2026-10-03T10:00:00Z",
+      "status": "suggested"
+    }
+  ]
+}

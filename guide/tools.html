@@ -1,0 +1,1522 @@
+<!doctype html>
+<html class="no-js" lang="en-GB" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="about.html"><link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Routes, journeys and networks" href="routes/index.html"><link rel="prev" title="Your own table of places: CSV, GeoJSON or a workbook" href="tables-of-places.html">
+        <link rel="prefetch" href="_static/plato-mark.svg" as="image">
+
+    <link rel="shortcut icon" href="_static/favicon.svg"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>Checking, converting and comparing - PLATO guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" type="text/css" href="_static/plato.css?v=0c54fe58" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">PLATO guide</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/plato-mark.svg" alt="Logo"/>
+  </div>
+  <span class="sidebar-brand-text">PLATO guide</span>
+</a>
+<p class="plato-status">
+  <a class="plato-badge" href="about.html#experimental" aria-describedby="plato-status-tip">Experimental</a>
+  <span class="plato-tip" id="plato-status-tip" role="tooltip">PLATO is experimental: it is developed in the open and not yet fully tested, and its terms and schemas may change, or break, between releases. A renamed or withdrawn term is kept, marked as deprecated, for at least one release before it is removed. Each release is archived on Zenodo with its own DOI. PLATO tools has its own badge.</span>
+</p><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Why PLATO</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ideas.html">The ideas in five minutes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/index.html">Organising data in spreadsheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/first-dataset.html">A first dataset, step by step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/survey-example.html">A place-name survey example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations from Recogito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tei.html">Place names in a TEI edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-of-places.html">Your own table of places: CSV, GeoJSON or a workbook</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Checking, converting and comparing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Routes, journeys and networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routes/index.html">Routes, journeys and networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/antonine.html">A route: the Antonine Itinerary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/king-john.html">A journey: King John in 1215</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/river-idle.html">A river network: the lower Idle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/datini.html">A network of correspondence: the Datini letters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/reference.html">Sheet reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vocabularies.html">Vocabularies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistical tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-data.html">Linked data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About PLATO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/blob/main/docs/tools.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/edit/main/docs/tools.md" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="checking-converting-and-comparing">
+<h1>Checking, converting and comparing<a class="headerlink" href="#checking-converting-and-comparing" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a> works on data in PLATO’s
+shape. It checks a file for mistakes, converts it to another format, and shows
+whether a new version of a published dataset has kept what the earlier one
+said, and it prepares a dataset for <a class="reference internal" href="#publishing-your-dataset">publishing</a>.
+It runs in your browser: your files are never uploaded. A dataset of a million
+places has been checked and converted there, within the storage the browser
+allows the page (see <a class="reference internal" href="#large-datasets">large datasets</a>). It also runs
+<a class="reference external" href="https://github.com/pelagios/plato-tools#from-the-command-line">from the command line</a>,
+for many files at a time, with the same checks and the same reports.</p>
+<p>To use it, open the page and drop a file on it (or choose one), then press
+<strong>Check</strong>, choose a format and press <strong>Convert</strong>, press <strong>Compare with the
+earlier version</strong>, or choose what to prepare for publishing and press
+<strong>Prepare</strong>. A page of its own, Chora, shows a dataset’s places on a map
+and adds the locations you draw there: see <a class="reference internal" href="#chora">placing on the map</a>.
+Not sure where to start? <a class="reference internal" href="#methodos">Methodos</a> leads you through a whole
+workflow, step by step, from three questions.</p>
+<section id="what-it-reads-and-writes">
+<h2>What it reads and writes<a class="headerlink" href="#what-it-reads-and-writes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The <a class="reference internal" href="spreadsheets/index.html"><span class="std std-doc">spreadsheet tables</span></a>: the ten CSV files, a zip of them, or the temPlato workbook</p></td>
+<td><p>yes</p></td>
+<td><p>yes, as a zip of the ten CSV files</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="json.html"><span class="std std-doc">PLATO JSON</span></a>, place-centric or attestation-centric, and JSON Lines</p></td>
+<td><p>yes</p></td>
+<td><p>yes (place-centric)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="linked-data.html"><span class="std std-doc">Linked data</span></a>: N-Triples, N-Quads or Turtle</p></td>
+<td><p>yes</p></td>
+<td><p>N-Triples</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linked Places Format, version 1</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="annotations.html"><span class="std std-doc">Annotations from Recogito</span></a></p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tei.html"><span class="std std-doc">Place names in a TEI edition</span></a>, TEI P5 or P4</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tables-of-places.html"><span class="std std-doc">Your own table of places</span></a>: any CSV, GeoJSON, or a sheet of a workbook (<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>, <code class="docutils literal notranslate"><span class="pre">.ods</span></code>) that is not the spreadsheet tables</p></td>
+<td><p>yes, with the columns matched to PLATO’s fields</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A gzipped file (ending <code class="docutils literal notranslate"><span class="pre">.gz</span></code>) is read as it is.</p>
+</section>
+<section id="large-datasets">
+<span id="id1"></span><h2>Large datasets<a class="headerlink" href="#large-datasets" title="Link to this heading">¶</a></h2>
+<p>These figures come from PLATO tools’ own test runs. In the browser
+(Chromium), a million places in the spreadsheet tables, a CSV of 296 MB, were
+checked, converted and saved in about 17½ minutes, using about 1.3 GB of
+memory and, at the peak, 3.6 GB of the browser’s storage. All of DEEP, 24.8
+million triples in 2.6 GB, was read in about 10 minutes, with 756 MB of memory
+and 5.2 GB of storage.</p>
+<p>In the browser, the limit is the storage the browser allows the site. Before
+it starts, the page estimates what a file will need and warns if that looks
+like too much: roughly four times the file for most formats, forty times a
+gzipped file, and twelve times the text of spreadsheet tables. Private windows
+allow very little, so use an ordinary window. How much other browsers, such as
+Safari, allow has not been measured.</p>
+<p>If the page warns, use the
+<a class="reference external" href="https://github.com/pelagios/plato-tools#from-the-command-line">command line</a>.
+It has no storage allowance and is not held to a browser tab’s memory: the same million
+places converted in 6 minutes 38 seconds with 367 MB of memory. It still needs
+disk, about one and a half to two times the uncompressed input, so give
+<code class="docutils literal notranslate"><span class="pre">--work-dir</span></code> a folder on a disk with room if the temporary folder is small. It
+needs memory wherever the whole of something must be held: a workbook (<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>
+or <code class="docutils literal notranslate"><span class="pre">.ods</span></code>) is read whole, so save very large tables as CSV files instead; the
+Data Cube check holds the whole graph; and a match review holds the places of
+both datasets. Gzipping a file makes it smaller to keep and send, but not
+smaller to work on. The command line also takes many files at once.</p>
+</section>
+<section id="checking">
+<h2>Checking<a class="headerlink" href="#checking" title="Link to this heading">¶</a></h2>
+<p><strong>Check</strong> holds a file to PLATO’s own definitions. A JSON document is checked
+against PLATO’s JSON Schemas; spreadsheet tables against their table
+definitions, and against the rules those definitions cannot state, such as
+that a relation names a place or something else, one or the other; linked
+data against the terms the ontology defines. It also finds two mistakes no
+schema can: a route or network that, through its members, is a member of
+itself; and an identity match written under one place that names another place
+as its subject.</p>
+<p>The report comes in three parts:</p>
+<ul class="simple">
+<li><p><strong>Problems</strong> must be put right before the data is valid PLATO. Each is
+named in plain words, with where it is: the sheet, row and column, or the
+place and the key.</p></li>
+<li><p><strong>Warnings</strong> are worth a look, but the data can still be used.</p></li>
+<li><p><strong>Would not be carried over</strong> lists what PLATO JSON has no place for, should
+you convert the file.</p></li>
+</ul>
+<p>A file that stops part-way, or is damaged, is reported as a problem in the
+file, with what could be read before it.</p>
+</section>
+<section id="converting">
+<h2>Converting<a class="headerlink" href="#converting" title="Link to this heading">¶</a></h2>
+<p>PLATO JSON and linked data hold everything PLATO can say, and converting
+between them loses nothing. The spreadsheet tables and Linked Places Format
+hold less, by design: see <a class="reference internal" href="spreadsheets/index.html#what-the-spreadsheets-cannot-say"><span class="std std-ref">what the spreadsheets cannot say</span></a>.
+Two rules govern what PLATO tools does about that.</p>
+<p><strong>Nothing is left out without saying so.</strong> The report names everything the
+target format has no place for, in words (“The pronunciation of a name…:
+Linked Places Format has no place for this, so it is left out”).</p>
+<p><strong>Nothing is written that would mislead.</strong> Where leaving a detail out would
+change what a statement says, the whole statement is left out, and the report
+says so:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>PLATO JSON, linked data</p></th>
+<th class="head"><p>Spreadsheet tables</p></th>
+<th class="head"><p>Linked Places Format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A <a class="reference internal" href="glossary.html"><span class="std std-doc">denial</span></a>: the source says something was <em>not</em> so</p></td>
+<td><p>kept</p></td>
+<td><p>kept, one thing denied per row</p></td>
+<td><p>left out</p></td>
+</tr>
+<tr class="row-odd"><td><p>A statement that a later one withdraws or replaces</p></td>
+<td><p>kept, with what withdraws it</p></td>
+<td><p>left out</p></td>
+<td><p>left out</p></td>
+</tr>
+<tr class="row-even"><td><p>A <a class="reference internal" href="glossary.html"><span class="std std-doc">computed value</span></a>, worked out by software</p></td>
+<td><p>kept, marked as computed</p></td>
+<td><p>left out</p></td>
+<td><p>left out</p></td>
+</tr>
+<tr class="row-odd"><td><p>A figure from a <a class="reference internal" href="statistics.html"><span class="std std-doc">statistical table</span></a></p></td>
+<td><p>kept</p></td>
+<td><p>left out</p></td>
+<td><p>left out</p></td>
+</tr>
+<tr class="row-even"><td><p>Identity matches made together, in one statement</p></td>
+<td><p>kept</p></td>
+<td><p>left out</p></td>
+<td><p>left out</p></td>
+</tr>
+<tr class="row-odd"><td><p>How firmly the source says it (<a class="reference internal" href="glossary.html"><span class="std std-doc">stance</span></a>)</p></td>
+<td><p>kept</p></td>
+<td><p>kept</p></td>
+<td><p>the statement is kept; its stance is reported as left out</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So a file in the tables or in Linked Places Format shows the dataset as it
+stands now. It never shows a withdrawn statement as current, a denied market
+as a market, or one figure from a table as a fact about the whole place.</p>
+<p><strong>Web addresses for your identifiers.</strong> PLATO fixes how the spreadsheet
+tables’ identifiers become web addresses, so that every tool gives the same
+ones. The base is the one given for the conversion, if any (on the page,
+“Web address for your identifiers”), and otherwise the <code class="docutils literal notranslate"><span class="pre">base_uri</span></code> of the
+<a class="reference internal" href="spreadsheets/first-dataset.html#say-what-the-dataset-is"><span class="std std-ref">about sheet</span></a>, which
+is where it belongs; a <code class="docutils literal notranslate"><span class="pre">/</span></code> is added to it unless it already ends in <code class="docutils literal notranslate"><span class="pre">/</span></code> or
+<code class="docutils literal notranslate"><span class="pre">#</span></code>. A place’s address is the base, then <code class="docutils literal notranslate"><span class="pre">place/</span></code>, then its <code class="docutils literal notranslate"><span class="pre">place_id</span></code>
+(<code class="docutils literal notranslate"><span class="pre">https://w3id.org/my-project/place/bristol</span></code>), and a source’s is the base,
+then <code class="docutils literal notranslate"><span class="pre">source/</span></code>, then its <code class="docutils literal notranslate"><span class="pre">source_id</span></code>. In both, every character other than a
+letter, a digit or one of <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">.</span> <span class="pre">_</span> <span class="pre">~</span></code> is percent-encoded (written as a code such
+as <code class="docutils literal notranslate"><span class="pre">%20</span></code>), so keep identifiers to those characters. The dataset’s own address
+is the about sheet’s <code class="docutils literal notranslate"><span class="pre">dataset_uri</span></code>, or the base (with its <code class="docutils literal notranslate"><span class="pre">/</span></code>) if that is
+empty. Without any base, PLATO tools uses a stand-in,
+<code class="docutils literal notranslate"><span class="pre">https://example.org/my-dataset/</span></code>, which is not a permanent address. Converting <em>to</em> the tables, an address is
+kept only if reading the tables back would give the same one; otherwise the
+report says it is lost.</p>
+</section>
+<section id="comparing-two-versions">
+<h2>Comparing two versions<a class="headerlink" href="#comparing-two-versions" title="Link to this heading">¶</a></h2>
+<p>Once a dataset says it is published, its attestations are only ever added
+to: none is deleted or changed, and a correction is a new attestation that
+withdraws or replaces the old one, which stays. Why, and what that makes
+possible, is explained under
+<a class="reference internal" href="linked-data.html#citing-a-place-in-a-gazetteer-that-changes"><span class="std std-ref">citing a place in a gazetteer that changes</span></a>.</p>
+<p><strong>Compare with the earlier version</strong> shows that a new version has kept to
+this. Choose the new version first, then press the button and choose the
+earlier one. The two may be in different formats: what is compared is what
+each attestation says, not how the file writes it.</p>
+<p><strong>Problems</strong> are what breaks the rule:</p>
+<ul class="simple">
+<li><p>an attestation of the earlier version that is missing from the later one;</p></li>
+<li><p>an attestation that says something different in the later one;</p></li>
+<li><p>an attestation that says the same but has lost its web address, or has
+been given another: later statements point to it by that address;</p></li>
+<li><p>a name, location, date, type, property or citation, with a web address of
+its own, that attestations point to, and that the later version describes
+differently, or no longer describes at all though attestations still point to
+it. It is part of what those attestations say, so changing it changes them.</p></li>
+</ul>
+<p>For the first few attestations, names and other facets that changed, the
+report shows what changed: what one version says and the other does not.
+Each problem says how to put it right.</p>
+<p><strong>Warnings</strong> do not break the rule:</p>
+<ul class="simple">
+<li><p>a place or a source described differently, since those may be corrected;</p></li>
+<li><p>an identity match removed or changed;</p></li>
+<li><p>an attestation added without the date it was made (<code class="docutils literal notranslate"><span class="pre">created</span></code>), without
+which the dataset’s state at an earlier moment cannot be worked out;</p></li>
+<li><p>a later version that is not marked published, gives the same version as
+the earlier one, or names another as the version before it.</p></li>
+</ul>
+<p>Before the earlier version is published the rule does not yet apply, so
+everything is listed as a warning, and the report says why.</p>
+<p><strong>Give your attestations web addresses.</strong> An attestation without an address
+of its own (in JSON, an <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>) can only be found by what it says. If one goes
+missing, the check cannot tell whether it was deleted or changed, and no later
+attestation can withdraw or replace it, since there is nothing to point to.
+The report counts such attestations. PLATO recommends that every attestation in
+a published dataset has a permanent address. The spreadsheet tables have no
+column for one, so this applies to data published as JSON or linked data.</p>
+<p>A comparison that could not read the whole of either version does not pass,
+and nor does one whose earlier version holds no attestations: in both cases
+nothing, or not everything, was compared.</p>
+</section>
+<section id="reviewing-matches">
+<span id="match-review"></span><h2>Reviewing matches<a class="headerlink" href="#reviewing-matches" title="Link to this heading">¶</a></h2>
+<p>A match review asks, place by place: is this Newton that Newton? Choose your
+dataset, press <strong>Match with another dataset…</strong>, and choose the other one, in
+any format PLATO tools reads. Places whose names are alike, and that are near
+each other, are suggested as possible matches; you accept or reject each, and
+your decisions are written as <a class="reference internal" href="glossary.html"><span class="std std-doc">attestations</span></a>, like any other.
+Matching two files on your computer sends nothing anywhere.</p>
+<p>A suggestion is a claim by no one until a person decides (see
+<a class="reference internal" href="json.html#candidate-sets"><span class="std std-ref">candidate sets</span></a>), so none goes into your dataset:
+only your decisions do. For each suggestion, choose one of:</p>
+<ul class="simple">
+<li><p><strong>Same place</strong>: the suggestion is your place. The matches you accept for
+one place are written together as one attestation, so they stand or fall
+together.</p></li>
+<li><p><strong>Not this one</strong>: the suggestion is wrong, and there is no more to say.
+Nothing is written.</p></li>
+<li><p><strong>Different places</strong>: you can say why the two are <em>not</em> the same place.
+Your reason is written with a <a class="reference internal" href="glossary.html"><span class="std std-doc">denial</span></a>: an attestation that
+the two are not the same place.</p></li>
+</ul>
+<p><strong>Save the review</strong> keeps the suggestions and your decisions so far in a
+file of their own, the work file. To carry on, choose the same dataset,
+press <strong>Resume a review…</strong> and choose the work file. It is yours: a working
+file of PLATO tools, not PLATO data, and it is not published.</p>
+<p>When you have done, press <strong>Finish</strong>. By default you get your dataset with
+the new attestations added, as a PLATO JSON document, offered to save only
+once the <a class="reference internal" href="#comparing-two-versions">version check</a> has found nothing of the
+original deleted or changed. Or you can choose a PLATO file of only the new
+attestations, each naming its place by its web address.</p>
+<p><strong>Looking places up in the World Historical Gazetteer.</strong> The review can also
+look your places up in the <a class="reference external" href="https://whgazetteer.org/">World Historical Gazetteer</a>
+(WHG), or another gazetteer that offers the same kind of search, online and
+only if you choose. You use a WHG token of your own, and allow the lookup in
+the <strong>Permissions</strong> panel of PLATO tools, which also says where the token is
+kept. A preview shows exactly what will be sent before anything goes: each
+place’s name, its other names only if you ask, and its coordinates only if you
+choose to search near it; nothing else of your dataset. What comes back joins
+the review beside your own matches, nearest first, with each record’s licence.
+WHG’s scores rank the answers to one search only, not how likely a match is,
+so the decision is still yours.</p>
+<p><strong>The language of the names.</strong> Each name is sent to the World Historical
+Gazetteer with its language, so that WHG reads it as a name in that language:
+the name’s own language tag where it has one (<code class="docutils literal notranslate"><span class="pre">en-GB</span></code> is sent as <code class="docutils literal notranslate"><span class="pre">en</span></code>, <code class="docutils literal notranslate"><span class="pre">eng</span></code>
+as <code class="docutils literal notranslate"><span class="pre">en</span></code>), else the language you give for the whole dataset in the lookup
+panel (<em>The dataset’s language</em>, a code such as <code class="docutils literal notranslate"><span class="pre">en</span></code>, <code class="docutils literal notranslate"><span class="pre">la</span></code> or <code class="docutils literal notranslate"><span class="pre">ang</span></code>; on the
+command line, <code class="docutils literal notranslate"><span class="pre">--lang</span></code>). A code the field does not recognise is refused
+beside it, and nothing is sent until it is corrected or emptied. A name
+tagged <code class="docutils literal notranslate"><span class="pre">und</span></code> or <code class="docutils literal notranslate"><span class="pre">mis</span></code> takes the dataset’s language; one tagged <code class="docutils literal notranslate"><span class="pre">mul</span></code> or
+<code class="docutils literal notranslate"><span class="pre">zxx</span></code> is sent with none. A name with no language is never sent as
+“undetermined”, and the preview says how many queries go without one. A
+language is not a filter: it leaves nothing out.</p>
+<p><strong>Regions are matched to areas.</strong> In the region review, each region is looked
+up among records with an outline only, so that a region is never matched to
+a point (a town of the same name), within which nothing could be looked up.
+The places themselves are looked up among all records.</p>
+</section>
+<section id="reviewing-regions-level-by-level">
+<span id="region-review"></span><h2>Reviewing regions, level by level<a class="headerlink" href="#reviewing-regions-level-by-level" title="Link to this heading">¶</a></h2>
+<p>Many tables give, beside each place, the regions it lies in: a country, a
+county, a parish (the columns read as <em>within</em>). <strong>Review the regions level by
+level</strong> looks these up in the World Historical Gazetteer before the places,
+widest first, each inside the one above it. Every row naming Surrey in England
+is one region; a Newport in Shropshire and a Newport in Monmouthshire are two.</p>
+<p><strong>How a match narrows the next search.</strong> A region waits until the region above
+it is settled, with a match or with <strong>None of these</strong>. Its search is then kept
+within the gazetteer’s record for the region above, or within all its records
+taken together when it was matched to more than one. Where that cannot be
+asked, it is kept to the area they cover. Either way, the match’s countries
+are added. A constraint only ever takes candidates away: a country filter even
+drops one with no country recorded. Each region says what it was looked up
+within. A search WHG could not narrow returns nothing, and the review says so:
+that is not a finding that there is no match.</p>
+<p><strong>Asking again.</strong> When the right region is missing, ask again, for one region
+or a whole level: <strong>Again without the countries</strong>, <strong>Within the area
+instead</strong>, within the region above that instead, or <strong>With no constraint</strong>.
+Each button says how many queries and requests it will cost. Changing a
+settled region clears the decisions and candidates below it, after asking, and
+<strong>Undo</strong> puts them back. Once a place’s regions are settled, the places are
+looked up within them and reviewed one at a time, as in
+<a class="reference internal" href="#match-review">reviewing matches</a>. A place still waiting can be looked up
+without its regions.</p>
+<p><strong>WHG’s guards.</strong> WHG’s own page accepts a candidate only when it tops its
+answer, its title is an exact match or its score is 90 or more, it is not held
+back, and there is no tie. It is held back when WHG gives it a confidence
+below 30, or, where WHG gives none, when its names are too unlike the name
+sent, by WHG’s own measure. It is tied when another candidate scores as high,
+unless that one is the same record repeated. In the review of places,
+<strong>Accept the N that pass WHG’s guards</strong> accepts each place’s one passing
+candidate, as the kind of match you choose (close match by default). A
+candidate too far from the place, or in another country, is left out and
+counted, for you to decide. So is a place for which two places of its name
+were found where it was looked for, even when WHG’s guard lets one of them
+through: the place says so (“2 places of this name in …: left for you”).
+Within a region, every place of that name in it counts, however far off;
+otherwise only those within the greatest distance. Records of the name
+within 2 km of each other are taken for one place, as WHG often holds one
+village several times over, from different gazetteers. Only titles are
+compared, not other names. Each acceptance is recorded as your decision,
+naming the guard; <strong>Undo</strong> takes them back. Nothing is ever accepted
+automatically.</p>
+<p><strong>What is written.</strong> Two separate claims, as in
+<a class="reference internal" href="json.html#regions-matched-to-a-gazetteer"><span class="std std-ref">regions matched to a gazetteer</span></a>. Your
+source’s containment stays as it is: each place is <code class="docutils literal notranslate"><span class="pre">ContainedIn</span></code> a region made
+from your data, one for each whole chain of regions. Your decision is an
+attestation about that region, with you, the date and your certainty,
+bundling an identity relation (a close or an exact match, with its basis) to
+each gazetteer record you matched it to. When the suggestions are published as
+a <a class="reference internal" href="json.html#candidate-sets"><span class="std std-ref">candidate set</span></a>, each relation points back to its
+suggestion with <code class="docutils literal notranslate"><span class="pre">promotedFrom</span></code>, and the suggestion’s <code class="docutils literal notranslate"><span class="pre">matchParameters</span></code> record
+what it was looked up within. The containment is never rewritten: a match
+changed later is a new attestation. Regions need addresses of their own, so
+the dataset needs a
+<a class="reference internal" href="tables-of-places.html#place-ids-and-the-base-address"><span class="std std-ref">base address</span></a>. The
+repository’s
+<a class="reference external" href="https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-regions.json">place-centric-regions.json</a>
+and
+<a class="reference external" href="https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/candidate-set-regions.json">candidate-set-regions.json</a>
+show both claims. Linked Places Format writes them as one <code class="docutils literal notranslate"><span class="pre">broaderPartitive</span></code>
+relation.</p>
+<p><strong>Rows set aside.</strong> A place can be marked <strong>Keep without reconciling</strong> (never
+looked up, still in the dataset) or <strong>Leave out of the dataset</strong> (and the
+version check is told to expect exactly those missing). Notes stay in the work
+file, never in the dataset.</p>
+<p><strong>From the command line.</strong> With your WHG token in <code class="docutils literal notranslate"><span class="pre">WHG_TOKEN</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>lookup<span class="w"> </span>--levels<span class="w"> </span>--dry-run<span class="w"> </span>parishes.csv
+npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>lookup<span class="w"> </span>--levels<span class="w"> </span>--reviewer<span class="w"> </span><span class="s2">"Your Name"</span><span class="w"> </span>parishes.csv
+</pre></div>
+</div>
+<p>The first shows the plan, level by level, and sends nothing. The second looks
+up the first level with regions ready (or <code class="docutils literal notranslate"><span class="pre">--level</span> <span class="pre">N</span></code>) and writes a work file,
+given back with <code class="docutils literal notranslate"><span class="pre">--review</span></code> to carry on. <code class="docutils literal notranslate"><span class="pre">--relax</span></code> takes <code class="docutils literal notranslate"><span class="pre">countries</span></code>, <code class="docutils literal notranslate"><span class="pre">area</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ancestor</span></code> or <code class="docutils literal notranslate"><span class="pre">all</span></code>; <code class="docutils literal notranslate"><span class="pre">--only</span></code> one region or place; <code class="docutils literal notranslate"><span class="pre">--unconstrained</span></code> also
+looks up places whose regions are unsettled. The regions are decided on the
+page.</p>
+</section>
+<section id="placing-on-the-map">
+<span id="chora"></span><h2>Placing on the map<a class="headerlink" href="#placing-on-the-map" title="Link to this heading">¶</a></h2>
+<p><strong>Chora</strong>, a page of its own in PLATO tools (<strong>Open Chora</strong> on the main
+page, or <a class="reference external" href="https://pelagios.org/plato-tools/chora.html">straight to it</a>),
+shows a dataset’s places on a map, with everything their attestations say of
+each one over time, and lets you add a location you have worked out
+yourself: a point, a line or an area, drawn on the map, or traced from a
+historical map laid over it. It runs in your
+browser like the rest of PLATO tools, and reads the formats in
+<a class="reference internal" href="#what-it-reads-and-writes">the table above</a>. A table of places of your own
+is read with its columns matched as PLATO tools guesses them; to correct the
+matching, convert the table to PLATO JSON on the main page and open that.
+Files already chosen on the main page are offered when you open Chora.</p>
+<p>Drop a file on the page, or choose one. The map shows every place with a
+location, grouped where they crowd together (it shows the first 50,000; find
+others by name). Find a place by any part of a name, or click it on the
+map. The search looks in the name each place is listed under and in every
+name its attestations give it, as written and in Latin letters (<code class="docutils literal notranslate"><span class="pre">toponym</span></code>
+and <code class="docutils literal notranslate"><span class="pre">romanized</span></code>), except names denied or in a statement withdrawn or
+replaced. A place found by another name is listed with it: <em>Byzantium — also
+Constantinople</em>. Capitals and accents make no difference, and letters such
+as œ, æ, þ, ð and ß, and ligatures such as ﬁ, match as they are spelt out
+(<em>Brabœuf</em> finds <em>braboeuf</em>). The list shows fifty places at a time, with
+<strong>Previous</strong> and <strong>Next</strong>, and marks a place with <em>no location</em> recorded. A IIIF Georeference Annotation, which places a map
+rather than describing places, is not a dataset, and Chora says so: to lay
+the map over the basemap, paste it under <strong>Historical maps</strong> (see
+<a class="reference internal" href="#tracing-from-a-historical-map">tracing from a historical map</a>).</p>
+<p>Chora works in one tab at a time: a second Chora tab says that it is open
+in another. The main page and Chora can be open together.</p>
+<p><strong>A place’s card</strong> lists what its attestations say: its names, types,
+locations, related places (click one the dataset has to go to it) and sources. <em>Over time</em>
+draws each dated statement as a bar from its start to its end, by year, and
+lists those dated only in words. A statement the source makes less than
+firmly is labelled: <em>denied</em> (the source says it was not so), <em>doubted</em>,
+<em>reported</em> (as said by others) or <em>tentative</em>. On the map, a place’s
+locations are drawn in the same colours: a firm one solid, the others dashed
+(a point, hollow), and a denied one, where the place is said <em>not</em> to be,
+faint. A statement that a later one withdraws or replaces is left out, as
+PLATO requires of any view of the dataset as it stands; the card says how
+many were left out.</p>
+<p><strong>A place with no location</strong> is shown by what the dataset says about it
+instead: the places it is related to, if they have locations, or else the
+outline of its country, from its country codes (<code class="docutils literal notranslate"><span class="pre">ccodes</span></code>). The card says
+which. Where there is neither, it says there is nothing to place it by.</p>
+<section id="drawing-a-location">
+<h3>Drawing a location<a class="headerlink" href="#drawing-a-location" title="Link to this heading">¶</a></h3>
+<p>Choose a place, then draw with the tools on the map: <strong>Point</strong>; <strong>Line</strong>,
+clicking each point and the last one again to finish; or <strong>Area</strong>, clicking
+each corner and the first one again to finish. <strong>Edit</strong> moves or reshapes a
+drawing, and <strong>Stop</strong> ends drawing. Point at a tool, or reach it with the
+keyboard, and it says what it does. Each drawing appears under <em>Your
+drawings</em> in the place’s card, where you can say what it marks (the whole
+place, a feature of it, or a point standing for it) and how well the
+location is known (exact, approximate, uncertain, historical approximate),
+or remove it. A drawing that crosses the 180° meridian, in the Pacific,
+cannot be recorded as it is drawn, so it is not kept, and the card says why.</p>
+<p>Drawings are kept in this browser until you save, even if you close the
+page: open the same file again, unchanged, and they come back, with their
+places. To keep nothing between visits, turn off <strong>Keep my working data
+between visits</strong> in the <strong>Permissions</strong> panel: drawings not yet saved are
+then cleared the next time you open Chora, so save them before you leave.</p>
+</section>
+<section id="tracing-from-a-historical-map">
+<h3>Tracing from a historical map<a class="headerlink" href="#tracing-from-a-historical-map" title="Link to this heading">¶</a></h3>
+<p>Under <strong>Historical maps</strong>, paste a georeference (a IIIF Georeference
+Annotation, such as one made in <a class="reference external" href="https://allmaps.org">Allmaps</a>), or the
+address of one, of a IIIF manifest or of a IIIF image, and press <strong>Add the
+map</strong>. The map is laid over the basemap, placed on the earth by its
+georeference. Where it holds several georeferences of one image, made
+separately, Chora lists them, each with the date it was last changed and its
+number of control points, and you choose one (the most recently changed is
+chosen to begin with). A map that comes with no georeference can be looked
+for in Allmaps with <strong>Look for a georeference</strong>; or you can georeference it
+in the Allmaps Editor, from the link that says it sends the map’s address,
+and paste here the georeference it makes.</p>
+<p>Each map shown names the site its image comes from, with its credit and
+licence, and has <strong>Opacity</strong>, <strong>Show</strong>, <strong>Fit</strong> and <strong>Remove</strong>. A map whose
+licence allows only non-commercial use has one line more, saying that this
+may bear on how what you trace from it can be reused. The maps you add are
+kept between visits, as drawings are, unless <strong>Keep my working data between
+visits</strong> is off.</p>
+<p>No map’s site is asked until you allow it in the <strong>Permissions</strong> panel, as
+for a basemap: its image server, which sees which map you view and which
+parts of it, and Allmaps, which learns which map a georeference was looked
+for. Each has its own <em>Needs permission</em> line under the paste box, and one
+reload brings them all. An address that forwards to another site, as some
+archives’ addresses do, is not followed: Chora offers it as a link to open in
+a new tab, so that you can paste the address it ends at. If your browser
+does not show that it enforces the page’s protection, no map is shown.</p>
+<p>To trace, choose a place and draw over the map by hand, with the same tools.
+A drawing on a map is traced from it (from the topmost, where maps overlap),
+and <em>Traced from</em> in the place’s card lets you choose another map it lies
+on, or the basemap. A traced point is, until you change it, <em>a point
+standing for it</em>, of approximate precision, since a map’s symbol stands for
+a place rather than drawing it: choose <em>a feature of it</em> where the map draws
+the feature itself, such as a church drawn as such. A traced drawing can also
+mark <em>where the map writes its name</em>. A drawing moved or reshaped is traced
+again; if it no longer lies on the map, it no longer cites it, and the card
+says so.</p>
+</section>
+<section id="tracing-with-assistance-from-the-map-s-ink">
+<h3>Tracing with assistance from the map’s ink<a class="headerlink" href="#tracing-with-assistance-from-the-map-s-ink" title="Link to this heading">¶</a></h3>
+<p>Once a map shown has drawn a tile, two more tools are offered beside the
+drawing tools, <strong>Trace area</strong> and <strong>Trace line</strong>; until then they say in a
+tooltip why not. The tracing itself is loaded when one is first pressed, and
+a click made on the map before it has loaded is acted on once it has. With
+<strong>Trace area</strong>, click inside an area the map draws, such as a wash or an
+outlined field, and its outline is proposed from the map’s own ink; with
+<strong>Trace line</strong>, click on a line, such as a road or a river, and it is
+followed both ways from the click, as far as the ink goes, and proposed.
+The proposal is shown on the map, with a panel of settings. For an area:
+the colour tolerance, <strong>Bridge gaps in the outline</strong> and how far, and
+<strong>Leave out small holes (lettering)</strong>, which keeps holes no bigger than the
+map’s lettering out of the proposal. For a line: <strong>Match the colour clicked
+(else: the darkest ink)</strong>, which follows the colour under the click, within
+the colour tolerance, rather than the darkest ink (the tolerance counts only
+when this is ticked); the thickness of line to follow; and <strong>Jump gaps in
+the line</strong>. For both, how closely to keep to the ink. Moving one proposes
+again, from the part of the map already read, so the map’s server is asked
+nothing more. A proposal is not yet a drawing: <strong>Accept</strong> (or Enter)
+makes it one, to edit or remove like any other, and <strong>Let go</strong> (or Esc)
+drops it. Accepting before a place is chosen keeps the proposal and asks you
+to choose one.</p>
+<p>A line may stop where the ink does, or where it meets a fork it cannot judge;
+Shift-click further along carries it on, keeping what was proposed and
+tracing the new click alone. Whatever holes an area still has are left out
+when it is accepted, since a drawing is an outline: the page says how many.
+A fill that covers most of the part of the map read is refused in words, as
+the area is not closed: bridge its gaps, or lower the tolerance. One that
+runs out to the edge of the part read is tried again from a larger part,
+and then once at a coarser scale; if it still runs out, the page says it is
+too large to trace at once: zoom out, or trace it in parts.</p>
+<p><strong>Snap to ink</strong>, offered while you draw a line or an area by hand (not a
+point), once a map shown has drawn a tile, helps tracing by hand: a vertex
+you place within 10 screen pixels of the map’s ink
+goes onto it, the centre of a line or the edge of an area. Hold Alt to
+place a vertex where you click.</p>
+<p>What is proposed is read from the map’s image tiles, fetched from the map’s
+own image server under the permission you gave it under <strong>Historical
+maps</strong>, and nothing else is asked; withdraw that permission and everything
+read from that server is let go, the proposal with it. The work is done in
+your browser.</p>
+<p>A shape traced this way is attested, not computed: you accepted it. Its
+notes say so, after the georeference’s sentences: that it was proposed from
+the map’s ink, by filling an area or following a line, with the settings
+used; for an area, how many holes were left out; then whether it was
+accepted as proposed or edited by hand, counting the vertices moved, added
+and removed against those proposed. Moved off its map, it keeps saying how
+it was proposed, and that the citation was dropped.</p>
+<p>The assistance has limits, which it is better to know than to meet. It
+reads the map at the resolution shown, so a fine line is best traced zoomed
+in: a line about three pixels wide in the image read, running diagonally,
+may be placed a few pixels short at its ends, and a very short stroke of
+that width may not be followed at all. A line narrower than six pixels
+that ends square-cut, but runs at a slant to the image’s pixels, has that
+end placed as if rounded, half a line’s width short; an end square to the
+pixels is placed where the ink stops. A line ending on
+a bar twice its width may run on along the bar; on one of its own width it
+stops. A map’s server that refuses its pixels (one that asks you to log in,
+or lets no other site read it) cannot be traced from, and the page says so.
+Check every proposal against the map before accepting it, as you would a
+drawing of your own.</p>
+</section>
+<section id="what-a-drawing-records">
+<h3>What a drawing records<a class="headerlink" href="#what-a-drawing-records" title="Link to this heading">¶</a></h3>
+<p>Each drawing becomes a <strong>new attestation</strong> of its place, holding one
+location. An attestation already in the dataset is never changed, since a
+correction is a new attestation, not an edit (see
+<a class="reference internal" href="#comparing-two-versions">comparing two versions</a>). With the location, the
+new attestation records:</p>
+<ul class="simple">
+<li><p><strong>who drew it</strong> (<code class="docutils literal notranslate"><span class="pre">contributor</span></code>): your name, and your ORCID iD if you give
+one. Chora asks before your first save, keeps the answer in this browser
+(see <a class="reference internal" href="#which-map-and-who-sees-what">who sees what</a>), and shows it as <em>Saving as</em> your name, with <em>change</em> and <em>forget me</em>.
+It is never taken from the dataset, since the person drawing is not
+necessarily the person who made it. A mistyped ORCID iD is caught, by its
+last digit, before anything is saved;</p></li>
+<li><p><strong>when it was drawn</strong> (<code class="docutils literal notranslate"><span class="pre">created</span></code>);</p></li>
+<li><p><strong>how it was drawn</strong>, in its <code class="docutils literal notranslate"><span class="pre">notes</span></code>, since PLATO has no term for this,
+such as “Drawn by hand on the Natural Earth basemap at zoom 9 in PLATO
+tools (Chora)”. A basemap you pasted in yourself is not named there, only
+called “a basemap pasted by the contributor”, since its address may be a
+private one and the notes are published with the dataset.</p></li>
+</ul>
+<p>A drawing traced from a historical map records where it came from as PLATO
+sets out for a geometry traced from a map (<code class="docutils literal notranslate"><span class="pre">plato:Geometry</span></code>, in the
+<a class="reference external" href="https://pelagios.org/place-attestation-ontology/">ontology reference</a>). It
+cites the map as its evidence (<code class="docutils literal notranslate"><span class="pre">cito:citesAsEvidence</span></code>), with the canvas and
+the area traced as the locator, and the map’s licence where it is known; and
+it cites the georeference as the method used (<code class="docutils literal notranslate"><span class="pre">cito:usesMethodIn</span></code>), as a
+source of its own derived from the map. Its notes begin with the
+georeference’s address, its transformation and number of control points, and
+when it was retrieved, and the canvas and manifest, since a georeference can
+be changed after you trace from it; then comes “Traced by hand from a
+georeferenced historical map at zoom 9 in PLATO tools (Chora)”, or, for one
+<a class="reference internal" href="#tracing-with-assistance-from-the-map-s-ink">traced with assistance</a>, how it
+was proposed and what was done to it by hand.</p>
+<p>It has no web address of its own yet: <strong>Mint</strong> gives it one when you
+<a class="reference internal" href="#the-four-parts-in-order">publish the dataset</a>.</p>
+</section>
+<section id="saving">
+<h3>Saving<a class="headerlink" href="#saving" title="Link to this heading">¶</a></h3>
+<p><strong>Save as PLATO JSON</strong> writes the whole dataset, not the drawings alone, as
+one PLATO JSON document (place-centric): every place and attestation as it
+was read, with the drawings added after each place’s own attestations. A
+dataset in another format is converted, and the page lists anything the
+conversion reported. The file is named after yours, ending <code class="docutils literal notranslate"><span class="pre">.chora.json</span></code>.</p>
+<p>In the same run, the version check
+(<a class="reference internal" href="#comparing-two-versions">comparing two versions</a>) compares it with the
+file you opened, and must find every attestation there exactly as it was,
+every place described as it was, and exactly as many new attestations as you
+drew, whether or not the dataset is published. A dataset with no attestations
+yet, such as a list of places still to be located, can be saved too: the
+check then finds only your drawings, as it must. Only when the check passes
+is the file offered to save; otherwise the page says what went wrong, and
+not to use it. Problems the dataset already had are listed even when the
+check passes, since the saved file has them too.</p>
+<p>Nothing is saved if a drawing is for a place whose attestations are not
+written as a list, as PLATO requires: the drawing could only replace them.
+The page names the place, to be corrected in the dataset first.</p>
+<p>Where your browser asks where to save a file, the drawings are no longer
+kept in the browser once it is saved. Where it simply downloads the file,
+the page cannot tell when the download is complete, so the drawings are
+kept, and the file still offered, until you press <strong>The download is
+complete: let these drawings go</strong>. Either way, to add more, open the saved
+file. If you change the drawings before saving the file, it is no longer
+offered: save again.</p>
+</section>
+<section id="which-map-and-who-sees-what">
+<h3>Which map, and who sees what<a class="headerlink" href="#which-map-and-who-sees-what" title="Link to this heading">¶</a></h3>
+<p>The map you see first, from <a class="reference external" href="https://www.naturalearthdata.com/">Natural Earth</a>,
+comes from this site, so opening Chora sends nothing anywhere else. Its
+borders are Natural Earth’s borders as they are in practice, not a statement
+on any dispute.</p>
+<p>Under <strong>Basemap</strong> you can choose another, fetched from its provider:
+OpenFreeMap (Liberty, Bright or Positron), OpenStreetMap, CARTO (Positron,
+Voyager or Dark Matter), or a style address or tile address of your own,
+pasted in, including one with a key. No other site is asked until you allow
+it in the <strong>Permissions</strong> panel, from the button at the top of the page, the
+same panel as on the main page. A basemap not yet allowed is not used: one
+line, <em>Needs permission</em>, opens the panel at it. The panel names every site
+the basemap will ask, since one provider may serve it from several, and says
+what they will see: the part of the world you are looking at, and your
+address on the internet, as any website does; never your files, which stay
+on your computer. There you can allow it, or allow it for this tab only, or
+choose <em>Never</em>, and it is no longer offered. A basemap allowed is used once
+the page is reloaded: the panel offers the reload, keeping the dataset, the
+place and the view, and asks first if something would be lost, such as a
+line half drawn. One withdrawn gives way to Natural Earth at once. A style
+you paste in is read from its own site once you allow that; if it names
+further sites, each needs your permission too before the map uses them. The
+page refuses any request to a site other than this one and those you have
+allowed, and says how many it refused. If your browser does not show that it
+enforces this protection, no other site is asked, and the page says so. A
+basemap that cannot be loaded gives way to Natural Earth, and the page says
+why.</p>
+<p>Your permissions, your choice of basemap, any address you paste (with any
+key in it), your name as the one drawing, the historical maps you add, and
+your working data are kept in
+this browser. PLATO tools is on pelagios.org, which other Pelagios sites
+share, so, as the panel says, any Pelagios site can read them, on this
+computer only.</p>
+</section>
+<section id="adopting-a-location-from-a-match">
+<h3>Adopting a location from a match<a class="headerlink" href="#adopting-a-location-from-a-match" title="Link to this heading">¶</a></h3>
+<p>From a place’s card, <em>Find in a gazetteer…</em> looks the place up in the World
+Historical Gazetteer and adopts a record’s location. That records two claims,
+kept apart as PLATO keeps them: that this place is that record, and, as a new
+attestation citing the gazetteer, where it is. The search looks where the
+place lies: within the nearest region your dataset identifies with WHG
+records (its <code class="docutils literal notranslate"><span class="pre">ContainedIn</span></code> regions), and in its countries, and the panel says
+so before anything is sent. If the right record is not found there, <strong>Search
+everywhere</strong> looks without them; it is never done for you.</p>
+</section>
+</section>
+<section id="publishing-your-dataset">
+<h2>Publishing your dataset<a class="headerlink" href="#publishing-your-dataset" title="Link to this heading">¶</a></h2>
+<p>Publishing a dataset means giving it addresses that will still work in
+twenty years, a website where people and software can find each place, and a
+record in a repository that gives it a DOI. PLATO tools prepares all of that
+from the dataset itself, in four parts. On the page, choose the part under
+<em>to publish it</em> and press <strong>Prepare</strong>; the release’s name, the previous
+release, the GitHub repository and the rest are under <em>Options</em>. From the
+command line, each part is <code class="docutils literal notranslate"><span class="pre">publish</span></code> followed by its name.</p>
+<p>Nothing leaves your computer. Neither the page nor the command line sends
+anything anywhere: they write files, and uploading them, depositing them or
+opening a pull request is for you to do. The page gives each result as a file
+(a folder comes as a zip); the command line writes folders.</p>
+<p>Every part checks the dataset first, and writes nothing to publish from a
+dataset that has problems. It needs to know the dataset’s base address:
+<code class="docutils literal notranslate"><span class="pre">base_uri</span></code> in the <a class="reference internal" href="spreadsheets/first-dataset.html#say-what-the-dataset-is"><span class="std std-ref">about sheet</span></a>,
+or <code class="docutils literal notranslate"><span class="pre">uriSpace</span></code> in PLATO JSON. Record it there rather than giving it for each
+run (on the page, “Web address for your identifiers”; on the command line,
+<code class="docutils literal notranslate"><span class="pre">--base</span></code>), so that every part, and every later release, uses the same one.</p>
+<section id="the-four-parts-in-order">
+<h3>The four parts, in order<a class="headerlink" href="#the-four-parts-in-order" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Mint</strong> writes a copy of the dataset in which every attestation has a
+permanent address of its own, as PLATO JSON Lines (its name ends
+<code class="docutils literal notranslate"><span class="pre">-with-ids.jsonl</span></code>). This copy is what you publish, and what the other
+parts read. It needs the base address (above).</p></li>
+<li><p><strong>Report</strong> says what the dataset’s description still lacks to be
+<a class="reference internal" href="index.html#plato-and-fair-data"><span class="std std-ref">FAIR</span></a>: a title, a description long enough
+for search engines, authors with ORCIDs (whose check digits are tested),
+a licence given as its web address, a version, what the dataset covers,
+and a base address that will last. It counts the checks passed, and
+writes the deposit files (below). Put right what it lists, in the about
+sheet or the <code class="docutils literal notranslate"><span class="pre">gazetteer</span></code> header, and run it again. Run it on the minted
+copy: for a published dataset it refuses attestations without addresses.
+You can run it on the draft first, to see what the description still
+lacks before you mint.</p></li>
+<li><p><strong>Site</strong> makes a website for GitHub Pages from that copy, with the
+workflow that publishes it.</p></li>
+<li><p><strong>w3id</strong> writes the redirect rules that send your w3id.org addresses to
+the site. Only for a published dataset whose base is a w3id.org address.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>publish<span class="w"> </span>mint<span class="w"> </span>my-tables/<span class="w"> </span>--previous<span class="w"> </span>my-gazetteer-1.0.jsonl
+npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>publish<span class="w"> </span>report<span class="w"> </span>my-tables-with-ids.jsonl
+npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>publish<span class="w"> </span>site<span class="w"> </span>my-tables-with-ids.jsonl<span class="w"> </span>--repo<span class="w"> </span>my-project/my-gazetteer
+npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>publish<span class="w"> </span>w3id<span class="w"> </span>my-tables-with-ids.jsonl<span class="w"> </span>--repo<span class="w"> </span>my-project/my-gazetteer<span class="w"> </span>--maintainer<span class="w"> </span>my-github-name
+</pre></div>
+</div>
+<p>A part that finds problems says so and ends with exit status 1, like
+<strong>Check</strong>.</p>
+</section>
+<section id="addresses">
+<h3>Addresses<a class="headerlink" href="#addresses" title="Link to this heading">¶</a></h3>
+<p>Every address is made from the base, which always ends in <code class="docutils literal notranslate"><span class="pre">/</span></code>:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>What</p></th>
+<th class="head"><p>Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The dataset, and its home page</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;base&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>A place</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;base&gt;place/&lt;id&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>A source</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;base&gt;source/&lt;id&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>An attestation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;base&gt;place/&lt;id&gt;#a-&lt;hash&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>A frozen release</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;base&gt;release/&lt;name&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>The latest dataset, to download</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;base&gt;download/&lt;file&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The addresses of places and sources are PLATO’s own rule, set out under
+<a class="reference internal" href="linked-data.html#spreadsheets-to-rdf"><span class="std std-ref">spreadsheets to RDF</span></a> and in
+<a class="reference internal" href="spreadsheets/first-dataset.html#say-what-the-dataset-is"><span class="std std-ref">step 7 of a first dataset</span></a>;
+the rest are how PLATO tools lays out what it publishes. A release is named
+with <code class="docutils literal notranslate"><span class="pre">--release</span></code> (on the page, “Release name”); its dataset’s own address
+(<code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>) should then be the release’s, with <code class="docutils literal notranslate"><span class="pre">isVersionOf</span></code> the base, and the
+report says what to set.</p>
+<p>An attestation’s address is part of its place’s: <code class="docutils literal notranslate"><span class="pre">#a-</span></code> and the first eight
+digits of a hash of what the attestation says. So minting the same data again
+gives the same addresses, even from spreadsheet tables, which have no column
+for them. An address an attestation already has is never changed. Give the
+previous release with <code class="docutils literal notranslate"><span class="pre">--previous</span></code> (on the page, “Previous release”), and
+every attestation it published keeps the address it had there.</p>
+<p>Keep the identifiers of places and sources to letters, digits and
+<code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">.</span> <span class="pre">_</span> <span class="pre">~</span></code>, in one part (no <code class="docutils literal notranslate"><span class="pre">/</span></code>), not starting with <code class="docutils literal notranslate"><span class="pre">.</span></code>, not ending in
+<code class="docutils literal notranslate"><span class="pre">.jsonld</span></code>, <code class="docutils literal notranslate"><span class="pre">.ttl</span></code> or <code class="docutils literal notranslate"><span class="pre">.html</span></code> (w3id reads those endings as a request for that
+format), and never two that differ only in capital letters: a website cannot
+serve any other as a file. While the dataset is a
+draft the report counts any other as a problem; once it is published its
+addresses are frozen, and the site lists such places as held only in the
+downloads.</p>
+</section>
+<section id="what-published-commits-you-to">
+<h3>What “published” commits you to<a class="headerlink" href="#what-published-commits-you-to" title="Link to this heading">¶</a></h3>
+<p>A dataset is published when its <code class="docutils literal notranslate"><span class="pre">status</span></code> is <code class="docutils literal notranslate"><span class="pre">published</span></code>. From then on:</p>
+<ul class="simple">
+<li><p>its attestations are only ever added to (see
+<a class="reference internal" href="#comparing-two-versions">comparing two versions</a>);</p></li>
+<li><p>the addresses of its places, sources and attestations are frozen;</p></li>
+<li><p>minting with <code class="docutils literal notranslate"><span class="pre">--previous</span></code> checks the new version against the previous
+release, as <strong>Compare with the earlier version</strong> does, and writes nothing
+if anything published was deleted or changed. Against a previous release
+that was still a draft, it writes the copy and warns you what would be
+refused once that release is published.</p></li>
+</ul>
+<p>Until then, the site says on every page that the dataset is a draft and not
+to be cited, and asks search engines to leave it out.</p>
+</section>
+<section id="the-deposit-files">
+<h3>The deposit files<a class="headerlink" href="#the-deposit-files" title="Link to this heading">¶</a></h3>
+<p><strong>Report</strong> writes a folder (its name ends <code class="docutils literal notranslate"><span class="pre">-deposit</span></code>) of files made from the
+dataset’s description, for a repository that gives it a DOI. Its
+<code class="docutils literal notranslate"><span class="pre">README.txt</span></code> says what to check and fill in before you deposit.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>What it is for</p></th>
+<th class="head"><p>Where it goes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.zenodo.json</span></code></p></td>
+<td><p>Zenodo’s description of the deposit</p></td>
+<td><p>At the top of the GitHub repository the dataset is released from, where Zenodo reads it with each release</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code></p></td>
+<td><p>How to cite the dataset</p></td>
+<td><p>At the top of the same repository, where GitHub shows <em>Cite this repository</em> from it</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">datacite.json</span></code></p></td>
+<td><p>DataCite’s description, for a repository that registers DOIs itself</p></td>
+<td><p>Sent to that repository, with the DOI added</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Once Zenodo has given the dataset a DOI for all its versions (the concept
+DOI), run the report again with it (<code class="docutils literal notranslate"><span class="pre">--concept-doi</span></code>, or “Concept DOI” on the
+page) to put it in <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> and <code class="docutils literal notranslate"><span class="pre">datacite.json</span></code>, and give it to
+<strong>site</strong> too, which shows it on the home page.</p>
+</section>
+<section id="the-site">
+<h3>The site<a class="headerlink" href="#the-site" title="Link to this heading">¶</a></h3>
+<p><strong>Site</strong> makes a website with a page and a JSON-LD document (<code class="docutils literal notranslate"><span class="pre">.jsonld</span></code>) for
+every place and source, at the paths the addresses above lead to, and
+optionally Turtle as well (<code class="docutils literal notranslate"><span class="pre">--turtle</span></code>). Each attestation with an address is
+marked on its place’s page, so its address opens the page at it. The home
+page describes the dataset in the form search engines such as Google Dataset
+Search read, and offers the whole dataset to download as PLATO JSON Lines,
+N-Triples and spreadsheet tables.</p>
+<p>Beside the site, a second folder (its name ends <code class="docutils literal notranslate"><span class="pre">-repo</span></code>) holds what goes into
+your GitHub repository: a GitHub Actions workflow,
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/pages.yml</span></code>, and a <code class="docutils literal notranslate"><span class="pre">README-agora.md</span></code> saying how to set it
+up. Once the workflow is committed and the repository’s Pages settings have
+Source set to <em>GitHub Actions</em>, every push that changes the dataset rebuilds
+the site and publishes it. The workflow runs the same version of PLATO tools
+that made it, so the site is made the same way every time, and publishes
+nothing if the dataset has problems. The site itself is never committed.</p>
+<p>So what you commit is the copy that <strong>mint</strong> wrote, with its attestation
+addresses. The workflow never makes addresses: made there, they would be
+made again on every run, and an address that changes is no address at all.
+For a published dataset, the workflow stops if any attestation has no
+address. Before you push, look at the site on your own computer: the
+command line writes it to a folder (its name ends <code class="docutils literal notranslate"><span class="pre">-site</span></code>), which you can
+open through a local web server, such as <code class="docutils literal notranslate"><span class="pre">npx</span> <span class="pre">serve</span> <span class="pre">my-tables-with-ids-site</span></code>.</p>
+<p>If the dataset is not at the top of your repository, say where it is with
+<code class="docutils literal notranslate"><span class="pre">--dataset-path</span></code>. The page cannot tell which folder spreadsheet tables were
+chosen from, so for tables it guesses, and says so: correct the path in the
+workflow, or make the site from the command line.</p>
+<p><strong>Size.</strong> GitHub Pages serves at most 1 GB for a site, and gives up on a
+deployment that takes more than ten minutes. PLATO tools estimates the site’s
+size before it writes anything. Past the limit the page stops and says what
+to do; the command line writes the site anyway, with a warning, for hosting
+elsewhere. To stay within it, leave out Turtle, or publish a subset of the
+places with <code class="docutils literal notranslate"><span class="pre">--only</span></code>, a file listing their identifiers, one to a line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx<span class="w"> </span>github:pelagios/plato-tools<span class="w"> </span>publish<span class="w"> </span>site<span class="w"> </span>my-tables-with-ids.jsonl<span class="w"> </span>--repo<span class="w"> </span>my-project/my-gazetteer<span class="w"> </span>--only<span class="w"> </span>places-to-show.txt
+</pre></div>
+</div>
+<p>The addresses of the places left out lead to the site’s “not found” page,
+which points to the downloads, where every place is.</p>
+</section>
+<section id="how-long-your-addresses-last">
+<h3>How long your addresses last<a class="headerlink" href="#how-long-your-addresses-last" title="Link to this heading">¶</a></h3>
+<p>That depends on the base, and the report grades it:</p>
+<ul class="simple">
+<li><p><strong>A w3id.org address</strong> (<code class="docutils literal notranslate"><span class="pre">https://w3id.org/my-gazetteer/</span></code>) passes. It is a
+permanent redirect: if the site ever moves, the rules are changed and every
+address still works.</p></li>
+<li><p><strong>A domain of your own</strong> (<code class="docutils literal notranslate"><span class="pre">https://gazetteer.example.ac.uk/</span></code>) is a warning:
+the addresses last as long as you keep the domain and its site. When the
+base is at the root of the domain, the site carries the <code class="docutils literal notranslate"><span class="pre">CNAME</span></code> file GitHub
+Pages needs; set the same domain in the repository’s Pages settings and
+point the domain at GitHub as GitHub’s documentation says. GitHub Pages
+serves a custom domain only from the root of a site, so a base further down
+the domain gets no <code class="docutils literal notranslate"><span class="pre">CNAME</span></code>, and the report says why.</p></li>
+<li><p><strong>A GitHub Pages address</strong> (<code class="docutils literal notranslate"><span class="pre">https://my-project.github.io/my-gazetteer/</span></code>),
+a local one or a stand-in such as <code class="docutils literal notranslate"><span class="pre">example.org</span></code> is a warning while the
+dataset is a draft and a problem once it is published. A github.io address
+changes if the repository is renamed or moves to another owner, and every
+citation of it breaks. Use it to try things out; publish under a w3id.org
+address instead, with the site still on github.io behind it.</p></li>
+</ul>
+</section>
+<section id="registering-a-w3id-org-address">
+<h3>Registering a w3id.org address<a class="headerlink" href="#registering-a-w3id-org-address" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://w3id.org">w3id.org</a> gives permanent addresses by redirecting them,
+under rules kept in a public GitHub repository, <code class="docutils literal notranslate"><span class="pre">perma-id/w3id.org</span></code>. A new
+name is added by a pull request there. <strong>w3id</strong> writes everything that pull
+request needs, into a folder whose name starts <code class="docutils literal notranslate"><span class="pre">w3id-</span></code>, and only for a
+dataset that is published and whose base is a w3id.org address. It needs the
+GitHub names of the people who will look after the name (<code class="docutils literal notranslate"><span class="pre">--maintainer</span></code>,
+once each; “w3id maintainers” on the page), and where the site is: the
+repository (<code class="docutils literal notranslate"><span class="pre">--repo</span></code>), or the site’s address if it is somewhere else
+(<code class="docutils literal notranslate"><span class="pre">--site-url</span></code>).</p>
+<p>The folder holds the rules and a README for w3id.org, the pull request’s
+title and text (<code class="docutils literal notranslate"><span class="pre">PULL_REQUEST.md</span></code>), a list of real addresses of the dataset
+with what each should answer, and a script, <code class="docutils literal notranslate"><span class="pre">test-w3id.sh</span></code>, that asks for
+each. <code class="docutils literal notranslate"><span class="pre">STEPS.md</span></code> goes through it in order:</p>
+<ol class="arabic simple">
+<li><p>Test the rules on your own computer before anything else, in a local
+copy of the web server w3id.org runs (with Docker), with
+<code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">test-w3id.sh</span> <span class="pre">http://localhost:8080</span></code>. Every line should say PASS.</p></li>
+<li><p>Open the pull request yourself, from your own GitHub account, with the
+test results pasted into its text. PLATO tools never opens it: once it is
+merged, the addresses are public and meant to be cited for good.</p></li>
+<li><p>Once it is merged, test the live addresses: <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">test-w3id.sh</span></code>.</p></li>
+</ol>
+<p>The rules send a browser to a place’s page and any other client to its
+JSON-LD, and a request for <code class="docutils literal notranslate"><span class="pre">.jsonld</span></code>, <code class="docutils literal notranslate"><span class="pre">.ttl</span></code> or <code class="docutils literal notranslate"><span class="pre">.html</span></code> to that file. The
+site must be live before the rules are merged, since they only send people
+there.</p>
+</section>
+</section>
+<section id="following-a-workflow-methodos">
+<span id="methodos"></span><h2>Following a workflow: Methodos<a class="headerlink" href="#following-a-workflow-methodos" title="Link to this heading">¶</a></h2>
+<p><strong>Methodos</strong> is the part of PLATO tools that leads you through a whole
+workflow, step by step, with your place kept. It does no work of its own:
+each step is one of the tools described above, named with what it does, and
+Methodos keeps track of which steps are done. The workflows are named in plain
+English; the tools keep their Greek names.</p>
+<section id="the-three-questions">
+<h3>The three questions<a class="headerlink" href="#the-three-questions" title="Link to this heading">¶</a></h3>
+<p>Press <strong>Not sure where to start? Answer three questions</strong> at the top of the
+page, or choose the <strong>Methodos</strong> card among the tools. Three questions choose
+a workflow:</p>
+<ol class="arabic simple">
+<li><p><strong>What do you have?</strong> A list of place names (a spreadsheet or CSV), a text
+that names places, an edition in TEI, annotations from Recogito, a dataset
+already in a PLATO format, a map image, or nothing yet.</p></li>
+<li><p><strong>What do you want at the end?</strong> Places on a map, each identified in a
+gazetteer; a citable, published dataset; a new version of a published
+dataset, checked; a file in another format; a match of two datasets;
+figures as a Data Cube; or <em>I am not sure: show me what the tools can do</em>.</p></li>
+<li><p><strong>Anything of these?</strong> Only the yes-or-no questions the workflow needs and
+the first two answers left open; and, for a workflow that gives places
+addresses of their own, the base address they are given under (see
+<a class="reference internal" href="#methodos-base-address">below</a>).</p></li>
+</ol>
+<p>The same answers always give the same workflow. Two workflows exist so far:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>You have</p></th>
+<th class="head"><p>You want</p></th>
+<th class="head"><p>The workflow</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A list of place names</p></td>
+<td><p>Places on a map, each identified in a gazetteer</p></td>
+<td><p><a class="reference internal" href="#methodos-map-your-data">Map your data</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>A list of place names</p></td>
+<td><p>A citable, published dataset</p></td>
+<td><p>Map your data, with its publishing steps</p></td>
+</tr>
+<tr class="row-even"><td><p>A dataset already in a PLATO format</p></td>
+<td><p>A citable, published dataset</p></td>
+<td><p><a class="reference internal" href="#methodos-publish-a-dataset">Publish a dataset</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Once the questions are answered, the workflow’s steps are listed, with any
+steps your answers leave out; <strong>Follow</strong> with the workflow’s name begins it.
+<em>I am not sure</em> leads instead to the tools’ cards (<strong>Show me the tools</strong>):
+each card says what its tool does. Any other answers say that there is no
+workflow for this yet, why, and which tools do the work meanwhile, with a
+link, <strong>Tell us what you wanted to do</strong> (see <a class="reference internal" href="#methodos-feedback">below</a>).</p>
+</section>
+<section id="the-tracker">
+<h3>The tracker<a class="headerlink" href="#the-tracker" title="Link to this heading">¶</a></h3>
+<p>A workflow you follow is shown above step 1 of the page, under <strong>Your
+workflow</strong>, as a list of its steps. Each step says its state, the tool that
+does it, and what it does:</p>
+<ul class="simple">
+<li><p><strong>Done</strong>: the step is finished.</p></li>
+<li><p><strong>Now</strong>: the step at hand.</p></li>
+<li><p><strong>To come</strong>: a step still ahead.</p></li>
+<li><p><strong>Not yet available</strong>: a step the tools cannot do yet, with the reason. It
+is skipped, not counted among the workflow’s steps, and never refused: the
+workflow goes on without it, and its end says what was not done.</p></li>
+</ul>
+<p>The workflow begins when you choose its file in step 1 (or with <strong>Choose the
+file</strong> in the tracker). Steps are of two kinds:</p>
+<ul class="simple">
+<li><p><strong>Done by the tools.</strong> You run the step’s tool on the page, as you would
+without a workflow, and the step is done when the run finishes. The run
+must be on the step’s file: a run on another file is not counted, and the
+tracker says which file to choose. A run that finds problems is
+<strong>Stopped</strong>, one that goes wrong <strong>Failed</strong>, and one you stop <strong>Stopped by
+you</strong>; in each case, put it right and run the step again.</p></li>
+<li><p><strong>Yours.</strong> The tracker says what the step waits for (matching the columns,
+deciding on the candidates, drawing in Chora). When you have done it, press
+<strong>This step is done</strong>.</p></li>
+</ul>
+<p><strong>Back a step</strong> undoes the last step done, so that it is to do again.
+<strong>Leave the workflow</strong> ends it and lets go of everything Methodos kept for it
+in this browser. A workflow chosen but not yet begun can be let go with
+<strong>Discard this workflow</strong>.</p>
+</section>
+<section id="map-your-data">
+<span id="methodos-map-your-data"></span><h3>Map your data<a class="headerlink" href="#map-your-data" title="Link to this heading">¶</a></h3>
+<p>From a list of place names to places identified in the World Historical
+Gazetteer, located, checked and written out, and published if you say so.</p>
+<p><strong>What you need first.</strong> The lookups in the World Historical Gazetteer need an
+account of your own with WHG, enrolled in WHG’s beta, and a WHG token. That
+covers the regions in step 4, the places in step 5, and finding a record whose
+location you adopt in Chora. To get the token, sign in at
+<a class="reference external" href="https://whgazetteer.org/">whgazetteer.org</a> with ORCiD, open your <strong>Profile</strong>
+and generate an <strong>API Token</strong>. You give the token in the lookup panel, and the
+<strong>Permissions</strong> panel says where it is kept. The rest of the workflow needs no
+account.</p>
+<p>The questions under 3 are:</p>
+<ul class="simple">
+<li><p><em>Does the table say which region each place is in (a parish, a county)?</em></p></li>
+<li><p><em>Will you draw or trace places that the gazetteer cannot locate?</em></p></li>
+<li><p><em>Will you publish the result?</em> (asked only when you wanted places on a map)</p></li>
+<li><p>When the table gives regions, <em>Under what base address will your places and
+regions have web addresses of their own?</em>: needed, since the regions are
+given addresses under it, so <strong>Follow</strong> waits for it (see
+<a class="reference internal" href="#methodos-base-address">the base address</a>).</p></li>
+</ul>
+<p>The steps, with the tool that does each:</p>
+<ol class="arabic simple">
+<li><p><strong>Hermes: Match the columns to PLATO.</strong> Yours: match the table’s columns
+to PLATO’s fields in the Columns panel (see
+<a class="reference internal" href="tables-of-places.html"><span class="std std-doc">your own table of places</span></a>), then say the step is
+done.</p></li>
+<li><p><strong>Elenchos: Check the table.</strong> Run the <a class="reference internal" href="#checking">check</a>.</p></li>
+<li><p><strong>Metaphrasis: Make a PLATO dataset of it.</strong> Run the
+<a class="reference internal" href="#converting">conversion</a> to PLATO JSON. Where the table gives regions,
+the conversion uses the base address you gave (it is the one in
+<strong>Options</strong>, <em>Web address for your identifiers</em>): the regions are made
+from the table when it is converted, and need it to have addresses of
+their own (see
+<a class="reference internal" href="tables-of-places.html#place-ids-and-the-base-address"><span class="std std-ref">the base address</span></a>).</p></li>
+<li><p><strong>Krisis: Identify the regions, the widest first.</strong> Only if the table gives
+regions. Yours, in the region review (<strong>Review the regions level by
+level</strong>): the regions are looked up level by level, from the widest, each
+level within the match of the level above. The step is done only when
+every region is settled. The detail of the region review is in
+<a class="reference internal" href="#region-review">reviewing regions, level by level</a>.</p></li>
+<li><p><strong>Krisis: Look the places up in the World Historical Gazetteer.</strong> Where
+the table gives regions, the places are looked up within their regions.
+The lookup needs your WHG token and your permission (see
+<a class="reference internal" href="#match-review">reviewing matches</a>).</p></li>
+<li><p><strong>Krisis: Decide which candidates are the same place.</strong> Yours: review the
+candidates, as in <a class="reference internal" href="#match-review">reviewing matches</a>.</p></li>
+<li><p>Recording the decisions, by <strong>Finish</strong> in the review, as one of:</p>
+<ul class="simple">
+<li><p><strong>Krisis: Record the decisions in the dataset</strong>, where the table gives
+no regions;</p></li>
+<li><p><strong>Krisis: Record the decisions, with the region each place is in</strong>,
+where it does. Export the candidates first (<strong>Export the suggestions as
+a candidate set</strong>), so that each identity records the candidate it
+answers (<code class="docutils literal notranslate"><span class="pre">promotedFrom</span></code>). The places stay <code class="docutils literal notranslate"><span class="pre">ContainedIn</span></code> the regions made
+from the table, and each region gets your identification of it with the
+gazetteer’s record, as described under
+<a class="reference internal" href="#region-review">what is written</a>. If the base address in <strong>Options</strong>
+is no longer the one the review was saved with, <strong>Finish</strong> says so, and
+still writes, for the review’s own address: set <strong>Options</strong> back if
+your places keep that address.</p></li>
+</ul>
+</li>
+<li><p><strong>Chora: Draw or trace the places still without a location.</strong> Only if you
+said you would. Yours: <strong>Open Chora</strong> opens <a class="reference internal" href="#chora">Chora</a> for this
+workflow. Draw or trace the places there, or take a location from a
+gazetteer’s match (<strong>Adopt</strong>), and save the dataset. Chora then offers
+<strong>Back to the workflow</strong>. On the main page, press <strong>Take the dataset back
+from Chora</strong> and choose the saved file in step 1: it is checked to be the
+file Chora saved, by size and SHA-256, and then the step is done. If
+nothing usable comes back, choose the dataset you saved in Chora in step 1
+and press <strong>This step is done</strong>.</p></li>
+<li><p><strong>Elenchos: Check the result.</strong></p></li>
+<li><p><strong>Mneme: Compare the result with the dataset made from the table</strong>, as in
+<a class="reference internal" href="#comparing-two-versions">comparing two versions</a>.</p></li>
+<li><p><strong>Metaphrasis: Write it out</strong>, in the format the workflow was given
+(PLATO JSON). The dataset is PLATO JSON by now, and a file is not
+converted into its own format: the step says <strong>Ready to download</strong>, with
+a <strong>Download</strong> button for the file chosen in step 1, and is done once you
+have downloaded it. A dataset in another format is converted, as any
+step done by the tools.</p></li>
+<li><p>Only if you will publish, the four parts of
+<a class="reference internal" href="#publishing-your-dataset">publishing your dataset</a>, by <strong>Agora</strong>:
+<strong>Give every place and source a permanent address</strong>, <strong>Write the FAIR
+report</strong>, <strong>Build the web site</strong> and <strong>Write the permanent-address
+rules</strong>.</p></li>
+</ol>
+</section>
+<section id="publish-a-dataset">
+<span id="methodos-publish-a-dataset"></span><h3>Publish a dataset<a class="headerlink" href="#publish-a-dataset" title="Link to this heading">¶</a></h3>
+<p>For a dataset already in a PLATO format: <strong>Elenchos: Check the dataset</strong>, then
+Agora’s four parts in order, <strong>Give every place and source a permanent
+address</strong>, <strong>Write the FAIR report</strong>, <strong>Build the web site</strong> and <strong>Write the
+permanent-address rules</strong> (see <a class="reference internal" href="#publishing-your-dataset">publishing your dataset</a>).
+Under 3 it asks only for the base address, which is optional: minting uses it
+where the dataset has none of its own (see
+<a class="reference internal" href="#methodos-base-address">the base address</a>).</p>
+</section>
+<section id="the-base-address">
+<span id="methodos-base-address"></span><h3>The base address<a class="headerlink" href="#the-base-address" title="Link to this heading">¶</a></h3>
+<p>A workflow that gives places addresses of their own (Map your data when the
+table gives regions, and Publish a dataset) asks under 3 for the base address
+they are given under. The field shows the base address already in <strong>Options</strong>
+(<em>Web address for your identifiers</em>), and what you type there is written to
+<strong>Options</strong> too: there is one base address, used by every tool on the page.</p>
+</section>
+<section id="saving-and-resuming">
+<h3>Saving and resuming<a class="headerlink" href="#saving-and-resuming" title="Link to this heading">¶</a></h3>
+<p>A workflow is kept in this browser at every step: which workflow it is, your
+answers, the state of each step, and references to the files (each file’s
+name, size and SHA-256), never your own files. Reload the page, or come back
+later, and it is taken up where it was left. A workflow chosen before any
+file is kept too.</p>
+<p>A step that takes the file the workflow began with asks for it to be chosen
+again in step 1 (in Chromium, a button <strong>Open</strong> <em>the file’s name</em> <strong>again</strong>
+opens it in one click). The file is checked to be the one the workflow recorded:
+a different file is refused, with what differs, and is not counted. A page
+closed while a step was running leaves that step failed, to run again.</p>
+<p>If the workflow’s recipe has changed since it was saved, the tracker says
+so. A change of words only carries on. Otherwise it stays at its last
+finished step, and you can <strong>Start the remaining steps under the new
+recipe</strong>, or leave it.</p>
+</section>
+<section id="what-is-kept-in-the-browser-and-clearing-it">
+<h3>What is kept in the browser, and clearing it<a class="headerlink" href="#what-is-kept-in-the-browser-and-clearing-it" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>The workflow’s record</strong>, in the browser’s IndexedDB.</p></li>
+<li><p><strong>The files the steps made</strong> (the matching of the columns, the dataset,
+the review’s work file), in the browser’s private file storage (OPFS), so
+that after a reload the next step takes them without their being chosen
+again. The tracker says how many there are and their size, beside
+<strong>Clear them</strong>. Once cleared, a step that takes one asks for it to be
+chosen.</p></li>
+</ul>
+<p>Your own files are never copied there. To keep nothing between visits, turn
+off <strong>Keep my working data between visits</strong> under <em>Your working data</em> in the
+<strong>Permissions</strong> panel: the workflow and its files then last only as long as
+the tab, and what was kept is cleared at once. <strong>Leave the workflow</strong> lets go
+of everything kept for that workflow. A browser that refuses storage (a
+private window, say) keeps the workflow for the tab only.</p>
+</section>
+<section id="a-workflow-that-is-not-there">
+<span id="methodos-feedback"></span><h3>A workflow that is not there<a class="headerlink" href="#a-workflow-that-is-not-there" title="Link to this heading">¶</a></h3>
+<p>When your answers lead to no workflow, <strong>Tell us what you wanted to do</strong> opens
+a new issue on <a class="reference external" href="https://github.com/pelagios/plato-tools/issues">PLATO tools’ GitHub</a>,
+in a new tab, labelled <em>Methodos</em> and titled with your two answers. Nothing
+else is put in it: say there what you were trying to do.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="routes/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Routes, journeys and networks</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="tables-of-places.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Your own table of places: CSV, GeoJSON or a workbook</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Pelagios Network Place Working Group (CC BY 4.0)
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Checking, converting and comparing</a><ul>
+<li><a class="reference internal" href="#what-it-reads-and-writes">What it reads and writes</a></li>
+<li><a class="reference internal" href="#large-datasets">Large datasets</a></li>
+<li><a class="reference internal" href="#checking">Checking</a></li>
+<li><a class="reference internal" href="#converting">Converting</a></li>
+<li><a class="reference internal" href="#comparing-two-versions">Comparing two versions</a></li>
+<li><a class="reference internal" href="#reviewing-matches">Reviewing matches</a></li>
+<li><a class="reference internal" href="#reviewing-regions-level-by-level">Reviewing regions, level by level</a></li>
+<li><a class="reference internal" href="#placing-on-the-map">Placing on the map</a><ul>
+<li><a class="reference internal" href="#drawing-a-location">Drawing a location</a></li>
+<li><a class="reference internal" href="#tracing-from-a-historical-map">Tracing from a historical map</a></li>
+<li><a class="reference internal" href="#tracing-with-assistance-from-the-map-s-ink">Tracing with assistance from the map’s ink</a></li>
+<li><a class="reference internal" href="#what-a-drawing-records">What a drawing records</a></li>
+<li><a class="reference internal" href="#saving">Saving</a></li>
+<li><a class="reference internal" href="#which-map-and-who-sees-what">Which map, and who sees what</a></li>
+<li><a class="reference internal" href="#adopting-a-location-from-a-match">Adopting a location from a match</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#publishing-your-dataset">Publishing your dataset</a><ul>
+<li><a class="reference internal" href="#the-four-parts-in-order">The four parts, in order</a></li>
+<li><a class="reference internal" href="#addresses">Addresses</a></li>
+<li><a class="reference internal" href="#what-published-commits-you-to">What “published” commits you to</a></li>
+<li><a class="reference internal" href="#the-deposit-files">The deposit files</a></li>
+<li><a class="reference internal" href="#the-site">The site</a></li>
+<li><a class="reference internal" href="#how-long-your-addresses-last">How long your addresses last</a></li>
+<li><a class="reference internal" href="#registering-a-w3id-org-address">Registering a w3id.org address</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#following-a-workflow-methodos">Following a workflow: Methodos</a><ul>
+<li><a class="reference internal" href="#the-three-questions">The three questions</a></li>
+<li><a class="reference internal" href="#the-tracker">The tracker</a></li>
+<li><a class="reference internal" href="#map-your-data">Map your data</a></li>
+<li><a class="reference internal" href="#publish-a-dataset">Publish a dataset</a></li>
+<li><a class="reference internal" href="#the-base-address">The base address</a></li>
+<li><a class="reference internal" href="#saving-and-resuming">Saving and resuming</a></li>
+<li><a class="reference internal" href="#what-is-kept-in-the-browser-and-clearing-it">What is kept in the browser, and clearing it</a></li>
+<li><a class="reference internal" href="#a-workflow-that-is-not-there">A workflow that is not there</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=809ddda4"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/translations.js?v=8fd896e3"></script>
+    <script src="_static/plato-tooltip.js?v=d3050378"></script>
+    </body>
+</html>

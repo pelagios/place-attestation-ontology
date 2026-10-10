@@ -1,0 +1,123 @@
+[
+  {
+    "version": "0.1.0",
+    "tag": "v0.1.0",
+    "commit": "3bd2e41382b7f3bb0c691e6c2aa623b6ae0c711d",
+    "files": [
+      "0.1.0/ontology.ttl",
+      "0.1.0/ontology.nt",
+      "0.1.0/ontology.owl",
+      "0.1.0/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.1.1",
+    "tag": "v0.1.1",
+    "commit": "dac35dd2bf08c944f536f044166dd7d9ad8a7195",
+    "files": [
+      "0.1.1/ontology.ttl",
+      "0.1.1/ontology.nt",
+      "0.1.1/ontology.owl",
+      "0.1.1/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.2.0",
+    "tag": "v0.2.0",
+    "commit": "274e172f4925aec5b23024579e11655c8b110853",
+    "files": [
+      "0.2.0/ontology.ttl",
+      "0.2.0/ontology.nt",
+      "0.2.0/ontology.owl",
+      "0.2.0/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.3.0",
+    "tag": "v0.3.0",
+    "commit": "048174fc4b98b38671e239627a0fb62549d43cbb",
+    "files": [
+      "0.3.0/ontology.ttl",
+      "0.3.0/ontology.nt",
+      "0.3.0/ontology.owl",
+      "0.3.0/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.4.0",
+    "tag": "v0.4.0",
+    "commit": "ca0afadabec1e23a145c0b03df77e8f151f79832",
+    "files": [
+      "0.4.0/ontology.ttl",
+      "0.4.0/ontology.nt",
+      "0.4.0/ontology.owl",
+      "0.4.0/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.5.0",
+    "tag": "v0.5.0",
+    "commit": "fa0d247ccc0263f8f19c8d7cdcd163df96935d1e",
+    "files": [
+      "0.5.0/ontology.ttl",
+      "0.5.0/ontology.nt",
+      "0.5.0/ontology.owl",
+      "0.5.0/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.6.0",
+    "tag": "v0.6.0",
+    "commit": "1597e6702c4833a3f7265b0894ad045caa5cbe6e",
+    "files": [
+      "0.6.0/ontology.ttl",
+      "0.6.0/ontology.nt",
+      "0.6.0/ontology.owl",
+      "0.6.0/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.7.0",
+    "tag": "v0.7.0",
+    "commit": "238d4f27d31dd61d430d10e085f0bbe834135130",
+    "files": [
+      "0.7.0/ontology.ttl",
+      "0.7.0/ontology.nt",
+      "0.7.0/ontology.owl",
+      "0.7.0/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.7.1",
+    "tag": "v0.7.1",
+    "commit": "8b37c184089bca8a7c7bb46e05f1731df2b1a1cc",
+    "files": [
+      "0.7.1/ontology.ttl",
+      "0.7.1/ontology.nt",
+      "0.7.1/ontology.owl",
+      "0.7.1/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.8.0",
+    "tag": "v0.8.0",
+    "commit": "b07b1e40fc1d2fd8a9bcb5d99715569e09cf44b2",
+    "files": [
+      "0.8.0/ontology.ttl",
+      "0.8.0/ontology.nt",
+      "0.8.0/ontology.owl",
+      "0.8.0/ontology.jsonld"
+    ]
+  },
+  {
+    "version": "0.9.0-alpha.1",
+    "tag": "v0.9.0-alpha.1",
+    "commit": "0b23ada42ca83cfa06eb30a9e3d2f11426a1e1c8",
+    "files": [
+      "0.9.0-alpha.1/ontology.ttl",
+      "0.9.0-alpha.1/ontology.nt",
+      "0.9.0-alpha.1/ontology.owl",
+      "0.9.0-alpha.1/ontology.jsonld"
+    ]
+  }
+]

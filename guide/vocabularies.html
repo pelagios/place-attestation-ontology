@@ -1,0 +1,890 @@
+<!doctype html>
+<html class="no-js" lang="en-GB" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="about.html"><link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Glossary" href="glossary.html"><link rel="prev" title="Sheet reference" href="spreadsheets/reference.html">
+        <link rel="prefetch" href="_static/plato-mark.svg" as="image">
+
+    <link rel="shortcut icon" href="_static/favicon.svg"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>Vocabularies - PLATO guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" type="text/css" href="_static/plato.css?v=0c54fe58" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">PLATO guide</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/plato-mark.svg" alt="Logo"/>
+  </div>
+  <span class="sidebar-brand-text">PLATO guide</span>
+</a>
+<p class="plato-status">
+  <a class="plato-badge" href="about.html#experimental" aria-describedby="plato-status-tip">Experimental</a>
+  <span class="plato-tip" id="plato-status-tip" role="tooltip">PLATO is experimental: it is developed in the open and not yet fully tested, and its terms and schemas may change, or break, between releases. A renamed or withdrawn term is kept, marked as deprecated, for at least one release before it is removed. Each release is archived on Zenodo with its own DOI. PLATO tools has its own badge.</span>
+</p><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Why PLATO</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ideas.html">The ideas in five minutes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/index.html">Organising data in spreadsheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/first-dataset.html">A first dataset, step by step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/survey-example.html">A place-name survey example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations from Recogito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tei.html">Place names in a TEI edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables-of-places.html">Your own table of places: CSV, GeoJSON or a workbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Checking, converting and comparing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Routes, journeys and networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routes/index.html">Routes, journeys and networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/antonine.html">A route: the Antonine Itinerary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/king-john.html">A journey: King John in 1215</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/river-idle.html">A river network: the lower Idle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/datini.html">A network of correspondence: the Datini letters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/reference.html">Sheet reference</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Vocabularies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistical tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-data.html">Linked data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About PLATO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/blob/main/docs/vocabularies.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/edit/main/docs/vocabularies.md" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="vocabularies">
+<h1>Vocabularies<a class="headerlink" href="#vocabularies" title="Link to this heading">¶</a></h1>
+<p>Some columns in the spreadsheets, and some fields in JSON, take a word from a
+fixed list rather than free text. This page lists every such word, what it
+means, and the full identifier it stands for in PLATO. It is generated from
+the ontology, so it always matches it.</p>
+<p>In the spreadsheets, write the word in the <em>Value</em> column exactly as shown,
+with the same capital letters. Four columns are exceptions, because the
+table definitions add the start of the word for you:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">attribution</span></code>: write <code class="docutils literal notranslate"><span class="pre">Stated</span></code> or <code class="docutils literal notranslate"><span class="pre">Inferred</span></code> (not <code class="docutils literal notranslate"><span class="pre">AttributionStated</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stance</span></code>: write <code class="docutils literal notranslate"><span class="pre">Reported</span></code>, <code class="docutils literal notranslate"><span class="pre">Tentative</span></code>, <code class="docutils literal notranslate"><span class="pre">Doubted</span></code> or <code class="docutils literal notranslate"><span class="pre">Asserted</span></code> (not
+<code class="docutils literal notranslate"><span class="pre">StanceReported</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transcription_accuracy</span></code>: write <code class="docutils literal notranslate"><span class="pre">Accurate</span></code>, <code class="docutils literal notranslate"><span class="pre">Inaccurate</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transcription_completeness</span></code>: write <code class="docutils literal notranslate"><span class="pre">Complete</span></code>, <code class="docutils literal notranslate"><span class="pre">Reconstructable</span></code> or
+<code class="docutils literal notranslate"><span class="pre">NonReconstructable</span></code>.</p></li>
+</ul>
+<p>The kinds of spatial entity (<code class="docutils literal notranslate"><span class="pre">TypeRoute</span></code> and the others) are not written as
+words in any column: give the full identifier in a type row’s <code class="docutils literal notranslate"><span class="pre">type_uri</span></code>, as
+<a class="reference internal" href="routes/index.html"><span class="std std-doc">Routes, journeys and networks</span></a> shows. In JSON and RDF, use
+the full identifier.</p>
+<p>The lists are open: if you need a value that is not here, ask for it by
+<a class="reference external" href="https://github.com/pelagios/place-attestation-ontology/issues">opening an issue</a>.</p>
+<section id="attribution-status">
+<h2>Attribution status<a class="headerlink" href="#attribution-status" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:attribution_status. Whether the attribution of evidence to a cited source was stated or resolved editorially.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AttributionInferred</span></code></p></td>
+<td><p>The source was given as ibidem or idem and resolved by an editor, so the attribution is inferred rather than stated.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#AttributionInferred</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AttributionStated</span></code></p></td>
+<td><p>The source is named where the form occurs. The default attribution status, usually omitted.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#AttributionStated</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="kind-of-spatial-entity">
+<h2>Kind of spatial entity<a class="headerlink" href="#kind-of-spatial-entity" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for the kinds of SpatialEntity a platform treats specially: routes, itineraries, networks and segments. A Type attestation names one in its type identifier.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TypeItinerary</span></code></p></td>
+<td><p>A journey made through places in order, each stop with its own timespan: a traveller’s tour, a royal progress, a ship’s voyage. Not plato:Itinerary, which is a geometry role (a line tracing a route or journey).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TypeItinerary</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TypeNetwork</span></code></p></td>
+<td><p>A set of places and the connections between them, in no single order: a river system, a canal network, a correspondence network.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TypeNetwork</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TypeRoute</span></code></p></td>
+<td><p>An ordered set of places making a way: a road, a sea lane, a pilgrimage route. Its timespan, if any, is when it was in use, not when anyone travelled it.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TypeRoute</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TypeSegment</span></code></p></td>
+<td><p>A physical link with an existence of its own: a leg of a route between two stations, a reach of a river between confluences. Platforms may leave segments out of lists and searches of places.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TypeSegment</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="form-status">
+<h2>Form status<a class="headerlink" href="#form-status" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:form_status. The status of the name form an attestation contributes.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Attested</span></code></p></td>
+<td><p>A form read in the cited source. The default form status, usually omitted.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Attested</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Editorial</span></code></p></td>
+<td><p>A form written by the editors of the cited edition in their own words (commentary, apparatus, notes), not a form the edited source itself contains. Use it when the citation is to an edition and the name occurs in the editors’ text, not in the edited text. It says nothing about whether the place’s name is attested elsewhere. Attested remains the default for forms the source contains.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Editorial</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Headword</span></code></p></td>
+<td><p>The editorial or preferred form under which the cited authority files the entry. A scholarly decision rather than a reading.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Headword</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Normalised</span></code></p></td>
+<td><p>A form derived from an attested one for matching or search, attested by no source and carrying no independent evidential value.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Normalised</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Preferred</span></code></p></td>
+<td><p>The form the contributing project prefers for display and search: a project decision, so the cited source may show a different form.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Preferred</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Reconstructed</span></code></p></td>
+<td><p>A form inferred but not attested; the philologists’ asterisked form.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Reconstructed</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="geometry-role">
+<h2>Geometry role<a class="headerlink" href="#geometry-role" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:geometry_role. What a geometry depicts, as distinct from how precisely it is known.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Extent</span></code></p></td>
+<td><p>The built or bounded extent of the SpatialEntity.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Extent</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FeaturePoint</span></code></p></td>
+<td><p>The location of a specific central feature of the SpatialEntity, such as a market place or a church.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#FeaturePoint</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Itinerary</span></code></p></td>
+<td><p>A line tracing a route or journey.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Itinerary</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LabelAnchor</span></code></p></td>
+<td><p>The anchor point of a map label.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#LabelAnchor</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RepresentativePoint</span></code></p></td>
+<td><p>A proxy point standing in for the whole SpatialEntity, for indexing and display; it need not depict any feature of it.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#RepresentativePoint</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="meta-attestation-type">
+<h2>Meta-attestation type<a class="headerlink" href="#meta-attestation-type" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:has_meta_type. The nature of a meta-attestation’s relationship to its target attestation.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AlternativeTo</span></code></p></td>
+<td><p>This attestation and the target are alternative readings of the same evidence: at most one of them is right. Each keeps its own certainty. Link every alternative in a set to the same first one. A set of alternatives is one piece of evidence, not several, so it must be counted once.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#AlternativeTo</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Annotates</span></code></p></td>
+<td><p>Adds a remark about the target attestation, with its own source, without supporting, contradicting or refining it. The remark is the meta-attestation’s notes.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Annotates</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Bundles</span></code></p></td>
+<td><p>Groups the target with other related attestations.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Bundles</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Challenges</span></code></p></td>
+<td><p>Questions the validity of the target attestation.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Challenges</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Contradicts</span></code></p></td>
+<td><p>Asserts that the target attestation is incorrect.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Contradicts</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DerivedFrom</span></code></p></td>
+<td><p>This attestation’s value was derived from the target attestation’s, as a normalised search form is derived from an attested spelling.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#DerivedFrom</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Refines</span></code></p></td>
+<td><p>Provides more precise information than the target attestation.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Refines</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Retracts</span></code></p></td>
+<td><p>The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. For a claim its maker takes back, such as a bad import, where plato:Contradicts would read as one scholar disputing another. A tool showing the current state leaves a retracted attestation out. A retraction is itself an attestation: retracting it withdraws the withdrawal, and the target holds again.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Retracts</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Supersedes</span></code></p></td>
+<td><p>Replaces the target attestation with newer information.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Supersedes</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Supports</span></code></p></td>
+<td><p>Provides additional evidence for the target attestation.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Supports</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="occurrence-context">
+<h2>Occurrence context<a class="headerlink" href="#occurrence-context" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:occurrence_context. The capacity in which an attested form occurs in its source.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Direct</span></code></p></td>
+<td><p>The form refers to the SpatialEntity directly. The default occurrence context, usually omitted.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Direct</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">InFieldName</span></code></p></td>
+<td><p>The form survives only as an element of a later minor name, such as a field name.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#InFieldName</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">InPersonalName</span></code></p></td>
+<td><p>The form occurs only as an element of a personal name, a surname or by-name; the (p) of the place-name surveys.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#InPersonalName</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="relative-qualifier">
+<h2>Relative qualifier<a class="headerlink" href="#relative-qualifier" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:relative_qualifier. How a facet is defined relative to its anchor when bearing and distance are not applicable or not sufficient.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BetweenXAndY</span></code></p></td>
+<td><p>Between two anchors, given as two values of plato:relative_to, in no particular order.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#BetweenXAndY</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Beyond</span></code></p></td>
+<td><p>On the far side of the anchor from the point of view of the source.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Beyond</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DuringReignOf</span></code></p></td>
+<td><p>A timespan defined by the reign or tenure of the anchor.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#DuringReignOf</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Near</span></code></p></td>
+<td><p>Close to the anchor, without a stated bearing or distance.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Near</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">UpstreamOf</span></code></p></td>
+<td><p>Upstream of the anchor along a watercourse.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#UpstreamOf</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">VariantOf</span></code></p></td>
+<td><p>A name defined as a variant of the anchor name.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#VariantOf</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Within</span></code></p></td>
+<td><p>Inside the anchor.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Within</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="source-stance">
+<h2>Source stance<a class="headerlink" href="#source-stance" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:source_stance. How firmly the source itself asserts what an attestation records, as distinct from anyone’s confidence in it.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">StanceAsserted</span></code></p></td>
+<td><p>The source states it as so, on its own account. The default source stance, usually omitted.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#StanceAsserted</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">StanceDoubted</span></code></p></td>
+<td><p>The source raises it and declines to settle it. Not a denial, which is plato:negated.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#StanceDoubted</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">StanceReported</span></code></p></td>
+<td><p>The source passes it on without vouching for it: ‘it is said’, ‘as Cambden noteth’.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#StanceReported</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">StanceTentative</span></code></p></td>
+<td><p>The source states it, but with a hedge: ‘as it seems’, ‘were (if not are)’.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#StanceTentative</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="timespan-role">
+<h2>Timespan role<a class="headerlink" href="#timespan-role" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:timespan_role. What an attestation’s timespans date: when what it records held, or the span of the evidence for it.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EvidenceSpan</span></code></p></td>
+<td><p>The span of the evidence: the dates of the earliest and latest documents that mention the entity. Not the dates of the entity itself.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#EvidenceSpan</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WhenTrue</span></code></p></td>
+<td><p>The period during which what the attestation records held, according to the source. The default.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#WhenTrue</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="transcription-accuracy">
+<h2>Transcription accuracy<a class="headerlink" href="#transcription-accuracy" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:transcription_accuracy. How faithfully a transcribed value renders what the source shows.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TranscriptionAccurate</span></code></p></td>
+<td><p>The transcription renders what the source shows.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TranscriptionAccurate</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TranscriptionFalse</span></code></p></td>
+<td><p>The transcribed form is not in the source at all: a ghost form, kept because it circulates and must be recognisable.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TranscriptionFalse</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TranscriptionInaccurate</span></code></p></td>
+<td><p>The transcription departs from what the source shows, by misreading or error, but is a reading of something the source contains.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TranscriptionInaccurate</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="transcription-completeness">
+<h2>Transcription completeness<a class="headerlink" href="#transcription-completeness" title="Link to this heading">¶</a></h2>
+<p>Starter concepts for plato:transcription_completeness. Whether a transcribed value is whole, and if not, whether the lost part can be supplied.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TranscriptionComplete</span></code></p></td>
+<td><p>Nothing of the value is lost.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TranscriptionComplete</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TranscriptionNonReconstructable</span></code></p></td>
+<td><p>Part of the value is lost and cannot be supplied.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TranscriptionNonReconstructable</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TranscriptionReconstructable</span></code></p></td>
+<td><p>Part of the value is lost, damaged or abbreviated, but can be supplied with confidence.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#TranscriptionReconstructable</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="certainty-levels">
+<h2>Certainty levels<a class="headerlink" href="#certainty-levels" title="Link to this heading">¶</a></h2>
+<p>The words that the <code class="docutils literal notranslate"><span class="pre">certainty_level</span></code> column, and <code class="docutils literal notranslate"><span class="pre">certaintyLevel</span></code> in JSON, can name, for certainty given in words rather than as a number.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Full identifier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Certain</span></code></p></td>
+<td><p>The statement is certain: the source, or the contributor, has no doubt of it.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Certain</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LessCertain</span></code></p></td>
+<td><p>The statement is probable but not certain.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#LessCertain</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Uncertain</span></code></p></td>
+<td><p>The statement is doubtful: possible, but not established.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/plato#Uncertain</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="relation-types">
+<h2>Relation types<a class="headerlink" href="#relation-types" title="Link to this heading">¶</a></h2>
+<p>The relations that the <code class="docutils literal notranslate"><span class="pre">relation_type</span></code> column of the relations sheet, and <code class="docutils literal notranslate"><span class="pre">relationType</span></code> in JSON, can name.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Reads as</p></th>
+<th class="head"><p>Inverse</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BeginsAt</span></code></p></td>
+<td><p>begins_at</p></td>
+<td><p>beginning_of</p></td>
+<td><p>The subject segment begins at the target: a leg of an itinerary at the station it leaves, a river reach at its upstream confluence. With plato:EndsAt it gives a segment a direction. A segment with no direction is joined to its two ends with plato:HasEnd.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BirthplaceOf</span></code></p></td>
+<td><p>birthplace_of</p></td>
+<td><p>born_at</p></td>
+<td><p>The subject is where the target person was born.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ConnectedTo</span></code></p></td>
+<td><p>connected_to</p></td>
+<td><p>connected_to</p></td>
+<td><p>The subject and target are directly connected, in no particular direction: an attestation that A is connected to B says the same as one that B is connected to A. For a connection that runs one way, use plato:LeadsTo. A connection known in both directions from sources that each give one is better recorded as two LeadsTo attestations, each with its own source, than as one ConnectedTo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ContainedIn</span></code></p></td>
+<td><p>contained_in</p></td>
+<td><p>contains</p></td>
+<td><p>The subject SpatialEntity is contained in the target SpatialEntity, for the attested timespan: a parish in a hundred, a hundred in a county. Not an identity relation and not fixed by the class model; it is a claim, with a source and a certainty, like any other attestation. When a dataset’s containing regions are matched to a gazetteer (a parish’s county and country, looked up level by level), two claims are made, and kept apart. The dataset’s own claim is ContainedIn, pointing at a region minted from the dataset itself, one for each full chain of containers (England, Surrey), never for the name alone, so that two regions with one name in different chains are not merged. The reviewer’s decision that this region is the gazetteer’s is an IdentityRelation from it, whose promoted_from names the Candidate that holds the matching software’s similarity_score. A match score is not a certainty, so it is never put on the containment. In Linked Places Format the two are written together as one gvp:broaderPartitive relation: its relationTo is the identity’s object, its certainty the identity attestation’s certainty level, its whg_match_score the Candidate’s score and its label the region’s name. A region assigned by hand, with no software suggestion, may be stated directly against the gazetteer’s address instead.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DeathplaceOf</span></code></p></td>
+<td><p>deathplace_of</p></td>
+<td><p>died_at</p></td>
+<td><p>The subject is where the target person died.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DepictedIn</span></code></p></td>
+<td><p>depicted_in</p></td>
+<td><p>depicts</p></td>
+<td><p>The subject is shown in the target: a photograph, map, plan, drawing or other image, identified by its address in a collection.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EndsAt</span></code></p></td>
+<td><p>ends_at</p></td>
+<td><p>end_of</p></td>
+<td><p>The subject segment ends at the target: a leg of an itinerary at the station it reaches, a river reach at its downstream confluence. See plato:BeginsAt.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FindspotOf</span></code></p></td>
+<td><p>findspot_of</p></td>
+<td><p>found_at</p></td>
+<td><p>The target object (a coin, an inscription, a manuscript) was found at the subject. The timespan is when it was found, if known.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HasEnd</span></code></p></td>
+<td><p>has_end</p></td>
+<td><p>one_end_of</p></td>
+<td><p>The subject segment has the target as one of its ends, in no particular direction: a stretch of road between two towns, walked either way. An undirected segment has two HasEnd attestations. Not plato:ConnectedTo, which joins two places directly: were a segment connected to its ends, every place would be two steps from its neighbours.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HomelandOf</span></code></p></td>
+<td><p>homeland_of</p></td>
+<td><p>has_homeland</p></td>
+<td><p>The subject is land that the target people lived in or held, as the source says: the target is a people described elsewhere, identified by its address where it has one, and named by plato:related_label. A people is not itself a SpatialEntity.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LeadsTo</span></code></p></td>
+<td><p>leads_to</p></td>
+<td><p>reached_from</p></td>
+<td><p>A directed connection, from the subject (attests_about) to the target (relates_to): one river flowing into another, a post road carrying mail from one town to the next, letters sent from one city to another. It joins two places; the reaches and legs of a network are segments, whose direction is given by plato:BeginsAt and plato:EndsAt. Not river-specific: a project declares its own narrower types (‘flows into’, ‘carries post to’) with plato:broader_relation pointing here, so that a consumer that knows only LeadsTo still follows them in the right direction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MemberOf</span></code></p></td>
+<td><p>member_of</p></td>
+<td><p>has_member</p></td>
+<td><p>The subject is a member of the target route, itinerary or network: a station on a road, a stop on a journey, a port in a trade network, a segment of a river system. Its position, where the source gives one, is plato:sequence on the same attestation. A route may be a member of another route (one stage of a pilgrimage), but not, through any chain of memberships, of itself. Not containment: a town on a road is not within it, and a network’s members need not lie inside anything.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ResidenceOf</span></code></p></td>
+<td><p>residence_of</p></td>
+<td><p>resided_at</p></td>
+<td><p>The target person or group lived at the subject, for the attested timespan.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SettingOf</span></code></p></td>
+<td><p>setting_of</p></td>
+<td><p>took_place_at</p></td>
+<td><p>The target event (a battle, a council, a fair) took place at the subject, wholly or in part.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SubjectOf</span></code></p></td>
+<td><p>subject_of</p></td>
+<td><p>about</p></td>
+<td><p>The target is about the subject: an archival file, a site record, a report or a publication, identified by its address. Not a citation of the target as evidence for another statement, which is plato:has_citation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WorkplaceOf</span></code></p></td>
+<td><p>workplace_of</p></td>
+<td><p>worked_at</p></td>
+<td><p>The target person or group worked, or held office, at the subject, for the attested timespan: Linked Traces’ heldOffice, and work generally.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="glossary.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Glossary</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="spreadsheets/reference.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Sheet reference</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Pelagios Network Place Working Group (CC BY 4.0)
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Vocabularies</a><ul>
+<li><a class="reference internal" href="#attribution-status">Attribution status</a></li>
+<li><a class="reference internal" href="#kind-of-spatial-entity">Kind of spatial entity</a></li>
+<li><a class="reference internal" href="#form-status">Form status</a></li>
+<li><a class="reference internal" href="#geometry-role">Geometry role</a></li>
+<li><a class="reference internal" href="#meta-attestation-type">Meta-attestation type</a></li>
+<li><a class="reference internal" href="#occurrence-context">Occurrence context</a></li>
+<li><a class="reference internal" href="#relative-qualifier">Relative qualifier</a></li>
+<li><a class="reference internal" href="#source-stance">Source stance</a></li>
+<li><a class="reference internal" href="#timespan-role">Timespan role</a></li>
+<li><a class="reference internal" href="#transcription-accuracy">Transcription accuracy</a></li>
+<li><a class="reference internal" href="#transcription-completeness">Transcription completeness</a></li>
+<li><a class="reference internal" href="#certainty-levels">Certainty levels</a></li>
+<li><a class="reference internal" href="#relation-types">Relation types</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=809ddda4"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/translations.js?v=8fd896e3"></script>
+    <script src="_static/plato-tooltip.js?v=d3050378"></script>
+    </body>
+</html>
