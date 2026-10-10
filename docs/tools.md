@@ -906,6 +906,7 @@ location you adopt in Chora. To get the token, sign in at
 and generate an **API Token**. You give the token in the lookup panel, and the
 **Permissions** panel says where it is kept. The rest of the workflow needs no
 account.
+
 The questions under 3 are:
 
 - *Does the table say which region each place is in (a parish, a county)?*
