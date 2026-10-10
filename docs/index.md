@@ -66,13 +66,13 @@ gives you three things.
   towards implementing PLATO, so that data organised this way can more easily
   be welcomed there.
 
-  Its *Map your Data* tool, in beta testing and reached from the WHG site,
-  *reconciles* your places with established reference gazetteers such as
-  Pleiades, GeoNames and Wikidata: it finds the record for the same place,
-  so that you can take its coordinates where yours have none. *Map your
-  Data* is now migrating out of WHG and into [PLATO tools](https://pelagios.org/plato-tools/),
-  where it becomes the first guided workflow in
-  {ref}`Methodos <methodos>`: the regions your places lie in are matched
+  Its *Map your Data* tool, reached from the WHG site, *reconciles* your
+  places with established reference gazetteers such as Pleiades, GeoNames
+  and Wikidata: it finds the record for the same place, so that you can take
+  its coordinates where yours have none. With WHG's agreement, *Map your
+  Data* is moving out of WHG and into [PLATO tools](https://pelagios.org/plato-tools/),
+  and the PLATO tools version is the one now being tested. There it is the
+  first guided workflow in {ref}`Methodos <methodos>`: the regions your places lie in are matched
   level by level, then the places themselves, and each place is located from
   its match or drawn, including over a georeferenced historical map, before
   the result is checked and written out in PLATO. Like the rest of PLATO

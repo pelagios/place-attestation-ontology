@@ -897,6 +897,15 @@ in this browser. A workflow chosen but not yet begun can be let go with
 
 From a list of place names to places identified in the World Historical
 Gazetteer, located, checked and written out, and published if you say so.
+
+**What you need first.** The lookups in the World Historical Gazetteer need an
+account of your own with WHG, enrolled in WHG's beta, and a WHG token. That
+covers the regions in step 4, the places in step 5, and finding a record whose
+location you adopt in Chora. To get the token, sign in at
+[whgazetteer.org](https://whgazetteer.org/) with ORCiD, open your **Profile**
+and generate an **API Token**. You give the token in the lookup panel, and the
+**Permissions** panel says where it is kept. The rest of the workflow needs no
+account.
 The questions under 3 are:
 
 - *Does the table say which region each place is in (a parish, a county)?*
