@@ -265,10 +265,14 @@ unless that one is the same record repeated. In the review of places,
 **Accept the N that pass WHG's guards** accepts each place's one passing
 candidate, as the kind of match you choose (close match by default). A
 candidate too far from the place, or in another country, is left out and
-counted, for you to decide. So is a place for which two places of the same
-name were found where it was looked for, even when WHG's guard lets one of
-them through: the place says so ("2 places of this name in …: left for
-you"). Each acceptance is recorded as your decision,
+counted, for you to decide. So is a place for which two places of its name
+were found where it was looked for, even when WHG's guard lets one of them
+through: the place says so ("2 places of this name in …: left for you").
+Within a region, every place of that name in it counts, however far off;
+otherwise only those within the greatest distance. Records of the name
+within 2 km of each other are taken for one place, as WHG often holds one
+village several times over, from different gazetteers. Only titles are
+compared, not other names. Each acceptance is recorded as your decision,
 naming the guard; **Undo** takes them back. Nothing is ever accepted
 automatically.
 
