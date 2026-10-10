@@ -227,6 +227,23 @@ the review beside your own matches, nearest first, with each record's licence.
 WHG's scores rank the answers to one search only, not how likely a match is,
 so the decision is still yours.
 
+**The language of the names.** Each name is sent to the World Historical
+Gazetteer with its language, so that WHG reads it as a name in that language:
+the name's own language tag where it has one (`en-GB` is sent as `en`, `eng`
+as `en`), else the language you give for the whole dataset in the lookup
+panel (*The dataset's language*, a code such as `en`, `la` or `ang`; on the
+command line, `--lang`). A code the field does not recognise is refused
+beside it, and nothing is sent until it is corrected or emptied. A name
+tagged `und` or `mis` takes the dataset's language; one tagged `mul` or
+`zxx` is sent with none. A name with no language is never sent as
+"undetermined", and the preview says how many queries go without one. A
+language is not a filter: it leaves nothing out.
+
+**Regions are matched to areas.** In the region review, each region is looked
+up among records with an outline only, so that a region is never matched to
+a point (a town of the same name), within which nothing could be looked up.
+The places themselves are looked up among all records.
+
 (region-review)=
 ## Reviewing regions, level by level
 
@@ -599,12 +616,16 @@ this browser. PLATO tools is on pelagios.org, which other Pelagios sites
 share, so, as the panel says, any Pelagios site can read them, on this
 computer only.
 
-### Still to come
+### Adopting a location from a match
 
-- **Adopting a location from a match**: taking a location from a matching
-  record in another gazetteer, such as the World Historical Gazetteer. That
-  records two claims, kept apart as PLATO keeps them: that this place is
-  that record, and, as a new attestation citing the gazetteer, where it is.
+From a place's card, *Find in a gazetteer…* looks the place up in the World
+Historical Gazetteer and adopts a record's location. That records two claims,
+kept apart as PLATO keeps them: that this place is that record, and, as a new
+attestation citing the gazetteer, where it is. The search looks where the
+place lies: within the nearest region your dataset identifies with WHG
+records (its `ContainedIn` regions), and in its countries, and the panel says
+so before anything is sent. If the right record is not found there, **Search
+everywhere** looks without them; it is never done for you.
 
 ## Publishing your dataset
 
