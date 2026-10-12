@@ -61,6 +61,14 @@ Data Cube check holds the whole graph; and a match review holds the places of
 both datasets. Gzipping a file makes it smaller to keep and send, but not
 smaller to work on. The command line also takes many files at once.
 
+**Stopping a run.** **Cancel** stops a run on the page at once, even in the
+middle of a long step, and keeps nothing it had half-written: no part of a
+file is offered. In a [workflow](#methodos), the step is then *Stopped by
+you*, to run again. For a moment afterwards the page may say "The cancelled
+run's files are still being released; try again in a moment." On the command
+line, Ctrl-C stops a run in the same way, and removes its working files and
+any file it had not finished.
+
 (the-kept-file)=
 ## The file you chose, kept
 
@@ -146,6 +154,12 @@ empty. Without any base, PLATO tools uses a stand-in,
 `https://example.org/my-dataset/`, which is not a permanent address. Converting *to* the tables, an address is
 kept only if reading the tables back would give the same one; otherwise the
 report says it is lost.
+
+**Gzipping the output.** Under *Options*, **Gzip the converted file**
+compresses the file as it is written and adds `.gz` to its name; on the
+command line, give `--gzip` to `convert` (it is for converting only). The
+same data always gives the same bytes. The spreadsheet tables are not
+gzipped, as they are a zip already, and the report says so.
 
 ## Comparing two versions
 
@@ -243,9 +257,38 @@ sent before anything goes: each place's name, its other names only if you
 ask, and its coordinates only if you choose to search near it; and, where a
 [Scope](#scope) is set, which of its parts are sent and as what; nothing else
 of your dataset. What comes back joins
-the review beside your own matches, nearest first, with each record's licence.
-WHG's scores rank the answers to one search only, not how likely a match is,
-so the decision is still yours.
+the review beside your own matches, with each record's licence and its kind of
+place, nearest first. A candidate whose kind of place clashes with your
+place's own (a lake for a town) comes after the others as near, and says so
+("Ranked down: …"). Your place's own kind decides the order only among
+records of one place (within 2 km of each other), as when WHG holds one
+village several times over, from different gazetteers. WHG's scores rank the
+answers to one search only, not how likely a match is, so the decision is
+still yours.
+
+**Kind of place.** Each candidate from the World Historical Gazetteer shows
+*Kind of place:* with its types: a type from the Getty AAT by WHG's label for
+it, with its code, and any other source's type as its code alone (such as
+`gn:P.PPL` or `osm:village`), never a label made up for it; or *type unknown*
+when the record gives none. Your place's own kind is the types your dataset
+gives it (in a table of places, its kind-of-place column). Some kinds never go
+together, such as a body of water and a settlement; a settlement, a division
+and a landform do (a parish named after its village, a village after its
+hill), and a kind these tools do not know decides nothing. Chora's
+[*Find in a gazetteer…*](#adopting-a-location-from-a-match) panel shows each
+record's kind in the same way, naming by label only the types of
+[Scope](#scope)'s shortlist.
+
+**Placeholders.** WHG holds some records whose only name is a cataloguing
+placeholder ("Oknoname 037068 Dam" and the like). These are left out of the
+candidates, and the lookup says how many, in its summary and on a place left
+with nothing.
+
+**WHG's limits.** WHG allows each token a number of requests a day. When it
+is reached, the lookup stops, keeps what was answered, and says so: "WHG's
+daily limit for this token is reached; it resets at …", in your own time.
+Your token is not at fault, and is not asked for again: resume the lookup
+once the limit has reset. WHG's limit per minute is waited out by itself.
 
 (the-whg-token)=
 **The WHG token.** The field for it, *Your WHG token*, shows only when the
@@ -303,8 +346,9 @@ the page, under *Scope of the lookups*, in four parts:
   places with no dates**. Unticked, a place with no dates is left out
   whenever years are given, and the Scope says so: *Places with no dates are
   left out*.
-- **Only these sources**: the WHG sources to look in. Nothing chosen means
-  every source.
+- **Only these sources**: the WHG sources to look in, sent as their
+  namespaces. Nothing chosen means every source. Unlike the other parts,
+  the sources narrow WHG's search itself.
 
 **Done** goes back to the step. **Clear the Scope** sets it back to nothing.
 
@@ -326,9 +370,10 @@ too. The kinds of place, the years and the sources still apply to every
 place. A place looked up before its regions are settled keeps the Scope's
 Where.
 
-**A narrow Scope can leave a place with nothing.** Each part is a filter: WHG
-first takes its best two hundred or so matches by name, then leaves out every
-one outside the Scope, the right answer too. A place for which nothing was
+**A narrow Scope can leave a place with nothing.** The sources narrow WHG's
+search itself, but the Where, the kinds of place and the years are filters:
+WHG first takes its best two hundred or so matches by name, from the sources
+chosen, then leaves out every one outside them, the right answer too. A place for which nothing was
 left says so ("Nothing within the Scope among WHG's best name matches…"), and
 offers **Look it up again without Scope**, for that place alone, with nothing
 of the Scope sent. Nothing is ever relaxed by itself.
@@ -373,8 +418,9 @@ sent, by WHG's own measure. It is tied when another candidate scores as high,
 unless that one is the same record repeated. In the review of places,
 **Accept the N that pass WHG's guards** accepts each place's one passing
 candidate, as the kind of match you choose (close match by default). A
-candidate too far from the place, or in another country, is left out and
-counted, for you to decide. So is a place for which two places of its name
+candidate too far from the place, in another country, or of another kind of
+place than yours (a lake for a town, say), is left out and counted, for you
+to decide: a clashing kind is never accepted in bulk. So is a place for which two places of its name
 were found where it was looked for, even when WHG's guard lets one of them
 through: the place says so ("2 places of this name in …: left for you").
 Within a region, every place of that name in it counts, however far off;
@@ -767,6 +813,8 @@ run (on the page, "Web address for your identifiers"; on the command line,
    copy: for a published dataset it refuses attestations without addresses.
    You can run it on the draft first, to see what the description still
    lacks before you mint.
+   It also warns of [licences](#licences-that-travel-with-what-you-copy)
+   that may not sit under the dataset's own.
 3. **Site** makes a website for GitHub Pages from that copy, with the
    workflow that publishes it.
 4. **w3id** writes the redirect rules that send your w3id.org addresses to
@@ -835,6 +883,80 @@ A dataset is published when its `status` is `published`. From then on:
 Until then, the site says on every page that the dataset is a draft and not
 to be cited, and asks search engines to leave it out.
 
+(keep-it-private)=
+### Keep it private until it is ready
+
+Everything PLATO tools does to a dataset is done on your own computer:
+checking, converting, comparing, matching (Krisis), drawing (Chora) and
+preparing it for publishing (Agora). Nothing is uploaded. So the way to keep
+work in progress private is to keep it there: prepare, match and review it
+locally, and put it anywhere public only when you are ready for it to be
+seen.
+
+Two things do leave your computer, and only when you allow them:
+
+- **Looking places up in the World Historical Gazetteer** (Krisis's lookup,
+  and Chora's *Find in a gazetteer…*) sends the names you look up, and any
+  limits you set (such as countries, a region, years), with your WHG token, which
+  says who asked. It sends no dataset: you never need to upload a dataset to
+  WHG to look its places up.
+- **A site you upload** is public, even while the dataset is a draft. Every
+  page of a draft site says DRAFT and asks search engines not to list it
+  (`noindex`), but anyone who has its address can read every page and
+  download the whole dataset, and an address is easily passed on. GitHub
+  Pages serves a site from a private repository to everyone too (only an
+  Enterprise organisation can restrict it), and the workflow Agora writes
+  publishes the site on every push that changes the dataset.
+
+So, until the dataset is ready:
+
+- look at the site on your own computer (`npx serve my-tables-with-ids-site`)
+  rather than uploading it;
+- keep the dataset in a private repository, or in none, and commit the
+  site's workflow only when the site may be seen;
+- to show a draft to a colleague, send them the files.
+
+The report and the site of any dataset not yet published say so too.
+
+(licences-that-travel-with-what-you-copy)=
+### Licences that travel with what you copy
+
+An attestation that copies from a source, such as a location adopted from the
+World Historical Gazetteer or a line traced from a historical map, comes under
+that source's licence, and a dataset cannot pass it on more freely than the
+source allows. Chora records the licence of what it copies: an adopted
+location carries the licence of the source WHG had it from, and a traced
+drawing the licence of the map, where each is known.
+
+So the report, on the page and on the command line, reads the licence of each
+source an attestation cites against the dataset's own, and warns, with a
+count and a few examples (the attestation, its source's licence and the
+source), of any that may not sit under it:
+
+- a source for non-commercial use only (NC), in a dataset whose licence
+  allows commercial use;
+- a source whose licence allows no adaptations (ND), even under the same
+  licence;
+- a share-alike source (such as ODbL or CC BY-SA), in a dataset under
+  another licence;
+- a source that asks for credit (such as CC BY), in a public-domain dataset
+  (CC0, PDDL or the Public Domain Mark).
+
+A rights statement, from [rightsstatements.org](https://rightsstatements.org/)
+(such as In Copyright), is not an open licence: it grants nothing, and the
+report says that you may need the holder's permission. A licence these tools
+do not know, or a location copied from a source that gave none, is reported
+as unknown: find out the source's licence and record it on the source, and
+the report compares it. A dataset with no licence of its own is not compared
+at all, and the report says so.
+
+Each warning says what to do: publish the dataset under a licence compatible
+with the source's, remove those attestations (a location can be drawn again
+from evidence of your own), or ask the source's holder. Each is a warning,
+not a problem, since only you know whether an attestation copied from its
+source or only cites it for a fact; and each is a reading of the licences'
+terms, "not legal advice".
+
 ### The deposit files
 
 **Report** writes a folder (its name ends `-deposit`) of files made from the
@@ -846,6 +968,11 @@ dataset's description, for a repository that gives it a DOI. Its
 | `.zenodo.json` | Zenodo's description of the deposit | At the top of the GitHub repository the dataset is released from, where Zenodo reads it with each release |
 | `CITATION.cff` | How to cite the dataset | At the top of the same repository, where GitHub shows *Cite this repository* from it |
 | `datacite.json` | DataCite's description, for a repository that registers DOIs itself | Sent to that repository, with the DOI added |
+
+The dataset's licence is given to Zenodo by Zenodo's own id for it (the
+Public Domain Mark, for which Zenodo has none, as *Other (Public Domain)*). A
+licence these tools do not recognise is left out, for you to choose on the
+repository's form, and the report says so.
 
 Once Zenodo has given the dataset a DOI for all its versions (the concept
 DOI), run the report again with it (`--concept-doi`, or "Concept DOI" on the
