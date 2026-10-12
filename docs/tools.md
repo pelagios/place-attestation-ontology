@@ -893,13 +893,18 @@ work in progress private is to keep it there: prepare, match and review it
 locally, and put it anywhere public only when you are ready for it to be
 seen.
 
-Two things do leave your computer, and only when you allow them:
+Nothing else leaves your computer unless you allow it in the **Permissions**
+panel, and your dataset itself never does. What can go, once allowed:
 
 - **Looking places up in the World Historical Gazetteer** (Krisis's lookup,
-  and Chora's *Find in a gazetteer…*) sends the names you look up, and any
-  limits you set (such as countries, a region, years), with your WHG token, which
-  says who asked. It sends no dataset: you never need to upload a dataset to
-  WHG to look its places up.
+  and Chora's *Find in a gazetteer…*) sends the names you look up, any limits
+  you set (such as countries, a region, kinds of place, years or sources), and
+  a place's coordinates if you search near it, with your WHG token, which says
+  who asked. The preview shows exactly what will be sent. The names of kinds
+  of place are fetched from WHG without the token. You never need to upload a
+  dataset to WHG to look its places up.
+- **Chora's maps** fetch their tiles and images from the sites you allow
+  (see [Basemaps](#chora)); nothing of yours is sent with them.
 - **A site you upload** is public, even while the dataset is a draft. Every
   page of a draft site says DRAFT and asks search engines not to list it
   (`noindex`), but anyone who has its address can read every page and
