@@ -61,6 +61,24 @@ Data Cube check holds the whole graph; and a match review holds the places of
 both datasets. Gzipping a file makes it smaller to keep and send, but not
 smaller to work on. The command line also takes many files at once.
 
+(the-kept-file)=
+## The file you chose, kept
+
+While **Keep my working data between visits** is on (in the **Permissions**
+panel, under *Your working data*), the file you choose on the main page, or
+the files, is kept in this browser, with no time limit, so that you need not
+choose it again. It stays until you forget it, clear a workflow's files
+(**Clear them**), turn the setting off, or choose another file, which takes
+its place. It never leaves your computer.
+
+On a new visit, or after a reload, it is offered above the place where you
+choose a file, never chosen for you: *Kept from last time: …*, with **Use
+it** and **Forget it**. Coming back from [Chora](#chora), or taking up a
+[workflow](#methodos) again, it is chosen again by itself. The
+**Permissions** panel lists it too, with **Forget it**. Like everything else
+kept in this browser, it can be read by other pelagios.org pages on this
+computer (see [who sees what](#which-map-and-who-sees-what)).
+
 ## Checking
 
 **Check** holds a file to PLATO's own definitions. A JSON document is checked
@@ -218,21 +236,40 @@ attestations, each naming its place by its web address.
 **Looking places up in the World Historical Gazetteer.** The review can also
 look your places up in the [World Historical Gazetteer](https://whgazetteer.org/)
 (WHG), or another gazetteer that offers the same kind of search, online and
-only if you choose. You use a WHG token of your own, and allow the lookup in
-the **Permissions** panel of PLATO tools, which also says where the token is
-kept. A preview shows exactly what will be sent before anything goes: each
-place's name, its other names only if you ask, and its coordinates only if you
-choose to search near it; nothing else of your dataset. What comes back joins
+only if you choose. You allow the lookup in the **Permissions** panel of
+PLATO tools, and give a WHG token of your own (see
+[the WHG token](#the-whg-token), below). A preview shows exactly what will be
+sent before anything goes: each place's name, its other names only if you
+ask, and its coordinates only if you choose to search near it; and, where a
+[Scope](#scope) is set, which of its parts are sent and as what; nothing else
+of your dataset. What comes back joins
 the review beside your own matches, nearest first, with each record's licence.
 WHG's scores rank the answers to one search only, not how likely a match is,
 so the decision is still yours.
+
+(the-whg-token)=
+**The WHG token.** The field for it, *Your WHG token*, shows only when the
+World Historical Gazetteer is the service chosen, in the lookup panel and in
+Chora's [*Find in a gazetteer…*](#adopting-a-location-from-a-match) panel,
+which share it. Before a token is given, the field is empty, with
+**Remember my token** beside it. Press Enter to give the token for this tab
+only, or **Remember my token** to keep it in this browser. Once a token is
+given, the field shows `••••••••`, never the token itself, with where it is
+kept beside it, *Token kept for this tab only* or *Token remembered in this
+browser*, and **Forget the token**, which forgets it in this browser at once,
+without asking. Forgetting a token does not revoke it: only regenerating it
+in your WHG profile does. The field takes only what you type or paste into
+it: a password your browser has saved is never taken for a token. The
+**Permissions** panel says where the token is kept too, and can forget it.
 
 **The language of the names.** Each name is sent to the World Historical
 Gazetteer with its language, so that WHG reads it as a name in that language:
 the name's own language tag where it has one (`en-GB` is sent as `en`, `eng`
 as `en`), else the language you give for the whole dataset in the lookup
 panel (*The dataset's language*, a code such as `en`, `la` or `ang`; on the
-command line, `--lang`). A code the field does not recognise is refused
+command line, `--lang`). You need not know the code: type a language's code
+or its name, and the field offers the languages that fit, historical ones
+among them, so that *old eng* finds Old English, `ang`. A code the field does not recognise is refused
 beside it, and nothing is sent until it is corrected or emptied. A name
 tagged `und` or `mis` takes the dataset's language; one tagged `mul` or
 `zxx` is sent with none. A name with no language is never sent as
@@ -243,6 +280,58 @@ language is not a filter: it leaves nothing out.
 up among records with an outline only, so that a region is never matched to
 a point (a town of the same name), within which nothing could be looked up.
 The places themselves are looked up among all records.
+
+(scope)=
+## Scope: confining every lookup
+
+A **Scope** confines every lookup in the World Historical Gazetteer to a part
+of the world, kinds of place, years and sources. It is sent to WHG only;
+another gazetteer is sent nothing of it. **Edit** opens it in the centre of
+the page, under *Scope of the lookups*, in four parts:
+
+- **Where**: **Anywhere**; **In these countries**; **Within a place in WHG**,
+  found there by name, among records with an outline only (a point cannot
+  hold places); or **Within an area drawn on a map**, drawn corner by corner
+  on the Natural Earth map, from this site.
+- **What kinds of place**: chosen from a shortlist (villages, parishes,
+  rivers and so on), or, under **More types…**, from WHG's whole tree of the
+  AAT's place types. WHG matches a type exactly, not the narrower types under
+  it, so each type chosen is sent with all of them, and its label says how
+  many ("Villages (and 1 narrower type)").
+- **When**: **From the year** and **To the year**, either or both (a year
+  before the common era is negative: `-500` for 500 BCE), with **Include
+  places with no dates**. Unticked, a place with no dates is left out
+  whenever years are given, and the Scope says so: *Places with no dates are
+  left out*.
+- **Only these sources**: the WHG sources to look in. Nothing chosen means
+  every source.
+
+**Done** goes back to the step. **Clear the Scope** sets it back to nothing.
+
+**Whose Scope it is.** In a workflow, the Scope is the workflow's: kept with
+it, in this browser and in its downloaded record, and used by every WHG
+lookup it makes, including Chora's *Find in a gazetteer…* when Chora is
+opened for the workflow. It is shown as one line in the
+[tracker](#the-tracker), such as *Scope: GB, IE · Villages · 1500 to 1600*,
+which opens to its four parts, with **Edit**. Outside a workflow, the lookup
+panel has a Scope of its own, for that tab only. A workflow begun while the
+tab has one asks whether to use it (**Use it** or **No**), and never takes it
+in silently.
+
+**What a row already says comes first.** Once the regions in your table's
+region columns are matched, each place is looked up within its own regions,
+not within the Scope's Where, and so are the regions below the widest. A
+place's own filters in the lookup panel (its countries, near its point) win
+too. The kinds of place, the years and the sources still apply to every
+place. A place looked up before its regions are settled keeps the Scope's
+Where.
+
+**A narrow Scope can leave a place with nothing.** Each part is a filter: WHG
+first takes its best two hundred or so matches by name, then leaves out every
+one outside the Scope, the right answer too. A place for which nothing was
+left says so ("Nothing within the Scope among WHG's best name matches…"), and
+offers **Look it up again without Scope**, for that place alone, with nothing
+of the Scope sent. Nothing is ever relaxed by itself.
 
 (region-review)=
 ## Reviewing regions, level by level
@@ -258,15 +347,18 @@ it is settled, with a match or with **None of these**. Its search is then kept
 within the gazetteer's record for the region above, or within all its records
 taken together when it was matched to more than one. Where that cannot be
 asked, it is kept to the area they cover. Either way, the match's countries
-are added. A constraint only ever takes candidates away: a country filter even
+are added. The widest level, which has no region above it, is kept within
+the [Scope](#scope)'s Where, if one is set, and so is a region whose region
+above has no match. A constraint only ever takes candidates away: a country filter even
 drops one with no country recorded. Each region says what it was looked up
 within. A search WHG could not narrow returns nothing, and the review says so:
 that is not a finding that there is no match.
 
 **Asking again.** When the right region is missing, ask again, for one region
 or a whole level: **Again without the countries**, **Within the area
-instead**, within the region above that instead, or **With no constraint**.
-Each button says how many queries and requests it will cost. Changing a
+instead**, within the region above that instead, or **With no constraint**,
+which also drops the Scope's Where (its kinds of place, years and sources
+still apply). Each button says how many queries and requests it will cost. Changing a
 settled region clears the decisions and candidates below it, after asking, and
 **Undo** puts them back. Once a place's regions are settled, the places are
 looked up within them and reviewed one at a time, as in
@@ -345,7 +437,12 @@ browser like the rest of PLATO tools, and reads the formats in
 [the table above](#what-it-reads-and-writes). A table of places of your own
 is read with its columns matched as PLATO tools guesses them; to correct the
 matching, convert the table to PLATO JSON on the main page and open that.
-Files already chosen on the main page are offered when you open Chora.
+Opened with **Open Chora** from the main page, Chora opens the files chosen
+there at once. From the start, its masthead offers the way back: **Back to
+PLATO tools**, where the files you chose are chosen again (while your working
+data is kept: see [the kept file](#the-kept-file)), or, when Chora was
+opened for a [workflow](#methodos), **Back to the workflow**. Going back by
+that link or by the browser's Back keeps the dataset chosen.
 
 Drop a file on the page, or choose one. The map shows every place with a
 location, grouped where they crowd together (it shows the first 50,000; find
@@ -610,8 +707,9 @@ basemap that cannot be loaded gives way to Natural Earth, and the page says
 why.
 
 Your permissions, your choice of basemap, any address you paste (with any
-key in it), your name as the one drawing, the historical maps you add, and
-your working data are kept in
+key in it), your name as the one drawing, the historical maps you add, your
+working data, a WHG token you ask to be remembered, and the file you last
+chose on the main page (see [the kept file](#the-kept-file)) are kept in
 this browser. PLATO tools is on pelagios.org, which other Pelagios sites
 share, so, as the panel says, any Pelagios site can read them, on this
 computer only.
@@ -625,7 +723,11 @@ attestation citing the gazetteer, where it is. The search looks where the
 place lies: within the nearest region your dataset identifies with WHG
 records (its `ContainedIn` regions), and in its countries, and the panel says
 so before anything is sent. If the right record is not found there, **Search
-everywhere** looks without them; it is never done for you.
+everywhere** looks without them; it is never done for you. When Chora was
+opened for a workflow that has a [Scope](#scope), the search keeps to its
+kinds of place, years and sources, and to its Where when the place's own
+regions and countries give none. The WHG token is given here as in the
+lookup panel (see [the WHG token](#the-whg-token)).
 
 ## Publishing your dataset
 
@@ -858,8 +960,9 @@ English; the tools keep their Greek names.
 
 ### The three questions
 
-Press **Not sure where to start? Answer three questions** at the top of the
-page, or choose the **Methodos** card among the tools. Three questions choose
+Press **Not sure where to start? Answer three questions**, in the right-hand
+column of the page (on a narrow screen, near the top), or choose the
+**Methodos** card among the tools. Three questions choose
 a workflow:
 
 1. **What do you have?** A list of place names (a spreadsheet or CSV), a text
@@ -891,19 +994,30 @@ link, **Tell us what you wanted to do** (see [below](#methodos-feedback)).
 
 ### The tracker
 
-A workflow you follow is shown above step 1 of the page, under **Your
-workflow**, as a list of its steps. Each step says its state, the tool that
-does it, and what it does:
+On a wide screen the main page has three columns: the tools on the left, the
+step at hand in the centre, and, on the right, a column that stays in view as
+you scroll. A workflow you follow is shown there, under **Your workflow**, as
+a list of its steps, each with a checkbox, the tool that does it, and what it
+does. A step's box is ticked once the step is done; the step at hand is
+marked with a ring; the steps still ahead are greyed until they are reached.
+A step the tools cannot do yet has a dashed box, with the reason beside it. It is skipped, not counted among the workflow's steps,
+and never refused: the workflow goes on without it, and its end says what was
+not done. On a narrower screen the page has two columns, the tools' cards
+below the steps; on a narrow one, such as a phone's, a single column, with
+the tracker folded into a strip at the top of the window, *Step n of N: …
+▾*, that opens to the whole of it. When a [Scope](#scope) is set, it is one
+line after the tracker's buttons.
 
-- **Done**: the step is finished.
-- **Now**: the step at hand.
-- **To come**: a step still ahead.
-- **Not yet available**: a step the tools cannot do yet, with the reason. It
-  is skipped, not counted among the workflow's steps, and never refused: the
-  workflow goes on without it, and its end says what was not done.
+While you follow a workflow, the page's own step numbers are hidden, so that
+there is one numbering: the centre is titled with the workflow's, *Step n of
+N: …*. The file you choose in *Choose your data* folds to one line, its name
+and size, with **Change** to choose another. A step's result stays in view,
+labelled *Result of step n: …*, until you act on the next step; it is then
+folded into its step's row in the tracker, with **Show its result** to see it
+again.
 
-The workflow begins when you choose its file in step 1 (or with **Choose the
-file** in the tracker). Steps are of two kinds:
+The workflow begins when you choose its file in *Choose your data* (or with
+**Choose the file** in the tracker). Steps are of two kinds:
 
 - **Done by the tools.** You run the step's tool on the page, as you would
   without a workflow, and the step is done when the run finishes. The run
@@ -931,9 +1045,10 @@ account of your own with WHG, enrolled in WHG's beta, and a WHG token. That
 covers the regions in step 4, the places in step 5, and finding a record whose
 location you adopt in Chora. To get the token, sign in at
 [whgazetteer.org](https://whgazetteer.org/) with ORCiD, open your **Profile**
-and generate an **API Token**. You give the token in the lookup panel, and the
-**Permissions** panel says where it is kept. The rest of the workflow needs no
-account.
+and generate an **API Token**. You give the token in the lookup panel (see
+[the WHG token](#the-whg-token)). The rest of the workflow needs no account.
+A [Scope](#scope), set from the tracker, confines every lookup the workflow
+makes.
 
 The questions under 3 are:
 
@@ -967,8 +1082,10 @@ The steps, with the tool that does each:
    [reviewing regions, level by level](#region-review).
 5. **Krisis: Look the places up in the World Historical Gazetteer.** Where
    the table gives regions, the places are looked up within their regions.
-   The lookup needs your WHG token and your permission (see
-   [reviewing matches](#match-review)).
+   The workflow's [Scope](#scope), if one is set, applies too: its kinds of
+   place, years and sources to every place, and its Where to a place whose
+   regions say nothing of where to look. The lookup needs your WHG token and
+   your permission (see [reviewing matches](#match-review)).
 6. **Krisis: Decide which candidates are the same place.** Yours: review the
    candidates, as in [reviewing matches](#match-review).
 7. Recording the decisions, by **Finish** in the review, as one of:
@@ -986,20 +1103,26 @@ The steps, with the tool that does each:
      your places keep that address.
 8. **Chora: Draw or trace the places still without a location.** Only if you
    said you would. Yours: **Open Chora** opens [Chora](#chora) for this
-   workflow. Draw or trace the places there, or take a location from a
-   gazetteer's match (**Adopt**), and save the dataset. Chora then offers
-   **Back to the workflow**. On the main page, press **Take the dataset back
-   from Chora** and choose the saved file in step 1: it is checked to be the
-   file Chora saved, by size and SHA-256, and then the step is done. If
-   nothing usable comes back, choose the dataset you saved in Chora in step 1
-   and press **This step is done**.
+   workflow, with the dataset already open in it, and a small tracker in its
+   panel giving the workflow, *Step n of N* and what the step is for. Draw or
+   trace the places there, or take a location from a gazetteer's match
+   (**Adopt**), and save the dataset. **Back to the workflow** is offered from
+   the start; until you save, it hands nothing back. Back on the main page,
+   by that link or by the browser's Back, the dataset is chosen again in
+   *Choose your data*. Press **Take the dataset back from Chora** and choose
+   the saved file: it is checked to be the file Chora saved, by size and
+   SHA-256, and then the step is done. If nothing usable comes back, choose
+   the dataset you saved in Chora in *Choose your data* and press **This step
+   is done**. **This step is done** with the dataset that went to Chora,
+   unchanged, is refused, since nothing drawn there is in it; if there was
+   nothing to draw, press **Nothing to draw: go on with this dataset**.
 9. **Elenchos: Check the result.**
 10. **Mneme: Compare the result with the dataset made from the table**, as in
     [comparing two versions](#comparing-two-versions).
 11. **Metaphrasis: Write it out**, in the format the workflow was given
     (PLATO JSON). The dataset is PLATO JSON by now, and a file is not
     converted into its own format: the step says **Ready to download**, with
-    a **Download** button for the file chosen in step 1, and is done once you
+    a **Download** button for the file chosen in *Choose your data*, and is done once you
     have downloaded it. A dataset in another format is converted, as any
     step done by the tools.
 12. Only if you will publish, the four parts of
@@ -1031,16 +1154,18 @@ they are given under. The field shows the base address already in **Options**
 ### Saving and resuming
 
 A workflow is kept in this browser at every step: which workflow it is, your
-answers, the state of each step, and references to the files (each file's
-name, size and SHA-256), never your own files. Reload the page, or come back
-later, and it is taken up where it was left. A workflow chosen before any
-file is kept too.
+answers, the state of each step, its [Scope](#scope), and references to the
+files (each file's name, size and SHA-256). Reload the page, or come back
+later, and it is taken up where it was left, with the file the step works on
+chosen again in *Choose your data* for you, from what is kept (below). A
+workflow chosen before any file is kept too.
 
-A step that takes the file the workflow began with asks for it to be chosen
-again in step 1 (in Chromium, a button **Open** *the file's name* **again**
-opens it in one click). The file is checked to be the one the workflow recorded:
-a different file is refused, with what differs, and is not counted. A page
-closed while a step was running leaves that step failed, to run again.
+Where that file is not kept, the step asks for it to be chosen again in
+*Choose your data* (in Chromium, a button **Open** *the file's name*
+**again** opens it in one click). The file is checked to be the one the
+workflow recorded: a different file is refused, with what differs, and is
+not counted. A page closed while a step was running leaves that step failed,
+to run again.
 
 If the workflow's recipe has changed since it was saved, the tracker says
 so. A change of words only carries on. Otherwise it stays at its last
@@ -1049,18 +1174,22 @@ recipe**, or leave it.
 
 ### What is kept in the browser, and clearing it
 
-- **The workflow's record**, in the browser's IndexedDB.
-- **The files the steps made** (the matching of the columns, the dataset,
-  the review's work file), in the browser's private file storage (OPFS), so
-  that after a reload the next step takes them without their being chosen
-  again. The tracker says how many there are and their size, beside
-  **Clear them**. Once cleared, a step that takes one asks for it to be
-  chosen.
+- **The workflow's record**, with its Scope, in the browser's IndexedDB.
+- **A copy of the file you began it with, and the files the steps made**
+  (the matching of the columns, the dataset, the review's work file), in the
+  browser's private file storage (OPFS), so that after a reload, or a visit
+  to Chora, the next step takes them without their being chosen again; and,
+  where the browser allows, a link to the file you began with. The tracker
+  says what is kept and its size, beside **Clear them**. Once cleared, a
+  step that takes one asks for it to be chosen. **Clear them** lets go of
+  [the kept file](#the-kept-file) too.
 
-Your own files are never copied there. To keep nothing between visits, turn
-off **Keep my working data between visits** under *Your working data* in the
-**Permissions** panel: the workflow and its files then last only as long as
-the tab, and what was kept is cleared at once. **Leave the workflow** lets go
+None of it leaves your computer, but like everything PLATO tools keeps in
+this browser it can be read by other pelagios.org pages on this computer (see
+[who sees what](#which-map-and-who-sees-what)). To keep nothing between
+visits, turn off **Keep my working data between visits** under *Your working
+data* in the **Permissions** panel: the workflow and its files then last only
+as long as the tab, and what was kept is cleared at once. **Leave the workflow** lets go
 of everything kept for that workflow. A browser that refuses storage (a
 private window, say) keeps the workflow for the tab only.
 
