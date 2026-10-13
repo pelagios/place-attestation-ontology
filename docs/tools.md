@@ -761,11 +761,14 @@ It has no web address of its own yet: **Mint** gives it one when you
 
 ### Saving
 
-**Save as PLATO JSON** writes the whole dataset, not the drawings alone, as
-one PLATO JSON document (place-centric): every place and attestation as it
-was read, with the drawings added after each place's own attestations. A
+**Save** writes the whole dataset, not the drawings alone: every place and
+attestation as it was read, with the drawings added after each place's own
+attestations. A dataset read from PLATO JSON Lines is saved as PLATO JSON
+Lines (the button says **Save as PLATO JSON Lines**), and the file is named
+after yours, ending `.chora.jsonl`. Anything else is saved as one PLATO JSON
+document (place-centric), ending `.chora.json` (**Save as PLATO JSON**); a
 dataset in another format is converted, and the page lists anything the
-conversion reported. The file is named after yours, ending `.chora.json`.
+conversion reported.
 
 In the same run, the version check
 ([comparing two versions](#comparing-two-versions)) compares it with the
