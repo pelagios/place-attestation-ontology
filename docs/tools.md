@@ -13,8 +13,9 @@ for many files at a time, with the same checks and the same reports.
 To use it, open the page and drop a file on it (or choose one), then press
 **Check**, choose a format and press **Convert**, press **Compare with the
 earlier version**, or choose what to prepare for publishing and press
-**Prepare**. A page of its own, Chora, shows a dataset's places on a map
-and adds the locations you draw there: see [placing on the map](#chora).
+**Prepare**. **Show on the map** opens Chora, which shows a dataset's places
+on a map and adds the locations you draw there: see
+[placing on the map](#chora).
 Not sure where to start? [Methodos](#methodos) leads you through a whole
 workflow, step by step, from three questions.
 
@@ -81,8 +82,9 @@ its place. It never leaves your computer.
 
 On a new visit, or after a reload, it is offered above the place where you
 choose a file, never chosen for you: *Kept from last time: …*, with **Use
-it** and **Forget it**. Coming back from [Chora](#chora), or taking up a
-[workflow](#methodos) again, it is chosen again by itself. The
+it** and **Forget it**. Taking up a [workflow](#methodos) again, or a reload
+for a permission while [Chora](#chora) has it open, chooses it again by
+itself. The
 **Permissions** panel lists it too, with **Forget it**. Like everything else
 kept in this browser, it can be read by other pelagios.org pages on this
 computer (see [who sees what](#which-map-and-who-sees-what)).
@@ -183,7 +185,10 @@ each attestation says, not how the file writes it.
 - a name, location, date, type, property or citation, with a web address of
   its own, that attestations point to, and that the later version describes
   differently, or no longer describes at all though attestations still point to
-  it. It is part of what those attestations say, so changing it changes them.
+  it. It is part of what those attestations say, so changing it changes them;
+- a pair of places that one contributor now says both are and are not the
+  same place, with both answers current: a decision was changed without
+  withdrawing the earlier answer (see [reviewing matches](#match-review)).
 
 For the first few attestations, names and other facets that changed, the
 report shows what changed: what one version says and the other does not.
@@ -247,6 +252,32 @@ once the [version check](#comparing-two-versions) has found nothing of the
 original deleted or changed. Or you can choose a PLATO file of only the new
 attestations, each naming its place by its web address.
 
+**Changing a decision after Finish.** Every attestation the review writes is
+given a web address of its own, made as **Mint** makes one (`#a-` and a hash:
+see [addresses](#addresses)), so that a later change can point to it. This
+applies only to places under the dataset's base address. Finish again after
+changing a decision, on the dataset that Finish wrote, and the earlier answer
+is withdrawn: a new attestation retracts it (`plato:Retracts`), and the new
+answer, if there is one, is written beside it. Nothing is deleted, so the
+dataset still shows what it said before. A decision made again unchanged
+writes nothing new. Only your own earlier answers are withdrawn. They are
+recognised by your ORCID iD, or by your name alone where either side gives no
+ORCID iD, and the report then asks you to check them. PLATO tools never uses
+`plato:Supersedes` for this: a superseded answer would come back if the answer
+that replaced it were withdrawn later.
+
+In a dataset not yet published, the Finish area also lets you **replace** the
+earlier answer: take it out and write the new one, keeping no record of it.
+Withdrawing is the default. A published dataset always keeps its earlier
+answers, whichever you choose. On the command line this is
+`--draft-answers withdraw` or `replace`.
+
+Each Finish is recorded in the work file: what it wrote, and by whom. Save the
+review again afterwards, as the page asks. A later Finish can then tell
+whether you have given it the dataset it wrote. If you give it the original
+file instead, which holds none of the review's answers, it warns you, since a
+changed decision cannot withdraw an answer that is not there.
+
 **Looking places up in the World Historical Gazetteer.** The review can also
 look your places up in the [World Historical Gazetteer](https://whgazetteer.org/)
 (WHG), or another gazetteer that offers the same kind of search, online and
@@ -265,6 +296,21 @@ records of one place (within 2 km of each other), as when WHG holds one
 village several times over, from different gazetteers. WHG's scores rank the
 answers to one search only, not how likely a match is, so the decision is
 still yours.
+
+**Which places** are looked up is chosen in the lookup panel; **Only places
+without a gazetteer link** chooses, in one click, the places that neither
+have a gazetteer's address of their own nor are linked to one, and the
+preview says how many before anything is sent.
+
+A place whose own address is already a gazetteer's (a WHG, GeoNames, Getty
+TGN, Wikidata, OpenStreetMap or Pleiades address, such as a TEI `ref` or a
+Recogito link) keeps it: it is never replaced, and WHG's record of it is not
+suggested again. It is still looked up, and if WHG's best candidate is more
+than 25 km from the record its address names, the place is flagged on its
+review screen with both records and the distance. A flagged place is left for
+you to decide, and never accepted in bulk. The distance can be changed in the
+lookup panel. Where WHG did not return that record, or the record has no
+point, the screen says so and nothing is flagged.
 
 **Kind of place.** Each candidate from the World Historical Gazetteer shows
 *Kind of place:* with its types: a type from the Getty AAT by WHG's label for
@@ -473,24 +519,28 @@ page.
 (chora)=
 ## Placing on the map
 
-**Chora**, a page of its own in PLATO tools (**Open Chora** on the main
-page, or [straight to it](https://pelagios.org/plato-tools/chora.html)),
-shows a dataset's places on a map, with everything their attestations say of
-each one over time, and lets you add a location you have worked out
-yourself: a point, a line or an area, drawn on the map, or traced from a
-historical map laid over it. It runs in your
-browser like the rest of PLATO tools, and reads the formats in
-[the table above](#what-it-reads-and-writes). A table of places of your own
-is read with its columns matched as PLATO tools guesses them; to correct the
-matching, convert the table to PLATO JSON on the main page and open that.
-Opened with **Open Chora** from the main page, Chora opens the files chosen
-there at once. From the start, its masthead offers the way back: **Back to
-PLATO tools**, where the files you chose are chosen again (while your working
-data is kept: see [the kept file](#the-kept-file)), or, when Chora was
-opened for a [workflow](#methodos), **Back to the workflow**. Going back by
-that link or by the browser's Back keeps the dataset chosen.
+**Chora**, in the middle of the PLATO tools page (its card among the tools,
+**Show on the map** in step 2, or
+[straight to it](https://pelagios.org/plato-tools/#chora)), shows a
+dataset's places on a map, with everything their attestations say of each
+one over time, and lets you add a location you have worked out yourself: a
+point, a line or an area, drawn on the map, or traced from a historical map
+laid over it. It runs in your browser like the rest of PLATO tools, and
+reads the formats in [the table above](#what-it-reads-and-writes). A table
+of places of your own is read with its columns matched as PLATO tools
+guesses them; to correct the matching, convert the table to PLATO JSON first
+and open that.
 
-Drop a file on the page, or choose one. The map shows every place with a
+Chora shows the file chosen in step 1, *Choose your data*, as soon as it
+opens, and whatever you choose there while it is open; it has no file
+chooser of its own. Step 1 stays above the map, folded to one line with
+**Change** once its file is recognised. While the map is shown, the tools
+fold away behind **Tools ▸**, which brings them back, and a workflow you are
+following stays beside the map. **Leave the map** goes back to the steps.
+If the map itself cannot be loaded, the page says so where the map would
+be, with **Reload the page**, which comes back to the map.
+
+The map shows every place with a
 location, grouped where they crowd together (it shows the first 50,000; find
 others by name). Find a place by any part of a name, or click it on the
 map. The search looks in the name each place is listed under and in every
@@ -505,8 +555,8 @@ rather than describing places, is not a dataset, and Chora says so: to lay
 the map over the basemap, paste it under **Historical maps** (see
 [tracing from a historical map](#tracing-from-a-historical-map)).
 
-Chora works in one tab at a time: a second Chora tab says that it is open
-in another. The main page and Chora can be open together.
+Chora works in one tab at a time: opened in a second tab, the map says that
+it is open in another, and the rest of the page works there as usual.
 
 **A place's card** lists what its attestations say: its names, types,
 locations, related places (click one the dataset has to go to it) and sources. *Over time*
@@ -516,7 +566,25 @@ firmly is labelled: *denied* (the source says it was not so), *doubted*,
 *reported* (as said by others) or *tentative*. On the map, a place's
 locations are drawn in the same colours: a firm one solid, the others dashed
 (a point, hollow), and a denied one, where the place is said *not* to be,
-faint. A statement that a later one withdraws or replaces is left out, as
+faint.
+
+How well a location is known is drawn too, as PLATO records it, and only
+where it does. A point's precision (`spatialPrecision`) is a mark around it:
+four ticks for *exact*, a dashed ring for *approximate*, three small rings
+for *uncertain* (one of several possible locations), and the dashed ring with
+an hourglass for *historical approximate*. A line or an area outline is
+edged in the same way: solid, dashed, dotted, or dash and dot. A point's
+`precisionKm` is a circle of that radius, drawn to scale on the ground, and
+the map zooms out to show it whole when you choose the place. A location
+whose precision is not given has no mark, and one without `precisionKm` has
+no circle: the map does not invent an uncertainty the data does not give.
+**Key: how well a location is known**, folded at the foot of the map once a
+place is chosen, shows each mark. The card names the precision with PLATO's
+own gloss, and how far out the location may be ("to within 2 km"; for a line
+or an area, "boundary to within 2 km"). Where the circle would be too large
+to draw, the card adds "(too large to draw)".
+
+A statement that a later one withdraws or replaces is left out, as
 PLATO requires of any view of the dataset as it stands; the card says how
 many were left out.
 
@@ -539,7 +607,7 @@ or remove it. A drawing that crosses the 180° meridian, in the Pacific,
 cannot be recorded as it is drawn, so it is not kept, and the card says why.
 
 Drawings are kept in this browser until you save, even if you close the
-page: open the same file again, unchanged, and they come back, with their
+page: choose the same file again, unchanged, and they come back, with their
 places. To keep nothing between visits, turn off **Keep my working data
 between visits** in the **Permissions** panel: drawings not yet saved are
 then cleared the next time you open Chora, so save them before you leave.
@@ -718,9 +786,18 @@ Where your browser asks where to save a file, the drawings are no longer
 kept in the browser once it is saved. Where it simply downloads the file,
 the page cannot tell when the download is complete, so the drawings are
 kept, and the file still offered, until you press **The download is
-complete: let these drawings go**. Either way, to add more, open the saved
-file. If you change the drawings before saving the file, it is no longer
-offered: save again.
+complete: let these drawings go**. If you change the drawings before saving
+the file, it is no longer offered: save again.
+
+Once the check passes, the saved file is also chosen in step 1, *Choose your
+data*, for the other tools, and the page says so under the save. Once its
+drawings are let go, Chora carries on with the saved file as its dataset,
+keeping the place, the view and any drawings made since, so that what you
+draw next is added to it and a later save builds on it. In a
+[workflow](#methodos) at Chora's step, the save also does that step, if the
+dataset Chora had open is the one that went to the step (see
+[Map your data](#methodos-map-your-data), step 8). Saved from another
+dataset, the step stays open, and the tracker and the save say why.
 
 ### Which map, and who sees what
 
@@ -733,8 +810,7 @@ Under **Basemap** you can choose another, fetched from its provider:
 OpenFreeMap (Liberty, Bright or Positron), OpenStreetMap, CARTO (Positron,
 Voyager or Dark Matter), or a style address or tile address of your own,
 pasted in, including one with a key. No other site is asked until you allow
-it in the **Permissions** panel, from the button at the top of the page, the
-same panel as on the main page. A basemap not yet allowed is not used: one
+it in the page's **Permissions** panel. A basemap not yet allowed is not used: one
 line, *Needs permission*, opens the panel at it. The panel names every site
 the basemap will ask, since one provider may serve it from several, and says
 what they will see: the part of the world you are looking at, and your
@@ -755,7 +831,7 @@ why.
 Your permissions, your choice of basemap, any address you paste (with any
 key in it), your name as the one drawing, the historical maps you add, your
 working data, a WHG token you ask to be remembered, and the file you last
-chose on the main page (see [the kept file](#the-kept-file)) are kept in
+chose in step 1 (see [the kept file](#the-kept-file)) are kept in
 this browser. PLATO tools is on pelagios.org, which other Pelagios sites
 share, so, as the panel says, any Pelagios site can read them, on this
 computer only.
@@ -1105,20 +1181,25 @@ a workflow:
    dataset, checked; a file in another format; a match of two datasets;
    figures as a Data Cube; or *I am not sure: show me what the tools can do*.
 3. **Anything of these?** Only the yes-or-no questions the workflow needs and
-   the first two answers left open; and, for a workflow that gives places
-   addresses of their own, the base address they are given under (see
-   [below](#methodos-base-address)).
+   the first two answers left open; and, for a workflow that publishes, or
+   that gives regions addresses of their own, the base address they are
+   given under (see [below](#methodos-base-address)).
 
-The same answers always give the same workflow. Two workflows exist so far:
+The same answers always give the same workflow. Four workflows exist so far:
 
 | You have | You want | The workflow |
 |---|---|---|
 | A list of place names | Places on a map, each identified in a gazetteer | [Map your data](#methodos-map-your-data) |
 | A list of place names | A citable, published dataset | Map your data, with its publishing steps |
 | A dataset already in a PLATO format | A citable, published dataset | [Publish a dataset](#methodos-publish-a-dataset) |
+| An edition in TEI | Places on a map, or a citable, published dataset | [Places from an edition (TEI)](#methodos-places-from-tei-or-recogito) |
+| Annotations from Recogito | Places on a map, or a citable, published dataset | [Places from Recogito](#methodos-places-from-tei-or-recogito) |
 
 Once the questions are answered, the workflow's steps are listed, with any
-steps your answers leave out; **Follow** with the workflow's name begins it.
+steps your answers leave out and, for a workflow that reads an edition or
+annotations, what it cannot carry from your files; **Follow** with the
+workflow's name begins it. While you follow it, the same list is folded in
+the tracker under **What this workflow cannot carry**.
 *I am not sure* leads instead to the tools' cards (**Show me the tools**):
 each card says what its tool does. Any other answers say that there is no
 workflow for this yet, why, and which tools do the work meanwhile, with a
@@ -1159,7 +1240,8 @@ The workflow begins when you choose its file in *Choose your data* (or with
   you**; in each case, put it right and run the step again.
 - **Yours.** The tracker says what the step waits for (matching the columns,
   deciding on the candidates, drawing in Chora). When you have done it, press
-  **This step is done**.
+  **This step is done**. Chora's step needs no button: saving there does it
+  (see [Map your data](#methodos-map-your-data), step 8).
 
 **Back a step** undoes the last step done, so that it is to do again.
 **Leave the workflow** ends it and lets go of everything Methodos kept for it
@@ -1187,9 +1269,10 @@ The questions under 3 are:
 - *Does the table say which region each place is in (a parish, a county)?*
 - *Will you draw or trace places that the gazetteer cannot locate?*
 - *Will you publish the result?* (asked only when you wanted places on a map)
-- When the table gives regions, *Under what base address will your places and
-  regions have web addresses of their own?*: needed, since the regions are
-  given addresses under it, so **Follow** waits for it (see
+- When the table gives regions, or you will publish, *Under what base address
+  will your places, and any regions, have web addresses of their own?* Where
+  the table gives regions it is needed, since the regions are given addresses
+  under it, so **Follow** waits for it; otherwise it is optional (see
   [the base address](#methodos-base-address)).
 
 The steps, with the tool that does each:
@@ -1234,20 +1317,20 @@ The steps, with the tool that does each:
      still writes, for the review's own address: set **Options** back if
      your places keep that address.
 8. **Chora: Draw or trace the places still without a location.** Only if you
-   said you would. Yours: **Open Chora** opens [Chora](#chora) for this
-   workflow, with the dataset already open in it, and a small tracker in its
-   panel giving the workflow, *Step n of N* and what the step is for. Draw or
-   trace the places there, or take a location from a gazetteer's match
-   (**Adopt**), and save the dataset. **Back to the workflow** is offered from
-   the start; until you save, it hands nothing back. Back on the main page,
-   by that link or by the browser's Back, the dataset is chosen again in
-   *Choose your data*. Press **Take the dataset back from Chora** and choose
-   the saved file: it is checked to be the file Chora saved, by size and
-   SHA-256, and then the step is done. If nothing usable comes back, choose
-   the dataset you saved in Chora in *Choose your data* and press **This step
-   is done**. **This step is done** with the dataset that went to Chora,
-   unchanged, is refused, since nothing drawn there is in it; if there was
-   nothing to draw, press **Nothing to draw: go on with this dataset**.
+   said you would. Yours: **Open Chora**, in the tracker or under the step's
+   title, opens [Chora](#chora) on the step's dataset, with the workflow
+   still beside the map. Draw or trace the places there, or take a location
+   from a gazetteer's match (**Adopt**: see
+   [adopting a location from a match](#adopting-a-location-from-a-match)),
+   and save the dataset. Once the save passes its check, the step is done
+   with the file it wrote, which is also chosen in *Choose your data*, and
+   Chora says so: **Leave the map** to carry on. A save made from a dataset
+   other than the one that went to the step does not do it, and the tracker
+   and the save say why. To use a dataset saved some other way, choose it in
+   *Choose your data* and press **This step is done**. **This step is done**
+   with the dataset that went to Chora, unchanged, is refused, since nothing
+   drawn there is in it; if there was nothing to draw, press **Nothing to
+   draw: go on with this dataset**.
 9. **Elenchos: Check the result.**
 10. **Mneme: Compare the result with the dataset made from the table**, as in
     [comparing two versions](#comparing-two-versions).
@@ -1262,6 +1345,36 @@ The steps, with the tool that does each:
     **Give every place and source a permanent address**, **Write the FAIR
     report**, **Build the web site** and **Write the permanent-address
     rules**.
+
+(methodos-places-from-tei-or-recogito)=
+### Places from an edition (TEI), and Places from Recogito
+
+From the place names of a [TEI edition](tei.md), or the places linked in a
+[Recogito export](annotations.md), to places identified in the World
+Historical Gazetteer, located, checked and written out, and published if you
+say so. Choose the edition, or the export (with the IIIF georeferences of its
+maps, and their manifests, if it has regions drawn on maps), in *Choose your
+data*. The questions under 3 are Map your data's, less the regions, since
+neither an edition nor an export says which region each place is in: *Will
+you draw or trace places that the gazetteer cannot locate?*, *Will you
+publish the result?* (asked only when you wanted places on a map), and, if
+you will publish, the base address, which is optional.
+
+The steps are **Elenchos: Check the edition** (or *the annotations*),
+**Metaphrasis: Read its place names into a PLATO dataset** (or *Read the
+places they link into a PLATO dataset*), and then Map your data's from step
+5, as where the table gives no regions: the lookup, the review, **Record the
+decisions in the dataset**, Chora if you said so, the check, the comparison
+with the dataset made from the edition (or the annotations), writing it out,
+and Agora's four parts if you will publish.
+
+A place's `ref` in the edition, or its link in Recogito, stays its own
+address: the lookup looks for it in WHG beside that address, never replaces
+it, and flags it when WHG's best candidate is far from it (see
+[reviewing matches](#match-review)). Pleiades addresses are read as a
+gazetteer's like the others. The tracker lists what each reader cannot carry,
+such as a place name with no `ref`, coordinates in a name's own `<geo>`, or a
+Recogito region on a map with no georeference.
 
 (methodos-publish-a-dataset)=
 ### Publish a dataset
@@ -1278,8 +1391,9 @@ where the dataset has none of its own (see
 ### The base address
 
 A workflow that gives places addresses of their own (Map your data when the
-table gives regions, and Publish a dataset) asks under 3 for the base address
-they are given under. The field shows the base address already in **Options**
+table gives regions, and every workflow when you will publish) asks under 3
+for the base address they are given under. It is the same question, in the
+same field, in every workflow, and optional except where regions need it. The field shows the base address already in **Options**
 (*Web address for your identifiers*), and what you type there is written to
 **Options** too: there is one base address, used by every tool on the page.
 
@@ -1304,13 +1418,41 @@ so. A change of words only carries on. Otherwise it stays at its last
 finished step, and you can **Start the remaining steps under the new
 recipe**, or leave it.
 
+### Carrying a workflow elsewhere: the project file
+
+A workflow can be saved whole as one file, a project (ending `.platoproj`),
+to carry on in another browser or on another computer, or to give to a
+colleague. Under **Save or open the project** in the tracker, **Save the
+project** writes the workflow with your answers and its Scope, the files its
+steps made, the review open with its decisions, and your own starting file
+unless you untick **Put my own file in it**. A file this browser no longer
+keeps is left out, and the page names it. Whoever opens the project then
+chooses it again where a step needs it. A project never holds your WHG token
+or any other key, the permissions you gave, or your other workflows. If any
+part of it, your own file included, contains the token or a key this page
+knows, the project is not saved. The reviewer's name is in it only where a
+review records who decided. Keep it as you would your data.
+
+**Open a project**, in the tracker, or *open a project saved before* at the
+top of the page, reads one back. Every part is checked against its size and
+SHA-256 before the workflow is taken up at its step, with the review
+reopened. Opening a project runs no step and sends nothing anywhere. If a
+workflow is already open, the page asks before letting it go. A project whose
+files will not fit in the room the browser allows is refused before anything
+is written. A project saved by a newer PLATO tools opens with a note that
+what the newer version added is not read.
+
+From the command line,
+`npx github:pelagios/plato-tools project info my-workflow.platoproj` lists
+what a project holds and checks every part, without opening it.
+
 ### What is kept in the browser, and clearing it
 
 - **The workflow's record**, with its Scope, in the browser's IndexedDB.
 - **A copy of the file you began it with, and the files the steps made**
   (the matching of the columns, the dataset, the review's work file), in the
-  browser's private file storage (OPFS), so that after a reload, or a visit
-  to Chora, the next step takes them without their being chosen again; and,
+  browser's private file storage (OPFS), so that after a reload the next
+  step takes them without their being chosen again; and,
   where the browser allows, a link to the file you began with. The tracker
   says what is kept and its size, beside **Clear them**. Once cleared, a
   step that takes one asks for it to be chosen. **Clear them** lets go of
