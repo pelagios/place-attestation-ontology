@@ -4,7 +4,9 @@
 shape. It checks a file for mistakes, converts it to another format, and shows
 whether a new version of a published dataset has kept what the earlier one
 said, and it prepares a dataset for [publishing](#publishing-your-dataset).
-It runs in your browser: your files are never uploaded. A dataset of a million
+It runs in your browser: your files are never uploaded, unless you save a
+workflow's project to the World Historical Gazetteer yourself (see
+[keeping the project in WHG](#methodos-project-in-whg)). A dataset of a million
 places has been checked and converted there, within the storage the browser
 allows the page (see [large datasets](#large-datasets)). It also runs
 [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line),
@@ -240,6 +242,12 @@ only your decisions do. For each suggestion, choose one of:
 - **Different places**: you can say why the two are *not* the same place.
   Your reason is written with a [denial](glossary.md): an attestation that
   the two are not the same place.
+
+A candidate whose kind of place clashes with yours (a lake for a town) is
+placed after the others, and says so (*Ranked down: …*). It is never left
+out. A place of the other dataset you have already accepted for another of
+yours says so too (*Already accepted for …*), and can still be accepted,
+since two of your places may be one.
 
 **Save the review** keeps the suggestions and your decisions so far in a
 file of their own, the work file. To carry on, choose the same dataset,
@@ -499,8 +507,11 @@ relation.
 
 **Rows set aside.** A place can be marked **Keep without reconciling** (never
 looked up, still in the dataset) or **Leave out of the dataset** (and the
-version check is told to expect exactly those missing). Notes stay in the work
-file, never in the dataset.
+version check is told to expect exactly those missing). A source with a web
+address of its own that only a place left out cited goes with it: **Finish**
+still succeeds, and the version check warns, naming the address, which will
+no longer resolve if your dataset serves it. Notes stay in the work file,
+never in the dataset.
 
 **From the command line.** With your WHG token in `WHG_TOKEN`:
 
@@ -973,7 +984,8 @@ locally, and put it anywhere public only when you are ready for it to be
 seen.
 
 Nothing else leaves your computer unless you allow it in the **Permissions**
-panel, and your dataset itself never does. What can go, once allowed:
+panel, and your dataset itself goes only where you send it, in a
+workflow's project saved to WHG. What can go, once allowed:
 
 - **Looking places up in the World Historical Gazetteer** (Krisis's lookup,
   and Chora's *Find in a gazetteer…*) sends the names you look up, any limits
@@ -982,6 +994,10 @@ panel, and your dataset itself never does. What can go, once allowed:
   who asked. The preview shows exactly what will be sent. The names of kinds
   of place are fetched from WHG without the token. You never need to upload a
   dataset to WHG to look its places up.
+- **A workflow's project saved to WHG** (*Projects kept in WHG*) is sent
+  whole, as a project file holds it, with your WHG token, and only when you
+  press **Save to WHG**. Anyone you give its share link to can read it. See
+  [keeping the project in WHG](#methodos-project-in-whg).
 - **Chora's maps** fetch their tiles and images from the sites you allow
   (see [Basemaps](#chora)); nothing of yours is sent with them.
 - **A site you upload** is public, even while the dataset is a draft. Every
@@ -1188,7 +1204,7 @@ a workflow:
    that gives regions addresses of their own, the base address they are
    given under (see [below](#methodos-base-address)).
 
-The same answers always give the same workflow. Four workflows exist so far:
+The same answers always give the same workflow. Five workflows exist so far:
 
 | You have | You want | The workflow |
 |---|---|---|
@@ -1197,10 +1213,11 @@ The same answers always give the same workflow. Four workflows exist so far:
 | A dataset already in a PLATO format | A citable, published dataset | [Publish a dataset](#methodos-publish-a-dataset) |
 | An edition in TEI | Places on a map, or a citable, published dataset | [Places from an edition (TEI)](#methodos-places-from-tei-or-recogito) |
 | Annotations from Recogito | Places on a map, or a citable, published dataset | [Places from Recogito](#methodos-places-from-tei-or-recogito) |
+| A list of place names, or a dataset already in a PLATO format | A match of two datasets | [Match two datasets](#methodos-match-two-datasets) |
 
 Once the questions are answered, the workflow's steps are listed, with any
 steps your answers leave out and, for a workflow that reads an edition or
-annotations, what it cannot carry from your files; **Follow** with the
+annotations, or matches two datasets, what it cannot carry from your files; **Follow** with the
 workflow's name begins it. While you follow it, the same list is folded in
 the tracker under **What this workflow cannot carry**.
 *I am not sure* leads instead to the tools' cards (**Show me the tools**):
@@ -1379,6 +1396,77 @@ gazetteer's like the others. The tracker lists what each reader cannot carry,
 such as a place name with no `ref`, coordinates in a name's own `<geo>`, or a
 Recogito region on a map with no georeference.
 
+(methodos-match-two-datasets)=
+### Match two datasets
+
+Your places matched with the places of another dataset, the decisions
+recorded, checked and written out, and published if you say so. Nothing
+is looked up online.
+
+**Your dataset** is the one the decisions are about. Choose it in *Choose
+your data*. It can be a table of places (CSV or GeoJSON), which is read as
+Map your data reads one: **Hermes: Match the columns to PLATO**,
+**Elenchos: Check the table** and **Metaphrasis: Make a PLATO dataset of
+it**. Or it can be a dataset already in a PLATO format, which is checked
+(**Elenchos: Check your dataset**) and taken as it is.
+
+**The other dataset** is not asked for at the start. You choose it at the
+match step (**Krisis: Find the places of yours that may be the same as
+places of the other dataset**), in **Match with another dataset…**, in any
+format PLATO tools reads, and the workflow records it as it records your
+dataset. Until then the tracker says it is not yet chosen. Once it is
+recorded, a match with any other file is not counted. **Forget** with its
+name lets it go, but only while no step has been done with it. Its places
+must have web addresses of their own, since a decision names both places
+by address. The match counts the ones that have none. A project of this
+workflow holds both files as your own, unless you untick **Put my own
+files in it**.
+
+**Its faults.** After the match, **Elenchos: Check the other dataset**.
+What the check finds is shown in the step's row (*Done, with a report*)
+but does not stop the workflow, since the other dataset is not yours to
+correct. A file the tools cannot read stops the match.
+
+Then **Krisis: Decide which candidates are the same place**, as in
+[reviewing matches](#match-review), where a candidate of another kind of
+place than yours is ranked down and a place you have already accepted for
+another of yours says so. **Open the review** reopens the match's review if
+it was put away. A review made with other files is not counted.
+
+The questions under 3 are:
+
+- *Add the decisions to your dataset, or keep them in a file of their
+  own about it?* **Add them to my dataset** (the default) writes your
+  dataset with the new attestations added. It is then checked and
+  compared with your dataset, as in
+  [comparing two versions](#comparing-two-versions). **Keep them in a file
+  of their own** writes a PLATO file of only the new attestations. It is
+  checked, but not compared, since it is not a version of your dataset.
+  Choose the same under **Finish** in the review (*Your dataset with the
+  new attestations added*, or *A PLATO file of only the new
+  attestations*): a Finish that makes the other is not counted.
+- *Will you publish the result?*
+- The base address, which is optional. For a table it is always asked,
+  since your places are given their addresses under it. For a PLATO
+  dataset it is asked only if you will publish.
+
+**Publishing.** If you will publish, export the suggestions first
+(**Export the suggestions as a candidate set**), so that each decision
+records the candidate it answers (`promotedFrom`). **Finish** is not
+counted until you have. Then come **Metaphrasis: Write it out** and
+Agora's four parts, as in Map your data.
+
+The tracker lists what the match cannot do, among them:
+
+- Places are matched by their names, and only within 50 km of each other
+  where both have a location. Each of your places is given at most its
+  five best candidates. The distance, and how alike two names must be,
+  can be changed in Krisis's options. Nothing is accepted in bulk.
+- "Measured with the command line (in Node, not in the browser), with
+  50,000 places in each dataset (constructed ones), the match took about
+  65 seconds on a laptop of 2024 and held under 500 MB; larger datasets
+  are not refused, but are unmeasured."
+
 (methodos-publish-a-dataset)=
 ### Publish a dataset
 
@@ -1425,13 +1513,13 @@ recipe**, or leave it.
 
 A workflow can be saved whole as one file, a project (ending `.platoproj`),
 to carry on in another browser or on another computer, or to give to a
-colleague. Under **Save or open the project** in the tracker, **Save the
+colleague. Under **Save, open or share the project** in the tracker, **Save the
 project** writes the workflow with your answers and its Scope, the files its
 steps made, the review open with its decisions, and your own starting file
 unless you untick **Put my own file in it**. A file this browser no longer
 keeps is left out, and the page names it. Whoever opens the project then
-chooses it again where a step needs it. A project never holds your WHG token
-or any other key, the permissions you gave, or your other workflows. If any
+chooses it again where a step needs it. A project never holds your WHG token,
+a share link, or any other key, the permissions you gave, or your other workflows. If any
 part of it, your own file included, contains the token or a key this page
 knows, the project is not saved. The reviewer's name is in it only where a
 review records who decided. Keep it as you would your data.
@@ -1449,9 +1537,89 @@ From the command line,
 `npx github:pelagios/plato-tools project info my-workflow.platoproj` lists
 what a project holds and checks every part, without opening it.
 
+(methodos-project-in-whg)=
+### Keeping the project in WHG
+
+A workflow's project can be kept in the World Historical Gazetteer's
+Workbench instead of in a file, to open in another browser or to share
+for reading. The part *In the World Historical Gazetteer*, under **Save,
+open or share the project**, has **Save to WHG**, **Open from WHG** and
+**Share a read-only link**.
+
+**What you need first.** A WHG account with its token, as for the lookups
+(see [the WHG token](#the-whg-token)), which can also be given in the
+part's own field. The account must be enrolled in the Workbench, which is
+in beta. It cannot be joined from here: ask WHG to enrol you, through
+*Get in touch* on [WHG's development page](https://whgazetteer.org/development/).
+And the permission *World Historical Gazetteer Workbench*, under
+*Projects kept in WHG* in the **Permissions** panel. It is asked for only
+when you save, open, delete or share a project there, or open a share link.
+WHG takes projects only from the tools at pelagios.org.
+
+**What is sent.** **Save to WHG** sends the project, the same one **Save
+the project** writes (your own file is included unless you untick **Put my
+own file in it**), with your token, which says who saved it. WHG keeps it
+in your own workbench without reading it. Its own pages do not show it, so
+**Open from WHG** is the only place to see it. Nothing is saved until you
+press the button, and not while a step is running. The project never
+holds your token. Which WHG project a workflow is saved to is kept only in
+this browser, beside the workflow. The part says when the workflow was
+last saved there, and whether it has changed since.
+
+**The size.** WHG takes a save of at most 2.1 MB, room for a project of
+about 1.6 MB. Anything larger goes without some of its files: your own
+first, then the largest of those the steps made, never the workflow or the
+review. The part names those files before you save. Whoever opens the
+project chooses them again where a step needs them. If the workflow and
+the review alone are too large, nothing is saved: save the project to a
+file instead.
+
+**A newer save in WHG.** A workflow is saved again to the WHG project it
+was saved to or opened from. If WHG holds a newer save than the one this
+browser last saved or opened, perhaps your own from another browser,
+nothing is saved over it, either here or in WHG. You can then **Open the
+copy on WHG** in place of this one, or **Save mine as a new WHG project**.
+A workflow not yet linked to a project is looked for first among your
+projects in WHG, and if one holds it you are asked to **Save to it** or
+**Save as a new WHG project**.
+
+**Open from WHG**, or *one kept in WHG* at the top of the page, lists
+your PLATO tools projects in WHG, newest first, with your role in each,
+when it was saved and its version. **Open** reads one back exactly as a
+project file is read, every part checked, and asks first if another
+workflow is open. A project you own also has **Delete**. It asks first
+(**Delete it** or **Keep it**), cannot be undone, and stops any share link
+working. A workflow already open in a browser stays there.
+
+**Share a read-only link** gives an address of this page ending
+`#whg-shared=` and a token, once the workflow has been saved to WHG.
+Anyone with the link can read the workflow as it is kept in WHG: the
+names in it, your decisions, the reviewer's name and any files it holds.
+It always shows your newest save to WHG, not the workflow as it is in
+your browser. **Stop sharing** withdraws it, so that the link opens
+nothing. Sharing again makes a new link. Only the project's owner or an
+editor can share it.
+
+**Opening a share link** needs no WHG account and sends nothing of yours,
+not even a token. The page takes the link out of the address at once. If
+the permission is not yet given it says what the link is and asks for
+it, and a reload may be needed after that. The workflow is shown in the
+tracker as it was last saved to WHG, read-only: nothing in it can be
+changed or run. **Make my own copy** opens it as a new workflow of your
+own, not linked to the one shared. **Download .platoproj** saves it as a
+project file, and **Close** leaves it. If WHG cannot be reached, **Try
+again**. A reload then needs the link pasted again.
+
+From the command line,
+`npx github:pelagios/plato-tools project info 'https://pelagios.org/plato-tools/#whg-shared=…'`
+reads the project a share link opens, with no token, and checks it as it
+checks a file. It reminds you that the link is now in the shell's history.
+
 ### What is kept in the browser, and clearing it
 
-- **The workflow's record**, with its Scope, in the browser's IndexedDB.
+- **The workflow's record**, with its Scope, in the browser's IndexedDB;
+  and, for a workflow saved to WHG or opened from it, which project it is
+  there (its id and version, never a token).
 - **A copy of the file you began it with, and the files the steps made**
   (the matching of the columns, the dataset, the review's work file), in the
   browser's private file storage (OPFS), so that after a reload the next
