@@ -536,7 +536,9 @@ page.
 dataset's places on a map, with everything their attestations say of each
 one over time, and lets you add a location you have worked out yourself: a
 point, a line or an area, drawn on the map, or traced from a historical map
-laid over it. It runs in your browser like the rest of PLATO tools, and
+laid over it. A historical map can also be traced into a new dataset of its
+own, each feature a place (see
+[tracing a map into a new dataset](#tracing-a-map-into-a-new-dataset)). It runs in your browser like the rest of PLATO tools, and
 reads the formats in [the table above](#what-it-reads-and-writes). A table
 of places of your own is read with its columns matched as PLATO tools
 guesses them; to correct the matching, convert the table to PLATO JSON first
@@ -653,7 +655,9 @@ archives' addresses do, is not followed: Chora offers it as a link to open in
 a new tab, so that you can paste the address it ends at. If your browser
 does not show that it enforces the page's protection, no map is shown.
 
-To trace, choose a place and draw over the map by hand, with the same tools.
+To trace a place the dataset has, choose it and draw over the map by hand,
+with the same tools. To make new places from the map, see
+[tracing a map into a new dataset](#tracing-a-map-into-a-new-dataset).
 A drawing on a map is traced from it (from the topmost, where maps overlap),
 and *Traced from* in the place's card lets you choose another map it lies
 on, or the basemap. A traced point is, until you change it, *a point
@@ -732,6 +736,105 @@ or lets no other site read it) cannot be traced from, and the page says so.
 Check every proposal against the map before accepting it, as you would a
 drawing of your own.
 
+### Tracing a map into a new dataset
+
+A map shown under **Historical maps** can be traced into a dataset of its
+own: "each feature you trace becomes a place, named as the map writes it,
+and cites the map and its georeference." Press **Trace into a new dataset**
+beside the map. The panel *Trace into a new dataset*, below the maps, says
+what is under way. It is also the first step of the workflow
+[Trace a historical map](#methodos-trace-a-historical-map), but works
+without one.
+
+**Into the dataset open.** With a dataset open (any but one made from a map
+and not yet saved), the button says **Trace it into the dataset open**, and
+the places you trace are added to that dataset, as new places of its own.
+They are given their addresses under that dataset's own base address, its
+`uriSpace`, whatever **Options** say: the settings show it, with the
+dataset's title, and neither can be changed there. Under it: *The dataset
+open's own base address (its uriSpace), as its file gives it: every place
+traced into it is given its address under it, whatever Options say.*
+**Trace into it** begins. A dataset that gives no base address of its own
+cannot be traced into, and the panel says why: *"…" does not say under what
+address its places are published (it has no uriSpace), so a place traced
+into it could not be given an address of its own. Give the dataset its base
+address (uriSpace in PLATO JSON, or the about sheet's base_uri) and open it
+again, or trace the map into a new dataset of its own with no dataset
+open.*
+
+**The settings for the map** are asked once, and kept for that map:
+
+- **Base address: your places will have their web addresses under it.**
+  *Needed: every place you trace is given its address under it as you name
+  it. It is the base address in Options, which this changes too.* Once the
+  dataset is made it is fixed, as is the title; traced into the dataset
+  open, both are that dataset's, as above.
+- **The dataset's title**, to begin with *Places traced from* the map's
+  title.
+- **The map's date, as you would cite it**, filled in from the map's own
+  date where its description gives one, and **Date each place by the map:
+  what it shows is as of then** (ticked to begin with).
+- **The language of the names on the map** (a code: en, la, fr…), given to
+  every name and changed for one name where it differs. Where the language
+  is written in another script than Latin letters, **The names are written
+  in** asks which: that script, or *Latin letters (a romanised form)*.
+- **What each feature marks, and how well it is known, until you say
+  otherwise**, folded: for **Points**, **Lines** and **Areas**, *What it
+  marks* and *How well known*. A point stands for the place (*a point
+  standing for it*), a line or an area is *the whole place* (*a route* only
+  where you say so), each *approximate*. With them, **An uncertainty radius
+  of your own for this map, in km (optional)**, given to every feature, and
+  said in its notes to be your estimate. The georeference's own error is
+  said in the notes, and never made the radius.
+- In a workflow that looks the places up, **Look the places up within the
+  map's outline: the gazetteer lookup's Scope becomes the area the map
+  covers** (ticked to begin with).
+
+**Make the dataset, and trace** makes it and chooses it in *Choose your
+data*; later, **Change the settings** and **Keep these settings** change
+them, each but the base address and title still open to change for one
+place as you go.
+
+**What the map lets you do with it.** Above the settings, and while you
+trace, one line says whether what you trace may be reused, from the map's
+licence and its georeference's (a georeference kept by Allmaps is CC0):
+
+- *Free to reuse: the map is licensed …, and its georeference is licensed
+  ….*, for the public domain, CC0, CC BY and CC BY-SA (and
+  RightsStatements.org's NoC-US and NKC);
+- *Not free to reuse as it is: … This may bear on how what you trace from it
+  can be reused.*, for a non-commercial or no-derivatives licence, or one In
+  Copyright;
+- *Not known to be free to reuse: … Check the holder's terms before you
+  publish what you trace from it.*, where either names no licence. A credit
+  that says "public domain" or "no known restrictions" in words is quoted,
+  and said not to be a licence.
+
+**Naming each place.** Draw a point, line or area on the map with no place
+chosen, or press **New place** first: a form over the map asks for **The
+name, as the map writes it**, **Its label in lists** (a display form, not
+evidence: the name, unless you change it), **What kind of place it is**
+(optional: a short list of kinds, each a Getty AAT concept, or words of your
+own; the last chosen is offered next), **The language of the name**, and,
+where the language is written in another script, **A romanised form of the
+name** (optional). **Add the place**, or Enter, adds it; **Cancel: let the
+drawing go**, or Esc, drops the drawing. **Add to "…" instead** makes the
+drawing one more part of the place last named: a point added so marks
+*where the map writes its name*. A shape accepted from the map's ink with no
+place chosen is named the same way.
+
+**Traced from the map** lists what is traced, fifty at a time, the latest
+first: each with its name (or *Not named yet*, with **Name it**), its kind
+and shape, *What it marks* and *How well known* (marked *(the map's
+defaults)* until you change them), **Edit the name** and **Remove**. **Stop
+tracing** ends it: a drawing with no place chosen is then let go, as before,
+and what was traced stays.
+
+A dataset made from a map and not yet saved is kept in this browser, as
+drawings are, and offered again as **Go on tracing "…": the dataset made
+from it, not yet saved**. If the map is no longer shown, the panel says so:
+add it again under **Historical maps** to trace from it.
+
 ### What a drawing records
 
 Each drawing becomes a **new attestation** of its place, holding one
@@ -767,6 +870,18 @@ georeferenced historical map at zoom 9 in PLATO tools (Chora)", or, for one
 [traced with assistance](#tracing-with-assistance-from-the-maps-ink), how it
 was proposed and what was done to it by hand.
 
+A place traced [into a new dataset](#tracing-a-map-into-a-new-dataset) is
+written as a new place, with its label and its address under the base
+address (the dataset's own, traced into one open; made from the label, with
+a number after it where that is taken), and one attestation holding all it
+was traced as: its name, with its language (and its romanised form), its
+kind, its geometries in the order drawn, the map's date as its timespan
+unless you said not, and the map and its georeference cited as above. The
+map's credit and date are on its citation, and its licence where it is
+known; a dataset made from a map is given none. The control points' misfit is said
+in the notes, and your own uncertainty radius, if you gave one, is said
+there to be yours.
+
 It has no web address of its own yet: **Mint** gives it one when you
 [publish the dataset](#the-four-parts-in-order).
 
@@ -796,6 +911,11 @@ Nothing is saved if a drawing is for a place whose attestations are not
 written as a list, as PLATO requires: the drawing could only replace them.
 The page names the place, to be corrected in the dataset first.
 
+A dataset traced from a map is saved the same way, with the new places after
+the dataset's own, and the version check also counts them: the save says how
+many places were traced from the map. Nothing is saved while a feature is not
+named yet: name it in *Traced from the map*, or remove it.
+
 Where your browser asks where to save a file, the drawings are no longer
 kept in the browser once it is saved. Where it simply downloads the file,
 the page cannot tell when the download is complete, so the drawings are
@@ -810,7 +930,9 @@ keeping the place, the view and any drawings made since, so that what you
 draw next is added to it and a later save builds on it. In a
 [workflow](#methodos) at Chora's step, the save also does that step, if the
 dataset Chora had open is the one that went to the step (see
-[Map your data](#methodos-map-your-data), step 8). Saved from another
+[Map your data](#methodos-map-your-data), step 8), or, in
+[Trace a historical map](#methodos-trace-a-historical-map), if the save adds
+places traced from a map. Saved from another
 dataset, the step stays open, and the tracker and the save say why.
 
 ### Which map, and who sees what
@@ -821,9 +943,12 @@ borders are Natural Earth's borders as they are in practice, not a statement
 on any dispute.
 
 Under **Basemap** you can choose another, fetched from its provider:
-OpenFreeMap (Liberty, Bright or Positron), OpenStreetMap, CARTO (Positron,
-Voyager or Dark Matter), or a style address or tile address of your own,
-pasted in, including one with a key. No other site is asked until you allow
+OpenFreeMap (Liberty, Bright or Positron); Ancient World (CAWM), the
+Consortium of Ancient World Mappers' map tiles, made for the ancient
+Mediterranean and Middle East, so that elsewhere their coasts, rivers and
+lakes may be missing or wrong, as the chooser says beside it; OpenStreetMap;
+CARTO (Positron, Voyager or Dark Matter); or a style address or tile address
+of your own, pasted in, including one with a key. No other site is asked until you allow
 it in the page's **Permissions** panel. A basemap not yet allowed is not used: one
 line, *Needs permission*, opens the panel at it. The panel names every site
 the basemap will ask, since one provider may serve it from several, and says
@@ -838,13 +963,19 @@ you paste in is read from its own site once you allow that; if it names
 further sites, each needs your permission too before the map uses them. The
 page refuses any request to a site other than this one and those you have
 allowed, and says how many it refused. If your browser does not show that it
-enforces this protection, no other site is asked, and the page says so. A
-basemap that cannot be loaded gives way to Natural Earth, and the page says
-why.
+enforces this protection, no other site is asked, and the page says so. A basemap that cannot be loaded, or none of whose tiles can be (its site is
+down, say, or your browser refuses its certificate), gives way to Natural
+Earth, which is then the basemap chosen, and the page says why: *… could not
+be loaded from … (…), so the map is back on Natural Earth, from this site.* A
+tile that fails among others that load does not. The Ancient World tiles are
+the Consortium of Ancient World Mappers', under CC BY 4.0, and the map
+credits them so. They begin at the second zoom level out: zoomed out
+further, the map shows no basemap.
 
 Your permissions, your choice of basemap, any address you paste (with any
-key in it), your name as the one drawing, the historical maps you add, your
-working data, a WHG token you ask to be remembered, and the file you last
+key in it), your name as the one drawing, the historical maps you add, your settings for
+tracing each map, a dataset traced from a map and not yet saved, your working
+data, a WHG token you ask to be remembered, and the file you last
 chose in step 1 (see [the kept file](#the-kept-file)) are kept in
 this browser. PLATO tools is on pelagios.org, which other Pelagios sites
 share, so, as the panel says, any Pelagios site can read them, on this
@@ -1200,11 +1331,11 @@ a workflow:
    dataset, checked; a file in another format; a match of two datasets;
    figures as a Data Cube; or *I am not sure: show me what the tools can do*.
 3. **Anything of these?** Only the yes-or-no questions the workflow needs and
-   the first two answers left open; and, for a workflow that publishes, or
-   that gives regions addresses of their own, the base address they are
-   given under (see [below](#methodos-base-address)).
+   the first two answers left open; and, for a workflow that publishes, or that gives regions or traced places
+   addresses of their own, the base address they are given under (see
+   [below](#methodos-base-address)).
 
-The same answers always give the same workflow. Five workflows exist so far:
+The same answers always give the same workflow. Six workflows exist so far:
 
 | You have | You want | The workflow |
 |---|---|---|
@@ -1214,6 +1345,8 @@ The same answers always give the same workflow. Five workflows exist so far:
 | An edition in TEI | Places on a map, or a citable, published dataset | [Places from an edition (TEI)](#methodos-places-from-tei-or-recogito) |
 | Annotations from Recogito | Places on a map, or a citable, published dataset | [Places from Recogito](#methodos-places-from-tei-or-recogito) |
 | A list of place names, or a dataset already in a PLATO format | A match of two datasets | [Match two datasets](#methodos-match-two-datasets) |
+| A map image | Places on a map, each identified in a gazetteer | [Trace a historical map](#methodos-trace-a-historical-map) |
+| A map image | A citable, published dataset | Trace a historical map, with its publishing steps |
 
 Once the questions are answered, the workflow's steps are listed, with any
 steps your answers leave out and, for a workflow that reads an edition or
@@ -1250,7 +1383,10 @@ folded into its step's row in the tracker, with **Show its result** to see it
 again.
 
 The workflow begins when you choose its file in *Choose your data* (or with
-**Choose the file** in the tracker). Steps are of two kinds:
+**Choose the file** in the tracker).
+[Trace a historical map](#methodos-trace-a-historical-map) begins at once,
+since it starts from no file: its dataset is made in Chora. Steps are of two
+kinds:
 
 - **Done by the tools.** You run the step's tool on the page, as you would
   without a workflow, and the step is done when the run finishes. The run
@@ -1260,8 +1396,9 @@ The workflow begins when you choose its file in *Choose your data* (or with
   you**; in each case, put it right and run the step again.
 - **Yours.** The tracker says what the step waits for (matching the columns,
   deciding on the candidates, drawing in Chora). When you have done it, press
-  **This step is done**. Chora's step needs no button: saving there does it
-  (see [Map your data](#methodos-map-your-data), step 8).
+  **This step is done**. Chora's step needs no button: saving there does it (see
+  [Map your data](#methodos-map-your-data), step 8, and
+  [Trace a historical map](#methodos-trace-a-historical-map)).
 
 **Back a step** undoes the last step done, so that it is to do again.
 **Leave the workflow** ends it and lets go of everything Methodos kept for it
@@ -1467,6 +1604,59 @@ The tracker lists what the match cannot do, among them:
   65 seconds on a laptop of 2024 and held under 500 MB; larger datasets
   are not refused, but are unmeasured."
 
+(methodos-trace-a-historical-map)=
+### Trace a historical map
+
+A georeferenced historical map, its places traced in Chora into a new
+dataset of their own, checked, identified in the World Historical Gazetteer
+if you say so, written out, and published if you say so. Each feature you
+trace becomes a place, named as the map writes it, citing the map and its
+georeference.
+
+**It begins from no file.** **Follow** starts it at once, at its first step,
+**Chora: Trace the places from the map, into a new dataset**. **Open Chora**,
+in the tracker or under the step's title, opens [Chora](#chora). Add the map
+under **Historical maps**, then press **Trace into a new dataset** beside it,
+as [tracing a map into a new dataset](#tracing-a-map-into-a-new-dataset)
+describes. Chora makes the dataset, and saving it there does the step, with
+the file it wrote, which is also chosen in *Choose your data*. Only a save
+that adds places traced from a map does it; any other is refused, and the
+tracker and the save say why. To use a dataset you traced and saved before,
+choose it in *Choose your data* and press **This step is done**.
+
+The questions under 3 are:
+
+- *Will you look the places up in the World Historical Gazetteer, to
+  identify each with a record there?*
+- *Will you publish the result?* (asked only when you wanted places on a map)
+- The base address, which is needed, since every place is given its web
+  address under it as you name it, so **Follow** waits for it. Under the
+  field: *Needed: every place you trace is given its address under it as you
+  name it.* (See [the base address](#methodos-base-address).)
+
+**If you look the places up**, the steps after **Elenchos: Check the dataset
+traced** are Map your data's, as where the table gives no regions:
+**Krisis: Look the places up in the World Historical Gazetteer, within the
+map's outline**, **Krisis: Decide which candidates are the same place**,
+**Krisis: Record the decisions in the dataset**, **Elenchos: Check the
+result**, and **Mneme: Compare the result with the dataset traced**. The
+lookup needs a WHG token, as Map your data's does (see
+[Map your data](#methodos-map-your-data), *What you need first*). Unless you
+untick it in Chora's settings for the map, the map's outline is made the
+lookup's [Scope](#scope), so that the gazetteer is asked only for places
+within it; Chora says so, and the tracker shows it in its Scope line, where
+it can be changed. Before you follow it, the workflow says: "Looking the
+places up uses the World Historical Gazetteer's allowance of requests: its
+cap is 5,000 requests a day per token, and the lookup says before it sends
+how much of that it would use. A map of many places may be looked up over
+more than one day, the lookup resuming where it stopped."
+
+Then **Metaphrasis: Write it out** (PLATO JSON), and, if you will publish,
+Agora's four parts, as in Map your data. The dataset made from a map is a
+draft, with no licence of its own: the map's licence is given on each
+citation of the map, and the dataset's is yours to give before you publish
+(see [licences that travel with what you copy](#licences-that-travel-with-what-you-copy)).
+
 (methodos-publish-a-dataset)=
 ### Publish a dataset
 
@@ -1482,9 +1672,10 @@ where the dataset has none of its own (see
 ### The base address
 
 A workflow that gives places addresses of their own (Map your data when the
-table gives regions, and every workflow when you will publish) asks under 3
-for the base address they are given under. It is the same question, in the
-same field, in every workflow, and optional except where regions need it. The field shows the base address already in **Options**
+table gives regions, Trace a historical map always, and every workflow when
+you will publish) asks under 3 for the base address they are given under. It
+is the same question, in the same field, in every workflow, and optional
+except where regions, or places traced from a map, need it. The field shows the base address already in **Options**
 (*Web address for your identifiers*), and what you type there is written to
 **Options** too: there is one base address, used by every tool on the page.
 
