@@ -29,7 +29,8 @@
 #      bundled in one Attestation, which gives them one author, date and
 #      source, and lets them be withdrawn together.
 #   3. plato:Retracts: a published attestation is never deleted or edited; it
-#      is withdrawn by a meta-attestation from whoever made it.
+#      is withdrawn by a meta-attestation from the gazetteer that made it,
+#      signed by a maintainer.
 #   4. plato:negated: an attestation bundling one exactMatch that says two
 #      entities are NOT the same, so disagreement is recorded as well as
 #      agreement.
@@ -173,9 +174,9 @@ whgx:identity\/river-upland-1
 # target does. Nested under a place in place-centric JSON it is given that
 # place, which is the same entity.
 #
-# The gazetteer is published, so Act 1 is not deleted or changed. Its maker
-# withdraws it, both relations together, by a meta-attestation of type
-# plato:Retracts. A view of the gazetteer as of 11 September still shows
+# The gazetteer is published, so Act 1 is not deleted or changed. The
+# gazetteer withdraws it, both relations together, by a meta-attestation of
+# type plato:Retracts, its editor signing for it as contributor. A view of the gazetteer as of 11 September still shows
 # Act 1; a view from 12 September on leaves it out.
 # -----------------------------------------------------------------------------
 

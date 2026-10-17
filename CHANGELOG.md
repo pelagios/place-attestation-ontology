@@ -11,6 +11,19 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
+## Unreleased
+
+### Changed
+
+- `plato:Retracts` is defined at Gazetteer level: a Gazetteer retracts the
+  attestations it made, and a maintainer signs for it, recorded as the
+  retraction's contributor. It is not a claim about the person who first
+  wrote the attestation, which the earlier wording ("withdrawn by whoever
+  made it") could be read as. A maintainer disputing an attestation made by
+  another Gazetteer uses `plato:Contradicts`. Agreed with WHG, 17 October
+  2026. The definition, the `has_meta_type` comment and the two examples
+  are reworded; no term changes.
+
 ## 0.9.0-alpha.1
 
 Released 2026-10-05. The first release under SemVer pre-release versions:

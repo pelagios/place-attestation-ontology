@@ -1019,8 +1019,8 @@ plato:has_meta_type
           meta-attestation's notes
         - plato:AlternativeTo: this attestation and the target are alternative
           readings of the same evidence, at most one of them right
-        - plato:Retracts: the target attestation is withdrawn by whoever made
-          it, and kept only so that earlier states can be reproduced
+        - plato:Retracts: the target attestation is withdrawn by the Gazetteer
+          that made it, and kept only so that earlier states can be reproduced
 
         Using SKOS concepts rather than strings enables vocabulary management
         and multilingual labels.
@@ -3375,7 +3375,7 @@ plato:Retracts
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     skos:inScheme plato:MetaTypeScheme ;
     skos:prefLabel "retracts"@en ;
-    skos:definition "The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. For a claim its maker takes back, such as a bad import, where plato:Contradicts would read as one scholar disputing another. A tool showing the current state leaves a retracted attestation out. A retraction is itself an attestation: retracting it withdraws the withdrawal, and the target holds again."@en .
+    skos:definition "The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. A Gazetteer retracts the attestations it made, such as a bad import; a maintainer signs for the Gazetteer, and is recorded as the retraction's contributor. It is not a claim about the person who first wrote the attestation. To dispute an attestation made by another Gazetteer, use plato:Contradicts. A tool showing the current state leaves a retracted attestation out. A retraction is itself an attestation: retracting it withdraws the withdrawal, and the target holds again."@en .
 
 # -----------------------------------------------------------------------------
 # Certainty levels
