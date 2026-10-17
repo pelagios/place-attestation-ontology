@@ -378,6 +378,95 @@ up among records with an outline only, so that a region is never matched to
 a point (a town of the same name), within which nothing could be looked up.
 The places themselves are looked up among all records.
 
+(wikidata-items)=
+### Wikidata items for the places no gazetteer knows
+
+A place the review leaves with no match (every candidate judged *Not this
+one* or *Different places*, or none found) can be given an item in
+Wikidata, with its names, a description, its kind of place, its point, its
+country and, from the [region review](#region-review), the region it lies
+in; the new item then comes back as an identity of the place. The panel for
+it, **Wikidata items for the places no gazetteer knows**, is under the
+review, in five parts, in order. In a workflow it is an optional step of
+its own, after the review (see [Map your data](#methodos-map-your-data),
+step 6). PLATO tools never writes to Wikidata: it writes a batch, which you
+run with your own Wikidata account.
+
+1. **Search Wikidata first.** Before an item is made, each place with no
+   match is searched in Wikidata itself, by each of its names in its own
+   language and, where it has a point, for items within 5 km of it, which
+   sends its coordinates. The search needs your permission for Wikidata in
+   the **Permissions** panel, and no account or token; the preview says
+   what will be sent. What it finds joins the review as candidates, which
+   are never accepted in bulk: decide each (*Same place* records the item
+   found; *Not this one* or *Different places* lets the place go to the
+   batch). A place never looked up in the World Historical Gazetteer is
+   counted and warned of, not refused: look it up first, so that an item
+   is not made for a place a gazetteer knows.
+2. **The licence.** Wikidata's data is in the public domain (CC0), so the
+   dataset's licence decides whether its statements may go there. A
+   dataset in the public domain (CC0, the Public Domain Mark, PDDL)
+   passes. One under a licence that asks credit or share-alike (CC BY,
+   CC BY-SA, ODbL, ODC-By, the Open Government Licence) needs your
+   statement, *I hold the rights in this dataset, or have the holder's
+   permission, and release these statements under CC0*, recorded with your
+   name and the date, for that licence: change the licence, and it must be
+   made again. A licence that allows no commercial use or no adaptations,
+   a rights statement, no licence, or one these tools do not know, refuses
+   the batch. A statement taken from a cited source that is not free to
+   copy is left out of the item, and the panel says so.
+3. **The items.** A place qualifies when it is reviewed (no candidate left
+   undecided), matched to nothing, linked to no gazetteer record, searched
+   in Wikidata and answered, with a web address under the dataset's base
+   address, a name, a point (or a region the region review matched to a
+   Wikidata item) and an attestation citing a source; the panel lists each
+   reason a place is left out. Each item has labels (the name in each
+   language) and aliases (the other names); a description, filled in as
+   "<kind> in <region>, <country>, attested <first>–<last>" and yours to
+   edit (two to twelve words); *Instance of* (P31) from its kind of place,
+   or one you choose; *Coordinate location* (P625), to as many decimals as
+   the location's precision allows; *Country* (P17) from its country code;
+   and *Located in* (P131), only from a region the region review matched
+   to a Wikidata item. No dates are written. Each statement is a tick-box,
+   and **Leave this place out** keeps a place from the batch.
+4. **The batch.** **Download the QuickStatements batch** writes the items
+   as QuickStatements text (its version 1 commands), named after the
+   dataset with `.wikidata.qs.txt`, each statement referenced to the
+   place's own web address and the date. One batch holds at most 250
+   items: for more, leave places out, or ask for Wikidata's approval first
+   (*Requests for permissions/Bot*), talk to WikiProject Historical Place,
+   and make the batch in parts. A dataset not yet published is warned of,
+   not refused, since the addresses the batch cites may not lead anywhere
+   yet. Then open [QuickStatements](https://quickstatements.toolforge.org/)
+   and log in with your Wikidata account (it needs to be autoconfirmed: at
+   least 50 edits, and four days old); choose *New batch*, then *V1
+   commands*, paste the batch and *Import V1 commands*; check the commands,
+   and *Run* them. Keep the batch number: the batch is an edit group, which
+   can be undone whole.
+5. **The Q-ids back.** Paste the Q-ids of the new items (one a line, in the
+   batch's order, or the table QuickStatements shows) and press **Check
+   the Q-ids**; or give your Wikidata user name (sent to Wikidata only) and
+   press **Read my new items**. Each item is read from Wikidata and checked
+   against the batch's row: a label equal to one of the place's names, its
+   point within 1 km where the place has one, and the reference to the
+   place's address. A verified item is recorded in the review as an
+   identity, which **Finish** writes into the dataset, citing Wikidata (the
+   [version check](#comparing-two-versions) sees only an addition); an item
+   not verified is shown, never recorded. **Take the Q-id out** lets the
+   place be given an item again. Save the review afterwards, as the page
+   asks.
+
+On the command line the same parts are `wikidata search`, `wikidata batch`
+and `wikidata ids`, over the review's work file: `--allow-host wikidata` is
+the consent to ask Wikidata, `--consent` the rights statement, and the Q-ids
+come from a file (`--qids`) or your own new items (`--user`):
+
+```bash
+npx github:pelagios/plato-tools wikidata search places.json --review places-review.json --allow-host wikidata
+npx github:pelagios/plato-tools wikidata batch places.json --review places-review.json --consent
+npx github:pelagios/plato-tools wikidata ids places.json --review places-review.json --reviewer "Your Name" --allow-host wikidata --qids qids.txt
+```
+
 (scope)=
 ## Scope: confining every lookup
 
@@ -1329,13 +1418,14 @@ a workflow:
 2. **What do you want at the end?** Places on a map, each identified in a
    gazetteer; a citable, published dataset; a new version of a published
    dataset, checked; a file in another format; a match of two datasets;
-   figures as a Data Cube; or *I am not sure: show me what the tools can do*.
+   a map image for Wikipedia or Commons; figures as a Data Cube; or *I am
+   not sure: show me what the tools can do*.
 3. **Anything of these?** Only the yes-or-no questions the workflow needs and
    the first two answers left open; and, for a workflow that publishes, or that gives regions or traced places
    addresses of their own, the base address they are given under (see
    [below](#methodos-base-address)).
 
-The same answers always give the same workflow. Six workflows exist so far:
+The same answers always give the same workflow. Seven workflows exist so far:
 
 | You have | You want | The workflow |
 |---|---|---|
@@ -1347,6 +1437,7 @@ The same answers always give the same workflow. Six workflows exist so far:
 | A list of place names, or a dataset already in a PLATO format | A match of two datasets | [Match two datasets](#methodos-match-two-datasets) |
 | A map image | Places on a map, each identified in a gazetteer | [Trace a historical map](#methodos-trace-a-historical-map) |
 | A map image | A citable, published dataset | Trace a historical map, with its publishing steps |
+| A list of place names, or a dataset already in a PLATO format | A map image for Wikipedia or Commons | [Make an open map](#methodos-make-an-open-map) |
 
 Once the questions are answered, the workflow's steps are listed, with any
 steps your answers leave out and, for a workflow that reads an edition or
@@ -1426,6 +1517,9 @@ The questions under 3 are:
 - *Does the table say which region each place is in (a parish, a county)?*
 - *Will you draw or trace places that the gazetteer cannot locate?*
 - *Will you publish the result?* (asked only when you wanted places on a map)
+- *Will you create Wikidata items for the places no gazetteer knows (a batch
+  you run in QuickStatements yourself)?* Asked last, and no unless you
+  answer yes (see [Wikidata items](#wikidata-items)).
 - When the table gives regions, or you will publish, *Under what base address
   will your places, and any regions, have web addresses of their own?* Where
   the table gives regions it is needed, since the regions are given addresses
@@ -1459,7 +1553,14 @@ The steps, with the tool that does each:
    regions say nothing of where to look. The lookup needs your WHG token and
    your permission (see [reviewing matches](#match-review)).
 6. **Krisis: Decide which candidates are the same place.** Yours: review the
-   candidates, as in [reviewing matches](#match-review).
+   candidates, as in [reviewing matches](#match-review). If you said you
+   would create Wikidata items, **Krisis: Create Wikidata items for the
+   places no gazetteer knows** follows, an optional step of its own. Yours:
+   with the review open, use its panel *Wikidata items for the places no
+   gazetteer knows* (see [Wikidata items](#wikidata-items)), then press
+   **This step is done**. The step is done with the review as it stands,
+   whether or not an item was recorded, and the next step writes any Q-id
+   recorded into the dataset as an identity.
 7. Recording the decisions, by **Finish** in the review, as one of:
    - **Krisis: Record the decisions in the dataset**, where the table gives
      no regions;
@@ -1568,7 +1669,10 @@ Then **Krisis: Decide which candidates are the same place**, as in
 [reviewing matches](#match-review), where a candidate of another kind of
 place than yours is ranked down and a place you have already accepted for
 another of yours says so. **Open the review** reopens the match's review if
-it was put away. A review made with other files is not counted.
+it was put away. A review made with other files is not counted. If you
+said you would create Wikidata items, **Krisis: Create Wikidata items for
+the places no gazetteer knows** follows the review, as in
+[Map your data](#methodos-map-your-data), step 6.
 
 The questions under 3 are:
 
@@ -1583,6 +1687,9 @@ The questions under 3 are:
   new attestations added*, or *A PLATO file of only the new
   attestations*): a Finish that makes the other is not counted.
 - *Will you publish the result?*
+- *Will you create Wikidata items for the places no gazetteer knows (a
+  batch you run in QuickStatements yourself)?* Asked last, and no unless
+  you answer yes (see [Wikidata items](#wikidata-items)).
 - The base address, which is optional. For a table it is always asked,
   since your places are given their addresses under it. For a PLATO
   dataset it is asked only if you will publish.
@@ -1629,6 +1736,10 @@ The questions under 3 are:
 - *Will you look the places up in the World Historical Gazetteer, to
   identify each with a record there?*
 - *Will you publish the result?* (asked only when you wanted places on a map)
+- *Will you create Wikidata items for the places no gazetteer knows (a
+  batch you run in QuickStatements yourself)?* Asked last, and no unless
+  you answer yes. The step runs only if you also look the places up, since
+  it follows the review (see [Wikidata items](#wikidata-items)).
 - The base address, which is needed, since every place is given its web
   address under it as you name it, so **Follow** waits for it. Under the
   field: *Needed: every place you trace is given its address under it as you
@@ -1638,6 +1749,8 @@ The questions under 3 are:
 traced** are Map your data's, as where the table gives no regions:
 **Krisis: Look the places up in the World Historical Gazetteer, within the
 map's outline**, **Krisis: Decide which candidates are the same place**,
+**Krisis: Create Wikidata items for the places no gazetteer knows** if you
+said you would (see [Map your data](#methodos-map-your-data), step 6),
 **Krisis: Record the decisions in the dataset**, **Elenchos: Check the
 result**, and **Mneme: Compare the result with the dataset traced**. The
 lookup needs a WHG token, as Map your data's does (see
@@ -1657,6 +1770,88 @@ draft, with no licence of its own: the map's licence is given on each
 citation of the map, and the dataset's is yours to give before you publish
 (see [licences that travel with what you copy](#licences-that-travel-with-what-you-copy)).
 
+(methodos-make-an-open-map)=
+### Make an open map
+
+A plain map of ancient places, made from a list of their names, to
+illustrate an article on Wikipedia: labelled, with a scale bar and its
+sources written in, under a licence Wikimedia Commons accepts. No GIS is
+needed.
+
+**You need:** a list of the places' names (or a spreadsheet of them, or a
+dataset already in PLATO), a base address for your places (any web address
+of yours, such as `https://example.org/my-map/`), and a World Historical
+Gazetteer token for the lookup (see
+[Map your data](#methodos-map-your-data), *What you need first*).
+
+1. **Say what you have.** On the tools' page, choose **Not sure where to
+   start? Answer three questions**. Say you have *A list of place names*,
+   and that you want *A map image for Wikipedia or Commons*. Give the base
+   address. Follow the workflow.
+2. **Paste the names.** Under *Choose your data*, open **Or paste a list of
+   names** and paste one name on each line. They are read as a small table:
+   each name, and an id made from it. A name in Greek or Cyrillic is given
+   an id in Latin letters (Ἀθῆναι gives `athenai`); the name itself stays as
+   you wrote it.
+3. **Identify the places.** The workflow takes you through the tools: the
+   columns are matched, the list is checked and made a dataset, and the
+   names are looked up in the World Historical Gazetteer. Decide which
+   candidate is the place you mean (accept the clear ones together), and
+   record the decisions (see [reviewing matches](#match-review)).
+4. **Locate them.** Recording a decision says which place it is, not where.
+   Open [Chora](#chora) (the map): for each place, **Find in a gazetteer…**,
+   and adopt its match's location (see
+   [adopting a location from a match](#adopting-a-location-from-a-match)).
+   Save, and say the download is complete.
+5. **Make the map.** In Chora, frame the view: what you see is what the map
+   shows. Under the places, choose **Make a map of this view**. The preview
+   over the map is the file as it will be written.
+   - **Background:** Natural Earth (public domain, drawn as vectors) is the
+     plainest; tick *Shaded relief* for the land's shape, and *Seas named*
+     or *Mountains, deserts and other regions named* if you want them.
+     Modern borders and names are off. The Ancient World (CAWM) and Roman
+     Empire (DARE) basemaps are pictures of ancient landscapes; DARE makes
+     your map CC BY-SA. A historical map you have added in Chora can be the
+     background too: if its rights are not clear, say what they are (a map
+     published more than 120 years ago is usually in the public domain, and
+     that is chosen for you when its date says so). If its holder licenses
+     its scan for non-commercial use only, nothing is chosen: choosing a
+     statement then says the scan is of a public-domain map, which
+     overrides the holder's licence, so choose one only if that is so.
+   - **Labels:** each place has its preferred name; choose another it is
+     attested by, or a rule for the whole map (*the name in Latin where one
+     is attested*). Drag a label to move it, untick a place to leave it
+     out, mark a label as a region (spaced capitals) or water (italic), and
+     add a short note under it if you need one.
+   - **The map:** a title, a north arrow, a small locator map, the
+     projection (Web Mercator, or equirectangular to use the map as a
+     Wikipedia location map), its width.
+   - **Licence:** your own drawing and labels are CC BY 4.0 unless you
+     choose otherwise; what the map is made of may make it CC BY-SA, and
+     the panel says why. The sources of your places are credited in the
+     file (for example "Pleiades (CC BY 3.0), through the World Historical
+     Gazetteer"). If anything in it cannot go to Commons (a basemap you
+     pasted, a source for non-commercial use only), the panel says what.
+     You can still download the map for your own use: the file says why it
+     is not under an open licence, and there is no description or upload
+     link for Commons. Leave that part out, and the map can go to Commons.
+6. **Download.** Download the SVG (Commons prefers it, and Inkscape edits
+   it) and the PNG. In a workflow, the first download ends it, and the
+   other, downloaded after, is kept with the same step.
+7. **Upload to Wikimedia Commons.** Open **Wikimedia Commons: the file's
+   description**. **Upload to Wikimedia Commons** opens Commons' upload
+   form with the file's name, its description (the `{{Map}}` template,
+   filled in) and its licence: choose the file you downloaded there.
+   Following the link sends that name and description to Wikimedia
+   Commons, in the link; nothing else is sent. If the link is not offered,
+   copy the description and paste it into the form.
+
+**What it cannot do:** at most 200 places a map; no arrows or battle plans;
+labels in one language a file (make another file for another language); a
+map with a part whose licence is unknown, or for non-commercial use only,
+cannot go to Commons. The map's settings are kept in its SVG: **Remake from
+a map made here** opens them again.
+
 (methodos-publish-a-dataset)=
 ### Publish a dataset
 
@@ -1672,10 +1867,11 @@ where the dataset has none of its own (see
 ### The base address
 
 A workflow that gives places addresses of their own (Map your data when the
-table gives regions, Trace a historical map always, and every workflow when
-you will publish) asks under 3 for the base address they are given under. It
-is the same question, in the same field, in every workflow, and optional
-except where regions, or places traced from a map, need it. The field shows the base address already in **Options**
+table gives regions, Trace a historical map always, Make an open map from a
+list or a table, and every workflow when you will publish) asks under 3 for
+the base address they are given under. It is the same question, in the same
+field, in every workflow, and optional except where regions, places traced
+from a map, or the places of a list or a table to be mapped, need it. The field shows the base address already in **Options**
 (*Web address for your identifiers*), and what you type there is written to
 **Options** too: there is one base address, used by every tool on the page.
 
@@ -1699,6 +1895,13 @@ If the workflow's recipe has changed since it was saved, the tracker says
 so. A change of words only carries on. Otherwise it stays at its last
 finished step, and you can **Start the remaining steps under the new
 recipe**, or leave it.
+
+The recipes of Map your data, Match two datasets and Trace a historical map
+changed when the Wikidata step was added to them (they are now versions 3, 2
+and 2). A workflow saved under the earlier recipe answers that step's
+question as no, and takes up its remaining steps under the new recipe, the
+steps done kept; one already past **Record the decisions** restarts from
+that step, since the Wikidata step comes before it.
 
 ### Carrying a workflow elsewhere: the project file
 
