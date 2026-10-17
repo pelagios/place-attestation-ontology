@@ -1,0 +1,1124 @@
+<!doctype html>
+<html class="no-js" lang="en-GB" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="about.html"><link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Checking, converting and comparing" href="tools.html"><link rel="prev" title="Place names in a TEI edition" href="tei.html">
+        <link rel="prefetch" href="_static/plato-mark.svg" as="image">
+
+    <link rel="shortcut icon" href="_static/favicon.svg"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>Your own table of places: CSV, GeoJSON or a workbook - PLATO guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" type="text/css" href="_static/plato.css?v=0c54fe58" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">PLATO guide</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/plato-mark.svg" alt="Logo"/>
+  </div>
+  <span class="sidebar-brand-text">PLATO guide</span>
+</a>
+<p class="plato-status">
+  <a class="plato-badge" href="about.html#experimental" aria-describedby="plato-status-tip">Experimental</a>
+  <span class="plato-tip" id="plato-status-tip" role="tooltip">PLATO is experimental: it is developed in the open and not yet fully tested, and its terms and schemas may change, or break, between releases. A renamed or withdrawn term is kept, marked as deprecated, for at least one release before it is removed. Each release is archived on Zenodo with its own DOI. PLATO tools has its own badge.</span>
+</p><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Why PLATO</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ideas.html">The ideas in five minutes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/index.html">Organising data in spreadsheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/first-dataset.html">A first dataset, step by step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/survey-example.html">A place-name survey example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations from Recogito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tei.html">Place names in a TEI edition</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Your own table of places: CSV, GeoJSON or a workbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Checking, converting and comparing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Routes, journeys and networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routes/index.html">Routes, journeys and networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/antonine.html">A route: the Antonine Itinerary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/king-john.html">A journey: King John in 1215</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/river-idle.html">A river network: the lower Idle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/datini.html">A network of correspondence: the Datini letters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheets/reference.html">Sheet reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vocabularies.html">Vocabularies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistical tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-data.html">Linked data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About PLATO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/blob/main/docs/tables-of-places.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/edit/main/docs/tables-of-places.md" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="your-own-table-of-places-csv-geojson-or-a-workbook">
+<h1>Your own table of places: CSV, GeoJSON or a workbook<a class="headerlink" href="#your-own-table-of-places-csv-geojson-or-a-workbook" title="Link to this heading">¶</a></h1>
+<p>Many projects keep their places in a table of their own: a spreadsheet, as an
+Excel or OpenDocument workbook or saved as CSV, with a column for the name, one
+for latitude, one for longitude and so on, or a GeoJSON file of features
+exported from a GIS. Such a table is not yet in PLATO’s shape, but most of
+what it holds has a place there.</p>
+<p><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a> reads such a table, works out
+which column holds what, lets you correct that, and turns each row into
+evidence in PLATO’s shape, which you can then check, convert to the
+<a class="reference internal" href="spreadsheets/index.html"><span class="std std-doc">spreadsheet tables</span></a> or to Linked Places Format, and
+add to.</p>
+<section id="what-it-reads">
+<h2>What it reads<a class="headerlink" href="#what-it-reads" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>A CSV file</strong> (or a tab-separated file ending <code class="docutils literal notranslate"><span class="pre">.tsv</span></code> or <code class="docutils literal notranslate"><span class="pre">.tab</span></code>) that is not
+one of the sheets of PLATO’s own <a class="reference internal" href="spreadsheets/index.html"><span class="std std-doc">spreadsheet tables</span></a>.
+Files named after those sheets (<code class="docutils literal notranslate"><span class="pre">places.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">names.csv</span></code> and the rest) are
+read as the tables, as before; a single file of that name whose first column
+is not the sheet’s own (a <code class="docutils literal notranslate"><span class="pre">places.csv</span></code> of your own that does not begin with
+<code class="docutils literal notranslate"><span class="pre">place_id</span></code>) is read as a table of places. Several CSV files not named after
+the sheets are not read together: choose one at a time.</p></li>
+<li><p><strong>A workbook</strong> (<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> or <code class="docutils literal notranslate"><span class="pre">.ods</span></code>) that is not PLATO’s own spreadsheet
+tables, one sheet at a time: see <a class="reference internal" href="#a-workbook-of-your-own">A workbook of your own</a>.</p></li>
+<li><p><strong>Plain GeoJSON</strong>: a FeatureCollection, or a single Feature, that is not
+Linked Places Format. Each feature’s properties are read as the columns of a
+row, its <code class="docutils literal notranslate"><span class="pre">id</span></code> as one more column, and its geometry is carried if it is well
+formed.</p></li>
+<li><p><strong>A list of names, pasted</strong> into <em>Or paste a list of names</em>, under the drop
+zone on the page: one name a line. It is read as a table of places with one
+column, <code class="docutils literal notranslate"><span class="pre">name</span></code>. On the command line, save the list as a CSV file headed
+<code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></li>
+</ul>
+<p>A IIIF Georeference Annotation, as <a class="reference external" href="https://allmaps.org">Allmaps</a> makes them,
+is refused if it is dropped on its own, and the message says why: it places a
+map image on the earth, and is a map’s georeference, not a dataset of places.</p>
+<p><strong>A CSV file must be well formed.</strong> A quotation mark that opens a cell and is
+never closed, or a stray one inside a quoted cell (one there is written twice,
+<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>), stops the file, naming the line: after it, where rows begin and end
+cannot be told. Two columns with the same heading are each known by the
+heading and their place, such as <code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">(column</span> <span class="pre">3)</span></code>, in the matching and in
+the notes, and the report warns you once. Give each column a heading of its
+own to be sure which is which.</p>
+<p>Coordinates must be decimal degrees of longitude and latitude (WGS 84), as
+GeoJSON requires. A GeoJSON file that names another coordinate reference
+system is refused, rather than read as degrees it is not. The one exception is
+a column of British or Irish grid references, which are converted (see
+<a class="reference internal" href="#grid-references">Grid references</a>).</p>
+<section id="a-workbook-of-your-own">
+<h3>A workbook of your own<a class="headerlink" href="#a-workbook-of-your-own" title="Link to this heading">¶</a></h3>
+<p>A workbook is read as PLATO’s <a class="reference internal" href="spreadsheets/index.html"><span class="std std-doc">spreadsheet tables</span></a>, as
+before, when its sheets are named after the tables’ sheets: two or more of
+them, or a single one that begins as that sheet does (a <code class="docutils literal notranslate"><span class="pre">places</span></code> sheet whose
+first column is <code class="docutils literal notranslate"><span class="pre">place_id</span></code>). Any other <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> or <code class="docutils literal notranslate"><span class="pre">.ods</span></code> workbook is a table of
+places, and its columns are matched as a CSV file’s are.</p>
+<p><strong>One sheet is read.</strong> It is the first sheet that is not hidden, unless you
+choose another. <strong>On the page</strong>, choose it in <em>Sheet to read</em>, above the table
+of columns: its columns are then read and guessed afresh. <strong>On the command
+line</strong>, give <code class="docutils literal notranslate"><span class="pre">--sheet</span> <span class="pre">NAME</span></code> to <code class="docutils literal notranslate"><span class="pre">check</span></code>, <code class="docutils literal notranslate"><span class="pre">convert</span></code> or <code class="docutils literal notranslate"><span class="pre">preview</span></code>; a name the
+workbook does not have is refused, and the message names the sheets it has.
+The report names the sheets not read. To read several, read each in turn, or
+put their rows on one sheet.</p>
+<p><strong>The report also names</strong></p>
+<ul class="simple">
+<li><p>a <strong>hidden sheet</strong>, whether or not it is the one read. Only an Excel
+workbook’s hidden sheets are known: an OpenDocument (<code class="docutils literal notranslate"><span class="pre">.ods</span></code>) workbook’s are
+not marked as hidden when it is read, so a hidden first sheet is the one
+read. Check the report’s <em>read “…”</em> line;</p></li>
+<li><p>a <strong>formula saved without its value</strong>, as a program that does not calculate
+may save it. The cell is read as empty. Open the workbook in a spreadsheet
+program, let it calculate, and save it again;</p></li>
+<li><p>a <strong>cell holding an error</strong>, such as <code class="docutils literal notranslate"><span class="pre">#DIV/0!</span></code>, <code class="docutils literal notranslate"><span class="pre">#N/A</span></code> or <code class="docutils literal notranslate"><span class="pre">#REF!</span></code>. It carries
+nothing: it is read as empty, never as the error’s text;</p></li>
+<li><p>an <strong>empty sheet</strong>, which is an error: choose the sheet that holds the table.</p></li>
+</ul>
+<p><strong>Each cell is read as it is stored, not as the workbook shows it</strong>, exactly
+as the spreadsheet tables reader reads a workbook:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>In the workbook</p></th>
+<th class="head"><p>Read as</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A coordinate formatted to show <code class="docutils literal notranslate"><span class="pre">51.38</span></code></p></td>
+<td><p>every digit it has: <code class="docutils literal notranslate"><span class="pre">51.381088</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>A very small or very large number</p></td>
+<td><p>written out in full, never with an exponent: <code class="docutils literal notranslate"><span class="pre">0.0000001</span></code>, not <code class="docutils literal notranslate"><span class="pre">1e-7</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>A percentage shown as <code class="docutils literal notranslate"><span class="pre">95%</span></code></p></td>
+<td><p>the number, <code class="docutils literal notranslate"><span class="pre">0.95</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>A date</p></td>
+<td><p>an ISO date, <code class="docutils literal notranslate"><span class="pre">1990-05-06</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>A date with a time of day</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1991-07-02T10:30:00</span></code>, with no time zone, as the workbook gives none</p></td>
+</tr>
+<tr class="row-odd"><td><p>A time of day alone</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">12:00:00</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Text, such as <code class="docutils literal notranslate"><span class="pre">007</span></code></p></td>
+<td><p>the text as it is: <code class="docutils literal notranslate"><span class="pre">007</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A workbook is read whole into memory, and one over 50 MB is warned of: save a
+very large sheet as CSV (UTF-8), which is read a row at a time.</p>
+<p>For example, a workbook <code class="docutils literal notranslate"><span class="pre">sites.xlsx</span></code> made for this guide has three sheets: a
+hidden one, <em>Old list</em>; <em>Sites</em>; and <em>Notes</em>. <em>Sites</em> is</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>latitude</p></th>
+<th class="head"><p>longitude</p></th>
+<th class="head"><p>surveyed</p></th>
+<th class="head"><p>finds</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bath</p></td>
+<td><p>Aquae Sulis</p></td>
+<td><p>51.38</p></td>
+<td><p>-2.36</p></td>
+<td><p>1990-05-06</p></td>
+<td><p>120</p></td>
+</tr>
+<tr class="row-odd"><td><p>york</p></td>
+<td><p>Eboracum</p></td>
+<td><p>53.96</p></td>
+<td><p>-1.08</p></td>
+<td><p>1991-07-02 10:30</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">=F2*2</span></code>, saved without its value</p></td>
+</tr>
+<tr class="row-even"><td><p>wroxeter</p></td>
+<td><p>Viroconium</p></td>
+<td><p>52.6744</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#N/A</span></code></p></td>
+<td><p>1992-04-01</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#DIV/0!</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>with the coordinates of the first two rows formatted to show two decimal
+places. Checked with the base <code class="docutils literal notranslate"><span class="pre">https://example.org/survey/</span></code>, <em>Sites</em> is read,
+as the first sheet not hidden, and gives three places. Aquae Sulis has its
+point at every digit stored, <code class="docutils literal notranslate"><span class="pre">51.381088,</span> <span class="pre">-2.359019</span></code>, and the notes “surveyed:
+1990-05-06” and “finds: 120”; Eboracum’s note is “surveyed:
+1991-07-02T10:30:00”. The report says:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sites.xlsx: read "Sites"; not read "Old list", "Notes"
+"Old list" in sites.xlsx, not read
+row 4, column "longitude", cell D4: #N/A
+row 4, column "finds", cell F4: #DIV/0!
+cell F3 of "Sites", column "finds": =F2*2
+row 4: latitude 52.6744 with no longitude
+</pre></div>
+</div>
+<p>Saved as <code class="docutils literal notranslate"><span class="pre">sites.ods</span></code>, the same workbook reads <em>Old list</em> first, as its hidden
+flag is not known, and <code class="docutils literal notranslate"><span class="pre">--sheet</span> <span class="pre">Sites</span></code> reads <em>Sites</em>.</p>
+</section>
+<section id="plain-geojson-or-linked-places-format">
+<h3>Plain GeoJSON or Linked Places Format?<a class="headerlink" href="#plain-geojson-or-linked-places-format" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://github.com/LinkedPasts/linked-places-format">Linked Places Format</a>
+(LPF) is itself GeoJSON, with members of its own for names, dates and
+identifiers. PLATO tools reads a file as LPF, with LPF’s own reader, only when
+it shows LPF’s structure near its start: it names LPF’s <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code>, or a
+feature has a <code class="docutils literal notranslate"><span class="pre">names</span></code> list whose items have a <code class="docutils literal notranslate"><span class="pre">toponym</span></code>, a <code class="docutils literal notranslate"><span class="pre">when</span></code> with
+<code class="docutils literal notranslate"><span class="pre">timespans</span></code>, or an <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code> of its own, beside its <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.
+Anything else is plain GeoJSON, read as a table of places as this page
+describes. A property that is merely called <code class="docutils literal notranslate"><span class="pre">toponym</span></code>, <code class="docutils literal notranslate"><span class="pre">timespans</span></code> or <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>,
+inside a feature’s <code class="docutils literal notranslate"><span class="pre">properties</span></code>, does not make a file LPF.</p>
+</section>
+</section>
+<section id="matching-the-columns">
+<h2>Matching the columns<a class="headerlink" href="#matching-the-columns" title="Link to this heading">¶</a></h2>
+<p>PLATO tools guesses which column holds what from the column headings (case,
+accents, spaces and punctuation do not count, so <code class="docutils literal notranslate"><span class="pre">Place</span> <span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">place_name</span></code>
+and <code class="docutils literal notranslate"><span class="pre">PLACENAME</span></code> are the same) and from the values in the first 50 rows. A
+column headed <code class="docutils literal notranslate"><span class="pre">lat</span></code> counts as latitude only if it holds numbers; a column
+headed <code class="docutils literal notranslate"><span class="pre">wikidata</span></code> counts as the place’s web address only if it holds web
+addresses. Every column is matched to exactly one of these:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Choice</p></th>
+<th class="head"><p>What it means</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Name</p></td>
+<td><p>The place’s name: its label, and a name the table attests</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alternative names</p></td>
+<td><p>Other names; several in one cell separated by <code class="docutils literal notranslate"><span class="pre">;</span></code> or <code class="docutils literal notranslate"><span class="pre">|</span></code>, or a list in GeoJSON</p></td>
+</tr>
+<tr class="row-even"><td><p>Latitude, Longitude</p></td>
+<td><p>A point, in decimal degrees</p></td>
+</tr>
+<tr class="row-odd"><td><p>Point or shape, as WKT text</p></td>
+<td><p>A geometry in Well-Known Text</p></td>
+</tr>
+<tr class="row-even"><td><p>Point or shape, as GeoJSON</p></td>
+<td><p>A GeoJSON geometry written out in the cell</p></td>
+</tr>
+<tr class="row-odd"><td><p>Grid reference (Ordnance Survey, Irish Grid)</p></td>
+<td><p>A grid reference, such as <code class="docutils literal notranslate"><span class="pre">TQ</span> <span class="pre">33760</span> <span class="pre">80560</span></code> or <code class="docutils literal notranslate"><span class="pre">O</span> <span class="pre">15</span> <span class="pre">34</span></code> (see <a class="reference internal" href="#grid-references">Grid references</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Place id</p></td>
+<td><p>The place’s own identifier in the table, from which its web address is made</p></td>
+</tr>
+<tr class="row-odd"><td><p>Place’s web address</p></td>
+<td><p>The place’s address in a gazetteer (Wikidata, Pleiades, GeoNames, WHG…)</p></td>
+</tr>
+<tr class="row-even"><td><p>Kind of place</p></td>
+<td><p>A type; several in one cell separated by <code class="docutils literal notranslate"><span class="pre">;</span></code> or <code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Language of the name</p></td>
+<td><p>A language code, such as <code class="docutils literal notranslate"><span class="pre">en</span></code>, <code class="docutils literal notranslate"><span class="pre">la</span></code> or <code class="docutils literal notranslate"><span class="pre">grc</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Source</p></td>
+<td><p>The source the row comes from: a title, or a web address</p></td>
+</tr>
+<tr class="row-odd"><td><p>Date, as the source writes it</p></td>
+<td><p>The date in the source’s own words</p></td>
+</tr>
+<tr class="row-even"><td><p>Earliest date, Latest date</p></td>
+<td><p>A year (such as <code class="docutils literal notranslate"><span class="pre">-0500</span></code> or <code class="docutils literal notranslate"><span class="pre">1066</span></code>) or an ISO date</p></td>
+</tr>
+<tr class="row-odd"><td><p>Region it lies in</p></td>
+<td><p>A region the place lies in, such as its parish or county, at a level (see <a class="reference internal" href="#the-regions-a-place-lies-in">The regions a place lies in</a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Regions, to split into levels</p></td>
+<td><p>Several regions in one cell, such as “Rotherhithe, Surrey, England”</p></td>
+</tr>
+<tr class="row-odd"><td><p>Keep as a note</p></td>
+<td><p>Carried in the attestation’s notes, as “column: value”</p></td>
+</tr>
+<tr class="row-even"><td><p>Don’t carry over</p></td>
+<td><p>Left out, and named in the report</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A column the tools do not recognise is kept as a note. It is never turned
+into one of PLATO’s properties: all that is known of it is its heading, and a
+property would claim the source said something PLATO defines.</p>
+<p><strong>On the page</strong>, before anything is checked or converted, PLATO tools shows a
+table, <em>Which column holds what</em>: each column, three examples from the file,
+what it will be read as, and why. Change any choice that is wrong. Warnings
+follow your choices: for instance, that the places will have no web addresses,
+or that there is a latitude column with no longitude. <strong>Save this matching</strong>
+keeps your choices as a small JSON file, and <strong>Use a saved matching…</strong> applies
+it again, to this file or another like it.</p>
+<p><strong>On the <a class="reference external" href="https://github.com/pelagios/plato-tools#from-the-command-line">command line</a></strong>,
+the guess is printed with each table, one line for each column with its
+reason, and then as JSON:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{"id":"id","name":"name","latitude":"latitude","longitude":"longitude", …, "description":"note"}
+</pre></div>
+</div>
+<p>Save that line to a file, correct it, and give it back with
+<code class="docutils literal notranslate"><span class="pre">--columns</span> <span class="pre">FILE</span></code>. It is the same JSON the page saves. The fields are named in
+it as <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">alternativeNames</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code>, <code class="docutils literal notranslate"><span class="pre">wkt</span></code>, <code class="docutils literal notranslate"><span class="pre">geometry</span></code>,
+<code class="docutils literal notranslate"><span class="pre">gridref</span></code>, <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">language</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">start</span></code>,
+<code class="docutils literal notranslate"><span class="pre">end</span></code>, <code class="docutils literal notranslate"><span class="pre">within</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>, or <code class="docutils literal notranslate"><span class="pre">note</span></code> and <code class="docutils literal notranslate"><span class="pre">skip</span></code>. A column of a gazetteer’s ids, made into web addresses
+with a pattern, is written
+<code class="docutils literal notranslate"><span class="pre">{&quot;field&quot;:</span> <span class="pre">&quot;address&quot;,</span> <span class="pre">&quot;pattern&quot;:</span> <span class="pre">&quot;https://pleiades.stoa.org/places/{id}&quot;}</span></code> in
+place of the field’s name (see <a class="reference internal" href="#a-column-of-gazetteer-ids">A column of gazetteer ids</a>).
+A column the file names that the table does not have, or a column the file
+leaves out, is reported, and a column left out is kept as a note.</p>
+</section>
+<section id="previewing-the-first-records">
+<h2>Previewing the first records<a class="headerlink" href="#previewing-the-first-records" title="Link to this heading">¶</a></h2>
+<p>Before you check or convert a whole file, you can see what its first records
+become. <strong>On the page</strong>, choose <strong>Preview the first 10 records</strong>, once the
+columns are matched (for a TEI edition, once the file is chosen). <strong>On the
+command line</strong>, give</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plato-tools preview --limit 3 my-places.csv
+</pre></div>
+</div>
+<p>with <code class="docutils literal notranslate"><span class="pre">--limit</span> <span class="pre">N</span></code> for how many records (10 if you leave it out), and the same
+<code class="docutils literal notranslate"><span class="pre">--columns</span></code>, <code class="docutils literal notranslate"><span class="pre">--sheet</span></code>, <code class="docutils literal notranslate"><span class="pre">--base</span></code> and reading options a conversion would take.
+The records are shown in PLATO JSON, as a conversion reads them, with what was
+lost from them so far, grouped as the report groups it. On the command line,
+the records go to the standard output, one a line, and the rest to the
+standard error; <code class="docutils literal notranslate"><span class="pre">--json</span></code> prints it all as one JSON object.</p>
+<p>A preview is made of a table of places (a CSV file, plain GeoJSON or a sheet of
+a workbook), a <a class="reference internal" href="tei.html"><span class="std std-doc">TEI edition</span></a>, or <a class="reference internal" href="annotations.html"><span class="std std-doc">annotations from
+Recogito</span></a>. Any other format is refused, since the first part of
+a set of spreadsheet tables or of a PLATO JSON file could be taken for the
+whole.</p>
+<ul class="simple">
+<li><p><strong>It writes nothing</strong>, and checks nothing as a whole: a problem further on,
+such as an id used again after the records shown, is not found. If the file
+cannot be read past a problem among the first records, the preview stops
+there, and says why.</p></li>
+<li><p><strong>It stops early.</strong> Reading stops at the first record past the limit, so a
+preview of a large file is quick.</p></li>
+<li><p><strong>It says how many records there are only when it has read them all.</strong> The
+line above the records says <em>first 3 of 3 records</em> only when the whole file
+was read; otherwise <em>the first 3 records read; the rest not read</em>, as a file
+is never read to its end to count it.</p></li>
+</ul>
+<p>It also says why the records shown may not be all there are, or not in the
+order a conversion writes them: the rest of the file was not read; a
+conversion gathers attestations by the place each is about once the whole
+file is read; places made from rows that share an id are made only at the end
+(so none is shown); and in a TEI edition, a place name that points to a
+<code class="docutils literal notranslate"><span class="pre">&lt;place&gt;</span></code> later in the file, or that may be in the editors’ words, waits, and
+is not shown.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">plato-tools</span> <span class="pre">preview</span> <span class="pre">--limit</span> <span class="pre">2</span> <span class="pre">--base</span> <span class="pre">https://example.org/survey/</span> <span class="pre">sites.xlsx</span></code>,
+with the workbook <a class="reference internal" href="#a-workbook-of-your-own">above</a>, prints Aquae Sulis and
+Eboracum as two places, and says</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sites.xlsx: a table of places (the sheet “Sites” of a workbook), its columns matched to PLATO (place-centric): the first 2 records read; the rest not read; nothing checked or written
+  Reading stopped after the first 2 records: the rest of the file was not read, so nothing after them, and no problem in it, is shown.
+</pre></div>
+</div>
+<p>with, as losses so far, the sheets not read, the hidden sheet and the formula
+saved without its value, but not the error cells of row 4, which was not
+read. Without <code class="docutils literal notranslate"><span class="pre">--limit</span></code>, it reads all three rows, and the line says <em>first 3 of
+3 records</em>.</p>
+</section>
+<section id="places-or-evidence-about-places">
+<h2>Places, or evidence about places<a class="headerlink" href="#places-or-evidence-about-places" title="Link to this heading">¶</a></h2>
+<p>What each row becomes depends on whether a column holds places’ web
+addresses.</p>
+<p><strong>With a column of web addresses</strong> (matched as <em>Place’s web address</em>), each
+row is evidence about the place at that address: an attestation about it,
+with the row’s names, location, type and dates. Two rows with the same
+address are two attestations about one place. A row whose address cannot be
+used becomes a new place of its own if it has an id and a name, and is
+otherwise reported and left out.</p>
+<p><strong>Without one</strong>, each row is a place of your own, with one attestation
+holding what the row says of it.</p>
+<section id="place-ids-and-the-base-address">
+<h3>Place ids and the base address<a class="headerlink" href="#place-ids-and-the-base-address" title="Link to this heading">¶</a></h3>
+<p>A place of your own needs a permanent web address, and PLATO tools makes it
+exactly as the spreadsheet tables do from <code class="docutils literal notranslate"><span class="pre">place_id</span></code>: the <strong>base address</strong>,
+then <code class="docutils literal notranslate"><span class="pre">place/</span></code>, then the id. With the base <code class="docutils literal notranslate"><span class="pre">https://example.org/roman-britain/</span></code>,
+the place with id <code class="docutils literal notranslate"><span class="pre">bath</span></code> is <code class="docutils literal notranslate"><span class="pre">https://example.org/roman-britain/place/bath</span></code>.
+The id itself is kept too, as the place’s own identifier. Choose a base you
+control and will keep, and give it with <code class="docutils literal notranslate"><span class="pre">--base</span></code> on the command line, or in
+Options on the page; without one, a stand-in base is used and the report warns
+that the addresses are not permanent. See
+<a class="reference internal" href="spreadsheets/first-dataset.html#say-what-the-dataset-is"><span class="std std-ref">Say what the dataset is</span></a>
+for how to choose a base.</p>
+<ul class="simple">
+<li><p><strong>No id column</strong>: the places have no web addresses at all, and the report
+says so once. They can be checked and converted, but not published or
+linked to until they have ids. No address is ever made from a row’s number
+or its name, since it would change whenever the table did. Add a column of
+ids that will not change, or match an existing column as the id.</p></li>
+<li><p><strong>A row with no id</strong> in the id column: that place has no web address, with
+a warning.</p></li>
+<li><p><strong>Two rows with the same id</strong>: refused, unless you choose to read them as
+one place (see <a class="reference internal" href="#rows-that-share-an-id">Rows that share an id</a>). Each id
+becomes a place’s address, so reading stops at the second row, the report
+names the id and both rows, and you correct the duplicate, match another
+column as the id, or choose that reading option.</p></li>
+</ul>
+<p>A column headed as an id that holds web addresses, such as Pleiades
+addresses, is guessed to be the places’ web addresses instead.</p>
+</section>
+<section id="rows-that-share-an-id">
+<h3>Rows that share an id<a class="headerlink" href="#rows-that-share-an-id" title="Link to this heading">¶</a></h3>
+<p>Some tables have a row for each piece of evidence, not for each place: three
+rows from three sources, all with the id of one place. Read as they stand,
+the repeated id is refused, as above. If every row with the same id really is
+evidence about the same place, choose the <strong>reading option</strong> <em>Rows with the
+same id are one place</em> (on the page, under <strong>Reading options</strong>, below the
+table of columns), or give <code class="docutils literal notranslate"><span class="pre">--same-id</span></code> on the command line. Then:</p>
+<ul class="simple">
+<li><p>each id is one place, with its address made from the id under the base
+address, as before;</p></li>
+<li><p>each row is one attestation about that place, with its own names, location,
+dates and notes, citing its row;</p></li>
+<li><p>the place’s label is the name its rows agree on. Where their names differ,
+none is picked: the label is the id, every name stays in its own row’s
+attestation, and the report lists the names, so that you can check the rows
+are one place;</p></li>
+<li><p>a row with no id names no place, so it is reported and left out.</p></li>
+</ul>
+<p>The option needs a column read as the place id; without one it is refused,
+on the page and on the command line, with the reason. It is for tables of
+places only: <code class="docutils literal notranslate"><span class="pre">--same-id</span></code> with no CSV or GeoJSON among the inputs is refused.</p>
+<p>For example, PLATO tools’ test file <code class="docutils literal notranslate"><span class="pre">duplicate-ids.csv</span></code> is</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>id,name,lat,lon
+a,Alpha,50.1,-1.1
+b,Beta,50.2,-1.2
+a,Alpha again,50.3,-1.3
+</pre></div>
+</div>
+<p>Read as it stands, it is refused at row 4: “The id “a” is used by more than
+one row (row 2 and row 4)…”, ending with the advice to read rows with the same
+id as one place (Reading options, or <code class="docutils literal notranslate"><span class="pre">--same-id</span></code>). With <code class="docutils literal notranslate"><span class="pre">--same-id</span></code> and the
+base <code class="docutils literal notranslate"><span class="pre">https://example.org/demo/</span></code>, it gives two places.
+<code class="docutils literal notranslate"><span class="pre">https://example.org/demo/place/a</span></code> has two attestations, <em>Alpha</em> (row 2) and
+<em>Alpha again</em> (row 4), each with its own point; as the names differ, its label
+is <code class="docutils literal notranslate"><span class="pre">a</span></code>, and the report warns: <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;:</span> <span class="pre">Alpha</span> <span class="pre">/</span> <span class="pre">Alpha</span> <span class="pre">again</span></code>.
+<code class="docutils literal notranslate"><span class="pre">https://example.org/demo/place/b</span></code>, <em>Beta</em>, has one.</p>
+</section>
+<section id="a-column-of-gazetteer-ids">
+<h3>A column of gazetteer ids<a class="headerlink" href="#a-column-of-gazetteer-ids" title="Link to this heading">¶</a></h3>
+<p>A table may hold a gazetteer’s ids, not its web addresses: a column
+<code class="docutils literal notranslate"><span class="pre">pleiades_id</span></code> of numbers such as <code class="docutils literal notranslate"><span class="pre">579885</span></code>. An id is not an address, and the
+same number can mean different places in different gazetteers, so such a
+column is kept as a note until you say which gazetteer it is. PLATO tools
+<strong>suggests</strong> a pattern when the column’s heading names Pleiades, GeoNames or
+Wikidata and at least half its values have the shape of that gazetteer’s ids:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gazetteer</p></th>
+<th class="head"><p>Its ids</p></th>
+<th class="head"><p>The pattern suggested</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Pleiades</p></td>
+<td><p>digits</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://pleiades.stoa.org/places/{id}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GeoNames</p></td>
+<td><p>digits</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://sws.geonames.org/{id}/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Wikidata</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Q</span></code> and digits</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http://www.wikidata.org/entity/{id}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A suggestion is never used until you <strong>confirm</strong> it. On the page, tick <em>Make
+web addresses</em> in the column’s row of the table of columns. On the command
+line, the guess and a note print the pattern; give it back in the file for
+<code class="docutils literal notranslate"><span class="pre">--columns</span></code>, as
+<code class="docutils literal notranslate"><span class="pre">&quot;pleiades_id&quot;:</span> <span class="pre">{&quot;field&quot;:</span> <span class="pre">&quot;address&quot;,</span> <span class="pre">&quot;pattern&quot;:</span> <span class="pre">&quot;https://pleiades.stoa.org/places/{id}&quot;}</span></code>.
+Once confirmed, the column is read as the places’ web addresses: each id
+replaces <code class="docutils literal notranslate"><span class="pre">{id}</span></code>, each row becomes an attestation about the place at that
+address, and its notes say how the address was made.</p>
+<p>You may also write a pattern of your own for another gazetteer. It must hold
+<code class="docutils literal notranslate"><span class="pre">{id}</span></code> once, after the address’s host, and make a web address (<code class="docutils literal notranslate"><span class="pre">http</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https</span></code>); its ids may hold only letters, digits and <code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">_</span> <span class="pre">~</span> <span class="pre">-</span></code>. A pattern for
+the World Historical Gazetteer is refused, as WHG’s short codes do not name
+one record, and <code class="docutils literal notranslate"><span class="pre">whg:</span></code> followed by a number is never made into an address.</p>
+<p>A value of the wrong shape (not digits, for Pleiades) makes no address, and is
+reported; the row is then read without it, so with an id it becomes a place of
+its own, keeping the value in its notes. A value that is already a full web
+address is read as one.</p>
+<p>For example, PLATO tools’ test file
+<a class="reference external" href="https://github.com/pelagios/plato-tools/blob/main/test/fixtures/generic/gazetteer-ids.csv"><code class="docutils literal notranslate"><span class="pre">gazetteer-ids.csv</span></code></a>
+is</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>id,name,pleiades_id
+1,Athenae,579885
+2,Roma,423025
+3,Ostia,422995
+4,Somewhere,whg:12345
+5,Bad id,57-9885
+6,No address,
+</pre></div>
+</div>
+<p>Checked as it is, the column <code class="docutils literal notranslate"><span class="pre">pleiades_id</span></code> is kept as a note, with the
+suggestion: “3 of its 5 sampled values have the form of Pleiades ids, so it
+can be read as the place’s web address, made with the pattern
+https://pleiades.stoa.org/places/{id}, once you confirm that pattern”. With
+the pattern confirmed, Athenae is an attestation about
+<code class="docutils literal notranslate"><span class="pre">https://pleiades.stoa.org/places/579885</span></code>, with the note “Place address made
+from the value 579885 in the column “pleiades_id” with the pattern
+https://pleiades.stoa.org/places/{id}”, and so are Roma and Ostia. <code class="docutils literal notranslate"><span class="pre">whg:12345</span></code>
+and <code class="docutils literal notranslate"><span class="pre">57-9885</span></code> are reported as not the shape of a Pleiades id, and rows 4, 5
+and 6, which have ids of their own, become places of their own under the base
+address.</p>
+</section>
+<section id="world-historical-gazetteer-addresses">
+<h3>World Historical Gazetteer addresses<a class="headerlink" href="#world-historical-gazetteer-addresses" title="Link to this heading">¶</a></h3>
+<p>Addresses of the <a class="reference external" href="https://whgazetteer.org">World Historical Gazetteer</a> are
+treated as in a <a class="reference internal" href="tei.html#world-historical-gazetteer-addresses"><span class="std std-ref">TEI edition</span></a>: a
+reconciliation id (<code class="docutils literal notranslate"><span class="pre">place:gn:2988507</span></code>) or an entity page is written as
+<code class="docutils literal notranslate"><span class="pre">https://w3id.org/whg/id/place:…</span></code>, with a note giving what the table said,
+and a <code class="docutils literal notranslate"><span class="pre">/places/&lt;number&gt;/portal/</span></code> address holding a database record, or an
+address on WHG’s staging copy, is refused and reported.</p>
+</section>
+<section id="pleiades-geonames-and-wikidata-addresses">
+<h3>Pleiades, GeoNames and Wikidata addresses<a class="headerlink" href="#pleiades-geonames-and-wikidata-addresses" title="Link to this heading">¶</a></h3>
+<p>So that one place does not become two addresses, an address of Pleiades,
+GeoNames or Wikidata is written in the one form that gazetteer gives it, as
+in a <a class="reference internal" href="tei.html#gazetteer-addresses-in-one-form"><span class="std std-ref">TEI edition</span></a>:
+<code class="docutils literal notranslate"><span class="pre">http://pleiades.stoa.org/places/579885</span></code> becomes
+<code class="docutils literal notranslate"><span class="pre">https://pleiades.stoa.org/places/579885</span></code>, a Wikidata page
+<code class="docutils literal notranslate"><span class="pre">https://www.wikidata.org/wiki/Q90</span></code> becomes
+<code class="docutils literal notranslate"><span class="pre">http://www.wikidata.org/entity/Q90</span></code>, and so on. The attestation’s notes give
+what the table said, the rule, and the version of the rules, such as “Place
+address given as https://www.wikidata.org/wiki/Q90 (rule wikidata-page,
+hermes-addresses 1)”. An address made from an id through a pattern follows
+the same rules. A Pleiades address that names part of a place’s record, or
+ends <code class="docutils literal notranslate"><span class="pre">#this</span></code>, is carried as written and reported.</p>
+</section>
+</section>
+<section id="the-regions-a-place-lies-in">
+<h2>The regions a place lies in<a class="headerlink" href="#the-regions-a-place-lies-in" title="Link to this heading">¶</a></h2>
+<p>Many tables give, beside each place, the regions it lies in: a column for the
+parish, one for the county, one for the country. PLATO tools can read these
+as a chain of regions, each inside the next.</p>
+<p>Each such column is matched as <em>Region it lies in</em>, with a <em>Level</em> beside it.
+Levels are numbered from the widest: 1 is the widest region (the country,
+say), 2 the next (the county), and so on. PLATO tools guesses these columns
+from their headings (<code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">county</span></code>, <code class="docutils literal notranslate"><span class="pre">shire</span></code>, <code class="docutils literal notranslate"><span class="pre">parish</span></code>, <code class="docutils literal notranslate"><span class="pre">township</span></code>,
+<code class="docutils literal notranslate"><span class="pre">admin1</span></code> and the like) and puts them in order, widest first. Check the order,
+and change a level if it is wrong. Two columns cannot share a level. A column
+of numbers under such a heading (<code class="docutils literal notranslate"><span class="pre">admin1</span></code> holding <code class="docutils literal notranslate"><span class="pre">12</span></code>) is taken to be codes,
+not names, and is kept as a note.</p>
+<p><strong>Several regions in one cell.</strong> Some tables write the whole chain in one
+cell, narrowest first: “Rotherhithe, Surrey, England”. Match that column as
+<em>Regions, to split into levels</em>, and say what separates the parts (here a
+comma), which level each part goes to, and whether <em>The first part is the
+place’s name</em>. A row with fewer parts leaves its widest levels empty. Parts
+beyond the levels you gave are named in the report.</p>
+<p><strong>With a base address</strong> of your own (see
+<a class="reference internal" href="#place-ids-and-the-base-address">Place ids and the base address</a>), each
+region becomes a place in your dataset, with its name as the table gives it.
+Each region is <code class="docutils literal notranslate"><span class="pre">plato:ContainedIn</span></code> the next wider one, and each row’s place is
+<code class="docutils literal notranslate"><span class="pre">ContainedIn</span></code> its narrowest region. One region is made for each whole chain,
+not for each name: a parish called Newton in Lancashire and one in Cheshire
+are two regions, never merged. Each region cites the file and the row where it
+was first met. This is the shape described in
+<a class="reference internal" href="json.html#regions-matched-to-a-gazetteer"><span class="std std-ref">Regions matched to a gazetteer</span></a>,
+which also says how to record, separately, that one of your regions is a
+gazetteer’s region.</p>
+<p><strong>Without a base address</strong>, no region can be given a web address, so none is
+made and no relation is written. Each attestation instead gets a note giving
+the chain, widest first, then the place’s name, such as “Within (as the
+source gives it): England &gt; Surrey &gt; Rotherhithe”, and the report says so
+once.</p>
+<p><strong>On the command line</strong>, a region column is written in the file for
+<code class="docutils literal notranslate"><span class="pre">--columns</span></code> as <code class="docutils literal notranslate"><span class="pre">{&quot;field&quot;:</span> <span class="pre">&quot;within&quot;,</span> <span class="pre">&quot;level&quot;:</span> <span class="pre">2}</span></code>. A column to split is given
+with <code class="docutils literal notranslate"><span class="pre">--split</span></code>, such as</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>--split 'Place=, :name,3,2,1'
+</pre></div>
+</div>
+<p>which splits the column <code class="docutils literal notranslate"><span class="pre">Place</span></code> at each comma, gives its first part as the
+place’s name, and its other parts to levels 3, 2 and 1, narrowest first.
+Without the levels, there are as many as the most parts in the first rows.</p>
+</section>
+<section id="grid-references">
+<h2>Grid references<a class="headerlink" href="#grid-references" title="Link to this heading">¶</a></h2>
+<p>A table may give its locations as grid references of the Ordnance Survey
+National Grid of Great Britain (<code class="docutils literal notranslate"><span class="pre">TQ</span> <span class="pre">33760</span> <span class="pre">80560</span></code>, <code class="docutils literal notranslate"><span class="pre">SU1234</span></code>) or of the Irish
+Grid (<code class="docutils literal notranslate"><span class="pre">O</span> <span class="pre">15</span> <span class="pre">34</span></code>): letters, then digits, with or without spaces. PLATO tools
+reads them when a column is matched as <em>Grid reference</em>. It guesses such a
+column from its heading (<code class="docutils literal notranslate"><span class="pre">grid</span> <span class="pre">ref</span></code>, <code class="docutils literal notranslate"><span class="pre">NGR</span></code>, <code class="docutils literal notranslate"><span class="pre">OS</span> <span class="pre">grid</span></code>, <code class="docutils literal notranslate"><span class="pre">Irish</span> <span class="pre">grid</span></code> and the
+like), or from its values when at least half are references of a 1 km square
+or finer.</p>
+<p>A grid reference names a square, not a point. Each is converted to latitude
+and longitude (WGS 84) at the centre of its square, and its precision is set
+from the number of digits: a four-figure reference such as <code class="docutils literal notranslate"><span class="pre">SU1234</span></code> is a 1 km
+square, a ten-figure one a 1 m square. The conversion uses a Helmert
+transformation: the Ordnance Survey’s for Great Britain, good to about 3.5 m,
+and, for the Irish Grid, EPSG 1641, good to about 1 m. Where the
+transformation is less exact than the square, the precision given is the
+transformation’s. OSTN15, the Ordnance Survey’s more exact transformation, is
+not used. The reference is kept as written beside the point, and the
+attestation’s notes say which transformation was used.</p>
+<ul class="simple">
+<li><p><strong>If a row also has a latitude and longitude</strong>, or a point written as WKT or
+GeoJSON, that is its location, and the grid reference is kept in the notes.
+If the two are farther apart than the square and the transformation allow,
+the report warns.</p></li>
+<li><p><strong>A cell holding <code class="docutils literal notranslate"><span class="pre">NA</span></code>, <code class="docutils literal notranslate"><span class="pre">N/A</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, a dash or the like</strong> is read as empty,
+with nothing reported. (<code class="docutils literal notranslate"><span class="pre">NA</span></code> is otherwise a 100 km square of the National
+Grid, in the Atlantic.)</p></li>
+<li><p><strong>A reference of letters alone</strong>, such as <code class="docutils literal notranslate"><span class="pre">SU</span></code>, is read as a 100 km square,
+with a warning, since a column of them may be codes rather than references.
+A reference that cannot be read is reported, with its value.</p></li>
+<li><p><strong>Irish Transverse Mercator coordinates</strong>, which are numbers with no
+letters, are not read.</p></li>
+</ul>
+<p>On the command line, the field is written <code class="docutils literal notranslate"><span class="pre">gridref</span></code> in the file for
+<code class="docutils literal notranslate"><span class="pre">--columns</span></code>.</p>
+</section>
+<section id="grouping-similar-spellings">
+<h2>Grouping similar spellings<a class="headerlink" href="#grouping-similar-spellings" title="Link to this heading">¶</a></h2>
+<p>A table often writes one name several ways: <code class="docutils literal notranslate"><span class="pre">Rotherhithe</span></code>, <code class="docutils literal notranslate"><span class="pre">Rotherhith</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ROTHERHITHE.</span></code>. Before the places are looked up in a gazetteer, PLATO tools
+can propose grouping such spellings, so that each group is looked up by one
+spelling.</p>
+<p>On the page, <em>Group similar spellings…</em>, below the Reading options, proposes
+groups for the column you choose. There are three ways of grouping: case,
+accents, punctuation, spacing and word order not counting (the default, so
+<code class="docutils literal notranslate"><span class="pre">Newton,</span> <span class="pre">Upper</span></code> and <code class="docutils literal notranslate"><span class="pre">upper</span> <span class="pre">newton</span></code> are one); the same pairs of letters, which
+groups more, some wrongly; and names that sound alike, which groups the
+most, some wrongly (to it, <code class="docutils literal notranslate"><span class="pre">Rotherhithe</span></code> and <code class="docutils literal notranslate"><span class="pre">Redruth</span></code> sound alike). Each
+group lists its spellings, with how many rows have each, and suggests the
+commonest as the spelling to look it up by, which you can change.</p>
+<p><strong>Nothing is grouped unless you tick it.</strong> Every group starts unticked, and
+only the groups you tick are used. Your ticked groups are saved with the
+matching (<strong>Save this matching</strong>), and come back ticked when it is used again.</p>
+<p><strong>The source’s spelling is always kept.</strong> In PLATO, each row’s name is
+written as the source spells it. The chosen spelling is used only for looking
+the place up, and the row’s attestation gets a note such as “Grouped for
+lookup with: Rotherhith, ROTHERHITHE. (spelling chosen: Rotherhithe)”.</p>
+<p>On the command line, <code class="docutils literal notranslate"><span class="pre">plato-tools</span> <span class="pre">cluster</span> <span class="pre">--column</span> <span class="pre">name</span> <span class="pre">places.csv</span></code> prints the
+proposed groups as JSON, for review, and applies nothing; <code class="docutils literal notranslate"><span class="pre">--method</span></code> chooses
+<code class="docutils literal notranslate"><span class="pre">fingerprint</span></code> (the default), <code class="docutils literal notranslate"><span class="pre">ngram-fingerprint</span></code> or <code class="docutils literal notranslate"><span class="pre">phonetic</span></code>. Keep the
+groups you want, and give them back with <code class="docutils literal notranslate"><span class="pre">--clusters</span> <span class="pre">FILE</span></code> to <code class="docutils literal notranslate"><span class="pre">check</span></code>,
+<code class="docutils literal notranslate"><span class="pre">convert</span></code> or <code class="docutils literal notranslate"><span class="pre">preview</span></code>. The file may be a matching saved on the page with
+groups ticked, or the groups alone. Groups in a file given only as
+<code class="docutils literal notranslate"><span class="pre">--columns</span></code> are not used, and the command says so: they are never applied
+without being asked for.</p>
+</section>
+<section id="what-each-column-becomes">
+<h2>What each column becomes<a class="headerlink" href="#what-each-column-becomes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Matched as</p></th>
+<th class="head"><p>In PLATO</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Name</p></td>
+<td><p>The place’s label, and a <strong>name</strong> of the attestation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alternative names</p></td>
+<td><p>Further <strong>names</strong> of the attestation</p></td>
+</tr>
+<tr class="row-even"><td><p>Latitude and longitude</p></td>
+<td><p>A <strong>location</strong>, made exactly as the locations sheet makes one</p></td>
+</tr>
+<tr class="row-odd"><td><p>WKT, GeoJSON geometry, or a GeoJSON feature’s own geometry</p></td>
+<td><p>A <strong>location</strong> with that shape</p></td>
+</tr>
+<tr class="row-even"><td><p>Grid reference</p></td>
+<td><p>A <strong>location</strong> at the centre of its square, with a precision from its size</p></td>
+</tr>
+<tr class="row-odd"><td><p>Place id</p></td>
+<td><p>The place’s <strong>address</strong>, under the base address, and its own identifier</p></td>
+</tr>
+<tr class="row-even"><td><p>Place’s web address</p></td>
+<td><p>What the attestation is <strong>about</strong>, in its gazetteer’s one form</p></td>
+</tr>
+<tr class="row-odd"><td><p>A gazetteer’s ids, with a pattern you confirmed</p></td>
+<td><p>What the attestation is <strong>about</strong>, made from the id</p></td>
+</tr>
+<tr class="row-even"><td><p>Kind of place</p></td>
+<td><p>A <strong>type</strong> (with its address, when the value is a web address)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Language of the name</p></td>
+<td><p>The name’s <strong>language</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Source</p></td>
+<td><p>The citation’s <strong>source</strong>; with no source, the file is cited, with the row (“row 2”, “feature 3”) as the locator</p></td>
+</tr>
+<tr class="row-odd"><td><p>Date; earliest and latest dates</p></td>
+<td><p>The <strong>timespan</strong>: the date in the source’s words, the earliest start, the latest end</p></td>
+</tr>
+<tr class="row-even"><td><p>Region it lies in, or regions split into levels</p></td>
+<td><p>With a base address, regions of your own, and a <strong>ContainedIn</strong> relation to the narrowest; without one, a note</p></td>
+</tr>
+<tr class="row-odd"><td><p>Anything else</p></td>
+<td><p>The attestation’s <strong>notes</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The full mapping, for developers, is beside PLATO tools’
+<a class="reference external" href="https://github.com/pelagios/plato-tools/blob/main/test/fixtures/generic/README.md#the-mapping">CSV and GeoJSON test files</a>.</p>
+</section>
+<section id="what-is-left-out-and-why">
+<h2>What is left out, and why<a class="headerlink" href="#what-is-left-out-and-why" title="Link to this heading">¶</a></h2>
+<p>Each of these is named in the report, with the row or feature where it
+happened.</p>
+<ul class="simple">
+<li><p><strong>A column you chose not to carry over</strong>, once, by name.</p></li>
+<li><p><strong>A location that cannot be read</strong>: a latitude with no longitude (or the
+reverse), a coordinate that is not a number in decimal degrees (degrees,
+minutes and seconds must be converted first), or one off the earth’s range,
+often a sign that the two are the wrong way round. The rest of the row is
+carried.</p></li>
+<li><p><strong>A geometry that is not well formed</strong>, in a GeoJSON feature or written out
+in a cell: a position that is not two or three numbers, or is off the
+earth’s range; a line of fewer than two positions; a ring of a polygon of
+fewer than four, or one that does not end where it begins; or anything that
+is not a GeoJSON Point, LineString, Polygon or one of their Multi forms. The
+report says what is wrong, that geometry is left out, and the rest of the
+row is carried.</p></li>
+<li><p><strong>A GeometryCollection</strong>, which PLATO does not accept. Give each of its
+geometries as a feature of its own.</p></li>
+<li><p><strong>An earliest or latest date that is not a year or an ISO date</strong>, such as
+“c. 75”. Match the column as <em>Date, as the source writes it</em> instead to keep
+it in the source’s words. A year of fewer than four digits is padded, so
+<code class="docutils literal notranslate"><span class="pre">71</span></code> becomes <code class="docutils literal notranslate"><span class="pre">0071</span></code>.</p></li>
+<li><p><strong>A language that is not a language code</strong>, such as “Latin (classical)”:
+the name is carried without a language.</p></li>
+<li><p><strong>A row with no name (and no alternative name) and no web address</strong>, which
+has nothing to be a place or to be about. With a column of web addresses, a row with a name but no
+usable address, and no id, is left out too.</p></li>
+<li><p><strong>A workbook’s error cells, and formulas saved without their values</strong>,
+which are read as empty: see <a class="reference internal" href="#a-workbook-of-your-own">A workbook of your own</a>.</p></li>
+<li><p><strong>Cells beyond the last column</strong> of a CSV row, and members of a GeoJSON
+feature besides its <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">geometry</span></code> and <code class="docutils literal notranslate"><span class="pre">properties</span></code>, such as a
+<code class="docutils literal notranslate"><span class="pre">bbox</span></code>.</p></li>
+</ul>
+</section>
+<section id="two-examples">
+<h2>Two examples<a class="headerlink" href="#two-examples" title="Link to this heading">¶</a></h2>
+<p>These are small files made up for PLATO tools’ tests.</p>
+<p><strong>A table of places with ids.</strong> This CSV file has an id column and no web
+addresses:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>id,name,latitude,longitude,type,start,end,language,description
+bath,Aquae Sulis,51.3811,-2.3590,spa,0060,0410,la,Roman baths
+york,Eboracum,53.9590,-1.0815,fortress,71,,la,
+</pre></div>
+</div>
+<p>Every heading is recognised except <code class="docutils literal notranslate"><span class="pre">description</span></code>, which is kept as a note.
+With the base address <code class="docutils literal notranslate"><span class="pre">https://example.org/roman-britain/</span></code>, the first row
+becomes the place <code class="docutils literal notranslate"><span class="pre">https://example.org/roman-britain/place/bath</span></code>, labelled
+“Aquae Sulis”, with one attestation: the name <em>Aquae Sulis</em> in Latin, a point
+at 51.3811, -2.3590, the type “spa”, a timespan from 0060 to 0410, the file
+cited with “row 2” as the locator, and the note “description: Roman baths”.
+York’s start, <code class="docutils literal notranslate"><span class="pre">71</span></code>, is written <code class="docutils literal notranslate"><span class="pre">0071</span></code>.</p>
+<p><strong>Rows about gazetteer places.</strong> This CSV file has odd headings and a column of
+Wikidata addresses:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Place Name,LAT,Long,wikidata,Feature Type,Alt. names,Source,Remarks
+Roma,41.8933,12.4829,https://www.wikidata.org/wiki/Q220,city,Rome; Urbs,Itinerarium Antonini,the capital
+Lutetia,48.8566,2.3522,https://www.wikidata.org/wiki/Q90,settlement,Paris,,
+Lutetia Parisiorum,48.85,2.35,https://www.wikidata.org/wiki/Q90,,,,a second row about the same place
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Place</span> <span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">LAT</span></code>, <code class="docutils literal notranslate"><span class="pre">Long</span></code>, <code class="docutils literal notranslate"><span class="pre">Feature</span> <span class="pre">Type</span></code> and <code class="docutils literal notranslate"><span class="pre">Alt.</span> <span class="pre">names</span></code> are recognised
+despite their case and punctuation; <code class="docutils literal notranslate"><span class="pre">wikidata</span></code> holds web addresses, so each
+row is an attestation about the place at its address, written in Wikidata’s
+own form, <code class="docutils literal notranslate"><span class="pre">http://www.wikidata.org/entity/Q220</span></code>. Roma’s attestation has the
+names <em>Roma</em>, <em>Rome</em> and <em>Urbs</em>, a point, the type “city”, the
+<em>Itinerarium Antonini</em> as its source, and the notes “Remarks: the capital”
+and “Place address given as https://www.wikidata.org/wiki/Q220 (rule
+wikidata-page, hermes-addresses 1)”. The two Lutetia rows are two attestations
+about one place, <code class="docutils literal notranslate"><span class="pre">http://www.wikidata.org/entity/Q90</span></code>. Because the rows give
+names but not labels for Wikidata’s places, the report warns that each place’s
+address is used as its label.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="tools.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Checking, converting and comparing</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="tei.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Place names in a TEI edition</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Pelagios Network Place Working Group (CC BY 4.0)
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Your own table of places: CSV, GeoJSON or a workbook</a><ul>
+<li><a class="reference internal" href="#what-it-reads">What it reads</a><ul>
+<li><a class="reference internal" href="#a-workbook-of-your-own">A workbook of your own</a></li>
+<li><a class="reference internal" href="#plain-geojson-or-linked-places-format">Plain GeoJSON or Linked Places Format?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#matching-the-columns">Matching the columns</a></li>
+<li><a class="reference internal" href="#previewing-the-first-records">Previewing the first records</a></li>
+<li><a class="reference internal" href="#places-or-evidence-about-places">Places, or evidence about places</a><ul>
+<li><a class="reference internal" href="#place-ids-and-the-base-address">Place ids and the base address</a></li>
+<li><a class="reference internal" href="#rows-that-share-an-id">Rows that share an id</a></li>
+<li><a class="reference internal" href="#a-column-of-gazetteer-ids">A column of gazetteer ids</a></li>
+<li><a class="reference internal" href="#world-historical-gazetteer-addresses">World Historical Gazetteer addresses</a></li>
+<li><a class="reference internal" href="#pleiades-geonames-and-wikidata-addresses">Pleiades, GeoNames and Wikidata addresses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-regions-a-place-lies-in">The regions a place lies in</a></li>
+<li><a class="reference internal" href="#grid-references">Grid references</a></li>
+<li><a class="reference internal" href="#grouping-similar-spellings">Grouping similar spellings</a></li>
+<li><a class="reference internal" href="#what-each-column-becomes">What each column becomes</a></li>
+<li><a class="reference internal" href="#what-is-left-out-and-why">What is left out, and why</a></li>
+<li><a class="reference internal" href="#two-examples">Two examples</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=809ddda4"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/translations.js?v=8fd896e3"></script>
+    <script src="_static/plato-tooltip.js?v=d3050378"></script>
+    </body>
+</html>

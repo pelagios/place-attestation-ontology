@@ -1,0 +1,56 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/attestation-centric.schema.json",
+  "profile": "attestation-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/gazetteer/fen-parishes",
+    "title": "Fen parishes (illustrative)",
+    "candidateSets": [
+      "https://whgazetteer.org/example/candidates/county-survey-2026-09-09"
+    ]
+  },
+  "attestations": [
+    {
+      "@id": "https://whgazetteer.org/example/attestation/newton-river-mill",
+      "about": "https://whgazetteer.org/example/entity/newton-by-the-river",
+      "identities": [
+        {
+          "@id": "https://whgazetteer.org/example/identity/river-mill-2",
+          "subject": "https://whgazetteer.org/example/entity/newton-by-the-river",
+          "object": "https://whgazetteer.org/example/county-survey/newton-mill",
+          "identityType": "exactMatch",
+          "promotedFrom": "https://whgazetteer.org/example/candidates/county-survey-2026-09-09#c-8ed2901c"
+        }
+      ],
+      "sources": [
+        {
+          "@id": "https://whgazetteer.org/example/source/review-2026-09-12",
+          "title": "Second review of the Newtons, with the tithe maps, 12 September 2026"
+        }
+      ],
+      "contributor": "https://whgazetteer.org/example/contributor/editor",
+      "created": "2026-09-12T09:05:00Z"
+    },
+    {
+      "@id": "https://whgazetteer.org/example/attestation/river-upland-distinct-2026-09-12",
+      "about": "https://whgazetteer.org/example/entity/newton-by-the-river",
+      "negated": true,
+      "identities": [
+        {
+          "@id": "https://whgazetteer.org/example/identity/river-upland-denied",
+          "subject": "https://whgazetteer.org/example/entity/newton-by-the-river",
+          "object": "https://whgazetteer.org/example/county-survey/newton-upland",
+          "identityType": "exactMatch",
+          "promotedFrom": "https://whgazetteer.org/example/candidates/county-survey-2026-09-09#c-1ec753bb"
+        }
+      ],
+      "sources": [
+        {
+          "@id": "https://whgazetteer.org/example/source/review-2026-09-12",
+          "title": "Second review of the Newtons, with the tithe maps, 12 September 2026"
+        }
+      ],
+      "contributor": "https://whgazetteer.org/example/contributor/editor",
+      "created": "2026-09-12T09:10:00Z"
+    }
+  ]
+}

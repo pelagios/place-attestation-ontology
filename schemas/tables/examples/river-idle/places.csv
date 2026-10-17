@@ -1,0 +1,27 @@
+place_id,label,country_codes
+river-idle,"River Idle, from Mattersey to the Trent",GB
+river-ryton,River Ryton,GB
+river-trent,River Trent,GB
+mattersey,Mattersey,GB
+bawtry,Bawtry,GB
+node-00,"River Idle: junction with the Carr Drain (start of this stretch, by Mattersey)",GB
+node-01,River Idle: junction with an unnamed drain,GB
+node-02,River Idle: junction with the Main Drain,GB
+node-03,River Idle: junction with the River Ryton,GB
+node-04,River Idle: junction with an unnamed channel,GB
+node-05,River Idle: junction with the New Drain,GB
+node-06,River Idle: junction with the Magnus Drain,GB
+node-07,River Idle: junction with the Carr Road West Drain,GB
+node-08,River Idle: where OS Open Rivers names the channel Bycarrs Dyke,GB
+node-09,Bycarrs Dyke: the tidal limit in REWT,GB
+node-10,Bycarrs Dyke: junction with the River Trent,GB
+reach-01,"River Idle, reach 1 of 10",GB
+reach-02,"River Idle, reach 2 of 10",GB
+reach-03,"River Idle, reach 3 of 10",GB
+reach-04,"River Idle, reach 4 of 10",GB
+reach-05,"River Idle, reach 5 of 10",GB
+reach-06,"River Idle, reach 6 of 10",GB
+reach-07,"River Idle, reach 7 of 10",GB
+reach-08,"River Idle, reach 8 of 10",GB
+reach-09,"Bycarrs Dyke, reach 9 of 10",GB
+reach-10,"Bycarrs Dyke, reach 10 of 10",GB

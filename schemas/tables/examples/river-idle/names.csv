@@ -1,0 +1,15 @@
+place_id,name,language,script,romanized,name_type,form_status,occurrence_context,occurrence_count,transcription_accuracy,transcription_completeness,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+reach-01,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/2CA4675F-B603-41A0-9DA0-44FD0C49620E name,,citesAsDataSource,,,,,
+reach-02,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/6392FD7A-5871-40F9-BA77-7E0CBBC31A13 name,,citesAsDataSource,,,,,
+reach-03,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/754A649A-42DA-4A98-8474-FE4E0876E009 name,,citesAsDataSource,,,,,
+reach-04,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/69644DBA-6A53-4C18-8F60-4BB916A36F57 name,,citesAsDataSource,,,,,
+reach-05,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/9B78B0C3-3509-4641-92D1-A4FCBD5A2DE4 name,,citesAsDataSource,,,,,
+reach-06,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/F6F54AB0-CA53-4FD6-9C9A-A1B64016175F name,,citesAsDataSource,,,,,
+reach-07,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/05E368BF-37C1-471A-9064-5A893E946DE2 name,,citesAsDataSource,,,,,
+reach-08,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/E4C1DEED-33F6-458D-83EF-02AAAD22D648 name,,citesAsDataSource,,,,,
+reach-09,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0 name,,citesAsDataSource,,,,,
+reach-09,Bycarrs Dyke,,,,,,,,,,undated,,,rewt-v020,os:link/8B2D6309-6B61-4D8F-A352-FAF3601A3EE0 name_alt,,citesAsDataSource,,,,,OS Open Rivers gives this as an alternative name.
+reach-10,River Idle,,,,,,,,,,undated,,,rewt-v020,os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3 name,,citesAsDataSource,,,,,
+reach-10,Bycarrs Dyke,,,,,,,,,,undated,,,rewt-v020,os:link/3EF4B3CF-177D-4288-B011-04F227E51BD3 name_alt,,citesAsDataSource,,,,,OS Open Rivers gives this as an alternative name.
+reach-09,Bycarr's Dyke,en,,,,,,,,,before 1086,,1086,oksanen-2019,"heads_of_navigation, Head_Navi Mattersey, Notes",,citesAsEvidence,0.8,,,,"""Before 1086 the original course of Idle had been diverted east to join Trent through Bycarr's Dyke."" Oksanen names no reach; this example matches the name to the reaches OS calls Bycarrs Dyke, hence certainty 0.8."
+reach-10,Bycarr's Dyke,en,,,,,,,,,before 1086,,1086,oksanen-2019,"heads_of_navigation, Head_Navi Mattersey, Notes",,citesAsEvidence,0.8,,,,"""Before 1086 the original course of Idle had been diverted east to join Trent through Bycarr's Dyke."" Oksanen names no reach; this example matches the name to the reaches OS calls Bycarrs Dyke, hence certainty 0.8."

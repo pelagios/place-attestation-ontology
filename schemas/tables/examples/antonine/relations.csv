@@ -1,0 +1,23 @@
+place_id,relation_type,related_place_id,related_uri,related_label,sequence,date,from,to,duration,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+londinium,MemberOf,iter-iii,,,1,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.1",,citesAsEvidence,,,,,"The starting point, named in the heading."
+leg-londinium-durobrivae,MemberOf,iter-iii,,,2,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.3",,citesAsEvidence,,,,,
+durobrivae,MemberOf,iter-iii,,,3,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.3",,citesAsEvidence,,,,,
+leg-durobrivae-durovernum,MemberOf,iter-iii,,,4,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.4",,citesAsEvidence,,,,,
+durovernum,MemberOf,iter-iii,,,5,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.4",,citesAsEvidence,,,,,
+leg-durovernum-dubris,MemberOf,iter-iii,,,6,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.5",,citesAsEvidence,,,,,
+dubris,MemberOf,iter-iii,,,7,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.5",,citesAsEvidence,,,,,
+londinium,MemberOf,iter-iv,,,1,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.6",,citesAsEvidence,,,,,"The starting point, named in the heading."
+leg-londinium-durobrivae,MemberOf,iter-iv,,,2,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.8",,citesAsEvidence,,,,,
+durobrivae,MemberOf,iter-iv,,,3,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.8",,citesAsEvidence,,,,,
+leg-durobrivae-durovernum,MemberOf,iter-iv,,,4,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.9",,citesAsEvidence,,,,,
+durovernum,MemberOf,iter-iv,,,5,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.9",,citesAsEvidence,,,,,
+leg-durovernum-lemanis,MemberOf,iter-iv,,,6,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.10",,citesAsEvidence,,,,,
+lemanis,MemberOf,iter-iv,,,7,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.10",,citesAsEvidence,,,,,
+leg-londinium-durobrivae,BeginsAt,londinium,,,,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.3",,citesAsEvidence,,,,,In the direction the Itinerary runs.
+leg-londinium-durobrivae,EndsAt,durobrivae,,,,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.3",,citesAsEvidence,,,,,In the direction the Itinerary runs.
+leg-durobrivae-durovernum,BeginsAt,durobrivae,,,,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.4",,citesAsEvidence,,,,,In the direction the Itinerary runs.
+leg-durobrivae-durovernum,EndsAt,durovernum,,,,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.4",,citesAsEvidence,,,,,In the direction the Itinerary runs.
+leg-durovernum-dubris,BeginsAt,durovernum,,,,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.5",,citesAsEvidence,,,,,In the direction the Itinerary runs.
+leg-durovernum-dubris,EndsAt,dubris,,,,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.5",,citesAsEvidence,,,,,In the direction the Itinerary runs.
+leg-durovernum-lemanis,BeginsAt,durovernum,,,,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.10",,citesAsEvidence,,,,,In the direction the Itinerary runs.
+leg-durovernum-lemanis,EndsAt,lemanis,,,,undated,,,,parthey-pinder-1848,"p. 225, Wess. 473.10",,citesAsEvidence,,,,,In the direction the Itinerary runs.

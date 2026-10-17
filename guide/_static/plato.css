@@ -1,0 +1,61 @@
+/* Type: Alegreya for headings, Alegreya Sans for text (loaded in conf.py). A calligraphic
+   humanist pair suits the pen drawing on the front page better than the system fonts did.
+   Alegreya Sans is small on its body for its size, so text is set at 108% to read like the
+   system sans it replaced. */
+body {
+  font-size: 108%;
+  --font-stack: "Alegreya Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-stack--headings: Alegreya, Georgia, "Times New Roman", serif;
+}
+h1, h2, h3, h4, h5, h6, .sidebar-brand-text { font-weight: 500; }
+.sidebar-brand-text { font-family: var(--font-stack--headings); }
+
+/* Figures drawn on a light panel read in both light and dark themes. */
+.plato-figure img { background: #ffffff; border-radius: 8px; padding: 12px; }
+table.docutils td, table.docutils th { vertical-align: top; }
+
+/* The landing page's drawing: beside the text on wide screens, above it on narrow ones.
+   The drawing is line art on a transparent ground, so it sits on the page itself rather
+   than on a panel. In the dark theme the ink is inverted, which turns black lines white;
+   a white panel would otherwise be a bright rectangle in the middle of a dark page. */
+img.plato-hero { float: right; width: 38%; max-width: 340px; margin: 0 0 1rem 1.5rem; }
+body[data-theme="dark"] img.plato-hero { filter: invert(1); }
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) img.plato-hero { filter: invert(1); }
+}
+@media (max-width: 46em) { img.plato-hero { float: none; display: block; width: 75%; margin: 0 auto 1.25rem; } }
+
+/* Space after a list that ends a definition, before the next term. */
+dl dd > ul:last-child { margin-bottom: 1.25rem; }
+
+/* The logo: the pin mark above the guide's name in the sidebar, kept small, with the name
+   centred beneath it (Furo centres the logo but leaves the name flush left). */
+.sidebar-logo { max-width: 56px; }
+.sidebar-brand-text { text-align: center; }
+
+/* The status badge under the guide's name, in the logo's gold on its dark pupil, and the
+   styled tooltip that explains it (plato-tooltip.js). The tooltip is fixed-position and
+   placed by the script, so that it can stay within the viewport. */
+.plato-status { text-align: center; margin: -0.25rem 0 0.75rem; }
+.plato-badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; text-decoration: none; line-height: 1.4;
+  padding: 0.1rem 0.6rem; border-radius: 999px;
+  background: #f3c969; color: #101a3a; border: 1px solid #c99a2e;
+}
+.plato-badge:hover, .plato-badge:focus-visible { background: #f7d98e; color: #101a3a; }
+.plato-badge:focus-visible { outline: 2px solid #1f45b8; outline-offset: 2px; }
+.plato-tip {
+  position: fixed; z-index: 1000; top: 0; left: 0; box-sizing: border-box; max-width: min(22rem, calc(100vw - 16px));
+  padding: 0.6rem 0.8rem; border-radius: 6px; border-top: 3px solid #f3c969;
+  background: #101a3a; color: #ffffff; font-size: 0.85rem; line-height: 1.45;
+  text-align: left; text-transform: none; letter-spacing: normal;
+  box-shadow: 0 4px 14px rgba(16, 26, 58, 0.3);
+  visibility: hidden; opacity: 0; transition: opacity 120ms ease, visibility 0s 120ms;
+}
+.plato-tip.is-open { visibility: visible; opacity: 1; transition: opacity 120ms ease; }
+body[data-theme="dark"] .plato-tip { outline: 1px solid #7cc4f2; }
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) .plato-tip { outline: 1px solid #7cc4f2; }
+}
+@media (prefers-reduced-motion: reduce) { .plato-tip, .plato-tip.is-open { transition: none; } }
