@@ -1,0 +1,6 @@
+place_id,name,language,script,romanized,name_type,form_status,occurrence_context,occurrence_count,transcription_accuracy,transcription_completeness,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+londinium,Londinio,la,Latn,,,Attested,,,,,undated,,,parthey-pinder-1848,"p. 225, Wess. 473.1",,citesAsEvidence,,,,,"Ablative, in the heading of Iters III and IV: ""Item a Londinio""."
+durobrivae,Durobrivis,la,Latn,,,Attested,,,,,undated,,,parthey-pinder-1848,"p. 225, Wess. 473.3",,citesAsEvidence,,,,,"Ablative, as the Itinerary lists its stations."
+durovernum,Duroverno,la,Latn,,,Attested,,,,,undated,,,parthey-pinder-1848,"p. 225, Wess. 473.4",,citesAsEvidence,,,,,"Ablative, as the Itinerary lists its stations."
+dubris,Ad portum Dubris,la,Latn,,,Attested,,,,,undated,,,parthey-pinder-1848,"p. 225, Wess. 473.5",,citesAsEvidence,,,,,"""To the port of Dubris""."
+lemanis,Ad portum Lemanis,la,Latn,,,Attested,,,,,undated,,,parthey-pinder-1848,"p. 225, Wess. 473.10",,citesAsEvidence,,,,,"""To the port of Lemanis""."
