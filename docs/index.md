@@ -1,5 +1,8 @@
 # PLATO: a guide to organising data about places
 
+A short introduction to PLATO and its tools, as slides:
+[PLATO and its tools](https://docs.google.com/presentation/d/18XcP0IFIDxzw3hmoXpSB-VHmktBNgkz2/edit?usp=sharing).
+
 ```{image} _static/plato-thinking.png
 :alt: A line drawing of the philosopher Plato, chin in hand, thinking about a network of linked data: Wikidata, GeoNames, the Getty AAT, PeriodO and linked open data.
 :class: plato-hero
