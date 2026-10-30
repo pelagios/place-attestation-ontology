@@ -392,6 +392,14 @@ its own, after the review (see [Map your data](#methodos-map-your-data),
 step 6). PLATO tools never writes to Wikidata: it writes a batch, which you
 run with your own Wikidata account.
 
+Wikidata and PLATO keep different kinds of record. Wikidata holds one
+consensus statement of each notable thing, curated by its editors; PLATO
+keeps each attestation as a record of its own, with its source and the
+contributor's licence, so that conflicting claims stand side by side. That
+is why an item here is made only from what you hold the right to release
+as CC0 (part 2), and why each statement cites the place's own address:
+the attestations stay in your dataset, and Wikidata gets the summary.
+
 1. **Search Wikidata first.** Before an item is made, each place with no
    match is searched in Wikidata itself, by each of its names in its own
    language and, where it has a point, for items within 5 km of it, which
@@ -411,7 +419,10 @@ run with your own Wikidata account.
    statement, *I hold the rights in this dataset, or have the holder's
    permission, and release these statements under CC0*, recorded with your
    name and the date, for that licence: change the licence, and it must be
-   made again. A licence that allows no commercial use or no adaptations,
+   made again. The statement cannot be ticked, nor the batch written,
+   until the dataset's licence has been read: if the page says it has not
+   been (the dataset is not readable yet, or the page is busy), wait a
+   moment and try again. A licence that allows no commercial use or no adaptations,
    a rights statement, no licence, or one these tools do not know, refuses
    the batch. A statement taken from a cited source that is not free to
    copy is left out of the item, and the panel says so.
@@ -423,9 +434,15 @@ run with your own Wikidata account.
    reason a place is left out. Each item has labels (the name in each
    language) and aliases (the other names); a description, filled in as
    "<kind> in <region>, <country>, attested <first>–<last>" and yours to
-   edit (two to twelve words); *Instance of* (P31) from its kind of place,
-   or one you choose; *Coordinate location* (P625), to as many decimals as
-   the location's precision allows; *Country* (P17) from its country code;
+   edit (two to twelve words; a year before the common era is written
+   with BCE, as in "attested 500–200 BCE", not as -500; and where two items
+   of one batch would have the same English label and description, which
+   Wikidata refuses for the second, the panel warns: edit one apart); *Instance of* (P31) from its kind of place,
+   or one you choose; *Coordinate location* (P625), written to as many
+   decimals as the location's precision suggests, which is only how the
+   point is written and checked: QuickStatements version 1 has no way to
+   state a coordinate's precision and stores every point at 1e-6 degrees,
+   so the decimals do not set Wikidata's precision; *Country* (P17) from its country code;
    and *Located in* (P131), only from a region the region review matched
    to a Wikidata item. No dates are written. Each statement is a tick-box,
    and **Leave this place out** keeps a place from the batch.
@@ -447,13 +464,17 @@ run with your own Wikidata account.
    batch's order, or the table QuickStatements shows) and press **Check
    the Q-ids**; or give your Wikidata user name (sent to Wikidata only) and
    press **Read my new items**. Each item is read from Wikidata and checked
-   against the batch's row: a label equal to one of the place's names, its
-   point within 1 km where the place has one, and the reference to the
-   place's address. A verified item is recorded in the review as an
+   against the batch's row, as far as the batch wrote it: a label equal to
+   one of the place's names (compared in Unicode NFC, as Wikidata stores
+   it), its point within 1 km where the place has one, and the reference to
+   the place's address. A check whose statement was turned off when the
+   batch was made is not made, since the item cannot carry what was never
+   written. A verified item is recorded in the review as an
    identity, which **Finish** writes into the dataset, citing Wikidata (the
    [version check](#comparing-two-versions) sees only an addition); an item
-   not verified is shown, never recorded. **Take the Q-id out** lets the
-   place be given an item again. Save the review afterwards, as the page
+   not verified is shown, never recorded. A place that already has a
+   Q-id recorded takes no second one: it is refused until you press **Take
+   the Q-id out**, which lets the place be given an item again. Save the review afterwards, as the page
    asks.
 
 On the command line the same parts are `wikidata search`, `wikidata batch`
