@@ -911,7 +911,11 @@ licence and its georeference's (a georeference kept by Allmaps is CC0):
 
 - *Free to reuse: the map is licensed …, and its georeference is licensed
   ….*, for the public domain, CC0, CC BY and CC BY-SA (and
-  RightsStatements.org's NoC-US and NKC);
+  RightsStatements.org's NoC-US);
+- *No known copyright is not a licence: …*, for RightsStatements.org's NKC
+  (No Known Copyright), which says the holder knows of no copyright, not
+  that the map may be reused. It is not called free to reuse: state the
+  map's rights yourself before you publish what you make from it;
 - *Not free to reuse as it is: … This may bear on how what you trace from it
   can be reused.*, for a non-commercial or no-derivatives licence, or one In
   Copyright;
@@ -1823,7 +1827,9 @@ Gazetteer token for the lookup (see
    Open [Chora](#chora) (the map): for each place, **Find in a gazetteer…**,
    and adopt its match's location (see
    [adopting a location from a match](#adopting-a-location-from-a-match)).
-   Save, and say the download is complete.
+   Save, and say the download is complete. This is the slowest part, as it
+   is done a place at a time: a long list takes a while, so start with the
+   places your map needs.
 5. **Make the map.** In Chora, frame the view: what you see is what the map
    shows. Under the places, choose **Make a map of this view**. The preview
    over the map is the file as it will be written.
@@ -1839,6 +1845,9 @@ Gazetteer token for the lookup (see
      its scan for non-commercial use only, nothing is chosen: choosing a
      statement then says the scan is of a public-domain map, which
      overrides the holder's licence, so choose one only if that is so.
+     A map marked *No Known Copyright* (NKC) is not given a licence either:
+     the panel says that no known copyright is not a licence, and asks you
+     to state the map's rights before it will let the map go.
    - **Labels:** each place has its preferred name; choose another it is
      attested by, or a rule for the whole map (*the name in Latin where one
      is attested*). Drag a label to move it, untick a place to leave it
@@ -1846,7 +1855,11 @@ Gazetteer token for the lookup (see
      add a short note under it if you need one.
    - **The map:** a title, a north arrow, a small locator map, the
      projection (Web Mercator, or equirectangular to use the map as a
-     Wikipedia location map), its width.
+     Wikipedia location map), its width. A big map is heavy for the
+     computer: with 200 places and every option on, our test made a 2.7 MB
+     SVG 8,000 pixels wide in about a second, but the browser used up to
+     3.5 GB of memory. If your computer struggles, make the map of fewer
+     places, narrower, or without the shaded relief.
    - **Licence:** your own drawing and labels are CC BY 4.0 unless you
      choose otherwise; what the map is made of may make it CC BY-SA, and
      the panel says why. The sources of your places are credited in the
@@ -1860,12 +1873,21 @@ Gazetteer token for the lookup (see
    it) and the PNG. In a workflow, the first download ends it, and the
    other, downloaded after, is kept with the same step.
 7. **Upload to Wikimedia Commons.** Open **Wikimedia Commons: the file's
-   description**. **Upload to Wikimedia Commons** opens Commons' upload
-   form with the file's name, its description (the `{{Map}}` template,
-   filled in) and its licence: choose the file you downloaded there.
-   Following the link sends that name and description to Wikimedia
-   Commons, in the link; nothing else is sent. If the link is not offered,
-   copy the description and paste it into the form.
+   description**: the description as Commons' `{{Map}}` template, filled in,
+   with the licence tag at its end. Check that the author in it is you (it
+   is the contributor name Chora keeps, with your ORCID iD if you gave
+   one). **Upload to Wikimedia Commons** opens Commons' upload form with the
+   file's name and that description already in it: choose the file you
+   downloaded, and upload. Following the link sends that name and
+   description to Wikimedia Commons, in the link; nothing else is sent.
+   Commons' form may say *None selected* beside *Licensing*: the licence
+   tag is already in the description, which the form accepts. You need a
+   Commons account, and uploading is your own act: it says the licence
+   shown is yours to give. Commons' Upload Wizard works from its own
+   fields and writes its own *Information* description, not the `{{Map}}`
+   one, and asks you itself to confirm *This work was created by me*, so
+   the link is the better way. If the link is not offered, use **Copy the
+   description** and paste it into the form's description box.
 
 **What it cannot do:** at most 200 places a map; no arrows or battle plans;
 labels in one language a file (make another file for another language); a
