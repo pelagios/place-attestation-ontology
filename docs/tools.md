@@ -121,6 +121,10 @@ between them loses nothing. The spreadsheet tables and Linked Places Format
 hold less, by design: see [what the spreadsheets cannot say](spreadsheets/index.md#what-the-spreadsheets-cannot-say).
 Two rules govern what PLATO tools does about that.
 
+PLATO's own lists of words (the relation types, the certainty levels and the
+rest) are also published as a SKOS file, for tools that read thesauri; see
+[the vocabularies as SKOS](vocabularies.md#the-vocabularies-as-skos).
+
 **Nothing is left out without saying so.** The report names everything the
 target format has no place for, in words ("The pronunciation of a name…:
 Linked Places Format has no place for this, so it is left out").
