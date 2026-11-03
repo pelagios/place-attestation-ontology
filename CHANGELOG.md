@@ -63,7 +63,7 @@ reasoner finds consistent.
   `contributor_affiliation_string`) have the range `rdfs:Literal`, not
   `xsd:string`, and `plato:duration` too (its comment names `xsd:duration`
   as the expected datatype). In OWL 2 a language-tagged literal
-  ("certain"@en) is not an `xsd:string`, so a DL reasoner (HermiT) found the
+  (`"certain"@en`) is not an `xsd:string`, so a DL reasoner (HermiT) found the
   ontology inconsistent, as it has been since the certainty levels were
   added in 0.5.0; and `xsd:duration` is outside the OWL 2 datatype map, so
   HermiT refused the ontology outright. Nothing is deprecated: every value
