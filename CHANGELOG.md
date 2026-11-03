@@ -11,7 +11,11 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
-## Unreleased
+## 0.9.0-alpha.2
+
+Released 2026-11-03. Succession relation types, relation types as SKOS
+concepts with a SKOS view of the vocabularies, and an ontology that a DL
+reasoner finds consistent.
 
 ### Added
 
