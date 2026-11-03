@@ -16,6 +16,8 @@ on:
       - 'docs/**'
       - '.github/workflows/widoco.yml'
       - 'scripts/build_releases.py'
+      - 'scripts/skos_view.py'
+      - 'scripts/check_dl.py'
     # A release tag must rebuild, so that releases/X.Y.Z/ appears. PLATO tags
     # after pushing the release commit to main, and that main push has
     # usually started (without the tag) before the tag exists. GitHub does
@@ -59,6 +61,14 @@ jobs:
           # main has moved on. Always build the site from main on a tag push;
           # otherwise keep the default (the ref that triggered the run).
           ref: ${{ startsWith(github.ref, 'refs/tags/') && 'main' || '' }}
+
+      # Pinned: with PYTHONHASHSEED=0, the .jsonld files rdflib writes still differ in
+      # bytes between Python minor versions (siphash24 became siphash13 in 3.11), so the
+      # releases/X.Y.Z/ files would change whenever the runner image moved Python.
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -163,6 +173,10 @@ jobs:
           # one of them wrong (geo:wktLiteral typed as owl:Class). The Turtle is
           # the source file itself, comments included; Pages serves it as
           # text/turtle, which raw.githubusercontent.com does not.
+          # Hash randomisation changes the order rdflib writes JSON-LD in, so the
+          # .jsonld files would differ in bytes from one deploy to the next; the seed
+          # and the pinned Python (set up above) together keep them the same.
+          export PYTHONHASHSEED=0
           python3 -m venv /tmp/rdf
           /tmp/rdf/bin/pip install --quiet rdflib==7.6.0   # pinned: releases/X.Y.Z/ files must keep the same bytes from one deploy to the next
           cp ontology.ttl "$PUBLISH_DIR/ontology.ttl"
@@ -181,6 +195,14 @@ jobs:
               print(f"{name}: {len(h)} triples, isomorphic with ontology.ttl")
           PY
 
+          # A description-logic reasoner (HermiT) must find the ontology
+          # consistent. It once did not (a language-tagged "certain"@en in an
+          # xsd:string range), and nothing noticed. The script first adds a
+          # deliberate contradiction and fails unless that is detected, so a
+          # pass cannot be vacuous. Java is set up above for Widoco.
+          /tmp/rdf/bin/pip install --quiet owlready2==0.51   # carries the HermiT jar
+          /tmp/rdf/bin/python scripts/check_dl.py ontology.ttl
+
           # A fixed copy of every release, from its tag, at
           # releases/X.Y.Z/ontology.{ttl,nt,owl,jsonld}, plus releases/index.json.
           # w3id.org/plato/X.Y.Z redirects here, so these paths are permanent:
@@ -189,6 +211,13 @@ jobs:
           # is missing or does not parse is skipped with a ::warning:: and left
           # out of index.json rather than failing the deploy.
           /tmp/rdf/bin/python scripts/build_releases.py "$PUBLISH_DIR"
+
+          # The SKOS view of the current ontology, beside the schemas, where
+          # w3id.org/plato/schemas/* already redirects: the "latest" copy of
+          # the file each release carries as releases/X.Y.Z/vocabularies.skos.*.
+          # It is derived from ontology.ttl and fails the deploy if a concept
+          # lacks a label or a scheme.
+          /tmp/rdf/bin/python scripts/skos_view.py ontology.ttl "$PUBLISH_DIR/schemas/plato.skos"
 
           # Build the PLATO guide (Sphinx, docs/) into guide/. Its reference
           # pages, template workbook and download zips are generated from

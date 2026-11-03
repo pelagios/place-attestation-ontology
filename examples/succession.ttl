@@ -1,0 +1,125 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix whgx: <https://whgazetteer.org/example/> .
+
+# The "whgx:" prefix is used throughout these examples for illustrative URIs.
+
+# =============================================================================
+# Succession: mergers, absorptions and divisions of municipalities
+#
+# (A hypothetical example: every place and date is invented.) Oostervliet and
+# Westervliet merged into a new municipality, Vlietstad, on 1 January 1950;
+# Vlietstad absorbed Kleindorp on 1 January 1970; and Groot-Nieuwland was
+# divided into Noord- and Zuid-Nieuwland on 1 July 1900. Land also moved without
+# any of them ceasing: Noord-Nieuwland passed the hamlet of Zuidwijk to Vlietstad
+# on 1 January 1960, and Nieuwhaven was formed from part of Vlietstad on 1
+# January 1975. Those two are TransferredTo, and not successions.
+#
+# Each change is an attestation about the EARLIER entity that relates_to the
+# LATER one, so the direction always runs in time. The date the change took
+# effect is the attestation's timespan, with no end. No new property is
+# needed: the kind of change is the RelationType, and each of the three is
+# also a plato:SucceededBy through plato:broader_relation.
+# =============================================================================
+
+whgx:entity\/oostervliet a plato:SpatialEntity ; plato:entity_identifier "oostervliet" .
+whgx:entity\/westervliet a plato:SpatialEntity ; plato:entity_identifier "westervliet" .
+whgx:entity\/vlietstad a plato:SpatialEntity ; plato:entity_identifier "vlietstad" .
+whgx:entity\/kleindorp a plato:SpatialEntity ; plato:entity_identifier "kleindorp" .
+whgx:entity\/groot-nieuwland a plato:SpatialEntity ; plato:entity_identifier "groot-nieuwland" .
+whgx:entity\/noord-nieuwland a plato:SpatialEntity ; plato:entity_identifier "noord-nieuwland" .
+whgx:entity\/zuid-nieuwland a plato:SpatialEntity ; plato:entity_identifier "zuid-nieuwland" .
+whgx:entity\/nieuwhaven a plato:SpatialEntity ; plato:entity_identifier "nieuwhaven" .
+
+whgx:source\/municipal-register
+    a plato:Source ;
+    plato:authority_title "Register of municipal changes (hypothetical)" .
+
+whgx:timespan\/1950-01-01 a plato:Timespan ;
+    plato:start_earliest "1950-01-01" ; plato:start_latest "1950-01-01" ;
+    plato:source_label "1 January 1950" .
+whgx:timespan\/1970-01-01 a plato:Timespan ;
+    plato:start_earliest "1970-01-01" ; plato:start_latest "1970-01-01" ;
+    plato:source_label "1 January 1970" .
+whgx:timespan\/1900-07-01 a plato:Timespan ;
+    plato:start_earliest "1900-07-01" ; plato:start_latest "1900-07-01" ;
+    plato:source_label "1 July 1900" .
+
+# A merger: one attestation for each party, the same target and date. Vlietstad
+# is new, so neither party survives and neither is "absorbed".
+whgx:attestation\/oostervliet-merger
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/oostervliet ;
+    plato:relates_to whgx:entity\/vlietstad ;
+    plato:has_relation_type plato:MergedInto ;
+    plato:attests_timespan whgx:timespan\/1950-01-01 ;
+    plato:sourced_by whgx:source\/municipal-register .
+
+whgx:attestation\/westervliet-merger
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/westervliet ;
+    plato:relates_to whgx:entity\/vlietstad ;
+    plato:has_relation_type plato:MergedInto ;
+    plato:attests_timespan whgx:timespan\/1950-01-01 ;
+    plato:sourced_by whgx:source\/municipal-register .
+
+# An absorption: Vlietstad carries on, so only Kleindorp has an attestation.
+whgx:attestation\/kleindorp-absorbed
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/kleindorp ;
+    plato:relates_to whgx:entity\/vlietstad ;
+    plato:has_relation_type plato:AbsorbedBy ;
+    plato:attests_timespan whgx:timespan\/1970-01-01 ;
+    plato:sourced_by whgx:source\/municipal-register .
+
+# A division: one attestation for each successor.
+whgx:attestation\/groot-nieuwland-north
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/groot-nieuwland ;
+    plato:relates_to whgx:entity\/noord-nieuwland ;
+    plato:has_relation_type plato:SplitInto ;
+    plato:attests_timespan whgx:timespan\/1900-07-01 ;
+    plato:sourced_by whgx:source\/municipal-register .
+
+whgx:attestation\/groot-nieuwland-south
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/groot-nieuwland ;
+    plato:relates_to whgx:entity\/zuid-nieuwland ;
+    plato:has_relation_type plato:SplitInto ;
+    plato:attests_timespan whgx:timespan\/1900-07-01 ;
+    plato:sourced_by whgx:source\/municipal-register .
+
+# A transfer: both parties carry on, so neither is the other's successor, and
+# plato:TransferredTo is not a plato:SucceededBy. The target may already exist
+# (Vlietstad, 1960) or be formed by the transfer (Nieuwhaven, 1975). What moved
+# is described in the source's words, and each party's extent before and after
+# is a geometry attestation of its own; a geometry on this attestation would
+# read as the subject's extent.
+whgx:timespan\/1960-01-01 a plato:Timespan ;
+    plato:start_earliest "1960-01-01" ; plato:start_latest "1960-01-01" ;
+    plato:source_label "1 January 1960" .
+whgx:timespan\/1975-01-01 a plato:Timespan ;
+    plato:start_earliest "1975-01-01" ; plato:start_latest "1975-01-01" ;
+    plato:source_label "1 January 1975" .
+
+whgx:attestation\/zuidwijk-transferred
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/noord-nieuwland ;
+    plato:relates_to whgx:entity\/vlietstad ;
+    plato:has_relation_type plato:TransferredTo ;
+    plato:attests_timespan whgx:timespan\/1960-01-01 ;
+    plato:sourced_by whgx:source\/municipal-register ;
+    plato:notes "The hamlet of Zuidwijk passed to Vlietstad. Both municipalities carry on." .
+
+whgx:attestation\/nieuwhaven-formed
+    a plato:Attestation ;
+    plato:attests_about whgx:entity\/vlietstad ;
+    plato:relates_to whgx:entity\/nieuwhaven ;
+    plato:has_relation_type plato:TransferredTo ;
+    plato:attests_timespan whgx:timespan\/1975-01-01 ;
+    plato:sourced_by whgx:source\/municipal-register ;
+    plato:notes "Nieuwhaven was formed from part of Vlietstad, which carries on." .
+
+# A query for "what succeeded Oostervliet?" that follows plato:broader_relation
+# finds Vlietstad through plato:SucceededBy, though the data says MergedInto.

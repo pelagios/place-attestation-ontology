@@ -443,27 +443,31 @@ plato:Period
 plato:RelationType
     a owl:Class ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
-    rdfs:subClassOf plato:Authority ;
+    rdfs:subClassOf plato:Authority, skos:Concept ;
     rdfs:label "Relation Type"@en ;
     rdfs:comment """
         A vocabulary entry defining a semantic relationship between SpatialEntities:
         'capital_of', 'successor_to', 'connected_by_trade_route_to', etc.
         Carries a label, an inverse label, and domain/range constraints.
         This allows the vocabulary of historical relationships to grow
-        without modifying the core ontology.
+        without modifying the core ontology. Also a skos:Concept: the
+        starter types are concepts in plato:RelationTypeScheme, and a
+        project's own, narrower type is one for any SKOS tool that follows
+        plato:broader_relation, which is a skos:broader.
     """@en .
 
 plato:CertaintyLevel
     a owl:Class ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
-    rdfs:subClassOf plato:Authority ;
+    rdfs:subClassOf plato:Authority, skos:Concept ;
     rdfs:label "Certainty Level"@en ;
     rdfs:comment """
         A defined level of certainty for use in attestations, allowing
         projects to standardise their confidence vocabulary. An attestation or
         facet points at one with plato:certainty_level. PLATO declares the three
         levels of Linked Places Format (plato:Certain, plato:LessCertain,
-        plato:Uncertain); a project may declare its own.
+        plato:Uncertain), concepts in plato:CertaintyLevelScheme; a project
+        may declare its own.
     """@en .
 
 
@@ -923,7 +927,7 @@ plato:related_label
         names a target there is nothing to point at (see plato:relates_to).
     """@en ;
     rdfs:domain plato:Attestation ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:has_relation_type
     a owl:ObjectProperty ;
@@ -946,11 +950,14 @@ plato:has_relation_type
 # declares: a river's "flows into" is a directed connection, a post road's
 # "carries post to" another. Saying so lets a consumer that knows only the
 # starter types still traverse the project's network in the right direction.
-# skos:broader cannot say it: RelationType is an Authority, not a skos:Concept,
-# and skos:broader's domain would infer every relation type to be a Concept.
+# It is a sub-property of skos:broader, so a SKOS tool sees the project's type
+# under the PLATO one with nothing more written. RelationType is both an
+# Authority and a skos:Concept (the two are not disjoint), which is what lets
+# skos:broader, whose domain and range are skos:Concept, apply to it.
 
 plato:broader_relation
     a owl:ObjectProperty ;
+    rdfs:subPropertyOf skos:broader ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "broader relation"@en ;
     rdfs:comment """
@@ -1084,7 +1091,7 @@ plato:certainty_note
         (e.g. 'manuscript partially illegible', 'coordinates extrapolated
         from itinerary distances'). Applies wherever certainty does.
     """@en ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:certainty_level
     a owl:ObjectProperty ;
@@ -1307,7 +1314,7 @@ plato:notes
         other information that doesn't fit structured fields.
     """@en ;
     rdfs:domain plato:Attestation ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:contributed_by
     a owl:ObjectProperty ;
@@ -1554,7 +1561,7 @@ plato:fuzziness_note
         'name used inconsistently across contemporary sources',
         'transition was gradual rather than a discrete event').
     """@en ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 
 # -----------------------------------------------------------------------------
@@ -1779,7 +1786,7 @@ plato:identity_basis
         reconciliation review', 'confirmed via TGN cross-reference').
     """@en ;
     rdfs:domain plato:IdentityRelation ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:identity_asserted_by
     a owl:ObjectProperty ;
@@ -1877,7 +1884,7 @@ plato:toponym
         primary property of a Name entity. Required for all Name instances.
     """@en ;
     rdfs:domain plato:Name ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:language
     a owl:DatatypeProperty ;
@@ -1937,7 +1944,7 @@ plato:romanized
         system used via plato:transliteration_system.
     """@en ;
     rdfs:domain plato:Name ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:transliteration_system
     a owl:DatatypeProperty ;
@@ -2199,7 +2206,7 @@ plato:duration
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "duration"@en ;
     rdfs:comment """
-        How long the timespan lasted, as an xsd:duration ('P42D' for six
+        How long the timespan lasted, as an xsd:duration literal ('P42D' for six
         weeks, 'P1D' for a day), where the source states a length: a stay at
         a stop on an itinerary, a siege, a fair. It may stand alone, when the
         source gives a length and no dates, or beside the bounds, which it
@@ -2208,7 +2215,7 @@ plato:duration
         plato:source_label on the same timespan.
     """@en ;
     rdfs:domain plato:Timespan ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 plato:timespan_label
     a owl:DatatypeProperty ;
@@ -2221,7 +2228,7 @@ plato:timespan_label
         source writes it ('c. 925', 'a. 1300') is plato:source_label.
     """@en ;
     rdfs:domain plato:Timespan ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:start_precision
     a owl:DatatypeProperty ;
@@ -2345,7 +2352,7 @@ plato:type_label
     rdfs:label "type label"@en ;
     rdfs:comment "Human-readable label for this type."@en ;
     rdfs:domain plato:Type ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 # A type identifier usually names its scheme: an AAT IRI is plainly an AAT
 # concept. Some vocabularies have no such IRIs (Koppen climate codes, WWF
@@ -2390,7 +2397,7 @@ plato:source_label
         so the wording is never ambiguous. Like the qualification properties it
         has no rdfs:domain, so it applies to any facet node or attestation.
     """@en ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 
 # =============================================================================
@@ -2438,7 +2445,7 @@ plato:property_label
     rdfs:label "property label"@en ;
     rdfs:comment "Human-readable label for the property (e.g. 'population')."@en ;
     rdfs:domain plato:PropertyValue ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:value_literal
     a owl:DatatypeProperty ;
@@ -2505,12 +2512,30 @@ plato:value_json
 # Authority Properties
 # =============================================================================
 
+# Free text that a person writes, and that may carry a language tag
+# ("certain"@en, a toponym in Middle English), has the range rdfs:Literal, not
+# xsd:string: in OWL 2 a language-tagged literal is not an xsd:string, so an
+# xsd:string range makes a tagged value inconsistent for a DL reasoner (HermiT
+# reported this ontology inconsistent until it was changed). Codes and
+# identifiers keep xsd:string. The same applies to plato:toponym,
+# plato:certainty_note, plato:notes, the other labels and notes (source_label,
+# related_label, timespan_label, period_label, property_label, type_label,
+# fuzziness_note), bibliographic_string, romanized, identity_basis, publisher
+# and the contributor's name and affiliation text. plato:duration is rdfs:Literal for
+# another reason: xsd:duration is outside the OWL 2 datatype map, and a DL
+# reasoner rejects it, so its comment states the datatype it expects.
+# rdf:PlainLiteral (a string with or without a tag) would be tighter, and is in
+# the OWL 2 datatype map, but RDF 1.1 deprecates it and tools treat it unevenly;
+# rdfs:Literal is the one every tool accepts. plato:locator and
+# plato:spatial_coverage stay xsd:string: they hold references and names that
+# are not normally tagged.
+
 plato:authority_title
     a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "title"@en ;
     rdfs:domain plato:Authority ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:authority_uri
     a owl:DatatypeProperty ;
@@ -2532,7 +2557,7 @@ plato:publisher
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     rdfs:label "publisher"@en ;
     rdfs:domain plato:Dataset ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:licence
     a owl:DatatypeProperty ;
@@ -2572,7 +2597,7 @@ plato:bibliographic_string
         Authority forbids.
     """@en ;
     rdfs:domain plato:Authority ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 
 # -----------------------------------------------------------------------------
@@ -2680,7 +2705,7 @@ plato:period_label
         which may be more formal.
     """@en ;
     rdfs:domain plato:Period ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:spatial_coverage
     a owl:DatatypeProperty ;
@@ -2749,7 +2774,7 @@ plato:contributor_name
         For teams, the team name. For automated processes, a descriptive name.
     """@en ;
     rdfs:domain plato:Contributor ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:contributor_orcid
     a owl:DatatypeProperty ;
@@ -2812,7 +2837,7 @@ plato:contributor_affiliation_string
         Institute for Spatial History Innovation"
     """@en ;
     rdfs:domain plato:Contributor ;
-    rdfs:range xsd:string .
+    rdfs:range rdfs:Literal .
 
 plato:contributor_role
     a owl:DatatypeProperty ;
@@ -3385,21 +3410,39 @@ plato:Retracts
 
 plato:Certain
     a plato:CertaintyLevel ;
+    skos:inScheme plato:CertaintyLevelScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "certain"@en ;
     rdfs:comment "The statement is certain: the source, or the contributor, has no doubt of it."@en .
 
 plato:LessCertain
     a plato:CertaintyLevel ;
+    skos:inScheme plato:CertaintyLevelScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "less certain"@en ;
     rdfs:comment "The statement is probable but not certain."@en .
 
 plato:Uncertain
     a plato:CertaintyLevel ;
+    skos:inScheme plato:CertaintyLevelScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "uncertain"@en ;
     rdfs:comment "The statement is doubtful: possible, but not established."@en .
+
+# The relation types and certainty levels are concepts in two schemes of their
+# own, so that SKOS tools find them; see plato:RelationType.
+
+plato:RelationTypeScheme
+    a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "relation types"@en ;
+    rdfs:comment "PLATO's starter relation types: how one SpatialEntity, or a SpatialEntity and a person, object, event or record, are related by an attestation, read from the subject (attests_about) to the target (relates_to); plato:inverse_label reads it from the target. A project's own narrower types point at these with plato:broader_relation."@en .
+
+plato:CertaintyLevelScheme
+    a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:label "certainty levels"@en ;
+    rdfs:comment "Certainty in words, for a statement whose source gives no number."@en .
 
 # -----------------------------------------------------------------------------
 # RelationType: containment
@@ -3414,6 +3457,7 @@ plato:Uncertain
 
 plato:ContainedIn
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "contained in"@en ;
     plato:relation_label "contained_in" ;
@@ -3469,6 +3513,7 @@ plato:ContainedIn
 
 plato:MemberOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "member of"@en ;
     plato:relation_label "member_of" ;
@@ -3487,6 +3532,7 @@ plato:MemberOf
 
 plato:ConnectedTo
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "connected to"@en ;
     plato:relation_label "connected_to" ;
@@ -3504,6 +3550,7 @@ plato:ConnectedTo
 
 plato:LeadsTo
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "leads to"@en ;
     plato:relation_label "leads_to" ;
@@ -3524,6 +3571,7 @@ plato:LeadsTo
 
 plato:BeginsAt
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "begins at"@en ;
     plato:relation_label "begins_at" ;
@@ -3539,6 +3587,7 @@ plato:BeginsAt
 
 plato:EndsAt
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "ends at"@en ;
     plato:relation_label "ends_at" ;
@@ -3553,6 +3602,7 @@ plato:EndsAt
 
 plato:HasEnd
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "has end"@en ;
     plato:relation_label "has_end" ;
@@ -3566,6 +3616,135 @@ plato:HasEnd
         plato:ConnectedTo, which joins two places directly: were a segment
         connected to its ends, every place would be two steps from its
         neighbours.
+    """@en .
+
+# -----------------------------------------------------------------------------
+# RelationTypes: succession (mergers, absorptions and divisions)
+# -----------------------------------------------------------------------------
+# Administrative units are merged, absorbed into a neighbour and divided, and
+# a gazetteer of them needs to say which came from which, and when. Each is an
+# attestation about the earlier SpatialEntity that relates_to the later one,
+# so that direction runs in time, subject to target, in all four types, and a
+# consumer that filters on the type cannot misread it. The effective date is
+# the attestation's timespan, from which the relation holds (the date of the
+# act, not of the source that reports it); no end is given unless the
+# succession was itself undone. Which of the types applies follows what the
+# source says happened to each party, not the word it uses, so a merger and an
+# absorption are kept apart: in a merger every party ceased and the target is
+# new; in an absorption the subject ceased and the target carried on; in a
+# division the subject ceased and the targets are new. The types
+# narrow plato:SucceededBy through plato:broader_relation, so that a consumer
+# that knows only SucceededBy still follows any of them.
+#
+# A municipality dissolved and its land shared out among existing neighbours
+# is one AbsorbedBy attestation for each neighbour, each taking part of it.
+# That an entity ceased with no successor (a settlement abandoned) has no
+# target and so no relation: the entity's other attestations simply end, in
+# their timespans. A transfer of part of the land of an entity that carries on
+# (a boundary change, or a new municipality formed from part of a continuing
+# one) is not a succession of either entity, and has its own type,
+# plato:TransferredTo, which is not a SucceededBy.
+
+plato:SucceededBy
+    a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    plato:authority_title "succeeded by"@en ;
+    plato:relation_label "succeeded_by" ;
+    plato:inverse_label "succeeds" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The target took the subject's place from the attested date: a
+        parish replaced by a successor parish, a province by another. The
+        general succession, for a source that says an entity was succeeded
+        without saying how. It does not claim that the two are the same
+        entity (that is an IdentityRelation) or that one contains the other
+        (plato:ContainedIn). Use plato:MergedInto, plato:AbsorbedBy or
+        plato:SplitInto where the source says which kind of change it was;
+        each of those is also a SucceededBy.
+    """@en .
+
+plato:MergedInto
+    a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    plato:authority_title "merged into"@en ;
+    plato:relation_label "merged_into" ;
+    plato:inverse_label "formed_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    plato:broader_relation plato:SucceededBy ;
+    rdfs:comment """
+        The subject ceased, with at least one other entity, to form the
+        target, a new entity, from the attested date: two municipalities
+        merged into a third that took neither's identity. One attestation
+        for each party, all with the same target and date. If the target is
+        one of the parties carrying on under its old identity, it is an
+        absorption (plato:AbsorbedBy) whatever word the source uses, and
+        that word belongs in plato:source_label.
+    """@en .
+
+plato:AbsorbedBy
+    a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    plato:authority_title "absorbed by"@en ;
+    plato:relation_label "absorbed_by" ;
+    plato:inverse_label "absorbed" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    plato:broader_relation plato:SucceededBy ;
+    rdfs:comment """
+        The subject ceased and its territory, or a part of it, passed to the
+        target, which carried on under its own identity, from the attested
+        date: a municipality annexed by its neighbour, or dissolved and
+        shared out among several, one attestation for each. The target does
+        not become a different entity by absorbing, so it has no attestation
+        of its own for the event; a source that says the larger unit was
+        thereby enlarged is saying something about its extent, which belongs
+        in a geometry or property value with its own timespan.
+    """@en .
+
+plato:SplitInto
+    a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    plato:authority_title "split into"@en ;
+    plato:relation_label "split_into" ;
+    plato:inverse_label "split_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    plato:broader_relation plato:SucceededBy ;
+    rdfs:comment """
+        The subject ceased and was divided, from the attested date, into new
+        entities that include the target: a municipality divided into two.
+        One attestation for each, with the same date. Land shared out among
+        entities that already existed is plato:AbsorbedBy, once for each.
+    """@en .
+
+plato:TransferredTo
+    a plato:RelationType ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:inScheme plato:RelationTypeScheme ;
+    plato:authority_title "transferred to"@en ;
+    plato:relation_label "transferred_to" ;
+    plato:inverse_label "received_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        Part of the subject's land passed to the target from the attested
+        date, and both carry on: a boundary change between two municipalities,
+        or a new municipality formed from part of a continuing one. The target
+        may therefore be an entity that already existed, or one that came into
+        being by the transfer. Neither is the other's successor, so this is
+        not a plato:SucceededBy; and if the subject ceased, it is
+        plato:AbsorbedBy or plato:SplitInto instead. The date is the
+        attestation's timespan. The land itself is not recorded here: a
+        geometry on this attestation would read as the subject's own extent.
+        Each party's extent before and after is its own geometry attestation,
+        with its own timespan; a source's description of what moved ('the
+        hamlet of Zuidwijk') is plato:source_label.
     """@en .
 
 # -----------------------------------------------------------------------------
@@ -3583,6 +3762,7 @@ plato:HasEnd
 
 plato:BirthplaceOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "birthplace of"@en ;
     plato:relation_label "birthplace_of" ;
@@ -3593,6 +3773,7 @@ plato:BirthplaceOf
 
 plato:DeathplaceOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "deathplace of"@en ;
     plato:relation_label "deathplace_of" ;
@@ -3603,6 +3784,7 @@ plato:DeathplaceOf
 
 plato:ResidenceOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "residence of"@en ;
     plato:relation_label "residence_of" ;
@@ -3613,6 +3795,7 @@ plato:ResidenceOf
 
 plato:FindspotOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "findspot of"@en ;
     plato:relation_label "findspot_of" ;
@@ -3623,6 +3806,7 @@ plato:FindspotOf
 
 plato:SettingOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "setting of"@en ;
     plato:relation_label "setting_of" ;
@@ -3633,6 +3817,7 @@ plato:SettingOf
 
 plato:WorkplaceOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "workplace of"@en ;
     plato:relation_label "workplace_of" ;
@@ -3656,6 +3841,7 @@ plato:WorkplaceOf
 
 plato:DepictedIn
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "depicted in"@en ;
     plato:relation_label "depicted_in" ;
@@ -3666,6 +3852,7 @@ plato:DepictedIn
 
 plato:SubjectOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "subject of"@en ;
     plato:relation_label "subject_of" ;
@@ -3685,6 +3872,7 @@ plato:SubjectOf
 
 plato:HomelandOf
     a plato:RelationType ;
+    skos:inScheme plato:RelationTypeScheme ;
     rdfs:isDefinedBy <https://w3id.org/plato> ;
     plato:authority_title "homeland of"@en ;
     plato:relation_label "homeland_of" ;

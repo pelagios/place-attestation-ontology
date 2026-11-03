@@ -13,8 +13,59 @@ were made under the earlier policy.
 
 ## Unreleased
 
+### Added
+
+- Succession relation types, for administrative units that are merged,
+  absorbed and divided: `plato:SucceededBy`, and `plato:MergedInto`,
+  `plato:AbsorbedBy` and `plato:SplitInto`, each also a `SucceededBy` through
+  `plato:broader_relation`. The attestation is about the earlier entity and
+  relates to the later one, dated by the day the change took effect. No new
+  property: the kind of change is the relation type. A fifth,
+  `plato:TransferredTo`, is for land that moves while both parties carry on
+  (a boundary change, or a new municipality formed from part of a continuing
+  one); it is not a `SucceededBy`, and the land itself is not recorded on it,
+  since a geometry there would read as the subject's own extent. The
+  relations sheet takes all five. An entity that merely ceased has no target,
+  so no relation. Examples: `examples/succession.ttl`,
+  `schemas/examples/place-centric-succession.json` (invented municipalities).
+  Asked for by the KNAW Humanities Cluster, who model Dutch municipalities.
+- A SKOS view of the vocabularies, `scripts/skos_view.py`, published as
+  `releases/X.Y.Z/vocabularies.skos.{ttl,jsonld}` from this release and as
+  `plato.skos.{ttl,jsonld}` in the published site's `schemas/` for the
+  current ontology (reached through the existing `w3id.org/plato/schemas/`
+  rule). It writes out, for tools that do not reason, what the ontology says
+  or entails: labels, definitions, notations, narrower links, top concepts,
+  and a Getty `authority_uri` as `rdfs:seeAlso` (`skos:exactMatch` would make
+  a property of another ontology a Concept). It is derived, so unlike the
+  ontology files it may be regenerated if the view is corrected.
+- `plato:RelationTypeScheme` and `plato:CertaintyLevelScheme`, concept
+  schemes holding the relation types and the certainty levels.
+
 ### Changed
 
+- `plato:RelationType` and `plato:CertaintyLevel` are also subclasses of
+  `skos:Concept`, and `plato:broader_relation` a sub-property of
+  `skos:broader`. The ontology had kept relation types out of SKOS on the
+  ground that `skos:broader`'s domain would infer them to be Concepts; that
+  is harmless (nothing in PLATO or SKOS is disjoint with `skos:Concept` for
+  these classes, tested with HermiT), and it lets a project's narrower
+  relation type appear in the SKOS hierarchy with nothing more written. The
+  instances carry `skos:inScheme`. `plato:Type` was already a `skos:Concept`.
+- `plato:authority_title`, `plato:toponym`, `plato:certainty_note`,
+  `plato:notes` and the other properties that hold text a person writes
+  (`source_label`, `related_label`, `timespan_label`, `period_label`,
+  `property_label`, `type_label`, `fuzziness_note`, `bibliographic_string`,
+  `romanized`, `identity_basis`, `publisher`, `contributor_name`,
+  `contributor_affiliation_string`) have the range `rdfs:Literal`, not
+  `xsd:string`, and `plato:duration` too (its comment names `xsd:duration`
+  as the expected datatype). In OWL 2 a language-tagged literal
+  ("certain"@en) is not an `xsd:string`, so a DL reasoner (HermiT) found the
+  ontology inconsistent, as it has been since the certainty levels were
+  added in 0.5.0; and `xsd:duration` is outside the OWL 2 datatype map, so
+  HermiT refused the ontology outright. Nothing is deprecated: every value
+  valid before is valid now. `scripts/check_dl.py` now runs HermiT on the
+  ontology in the docs workflow, after first proving that it can detect a
+  contradiction.
 - `plato:Retracts` is defined at Gazetteer level: a Gazetteer retracts the
   attestations it made, and a maintainer signs for it, recorded as the
   retraction's contributor. It is not a claim about the person who first

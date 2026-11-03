@@ -91,7 +91,10 @@ def write_vocabularies_md():
     g = Graph()
     g.parse(REPO / "ontology.ttl", format="turtle")
     lines = []
-    for scheme in sorted(g.subjects(RDF.type, SKOS.ConceptScheme), key=str):
+    # The relation types and certainty levels are concepts in schemes of their own, and have
+    # their own sections below, with the columns that suit them.
+    own = {PL.RelationTypeScheme, PL.CertaintyLevelScheme}
+    for scheme in sorted(set(g.subjects(RDF.type, SKOS.ConceptScheme)) - own, key=str):
         label = g.value(scheme, RDFS.label)
         lines += [f"## {str(label).capitalize()}", "", str(g.value(scheme, RDFS.comment)), "",
                   "| Value | Meaning | Full identifier |", "|---|---|---|"]

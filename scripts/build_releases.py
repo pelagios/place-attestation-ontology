@@ -7,6 +7,9 @@ For each git tag vX.Y.Z (or vX.Y.Z-pre) this writes <publish_dir>/releases/X.Y.Z
     ontology.nt      N-Triples  } serialised from that Turtle by rdflib and
     ontology.owl     RDF/XML    } checked isomorphic with it, exactly as the
     ontology.jsonld  JSON-LD    } workflow does for the current ontology
+    vocabularies.skos.ttl / .jsonld   the SKOS view of its vocabularies (scripts/skos_view.py),
+                     from 0.9.0-alpha.2 on; derived, so unlike the ontology files it may be
+                     regenerated if the view is corrected
 
 and then <publish_dir>/releases/index.json listing every release built.
 w3id.org/plato/X.Y.Z redirects to these paths, so they must never change
@@ -31,9 +34,13 @@ from pathlib import Path
 from rdflib import Graph
 from rdflib.compare import to_isomorphic
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import skos_view   # scripts/skos_view.py, beside this file
+
 # vX.Y.Z, or a SemVer pre-release such as v0.9.0-alpha.1 (PLATO's releases
 # from 0.9.0 on are alphas, then betas). Build metadata (+...) is not used.
 TAG = re.compile(r"^v(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$")
+SKOS_FROM_TAG = "v0.9.0-alpha.2"   # the first release that carries the SKOS view
 FORMATS = [("ontology.nt", "nt"), ("ontology.owl", "xml"), ("ontology.jsonld", "json-ld")]
 
 
@@ -41,9 +48,9 @@ def git(*args: str) -> bytes:
     return subprocess.run(["git", *args], check=True, capture_output=True).stdout
 
 
-def warn(msg: str) -> None:
+def warn(msg: str, title: str = "Release copy skipped") -> None:
     # One line: a workflow command must not contain a raw newline.
-    print(f"::warning title=Release copy skipped::{msg}".replace("\n", " "), flush=True)
+    print(f"::warning title={title}::{msg}".replace("\n", " "), flush=True)
 
 
 def build(tag: str, version: str, releases: Path) -> list[str] | None:
@@ -79,12 +86,27 @@ def build(tag: str, version: str, releases: Path) -> list[str] | None:
             if to_isomorphic(h) != iso:
                 warn(f"{tag}: {name} is not isomorphic with ontology.ttl")
                 return None
+        extra = []
+        if precedence(tag) >= precedence(SKOS_FROM_TAG):
+            # A failure here costs this release its SKOS view, not its ontology files.
+            try:
+                view = skos_view.build_view(g)
+                problems = skos_view.check(view)
+                if problems:
+                    raise ValueError("; ".join(problems))
+                extra = skos_view.write(view, work / "vocabularies.skos")
+            except Exception as e:
+                warn(f"{tag}: ontology files kept, but no SKOS view ({type(e).__name__}: {e})", title="SKOS view skipped")
+                for f in work.glob("vocabularies.skos.*"):
+                    f.unlink()
+                extra = []
         dest = releases / version
         if dest.exists():
             shutil.rmtree(dest)
         shutil.copytree(work, dest)
-    print(f"{tag}: {len(g)} triples -> releases/{version}/ (ttl, nt, owl, jsonld; all isomorphic)")
-    return ["ontology.ttl"] + [name for name, _ in FORMATS]
+    print(f"{tag}: {len(g)} triples -> releases/{version}/ (ttl, nt, owl, jsonld; all isomorphic)"
+          + (" + SKOS view" if extra else ""))
+    return ["ontology.ttl"] + [name for name, _ in FORMATS] + extra
 
 
 def precedence(tag: str) -> tuple:
