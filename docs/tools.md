@@ -114,6 +114,34 @@ The report comes in three parts:
 A file that stops part-way, or is damaged, is reported as a problem in the
 file, with what could be read before it.
 
+**Check with candidate sets…** checks a dataset together with the
+[candidate sets](json.md#candidate-sets) that suggest matches for it, or one
+candidate set with the others. Choose the dataset (or the first set) first,
+press the button, and choose the sets' files, one file for each set. Each
+set is checked against its profile, as **Check** would; then the sets are
+taken in the order they were issued, and a later set must leave out a
+candidate an earlier one published, and its ids must differ from the earlier
+sets' (under the same base address); and, with a dataset, each identity
+relation that answers a candidate (`promotedFrom`) must find it in the sets,
+and the sets and the dataset's `candidateSets` must agree. Nothing is
+fetched. On the command line, give `check` one `--candidates SET` for each
+set, with the dataset as its input; with no input, the first set is checked
+with the others.
+
+**Check the Data Cube** is offered when Arithmos, the statistical figures
+tool, is chosen, for a dataset with [figures](statistics.md) or for a Data
+Cube export (N-Triples). A dataset is converted to its Data Cube first, in
+memory; an export is checked as it is. It checks the Data Cube integrity
+constraints IC-1, 2, 11, 12 and 14, and the figures themselves: every
+universe a figure of the same table, every coordinate declared in its
+table's structure, every value a number (each of these a problem), and the
+parts of a universe summing to it (a warning, since a sum that fails is
+sometimes the source's own arithmetic). Each check is shown with the number
+of things it evaluated; one with nothing to evaluate is not tested, and
+never counted as passed. On the command line it is `datacube`, which also
+checks IC-19 when given the code lists (`--codes FILE`); see
+[checking, and standard Data Cube](statistics.md#checking-and-standard-data-cube).
+
 ## Converting
 
 PLATO JSON and linked data hold everything PLATO can say, and converting

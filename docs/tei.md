@@ -77,10 +77,15 @@ to one.
 **A web address.** `ref="https://pleiades.stoa.org/places/579885"` is used as
 it is, except that an address of Pleiades, GeoNames or Wikidata is written in
 the one form its gazetteer gives it (see
-[Gazetteer addresses in one form](#gazetteer-addresses-in-one-form)). A `ref` with several addresses, separated by spaces, gives one
-attestation for each, with a note naming them all, and the report warns you.
-That the addresses may be the same place in two gazetteers is not recorded:
-PLATO says that with an identity match, not with a place name.
+[Gazetteer addresses in one form](#gazetteer-addresses-in-one-form)). A `ref` with several addresses, separated by spaces, each
+from a different gazetteer, is one place: it gives one attestation, about
+the preferred address (gazetteers of places first, Pleiades before the World
+Historical Gazetteer, GeoNames, the Getty TGN and Wikidata; then authority
+files such as GND; then a project's own), with an identity relation to each
+of the others, of the kind *unspecified*, since the edition links them
+without saying how strongly, and a note naming them all; the report warns
+you. Two different addresses from one gazetteer name two records, so the
+place is ambiguous: it is reported, and nothing is converted from it.
 
 **A prefixed pointer.** `ref="pl:579885"` is expanded through a `<prefixDef>`
 in the header, such as
@@ -291,9 +296,12 @@ that has a web address in its `<idno>` also becomes an attestation of its
 own, citing the edition:
 
 - **about** the place's web address. A place with no web address is reported,
-  and not converted; one with several different web addresses is ambiguous,
-  reported, and nothing is converted from it (two forms of one address, such
-  as `http` and `https` for Pleiades, count as one).
+  and not converted. One with several, each from a different gazetteer, is
+  about the preferred address, with an identity relation to each of the
+  others, as for a `ref` with several addresses ([above](#where-a-ref-can-point));
+  one with two different addresses from one gazetteer is ambiguous, reported,
+  and nothing is converted from it (two forms of one address, such as `http`
+  and `https` for Pleiades, count as one).
 - **name**: its first `<placeName>`, with the form status
   [*Headword*](glossary.md): the form under which the editors list the place,
   an editorial choice rather than a reading. Its other names are reported and
@@ -694,8 +702,11 @@ text it was made from. The place name becomes one attestation:
 - **notes** "Key: corinth" and where in the file the place name stands.
 
 A second place name in the same passage, `<placeName ref="… …">Kenchreai</placeName>`
-with two addresses, becomes two attestations and a warning; a third,
-`<placeName>Lechaeum</placeName>`, has no `ref`, and the report lists it.
+with two addresses, one in Pleiades and one in GeoNames, becomes one
+attestation about the Pleiades address, bundling an identity relation of the
+kind *unspecified* to the GeoNames address, with a note saying so, and a
+warning; a third, `<placeName>Lechaeum</placeName>`, has no `ref`, and the
+report lists it.
 
 ## A second example: an inscription, with reading options
 

@@ -188,7 +188,12 @@ Save that line to a file, correct it, and give it back with
 `--columns FILE`. It is the same JSON the page saves. The fields are named in
 it as `name`, `alternativeNames`, `latitude`, `longitude`, `wkt`, `geometry`,
 `gridref`, `id`, `address`, `type`, `language`, `source`, `date`, `start`,
-`end`, `within` and `split`, or `note` and `skip`. A column of a gazetteer's ids, made into web addresses
+`end`, `within` and `split`, or `note` and `skip`; and, for a table of
+figures (a census, a return), `period`, `dimension`, `value` and `figure`,
+with the table's own description beside the columns, which only the command
+line reads so far (see
+[Tables of figures](https://github.com/pelagios/plato-tools#tables-of-figures-a-census-a-return)
+in the PLATO tools README, and [Statistical tables](statistics.md)). A column of a gazetteer's ids, made into web addresses
 with a pattern, is written
 `{"field": "address", "pattern": "https://pleiades.stoa.org/places/{id}"}` in
 place of the field's name (see [A column of gazetteer ids](#a-column-of-gazetteer-ids)).

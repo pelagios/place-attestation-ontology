@@ -36,6 +36,28 @@ were made under the earlier policy.
   properties' `rdfs:Literal` range. The JSON page lists the worked examples,
   the Trismegistos, regions and succession examples among them, and links
   the vocabulary pages rather than repeating their lists.
+- The tools page's Checking section documents PLATO tools' **Check with
+  candidate sets…** and **Check the Data Cube**, and the statistics page
+  points at the latter. The table-of-places page's list of `--columns`
+  fields adds the four roles of a table of figures (`period`, `dimension`,
+  `value`, `figure`).
+- The TEI page described a place name with several addresses as it was
+  converted before PLATO tools' preferred-address rule (hermes-preferred 1):
+  one attestation for each address, and nothing recorded of their being one
+  place. It now describes what the tools do, and the worked example's
+  Kenchreai with it: one attestation about the preferred address, with an
+  identity relation of the kind *unspecified* to each of the others. Every
+  other count the guide takes from an example or a test file (the Antonine,
+  River Idle, customs and King John tables, the Constantinople and
+  Trismegistos JSON, the Pliny annotations, the TEI and table-of-places test
+  files) was recomputed from the files and found right.
+
+### Schemas
+
+- The context's `$comment` records its verification for 0.9.0-alpha.2: all
+  seventeen JSON examples expanded with pyld and parsed with rdflib, every
+  `plato:` term declared, every schema key a context term, no node inferred
+  into two unrelated classes. The mappings are unchanged.
 
 ## 0.9.0-alpha.2
 

@@ -93,7 +93,8 @@ statement, and its place and date as `refArea` and `refPeriod`, declared in
 each table's structure. A figure whose date is not one year or one day gets
 no `refPeriod`; it is reported, not guessed. The second runs Data Cube's
 integrity checks on the result, at any size, and says which passed, which
-failed, and which had nothing to check.
+failed, and which had nothing to check. On the page, **Check the Data Cube**
+does both at once: see [Checking](tools.md#checking).
 
 If you run the W3C's own integrity queries instead, normalise the cube first,
 as the [specification](https://www.w3.org/TR/vocab-data-cube/#normalize)
