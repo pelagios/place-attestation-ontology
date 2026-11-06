@@ -64,6 +64,14 @@ The date of the statement is not the same as the date of the source. An annal
 for the year 921 read in a manuscript written around 925 is dated 921; the
 manuscript's own date, c. 925, belongs to the source.
 
+Nor is it the same as the span of the evidence. Many gazetteers date a place
+by the earliest and latest documents that mention it, but a town mentioned
+from 144 BC to AD 99 existed before the first of those texts and after the
+last. PLATO lets such a window be marked for what it is, the span of the
+evidence rather than the dates of the place, so that no one reads it as when
+the place existed (in JSON and RDF, with a *timespan role*: see
+[JSON formats](json.md#keys-and-terms)).
+
 ## How sure, and what kind of evidence
 
 You can say how **certain** you are of a row, from 0 (not at all) to 1

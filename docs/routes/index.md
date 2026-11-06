@@ -125,6 +125,46 @@ only names the other thing, with nothing to point at ("in the Delta"), leave
 both empty and give the name in `related_label`. [PLATO
 tools](https://pelagios.org/plato-tools/) reports a row that fills in both.
 
+## Places that replace one another
+
+The relations sheet also records what became of a place that stopped being
+one: parishes, municipalities and provinces are merged, swallowed by a
+neighbour and divided, and a dataset of them needs to say which came from
+which, and when. Each change is a row about the **earlier** place, in
+`place_id`, relating it to the **later** one, in `related_place_id`, so that
+the row always runs forward in time. Put the day the change took effect in
+`from`, leave `to` empty, and put the date as your source writes it in `date`.
+Which word to choose follows what happened to each party, not the word your
+source uses:
+
+- `MergedInto`: the place ceased, with at least one other, to form a new
+  place. One row for each of the places merged, all pointing at the new one.
+- `AbsorbedBy`: the place ceased and the other carried on as itself, taking
+  its land or part of it. A place dissolved and shared out among several
+  neighbours is one row for each neighbour. The neighbour needs no row of its
+  own: it is the same place, only larger.
+- `SplitInto`: the place ceased and was divided into new places. One row for
+  each new place, all with the same date.
+- `SucceededBy`: the other took its place, and the source does not say how.
+  Software that knows only this word still follows the other three, which
+  are each a kind of succession.
+- `TransferredTo`: part of the place's land passed to the other, and **both
+  carry on**: a boundary change, or a new municipality formed from part of
+  one that continues. This is not a succession. Put what moved, in the
+  source's words ("the hamlet of Zuidwijk"), in `date` beside the date. In
+  JSON or RDF, do not give the land a location on this attestation: a
+  location there would read as the place's own extent. Each place's extent
+  before and after is a location of its own, with its own dates.
+
+A place that simply ceased, with nothing taking its place, has no row here:
+its other evidence ends, in its dates. Each word's definition, with what it
+reads as in each direction, is on the [vocabularies](../vocabularies.md#relation-types)
+page. The repository's
+[succession.ttl](https://github.com/pelagios/place-attestation-ontology/blob/main/examples/succession.ttl)
+and
+[place-centric-succession.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-succession.json)
+show invented municipalities going through all five.
+
 ## What not to enter
 
 Platforms work some things out for themselves: a journey's overall dates from

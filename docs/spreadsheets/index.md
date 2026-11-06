@@ -92,6 +92,10 @@ The spreadsheets cover most datasets, but a few things need the
 - one scholar's comment on another's evidence ("this contradicts that");
 - readings that are alternatives to each other, such as a "Neuton" that could
   be either of two Newtons, of which at most one is right;
+- a date that is the span of the evidence, the earliest and latest documents
+  that mention a place, rather than when the place existed. In JSON an
+  attestation says so with `timespanRole` (see
+  [JSON formats](../json.md#keys-and-terms));
 - a relation type that PLATO does not list, such as your project's own "flows
   into" for a river. In JSON it can say which of PLATO's types it narrows; or
   ask for it to be added to PLATO by

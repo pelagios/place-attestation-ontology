@@ -66,6 +66,13 @@ Editorial form
   commentary or notes, rather than in the text they edit. Recorded with the
   form status *Editorial*, so that it is not read as the source's own.
 
+Evidence span
+: A date window that is the span of the evidence, the earliest and latest
+  documents that mention a place, rather than when the place existed, as many
+  gazetteers date their places. In JSON and RDF an attestation carrying such a
+  window says so with the timespan role `EvidenceSpan`, so that it is not
+  read as the dates of the place. See [JSON formats](json.md#keys-and-terms).
+
 Fuzziness
 : The sense in which something genuinely has no sharp edge, such as "the
   Levant" or a gradual change of rule. It is a property of the thing, not of
@@ -163,6 +170,16 @@ Stance
   raise it and leave it undecided. That is recorded as the source's stance,
   separately from how sure you are: you can be quite certain that a source
   hedged. Leaving a thing undecided is not denying it (see Denial).
+
+Succession
+: What became of a place that ceased to be one: merged with others into a new
+  place (`MergedInto`), absorbed by a neighbour that carried on
+  (`AbsorbedBy`), divided into new places (`SplitInto`), or replaced without
+  the source saying how (`SucceededBy`). Recorded as a relation from the
+  earlier place to the later one, dated by the day the change took effect. A
+  transfer of land between two places that both carry on (`TransferredTo`)
+  is not a succession. See
+  [Places that replace one another](routes/index.md#places-that-replace-one-another).
 
 temPlato
 : PLATO's spreadsheet template: ten linked sheets, as an Excel workbook or

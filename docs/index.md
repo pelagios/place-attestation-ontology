@@ -165,6 +165,10 @@ permanent addresses for your places.
 : See [Routes, journeys and networks](routes/index.md), with four worked
   examples.
 
+**My places are parishes or municipalities that were merged, divided or replaced.**
+: See [Places that replace one another](routes/index.md#places-that-replace-one-another):
+  one row says which place became which, and when.
+
 **I want to check a file, or convert it to another format.**
 : Use [PLATO tools](https://pelagios.org/plato-tools/): drop the file on the page, and see
   [checking, converting and comparing](tools.md) for what it tells you. It runs in your

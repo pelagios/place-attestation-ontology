@@ -25,6 +25,17 @@ were made under the earlier policy.
   point at by `related_uri` and `related_label`.
 - The README lists the Trismegistos and regions examples and the
   IdentityRelation class, which it had left out.
+- The guide covers what 0.9.0-alpha.1 and alpha.2 added, which its
+  hand-written pages had not mentioned: the succession relation types
+  (*Places that replace one another*, on the routes page, with an entry under
+  *Where to start* and in the glossary), the timespan role and the evidence
+  span (the JSON page, the ideas page's *Dates*, what the spreadsheets cannot
+  say, and the glossary), names in their original script with
+  `transliterationSystem`, `relativeTo` with two anchors for `BetweenXAndY`,
+  `relatedLabel` alone, Retracts at Gazetteer level, and the text
+  properties' `rdfs:Literal` range. The JSON page lists the worked examples,
+  the Trismegistos, regions and succession examples among them, and links
+  the vocabulary pages rather than repeating their lists.
 
 ## 0.9.0-alpha.2
 

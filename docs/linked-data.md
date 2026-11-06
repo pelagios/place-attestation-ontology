@@ -87,7 +87,11 @@ three pieces for that.
 - **Nothing is deleted once published.** When a gazetteer's `status` is
   `published`, its attestations are append-only. A correction is a new
   attestation that supersedes or contradicts the old one, and a withdrawal
-  is one that retracts it (`plato:Retracts`). Every attestation carries its
+  is one that retracts it (`plato:Retracts`). A retraction is made by the
+  gazetteer that published the attestation, with the maintainer who signs
+  for it as its contributor; a maintainer who disputes another gazetteer's
+  attestation contradicts it (`plato:Contradicts`) rather than retracting
+  it. Every attestation carries its
   `created` time, so the state as of any date can be worked out from the
   data itself. Before publishing a new version, check that it keeps this
   rule: [PLATO tools](https://pelagios.org/plato-tools/) compares it with the
@@ -126,3 +130,14 @@ own way: JSON-LD writes a whole number as `xsd:integer` and any other as
 values, not their types: `1`, `1.0` and `1.0E0` are the same certainty.
 PLATO tools writes a whole number as `xsd:integer` and any other as
 `xsd:double`, as JSON-LD does.
+
+## Text
+
+The properties that hold text a person writes (`toponym`, `notes`,
+`source_label`, `authority_title` and the rest) take any literal, with a
+language tag (`"Bristowe"@enm`) or without one: their range is `rdfs:Literal`,
+not `xsd:string`, since in OWL 2 a language-tagged literal is not an
+`xsd:string`, and a reasoner would otherwise find the data inconsistent.
+`duration` is the same, though an `xsd:duration` such as `P42D` is what is
+expected. The ontology is checked with a reasoner on every change, so that it
+stays consistent for anyone who reasons over data in it.

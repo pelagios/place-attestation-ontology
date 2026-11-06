@@ -19,7 +19,7 @@ All three are built from the shared definitions in
 they refer to by relative path, so keep the files together when
 validating. Worked examples are in the repository's
 [schemas/examples](https://github.com/pelagios/place-attestation-ontology/tree/main/schemas/examples)
-folder.
+folder, and are listed under [Worked examples](#worked-examples) below.
 
 ## Checking and converting
 
@@ -89,13 +89,47 @@ something goes in an attestation's `sourceStance`, such as
 said"). A source's `licence` is the web address of the licence of the copy you
 cite, written as the gazetteer's is.
 
+A name's `toponym` is the name as the source gives it: in its original script
+where that is known and can be written, otherwise in a scholarly
+transliteration. `script` says which script the form is written in (`Grek`;
+`Latn` for a transliteration), `transliterationSystem` names the system a
+transliteration follows, and `romanized` can give a romanised form beside a
+name in another script. A Demotic name known only in Egyptological
+transliteration is still a toponym, with the language `egy-Latn-t-egy-egyd`.
+
+An attestation's timespans normally say when what it records held, according
+to the source. Many gazetteers date a place instead by the earliest and latest
+documents that mention it, which is not the same thing: a town mentioned from
+144 BC to AD 99 existed before the first of those texts and after the last.
+Such a window is recorded as one attestation about the place carrying only a
+timespan, with `timespanRole` set to `https://w3id.org/plato#EvidenceSpan`;
+it is never repeated on each name. The default role, `WhenTrue`, is usually
+left out. Both are listed under [Timespan role](vocabularies.md#timespan-role).
+Software that cannot carry the role should report the loss rather than show
+the window as the dates of the place; the spreadsheets have no column for it.
+
+A location given only relative to somewhere else puts the anchor's address in
+`relativeTo`, in the geometry's `qualification`, with a `relativeQualifier`
+from the [Relative qualifier](vocabularies.md#relative-qualifier) list.
+`https://w3id.org/plato#BetweenXAndY` takes a list of exactly two anchors, in
+no particular order; a `relativeBearing` or `relativeDistance` goes with one
+anchor only. A place located relative to several others at once is several
+attestations, not one with many anchors.
+
 Routes, journeys and networks use a few more keys (see
 [Routes, journeys and networks](routes/index.md)). An attestation that makes a
 place a member of a route, with `relationType`
 `https://w3id.org/plato#MemberOf`, gives its position in `sequence`, a whole
 number. A relation to something that is not a place, such as a person in
 Wikidata, gives its web address in `relatesTo` and a name to show it by in
-`relatedLabel`. A timespan's `duration` is a length the source states, as an
+`relatedLabel`. `relatedLabel` on its own, with no `relatesTo`, names
+something the source gives no address for ("in the Delta"); a unit that
+recurs, such as a province, is better made a place of the dataset, so that its
+places can be found together. Places that were merged, absorbed into a
+neighbour or divided use the succession relation types, `MergedInto`,
+`AbsorbedBy`, `SplitInto`, `SucceededBy` and `TransferredTo`, as
+[Places that replace one another](routes/index.md#places-that-replace-one-another)
+explains. A timespan's `duration` is a length the source states, as an
 `xsd:duration` such as `P42D` for six weeks. `computed`, on an attestation or
 in a `qualification`, marks a value software worked out, not a source's
 statement; data you record from sources never needs it.
@@ -147,6 +181,68 @@ river. A document declares it once, in a `relationTypes` array beside its
 
 `broaderRelation` names the PLATO relation it narrows, so software that knows
 only `LeadsTo` still reads "flows into" as a connection running one way.
+
+## Worked examples
+
+Each JSON example in the repository's
+[schemas/examples](https://github.com/pelagios/place-attestation-ontology/tree/main/schemas/examples)
+folder is valid against its profile and shows one part of the model. The
+examples that belong to a page of this guide are explained there.
+
+- [place-centric-constantinople.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-constantinople.json):
+  one place with three attestations from three periods, each giving a name,
+  a type and dates.
+- [attestation-centric-customs.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/attestation-centric-customs.json):
+  evidence from customs accounts about places that already exist elsewhere,
+  referred to by address.
+- [attestation-centric-citations.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/attestation-centric-citations.json)
+  and
+  [attestation-centric-survey.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/attestation-centric-survey.json):
+  citations with locators, an attribution worked out from "ibid.", an
+  editorial form, a copy derived from an earlier source, and a name found
+  only inside a personal name, as in the
+  [place-name survey example](spreadsheets/survey-example.md).
+- [place-centric-judgements.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-judgements.json):
+  denials, a source's stance, alternative readings, transcription judgements
+  and a withdrawn import.
+- [candidate-set-judgements.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/candidate-set-judgements.json)
+  and
+  [attestation-centric-judgements.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/attestation-centric-judgements.json):
+  matches suggested by software, and a person's answers to them (see
+  [Candidate sets](#candidate-sets)).
+- [place-centric-regions.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-regions.json)
+  and
+  [candidate-set-regions.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/candidate-set-regions.json):
+  a parish in Surrey in England, its regions made from the list itself and
+  matched to a gazetteer (see
+  [Regions matched to a gazetteer](#regions-matched-to-a-gazetteer)).
+- [place-centric-trismegistos.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-trismegistos.json):
+  three places from Trismegistos Places (CC BY-SA 4.0, credited in the
+  file): a date window that is the span of the evidence
+  (`timespanRole`), a position between two places (`BetweenXAndY` with two
+  anchors), a containment known only by name (`relatedLabel` alone), a
+  Demotic name known only in transliteration, and the land of a people,
+  whose names are typed both toponym and ethnonym.
+- [place-centric-succession.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-succession.json):
+  invented municipalities that merge, absorb, divide and transfer land (see
+  [Places that replace one another](routes/index.md#places-that-replace-one-another)).
+- [place-centric-georeference.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-georeference.json):
+  locations traced from a historical map, citing the map and the
+  georeference they were placed through.
+- [place-centric-statistics.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-statistics.json):
+  figures from a statistical table, with their dimensions (see
+  [Statistical tables](statistics.md)).
+- [place-centric-antonine.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-antonine.json),
+  [place-centric-king-john.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-king-john.json),
+  [place-centric-river-idle.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-river-idle.json)
+  and
+  [place-centric-datini.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-datini.json):
+  the four worked examples of
+  [Routes, journeys and networks](routes/index.md), whole.
+
+The same models are shown in RDF in the repository's
+[examples](https://github.com/pelagios/place-attestation-ontology/tree/main/examples)
+folder.
 
 ## Candidate sets
 
