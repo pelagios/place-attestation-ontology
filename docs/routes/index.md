@@ -108,7 +108,8 @@ object or event is usually described somewhere else already, such as in
 Wikidata or a museum catalogue. So a relations row can point to it by its web
 address, in `related_uri`, with a name to show it by in `related_label`, and
 `relation_type` `BirthplaceOf`, `DeathplaceOf`, `ResidenceOf`, `WorkplaceOf`,
-`FindspotOf` or `SettingOf`.
+`FindspotOf` or `SettingOf`; or `HomelandOf`, for land a people lived in or
+held, where the people is described elsewhere.
 
 The same goes for what an archive or collection holds about a place: a
 photograph, map or drawing that shows it (`DepictedIn`), or a file, site

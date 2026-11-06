@@ -14,7 +14,7 @@ for many files at a time, with the same checks and the same reports.
 
 To use it, open the page and drop a file on it (or choose one), then press
 **Check**, choose a format and press **Convert**, press **Compare with the
-earlier version**, or choose what to prepare for publishing and press
+earlier version…**, or choose what to prepare for publishing and press
 **Prepare**. **Show on the map** opens Chora, which shows a dataset's places
 on a map and adds the locations you draw there: see
 [placing on the map](#chora).
@@ -177,7 +177,7 @@ withdraws or replaces the old one, which stays. Why, and what that makes
 possible, is explained under
 [citing a place in a gazetteer that changes](linked-data.md#citing-a-place-in-a-gazetteer-that-changes).
 
-**Compare with the earlier version** shows that a new version has kept to
+**Compare with the earlier version…** shows that a new version has kept to
 this. Choose the new version first, then press the button and choose the
 earlier one. The two may be in different formats: what is compared is what
 each attestation says, not how the file writes it.
@@ -223,6 +223,30 @@ column for one, so this applies to data published as JSON or linked data.
 A comparison that could not read the whole of either version does not pass,
 and nor does one whose earlier version holds no attestations: in both cases
 nothing, or not everything, was compared.
+
+**Making a new version keep the rule.** A new version edited freely since its
+release (names corrected, attestations deleted, places added or dropped) can
+be made into one that keeps the rule. Choose the new version first, press
+**Revise against the earlier version…**, and choose the previous release as
+published: the copy with addresses that its site was made from (its name ends
+`-with-ids.jsonl`, written by **Mint**: see
+[publishing your dataset](#publishing-your-dataset)), not your working copy
+before minting, since a withdrawal can only point at an attestation that has
+an address. Whatever the new version deleted is put back and retracted
+(`plato:Retracts`); whatever it changed is put back, with the new form
+written beside it and replacing it (`plato:Supersedes`); a place dropped
+whole comes back with every attestation retracted, so that its address keeps
+resolving; and the header is made a release's. Each is named in the report.
+The retractions are made in your name as reviewer, the name and ORCID iD
+given under Krisis's review, and the revised dataset is checked against the
+previous release before it is written. A name, location, date, type,
+property or citation with a web address of its own that the new version
+changed, or no longer describes, is refused: put it back, and record the
+correction as a new one, in a new attestation that replaces the old. On the
+command line: `npx github:pelagios/plato-tools revise new.json --previous
+earlier-with-ids.jsonl --reviewer "Your Name"`, which writes
+`new-revised.json`. In a workflow this is
+[Release a new version](#methodos-release-a-new-version).
 
 (match-review)=
 ## Reviewing matches
@@ -1214,7 +1238,7 @@ A dataset is published when its `status` is `published`. From then on:
   [comparing two versions](#comparing-two-versions));
 - the addresses of its places, sources and attestations are frozen;
 - minting with `--previous` checks the new version against the previous
-  release, as **Compare with the earlier version** does, and writes nothing
+  release, as **Compare with the earlier version…** does, and writes nothing
   if anything published was deleted or changed. Against a previous release
   that was still a draft, it writes the copy and warns you what would be
   refused once that release is published.
@@ -1454,13 +1478,14 @@ a workflow:
    addresses of their own, the base address they are given under (see
    [below](#methodos-base-address)).
 
-The same answers always give the same workflow. Seven workflows exist so far:
+The same answers always give the same workflow. Eight workflows exist so far:
 
 | You have | You want | The workflow |
 |---|---|---|
 | A list of place names | Places on a map, each identified in a gazetteer | [Map your data](#methodos-map-your-data) |
 | A list of place names | A citable, published dataset | Map your data, with its publishing steps |
 | A dataset already in a PLATO format | A citable, published dataset | [Publish a dataset](#methodos-publish-a-dataset) |
+| A dataset already in a PLATO format | A new version of a published dataset, checked | [Release a new version](#methodos-release-a-new-version) |
 | An edition in TEI | Places on a map, or a citable, published dataset | [Places from an edition (TEI)](#methodos-places-from-tei-or-recogito) |
 | Annotations from Recogito | Places on a map, or a citable, published dataset | [Places from Recogito](#methodos-places-from-tei-or-recogito) |
 | A list of place names, or a dataset already in a PLATO format | A match of two datasets | [Match two datasets](#methodos-match-two-datasets) |
@@ -1909,6 +1934,28 @@ permanent-address rules** (see [publishing your dataset](#publishing-your-datase
 Under 3 it asks only for the base address, which is optional: minting uses it
 where the dataset has none of its own (see
 [the base address](#methodos-base-address)).
+
+(methodos-release-a-new-version)=
+### Release a new version
+
+For a new version of a dataset you have published, edited freely since its
+release: **Elenchos: Check the new version**; **Mneme: Revise it against the
+previous release: withdraw or replace what it changed, so nothing published
+is lost**, where you choose the previous release as published (the copy with
+addresses that its site was made from) in **Revise against the earlier
+version…**, as described under
+[comparing two versions](#comparing-two-versions); **Elenchos: Check the
+revised dataset**; **Mneme: Compare it with the previous release**, so that
+the tracker shows what was kept, withdrawn, replaced and added;
+**Metaphrasis: Write it out** (PLATO JSON); and, if you will publish, Agora's
+four parts, minting against the previous release so that every published
+address is kept. Under 3 it asks *Will you publish the result?* and, if so,
+the base address, which is optional. Before you follow it, the workflow says
+that the retractions are made in the name of the reviewer this browser
+remembers (the name and ORCID iD under Krisis's review): give it before the
+revise step. A changed decision about a match is not for this workflow:
+Krisis's **Finish** withdraws the answer it changes (see
+[reviewing matches](#match-review)).
 
 (methodos-base-address)=
 ### The base address

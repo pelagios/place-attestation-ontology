@@ -11,6 +11,21 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
+## Unreleased
+
+### Guide
+
+- The Converting section of the tools page points to the vocabularies as
+  SKOS.
+- Making a new version keep the append-only rule (PLATO tools' Revise, on
+  the page and as `revise` on the command line), and the Methodos workflow
+  *Release a new version*, which the guide had not described; the Methodos
+  table counts eight workflows.
+- The routes page names `HomelandOf` among the relation types a row may
+  point at by `related_uri` and `related_label`.
+- The README lists the Trismegistos and regions examples and the
+  IdentityRelation class, which it had left out.
+
 ## 0.9.0-alpha.2
 
 Released 2026-11-03. Succession relation types, relation types as SKOS
@@ -78,6 +93,39 @@ reasoner finds consistent.
   another Gazetteer uses `plato:Contradicts`. Agreed with WHG, 17 October
   2026. The definition, the `has_meta_type` comment and the two examples
   are reworded; no term changes.
+
+### Guide
+
+- The vocabularies page says which lists of words are SKOS and where the
+  SKOS files are.
+- Four new Methodos workflows, following PLATO tools: *Places from an
+  edition (TEI), and Places from Recogito*, *Match two datasets*
+  (two datasets matched offline, the decisions recorded and written out),
+  *Trace a historical map* (a georeferenced map traced in Chora into a new
+  dataset, or into the dataset open) and *Make an open map* (a labelled map
+  of places, with its sources and a scale bar, for Wikimedia Commons: the
+  upload link, what the Upload Wizard does differently, why a map under *No
+  Known Copyright* is not called free to reuse, and the cost of a big map).
+- Wikidata items for the places no gazetteer knows, and what the checked
+  tools do with them.
+- Scope, which confines every lookup to a part of the world, kinds of place,
+  years and sources; the kinds of place; placeholders; WHG's daily limit and
+  its token field; the language sent with each name and the language
+  typeahead; regions matched to areas only; the precision marks; and how the
+  bulk accept counts places of one name.
+- Chora on the main page, its way back, adopting a location within the
+  place's region, the Ancient World basemap, and that a JSON Lines dataset is
+  saved as JSON Lines.
+- The main page's three columns, the kept file, licence warnings and the
+  licences that travel with what you copy, a draft being public, Cancel,
+  `--gzip`, changing a decision after Finish, and a source left out with its
+  place.
+- The project file (`.platoproj`), and keeping a workflow's project in WHG's
+  Workbench.
+- *Keep it private* says truly what can leave the computer once allowed.
+- Map your data needs a WHG account enrolled in WHG's beta and a WHG token,
+  and the PLATO tools version is the one now being tested.
+- The introductory slides are linked at the top of the guide.
 
 ## 0.9.0-alpha.1
 
