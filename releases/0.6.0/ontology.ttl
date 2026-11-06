@@ -1,0 +1,3169 @@
+@prefix plato: <https://w3id.org/plato#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+
+# =============================================================================
+# Ontology Declaration
+# =============================================================================
+
+<https://w3id.org/plato>
+    a owl:Ontology ;
+    owl:versionInfo "0.6.0" ;
+    dcterms:title "PLATO — Place Attestation Ontology"@en ;
+    dcterms:description """
+        An ontology for representing historical place knowledge as attestations:
+        bundles of evidence linking SpatialEntities (settlements, routes,
+        networks, administrative units, regions and other entities whose
+        identity is bound up with space) to Names, Geometries, Timespans,
+        Types, PropertyValues and Authorities with full provenance.
+
+        Developed by the Pelagios Network's Place Working Group, led by the
+        Institute for Spatial History Innovation (ISHI), University of Pittsburgh.
+
+        PLATO formalises the WHG v4 data model, in which the Attestation is
+        the fundamental unit of contributed knowledge. The Linked Places
+        Format (LPF) is defined as its single-object-attestation profile:
+        every LPF element corresponds to one attestation linking one entity
+        to one name, type, geometry or related entity, so existing LPF files
+        remain valid. The use cases of Linked Traces are accommodated within
+        the same model.
+    """@en ;
+    dcterms:creator <https://orcid.org/0000-0003-3060-0181> ;
+    dcterms:contributor "Pelagios Network Place Working Group" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:created "2026-02-16"^^xsd:date ;
+    rdfs:seeAlso <https://pelagios.org/place-attestation-ontology/index-en.html> ;
+    vann:preferredNamespacePrefix "plato" ;
+    vann:preferredNamespaceUri "https://w3id.org/plato#" .
+
+
+<https://orcid.org/0000-0003-3060-0181>
+    a foaf:Person ;
+    foaf:name "Stephen Gadd" ;
+    foaf:account <https://github.com/docuracy> ;
+    foaf:mbox <mailto:stephen.gadd@pitt.edu> .
+
+
+# =============================================================================
+# Core Classes
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# SpatialEntity
+# -----------------------------------------------------------------------------
+# The identity to which attestations refer: the point on which attestations
+# from different sources, periods and contributors converge. A SpatialEntity
+# persists regardless of how many attestations reference it.
+#
+# PLATO defines no Place class and gives the word "place" no prescribed
+# meaning. Many SpatialEntities are what people would call places, and some
+# are not: a route, a network, the region to which a period applies. The word
+# is also used differently across languages and disciplines. So the ontology
+# neither equates a SpatialEntity with a place nor defines a place in terms
+# of SpatialEntities or their attestations, and where the word appears in
+# this file it is used in its ordinary sense. What kind of entity a
+# SpatialEntity is (settlement, route, network, region and so on) is a matter
+# for Type attestations.
+
+plato:SpatialEntity
+    a owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Spatial Entity"@en ;
+    rdfs:comment """
+        An entity whose identity is bound up with space, whether its spatial
+        extent is attested directly, applies notionally (as with the region to
+        which a period applies), or is derived from its constituents (as with a
+        collection). A SpatialEntity need not have any attested geometry: lost,
+        imagined and unlocated entities are admissible.
+
+        What kind of entity it is (settlement, route, region, administrative
+        unit and so on) is not fixed by the class. It is established by
+        Type attestations, so a classification is a claim rather than an axiom.
+
+        SpatialEntities are not defined by any single attestation. They are the
+        point of convergence for many attestations from different sources,
+        periods and contributors.
+
+        PLATO defines no Place class and gives "place" no prescribed
+        meaning. Many SpatialEntities are what people would call places and
+        some are not, and the word is used differently across languages and
+        disciplines. The ontology therefore neither equates a SpatialEntity
+        with a place nor defines a place in terms of SpatialEntities or
+        their attestations. Where the word appears in this document it is
+        used in its ordinary sense.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Attestation
+# -----------------------------------------------------------------------------
+# The central innovation of this model. An Attestation is a lightweight node
+# that bundles together a SpatialEntity, a Name, a Geometry, a Timespan, a Type,
+# and an Authority (source) through outgoing relationships. The Attestation
+# itself carries only metadata (certainty, contributor, notes). The bundling
+# happens through the relationships, not through fields on the Attestation.
+#
+# Because Attestations are first-class entities (not merely relationships),
+# they can themselves be the subject of meta-attestations.
+
+plato:Attestation
+    a owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Attestation"@en ;
+    rdfs:comment """
+        A bundle of evidence asserting that a particular SpatialEntity had a particular
+        Name, Geometry, Type, or combination thereof, during a particular
+        Timespan, according to a particular Authority. The Attestation node
+        carries only metadata; its semantic content is defined entirely by its
+        outgoing relationships.
+
+        IMPORTANT: Attestations are document nodes in the graph, not edges.
+        They are instances of plato:Attestation (a class), not instances of
+        owl:ObjectProperty. This design enables meta-attestations and full
+        provenance tracking.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Name
+# -----------------------------------------------------------------------------
+# A toponym or appellation. Names are reusable nodes: the same Name can appear
+# in attestations for multiple SpatialEntities (e.g. "Alexandria" for several cities),
+# and the same SpatialEntity can have multiple Names via different attestations.
+
+plato:Name
+    a owl:Class ;
+    rdfs:label "Name"@en ;
+    rdfs:comment """
+        A toponym or appellation for a SpatialEntity. Names are independent, reusable
+        entities. The association between a Name and a SpatialEntity is always mediated
+        by an Attestation, which provides temporal scope and provenance.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Geometry
+# -----------------------------------------------------------------------------
+# A spatial representation: point, polygon, line, or other GeoSPARQL geometry.
+# Like Names, Geometries are reusable: the same boundary polygon might apply
+# to different SpatialEntities or different periods.
+
+plato:Geometry
+    a owl:Class ;
+    rdfs:subClassOf geo:Geometry ;
+    rdfs:label "Geometry"@en ;
+    rdfs:comment """
+        A spatial representation of a SpatialEntity's extent or location. Geometries
+        are independent, reusable entities. The same Geometry may be referenced
+        by multiple Attestations across different SpatialEntities or time periods.
+
+        Note: GeometryCollection is not supported in some graph database
+        implementations. For heterogeneous geometry sets (e.g., both point and
+        polygon), use multiple Geometry entities linked through separate
+        attestations.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Timespan
+# -----------------------------------------------------------------------------
+# A temporal interval. Timespans are reusable: "Byzantine period" or
+# "330-1453 CE" can be shared across many attestations. Precision metadata
+# accommodates the uncertainty inherent in historical dating.
+
+plato:Timespan
+    a owl:Class ;
+    rdfs:subClassOf time:ProperInterval ;
+    rdfs:label "Timespan"@en ;
+    rdfs:comment """
+        A temporal interval with start and end bounds. Timespans are
+        independent, reusable entities that may be shared across multiple
+        Attestations. Precision and uncertainty are expressed through
+        the start and end bound properties. Aligned with W3C Time Ontology
+        and compatible with PeriodO period definitions.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Type
+# -----------------------------------------------------------------------------
+# A classification drawn from a controlled vocabulary (typically AAT).
+# Types are reusable: "inhabited place" can be referenced by attestations
+# for many different SpatialEntities.
+
+plato:Type
+    a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Type"@en ;
+    rdfs:comment """
+        A classification or category for a SpatialEntity, typically drawn from a
+        controlled vocabulary such as the Getty Art & Architecture Thesaurus
+        (AAT). Types are independent, reusable entities.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# PropertyValue
+# -----------------------------------------------------------------------------
+# An attribute of a SpatialEntity that is not a Name, Geometry, Timespan or Type:
+# a population count, an elevation, a taxable valuation, a market day.
+# Like the other facets, PropertyValues are reusable nodes — one census
+# figure may be attested for several SpatialEntities from a single table.
+
+plato:PropertyValue
+    a owl:Class ;
+    rdfs:label "Property Value"@en ;
+    rdfs:comment """
+        A quantitative or descriptive attribute of a SpatialEntity, expressed as a
+        property drawn from an external vocabulary together with its value.
+        Covers the many things a historical source says that are neither a
+        name, a location, a period nor a classification — populations,
+        valuations, elevations, recurrence rules for markets and fairs.
+
+        The property itself is identified by URI rather than enumerated here,
+        so the vocabulary stays open and delegated (Wikidata properties,
+        CIDOC-CRM, project vocabularies), in the same way that Type delegates
+        its classifications to AAT.
+
+        Values may be literals (with a datatype and optional unit) or
+        structured objects whose shape is declared by plato:value_type. As a
+        facet node, a PropertyValue may carry the qualification properties
+        (certainty, fuzziness) like any other.
+
+        Where the value is another SpatialEntity, use an entity-to-entity
+        relation instead; this class is for attributes of the entity. A person
+        or organisation connected to it (the grantee of a market right, an
+        owner, a lord of the manor) is such an attribute: the value is the
+        agent's IRI, ideally in an authority such as Wikidata or VIAF, with
+        value_datatype xsd:anyURI, and the property names the role, for
+        example http://www.wikidata.org/prop/direct/P127 ('owned by'). This
+        asserts nothing false, and needs no agent class: PLATO's own agent
+        classes (Contributor, Organization) describe who recorded the data.
+
+        A figure from a statistical table (a census count, a toll receipt) is
+        a PropertyValue that is also a qb:Observation of the W3C RDF Data
+        Cube vocabulary. It carries qb:dataSet (the table, a qb:DataSet), one
+        direct statement for each of its coordinates with the table's
+        qb:DimensionProperty predicates, one for each fact about the figure
+        with qb:AttributeProperty predicates (sdmx-attribute:obsStatus for a
+        cell's state), and plato:universe for the figure it is a part or share
+        of. So the county is not said to have 'class 1': the observation is.
+        The measure stays plato:property_type and plato:value_literal, and the
+        area and date stay on the attestation; a cube export adds the direct
+        measure statement, sdmx-dimension:refArea and refPeriod. A printed dash
+        is an observation with an obsStatus and no value, never 0. Money is
+        an exact integer in the smallest unit of its system of account
+        (farthings, for sterling amounts with halfpennies), the unit an IRI
+        from a fitting authority or minted by the encoding project, ideally
+        naming a unit of account in a named system ('penny sterling'); PLATO
+        mints no currency and converts nothing. A coordinate the source does
+        not give is an explicit 'unknown' code. A table mixing measures is one
+        qb:DataSet per measure. Dimension values are concepts, with the
+        source's label as skos:prefLabel, in code lists the encoding project
+        publishes where none exists. A statistical table in spreadsheet form
+        keeps its own CSV on the Web description and links to places by
+        place_id. The design, and its testing on three corpora, is issue #14.
+
+        A latitude given without a longitude (a source's 'at 9.5 degrees
+        north') is a PropertyValue, not a Geometry, since it is not a location:
+        property http://www.w3.org/2003/01/geo/wgs84_pos#lat, the value in
+        decimal degrees. A longitude alone is the same, with wgs84_pos#long.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Citation
+# -----------------------------------------------------------------------------
+# The reified link from an Attestation to the Authority it rests on: this
+# attestation, in that source, at this locator. plato:sourced_by is the direct
+# form and remains sufficient when there is nothing to say about the citation
+# itself. A Citation is needed as soon as there is: where in the work the
+# evidence sits (page, folio, column, cell, entry), or whether the attribution
+# was stated by the source or resolved editorially from an 'ibidem'.
+#
+# The locator cannot go on the Source without forcing a Source record per
+# page, and it cannot go on the Attestation because one attestation may rest
+# on several sources with a locator in each: the place-name surveys' "1252 Cl
+# et passim to 1346 Harl" is one claim (continuously attested between two
+# documents) resting on two citations. Reifying the citation is the only shape
+# in which "two sources, two locators, one claim" is expressible. The pattern
+# is PROV-O's qualified form (prov:used beside prov:qualifiedUsage), and
+# sourced_by is declared as the chain has_citation o cites, so that a reasoner
+# recovers the direct link from the qualified one.
+
+plato:Citation
+    a owl:Class ;
+    rdfs:label "Citation"@en ;
+    rdfs:comment """
+        One attestation's use of one Authority: the qualified form of
+        plato:sourced_by. Carries what is true of this citation rather than
+        of the source or of the attestation: the locator within the work
+        (page, folio, column, table cell, entry), and whether the attribution
+        was stated in the source or inferred editorially. It carries no date.
+        The date of a witness belongs on the Source (plato:source_timespan)
+        and the date of the claim on the Attestation's Timespan.
+
+        An attestation resting on several sources has several Citations,
+        each with its own locator. Where there is nothing to say about the
+        citation, plato:sourced_by alone is sufficient.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Authority (abstract superclass)
+# -----------------------------------------------------------------------------
+# Uses a class hierarchy (mirroring v4's single table inheritance with
+# authority_type). Authorities provide provenance: they are the sources,
+# datasets, period definitions, and relation type vocabularies that ground
+# attestations in evidence.
+
+plato:Authority
+    a owl:Class ;
+    owl:disjointUnionOf (
+        plato:Source
+        plato:Dataset
+        plato:Period
+        plato:RelationType
+        plato:CertaintyLevel
+    ) ;
+    rdfs:label "Authority"@en ;
+    rdfs:comment """
+        Abstract superclass for all reference entities that provide provenance
+        or semantic grounding for attestations. Subtypes include Source,
+        Dataset, Period, RelationType, and CertaintyLevel.
+    """@en .
+
+plato:Source
+    a owl:Class ;
+    rdfs:subClassOf plato:Authority ;
+    rdfs:label "Source"@en ;
+    rdfs:comment """
+        A citable source of evidence: a manuscript, chronicle, tax record,
+        map, scholarly article, or other document. Sources are the primary
+        provenance anchor for attestations. A Source may reference its parent
+        Dataset via plato:partOf.
+
+        A Source's licence, that of the edition or copy cited, is given with
+        dcterms:license, as a Gazetteer's is. A project that admits evidence
+        by its licence (citing a share-alike source as a witness but never
+        copying it, say) needs the licence on the thing cited, so that it
+        travels with the data.
+    """@en .
+
+plato:Dataset
+    a owl:Class ;
+    rdfs:subClassOf plato:Authority ;
+    rdfs:label "Dataset"@en ;
+    rdfs:comment """
+        A collection-level authority: a published gazetteer, a contributed
+        dataset, or an external authority corpus (GeoNames, Wikidata, TGN,
+        OSM, Pleiades). Carries metadata such as title, version, publisher,
+        and URI, and a licence (dcterms:license, as for any Authority).
+    """@en .
+
+plato:Period
+    a owl:Class ;
+    rdfs:subClassOf plato:Authority ;
+    rdfs:label "Period"@en ;
+    rdfs:comment """
+        A named historical period (e.g. 'Byzantine', 'Early Modern'),
+        optionally linked to PeriodO or defined locally. Includes temporal
+        bounds for period-based querying.
+    """@en .
+
+plato:RelationType
+    a owl:Class ;
+    rdfs:subClassOf plato:Authority ;
+    rdfs:label "Relation Type"@en ;
+    rdfs:comment """
+        A vocabulary entry defining a semantic relationship between SpatialEntities:
+        'capital_of', 'successor_to', 'connected_by_trade_route_to', etc.
+        Carries a label, an inverse label, and domain/range constraints.
+        This allows the vocabulary of historical relationships to grow
+        without modifying the core ontology.
+    """@en .
+
+plato:CertaintyLevel
+    a owl:Class ;
+    rdfs:subClassOf plato:Authority ;
+    rdfs:label "Certainty Level"@en ;
+    rdfs:comment """
+        A defined level of certainty for use in attestations, allowing
+        projects to standardise their confidence vocabulary. An attestation or
+        facet points at one with plato:certainty_level. PLATO declares the three
+        levels of Linked Places Format (plato:Certain, plato:LessCertain,
+        plato:Uncertain); a project may declare its own.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Gazetteer
+# -----------------------------------------------------------------------------
+# The primary container for contributed data. Replaces the WHG v3 concepts of
+# Dataset, Dataset Collection, and Place Collection with a single, unified,
+# mutable workspace.
+
+plato:Gazetteer
+    a owl:Class ;
+    rdfs:subClassOf dcat:Dataset ;
+    rdfs:label "Gazetteer"@en ;
+    rdfs:comment """
+        A mutable, versioned workspace of SpatialEntities and their associated
+        Attestations, owned by a contributor or team. Replaces the WHG v3
+        concepts of Dataset, Dataset Collection, and Place Collection.
+        A Gazetteer can be incrementally edited, enriched, and corrected
+        without re-ingestion.
+
+        As a dcat:Dataset, a Gazetteer is titled with dcterms:title and
+        licensed with dcterms:license. Not with plato:authority_title or
+        plato:licence: their domains are plato:Authority and plato:Dataset,
+        so using them would make the Gazetteer one of the Authorities it
+        contains attestations about.
+
+        Versions, and so citations that reproduce. A SpatialEntity's evidence
+        grows and is corrected while its identity stays the same, so a
+        citation of it must say which state was meant. For the same reason
+        as above, a Gazetteer's version uses DCAT 3's own properties, not a
+        PLATO one: dcat:version for its version indicator, and, for a frozen
+        snapshot published under its own IRI, dcat:isVersionOf (the living
+        Gazetteer) and dcat:previousVersion (the snapshot before). A
+        SpatialEntity is then cited as its IRI plus the Gazetteer version,
+        one number per gazetteer rather than one per entity, as PeriodO cites.
+
+        Once a Gazetteer's plato:gazetteer_status is 'published', its
+        attestations are append-only, and this is normative: an attestation is
+        never deleted or changed. A correction is a new attestation with a
+        meta-attestation (plato:Supersedes, plato:Contradicts), and a
+        withdrawal is a meta-attestation of type plato:Retracts. Each carries
+        plato:created. The state as of any moment D is then a filter over the
+        data: the attestations created by D, less those superseded or
+        retracted by D. A supersession or retraction takes effect only while
+        it holds itself, so retracting a retraction restores its target, and
+        a chain of them resolves the same way; a cycle is an error in the
+        data. A platform can offer that state on request, by
+        datetime negotiation on the entity's IRI (RFC 7089, Memento); PLATO
+        recommends this but does not require it, since it is behaviour of a
+        server, not of data.
+    """@en .
+
+plato:GazetteerGroup
+    a owl:Class ;
+    rdfs:label "Gazetteer Group"@en ;
+    rdfs:comment """
+        A thematic or organisational grouping of Gazetteers (e.g.
+        'EMEW — Gazetteer of Early Modern England and Wales').
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Contributor
+# -----------------------------------------------------------------------------
+
+plato:Contributor
+    a owl:Class ;
+    rdfs:subClassOf foaf:Agent, prov:Agent ;
+    rdfs:label "Contributor"@en ;
+    rdfs:comment """
+        A person, team, or automated process that creates attestations.
+        Aligned with both foaf:Agent and prov:Agent for provenance
+        chain-of-custody tracking.
+
+        Contributors should be identified using persistent identifiers where
+        possible. For persons, ORCID (https://orcid.org/) is strongly
+        recommended and may be required by specific implementations. ORCID
+        identifiers should use the full URI format (https://orcid.org/0000-0000-0000-0000)
+        rather than just the numeric portion, as ORCID is particular about
+        proper URI formatting for linked data interoperability.
+
+        For organizations, ROR (https://ror.org/) or ISNI identifiers are
+        recommended. Proper identification ensures accurate attribution,
+        enables citation, and supports research assessment.
+    """@en .
+
+
+# -----------------------------------------------------------------------------
+# Organization
+# -----------------------------------------------------------------------------
+# A lightweight class for organizational affiliations. PLATO defines this
+# minimally to avoid confusion with owl:Thing in visualizations. Implementations
+# can use this class directly or align with FOAF, schema.org, or other ontologies.
+
+plato:Organization
+    a owl:Class ;
+    rdfs:label "Organization"@en ;
+    rdfs:comment """
+        An organization to which a Contributor is affiliated. This is a
+        lightweight class defined primarily to avoid ambiguity in ontology
+        visualizations. Organizations can be further described using properties
+        from FOAF, schema.org, or other ontologies.
+
+        Organizations should use persistent identifiers where possible:
+        - ROR (Research Organization Registry): https://ror.org/
+        - ISNI (International Standard Name Identifier)
+        - Wikidata QIDs
+    """@en .
+
+
+# =============================================================================
+# Attestation Bundle Properties (the core bundling mechanism)
+# =============================================================================
+# These properties radiate outward from an Attestation to the entities it
+# bundles. This is the heart of the model: the Attestation node is the
+# junction point that says "these particular things go together at this
+# particular time according to this particular source."
+#
+# The bundling pattern follows PROV-O principles where attestations are
+# entities that link to other entities through qualified relationships.
+
+plato:attests_about
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "attests about"@en ;
+    rdfs:comment """
+        Links an Attestation to the SpatialEntity it is about. Every attestation must
+        have exactly one subject entity. This is the primary entity being
+        described by the bundled name, geometry, timespan, and type assertions.
+
+        Functional property: each attestation has exactly one subject entity.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:SpatialEntity .
+
+plato:attests_name
+    a owl:ObjectProperty ;
+    rdfs:label "attests name"@en ;
+    rdfs:comment """
+        Links an Attestation to a Name it asserts for the SpatialEntity. An attestation
+        may assert multiple names (e.g., primary name and variants) or no name
+        at all (e.g., geometry-only attestations).
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Name .
+
+plato:attests_geometry
+    a owl:ObjectProperty ;
+    rdfs:label "attests geometry"@en ;
+    rdfs:comment """
+        Links an Attestation to a Geometry it asserts for the SpatialEntity. An
+        attestation may assert multiple geometries (e.g., point and polygon)
+        or no geometry at all (e.g., name-only attestations from textual sources).
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Geometry .
+
+plato:attests_timespan
+    a owl:ObjectProperty ;
+    rdfs:label "attests timespan"@en ;
+    rdfs:comment """
+        Links an Attestation to the Timespan during which the attested
+        properties (name, geometry, type) were applicable. Distinct from
+        the attestation's creation date: this is the historical timespan
+        being asserted, not when the assertion was made.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Timespan .
+
+plato:attests_type
+    a owl:ObjectProperty ;
+    rdfs:label "attests type"@en ;
+    rdfs:comment """
+        Links an Attestation to a Type classification it assigns to the SpatialEntity.
+        An attestation may assert multiple types or no type at all.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Type .
+
+plato:attests_property
+    a owl:ObjectProperty ;
+    rdfs:label "attests property"@en ;
+    rdfs:comment """
+        Links an Attestation to a PropertyValue it asserts of the SpatialEntity — a
+        population, a valuation, an elevation, a market's trading day. An
+        attestation may assert several properties or none.
+
+        These are among the commonest things a source says about an entity, and
+        they carry exactly the provenance and temporal scoping the attestation
+        pattern exists to handle: a population figure is a claim, by a named
+        source, about one SpatialEntity, over a Timespan, with a certainty. The
+        attestation's own timespans scope the property as they scope every
+        other facet in the bundle.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:PropertyValue .
+
+plato:sourced_by
+    a owl:ObjectProperty ;
+    rdfs:label "sourced by"@en ;
+    rdfs:comment """
+        Links an Attestation to the Authority (typically a Source or Dataset)
+        that grounds it. This provides the provenance chain for the attestation.
+
+        Semantically equivalent to PROV-O's prov:wasDerivedFrom, indicating the
+        authority is the origin of the attested knowledge. We don't use formal
+        rdfs:subPropertyOf to avoid importing PROV-O's domain/range constraints
+        which conflict with PLATO's class structure.
+
+        This is the direct form. Where the citation itself has something to
+        say (a page or folio, an attribution resolved from 'ibidem'), use
+        plato:has_citation to a Citation node that cites the Authority.
+        sourced_by is declared as the property chain has_citation o cites, so
+        a reasoner derives it from a Citation; data intended for consumers
+        without a reasoner should assert it directly as well.
+    """@en ;
+    owl:propertyChainAxiom ( plato:has_citation plato:cites ) ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Authority .
+
+plato:has_citation
+    a owl:ObjectProperty ;
+    rdfs:label "has citation"@en ;
+    rdfs:comment """
+        Links an Attestation to a Citation: its qualified use of one
+        Authority, with a locator and an attribution status. An attestation
+        may have several, one per source it rests on.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Citation .
+
+
+# =============================================================================
+# Citation Properties
+# =============================================================================
+# What is true of one attestation's use of one source, as distinct from what
+# is true of the source (its date, its derivation) or of the attestation (its
+# certainty, the occurrence it records).
+
+plato:cites
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "cites"@en ;
+    rdfs:comment """
+        The Authority (a Source or a Dataset) this Citation uses. Exactly one
+        per Citation: an attestation resting on two sources has two
+        Citations.
+    """@en ;
+    rdfs:domain plato:Citation ;
+    rdfs:range plato:Authority .
+
+plato:locator
+    a owl:DatatypeProperty ;
+    rdfs:label "locator"@en ;
+    rdfs:comment """
+        Where in the cited work the evidence sits: 'p. 412', 'f. 12v', 'Table
+        VI, col. 3, row 88', 's.v. Athlone', 'no. xix'. An uninterpreted
+        string, deliberately: sources locate themselves inconsistently, and
+        normalising the value would destroy exactly the information it is
+        there to carry. The same position and shape as PeriodO's source
+        locator.
+
+        A property of this citation, not of the source: one Source for a
+        printed gazetteer, a different locator on each attestation drawn
+        from it. Not to be confused with the spatial sense of 'locator' in
+        the plato:geometry_role comment, a proxy point standing in for an
+        entity.
+    """@en ;
+    rdfs:domain plato:Citation ;
+    rdfs:range xsd:string .
+
+plato:attribution_status
+    a owl:ObjectProperty ;
+    rdfs:label "attribution status"@en ;
+    rdfs:comment """
+        Whether the attribution of the evidence to the cited source was
+        stated by the source or resolved editorially. Should point to a
+        concept in a SKOS concept scheme. The starter concepts are:
+
+        - plato:AttributionStated: the source is named where the form
+          occurs. The default, and usually omitted.
+        - plato:AttributionInferred: the source was given as 'ibidem' or
+          'idem' and resolved by an editor, so the attribution is inferred
+          rather than stated. Not marginal: about one attestation in twenty
+          in the English Place-Name Society corpus.
+
+        A statement about the citation, not about the form, which is why it
+        lives here and not in plato:occurrence_context.
+    """@en ;
+    rdfs:domain plato:Citation ;
+    rdfs:range skos:Concept .
+
+plato:citation_function
+    a owl:ObjectProperty ;
+    rdfs:label "citation function"@en ;
+    rdfs:comment """
+        Why the source is cited: as the evidence for the attestation, as a
+        source of its data, as related reading, and so on. The value is a
+        property of CiTO, the Citation Typing Ontology
+        (http://purl.org/spar/cito/): cito:citesAsEvidence,
+        cito:citesAsDataSource, cito:citesAsRelated, cito:citesForInformation,
+        cito:citesAsRecommendedReading, or another of the properties below
+        cito:cites. Only CiTO properties are used, so that every consumer reads
+        the same function the same way; a project whose own vocabulary has
+        other terms maps them to CiTO when it organises its data.
+
+        Without it, 'this source is the evidence' and 'see this source for
+        more' are the same link, which is the distinction an attestation model
+        exists to make: 143,418 of Pleiades' 244,759 references are 'see
+        further', and only 21,652 are cited as evidence. Absent, the function
+        is unstated, as before; a consumer should not assume evidence.
+
+        Only a property CiTO defines is a valid value. An IRI in the CiTO
+        namespace is not enough: Pleiades writes cito:seeFurther and
+        cito:seeAlso, which CiTO does not define, so the JSON Schema and the
+        tables list the accepted properties exactly.
+    """@en ;
+    rdfs:domain plato:Citation ;
+    rdfs:range rdf:Property .
+
+
+# =============================================================================
+# entity-to-entity Relations
+# =============================================================================
+# Mediated by Attestations using a RelationType authority. This handles
+# scholarly relationships like "capital_of", "successor_to",
+# "connected_by_trade_route_to". The pattern is:
+#   Entity1 <- [attests_about] - Attestation - [relates_to] -> Entity2
+#                                      |
+#                              [has_relation_type]
+#                                      ↓
+#                               RelationType Authority
+#
+# This makes the relationship itself an attestation, carrying certainty,
+# timespan, and source provenance.
+#
+# The target is usually a second SpatialEntity, but need not be. Linked Traces
+# annotates places with their part in the lives of people, the history of
+# objects and the course of events: the Buddha's birthplace, a coin's findspot,
+# the setting of a battle. Those things are not spatial entities, and making
+# them so to satisfy a range would stretch the class past meaning. So
+# relates_to has no rdfs:range: its target may be an entity described
+# elsewhere (a person in Wikidata, an object in a museum catalogue), named by
+# its IRI and not modelled here. plato:related_label carries a name for it,
+# since a consumer cannot be expected to dereference an arbitrary IRI.
+
+plato:relates_to
+    a owl:ObjectProperty ;
+    rdfs:label "relates to"@en ;
+    rdfs:comment """
+        Links an Attestation to the second entity of a relationship between
+        the Attestation's subject entity (via attests_about) and this target.
+        The semantic nature of the relationship is specified by
+        plato:has_relation_type, which references a RelationType authority.
+
+        Example: An attestation about Constantinople that relates_to the
+        Byzantine Empire with relation_type "capital_of" asserts that
+        "Constantinople was the capital of the Byzantine Empire".
+
+        The target is usually another SpatialEntity in the same dataset. It
+        may instead be an entity that is not spatial and is described
+        elsewhere: a person, an object or an event, identified by its IRI
+        (an attestation about Lumbini that relates_to the Buddha, with
+        plato:BirthplaceOf). There is deliberately no rdfs:range, so such a
+        target is not inferred to be a SpatialEntity. Give an external target
+        a plato:related_label. Platforms should show relations to entities
+        that are not spatial apart from spatial ones, and leave them out of
+        containment, clustering and matching.
+    """@en ;
+    rdfs:domain plato:Attestation .
+
+plato:related_label
+    a owl:DatatypeProperty ;
+    rdfs:label "related label"@en ;
+    rdfs:comment """
+        A name for the target of plato:relates_to, for display: 'the Buddha',
+        'denarius of Hadrian, BM 1872,0709.470'. It belongs on the attestation
+        rather than on the target, because the target may be someone else's
+        IRI, about which this dataset makes no other statement, and a platform
+        showing a place cannot reliably look up every IRI it links to. Give it
+        whenever the target is not a SpatialEntity in the same dataset; it is
+        harmless, but redundant, when the target is. It names the target; the
+        source's own wording of the relation is plato:source_label.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:string .
+
+plato:has_relation_type
+    a owl:ObjectProperty ;
+    rdfs:label "has relation type"@en ;
+    rdfs:comment """
+        Specifies the semantic type of a entity-to-entity relationship
+        attested by an Attestation. References a RelationType authority
+        which defines the relationship's label, inverse, and domain/range
+        constraints. Examples: 'capital_of', 'successor_to',
+        'connected_by_trade_route_to'.
+
+        The extensible vocabulary pattern allows new relationship types to
+        be added as Authority records without modifying the ontology.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:RelationType .
+
+# A project's own relation type is usually a narrower case of one PLATO
+# declares: a river's "flows into" is a directed connection, a post road's
+# "carries post to" another. Saying so lets a consumer that knows only the
+# starter types still traverse the project's network in the right direction.
+# skos:broader cannot say it: RelationType is an Authority, not a skos:Concept,
+# and skos:broader's domain would infer every relation type to be a Concept.
+
+plato:broader_relation
+    a owl:ObjectProperty ;
+    rdfs:label "broader relation"@en ;
+    rdfs:comment """
+        The more general RelationType of which this one is a narrower case:
+        a project's 'flows into' has broader_relation plato:LeadsTo, so any
+        attestation of the one is also, for a consumer that follows this
+        link, an attestation of the other. A narrower type keeps the
+        direction of its broader one. Transitive in use: a consumer should
+        follow the chain to the starter type it knows.
+    """@en ;
+    rdfs:domain plato:RelationType ;
+    rdfs:range plato:RelationType .
+
+
+# =============================================================================
+# Meta-Attestation Properties
+# =============================================================================
+# Because Attestations are first-class entities (prov:Entity), they can be
+# the subject or object of other Attestations. This enables scholarly
+# discourse: one attestation can contradict, support, supersede, or refine
+# another. Meta-attestations capture the relationships between claims, not
+# just the claims themselves.
+#
+# This pattern is critical for modeling historiographical debate and source
+# criticism, allowing PLATO to represent not just "what sources say" but
+# "what scholars say about what sources say."
+
+plato:meta_attestation_about
+    a owl:ObjectProperty ;
+    rdfs:label "meta-attestation about"@en ;
+    rdfs:comment """
+        Links a meta-Attestation to the Attestation it comments on or relates to.
+        Used with plato:has_meta_type to specify the nature of the relationship.
+
+        Example: A meta-attestation might assert that one source's geometry
+        attestation contradicts another source's geometry attestation for the
+        same SpatialEntity.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Attestation .
+
+plato:has_meta_type
+    a owl:ObjectProperty ;
+    rdfs:label "meta-attestation type"@en ;
+    rdfs:comment """
+        The nature of a meta-attestation's relationship to its target attestation.
+        Should reference a controlled vocabulary concept defining the relationship
+        type. The starter concepts, declared in this ontology's MetaTypeScheme:
+
+        - plato:Contradicts: asserts the target attestation is incorrect
+        - plato:Supports: provides additional evidence for the target attestation
+        - plato:Supersedes: replaces the target attestation with newer information
+        - plato:Refines: provides more precise information than the target
+        - plato:Challenges: questions the target attestation's validity
+        - plato:Bundles: groups the target with other related attestations
+        - plato:DerivedFrom: this attestation's value was derived from the
+          target's (a normalised search form from an attested spelling)
+        - plato:Annotates: adds a remark about the target, with its own source,
+          without supporting, contradicting or refining it; the remark is the
+          meta-attestation's notes
+        - plato:AlternativeTo: this attestation and the target are alternative
+          readings of the same evidence, at most one of them right
+        - plato:Retracts: the target attestation is withdrawn by whoever made
+          it, and kept only so that earlier states can be reproduced
+
+        Using SKOS concepts rather than strings enables vocabulary management
+        and multilingual labels.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range skos:Concept .
+
+
+# =============================================================================
+# Attestation Metadata
+# =============================================================================
+# Metadata properties that describe the attestation itself, not the entities
+# it bundles. These include certainty assessment, contributor tracking,
+# temporal metadata, and special properties for routes/networks/itineraries.
+
+plato:certainty
+    a owl:DatatypeProperty ;
+    rdfs:label "certainty"@en ;
+    rdfs:comment """
+        Epistemic certainty, from 0.0 (completely uncertain) to 1.0
+        (completely certain). On an Attestation it is the contributor's
+        confidence in the bundle as a whole. On a facet node (Name, Geometry,
+        Timespan, Type, PropertyValue) it is the confidence in that value
+        alone, and may differ from the attestation's overall certainty.
+        Certainty reflects the limits of evidence: better evidence could in
+        principle raise it. Distinct from fuzziness (the referent has no
+        sharp boundary) and from spatial_precision (how finely a location
+        is specified). No rdfs:domain, so it can qualify any node.
+
+        It is never the source's own confidence: how firmly a source asserts
+        what it says (hedging, hearsay, doubt) is plato:source_stance.
+    """@en ;
+    rdfs:range xsd:float .
+
+plato:certainty_note
+    a owl:DatatypeProperty ;
+    rdfs:label "certainty note"@en ;
+    rdfs:comment """
+        Free-text explanation of the certainty assessment: quality of
+        evidence, degree of scholarly consensus, reliability of source
+        (e.g. 'manuscript partially illegible', 'coordinates extrapolated
+        from itinerary distances'). Applies wherever certainty does.
+    """@en ;
+    rdfs:range xsd:string .
+
+plato:certainty_level
+    a owl:ObjectProperty ;
+    rdfs:label "certainty level"@en ;
+    rdfs:comment """
+        Certainty as a word rather than a number: a CertaintyLevel, such as
+        plato:Certain, plato:LessCertain or plato:Uncertain (the three of Linked
+        Places Format), or one a project declares. Use it when certainty is
+        stated in words, by a dataset or on a project's own scale, rather than
+        inventing a number for plato:certainty; the two may also be given
+        together. It is the same confidence as plato:certainty, the
+        contributor's or editor's, not the source's: a source that hedges or
+        reports is recorded with plato:source_stance. Like
+        plato:certainty it has no rdfs:domain, so it can qualify an Attestation
+        or any facet node.
+    """@en ;
+    rdfs:range plato:CertaintyLevel .
+
+plato:transcription_accuracy
+    a owl:ObjectProperty ;
+    rdfs:label "transcription accuracy"@en ;
+    rdfs:comment """
+        How faithfully a transcribed value (a name form, most often) renders
+        what the source shows: a concept in plato:TranscriptionAccuracyScheme,
+        plato:TranscriptionAccurate, plato:TranscriptionInaccurate or
+        plato:TranscriptionFalse. It judges the reading, not the source and not
+        the identification: plato:form_status says how a form came to be, and
+        plato:certainty how sure anyone is of the attestation, and neither says
+        how well the form was read. Pleiades records it for every name.
+
+        Like the other qualification properties it has no rdfs:domain, so a
+        transcribed coordinate or date can be judged the same way.
+    """@en ;
+    rdfs:range skos:Concept .
+
+plato:transcription_completeness
+    a owl:ObjectProperty ;
+    rdfs:label "transcription completeness"@en ;
+    rdfs:comment """
+        Whether a transcribed value is whole: a concept in
+        plato:TranscriptionCompletenessScheme, plato:TranscriptionComplete,
+        plato:TranscriptionReconstructable (part is lost but can be supplied
+        with confidence) or plato:TranscriptionNonReconstructable (part is lost
+        and cannot be supplied). A different axis from accuracy: a damaged form
+        can be accurately read as far as it goes. No rdfs:domain, as for
+        accuracy.
+    """@en ;
+    rdfs:range skos:Concept .
+
+# A platform works things out from what it holds: the span of an itinerary
+# from the dates of its stops, the extent of a route from its stations, a
+# network's hull. Those values are useful to export, and harmful to import:
+# read back as attestations, they become evidence that no source gave, and
+# they outlive any correction to the members they were computed from. So a
+# computed value says so.
+
+plato:computed
+    a owl:DatatypeProperty ;
+    rdfs:label "computed"@en ;
+    rdfs:comment """
+        True when this value, or this whole attestation, was worked out by
+        software from other data rather than taken from a source: an
+        itinerary's timespan from the timespans of its stops, a route's
+        geometry from its stations. A computed value is not evidence. A
+        consumer may show it, but must not take it in as an attestation of
+        its own: it should compute the value again from the members, or leave
+        it out and say so. Absent or false, a value is attested.
+
+        It is for a value derived from other statements in the same data,
+        which any consumer holding them could derive again. A figure a
+        project works out from its own source material and publishes as a
+        finding (letters counted from a register, a median taken over them)
+        is not computed in this sense: it is attested, citing the work that
+        produced it as a Source or Dataset derived_from the material it was
+        worked out from.
+
+        It is not plato:form_status Normalised (a name form an editor
+        derived from an attested one), nor a Candidate (a match an algorithm
+        suggests). Like the qualification properties it has no rdfs:domain,
+        so it can mark an Attestation or any facet node.
+    """@en ;
+    rdfs:range xsd:boolean .
+
+plato:negated
+    a owl:DatatypeProperty ;
+    rdfs:label "negated"@en ;
+    rdfs:comment """
+        True when the source states that what this attestation bundles is not
+        so: that a place had no market, that a name was not used, that a grant
+        was refused. The attestation is still about a real SpatialEntity (the
+        town that had no market), with the facet the source denies (a Type
+        'market'); nothing that never existed need be invented. A denial is a
+        statement a source makes, often a certain one, so it is neither low
+        certainty nor a meta-attestation, which needs a claim to contradict.
+        The 1886 return of market rights answered for every borough and
+        district in England and Wales, and 1,000 of its 1,813 rows are denials.
+
+        A consumer that does not implement this property will read a denial
+        as an assertion, the opposite of what the source says. So it must be
+        honoured: a tool that cannot express a denial in its target format
+        must leave the attestation out and report it, never write it as an
+        assertion. Bundle one denied facet per attestation, so that what is
+        denied is never in doubt. Absent or false, the attestation asserts.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:boolean .
+
+# A source can say a thing without vouching for it. Blome's Britannia (1673)
+# passes on 118 of its 7,435 statements about markets ("it is said", "as Cambden
+# noteth") and hedges 27 more; Everitt (1967) leaves undecided 65 places that
+# Adams calls markets. None of the existing terms records this. certainty is the
+# encoder's confidence, and an editor may be quite certain that a source hedged;
+# attribution_status is about whether the source is named; negated is a denial,
+# and doubt is precisely not one. So the source's own stance is a property of
+# the attestation, beside negated.
+
+plato:source_stance
+    a owl:ObjectProperty ;
+    rdfs:label "source stance"@en ;
+    rdfs:comment """
+        How firmly the source itself asserts what this attestation bundles: a
+        concept in plato:SourceStanceScheme, plato:StanceAsserted (the default,
+        usually omitted), plato:StanceReported, plato:StanceTentative or
+        plato:StanceDoubted, or one a project declares. It records the source,
+        not whoever encodes it: plato:certainty and plato:certainty_level are
+        the contributor's or editor's confidence, and an editor may be quite
+        certain that a source hedged. Nor is it plato:attribution_status, which
+        says whether the source is named where the evidence occurs.
+
+        Doubt is not denial. A source that raises a thing and declines to
+        settle it is plato:StanceDoubted; one that says it is not so is
+        plato:negated. A source that passes on a claim and names whom it
+        reports can have that work cited as well.
+
+        It qualifies the attestation as a whole, as plato:negated does, so
+        bundle one facet per attestation where the source's stance differs
+        between facets. A consumer that cannot express a stance reads the
+        attestation as asserted, which overstates the source but does not
+        invert it. So, unlike plato:negated, no consumer is required to leave
+        it out, but a converter should report the loss.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range skos:Concept .
+
+# Routes, itineraries and networks follow the WHG v4 pattern: the route is a
+# SpatialEntity, and each member (a station, a stop, a segment) has an
+# attestation about the member that relates_to the route with
+# plato:MemberOf. The order belongs on that attestation, because it is the
+# order one source gives: two itineraries of the same road may list its
+# stations differently, and each attestation keeps its own source's order.
+# Figures about a connection (a distance, a delivery time, a cargo) are
+# PropertyValues, each with its own source and date; plato:connection_metadata,
+# an opaque string for them, was removed in 0.6.0.
+
+plato:sequence
+    a owl:DatatypeProperty ;
+    rdfs:label "sequence"@en ;
+    rdfs:comment """
+        The position of a member in an ordered whole, as one source gives it:
+        a station on a route, a stop on an itinerary, a segment of a road.
+        It sits on the attestation about the member, which relates_to the
+        route, itinerary or network with plato:MemberOf; the relates_to target
+        is what the number orders, so one place can hold different positions
+        on different routes. Lower numbers come first.
+
+        Two members with the same number are alternatives at that point (two
+        branches of a road); a source that disagrees with another about the
+        order is recorded as its own attestations, with a meta-attestation
+        where a judgement is made between them. A member with no sequence is
+        in an order the source does not give. The members of an itinerary
+        carry their own timespans, from arrival to departure, and the order of
+        a journey known only from its dates may be left to those timespans.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:integer .
+
+plato:notes
+    a owl:DatatypeProperty ;
+    rdfs:label "notes"@en ;
+    rdfs:comment """
+        Free-text notes providing additional context about this attestation.
+        Can include transcriptions, translations, editorial comments, or
+        other information that doesn't fit structured fields.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:string .
+
+plato:contributed_by
+    a owl:ObjectProperty ;
+    rdfs:label "contributed by"@en ;
+    rdfs:comment """
+        The agent (person, team, or process) who created this attestation.
+
+        Semantically equivalent to PROV-O's prov:wasAttributedTo for provenance
+        tracking. We don't use formal rdfs:subPropertyOf to avoid importing
+        PROV-O's domain/range constraints. Distinct from sourced_by, which
+        indicates the historical source being cited.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range plato:Contributor .
+
+plato:created
+    a owl:DatatypeProperty ;
+    rdfs:label "created"@en ;
+    rdfs:comment """
+        Timestamp when this attestation was created. This is the contribution
+        date, not the historical timespan being attested (use attests_timespan
+        for that). In a published Gazetteer it is the time axis along which an
+        earlier state is recomputed, so every attestation and meta-attestation
+        there should carry it.
+
+        Semantically equivalent to PROV-O's prov:generatedAtTime. We don't use
+        formal rdfs:subPropertyOf to avoid importing PROV-O constraints.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:dateTime .
+
+plato:modified
+    a owl:DatatypeProperty ;
+    rdfs:label "modified"@en ;
+    rdfs:comment """
+        Timestamp when this attestation was last modified, while its
+        Gazetteer is still a draft. Once the Gazetteer is published its
+        attestations are append-only (see plato:Gazetteer): a published
+        attestation is not modified, and a change is a new attestation with a
+        meta-attestation, so that the state at any earlier moment can be
+        recomputed and every citation of it reproduces.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:dateTime .
+
+
+# =============================================================================
+# Occurrence and Form Status
+# =============================================================================
+# What an attestation says about the occurrence itself, as distinct from what
+# it says about the SpatialEntity. Philological gazetteers record these as a
+# matter of course. The English Place-Name Society surveys mark a form that
+# occurs three times in a source as '(3 X)' and a form found only as an
+# element of a personal name (Willelmus de Bonestou) as '(p)', and they
+# distinguish an attested spelling from the editorial headword under which
+# the entry is filed. Without a home for these the only option is free text
+# in plato:notes, which makes them unqueryable, and a consumer computing
+# "earliest attestation" or "number of independent spellings" then gets the
+# wrong answer without knowing it.
+#
+# All three properties sit on the Attestation rather than on the reusable
+# Name node, because they describe one occurrence: the same string can be a
+# direct attestation in one charter and a by-name element in another, a
+# reading in one source and a headword in another. They apply to every name
+# the attestation bundles, so an attestation should bundle only names of one
+# status.
+#
+# The vocabularies are open SKOS concepts rather than closed enumerations, as
+# with plato:geometry_role: the apparatus of survey traditions differs, and a
+# closed list would be guessing at conventions nobody here has surveyed.
+
+plato:occurrence_count
+    a owl:DatatypeProperty ;
+    rdfs:label "occurrence count"@en ;
+    rdfs:comment """
+        The number of times the attested form occurs in the cited source or
+        passage: the '(3 X)' of a place-name survey. A count of occurrences
+        of the form in this source, not of independent sources. It belongs to
+        the attestation, not to the Name, which may occur elsewhere.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range xsd:nonNegativeInteger .
+
+plato:occurrence_context
+    a owl:ObjectProperty ;
+    rdfs:label "occurrence context"@en ;
+    rdfs:comment """
+        The capacity in which the attested form occurs in the source. Should
+        point to a concept in a SKOS concept scheme. The starter concepts are:
+
+        - plato:Direct: the form refers to the SpatialEntity directly. The
+          default, and usually omitted.
+        - plato:InPersonalName: the form occurs only as an element of a
+          personal name, a surname or by-name such as 'Willelmus de
+          Bonestou'. This is the '(p)' of the place-name surveys, and it is
+          weaker evidence for the name's currency, and for the entity's
+          existence, than a direct attestation. Nothing else in the record
+          distinguishes Bonestou the hundred from de Bonestou the man.
+        - plato:InFieldName: the form survives only as an element of a later
+          minor name, such as a field name.
+
+        The editorially resolved 'ibidem' of the surveys is not an occurrence
+        context. It is a statement about the citation, and belongs on the
+        Citation as plato:attribution_status.
+
+        Not a certainty. A '(p)' attestation may be entirely certain as an
+        attestation; what differs is the kind of evidence it constitutes, and
+        folding that into a lower plato:certainty would discard the reason.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range skos:Concept .
+
+plato:form_status
+    a owl:ObjectProperty ;
+    rdfs:label "form status"@en ;
+    rdfs:comment """
+        The status of the name form this attestation contributes: read in the
+        cited source, chosen by the cited authority, or derived by the
+        contributing project. Should point to a concept in a SKOS concept
+        scheme. The starter concepts are:
+
+        - plato:Attested: a form read in the cited source. The default, and
+          usually omitted.
+        - plato:Headword: the editorial or preferred form under which the
+          cited authority files the entry ('Bunsty Hundred'). A scholarly
+          decision rather than a reading, and typically the form users search
+          for. Another authority may choose differently, which is why it is a
+          sourced attestation and not a label on the SpatialEntity.
+        - plato:Normalised: a form derived from an attested one for matching
+          or search ('Bunstow(e)' resolved to 'Bunstowe'), attested by no
+          source and carrying no independent evidential value. It may point
+          to the attestation it was derived from through a meta-attestation.
+        - plato:Reconstructed: a form inferred but not attested, the
+          philologists' asterisked form.
+        - plato:Preferred: the form the contributing project prefers for
+          display and search ('Ranny (Fort)'). A project decision, so the cited
+          source may show a different form.
+
+        A different axis from plato:name_type, which classifies what the name
+        denotes: a headword is still a toponym. It sits on the Attestation,
+        not on the Name, because the same string can be a reading in one
+        attestation and a headword in another. The WHG ingestion prototype
+        reached the same placement independently: its preferred-name flag is
+        on the attestation, not on the toponym record.
+    """@en ;
+    rdfs:domain plato:Attestation ;
+    rdfs:range skos:Concept .
+
+
+# =============================================================================
+# Qualification: Certainty, Fuzziness, and Relativity
+# =============================================================================
+# Three distinct concepts. Their scopes differ, and plato.schema.json is
+# normative on this:
+#
+#   Certainty applies to a facet node (Name, Geometry, Timespan, Type,
+#   PropertyValue) AND to an Attestation as a whole. An attestation may be
+#   doubtful even where each facet it bundles is not.
+#
+#   Fuzziness and the relativity properties apply to a facet node only.
+#   Fuzziness describes the referent of a facet, so it belongs on the
+#   Geometry or Timespan whose referent has no sharp edge, never on the
+#   attestation that bundles it.
+#
+#   Certainty — epistemic: there is a fact of the matter, but the evidence
+#   is insufficient to determine it precisely. "The battle was somewhere near
+#   here, but we're not sure exactly where." Low certainty can in principle be
+#   resolved by better evidence. The property is plato:certainty, defined
+#   above with the attestation metadata; it carries no domain.
+#
+#   Fuzziness — ontological: the referent itself has no sharp boundary.
+#   "The Weald" or "the Levant" has genuinely vague spatial extent; no amount of
+#   evidence will resolve it to a crisp polygon. A name used inconsistently
+#   across sources is fuzzy, not uncertain. A gradual political transition
+#   is a fuzzy timespan. Fuzziness is a property of the thing being described,
+#   not of our knowledge of it.
+#
+#   Relativity — the facet is defined not in absolute terms but in relation
+#   to an anchor entity. "20km east of Nanjing" is a relative geometry.
+#   "During the reign of Justinian" is a relative timespan. "Also known as
+#   Rum" (i.e. relative to the name "Rome") is a relative name. The anchor
+#   may be a SpatialEntity or another facet node.
+#
+# These three concepts are orthogonal. A relative geometry can also be
+# of low certainty ("roughly 20km east") or fuzzy ("in the hinterland of
+# Nanjing").
+
+# -----------------------------------------------------------------------------
+# Qualification properties
+# -----------------------------------------------------------------------------
+# These properties carry no rdfs:domain. In OWL a domain licenses inference
+# rather than constraining use, so declaring one here would assert that
+# anything bearing the property IS a facet, which is not intended. The
+# scope is therefore documented rather than axiomatised, and enforced by
+# plato.schema.json, which places the qualification object on Name,
+# Geometry, Timespan, Type and PropertyValue, and places certainty (with
+# certainty_note) on Attestation as well.
+
+# plato:uncertainty and plato:uncertainty_note were the facet-level form of
+# certainty until 0.2.0. Their scale already ran 0.0 (completely uncertain)
+# to 1.0 (certain), so a property named "uncertainty" whose value 1.0 meant
+# "certain" was misread by anyone who did not open the definition. They were
+# renamed in 0.3.0 and removed in the same release. Values need no conversion:
+# read plato:certainty and plato:certainty_note on the same scale.
+
+plato:fuzziness
+    a owl:DatatypeProperty ;
+    rdfs:label "fuzziness"@en ;
+    rdfs:comment """
+        Ontological fuzziness: a measure of how inherently vague or
+        indeterminate the facet's referent is, from 0.0 (crisp, sharply
+        bounded) to 1.0 (maximally vague). Distinct from certainty:
+        fuzziness is a property of the thing itself, not of our knowledge
+        of it. A regional boundary that was never precisely defined has
+        high fuzziness regardless of how much evidence we have.
+    """@en ;
+    rdfs:range xsd:float .
+
+plato:fuzziness_note
+    a owl:DatatypeProperty ;
+    rdfs:label "fuzziness note"@en ;
+    rdfs:comment """
+        Free-text explanation of the nature of ontological fuzziness
+        (e.g. 'regional boundary was never formally demarcated',
+        'name used inconsistently across contemporary sources',
+        'transition was gradual rather than a discrete event').
+    """@en ;
+    rdfs:range xsd:string .
+
+
+# -----------------------------------------------------------------------------
+# Relativity properties (applicable to any facet node)
+# -----------------------------------------------------------------------------
+# A relative facet is defined in terms of an anchor entity rather than in
+# absolute terms. The anchor may be a SpatialEntity (most commonly for geometry:
+# "20km east of Nanjing") or another facet node (a Name defined relative
+# to another Name, a Timespan defined relative to a Period).
+
+plato:relative_to
+    a owl:ObjectProperty ;
+    rdfs:label "relative to"@en ;
+    rdfs:comment """
+        Links a facet node to its anchor entity, indicating that this
+        facet is defined relationally rather than absolutely. The anchor
+        is typically a SpatialEntity, Period, or another facet (Name, Timespan, etc.).
+
+        Common patterns:
+        - Spatial relativity: "20km east of Nanjing" (anchor is a SpatialEntity)
+        - Temporal relativity: "during the reign of Justinian" (anchor is a Period)
+        - Name relativity: "also known as Rome" (anchor is another Name)
+    """@en ;
+    rdfs:domain [
+        a owl:Class ;
+        owl:unionOf (plato:Name plato:Geometry plato:Timespan plato:Type)
+    ] ;
+    rdfs:range [
+        a owl:Class ;
+        owl:unionOf (plato:SpatialEntity plato:Name plato:Timespan plato:Type plato:Period)
+    ] .
+
+plato:relative_bearing
+    a owl:DatatypeProperty ;
+    rdfs:label "bearing"@en ;
+    rdfs:comment """
+        Compass bearing from the anchor, in degrees (0–360).
+        Primarily used for relative geometries: '90' means east of
+        the anchor. May carry its own certainty or fuzziness.
+    """@en ;
+    rdfs:range xsd:float .
+
+plato:relative_distance
+    a owl:DatatypeProperty ;
+    rdfs:label "distance"@en ;
+    rdfs:comment """
+        Distance from the anchor, in metres. Primarily used for
+        relative geometries. May carry its own certainty or fuzziness.
+    """@en ;
+    rdfs:range xsd:float .
+
+plato:relative_qualifier
+    a owl:ObjectProperty ;
+    rdfs:label "relative qualifier"@en ;
+    rdfs:comment """
+        A controlled-vocabulary term describing the relative relationship
+        when bearing and distance are not applicable or not sufficient.
+        Should point to a concept in a SKOS concept scheme (e.g.
+        plato:Near, plato:Within, plato:Beyond, plato:UpstreamOf,
+        plato:BetweenXAndY, plato:DuringReignOf, plato:VariantOf).
+        Using URIs rather than free text enables machine reconciliation
+        across gazetteers that describe relativity differently.
+    """@en ;
+    rdfs:domain [
+        a owl:Class ;
+        owl:unionOf (plato:Name plato:Geometry plato:Timespan plato:Type)
+    ] ;
+    rdfs:range skos:Concept .
+
+
+# =============================================================================
+# Identity Relations
+# =============================================================================
+# A dedicated mechanism for asserting that two SpatialEntities are (or may be) the
+# same entity. This is fundamentally different from scholarly entity-to-entity
+# relations (capital_of, successor_to, etc.) which assert substantive
+# historical relationships between distinct entities. Identity relations
+# assert that two identifiers, potentially from different authority systems
+# or contributed gazetteers, refer to the same real-world entity.
+#
+# Identity relations are also distinct from Candidates: a Candidate is an
+# algorithm-generated candidate that awaits human review. An IdentityRelation
+# is a human-asserted (or human-confirmed) claim about identity, with its
+# own provenance, certainty, and evidence.
+#
+# The lifecycle is:
+#   Candidate (algorithm suggests) → human reviews →
+#     IdentityRelation (confirmed) or Candidate (rejected/deferred)
+
+plato:IdentityRelation
+    a owl:Class ;
+    rdfs:label "Identity Relation"@en ;
+    rdfs:comment """
+        An assertion that two SpatialEntities refer to the same real-world entity.
+        Carries its own provenance (who asserted it, on what basis),
+        certainty (how confident the assertion is), and identity semantics
+        (exactMatch, closeMatch, related).
+
+        Identity relations are distinct from scholarly entity-to-entity
+        relations, which describe substantive historical relationships
+        between different entities. They are also distinct from Candidates,
+        which are algorithm-generated candidates not yet confirmed by
+        human review.
+    """@en .
+
+plato:identity_subject
+    a owl:ObjectProperty ;
+    rdfs:label "identity subject"@en ;
+    rdfs:comment "The first SpatialEntity in an identity assertion."@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range plato:SpatialEntity .
+
+plato:identity_object
+    a owl:ObjectProperty ;
+    rdfs:label "identity object"@en ;
+    rdfs:comment """
+        The second SpatialEntity in an identity assertion. Often a record in
+        another authority, such as a GeoNames feature or a Wikidata item,
+        which this range makes a SpatialEntity. That is intended: in PLATO
+        an authority record is a SpatialEntity like any other, identified by
+        its own URI, with its origin recorded in plato:namespace.
+    """@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range plato:SpatialEntity .
+
+plato:identity_type
+    a owl:DatatypeProperty ;
+    rdfs:label "identity type"@en ;
+    rdfs:comment """
+        The semantic strength of the identity assertion:
+        'exactMatch'  — the two SpatialEntities are unambiguously the same entity.
+        'closeMatch'  — the two SpatialEntities are believed to be the same entity
+                        but with some residual ambiguity (e.g. differing
+                        granularity, overlapping but not identical scope).
+        'related'     — the two SpatialEntities are closely associated but may not
+                        be strictly identical (e.g. a settlement and its
+                        administrative district, or successive phases of
+                        a site that might or might not constitute continuity).
+        'unspecified' — the source links the two but does not say how strongly;
+                        honest where the alternative is to guess a strength.
+    """@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range xsd:string .
+
+plato:identity_certainty
+    a owl:DatatypeProperty ;
+    rdfs:label "identity certainty"@en ;
+    rdfs:comment """
+        Confidence in the identity assertion, from 0.0 to 1.0. This is
+        the epistemic certainty of the asserter, distinct from identity_type
+        which describes the semantic nature of the relationship.
+        A closeMatch can have high certainty ('I'm confident these are
+        close but not exact') and an exactMatch can have low certainty
+        ('I think they're identical but I'm not sure').
+    """@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range xsd:float .
+
+plato:identity_basis
+    a owl:DatatypeProperty ;
+    rdfs:label "identity basis"@en ;
+    rdfs:comment """
+        Free-text explanation of the evidence or reasoning supporting
+        this identity assertion (e.g. 'coordinates within 500m and
+        name forms are cognate', 'identified by contributor during
+        reconciliation review', 'confirmed via TGN cross-reference').
+    """@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range xsd:string .
+
+plato:identity_asserted_by
+    a owl:ObjectProperty ;
+    rdfs:label "asserted by"@en ;
+    rdfs:comment "The agent who made or confirmed this identity assertion."@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range plato:Contributor .
+
+plato:identity_asserted_at
+    a owl:DatatypeProperty ;
+    rdfs:label "asserted at"@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range xsd:dateTime .
+
+plato:identity_sourced_by
+    a owl:ObjectProperty ;
+    rdfs:label "identity sourced by"@en ;
+    rdfs:comment """
+        The Authority (Source or Dataset) that provides evidence for
+        this identity assertion, if any.
+    """@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range plato:Authority .
+
+plato:promoted_from
+    a owl:ObjectProperty ;
+    rdfs:label "promoted from"@en ;
+    rdfs:comment """
+        Links an IdentityRelation to the Candidate from which it was
+        promoted, preserving the algorithmic provenance. Optional:
+        identity relations can also be created directly by human
+        assertion without a prior Candidate.
+    """@en ;
+    rdfs:domain plato:IdentityRelation ;
+    rdfs:range plato:Candidate .
+
+
+# =============================================================================
+# Name Properties
+# =============================================================================
+# Properties for Name entities, which represent linguistic forms (toponyms,
+# chrononyms, ethnonyms) by which SpatialEntities are known.
+
+plato:toponym
+    a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "toponym"@en ;
+    rdfs:comment """
+        The name string itself in its original script. This is the primary
+        property of a Name entity. Required for all Name instances.
+    """@en ;
+    rdfs:domain plato:Name ;
+    rdfs:range xsd:string .
+
+plato:language
+    a owl:DatatypeProperty ;
+    rdfs:label "language"@en ;
+    rdfs:comment """
+        BCP 47 language tag for this name (e.g., 'ar' for Arabic, 'zh-Hans'
+        for Simplified Chinese). Recommended: use ISO 639-3 three-letter codes
+        within BCP 47 for better granularity (e.g., 'ara', 'cmn').
+    """@en ;
+    rdfs:domain plato:Name ;
+    rdfs:range xsd:string .
+
+plato:script
+    a owl:DatatypeProperty ;
+    rdfs:label "script"@en ;
+    rdfs:comment """
+        ISO 15924 script code (e.g., 'Arab' for Arabic script, 'Latn' for
+        Latin script, 'Hant' for Traditional Han characters). Important for
+        names that may appear in multiple scripts.
+    """@en ;
+    rdfs:domain plato:Name ;
+    rdfs:range xsd:string .
+
+plato:name_type
+    a owl:DatatypeProperty ;
+    rdfs:label "name type"@en ;
+    rdfs:comment """
+        What the name denotes. The list is open: 'toponym' (place name),
+        'chrononym' (period or era name), 'ethnonym' (people or ethnic
+        group), 'demonym' (inhabitants), 'odonym' (street or road name) and
+        'hydronym' (water body) are the starter values, and a project may
+        add others ('oronym', 'hagionym') provided it documents them in its
+        gazetteer metadata. Multiple types are possible (a name that
+        functions as both toponym and ethnonym). plato.schema.json carries
+        the same open list; earlier releases closed it there, and the two
+        serialisations now agree.
+
+        This classifies the referent, not the status of the form. Whether a
+        string is an attested spelling, an editorial headword or a derived
+        search form is a property of the attestation (plato:form_status),
+        because the same string can have a different status in different
+        attestations.
+    """@en ;
+    rdfs:domain plato:Name ;
+    rdfs:range xsd:string .
+
+plato:romanized
+    a owl:DatatypeProperty ;
+    rdfs:label "romanized"@en ;
+    rdfs:comment """
+        Romanized (Latin-script) form of the name for searchability and
+        display in contexts requiring ASCII. Should specify transliteration
+        system used via plato:transliteration_system.
+    """@en ;
+    rdfs:domain plato:Name ;
+    rdfs:range xsd:string .
+
+plato:transliteration_system
+    a owl:DatatypeProperty ;
+    rdfs:label "transliteration system"@en ;
+    rdfs:comment """
+        The transliteration/romanization system used (e.g., 'Pinyin' for
+        Chinese, 'BGN/PCGN' for Arabic, 'ISO 259' for Hebrew, 'Hepburn' for
+        Japanese). Enables proper interpretation and comparison of romanized
+        forms.
+    """@en ;
+    rdfs:domain plato:Name ;
+    rdfs:range xsd:string .
+
+plato:ipa
+    a owl:DatatypeProperty ;
+    rdfs:label "IPA"@en ;
+    rdfs:comment """
+        International Phonetic Alphabet representation of the name's
+        pronunciation. Enables phonetic search and comparison across scripts
+        and languages.
+    """@en ;
+    rdfs:domain plato:Name ;
+    rdfs:range xsd:string .
+
+plato:name_embedding
+    a owl:DatatypeProperty ;
+    rdfs:label "name embedding"@en ;
+    rdfs:comment """
+        Vector embedding for phonetic similarity search. Typically a
+        256-dimensional vector generated from the name's phonetic form,
+        enabling fuzzy matching and transliteration-variant detection.
+        Format is implementation-specific but should be documented in
+        gazetteer metadata. WHG v4 uses Symphonym embeddings.
+    """@en ;
+    rdfs:domain plato:Name ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# Geometry Properties
+# =============================================================================
+# Properties for Geometry entities. PLATO supports both WKT (for RDF/GeoSPARQL
+# compatibility) and GeoJSON (for web application compatibility). Geometries
+# can represent points, lines, polygons, and their multi- variants.
+
+plato:geo_wkt
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf geo:asWKT ;
+    rdfs:label "geometry WKT"@en ;
+    rdfs:comment """
+        Well-Known Text representation of the geometry, following OGC/ISO
+        standards. Used for GeoSPARQL queries and RDF serialization.
+        Supports Point, LineString, Polygon, MultiPoint, MultiLineString,
+        MultiPolygon.
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range geo:wktLiteral .
+
+plato:geo_json
+    a owl:DatatypeProperty ;
+    rdfs:label "geometry GeoJSON"@en ;
+    rdfs:comment """
+        GeoJSON representation of the geometry. Used for web mapping
+        applications and LPF export. Should be a valid GeoJSON geometry
+        object (not a Feature or FeatureCollection).
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range xsd:string .
+
+plato:repr_point
+    a owl:DatatypeProperty ;
+    rdfs:label "representative point"@en ;
+    rdfs:comment """
+        A single representative point (centroid, label point, or best
+        estimate) for spatial indexing and distance queries. Stored as WKT
+        Point. Required for all geometries to enable spatial search.
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range geo:wktLiteral .
+
+plato:geometry_role
+    a owl:ObjectProperty ;
+    rdfs:label "geometry role"@en ;
+    rdfs:comment """
+        What this geometry depicts, as distinct from how precisely it is known
+        (plato:spatial_precision) or where its indexing point falls
+        (plato:repr_point). A SpatialEntity may be attested with several geometries at
+        once — a built extent, the location of a specific central feature, a
+        proxy standing in for the whole, the anchor of a map label — and without
+        a declared role a consumer cannot tell them apart, nor state which one
+        an analysis used.
+
+        Should point to a concept in a SKOS concept scheme (e.g. plato:Extent,
+        plato:FeaturePoint, plato:RepresentativePoint, plato:LabelAnchor,
+        plato:Itinerary). Using URIs rather than free text lets gazetteers that
+        record geometry differently be compared.
+
+        Note that role is orthogonal to precision: a proxy locator may be
+        surveyed to the metre and still not depict the SpatialEntity it stands for. A
+        parish church's coordinates contributed as a locator for a town are a
+        representative point of high precision, not an imprecise feature point.
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range skos:Concept .
+
+plato:hull
+    a owl:DatatypeProperty ;
+    rdfs:label "convex hull"@en ;
+    rdfs:comment """
+        Convex hull of the geometry as WKT Polygon. Used for quick spatial
+        filtering before more expensive exact geometry operations. Optional
+        but recommended for complex geometries.
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range geo:wktLiteral .
+
+plato:bbox
+    a owl:DatatypeProperty ;
+    rdfs:label "bounding box"@en ;
+    rdfs:comment """
+        Bounding box as array: [min_lon, min_lat, max_lon, max_lat].
+        Enables fast spatial filtering. Format: comma-separated string
+        or JSON array depending on serialization context.
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range xsd:string .
+
+plato:spatial_precision
+    a owl:DatatypeProperty ;
+    rdfs:label "spatial precision"@en ;
+    rdfs:comment """
+        Precision qualifier for this geometry: 'exact' (surveyed or GPS),
+        'approximate' (estimated from maps or descriptions), 'uncertain'
+        (multiple possible locations), 'historical_approximate' (based on
+        historical sources with inherent imprecision). Multiple values
+        possible for heterogeneous geometries.
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range xsd:string .
+
+plato:precision_km
+    a owl:DatatypeProperty ;
+    rdfs:label "precision in kilometers"@en ;
+    rdfs:comment """
+        Uncertainty radius in kilometers. For point geometries, indicates
+        how far the true location might be from the stated coordinates.
+        For polygons, indicates boundary uncertainty. Can be multiple values
+        for heterogeneous geometries.
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range xsd:float .
+
+plato:source_crs
+    a owl:DatatypeProperty ;
+    rdfs:label "source CRS"@en ;
+    rdfs:comment """
+        Original coordinate reference system. Typically 'EPSG:4326' (WGS84),
+        but may reference historical or custom CRS identifiers for historical
+        maps. Enables proper interpretation of coordinate values.
+    """@en ;
+    rdfs:domain plato:Geometry ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# Timespan Properties
+# =============================================================================
+# Timespans use a four-date model with explicit uncertainty bounds to accommodate
+# the uncertainty inherent in historical dating. This aligns with PeriodO best
+# practices while maintaining compatibility with W3C Time Ontology.
+
+plato:start_earliest
+    a owl:DatatypeProperty ;
+    rdfs:label "start earliest"@en ;
+    rdfs:comment """
+        The earliest possible start date for this timespan. Together with
+        start_latest, defines the uncertainty range for when the interval began.
+        Use ISO 8601 format (e.g., '1453-05-29') or a year of at least four
+        digits ('0921', '-12000') for year-level precision; deep-time years
+        have as many digits as they need, as in xsd:gYear. May be null for unknown or deliberately
+        open-beginning intervals.
+
+        The range is rdfs:Literal rather than a single datatype, because one
+        property carries values of three shapes. A plain string is conformant;
+        a producer that can type by shape should emit xsd:gYear for a year,
+        xsd:date for a day and xsd:dateTime otherwise, so that a store can
+        index and compare the bounds. The same applies to start_latest,
+        end_earliest and end_latest.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range rdfs:Literal .
+
+plato:start_latest
+    a owl:DatatypeProperty ;
+    rdfs:label "start latest"@en ;
+    rdfs:comment """
+        The latest possible start date for this timespan. For certain dates,
+        this equals start_earliest. For uncertain dates, defines the end of
+        the uncertainty range for when the interval began.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range rdfs:Literal .
+
+plato:end_earliest
+    a owl:DatatypeProperty ;
+    rdfs:label "end earliest"@en ;
+    rdfs:comment """
+        The earliest possible end date for this timespan. Together with
+        end_latest, defines the uncertainty range for when the interval ended.
+        May be null for unknown or deliberately open-end intervals.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range rdfs:Literal .
+
+plato:end_latest
+    a owl:DatatypeProperty ;
+    rdfs:label "end latest"@en ;
+    rdfs:comment """
+        The latest possible end date for this timespan. For certain dates,
+        this equals end_earliest. For uncertain dates, defines the end of
+        the uncertainty range for when the interval ended.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range rdfs:Literal .
+
+# A source often says how long, and not when: "where I staid six weeks", "three days' journey".
+# The bounds cannot hold that, since there are no bounds to give. An itinerary also needs it to
+# tell a long stay from a night's lodging where the dates are not known.
+
+plato:duration
+    a owl:DatatypeProperty ;
+    rdfs:label "duration"@en ;
+    rdfs:comment """
+        How long the timespan lasted, as an xsd:duration ('P42D' for six
+        weeks, 'P1D' for a day), where the source states a length: a stay at
+        a stop on an itinerary, a siege, a fair. It may stand alone, when the
+        source gives a length and no dates, or beside the bounds, which it
+        does not replace. xsd:duration has no weeks, so weeks are written as
+        days; the source's own words ('staid 6 weekes') are
+        plato:source_label on the same timespan.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:duration .
+
+plato:timespan_label
+    a owl:DatatypeProperty ;
+    rdfs:label "timespan label"@en ;
+    rdfs:comment """
+        Human-readable label for this timespan (e.g., 'Byzantine period',
+        'Early Bronze Age', 'Ming Dynasty'). Particularly useful for named
+        periods referenced across multiple attestations. The date exactly as a
+        source writes it ('c. 925', 'a. 1300') is plato:source_label.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:string .
+
+plato:start_precision
+    a owl:DatatypeProperty ;
+    rdfs:label "start precision"@en ;
+    rdfs:comment """
+        Temporal granularity of the start bound. Values: 'year', 'decade',
+        'century', 'era', 'geological_period'. This describes the resolution
+        of the date specification, distinct from certainty (which describes
+        the confidence in that specification).
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:string .
+
+plato:end_precision
+    a owl:DatatypeProperty ;
+    rdfs:label "end precision"@en ;
+    rdfs:comment """
+        Temporal granularity of the end bound. Values: 'year', 'decade',
+        'century', 'era', 'geological_period'.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:string .
+
+plato:precision_value
+    a owl:DatatypeProperty ;
+    rdfs:label "precision value"@en ;
+    rdfs:comment """
+        Numeric precision indicator in years. For example, a decade-level
+        precision would have value 10, century-level would be 100. Enables
+        computational comparison of precision across timespans.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:integer .
+
+plato:open_start
+    a owl:DatatypeProperty ;
+    rdfs:label "open start"@en ;
+    rdfs:comment """
+        Boolean flag indicating that the start of this interval is deliberately
+        unspecified (not merely unknown). True for intervals like 'everything
+        before 1453' or 'prehistory until...'. Distinct from null start_earliest,
+        which indicates unknown start. Aligns with PeriodO's OpenBeginningInterval.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:boolean .
+
+plato:open_end
+    a owl:DatatypeProperty ;
+    rdfs:label "open end"@en ;
+    rdfs:comment """
+        Boolean flag indicating that the end of this interval is deliberately
+        unspecified (not merely unknown). True for ongoing periods like 'Modern
+        era (1800-present)' or situations where the end does not exist. Aligns
+        with PeriodO's OpenEndInterval.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:boolean .
+
+plato:periodo_uri
+    a owl:DatatypeProperty ;
+    rdfs:label "PeriodO URI"@en ;
+    rdfs:comment """
+        Link to a PeriodO period definition (https://perio.do/). When a timespan
+        corresponds to a standardized period in PeriodO, this property enables
+        alignment and allows PLATO to inherit PeriodO's temporal bounds, spatial
+        coverage, and cultural context. Example: 'https://n2t.net/ark:/99152/p06v8w4rb38'
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:anyURI .
+
+plato:edtf_string
+    a owl:DatatypeProperty ;
+    rdfs:label "EDTF string"@en ;
+    rdfs:comment """
+        Extended Date/Time Format (EDTF) representation of this timespan.
+        Provides standardized string encoding for interchange with systems
+        using EDTF. Optional but recommended for interoperability with library
+        and archival systems. Example: '1453-05-29/1453-05-29' or '1450~/1453~'
+        for approximate dates.
+    """@en ;
+    rdfs:domain plato:Timespan ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# Type Properties
+# =============================================================================
+
+plato:type_identifier
+    a owl:DatatypeProperty ;
+    rdfs:label "type identifier"@en ;
+    rdfs:comment "URI or identifier in a controlled vocabulary (e.g. AAT)."@en ;
+    rdfs:domain plato:Type ;
+    rdfs:range xsd:anyURI .
+
+plato:type_label
+    a owl:DatatypeProperty ;
+    rdfs:label "type label"@en ;
+    rdfs:comment "Human-readable label for this type."@en ;
+    rdfs:domain plato:Type ;
+    rdfs:range xsd:string .
+
+plato:source_label
+    a owl:DatatypeProperty ;
+    rdfs:label "source label"@en ;
+    rdfs:comment """
+        The original label as given in the contributing source, before
+        vocabulary mapping. For a structured PropertyValue this preserves the
+        unparsed original — 'Monday after Whitsun, 3 days' — which is what a
+        future reader will want to check against the document. On a Name it is
+        the form as printed where the toponym has been normalised; on a
+        Geometry, the coordinates as printed ('03-47S/13038E', '??'); on a
+        Timespan, the date as written ('about 1841'). On an Attestation it is
+        the source's own wording of the relation the attestation asserts
+        ('part of Berkshire', 'within Buckingham'), before that relation is
+        mapped to a RelationType; an attestation asserts at most one relation,
+        so the wording is never ambiguous. Like the qualification properties it
+        has no rdfs:domain, so it applies to any facet node or attestation.
+    """@en ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# PropertyValue Properties
+# =============================================================================
+# The property is identified by URI in an external vocabulary; the value is
+# either a literal (with datatype and optional unit) or a structured object
+# whose shape is declared by plato:value_type.
+
+plato:property_type
+    a owl:DatatypeProperty ;
+    rdfs:label "property type"@en ;
+    rdfs:comment """
+        URI of the property in an external vocabulary — a Wikidata property,
+        a CIDOC-CRM property, or a project vocabulary term (e.g.
+        <https://www.wikidata.org/wiki/Property:P1082> for population).
+        Keeping the vocabulary external rather than enumerating attributes in
+        this ontology is what allows the model to carry attributes it has
+        never heard of.
+    """@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range xsd:anyURI .
+
+plato:universe
+    a owl:ObjectProperty ;
+    rdfs:label "universe"@en ;
+    rdfs:comment """
+        The figure this figure is a part or share of: its denominator, where
+        the source defines one. Asserted only from the source, never inferred
+        from labels or sums: in Vision of Ireland three of seven plausible
+        denominators by name are wrong. The occupied beside the
+        total of the same row, or Vision of Ireland's Total Population cube as
+        the universe of the others for the same unit and year. RDF Data Cube
+        has no such property, and without it which number is the denominator
+        of which is lost, unrecoverably once the table is gone.
+    """@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range plato:PropertyValue .
+
+plato:property_label
+    a owl:DatatypeProperty ;
+    rdfs:label "property label"@en ;
+    rdfs:comment "Human-readable label for the property (e.g. 'population')."@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range xsd:string .
+
+plato:value_literal
+    a owl:DatatypeProperty ;
+    rdfs:label "value"@en ;
+    rdfs:comment """
+        The value, where it is a literal: a number, a string, a date. Use
+        plato:value_json instead where the value is structured.
+    """@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range rdfs:Literal .
+
+plato:value_datatype
+    a owl:DatatypeProperty ;
+    rdfs:label "value datatype"@en ;
+    rdfs:comment "Datatype of the literal value (e.g. xsd:integer, xsd:decimal, xsd:string)."@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range xsd:anyURI .
+
+plato:value_unit
+    a owl:DatatypeProperty ;
+    rdfs:label "value unit"@en ;
+    rdfs:comment """
+        URI of the unit of measurement, where the value has one — a QUDT unit
+        or a Wikidata unit item. Omitted for counts and dimensionless values.
+    """@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range xsd:anyURI .
+
+plato:value_type
+    a owl:DatatypeProperty ;
+    rdfs:label "value type"@en ;
+    rdfs:comment """
+        URI declaring the shape of a structured value, so that a consumer can
+        tell whether it understands the value before attempting to read it.
+        Omitted for literal values.
+
+        Not every attribute a source states is scalar. A market's trading day
+        — 'the Monday after Whitsun, for three days' — is a recurrence rule
+        anchored to a moveable feast, and flattening it to a string would
+        reproduce the loss this class exists to prevent. The ontology stays
+        agnostic about such shapes: it records which shape is in use and
+        leaves the definition to the vocabulary that owns it.
+    """@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range xsd:anyURI .
+
+plato:value_json
+    a owl:DatatypeProperty ;
+    rdfs:label "structured value"@en ;
+    rdfs:comment """
+        A structured value serialised as JSON, whose shape is declared by
+        plato:value_type. Use plato:value_literal instead for scalar values.
+    """@en ;
+    rdfs:domain plato:PropertyValue ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# Authority Properties
+# =============================================================================
+
+plato:authority_title
+    a owl:DatatypeProperty ;
+    rdfs:label "title"@en ;
+    rdfs:domain plato:Authority ;
+    rdfs:range xsd:string .
+
+plato:authority_uri
+    a owl:DatatypeProperty ;
+    rdfs:label "authority URI"@en ;
+    rdfs:domain plato:Authority ;
+    rdfs:range xsd:anyURI .
+
+plato:authority_version
+    a owl:DatatypeProperty ;
+    rdfs:label "version"@en ;
+    rdfs:comment "Version identifier for tracking upstream authority updates."@en ;
+    rdfs:domain plato:Authority ;
+    rdfs:range xsd:string .
+
+plato:publisher
+    a owl:DatatypeProperty ;
+    rdfs:label "publisher"@en ;
+    rdfs:domain plato:Dataset ;
+    rdfs:range xsd:string .
+
+plato:licence
+    a owl:DatatypeProperty ;
+    rdfs:label "licence"@en ;
+    rdfs:comment """
+        Deprecated: use dcterms:license. It could be given only to a Dataset,
+        it had no route in PLATO JSON, and it was a literal where a
+        Gazetteer's dcterms:license points at the licence itself. So the
+        licence of a cited source had no way into the data. dcterms:license has
+        no domain, so it serves every Authority and the Gazetteer alike, and
+        says nothing about what kind of thing is licensed. Kept for one release
+        under the deprecation policy.
+    """@en ;
+    owl:deprecated true ;
+    dcterms:isReplacedBy dcterms:license ;
+    rdfs:domain plato:Dataset ;
+    rdfs:range xsd:anyURI .
+
+plato:partOf
+    a owl:ObjectProperty ;
+    rdfs:label "part of"@en ;
+    rdfs:comment "Links a Source to its parent Dataset."@en ;
+    rdfs:domain plato:Source ;
+    rdfs:range plato:Dataset .
+
+plato:bibliographic_string
+    a owl:DatatypeProperty ;
+    rdfs:label "bibliographic string"@en ;
+    rdfs:comment """
+        A formatted citation string for this source or other authority. The
+        domain is Authority, not Source, because any authority can be cited
+        formally, a dataset as much as a document. Restricting it to Source
+        made a cited Dataset a Source as well, which the disjoint union of
+        Authority forbids.
+    """@en ;
+    rdfs:domain plato:Authority ;
+    rdfs:range xsd:string .
+
+
+# -----------------------------------------------------------------------------
+# Source date and derivation
+# -----------------------------------------------------------------------------
+# A Source needs a date of its own and a way to say that it is a copy of
+# another. The date a source was made is not the date of what it attests: an
+# annal for 921 read in a manuscript written c. 925 gives one attestation with
+# two dates, and the Timespan on the attestation dates the claim (the name was
+# in use in 921), not the witness. For medieval and early-modern evidence this
+# is the normal case rather than the edge: much of what survives is known only
+# through cartularies, registers, inspeximus confirmations and antiquarian
+# transcripts, and the date of the witness matters as much as the date of the
+# text. Encoding both in bibliographic_string makes every combination of text,
+# witness and copy-date a distinct Source and leaves the copy-date
+# unqueryable.
+#
+# The witness is modelled as a Source in its own right (the manuscript, the
+# cartulary, the edition) rather than by a separate Witness class: it is
+# citable, it has a date, and an attestation cites the one it was actually
+# read in. A manuscript sigil ('A') is then simply the authority_title of the
+# witness Source. CIDOC-CRM makes the same separation between a text (E33)
+# and its carrier (E84) and dates the carrier's production; PLATO needs the
+# two levels, not FRBR's four.
+
+plato:source_timespan
+    a owl:ObjectProperty ;
+    rdfs:label "source timespan"@en ;
+    rdfs:comment """
+        When this Source, as a document, was produced: the date of the
+        manuscript, the compilation of the cartulary, the publication of the
+        edition. Distinct from the Timespan an attestation asserts, which
+        dates the claim rather than the witness. An annal for 921 read in a
+        manuscript written c. 925 has an attested timespan of 921 and a
+        source timespan of c. 925. Reuses Timespan, so an approximate date
+        is start_earliest 915, end_latest 935, timespan_label 'c. 925'. The
+        same move as plato:has_timespan on a Period.
+    """@en ;
+    rdfs:domain plato:Source ;
+    rdfs:range plato:Timespan .
+
+plato:derived_from
+    a owl:ObjectProperty ;
+    rdfs:label "derived from"@en ;
+    rdfs:comment """
+        This Source is a copy, transcript, edition, calendar or confirmation
+        of that one. A later cartulary copy of a charter, an inspeximus, or a
+        printed edition of a manuscript is a Source of its own, with its own
+        source_timespan, derived_from the document it transmits. An
+        attestation should cite the Source it was actually read in; the chain
+        of derived_from links records what that Source transmits. The kind of
+        derivation (copy, edition, calendar, inspeximus) is not yet
+        distinguished; a sub-property or a small vocabulary can be added when
+        a project needs it.
+    """@en ;
+    rdfs:domain plato:Source ;
+    rdfs:range plato:Source .
+
+
+# =============================================================================
+# Period Properties
+# =============================================================================
+# Period authorities can either link to a Timespan node (for locally defined
+# periods) or reference a PeriodO URI (for standardized period definitions).
+
+plato:has_timespan
+    a owl:ObjectProperty ;
+    rdfs:label "has timespan"@en ;
+    rdfs:comment """
+        Links a Period authority to its temporal extent, represented as a
+        Timespan node. Used for locally-defined periods or when more detailed
+        temporal modeling is needed than provided by external period definitions.
+    """@en ;
+    rdfs:domain plato:Period ;
+    rdfs:range plato:Timespan .
+
+plato:period_periodo_uri
+    a owl:DatatypeProperty ;
+    rdfs:label "PeriodO URI"@en ;
+    rdfs:comment """
+        Link to a PeriodO period definition for this Period authority.
+        When present, indicates this Period aligns with a standardized PeriodO
+        definition. The PeriodO record provides authoritative temporal bounds,
+        spatial extent, and cultural context. Example: 'https://n2t.net/ark:/99152/p06v8w4rb38'
+    """@en ;
+    rdfs:domain plato:Period ;
+    rdfs:range xsd:anyURI .
+
+plato:period_label
+    a owl:DatatypeProperty ;
+    rdfs:label "period label"@en ;
+    rdfs:comment """
+        Human-readable label for this period (e.g., 'Byzantine period',
+        'Han Dynasty', 'Early Bronze Age'). Distinct from authority_title,
+        which may be more formal.
+    """@en ;
+    rdfs:domain plato:Period ;
+    rdfs:range xsd:string .
+
+plato:spatial_coverage
+    a owl:DatatypeProperty ;
+    rdfs:label "spatial coverage"@en ;
+    rdfs:comment """
+        Geographic or cultural region to which this period applies.
+        Free text or URI to a place/region. Useful because periods like
+        'Medieval' have different temporal bounds in different regions.
+    """@en ;
+    rdfs:domain plato:Period ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# RelationType Properties
+# =============================================================================
+
+plato:relation_label
+    a owl:DatatypeProperty ;
+    rdfs:label "relation label"@en ;
+    rdfs:comment "Forward label for the relationship (e.g. 'capital_of')."@en ;
+    rdfs:domain plato:RelationType ;
+    rdfs:range xsd:string .
+
+plato:inverse_label
+    a owl:DatatypeProperty ;
+    rdfs:label "inverse label"@en ;
+    rdfs:comment "Inverse label (e.g. 'has_capital')."@en ;
+    rdfs:domain plato:RelationType ;
+    rdfs:range xsd:string .
+
+plato:relation_domain
+    a owl:DatatypeProperty ;
+    rdfs:label "domain constraint"@en ;
+    rdfs:comment "Valid subject type for this relation."@en ;
+    rdfs:domain plato:RelationType ;
+    rdfs:range xsd:string .
+
+plato:relation_range
+    a owl:DatatypeProperty ;
+    rdfs:label "range constraint"@en ;
+    rdfs:comment "Valid object type for this relation."@en ;
+    rdfs:domain plato:RelationType ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# Contributor Properties
+# =============================================================================
+# Properties for Contributors (agents who create attestations). While PLATO
+# is a general-purpose ontology, it provides options for persistent identifiers
+# that may be required by specific implementations.
+
+plato:contributor_name
+    a owl:DatatypeProperty ;
+    rdfs:label "contributor name"@en ;
+    rdfs:comment """
+        The name of the contributor (person, team, or automated process).
+        For persons, should be the full name as preferred by the contributor.
+        For teams, the team name. For automated processes, a descriptive name.
+    """@en ;
+    rdfs:domain plato:Contributor ;
+    rdfs:range xsd:string .
+
+plato:contributor_orcid
+    a owl:DatatypeProperty ;
+    rdfs:label "ORCID"@en ;
+    rdfs:comment """
+        ORCID identifier for person contributors. Can be provided in two formats:
+
+        1. Compact format: 0000-0000-0000-0000 (sixteen digits in groups of four)
+        2. URI format: https://orcid.org/0000-0000-0000-0000 (preferred)
+
+        The URI format (https://orcid.org/...) is preferred and required for
+        proper linked data representation. ORCID is particular about always
+        including the https:// protocol and domain prefix.
+
+        While optional in the general ontology, specific implementations
+        (e.g., WHG) may require ORCID for person contributors to ensure
+        proper attribution and citation.
+
+        ORCID provides persistent identification for researchers, enabling
+        proper credit and reducing name ambiguity.
+    """@en ;
+    rdfs:domain plato:Contributor ;
+    rdfs:range xsd:string .
+
+plato:contributor_email
+    a owl:DatatypeProperty ;
+    rdfs:label "email"@en ;
+    rdfs:comment """
+        Contact email address for the contributor. Useful for collaboration
+        and correspondence about contributed data.
+    """@en ;
+    rdfs:domain plato:Contributor ;
+    rdfs:range xsd:string .
+
+plato:contributor_affiliation
+    a owl:ObjectProperty ;
+    rdfs:label "affiliation"@en ;
+    rdfs:comment """
+        Organizational affiliation of the contributor. Links to a
+        plato:Organization entity, which can be further described using
+        FOAF, schema.org, or other ontology properties. Organizations
+        should ideally use persistent identifiers (ROR, ISNI, etc.).
+
+        For simple cases, use contributor_affiliation_string for free-text
+        affiliation names.
+    """@en ;
+    rdfs:domain plato:Contributor ;
+    rdfs:range plato:Organization .
+
+plato:contributor_affiliation_string
+    a owl:DatatypeProperty ;
+    rdfs:label "affiliation (string)"@en ;
+    rdfs:comment """
+        Free-text organizational affiliation when a structured Organization
+        entity is not available. Example: "University of Pittsburgh,
+        Institute for Spatial History Innovation"
+    """@en ;
+    rdfs:domain plato:Contributor ;
+    rdfs:range xsd:string .
+
+plato:contributor_role
+    a owl:DatatypeProperty ;
+    rdfs:label "contributor role"@en ;
+    rdfs:comment """
+        Role of the contributor in the project or gazetteer. Examples:
+        'principal_investigator', 'data_curator', 'student_researcher',
+        'automated_process', 'external_contributor'. Helps understand the
+        context and authority of contributions.
+    """@en ;
+    rdfs:domain plato:Contributor ;
+    rdfs:range xsd:string .
+
+plato:contributor_url
+    a owl:DatatypeProperty ;
+    rdfs:label "contributor URL"@en ;
+    rdfs:comment """
+        Website or profile URL for the contributor (personal website,
+        institutional page, project page, GitHub profile, etc.). Provides
+        additional context about the contributor's work and identity.
+    """@en ;
+    rdfs:domain plato:Contributor ;
+    rdfs:range xsd:anyURI .
+
+plato:contributor_identifier
+    a owl:DatatypeProperty ;
+    rdfs:label "contributor identifier"@en ;
+    rdfs:comment """
+        Additional persistent identifier for the contributor. Can be used
+        for identifiers other than ORCID, such as:
+        - ISNI (International Standard Name Identifier)
+        - VIAF (Virtual International Authority File)
+        - Wikidata QID (for persons or organizations)
+        - Internal system identifiers
+
+        When using this property, specify the identifier type in the value
+        (e.g., "ISNI:0000000121032683" or "VIAF:12345678").
+    """@en ;
+    rdfs:domain plato:Contributor ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# SpatialEntity Properties
+# =============================================================================
+
+plato:entity_identifier
+    a owl:DatatypeProperty ;
+    rdfs:label "identifier"@en ;
+    rdfs:comment """
+        An identifier for this SpatialEntity other than its IRI: the
+        contributing project's own record id ('GLOB_366') or an authority's
+        ('geonames:2654675'), with plato:namespace saying whose. A finding aid,
+        like a label: not a claim about the place.
+    """@en ;
+    rdfs:domain plato:SpatialEntity ;
+    rdfs:range xsd:string .
+
+plato:namespace
+    a owl:DatatypeProperty ;
+    rdfs:label "namespace"@en ;
+    rdfs:comment """
+        Whose identifier plato:entity_identifier is (e.g. 'geonames', 'wikidata',
+        'tgn', 'osm', 'pleiades', 'whg', or the contributing project's own short
+        name). Authority-sourced SpatialEntities carry their origin namespace;
+        contributed SpatialEntities that cannot be linked to any authority
+        receive the 'whg' namespace.
+    """@en ;
+    rdfs:domain plato:SpatialEntity ;
+    rdfs:range xsd:string .
+
+plato:ccodes
+    a owl:DatatypeProperty ;
+    rdfs:label "country codes"@en ;
+    rdfs:comment """
+        ISO 3166-1 alpha-2 codes of the modern countries whose territory
+        contains or overlaps this SpatialEntity, as in Linked Places Format.
+        A finding aid for search and matching, like a label: not evidence,
+        and not a claim about the past, so it needs no source. Where a
+        country is itself the subject of a historical claim ("this town lay
+        in the Kingdom of Aragon"), record it as a relation attestation.
+    """@en ;
+    rdfs:domain plato:SpatialEntity ;
+    rdfs:range xsd:string .
+
+
+# =============================================================================
+# Gazetteer Properties
+# =============================================================================
+
+plato:contains_entity
+    a owl:ObjectProperty ;
+    rdfs:label "contains entity"@en ;
+    rdfs:comment "Links a Gazetteer to a SpatialEntity it contains."@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range plato:SpatialEntity .
+
+plato:contains_attestation
+    a owl:ObjectProperty ;
+    rdfs:label "contains attestation"@en ;
+    rdfs:comment "Links a Gazetteer to an Attestation contributed within it."@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range plato:Attestation .
+
+plato:contains_identity_relation
+    a owl:ObjectProperty ;
+    rdfs:label "contains identity relation"@en ;
+    rdfs:comment """
+        Links a Gazetteer to an IdentityRelation asserted within it. The
+        submission profiles carry identity relations at the top level of a
+        document, beside the entities and attestations, and this is the
+        property that top level maps to.
+    """@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range plato:IdentityRelation .
+
+# A project's own relation types ('flows into', 'carries post to') are declared once
+# in the document that uses them, where a reader looks for vocabulary, not inside
+# whichever citation first needs one. dcterms:hasPart already links a gazetteer to
+# its statistical tables; a link of its own lets a reader tell the two apart without
+# guessing from what each node carries.
+
+plato:declares_relation_type
+    a owl:ObjectProperty ;
+    rdfs:label "declares relation type"@en ;
+    rdfs:comment """
+        Links a Gazetteer to a RelationType it declares for its own use: a
+        project's 'flows into', with its label, inverse label and the starter
+        type it narrows (plato:broader_relation). The JSON profiles carry
+        these in a document-level relationTypes array, beside dataSets. A
+        relation type PLATO declares needs no declaration here.
+    """@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range plato:RelationType .
+
+plato:member_of_group
+    a owl:ObjectProperty ;
+    rdfs:label "member of group"@en ;
+    rdfs:comment "Links a Gazetteer to a GazetteerGroup."@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range plato:GazetteerGroup .
+
+plato:gazetteer_status
+    a owl:DatatypeProperty ;
+    rdfs:label "status"@en ;
+    rdfs:comment "Publication status: 'draft' or 'published'. From 'published' on, the Gazetteer's attestations are append-only (see plato:Gazetteer)."@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range xsd:string .
+
+plato:gazetteer_owner
+    a owl:ObjectProperty ;
+    rdfs:label "owner"@en ;
+    rdfs:domain plato:Gazetteer ;
+    rdfs:range plato:Contributor .
+
+
+# =============================================================================
+# Starter Vocabularies
+# =============================================================================
+# The object properties that range over skos:Concept delegate their values to
+# concept schemes rather than fixing them in the class model, so that a
+# project can extend a vocabulary without an ontology release. The starter
+# concepts named in the property comments are declared here, so that the
+# IRIs data points at are terms of this ontology and resolve to a definition.
+# Each scheme is open: a project may add concepts in its own namespace, and
+# should document them in its gazetteer metadata.
+#
+# RelationType authority instances are declared for containment, which every
+# gazetteer needs first; for routes, itineraries and networks; and for the
+# part a place plays in the history of a person, an object or an event, as
+# Linked Traces records it. Others (capital_of, successor_to, ...) are left to
+# project vocabularies, which may say which starter type each narrows with
+# plato:broader_relation. Four Types are declared so that routes, itineraries,
+# networks and their segments can be told from places by any consumer.
+
+plato:FormStatusScheme
+    a skos:ConceptScheme ;
+    rdfs:label "form status"@en ;
+    rdfs:comment "Starter concepts for plato:form_status. The status of the name form an attestation contributes."@en .
+
+plato:Attested
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "attested"@en ;
+    skos:definition "A form read in the cited source. The default form status, usually omitted."@en .
+
+plato:Headword
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "headword"@en ;
+    skos:definition "The editorial or preferred form under which the cited authority files the entry. A scholarly decision rather than a reading."@en .
+
+plato:Normalised
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "normalised"@en ;
+    skos:definition "A form derived from an attested one for matching or search, attested by no source and carrying no independent evidential value."@en .
+
+plato:Reconstructed
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "reconstructed"@en ;
+    skos:definition "A form inferred but not attested; the philologists' asterisked form."@en .
+
+plato:Preferred
+    a skos:Concept ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "preferred"@en ;
+    skos:definition "The form the contributing project prefers for display and search: a project decision, so the cited source may show a different form."@en .
+
+plato:OccurrenceContextScheme
+    a skos:ConceptScheme ;
+    rdfs:label "occurrence context"@en ;
+    rdfs:comment "Starter concepts for plato:occurrence_context. The capacity in which an attested form occurs in its source."@en .
+
+plato:Direct
+    a skos:Concept ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "direct"@en ;
+    skos:definition "The form refers to the SpatialEntity directly. The default occurrence context, usually omitted."@en .
+
+plato:InPersonalName
+    a skos:Concept ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "in personal name"@en ;
+    skos:definition "The form occurs only as an element of a personal name, a surname or by-name; the (p) of the place-name surveys."@en .
+
+plato:InFieldName
+    a skos:Concept ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "in field name"@en ;
+    skos:definition "The form survives only as an element of a later minor name, such as a field name."@en .
+
+plato:AttributionStatusScheme
+    a skos:ConceptScheme ;
+    rdfs:label "attribution status"@en ;
+    rdfs:comment "Starter concepts for plato:attribution_status. Whether the attribution of evidence to a cited source was stated or resolved editorially."@en .
+
+plato:AttributionStated
+    a skos:Concept ;
+    skos:inScheme plato:AttributionStatusScheme ;
+    skos:prefLabel "attribution stated"@en ;
+    skos:definition "The source is named where the form occurs. The default attribution status, usually omitted."@en .
+
+plato:AttributionInferred
+    a skos:Concept ;
+    skos:inScheme plato:AttributionStatusScheme ;
+    skos:prefLabel "attribution inferred"@en ;
+    skos:definition "The source was given as ibidem or idem and resolved by an editor, so the attribution is inferred rather than stated."@en .
+
+plato:TranscriptionAccuracyScheme
+    a skos:ConceptScheme ;
+    rdfs:label "transcription accuracy"@en ;
+    rdfs:comment "Starter concepts for plato:transcription_accuracy. How faithfully a transcribed value renders what the source shows."@en .
+
+plato:TranscriptionAccurate
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "accurate"@en ;
+    skos:definition "The transcription renders what the source shows."@en .
+
+plato:TranscriptionInaccurate
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "inaccurate"@en ;
+    skos:definition "The transcription departs from what the source shows, by misreading or error, but is a reading of something the source contains."@en .
+
+plato:TranscriptionFalse
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "false"@en ;
+    skos:definition "The transcribed form is not in the source at all: a ghost form, kept because it circulates and must be recognisable."@en .
+
+plato:TranscriptionCompletenessScheme
+    a skos:ConceptScheme ;
+    rdfs:label "transcription completeness"@en ;
+    rdfs:comment "Starter concepts for plato:transcription_completeness. Whether a transcribed value is whole, and if not, whether the lost part can be supplied."@en .
+
+plato:TranscriptionComplete
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "complete"@en ;
+    skos:definition "Nothing of the value is lost."@en .
+
+plato:TranscriptionReconstructable
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "reconstructable"@en ;
+    skos:definition "Part of the value is lost, damaged or abbreviated, but can be supplied with confidence."@en .
+
+plato:TranscriptionNonReconstructable
+    a skos:Concept ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "not reconstructable"@en ;
+    skos:definition "Part of the value is lost and cannot be supplied."@en .
+
+plato:SourceStanceScheme
+    a skos:ConceptScheme ;
+    rdfs:label "source stance"@en ;
+    rdfs:comment "Starter concepts for plato:source_stance. How firmly the source itself asserts what an attestation records, as distinct from anyone's confidence in it."@en .
+
+plato:StanceAsserted
+    a skos:Concept ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "asserted"@en ;
+    skos:definition "The source states it as so, on its own account. The default source stance, usually omitted."@en .
+
+plato:StanceReported
+    a skos:Concept ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "reported"@en ;
+    skos:definition "The source passes it on without vouching for it: 'it is said', 'as Cambden noteth'."@en .
+
+plato:StanceTentative
+    a skos:Concept ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "tentative"@en ;
+    skos:definition "The source states it, but with a hedge: 'as it seems', 'were (if not are)'."@en .
+
+plato:StanceDoubted
+    a skos:Concept ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "doubted"@en ;
+    skos:definition "The source raises it and declines to settle it. Not a denial, which is plato:negated."@en .
+
+plato:GeometryRoleScheme
+    a skos:ConceptScheme ;
+    rdfs:label "geometry role"@en ;
+    rdfs:comment "Starter concepts for plato:geometry_role. What a geometry depicts, as distinct from how precisely it is known."@en .
+
+plato:Extent
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "extent"@en ;
+    skos:definition "The built or bounded extent of the SpatialEntity."@en .
+
+plato:FeaturePoint
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "feature point"@en ;
+    skos:definition "The location of a specific central feature of the SpatialEntity, such as a market place or a church."@en .
+
+plato:RepresentativePoint
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "representative point"@en ;
+    skos:definition "A proxy point standing in for the whole SpatialEntity, for indexing and display; it need not depict any feature of it."@en .
+
+plato:LabelAnchor
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "label anchor"@en ;
+    skos:definition "The anchor point of a map label."@en .
+
+plato:Itinerary
+    a skos:Concept ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "itinerary"@en ;
+    skos:definition "A line tracing a route or journey."@en .
+
+plato:RelativeQualifierScheme
+    a skos:ConceptScheme ;
+    rdfs:label "relative qualifier"@en ;
+    rdfs:comment "Starter concepts for plato:relative_qualifier. How a facet is defined relative to its anchor when bearing and distance are not applicable or not sufficient."@en .
+
+plato:Near
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "near"@en ;
+    skos:definition "Close to the anchor, without a stated bearing or distance."@en .
+
+plato:Within
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "within"@en ;
+    skos:definition "Inside the anchor."@en .
+
+plato:Beyond
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "beyond"@en ;
+    skos:definition "On the far side of the anchor from the point of view of the source."@en .
+
+plato:UpstreamOf
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "upstream of"@en ;
+    skos:definition "Upstream of the anchor along a watercourse."@en .
+
+plato:BetweenXAndY
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "between"@en ;
+    skos:definition "Between the anchor and a second anchor."@en .
+
+plato:DuringReignOf
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "during reign of"@en ;
+    skos:definition "A timespan defined by the reign or tenure of the anchor."@en .
+
+plato:VariantOf
+    a skos:Concept ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "variant of"@en ;
+    skos:definition "A name defined as a variant of the anchor name."@en .
+
+plato:MetaTypeScheme
+    a skos:ConceptScheme ;
+    rdfs:label "meta-attestation type"@en ;
+    rdfs:comment "Starter concepts for plato:has_meta_type. The nature of a meta-attestation's relationship to its target attestation."@en .
+
+plato:Contradicts
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "contradicts"@en ;
+    skos:definition "Asserts that the target attestation is incorrect."@en .
+
+plato:Supports
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "supports"@en ;
+    skos:definition "Provides additional evidence for the target attestation."@en .
+
+plato:Supersedes
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "supersedes"@en ;
+    skos:definition "Replaces the target attestation with newer information."@en .
+
+plato:Refines
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "refines"@en ;
+    skos:definition "Provides more precise information than the target attestation."@en .
+
+plato:Challenges
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "challenges"@en ;
+    skos:definition "Questions the validity of the target attestation."@en .
+
+plato:Bundles
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "bundles"@en ;
+    skos:definition "Groups the target with other related attestations."@en .
+
+plato:DerivedFrom
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "derived from"@en ;
+    skos:definition "This attestation's value was derived from the target attestation's, as a normalised search form is derived from an attested spelling."@en .
+
+plato:Annotates
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "annotates"@en ;
+    skos:definition "Adds a remark about the target attestation, with its own source, without supporting, contradicting or refining it. The remark is the meta-attestation's notes."@en .
+
+plato:AlternativeTo
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "alternative to"@en ;
+    skos:definition "This attestation and the target are alternative readings of the same evidence: at most one of them is right. Each keeps its own certainty. Link every alternative in a set to the same first one. A set of alternatives is one piece of evidence, not several, so it must be counted once."@en .
+
+plato:Retracts
+    a skos:Concept ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "retracts"@en ;
+    skos:definition "The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. For a claim its maker takes back, such as a bad import, where plato:Contradicts would read as one scholar disputing another. A tool showing the current state leaves a retracted attestation out. A retraction is itself an attestation: retracting it withdraws the withdrawal, and the target holds again."@en .
+
+# -----------------------------------------------------------------------------
+# Certainty levels
+# -----------------------------------------------------------------------------
+# The three words Linked Places Format uses for certainty, as CertaintyLevel
+# authority instances, for plato:certainty_level. A project may declare its own.
+
+plato:Certain
+    a plato:CertaintyLevel ;
+    plato:authority_title "certain"@en ;
+    rdfs:comment "The statement is certain: the source, or the contributor, has no doubt of it."@en .
+
+plato:LessCertain
+    a plato:CertaintyLevel ;
+    plato:authority_title "less certain"@en ;
+    rdfs:comment "The statement is probable but not certain."@en .
+
+plato:Uncertain
+    a plato:CertaintyLevel ;
+    plato:authority_title "uncertain"@en ;
+    rdfs:comment "The statement is doubtful: possible, but not established."@en .
+
+# -----------------------------------------------------------------------------
+# RelationType: containment
+# -----------------------------------------------------------------------------
+# Containment is the entity-to-entity relation every gazetteer needs first: a
+# parish in a hundred, a hundred in a county, a town in a region. It is
+# declared as a RelationType authority instance, so an attestation asserts it
+# through relates_to and has_relation_type like any other relation, with a
+# timespan, a source and a certainty. The Getty vocabulary's broaderPartitive
+# is the same relation, and is recorded as the authority URI so that data
+# already pointing at it can be aligned.
+
+plato:ContainedIn
+    a plato:RelationType ;
+    plato:authority_title "contained in"@en ;
+    plato:relation_label "contained_in" ;
+    plato:inverse_label "contains" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    plato:authority_uri "http://vocab.getty.edu/ontology#broaderPartitive"^^xsd:anyURI ;
+    rdfs:comment """
+        The subject SpatialEntity is contained in the target SpatialEntity, for
+        the attested timespan: a parish in a hundred, a hundred in a county.
+        Not an identity relation and not fixed by the class model; it is a
+        claim, with a source and a certainty, like any other attestation.
+    """@en .
+
+# -----------------------------------------------------------------------------
+# RelationTypes: routes, itineraries and networks
+# -----------------------------------------------------------------------------
+# The WHG v4 patterns. A route, an itinerary or a network is a SpatialEntity,
+# typed as such, and each member has an attestation about the member that
+# relates_to the whole with MemberOf, ordered where the source orders it by
+# plato:sequence. A connection between two members is an attestation about one
+# that relates_to the other with ConnectedTo or LeadsTo. Direction is carried
+# by the relation type and nowhere else, so that a consumer filtering on the
+# type cannot miss it: a qualifier that turned an undirected relation into a
+# directed one would be silently misread by anything that ignored it.
+#
+# A physical link with its own existence (a leg of a road, a reach of a river)
+# is a SpatialEntity of type TypeSegment: a member of its route or network,
+# with BeginsAt and EndsAt its end places (or HasEnd twice, if it has no
+# direction), and its length and other figures as PropertyValues. Segments
+# never use ConnectedTo or LeadsTo for their ends: those always join one place
+# to another, so that "the places connected to Londinium" never returns a
+# segment, and a walk across a network does not take two steps for every one. A link that is only a relationship (two cities that
+# exchanged letters) is the ConnectedTo or LeadsTo attestation itself, with
+# its figures as that attestation's PropertyValues.
+
+plato:MemberOf
+    a plato:RelationType ;
+    plato:authority_title "member of"@en ;
+    plato:relation_label "member_of" ;
+    plato:inverse_label "has_member" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity (a route, itinerary or network)" ;
+    rdfs:comment """
+        The subject is a member of the target route, itinerary or network: a
+        station on a road, a stop on a journey, a port in a trade network, a
+        segment of a river system. Its position, where the source gives one,
+        is plato:sequence on the same attestation. A route may be a member of
+        another route (one stage of a pilgrimage), but not, through any chain
+        of memberships, of itself. Not containment: a town on a road is not
+        within it, and a network's members need not lie inside anything.
+    """@en .
+
+plato:ConnectedTo
+    a plato:RelationType ;
+    plato:authority_title "connected to"@en ;
+    plato:relation_label "connected_to" ;
+    plato:inverse_label "connected_to" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The subject and target are directly connected, in no particular
+        direction: an attestation that A is connected to B says the same as
+        one that B is connected to A. For a connection that runs one way, use
+        plato:LeadsTo. A connection known in both directions from sources that
+        each give one is better recorded as two LeadsTo attestations, each
+        with its own source, than as one ConnectedTo.
+    """@en .
+
+plato:LeadsTo
+    a plato:RelationType ;
+    plato:authority_title "leads to"@en ;
+    plato:relation_label "leads_to" ;
+    plato:inverse_label "reached_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        A directed connection, from the subject (attests_about) to the target
+        (relates_to): one river flowing into another, a post road carrying
+        mail from one town to the next, letters sent from one city to
+        another. It joins two places; the reaches and legs of a network are
+        segments, whose direction is given by plato:BeginsAt and
+        plato:EndsAt. Not river-specific: a project declares its own narrower types ('flows
+        into', 'carries post to') with plato:broader_relation pointing here,
+        so that a consumer that knows only LeadsTo still follows them in the
+        right direction.
+    """@en .
+
+plato:BeginsAt
+    a plato:RelationType ;
+    plato:authority_title "begins at"@en ;
+    plato:relation_label "begins_at" ;
+    plato:inverse_label "beginning_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The subject segment begins at the target: a leg of an itinerary at the
+        station it leaves, a river reach at its upstream confluence. With
+        plato:EndsAt it gives a segment a direction. A segment with no
+        direction is joined to its two ends with plato:HasEnd.
+    """@en .
+
+plato:EndsAt
+    a plato:RelationType ;
+    plato:authority_title "ends at"@en ;
+    plato:relation_label "ends_at" ;
+    plato:inverse_label "end_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The subject segment ends at the target: a leg of an itinerary at the
+        station it reaches, a river reach at its downstream confluence. See
+        plato:BeginsAt.
+    """@en .
+
+plato:HasEnd
+    a plato:RelationType ;
+    plato:authority_title "has end"@en ;
+    plato:relation_label "has_end" ;
+    plato:inverse_label "one_end_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_range "SpatialEntity" ;
+    rdfs:comment """
+        The subject segment has the target as one of its ends, in no
+        particular direction: a stretch of road between two towns, walked
+        either way. An undirected segment has two HasEnd attestations. Not
+        plato:ConnectedTo, which joins two places directly: were a segment
+        connected to its ends, every place would be two steps from its
+        neighbours.
+    """@en .
+
+# -----------------------------------------------------------------------------
+# RelationTypes: people, objects and events (Linked Traces)
+# -----------------------------------------------------------------------------
+# Linked Traces annotated places with their part in things that are not
+# spatial. In PLATO each such statement is an attestation about the place that
+# relates_to the person, object or event by its IRI, with a plato:related_label
+# to name it. These are the relations Linked Traces and WHG's collections used
+# most; a project may declare more. A journey is not among them: its waypoints,
+# stops, origin and destination are members of an itinerary, with
+# plato:MemberOf, ordered by plato:sequence, their stays given by timespans. Nor
+# are thematic keywords ('coastal trade', 'politics'): they are not relations,
+# and belong in notes or, where they classify, in a Type.
+
+plato:BirthplaceOf
+    a plato:RelationType ;
+    plato:authority_title "birthplace of"@en ;
+    plato:relation_label "birthplace_of" ;
+    plato:inverse_label "born_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "person" ;
+    rdfs:comment "The subject is where the target person was born."@en .
+
+plato:DeathplaceOf
+    a plato:RelationType ;
+    plato:authority_title "deathplace of"@en ;
+    plato:relation_label "deathplace_of" ;
+    plato:inverse_label "died_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "person" ;
+    rdfs:comment "The subject is where the target person died."@en .
+
+plato:ResidenceOf
+    a plato:RelationType ;
+    plato:authority_title "residence of"@en ;
+    plato:relation_label "residence_of" ;
+    plato:inverse_label "resided_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "person or group" ;
+    rdfs:comment "The target person or group lived at the subject, for the attested timespan."@en .
+
+plato:FindspotOf
+    a plato:RelationType ;
+    plato:authority_title "findspot of"@en ;
+    plato:relation_label "findspot_of" ;
+    plato:inverse_label "found_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "object" ;
+    rdfs:comment "The target object (a coin, an inscription, a manuscript) was found at the subject. The timespan is when it was found, if known."@en .
+
+plato:SettingOf
+    a plato:RelationType ;
+    plato:authority_title "setting of"@en ;
+    plato:relation_label "setting_of" ;
+    plato:inverse_label "took_place_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "event" ;
+    rdfs:comment "The target event (a battle, a council, a fair) took place at the subject, wholly or in part."@en .
+
+plato:WorkplaceOf
+    a plato:RelationType ;
+    plato:authority_title "workplace of"@en ;
+    plato:relation_label "workplace_of" ;
+    plato:inverse_label "worked_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_range "person or group" ;
+    rdfs:comment "The target person or group worked, or held office, at the subject, for the attested timespan: Linked Traces' heldOffice, and work generally."@en .
+
+# -----------------------------------------------------------------------------
+# Types: routes, itineraries, networks and segments
+# -----------------------------------------------------------------------------
+# What kind of entity a SpatialEntity is, is a Type attestation, and usually a
+# term from a vocabulary such as the AAT. These four are declared because a
+# platform's behaviour depends on them: it draws a route from its ordered
+# members, computes an itinerary's span, and may leave segments out of lists
+# of places, where "Londinium to Caesaromagus" would be a pseudo-place. A Type
+# attestation points at one with its IRI as the type identifier. The
+# distinction between a route and an itinerary is WHG's: a route is a way, and
+# an itinerary is a journey made along one, dated stop by stop.
+
+plato:TypeRoute
+    a plato:Type ;
+    plato:type_label "route"@en ;
+    rdfs:comment "An ordered set of places making a way: a road, a sea lane, a pilgrimage route. Its timespan, if any, is when it was in use, not when anyone travelled it."@en .
+
+plato:TypeItinerary
+    a plato:Type ;
+    plato:type_label "itinerary"@en ;
+    rdfs:comment "A journey made through places in order, each stop with its own timespan: a traveller's tour, a royal progress, a ship's voyage. Not plato:Itinerary, which is a geometry role (a line tracing a route or journey)."@en .
+
+plato:TypeNetwork
+    a plato:Type ;
+    plato:type_label "network"@en ;
+    rdfs:comment "A set of places and the connections between them, in no single order: a river system, a canal network, a correspondence network."@en .
+
+plato:TypeSegment
+    a plato:Type ;
+    plato:type_label "segment"@en ;
+    rdfs:comment "A physical link with an existence of its own: a leg of a route between two stations, a reach of a river between confluences. Platforms may leave segments out of lists and searches of places."@en .
+
+
+# =============================================================================
+# Candidates (PLACE clustering candidates)
+# =============================================================================
+# Candidates are algorithm-generated match suggestions, kept strictly separate
+# from confirmed identity assertions. They are not Attestations and they are
+# not IdentityRelations — they are candidates awaiting human review. When
+# confirmed, a Candidate is promoted to an IdentityRelation (which preserves
+# the algorithmic provenance via plato:promoted_from).
+
+plato:Candidate
+    a owl:Class ;
+    rdfs:label "Candidate"@en ;
+    rdfs:comment """
+        An algorithm-generated match candidate between two SpatialEntities, produced
+        by the PLACE clustering engine. Candidates carry a similarity score,
+        algorithm version, and review status. They are explicitly not
+        IdentityRelations — they become IdentityRelations only when confirmed
+        by a human reviewer (linked back via plato:promoted_from).
+    """@en .
+
+plato:candidate_source
+    a owl:ObjectProperty ;
+    rdfs:label "source entity"@en ;
+    rdfs:domain plato:Candidate ;
+    rdfs:range plato:SpatialEntity .
+
+plato:candidate_candidate
+    a owl:ObjectProperty ;
+    rdfs:label "candidate entity"@en ;
+    rdfs:domain plato:Candidate ;
+    rdfs:range plato:SpatialEntity .
+
+plato:similarity_score
+    a owl:DatatypeProperty ;
+    rdfs:label "similarity score"@en ;
+    rdfs:domain plato:Candidate ;
+    rdfs:range xsd:float .
+
+plato:algorithm_version
+    a owl:DatatypeProperty ;
+    rdfs:label "algorithm version"@en ;
+    rdfs:domain plato:Candidate ;
+    rdfs:range xsd:string .
+
+plato:candidate_status
+    a owl:DatatypeProperty ;
+    rdfs:label "status"@en ;
+    rdfs:comment "Review status: 'suggested', 'confirmed', 'rejected'."@en ;
+    rdfs:domain plato:Candidate ;
+    rdfs:range xsd:string .
+
+plato:generated_at
+    a owl:DatatypeProperty ;
+    rdfs:label "generated at"@en ;
+    rdfs:domain plato:Candidate ;
+    rdfs:range xsd:dateTime .

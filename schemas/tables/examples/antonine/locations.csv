@@ -1,0 +1,6 @@
+place_id,latitude,longitude,wkt,geometry_role,precision_km,date,from,to,source_id,locator,attribution,citation_function,certainty,certainty_level,denied,stance,notes
+londinium,51.513335,-0.088949,,RepresentativePoint,,undated,,,pleiades,places/79574,,citesAsDataSource,,,,,
+durobrivae,51.389649,0.502597,,RepresentativePoint,,undated,,,pleiades,places/79433,,citesAsDataSource,,,,,
+durovernum,51.279876,1.08386,,RepresentativePoint,,undated,,,pleiades,places/79439,,citesAsDataSource,,,,,
+dubris,51.123013,1.307512,,RepresentativePoint,,undated,,,pleiades,places/79646,,citesAsDataSource,,,,,
+lemanis,51.068468,1.021146,,RepresentativePoint,,undated,,,pleiades,places/79647,,citesAsDataSource,,,,,
