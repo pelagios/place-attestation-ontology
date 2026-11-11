@@ -14,6 +14,21 @@ matching software suggests, kept beside a dataset rather than in it (see
 | **attestation-centric** | you are adding evidence about places that already exist elsewhere, referring to them by URI | [attestation-centric.schema.json](https://w3id.org/plato/schemas/attestation-centric.schema.json) |
 | **candidate set** | you are publishing the matches your matching software suggested for a dataset, for people to review | [candidate-set.schema.json](https://w3id.org/plato/schemas/candidate-set.schema.json) |
 
+The two dataset formats say the same thing. Whichever you choose, what you
+record is attestations (a name, a type, a relation, a figure, each with its
+source), and each attestation is about one place. Expanded with the JSON-LD
+context, a place-centric document and an attestation-centric one give the same
+attestations in RDF, with the same content and provenance. They differ only
+in where the place is written, and so in a few bookkeeping statements (which
+places the document contains, and their labels): inside the document, with
+its label and its attestations nested under it (place-centric), or by
+reference to a place described elsewhere (attestation-centric). So choose by
+whether the places are new in this document. If they are all new, as in the
+[Valor Ecclesiasticus example](#worked-examples), place-centric is the natural
+shape, and it is the only one that gives each place a label; the
+attestation-centric format carries a place's label only through
+`newSpatialEntities`, which nests its attestations anyway.
+
 All three are built from the shared definitions in
 [plato.schema.json](https://w3id.org/plato/schemas/plato.schema.json), which
 they refer to by relative path, so keep the files together when
@@ -232,6 +247,15 @@ examples that belong to a page of this guide are explained there.
 - [place-centric-statistics.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-statistics.json):
   figures from a statistical table, with their dimensions (see
   [Statistical tables](statistics.md)).
+- [place-centric-valor.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-valor.json):
+  a sample of the Valor Ecclesiasticus dataset (the 1535 survey of Church of
+  England benefices, as printed in 1810-1834; CC BY-NC 4.0, credited in the
+  file): an index entry kept as printed beside its editorial head-name, a
+  place nested in a deanery and a diocese that skip an unprinted
+  archdeaconry, a link to a historical parish, a religious house with its
+  possessions, and the King's Books value and tenths that Ecton printed in
+  pounds, shillings and pence, with the printed figures as the source's
+  wording and the value in pence derived.
 - [place-centric-antonine.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-antonine.json),
   [place-centric-king-john.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-king-john.json),
   [place-centric-river-idle.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-river-idle.json)

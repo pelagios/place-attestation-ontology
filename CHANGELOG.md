@@ -13,8 +13,27 @@ were made under the earlier policy.
 
 ## Unreleased
 
+### Schemas
+
+- A figure's `attributes` key may now take a list of values (`attributeValue`
+  is a new shared definition), so one figure can carry two flags under one key.
+  The JSON-LD context already read such a list as one statement per value; the
+  schema had refused it. A document that validated before still does. Not yet
+  in PLATO tools' converters: check them before relying on it.
+
+### Examples
+
+- `place-centric-valor.json`: a sample of the Valor Ecclesiasticus dataset
+  (CC BY-NC 4.0, credited in the file), with the figures Ecton printed in
+  pounds, shillings and pence.
+- `place-centric-statistics.json`: one figure now carries two values under
+  one `attributes` key (`obsStatus`: estimated and provisional).
+
 ### Guide
 
+- The JSON page says that the two dataset formats give the same attestations
+  in RDF and differ only in where the place is written, and how to choose
+  between them; it lists the Valor example.
 - The Converting section of the tools page points to the vocabularies as
   SKOS.
 - Making a new version keep the append-only rule (PLATO tools' Revise, on

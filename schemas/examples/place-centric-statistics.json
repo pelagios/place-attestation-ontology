@@ -76,7 +76,13 @@
                   "@id": "http://purl.org/linked-data/sdmx/2009/code#sex-T"
                 }
               },
-              "universe": "https://whgazetteer.org/example/table/occupations-1851/all/total"
+              "universe": "https://whgazetteer.org/example/table/occupations-1851/all/total",
+              "attributes": {
+                "http://purl.org/linked-data/sdmx/2009/attribute#obsStatus": [
+                  { "@id": "http://purl.org/linked-data/sdmx/2009/code#obsStatus-E" },
+                  { "@id": "http://purl.org/linked-data/sdmx/2009/code#obsStatus-P" }
+                ]
+              }
             },
             {
               "@id": "https://whgazetteer.org/example/table/occupations-1851/agri/m",

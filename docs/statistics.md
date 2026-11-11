@@ -22,7 +22,9 @@ things added:
 - `dimensions`: its address in the table, one entry per coordinate, keyed by
   the web address of the table's dimension (occupation, sex, class);
 - `attributes`: facts about the figure itself, such as that the source
-  printed a dash, or that an amount is approximate;
+  printed a dash, or that an amount is approximate. A key may take a list of
+  values, for a fact that holds in more than one way, such as two flags on
+  one figure;
 - `universe`: the figure it is a part or share of, where the source says so.
 
 ```json

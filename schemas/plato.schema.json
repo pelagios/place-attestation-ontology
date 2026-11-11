@@ -312,6 +312,30 @@
       },
       "additionalProperties": false
     },
+    "attributeValue": {
+      "description": "One value of a figure's attribute: a literal, or a code given as {\"@id\": IRI}.",
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@id": {
+              "$ref": "#/$defs/uri"
+            }
+          },
+          "required": [
+            "@id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "propertyValue": {
       "type": "object",
       "description": "An attribute of a SpatialEntity that is not a Name, Geometry, Timespan or Type: a population, a valuation, an elevation, a market's trading day. The property is identified by URI in an external vocabulary; the value is either a literal or a structured object whose shape is declared by valueType. A value is required, except for a figure whose attributes give an sdmx-attribute:obsStatus, such as a printed dash.",
@@ -395,30 +419,21 @@
         },
         "attributes": {
           "type": "object",
-          "description": "Facts about the figure itself: each key the IRI of a qb:AttributeProperty, each value a code or a literal, becoming a direct statement on the observation. sdmx-attribute:obsStatus gives a cell's state, such as a printed dash ('nil or not applicable'); others give approximation or the period an amount covers.",
+          "description": "Facts about the figure itself: each key the IRI of a qb:AttributeProperty, each value a code or a literal, becoming a direct statement on the observation. sdmx-attribute:obsStatus gives a cell's state, such as a printed dash ('nil or not applicable'); others give approximation or the period an amount covers. A key may take a list of values where the fact holds in more than one way, such as two flags on one figure: each becomes its own statement.",
           "propertyNames": {
             "format": "iri"
           },
           "additionalProperties": {
             "oneOf": [
               {
-                "type": [
-                  "string",
-                  "number",
-                  "boolean"
-                ]
+                "$ref": "#/$defs/attributeValue"
               },
               {
-                "type": "object",
-                "properties": {
-                  "@id": {
-                    "$ref": "#/$defs/uri"
-                  }
-                },
-                "required": [
-                  "@id"
-                ],
-                "additionalProperties": false
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/attributeValue"
+                }
               }
             ]
           }
