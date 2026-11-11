@@ -1,0 +1,951 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix plato: <https://w3id.org/plato#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/plato/skos-view> dcterms:description "A SKOS rendering of the vocabularies of the PLATO ontology, derived from it and not edited. The ontology is normative."@en ;
+    dcterms:source <https://w3id.org/plato/0.9.0-alpha.2> ;
+    dcterms:title "PLATO vocabularies as SKOS"@en ;
+    owl:versionInfo "0.9.0-alpha.2" .
+
+plato:AbsorbedBy a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject ceased and its territory, or a part of it, passed to the
+        target, which carried on under its own identity, from the attested
+        date: a municipality annexed by its neighbour, or dissolved and
+        shared out among several, one attestation for each. The target does
+        not become a different entity by absorbing, so it has no attestation
+        of its own for the event; a source that says the larger unit was
+        thereby enlarged is saying something about its extent, which belongs
+        in a geometry or property value with its own timespan.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:broader plato:SucceededBy ;
+    skos:definition "The subject ceased and its territory, or a part of it, passed to the target, which carried on under its own identity, from the attested date: a municipality annexed by its neighbour, or dissolved and shared out among several, one attestation for each. The target does not become a different entity by absorbing, so it has no attestation of its own for the event; a source that says the larger unit was thereby enlarged is saying something about its extent, which belongs in a geometry or property value with its own timespan."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "absorbed_by" ;
+    skos:prefLabel "absorbed by"@en ;
+    plato:authority_title "absorbed by"@en ;
+    plato:broader_relation plato:SucceededBy ;
+    plato:inverse_label "absorbed" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "absorbed_by" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:AlternativeTo a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "This attestation and the target are alternative readings of the same evidence: at most one of them is right. Each keeps its own certainty. Link every alternative in a set to the same first one. A set of alternatives is one piece of evidence, not several, so it must be counted once."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "alternative to"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:Annotates a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Adds a remark about the target attestation, with its own source, without supporting, contradicting or refining it. The remark is the meta-attestation's notes."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "annotates"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:Attested a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A form read in the cited source. The default form status, usually omitted."@en ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "attested"@en ;
+    skos:topConceptOf plato:FormStatusScheme .
+
+plato:AttributionInferred a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The source was given as ibidem or idem and resolved by an editor, so the attribution is inferred rather than stated."@en ;
+    skos:inScheme plato:AttributionStatusScheme ;
+    skos:prefLabel "attribution inferred"@en ;
+    skos:topConceptOf plato:AttributionStatusScheme .
+
+plato:AttributionStated a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The source is named where the form occurs. The default attribution status, usually omitted."@en ;
+    skos:inScheme plato:AttributionStatusScheme ;
+    skos:prefLabel "attribution stated"@en ;
+    skos:topConceptOf plato:AttributionStatusScheme .
+
+plato:BeginsAt a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject segment begins at the target: a leg of an itinerary at the
+        station it leaves, a river reach at its upstream confluence. With
+        plato:EndsAt it gives a segment a direction. A segment with no
+        direction is joined to its two ends with plato:HasEnd.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject segment begins at the target: a leg of an itinerary at the station it leaves, a river reach at its upstream confluence. With plato:EndsAt it gives a segment a direction. A segment with no direction is joined to its two ends with plato:HasEnd."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "begins_at" ;
+    skos:prefLabel "begins at"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "begins at"@en ;
+    plato:inverse_label "beginning_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_label "begins_at" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:BetweenXAndY a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Between two anchors, given as two values of plato:relative_to, in no particular order."@en ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "between"@en ;
+    skos:topConceptOf plato:RelativeQualifierScheme .
+
+plato:Beyond a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "On the far side of the anchor from the point of view of the source."@en ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "beyond"@en ;
+    skos:topConceptOf plato:RelativeQualifierScheme .
+
+plato:BirthplaceOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The subject is where the target person was born."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject is where the target person was born."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "birthplace_of" ;
+    skos:prefLabel "birthplace of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "birthplace of"@en ;
+    plato:inverse_label "born_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "birthplace_of" ;
+    plato:relation_range "person" .
+
+plato:Bundles a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Groups the target with other related attestations."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "bundles"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:Certain a skos:Concept,
+        plato:CertaintyLevel ;
+    rdfs:comment "The statement is certain: the source, or the contributor, has no doubt of it."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The statement is certain: the source, or the contributor, has no doubt of it."@en ;
+    skos:inScheme plato:CertaintyLevelScheme ;
+    skos:prefLabel "certain"@en ;
+    skos:topConceptOf plato:CertaintyLevelScheme ;
+    plato:authority_title "certain"@en .
+
+plato:Challenges a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Questions the validity of the target attestation."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "challenges"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:ConnectedTo a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject and target are directly connected, in no particular
+        direction: an attestation that A is connected to B says the same as
+        one that B is connected to A. For a connection that runs one way, use
+        plato:LeadsTo. A connection known in both directions from sources that
+        each give one is better recorded as two LeadsTo attestations, each
+        with its own source, than as one ConnectedTo.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject and target are directly connected, in no particular direction: an attestation that A is connected to B says the same as one that B is connected to A. For a connection that runs one way, use plato:LeadsTo. A connection known in both directions from sources that each give one is better recorded as two LeadsTo attestations, each with its own source, than as one ConnectedTo."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "connected_to" ;
+    skos:prefLabel "connected to"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "connected to"@en ;
+    plato:inverse_label "connected_to" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "connected_to" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:ContainedIn a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject SpatialEntity is contained in the target SpatialEntity, for
+        the attested timespan: a parish in a hundred, a hundred in a county.
+        Not an identity relation and not fixed by the class model; it is a
+        claim, with a source and a certainty, like any other attestation.
+
+        When a dataset's containing regions are matched to a gazetteer (a
+        parish's county and country, looked up level by level), two claims
+        are made, and kept apart. The dataset's own claim is ContainedIn,
+        pointing at a region minted from the dataset itself, one for each
+        full chain of containers (England, Surrey), never for the name
+        alone, so that two regions with one name in different chains are not
+        merged. The reviewer's decision that this region is the gazetteer's is
+        an IdentityRelation from it, whose promoted_from names the Candidate
+        that holds the matching software's similarity_score. A match score is
+        not a certainty, so it is never put on the containment. In Linked
+        Places Format the two are written together as one
+        gvp:broaderPartitive relation: its relationTo is the identity's
+        object, its certainty the identity attestation's certainty level, its
+        whg_match_score the Candidate's score and its label the region's
+        name. A region assigned by hand, with no software suggestion, may be
+        stated directly against the gazetteer's address instead.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    rdfs:seeAlso <http://vocab.getty.edu/ontology#broaderPartitive> ;
+    skos:definition "The subject SpatialEntity is contained in the target SpatialEntity, for the attested timespan: a parish in a hundred, a hundred in a county. Not an identity relation and not fixed by the class model; it is a claim, with a source and a certainty, like any other attestation. When a dataset's containing regions are matched to a gazetteer (a parish's county and country, looked up level by level), two claims are made, and kept apart. The dataset's own claim is ContainedIn, pointing at a region minted from the dataset itself, one for each full chain of containers (England, Surrey), never for the name alone, so that two regions with one name in different chains are not merged. The reviewer's decision that this region is the gazetteer's is an IdentityRelation from it, whose promoted_from names the Candidate that holds the matching software's similarity_score. A match score is not a certainty, so it is never put on the containment. In Linked Places Format the two are written together as one gvp:broaderPartitive relation: its relationTo is the identity's object, its certainty the identity attestation's certainty level, its whg_match_score the Candidate's score and its label the region's name. A region assigned by hand, with no software suggestion, may be stated directly against the gazetteer's address instead."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "contained_in" ;
+    skos:prefLabel "contained in"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "contained in"@en ;
+    plato:authority_uri "http://vocab.getty.edu/ontology#broaderPartitive"^^xsd:anyURI ;
+    plato:inverse_label "contains" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "contained_in" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:Contradicts a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Asserts that the target attestation is incorrect."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "contradicts"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:DeathplaceOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The subject is where the target person died."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject is where the target person died."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "deathplace_of" ;
+    skos:prefLabel "deathplace of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "deathplace of"@en ;
+    plato:inverse_label "died_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "deathplace_of" ;
+    plato:relation_range "person" .
+
+plato:DepictedIn a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The subject is shown in the target: a photograph, map, plan, drawing or other image, identified by its address in a collection."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject is shown in the target: a photograph, map, plan, drawing or other image, identified by its address in a collection."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "depicted_in" ;
+    skos:prefLabel "depicted in"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "depicted in"@en ;
+    plato:inverse_label "depicts" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "depicted_in" ;
+    plato:relation_range "image, map or drawing" .
+
+plato:DerivedFrom a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "This attestation's value was derived from the target attestation's, as a normalised search form is derived from an attested spelling."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "derived from"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:Direct a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The form refers to the SpatialEntity directly. The default occurrence context, usually omitted."@en ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "direct"@en ;
+    skos:topConceptOf plato:OccurrenceContextScheme .
+
+plato:DuringReignOf a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A timespan defined by the reign or tenure of the anchor."@en ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "during reign of"@en ;
+    skos:topConceptOf plato:RelativeQualifierScheme .
+
+plato:Editorial a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A form written by the editors of the cited edition in their own words (commentary, apparatus, notes), not a form the edited source itself contains."@en ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "editorial"@en ;
+    skos:scopeNote "Use it when the citation is to an edition and the name occurs in the editors' text, not in the edited text. It says nothing about whether the place's name is attested elsewhere. Attested remains the default for forms the source contains."@en ;
+    skos:topConceptOf plato:FormStatusScheme .
+
+plato:EndsAt a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject segment ends at the target: a leg of an itinerary at the
+        station it reaches, a river reach at its downstream confluence. See
+        plato:BeginsAt.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject segment ends at the target: a leg of an itinerary at the station it reaches, a river reach at its downstream confluence. See plato:BeginsAt."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "ends_at" ;
+    skos:prefLabel "ends at"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "ends at"@en ;
+    plato:inverse_label "end_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_label "ends_at" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:EvidenceSpan a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The span of the evidence: the dates of the earliest and latest documents that mention the entity. Not the dates of the entity itself."@en ;
+    skos:inScheme plato:TimespanRoleScheme ;
+    skos:prefLabel "evidence span"@en ;
+    skos:topConceptOf plato:TimespanRoleScheme .
+
+plato:Extent a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The built or bounded extent of the SpatialEntity."@en ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "extent"@en ;
+    skos:topConceptOf plato:GeometryRoleScheme .
+
+plato:FeaturePoint a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The location of a specific central feature of the SpatialEntity, such as a market place or a church."@en ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "feature point"@en ;
+    skos:topConceptOf plato:GeometryRoleScheme .
+
+plato:FindspotOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The target object (a coin, an inscription, a manuscript) was found at the subject. The timespan is when it was found, if known."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The target object (a coin, an inscription, a manuscript) was found at the subject. The timespan is when it was found, if known."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "findspot_of" ;
+    skos:prefLabel "findspot of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "findspot of"@en ;
+    plato:inverse_label "found_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "findspot_of" ;
+    plato:relation_range "object" .
+
+plato:HasEnd a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject segment has the target as one of its ends, in no
+        particular direction: a stretch of road between two towns, walked
+        either way. An undirected segment has two HasEnd attestations. Not
+        plato:ConnectedTo, which joins two places directly: were a segment
+        connected to its ends, every place would be two steps from its
+        neighbours.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject segment has the target as one of its ends, in no particular direction: a stretch of road between two towns, walked either way. An undirected segment has two HasEnd attestations. Not plato:ConnectedTo, which joins two places directly: were a segment connected to its ends, every place would be two steps from its neighbours."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "has_end" ;
+    skos:prefLabel "has end"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "has end"@en ;
+    plato:inverse_label "one_end_of" ;
+    plato:relation_domain "SpatialEntity (a segment)" ;
+    plato:relation_label "has_end" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:Headword a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The editorial or preferred form under which the cited authority files the entry. A scholarly decision rather than a reading."@en ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "headword"@en ;
+    skos:topConceptOf plato:FormStatusScheme .
+
+plato:HomelandOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The subject is land that the target people lived in or held, as the source says: the target is a people described elsewhere, identified by its address where it has one, and named by plato:related_label. A people is not itself a SpatialEntity."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject is land that the target people lived in or held, as the source says: the target is a people described elsewhere, identified by its address where it has one, and named by plato:related_label. A people is not itself a SpatialEntity."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "homeland_of" ;
+    skos:prefLabel "homeland of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "homeland of"@en ;
+    plato:inverse_label "has_homeland" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "homeland_of" ;
+    plato:relation_range "people" .
+
+plato:InFieldName a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The form survives only as an element of a later minor name, such as a field name."@en ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "in field name"@en ;
+    skos:topConceptOf plato:OccurrenceContextScheme .
+
+plato:InPersonalName a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The form occurs only as an element of a personal name, a surname or by-name; the (p) of the place-name surveys."@en ;
+    skos:inScheme plato:OccurrenceContextScheme ;
+    skos:prefLabel "in personal name"@en ;
+    skos:topConceptOf plato:OccurrenceContextScheme .
+
+plato:Itinerary a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A line tracing a route or journey."@en ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "itinerary"@en ;
+    skos:topConceptOf plato:GeometryRoleScheme .
+
+plato:LabelAnchor a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The anchor point of a map label."@en ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "label anchor"@en ;
+    skos:topConceptOf plato:GeometryRoleScheme .
+
+plato:LeadsTo a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        A directed connection, from the subject (attests_about) to the target
+        (relates_to): one river flowing into another, a post road carrying
+        mail from one town to the next, letters sent from one city to
+        another. It joins two places; the reaches and legs of a network are
+        segments, whose direction is given by plato:BeginsAt and
+        plato:EndsAt. Not river-specific: a project declares its own narrower types ('flows
+        into', 'carries post to') with plato:broader_relation pointing here,
+        so that a consumer that knows only LeadsTo still follows them in the
+        right direction.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A directed connection, from the subject (attests_about) to the target (relates_to): one river flowing into another, a post road carrying mail from one town to the next, letters sent from one city to another. It joins two places; the reaches and legs of a network are segments, whose direction is given by plato:BeginsAt and plato:EndsAt. Not river-specific: a project declares its own narrower types ('flows into', 'carries post to') with plato:broader_relation pointing here, so that a consumer that knows only LeadsTo still follows them in the right direction."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "leads_to" ;
+    skos:prefLabel "leads to"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "leads to"@en ;
+    plato:inverse_label "reached_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "leads_to" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:LessCertain a skos:Concept,
+        plato:CertaintyLevel ;
+    rdfs:comment "The statement is probable but not certain."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The statement is probable but not certain."@en ;
+    skos:inScheme plato:CertaintyLevelScheme ;
+    skos:prefLabel "less certain"@en ;
+    skos:topConceptOf plato:CertaintyLevelScheme ;
+    plato:authority_title "less certain"@en .
+
+plato:MemberOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject is a member of the target route, itinerary or network: a
+        station on a road, a stop on a journey, a port in a trade network, a
+        segment of a river system. Its position, where the source gives one,
+        is plato:sequence on the same attestation. A route may be a member of
+        another route (one stage of a pilgrimage), but not, through any chain
+        of memberships, of itself. Not containment: a town on a road is not
+        within it, and a network's members need not lie inside anything.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The subject is a member of the target route, itinerary or network: a station on a road, a stop on a journey, a port in a trade network, a segment of a river system. Its position, where the source gives one, is plato:sequence on the same attestation. A route may be a member of another route (one stage of a pilgrimage), but not, through any chain of memberships, of itself. Not containment: a town on a road is not within it, and a network's members need not lie inside anything."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "member_of" ;
+    skos:prefLabel "member of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "member of"@en ;
+    plato:inverse_label "has_member" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "member_of" ;
+    plato:relation_range "SpatialEntity (a route, itinerary or network)" .
+
+plato:MergedInto a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject ceased, with at least one other entity, to form the
+        target, a new entity, from the attested date: two municipalities
+        merged into a third that took neither's identity. One attestation
+        for each party, all with the same target and date. If the target is
+        one of the parties carrying on under its old identity, it is an
+        absorption (plato:AbsorbedBy) whatever word the source uses, and
+        that word belongs in plato:source_label.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:broader plato:SucceededBy ;
+    skos:definition "The subject ceased, with at least one other entity, to form the target, a new entity, from the attested date: two municipalities merged into a third that took neither's identity. One attestation for each party, all with the same target and date. If the target is one of the parties carrying on under its old identity, it is an absorption (plato:AbsorbedBy) whatever word the source uses, and that word belongs in plato:source_label."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "merged_into" ;
+    skos:prefLabel "merged into"@en ;
+    plato:authority_title "merged into"@en ;
+    plato:broader_relation plato:SucceededBy ;
+    plato:inverse_label "formed_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "merged_into" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:Near a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Close to the anchor, without a stated bearing or distance."@en ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "near"@en ;
+    skos:topConceptOf plato:RelativeQualifierScheme .
+
+plato:Normalised a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A form derived from an attested one for matching or search, attested by no source and carrying no independent evidential value."@en ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "normalised"@en ;
+    skos:topConceptOf plato:FormStatusScheme .
+
+plato:Preferred a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The form the contributing project prefers for display and search: a project decision, so the cited source may show a different form."@en ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "preferred"@en ;
+    skos:topConceptOf plato:FormStatusScheme .
+
+plato:Reconstructed a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A form inferred but not attested; the philologists' asterisked form."@en ;
+    skos:inScheme plato:FormStatusScheme ;
+    skos:prefLabel "reconstructed"@en ;
+    skos:topConceptOf plato:FormStatusScheme .
+
+plato:Refines a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Provides more precise information than the target attestation."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "refines"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:RepresentativePoint a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A proxy point standing in for the whole SpatialEntity, for indexing and display; it need not depict any feature of it."@en ;
+    skos:inScheme plato:GeometryRoleScheme ;
+    skos:prefLabel "representative point"@en ;
+    skos:topConceptOf plato:GeometryRoleScheme .
+
+plato:ResidenceOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The target person or group lived at the subject, for the attested timespan."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The target person or group lived at the subject, for the attested timespan."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "residence_of" ;
+    skos:prefLabel "residence of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "residence of"@en ;
+    plato:inverse_label "resided_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "residence_of" ;
+    plato:relation_range "person or group" .
+
+plato:Retracts a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The target attestation is withdrawn: it no longer holds, and is kept only so that earlier states of the gazetteer can be reproduced. A Gazetteer retracts the attestations it made, such as a bad import; a maintainer signs for the Gazetteer, and is recorded as the retraction's contributor. It is not a claim about the person who first wrote the attestation. To dispute an attestation made by another Gazetteer, use plato:Contradicts. A tool showing the current state leaves a retracted attestation out. A retraction is itself an attestation: retracting it withdraws the withdrawal, and the target holds again."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "retracts"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:SettingOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The target event (a battle, a council, a fair) took place at the subject, wholly or in part."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The target event (a battle, a council, a fair) took place at the subject, wholly or in part."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "setting_of" ;
+    skos:prefLabel "setting of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "setting of"@en ;
+    plato:inverse_label "took_place_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "setting_of" ;
+    plato:relation_range "event" .
+
+plato:SplitInto a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The subject ceased and was divided, from the attested date, into new
+        entities that include the target: a municipality divided into two.
+        One attestation for each, with the same date. Land shared out among
+        entities that already existed is plato:AbsorbedBy, once for each.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:broader plato:SucceededBy ;
+    skos:definition "The subject ceased and was divided, from the attested date, into new entities that include the target: a municipality divided into two. One attestation for each, with the same date. Land shared out among entities that already existed is plato:AbsorbedBy, once for each."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "split_into" ;
+    skos:prefLabel "split into"@en ;
+    plato:authority_title "split into"@en ;
+    plato:broader_relation plato:SucceededBy ;
+    plato:inverse_label "split_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "split_into" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:StanceAsserted a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The source states it as so, on its own account. The default source stance, usually omitted."@en ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "asserted"@en ;
+    skos:topConceptOf plato:SourceStanceScheme .
+
+plato:StanceDoubted a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The source raises it and declines to settle it. Not a denial, which is plato:negated."@en ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "doubted"@en ;
+    skos:topConceptOf plato:SourceStanceScheme .
+
+plato:StanceReported a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The source passes it on without vouching for it: 'it is said', 'as Cambden noteth'."@en ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "reported"@en ;
+    skos:topConceptOf plato:SourceStanceScheme .
+
+plato:StanceTentative a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The source states it, but with a hedge: 'as it seems', 'were (if not are)'."@en ;
+    skos:inScheme plato:SourceStanceScheme ;
+    skos:prefLabel "tentative"@en ;
+    skos:topConceptOf plato:SourceStanceScheme .
+
+plato:SubjectOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The target is about the subject: an archival file, a site record, a report or a publication, identified by its address. Not a citation of the target as evidence for another statement, which is plato:has_citation."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The target is about the subject: an archival file, a site record, a report or a publication, identified by its address. Not a citation of the target as evidence for another statement, which is plato:has_citation."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "subject_of" ;
+    skos:prefLabel "subject of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "subject of"@en ;
+    plato:inverse_label "about" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "subject_of" ;
+    plato:relation_range "record, document or publication" .
+
+plato:Supersedes a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Replaces the target attestation with newer information."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "supersedes"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:Supports a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Provides additional evidence for the target attestation."@en ;
+    skos:inScheme plato:MetaTypeScheme ;
+    skos:prefLabel "supports"@en ;
+    skos:topConceptOf plato:MetaTypeScheme .
+
+plato:TranscriptionAccurate a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The transcription renders what the source shows."@en ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "accurate"@en ;
+    skos:topConceptOf plato:TranscriptionAccuracyScheme .
+
+plato:TranscriptionComplete a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Nothing of the value is lost."@en ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "complete"@en ;
+    skos:topConceptOf plato:TranscriptionCompletenessScheme .
+
+plato:TranscriptionFalse a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The transcribed form is not in the source at all: a ghost form, kept because it circulates and must be recognisable."@en ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "false"@en ;
+    skos:topConceptOf plato:TranscriptionAccuracyScheme .
+
+plato:TranscriptionInaccurate a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The transcription departs from what the source shows, by misreading or error, but is a reading of something the source contains."@en ;
+    skos:inScheme plato:TranscriptionAccuracyScheme ;
+    skos:prefLabel "inaccurate"@en ;
+    skos:topConceptOf plato:TranscriptionAccuracyScheme .
+
+plato:TranscriptionNonReconstructable a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Part of the value is lost and cannot be supplied."@en ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "not reconstructable"@en ;
+    skos:topConceptOf plato:TranscriptionCompletenessScheme .
+
+plato:TranscriptionReconstructable a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Part of the value is lost, damaged or abbreviated, but can be supplied with confidence."@en ;
+    skos:inScheme plato:TranscriptionCompletenessScheme ;
+    skos:prefLabel "reconstructable"@en ;
+    skos:topConceptOf plato:TranscriptionCompletenessScheme .
+
+plato:TransferredTo a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        Part of the subject's land passed to the target from the attested
+        date, and both carry on: a boundary change between two municipalities,
+        or a new municipality formed from part of a continuing one. The target
+        may therefore be an entity that already existed, or one that came into
+        being by the transfer. Neither is the other's successor, so this is
+        not a plato:SucceededBy; and if the subject ceased, it is
+        plato:AbsorbedBy or plato:SplitInto instead. The date is the
+        attestation's timespan. The land itself is not recorded here: a
+        geometry on this attestation would read as the subject's own extent.
+        Each party's extent before and after is its own geometry attestation,
+        with its own timespan; a source's description of what moved ('the
+        hamlet of Zuidwijk') is plato:source_label.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Part of the subject's land passed to the target from the attested date, and both carry on: a boundary change between two municipalities, or a new municipality formed from part of a continuing one. The target may therefore be an entity that already existed, or one that came into being by the transfer. Neither is the other's successor, so this is not a plato:SucceededBy; and if the subject ceased, it is plato:AbsorbedBy or plato:SplitInto instead. The date is the attestation's timespan. The land itself is not recorded here: a geometry on this attestation would read as the subject's own extent. Each party's extent before and after is its own geometry attestation, with its own timespan; a source's description of what moved ('the hamlet of Zuidwijk') is plato:source_label."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "transferred_to" ;
+    skos:prefLabel "transferred to"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "transferred to"@en ;
+    plato:inverse_label "received_from" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "transferred_to" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:TypeItinerary a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A journey made through places in order, each stop with its own timespan: a traveller's tour, a royal progress, a ship's voyage. Not plato:Itinerary, which is a geometry role (a line tracing a route or journey)."@en ;
+    skos:inScheme plato:EntityKindScheme ;
+    skos:prefLabel "itinerary"@en ;
+    skos:topConceptOf plato:EntityKindScheme .
+
+plato:TypeNetwork a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A set of places and the connections between them, in no single order: a river system, a canal network, a correspondence network."@en ;
+    skos:inScheme plato:EntityKindScheme ;
+    skos:prefLabel "network"@en ;
+    skos:topConceptOf plato:EntityKindScheme .
+
+plato:TypeRoute a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "An ordered set of places making a way: a road, a sea lane, a pilgrimage route. Its timespan, if any, is when it was in use, not when anyone travelled it."@en ;
+    skos:inScheme plato:EntityKindScheme ;
+    skos:prefLabel "route"@en ;
+    skos:topConceptOf plato:EntityKindScheme .
+
+plato:TypeSegment a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A physical link with an existence of its own: a leg of a route between two stations, a reach of a river between confluences. Platforms may leave segments out of lists and searches of places."@en ;
+    skos:inScheme plato:EntityKindScheme ;
+    skos:prefLabel "segment"@en ;
+    skos:topConceptOf plato:EntityKindScheme .
+
+plato:Uncertain a skos:Concept,
+        plato:CertaintyLevel ;
+    rdfs:comment "The statement is doubtful: possible, but not established."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The statement is doubtful: possible, but not established."@en ;
+    skos:inScheme plato:CertaintyLevelScheme ;
+    skos:prefLabel "uncertain"@en ;
+    skos:topConceptOf plato:CertaintyLevelScheme ;
+    plato:authority_title "uncertain"@en .
+
+plato:UpstreamOf a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Upstream of the anchor along a watercourse."@en ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "upstream of"@en ;
+    skos:topConceptOf plato:RelativeQualifierScheme .
+
+plato:VariantOf a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "A name defined as a variant of the anchor name."@en ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "variant of"@en ;
+    skos:topConceptOf plato:RelativeQualifierScheme .
+
+plato:WhenTrue a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The period during which what the attestation records held, according to the source. The default."@en ;
+    skos:inScheme plato:TimespanRoleScheme ;
+    skos:prefLabel "when true"@en ;
+    skos:topConceptOf plato:TimespanRoleScheme .
+
+plato:Within a skos:Concept ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "Inside the anchor."@en ;
+    skos:inScheme plato:RelativeQualifierScheme ;
+    skos:prefLabel "within"@en ;
+    skos:topConceptOf plato:RelativeQualifierScheme .
+
+plato:WorkplaceOf a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment "The target person or group worked, or held office, at the subject, for the attested timespan: Linked Traces' heldOffice, and work generally."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The target person or group worked, or held office, at the subject, for the attested timespan: Linked Traces' heldOffice, and work generally."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:notation "workplace_of" ;
+    skos:prefLabel "workplace of"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "workplace of"@en ;
+    plato:inverse_label "worked_at" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "workplace_of" ;
+    plato:relation_range "person or group" .
+
+plato:AttributionStatusScheme a skos:ConceptScheme ;
+    rdfs:label "attribution status"@en ;
+    rdfs:comment "Starter concepts for plato:attribution_status. Whether the attribution of evidence to a cited source was stated or resolved editorially."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:AttributionInferred,
+        plato:AttributionStated .
+
+plato:TimespanRoleScheme a skos:ConceptScheme ;
+    rdfs:label "timespan role"@en ;
+    rdfs:comment "Starter concepts for plato:timespan_role. What an attestation's timespans date: when what it records held, or the span of the evidence for it."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:EvidenceSpan,
+        plato:WhenTrue .
+
+plato:CertaintyLevelScheme a skos:ConceptScheme ;
+    rdfs:label "certainty levels"@en ;
+    rdfs:comment "Certainty in words, for a statement whose source gives no number."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:Certain,
+        plato:LessCertain,
+        plato:Uncertain .
+
+plato:OccurrenceContextScheme a skos:ConceptScheme ;
+    rdfs:label "occurrence context"@en ;
+    rdfs:comment "Starter concepts for plato:occurrence_context. The capacity in which an attested form occurs in its source."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:Direct,
+        plato:InFieldName,
+        plato:InPersonalName .
+
+plato:TranscriptionAccuracyScheme a skos:ConceptScheme ;
+    rdfs:label "transcription accuracy"@en ;
+    rdfs:comment "Starter concepts for plato:transcription_accuracy. How faithfully a transcribed value renders what the source shows."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:TranscriptionAccurate,
+        plato:TranscriptionFalse,
+        plato:TranscriptionInaccurate .
+
+plato:TranscriptionCompletenessScheme a skos:ConceptScheme ;
+    rdfs:label "transcription completeness"@en ;
+    rdfs:comment "Starter concepts for plato:transcription_completeness. Whether a transcribed value is whole, and if not, whether the lost part can be supplied."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:TranscriptionComplete,
+        plato:TranscriptionNonReconstructable,
+        plato:TranscriptionReconstructable .
+
+plato:SucceededBy a skos:Concept,
+        plato:RelationType ;
+    rdfs:comment """
+        The target took the subject's place from the attested date: a
+        parish replaced by a successor parish, a province by another. The
+        general succession, for a source that says an entity was succeeded
+        without saying how. It does not claim that the two are the same
+        entity (that is an IdentityRelation) or that one contains the other
+        (plato:ContainedIn). Use plato:MergedInto, plato:AbsorbedBy or
+        plato:SplitInto where the source says which kind of change it was;
+        each of those is also a SucceededBy.
+    """@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:definition "The target took the subject's place from the attested date: a parish replaced by a successor parish, a province by another. The general succession, for a source that says an entity was succeeded without saying how. It does not claim that the two are the same entity (that is an IdentityRelation) or that one contains the other (plato:ContainedIn). Use plato:MergedInto, plato:AbsorbedBy or plato:SplitInto where the source says which kind of change it was; each of those is also a SucceededBy."@en ;
+    skos:inScheme plato:RelationTypeScheme ;
+    skos:narrower plato:AbsorbedBy,
+        plato:MergedInto,
+        plato:SplitInto ;
+    skos:notation "succeeded_by" ;
+    skos:prefLabel "succeeded by"@en ;
+    skos:topConceptOf plato:RelationTypeScheme ;
+    plato:authority_title "succeeded by"@en ;
+    plato:inverse_label "succeeds" ;
+    plato:relation_domain "SpatialEntity" ;
+    plato:relation_label "succeeded_by" ;
+    plato:relation_range "SpatialEntity" .
+
+plato:EntityKindScheme a skos:ConceptScheme ;
+    rdfs:label "kind of spatial entity"@en ;
+    rdfs:comment "Starter concepts for the kinds of SpatialEntity a platform treats specially: routes, itineraries, networks and segments. A Type attestation names one in its type identifier."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:TypeItinerary,
+        plato:TypeNetwork,
+        plato:TypeRoute,
+        plato:TypeSegment .
+
+plato:SourceStanceScheme a skos:ConceptScheme ;
+    rdfs:label "source stance"@en ;
+    rdfs:comment "Starter concepts for plato:source_stance. How firmly the source itself asserts what an attestation records, as distinct from anyone's confidence in it."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:StanceAsserted,
+        plato:StanceDoubted,
+        plato:StanceReported,
+        plato:StanceTentative .
+
+plato:GeometryRoleScheme a skos:ConceptScheme ;
+    rdfs:label "geometry role"@en ;
+    rdfs:comment "Starter concepts for plato:geometry_role. What a geometry depicts, as distinct from how precisely it is known."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:Extent,
+        plato:FeaturePoint,
+        plato:Itinerary,
+        plato:LabelAnchor,
+        plato:RepresentativePoint .
+
+plato:FormStatusScheme a skos:ConceptScheme ;
+    rdfs:label "form status"@en ;
+    rdfs:comment "Starter concepts for plato:form_status. The status of the name form an attestation contributes."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:Attested,
+        plato:Editorial,
+        plato:Headword,
+        plato:Normalised,
+        plato:Preferred,
+        plato:Reconstructed .
+
+plato:RelativeQualifierScheme a skos:ConceptScheme ;
+    rdfs:label "relative qualifier"@en ;
+    rdfs:comment "Starter concepts for plato:relative_qualifier. How a facet is defined relative to its anchor when bearing and distance are not applicable or not sufficient."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:BetweenXAndY,
+        plato:Beyond,
+        plato:DuringReignOf,
+        plato:Near,
+        plato:UpstreamOf,
+        plato:VariantOf,
+        plato:Within .
+
+plato:MetaTypeScheme a skos:ConceptScheme ;
+    rdfs:label "meta-attestation type"@en ;
+    rdfs:comment "Starter concepts for plato:has_meta_type. The nature of a meta-attestation's relationship to its target attestation."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:AlternativeTo,
+        plato:Annotates,
+        plato:Bundles,
+        plato:Challenges,
+        plato:Contradicts,
+        plato:DerivedFrom,
+        plato:Refines,
+        plato:Retracts,
+        plato:Supersedes,
+        plato:Supports .
+
+plato:RelationTypeScheme a skos:ConceptScheme ;
+    rdfs:label "relation types"@en ;
+    rdfs:comment "PLATO's starter relation types: how one SpatialEntity, or a SpatialEntity and a person, object, event or record, are related by an attestation, read from the subject (attests_about) to the target (relates_to); plato:inverse_label reads it from the target. A project's own narrower types point at these with plato:broader_relation."@en ;
+    rdfs:isDefinedBy <https://w3id.org/plato> ;
+    skos:hasTopConcept plato:BeginsAt,
+        plato:BirthplaceOf,
+        plato:ConnectedTo,
+        plato:ContainedIn,
+        plato:DeathplaceOf,
+        plato:DepictedIn,
+        plato:EndsAt,
+        plato:FindspotOf,
+        plato:HasEnd,
+        plato:HomelandOf,
+        plato:LeadsTo,
+        plato:MemberOf,
+        plato:ResidenceOf,
+        plato:SettingOf,
+        plato:SubjectOf,
+        plato:SucceededBy,
+        plato:TransferredTo,
+        plato:WorkplaceOf .
+

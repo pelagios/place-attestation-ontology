@@ -1,0 +1,3 @@
+source_id,title,citation,uri,date,from,to,derived_from,licence
+datini-metadata,Datini Correspondence Metadata,"A. Franklin-Lyons, Datini Correspondence Metadata Project (BodoArXiv, 2024), doi:10.34055/osf.io/wgpm4, with the data at doi:10.17605/OSF.IO/MT25A: one record for each letter of the Datini archive, from the catalogue of the Archivio di Stato di Prato",https://doi.org/10.17605/OSF.IO/MT25A,2024,2024,2024,,https://creativecommons.org/licenses/by/4.0/
+letters-by-pair,Letters and delivery times by pair of cities,"Counts of letters, and median delivery times, for pairs of cities, worked out for this example on 29 September 2026 from the Datini Correspondence Metadata",,2026,2026,2026,datini-metadata,https://creativecommons.org/licenses/by/4.0/

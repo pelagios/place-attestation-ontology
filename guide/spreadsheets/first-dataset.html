@@ -1,0 +1,656 @@
+<!doctype html>
+<html class="no-js" lang="en-GB" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="author" title="About these documents" href="../about.html"><link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="A place-name survey example" href="survey-example.html"><link rel="prev" title="Organising data in spreadsheets" href="index.html">
+        <link rel="prefetch" href="../_static/plato-mark.svg" as="image">
+
+    <link rel="shortcut icon" href="../_static/favicon.svg"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>A first dataset, step by step - PLATO guide</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../_static/plato.css?v=0c54fe58" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">PLATO guide</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/plato-mark.svg" alt="Logo"/>
+  </div>
+  <span class="sidebar-brand-text">PLATO guide</span>
+</a>
+<p class="plato-status">
+  <a class="plato-badge" href="../about.html#experimental" aria-describedby="plato-status-tip">Experimental</a>
+  <span class="plato-tip" id="plato-status-tip" role="tooltip">PLATO is experimental: it is developed in the open and not yet fully tested, and its terms and schemas may change, or break, between releases. A renamed or withdrawn term is kept, marked as deprecated, for at least one release before it is removed. Each release is archived on Zenodo with its own DOI. PLATO tools has its own badge.</span>
+</p><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Why PLATO</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pelagios.org/plato-tools/">PLATO tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ideas.html">The ideas in five minutes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Organising data in spreadsheets</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">A first dataset, step by step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="survey-example.html">A place-name survey example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotations.html">Annotations from Recogito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tei.html">Place names in a TEI edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tables-of-places.html">Your own table of places: CSV, GeoJSON or a workbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Checking, converting and comparing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Routes, journeys and networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../routes/index.html">Routes, journeys and networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/antonine.html">A route: the Antonine Itinerary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/king-john.html">A journey: King John in 1215</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/river-idle.html">A river network: the lower Idle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/datini.html">A network of correspondence: the Datini letters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Sheet reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vocabularies.html">Vocabularies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../json.html">JSON formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics.html">Statistical tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-data.html">Linked data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About PLATO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/blob/main/docs/spreadsheets/first-dataset.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/pelagios/place-attestation-ontology/edit/main/docs/spreadsheets/first-dataset.md" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="a-first-dataset-step-by-step">
+<h1>A first dataset, step by step<a class="headerlink" href="#a-first-dataset-step-by-step" title="Link to this heading">¶</a></h1>
+<p>This walkthrough builds a small dataset from one source: a London customs
+account of 1480 to 1485 that mentions Bristol and Deptford Strand. It uses
+seven of the ten sheets. The finished tables are the <em>customs</em> example,
+which you can <a class="reference download internal" download="" href="../_downloads/f8939ed89a52c42f602a1565946e1c1e/plato-tables-example-customs.zip"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">as</span> <span class="pre">CSV</span> <span class="pre">files</span></code></a>
+and open beside this page.</p>
+<p>Start from the <a class="reference download internal" download="" href="../_downloads/8d309f7bd30064b980435d313e7fc588/plato-tables-template.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">temPlato</span> <span class="pre">workbook</span></code></a>.
+Only the columns you fill in are shown below; leave the others empty.</p>
+<section id="list-your-places">
+<h2>1. List your places<a class="headerlink" href="#list-your-places" title="Link to this heading">¶</a></h2>
+<p>One row per place, with an identifier you make up and a label to list it
+under. The label is only for display: the names the place has in your sources
+go in the names sheet.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">place_id</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">country_codes</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bristol</p></td>
+<td><p>Bristol</p></td>
+<td><p>GB</p></td>
+</tr>
+<tr class="row-odd"><td><p>deptford-strand</p></td>
+<td><p>Deptford Strand</p></td>
+<td><p>GB</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="list-your-sources">
+<h2>2. List your sources<a class="headerlink" href="#list-your-sources" title="Link to this heading">¶</a></h2>
+<p>One row per source. The <code class="docutils literal notranslate"><span class="pre">date</span></code> is when the source itself was made, as the
+catalogue gives it; <code class="docutils literal notranslate"><span class="pre">from</span></code> and <code class="docutils literal notranslate"><span class="pre">to</span></code> are the years it spans.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">source_id</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">citation</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">uri</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">from</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">to</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">licence</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>tna-e122-19-10</p></td>
+<td><p>TNA E 122/19/10</p></td>
+<td><p>The National Archives, Exchequer: King’s Remembrancer, E 122/19/10</p></td>
+<td><p>https://discovery.nationalarchives.gov.uk/details/r/C5846832</p></td>
+<td><p>1480-1485</p></td>
+<td><p>1480</p></td>
+<td><p>1485</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>geonames</p></td>
+<td><p>GeoNames</p></td>
+<td><p>GeoNames geographical database</p></td>
+<td><p>https://www.geonames.org/</p></td>
+<td><p>undated</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>https://creativecommons.org/licenses/by/4.0/</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The second source, GeoNames, is there because the coordinates in step 4 come
+from it, not from the customs account. Every row says which source it comes
+from, so a location taken from a modern database is never mistaken for one
+found in a fifteenth-century document.</p>
+</section>
+<section id="record-the-names">
+<h2>3. Record the names<a class="headerlink" href="#record-the-names" title="Link to this heading">¶</a></h2>
+<p>One row for each name a source gives, spelt exactly as the source spells it.
+<code class="docutils literal notranslate"><span class="pre">place_id</span></code> and <code class="docutils literal notranslate"><span class="pre">source_id</span></code> point at the rows you made in steps 1 and 2.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">place_id</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">script</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">name_type</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">from</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">to</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">source_id</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">certainty</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">notes</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bristol</p></td>
+<td><p>Bristowe</p></td>
+<td><p>enm</p></td>
+<td><p>Latn</p></td>
+<td><p></p></td>
+<td><p>1480-1485</p></td>
+<td><p>1480</p></td>
+<td><p>1485</p></td>
+<td><p>tna-e122-19-10</p></td>
+<td><p>0.95</p></td>
+<td><p>Clear manuscript hand.</p></td>
+</tr>
+<tr class="row-odd"><td><p>deptford-strand</p></td>
+<td><p>Deptford Strand</p></td>
+<td><p>en</p></td>
+<td><p>Latn</p></td>
+<td><p>toponym;odonym</p></td>
+<td><p>1481</p></td>
+<td><p>1481</p></td>
+<td><p>1481</p></td>
+<td><p>tna-e122-19-10</p></td>
+<td><p>0.7</p></td>
+<td><p>Manuscript partially damaged; reading probable but not certain.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The first row says: <em>the customs account, for 1480 to 1485, calls Bristol
+“Bristowe”</em>. The second says how sure the compiler is of a damaged reading
+(<code class="docutils literal notranslate"><span class="pre">certainty</span></code> 0.7) and why (<code class="docutils literal notranslate"><span class="pre">notes</span></code>). <em>Deptford Strand</em> names both a place and
+a street, hence two name types.</p>
+</section>
+<section id="record-locations">
+<h2>4. Record locations<a class="headerlink" href="#record-locations" title="Link to this heading">¶</a></h2>
+<p>Latitude and longitude in decimal degrees, as most web maps give them. The
+<code class="docutils literal notranslate"><span class="pre">geometry_role</span></code> says what the point marks: here a point standing in for the
+whole town, rather than its outline or one particular building.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">place_id</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">geometry_role</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">source_id</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bristol</p></td>
+<td><p>51.45523</p></td>
+<td><p>-2.59665</p></td>
+<td><p>RepresentativePoint</p></td>
+<td><p>undated</p></td>
+<td><p>geonames</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>GeoNames does not date its coordinates, so the date is <code class="docutils literal notranslate"><span class="pre">undated</span></code>.</p>
+</section>
+<section id="record-what-kind-of-place-it-is">
+<h2>5. Record what kind of place it is<a class="headerlink" href="#record-what-kind-of-place-it-is" title="Link to this heading">¶</a></h2>
+<p>The account treats Bristol as a port. The type can be written in your own
+words, with the matching concept from a published vocabulary (here the Getty
+Art &amp; Architecture Thesaurus) if you know it.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">place_id</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">type_label</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">type_uri</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">from</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">to</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">source_id</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bristol</p></td>
+<td><p>port</p></td>
+<td><p>http://vocab.getty.edu/aat/300000745</p></td>
+<td><p>1480-1485</p></td>
+<td><p>1480</p></td>
+<td><p>1485</p></td>
+<td><p>tna-e122-19-10</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="say-which-records-elsewhere-are-the-same-place">
+<h2>6. Say which records elsewhere are the same place<a class="headerlink" href="#say-which-records-elsewhere-are-the-same-place" title="Link to this heading">¶</a></h2>
+<p>If you know that one of your places is already in GeoNames, Wikidata or the
+World Historical Gazetteer, say so in identities. This is what lets your
+evidence join everyone else’s.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">place_id</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">same_as</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">match_type</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">certainty</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">basis</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bristol</p></td>
+<td><p>https://www.geonames.org/2654675/</p></td>
+<td><p>exactMatch</p></td>
+<td><p>0.95</p></td>
+<td><p>Same name and position; the only plausible match.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="say-what-the-dataset-is">
+<h2>7. Say what the dataset is<a class="headerlink" href="#say-what-the-dataset-is" title="Link to this heading">¶</a></h2>
+<p>The about sheet has one row, describing the dataset as a whole: its title,
+who made it, its licence, what it covers, and the base of its web addresses.
+It is what lets other people find your dataset, cite it and know what they
+may do with it. Only the title is required, and the licence too once you mark
+the dataset <code class="docutils literal notranslate"><span class="pre">published</span></code>, but fill in as much as you can.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">description</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">creator</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">licence</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">keywords</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">spatial</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">temporal_from</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">temporal_to</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">dataset_uri</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">base_uri</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>London Customs Accounts 1480–1485</p></td>
+<td><p>Ports and places named in an Exchequer customs account (TNA E 122/19/10): a worked example of PLATO spreadsheet tables.</p></td>
+<td><p>Stephen Gadd &lt;https://orcid.org/0000-0003-3060-0181&gt;</p></td>
+<td><p>https://creativecommons.org/licenses/by/4.0/</p></td>
+<td><p>draft</p></td>
+<td><p>customs accounts;ports</p></td>
+<td><p>http://www.wikidata.org/entity/Q21</p></td>
+<td><p>1480</p></td>
+<td><p>1485</p></td>
+<td><p>https://whgazetteer.org/example/customs/</p></td>
+<td><p>https://whgazetteer.org/example/customs/</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">creator</span></code> names the authors to cite. Write each one as a name followed by
+a web address in angle brackets, as here: <code class="docutils literal notranslate"><span class="pre">Stephen</span> <span class="pre">Gadd</span> <span class="pre">&lt;https://orcid.org/0000-0003-3060-0181&gt;</span></code>. The address is best an
+<a class="reference external" href="https://orcid.org">ORCID</a>, which identifies a researcher whatever their
+name is written as. An author with no address can be given by name alone,
+and an address can be given alone too. Separate several authors with <code class="docutils literal notranslate"><span class="pre">;</span></code>.
+Older tables may have a <code class="docutils literal notranslate"><span class="pre">creator_name</span></code> column for names without
+addresses: it still works, but it is deprecated and will be withdrawn in a
+later release, so put those names in <code class="docutils literal notranslate"><span class="pre">creator</span></code> instead.</p>
+<p><code class="docutils literal notranslate"><span class="pre">base_uri</span></code> is the most important column to get right before you publish.
+Every place’s permanent web address is made from it and the place’s
+<code class="docutils literal notranslate"><span class="pre">place_id</span></code>: the base, then <code class="docutils literal notranslate"><span class="pre">place/</span></code>, then the <code class="docutils literal notranslate"><span class="pre">place_id</span></code>. Here, Bristol’s is
+<code class="docutils literal notranslate"><span class="pre">https://whgazetteer.org/example/customs/place/bristol</span></code>. Every source’s is made
+the same way with <code class="docutils literal notranslate"><span class="pre">source/</span></code>: the customs account’s is
+<code class="docutils literal notranslate"><span class="pre">https://whgazetteer.org/example/customs/source/tna-e122-19-10</span></code>.
+Choose a base you control and will keep, such as your project’s own
+<a class="reference external" href="https://w3id.org">w3id</a> address, so that the addresses still work in
+twenty years, and do not change a <code class="docutils literal notranslate"><span class="pre">place_id</span></code> or <code class="docutils literal notranslate"><span class="pre">source_id</span></code> once the dataset
+is published, since that would change its address. Keep to letters, digits
+and the characters <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">.</span> <span class="pre">_</span> <span class="pre">~</span></code> in these identifiers: any other character, a
+space included, is written in the address as a code such as <code class="docutils literal notranslate"><span class="pre">%20</span></code>.
+<code class="docutils literal notranslate"><span class="pre">dataset_uri</span></code> is the address of the dataset itself; if you leave it empty,
+the dataset takes the base as its address, ending in <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
+</section>
+<section id="what-happens-to-your-rows">
+<h2>What happens to your rows<a class="headerlink" href="#what-happens-to-your-rows" title="Link to this heading">¶</a></h2>
+<p>Each row of names, locations and types becomes one <strong>attestation</strong>: a
+statement that this source, for this date, gives this name, location or type
+for this place. Your four evidence rows become four attestations about two
+places, each keeping its source, its date and your certainty. Nothing you
+entered is merged or overwritten, and a user of the combined data can always
+see who said what, and when.</p>
+<p>For a richer example, with manuscripts copied later, “ibid.” references and
+editorial headwords, see the <a class="reference internal" href="survey-example.html"><span class="std std-doc">place-name survey example</span></a>.
+Every column is described in the <a class="reference internal" href="reference.html"><span class="std std-doc">sheet reference</span></a>.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="survey-example.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">A place-name survey example</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Organising data in spreadsheets</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Pelagios Network Place Working Group (CC BY 4.0)
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">A first dataset, step by step</a><ul>
+<li><a class="reference internal" href="#list-your-places">1. List your places</a></li>
+<li><a class="reference internal" href="#list-your-sources">2. List your sources</a></li>
+<li><a class="reference internal" href="#record-the-names">3. Record the names</a></li>
+<li><a class="reference internal" href="#record-locations">4. Record locations</a></li>
+<li><a class="reference internal" href="#record-what-kind-of-place-it-is">5. Record what kind of place it is</a></li>
+<li><a class="reference internal" href="#say-which-records-elsewhere-are-the-same-place">6. Say which records elsewhere are the same place</a></li>
+<li><a class="reference internal" href="#say-what-the-dataset-is">7. Say what the dataset is</a></li>
+<li><a class="reference internal" href="#what-happens-to-your-rows">What happens to your rows</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=809ddda4"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/translations.js?v=8fd896e3"></script>
+    <script src="../_static/plato-tooltip.js?v=d3050378"></script>
+    </body>
+</html>

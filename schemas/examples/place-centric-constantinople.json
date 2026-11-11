@@ -1,0 +1,140 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+
+  "gazetteer": {
+    "title": "Byzantine Cities Gazetteer",
+    "description": "Historical cities of the Byzantine Empire and their predecessors.",
+    "contributor": "https://orcid.org/0000-0002-1825-0097",
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "version": "2026-09",
+    "status": "published",
+    "creator": [{"@id": "https://orcid.org/0000-0003-3060-0181", "name": "Stephen Gadd"}]
+  },
+
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/place/12345",
+      "label": "Constantinople / İstanbul", "ccodes": ["TR"],
+      "attestations": [
+        {
+          "@id": "https://whgazetteer.org/attestation/12345-byzantion",
+          "names": [
+            {
+              "toponym": "Βυζάντιον",
+              "language": "grc",
+              "script": "Grek",
+              "romanized": "Byzantion",
+              "transliterationSystem": "ISO 843",
+              "nameType": ["toponym"],
+              "sourceLabel": "Βυζαντίῳ"
+            }
+          ],
+          "timespans": [
+            {
+              "startEarliest": "-0440",
+              "endLatest": "-0420",
+              "startPrecision": "decade",
+              "endPrecision": "decade"
+            }
+          ],
+          "types": [
+            { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" }
+          ],
+          "sources": [
+            {
+              "title": "Herodotus, Histories IV.144",
+              "citation": "Hdt. 4.144.2",
+              "uri": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0125:book=4:chapter=144"
+            }
+          ],
+          "certainty": 1.0,
+          "certaintyNote": "The source names the city: Megabazus was 'at Byzantion' (ἐν Βυζαντίῳ). It gives no location, so no geometry is attested.",
+          "notes": "The timespan is when this source witnesses the name Byzantion in use. A source witnesses only its own time, so that is the source's date, not the whole span in which the name was used. The Histories are usually dated about 440 BC; nothing in them can be dated with certainty after 430 BC, and Herodotus is thought to have died about 425 BC. The bounds are set wide enough to cover both.",
+          "created": "2026-02-15T10:00:00Z"
+        },
+        {
+          "@id": "https://whgazetteer.org/attestation/12345-constantinopolis",
+          "names": [
+            {
+              "toponym": "Constantinopolis",
+              "language": "la",
+              "script": "Latn",
+              "nameType": ["toponym"],
+              "sourceLabel": "urbis Constantinopolitanae"
+            }
+          ],
+          "timespans": [
+            {
+              "startEarliest": "0425",
+              "endLatest": "0450",
+              "startPrecision": "decade",
+              "endPrecision": "year"
+            }
+          ],
+          "types": [
+            { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" }
+          ],
+          "sources": [
+            {
+              "title": "Notitia Urbis Constantinopolitanae",
+              "citation": "Notitia Urbis Constantinopolitanae, praefatio, ed. O. Seeck, Notitia Dignitatum (1876), p. 229",
+              "uri": "https://www.livius.org/sources/content/notitia-urbis-constantinopolitanae/"
+            }
+          ],
+          "certainty": 1.0,
+          "certaintyNote": "The preface names the city 'urbis Constantinopolitanae'. The source describes the city's fourteen regions but gives no coordinates, so no geometry is attested.",
+          "notes": "The timespan is when this source witnesses the name Constantinopolis in use. A source witnesses only its own time, so that is the source's date, not the whole span in which the name was used. The Notitia was written under Theodosius II, who died in 450, and whom its preface praises; proposed dates run from about 425 to 447-450.",
+          "created": "2026-02-15T10:00:00Z"
+        },
+        {
+          "@id": "https://whgazetteer.org/attestation/12345-istanbul",
+          "names": [
+            {
+              "toponym": "İstanbul",
+              "language": "tr",
+              "script": "Latn",
+              "nameType": ["toponym"]
+            }
+          ],
+          "geometries": [
+            {
+              "geojson": { "type": "Point", "coordinates": [28.94966, 41.01384] },
+              "reprPoint": [28.94966, 41.01384],
+              "sourceCrs": "EPSG:4326"
+            }
+          ],
+          "timespans": [
+            {
+              "startEarliest": "2026-09-30",
+              "endLatest": "2026-09-30",
+              "startPrecision": "day",
+              "endPrecision": "day"
+            }
+          ],
+          "types": [
+            { "identifier": "http://vocab.getty.edu/aat/300008347", "label": "inhabited place" }
+          ],
+          "sources": [
+            {
+              "title": "GeoNames",
+              "citation": "GeoNames, feature 745044 (Istanbul)",
+              "uri": "https://www.geonames.org/745044/"
+            }
+          ],
+          "certainty": 1.0,
+          "certaintyNote": "GeoNames gives İstanbul as the official Turkish name, and a single point for the city; the point stands for the whole city and marks no boundary.",
+          "notes": "The timespan is the day GeoNames was consulted. A modern gazetteer witnesses the current name, not when the name came into use.",
+          "created": "2026-02-15T10:00:00Z"
+        }
+      ],
+      "identityRelations": [
+        {
+          "object": "https://sws.geonames.org/745044/",
+          "identityType": "closeMatch",
+          "basis": "GeoNames describes the modern city: the same settlement, with a different extent."
+        }
+      ]
+    }
+  ]
+}

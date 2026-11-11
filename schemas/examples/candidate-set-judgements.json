@@ -1,0 +1,39 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/candidate-set.schema.json",
+  "profile": "candidate-set",
+  "candidateSet": {
+    "@id": "https://whgazetteer.org/example/candidates/county-survey-2026-09-09",
+    "title": "Matches suggested between the fen parishes and the county survey, 9 September 2026 (illustrative)",
+    "description": "What matcher 2.1 suggested, as it suggested it. What the editor made of each suggestion is in the parishes gazetteer, in the attestations whose identity relations point here through promotedFrom.",
+    "creator": [
+      {
+        "name": "The parishes gazetteer's editor"
+      }
+    ],
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "issued": "2026-09-09",
+    "candidatesFor": "https://whgazetteer.org/example/gazetteer/fen-parishes"
+  },
+  "candidates": [
+    {
+      "@id": "https://whgazetteer.org/example/candidates/county-survey-2026-09-09#c-8ed2901c",
+      "subject": "https://whgazetteer.org/example/entity/newton-by-the-river",
+      "object": "https://whgazetteer.org/example/county-survey/newton-mill",
+      "similarityScore": 0.93,
+      "algorithmVersion": "matcher 2.1",
+      "matchParameters": "{\"threshold\":0.8,\"weights\":{\"distance\":0.4,\"name\":0.5,\"type\":0.1}}",
+      "generatedAt": "2026-09-09T18:00:00Z",
+      "status": "suggested"
+    },
+    {
+      "@id": "https://whgazetteer.org/example/candidates/county-survey-2026-09-09#c-1ec753bb",
+      "subject": "https://whgazetteer.org/example/entity/newton-by-the-river",
+      "object": "https://whgazetteer.org/example/county-survey/newton-upland",
+      "similarityScore": 0.84,
+      "algorithmVersion": "matcher 2.1",
+      "matchParameters": "{\"threshold\":0.8,\"weights\":{\"distance\":0.4,\"name\":0.5,\"type\":0.1}}",
+      "generatedAt": "2026-09-09T18:00:00Z",
+      "status": "suggested"
+    }
+  ]
+}
