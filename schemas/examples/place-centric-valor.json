@@ -4,12 +4,12 @@
   "profile": "place-centric",
   "gazetteer": {
     "@id": "https://w3id.org/valor/gazetteer/valor-ecclesiasticus",
-    "title": "Valor Ecclesiasticus (1535): a sample of the index layer and Ecton's figures",
-    "description": "A sample from the Valor Ecclesiasticus dataset (https://docuracy.github.io/valor/): two institutions in Hertfordshire with their deaneries and dioceses, and one religious house with five of its possession lines. The records are as published there, as printed in the 1810-1834 edition, with editorial fields marked as such. The two institutions carry the King's Books value and the tenths as printed by Ecton in 1763. The dataset withholds its own 1535 figures until they are checked, so none is shown. Licence of these layers: CC BY-NC 4.0.",
+    "title": "Valor Ecclesiasticus (1535): a sample of the index layer, Ecton's figures and one checked 1535 figure",
+    "description": "A sample from the Valor Ecclesiasticus dataset (https://docuracy.github.io/valor/): two institutions in Hertfordshire with their deaneries and dioceses, and one religious house with five of its possession lines. The records are as published there, as printed in the 1810-1834 edition, with editorial fields marked as such. One institution carries the King's Books value and the tenths as printed by Ecton in 1763; the other carries a 1535 clear value and tenth as read from the page. The dataset publishes only 1535 figures that pass its checks, and records for each how it was read. Licence of these layers: CC BY-NC 4.0.",
     "contributor": "https://orcid.org/0000-0003-3060-0181",
     "licence": "https://creativecommons.org/licenses/by-nc/4.0/",
     "status": "draft",
-    "version": "sample-2026-11"
+    "version": "sample-2026-11-11"
   },
   "relationTypes": [
     {
@@ -45,239 +45,6 @@
   ],
   "spatialEntities": [
     {
-      "@id": "https://w3id.org/valor/inst/1.453.ansty.rectory",
-      "label": "ANSTY Rectoria de, 453.",
-      "attestations": [
-        {
-          "@id": "https://w3id.org/valor/att/39c6200ff059",
-          "names": [
-            {
-              "toponym": "ANSTY",
-              "sourceLabel": "ANSTY Rectoria de, 453.",
-              "language": "la",
-              "nameType": [
-                "toponym"
-              ]
-            }
-          ],
-          "formStatus": "https://w3id.org/plato#Headword",
-          "citations": [
-            {
-              "source": {
-                "@id": "https://w3id.org/valor/source/valor-ecclesiasticus",
-                "authorityType": "source",
-                "title": "Valor Ecclesiasticus temp. Henr. VIII",
-                "citation": "J. Caley and J. Hunter (eds), Valor Ecclesiasticus temp. Henr. VIII, 6 vols, Record Commission, 1810-1834 (vol. VI, 1834: appendix and indexes). Internet Archive: https://archive.org/details/valor-ecclesiasticus-vol-1 to -6",
-                "licence": "https://creativecommons.org/publicdomain/mark/1.0/"
-              },
-              "locator": "vol. I, p. 453"
-            }
-          ],
-          "notes": "Liber Valorum flag: medium. Scan damaged or a mark unreadable in the index.",
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        },
-        {
-          "@id": "https://w3id.org/valor/att/e1469018cb3b",
-          "types": [
-            {
-              "label": "rectory",
-              "sourceLabel": "Rectoria de"
-            }
-          ],
-          "citations": [
-            {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. I, p. 453"
-            }
-          ],
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        },
-        {
-          "@id": "https://w3id.org/valor/att/444758527a29",
-          "relations": [
-            {
-              "relationType": "https://w3id.org/valor/rel/in-jurisdiction",
-              "relatesTo": "https://w3id.org/valor/unit/deanery/london.brawghyn",
-              "relationLabel": "Brawghyn Decanatus de"
-            }
-          ],
-          "citations": [
-            {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. I, p. 453"
-            }
-          ],
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        },
-        {
-          "@id": "https://w3id.org/valor/att/a6808bcf773e",
-          "relations": [
-            {
-              "relationType": "https://w3id.org/valor/rel/institution-of-parish",
-              "relatesTo": "https://w3id.org/beat/parish/HRT.Anstey"
-            }
-          ],
-          "citations": [
-            {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. I, p. 453"
-            }
-          ],
-          "notes": "Link to the historical parish mapped by beat; decided by curator (curator). Evidence: name equivalent / consistent with Ecton",
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        },
-        {
-          "@id": "https://w3id.org/valor/att/7504dd6cc736",
-          "properties": [
-            {
-              "property": "https://w3id.org/valor/prop/kings-books-value",
-              "label": "King's Books value as given by Ecton (1763)",
-              "sourceLabel": "21 / 13 / 04",
-              "value": 5200,
-              "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
-              "unit": "https://w3id.org/valor/unit/penny",
-              "qualification": {
-                "certaintyNote": "The printed pounds, shillings and pence are authoritative; the value in pence is derived from them."
-              }
-            },
-            {
-              "property": "https://w3id.org/valor/prop/tenths",
-              "label": "Tenths as given by Ecton (1763)",
-              "sourceLabel": "02 / 03 / 04",
-              "value": 520,
-              "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
-              "unit": "https://w3id.org/valor/unit/penny",
-              "qualification": {
-                "certaintyNote": "The printed pounds, shillings and pence are authoritative; the value in pence is derived from them."
-              }
-            },
-            {
-              "property": "https://w3id.org/valor/prop/charge-status",
-              "label": "charge status",
-              "value": "in_charge"
-            }
-          ],
-          "citations": [
-            {
-              "source": {
-                "@id": "https://w3id.org/valor/source/ecton-1763",
-                "authorityType": "source",
-                "title": "Thesaurus Rerum Ecclesiasticarum",
-                "citation": "John Ecton, Thesaurus Rerum Ecclesiasticarum, London, 1763",
-                "licence": "https://creativecommons.org/publicdomain/mark/1.0/"
-              },
-              "locator": "p. 259"
-            }
-          ],
-          "notes": "Ecton's entry is curated as this institution (Hertfordshire). Figures exactly as printed by Ecton; his reading is not independently checked.",
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/valor/unit/deanery/london.brawghyn",
-      "label": "Brawghyn (deanery)",
-      "attestations": [
-        {
-          "@id": "https://w3id.org/valor/att/4783aeee6d83",
-          "names": [
-            {
-              "toponym": "Brawghyn",
-              "sourceLabel": "Brawghyn Decanatus de",
-              "language": "la",
-              "nameType": [
-                "toponym"
-              ]
-            }
-          ],
-          "formStatus": "https://w3id.org/plato#Headword",
-          "citations": [
-            {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. I, p. 452"
-            }
-          ],
-          "notes": "County printed: HERTFORD'",
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        },
-        {
-          "@id": "https://w3id.org/valor/att/22d0b71d6e6a",
-          "types": [
-            {
-              "label": "deanery"
-            }
-          ],
-          "citations": [
-            {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. I, p. 452"
-            }
-          ],
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        },
-        {
-          "@id": "https://w3id.org/valor/att/2591c03c879a",
-          "relations": [
-            {
-              "relationType": "https://w3id.org/valor/rel/member-of-diocese",
-              "relatesTo": "https://w3id.org/valor/unit/diocese/london",
-              "relationLabel": "LONDON'"
-            }
-          ],
-          "citations": [
-            {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. I, p. 452"
-            }
-          ],
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/valor/unit/diocese/london",
-      "label": "London (diocese)",
-      "attestations": [
-        {
-          "@id": "https://w3id.org/valor/att/ee0bd0190795",
-          "names": [
-            {
-              "toponym": "London",
-              "sourceLabel": "London'",
-              "language": "la",
-              "nameType": [
-                "toponym"
-              ]
-            }
-          ],
-          "formStatus": "https://w3id.org/plato#Headword",
-          "citations": [
-            {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. VI, Index Dioecesium"
-            }
-          ],
-          "notes": "toponym is the English name (editorial gloss); sourceLabel is the printed form.",
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        },
-        {
-          "@id": "https://w3id.org/valor/att/2fc0235cbd13",
-          "types": [
-            {
-              "label": "diocese"
-            }
-          ],
-          "citations": [
-            {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. VI, Index Dioecesium"
-            }
-          ],
-          "contributor": "https://orcid.org/0000-0003-3060-0181"
-        }
-      ]
-    },
-    {
       "@id": "https://w3id.org/valor/inst/1.451.hexton.vicarage",
       "label": "HEXTON Vicaria de, 451.",
       "attestations": [
@@ -296,11 +63,17 @@
           "formStatus": "https://w3id.org/plato#Headword",
           "citations": [
             {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "source": {
+                "@id": "https://w3id.org/valor/source/valor-ecclesiasticus",
+                "authorityType": "source",
+                "title": "Valor Ecclesiasticus temp. Henr. VIII",
+                "citation": "J. Caley and J. Hunter (eds), Valor Ecclesiasticus temp. Henr. VIII, 6 vols, Record Commission, 1810-1834 (vol. VI, 1834: appendix and indexes). Internet Archive: https://archive.org/details/valor-ecclesiasticus-vol-1 to -6",
+                "licence": "https://creativecommons.org/publicdomain/mark/1.0/"
+              },
               "locator": "vol. I, p. 451"
             }
           ],
-          "notes": "Liber Valorum flag: medium. Scan damaged or a mark unreadable in the index.",
+          "notes": "Liber Valorum flag: medium.",
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
@@ -350,7 +123,7 @@
               "locator": "vol. I, p. 451"
             }
           ],
-          "notes": "Link to the historical parish mapped by beat; decided by curator (curator). Evidence: name equivalent / consistent with Ecton",
+          "notes": "Link to the historical parish mapped by beat; decided by the curator, Stephen Gadd. Evidence: name equivalent / consistent with Ecton",
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
@@ -386,7 +159,13 @@
           ],
           "citations": [
             {
-              "source": "https://w3id.org/valor/source/ecton-1763",
+              "source": {
+                "@id": "https://w3id.org/valor/source/ecton-1763",
+                "authorityType": "source",
+                "title": "Thesaurus Rerum Ecclesiasticarum",
+                "citation": "John Ecton, Thesaurus Rerum Ecclesiasticarum, London, 1763",
+                "licence": "https://creativecommons.org/publicdomain/mark/1.0/"
+              },
               "locator": "p. 281"
             }
           ],
@@ -456,11 +235,290 @@
       ]
     },
     {
-      "@id": "https://w3id.org/valor/house/bristol.abbottsbery-monasterium",
+      "@id": "https://w3id.org/valor/unit/diocese/london",
+      "label": "London (diocese)",
+      "attestations": [
+        {
+          "@id": "https://w3id.org/valor/att/ee0bd0190795",
+          "names": [
+            {
+              "toponym": "London",
+              "sourceLabel": "London'",
+              "language": "en",
+              "nameType": [
+                "toponym"
+              ]
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword",
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. VI, Index Dioecesium"
+            }
+          ],
+          "notes": "toponym is the English name (editorial gloss); sourceLabel is the printed form. A see of 1535.",
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        },
+        {
+          "@id": "https://w3id.org/valor/att/2fc0235cbd13",
+          "types": [
+            {
+              "label": "diocese"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. VI, Index Dioecesium"
+            }
+          ],
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/valor/inst/4.278.benyngton.rectory",
+      "label": "BENYNGTON Rectoria de, 278.",
+      "attestations": [
+        {
+          "@id": "https://w3id.org/valor/att/3f39d548d53a",
+          "names": [
+            {
+              "toponym": "BENYNGTON",
+              "sourceLabel": "BENYNGTON Rectoria de, 278.",
+              "language": "la",
+              "nameType": [
+                "toponym"
+              ]
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword",
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. IV, p. 278"
+            }
+          ],
+          "notes": "Liber Valorum flag: high.",
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        },
+        {
+          "@id": "https://w3id.org/valor/att/afcdc7434586",
+          "types": [
+            {
+              "label": "rectory",
+              "sourceLabel": "Rectoria de"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. IV, p. 278"
+            }
+          ],
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        },
+        {
+          "@id": "https://w3id.org/valor/att/565d84705993",
+          "relations": [
+            {
+              "relationType": "https://w3id.org/valor/rel/in-jurisdiction",
+              "relatesTo": "https://w3id.org/valor/unit/deanery/lincoln.baldock",
+              "relationLabel": "Baldock Decanatus de"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. IV, p. 278"
+            }
+          ],
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        },
+        {
+          "@id": "https://w3id.org/valor/att/45f86ef4229e",
+          "relations": [
+            {
+              "relationType": "https://w3id.org/valor/rel/institution-of-parish",
+              "relatesTo": "https://w3id.org/beat/parish/HRT.Benington"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. IV, p. 278"
+            }
+          ],
+          "notes": "Link to the historical parish mapped by beat; decided by the curator, Stephen Gadd. Evidence: name equivalent / consistent with Ecton",
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        },
+        {
+          "@id": "https://w3id.org/valor/att/52859137fc77",
+          "properties": [
+            {
+              "@id": "https://w3id.org/valor/ret/inst/4.278.benyngton.rectory#clear",
+              "property": "https://w3id.org/valor/prop/valor-1535-clear",
+              "label": "clear yearly value (Valor 1535)",
+              "sourceLabel": "xix /  / ",
+              "qualification": {
+                "certaintyNote": "Machine reading (Qwen3-VL-32B, whole page) of page image v4p291, right column, checked against the ink (the measured width of each numeral fits the reading), by the tenth, and by an independent second reading that agrees exactly; not checked by hand. On nine hand-checked pages, value-and-tenth pairs passing both checks were exactly right 70 times in 74. The value in pence is our parse of the numerals as read.",
+                "certaintyLevel": "https://w3id.org/plato#Uncertain"
+              },
+              "attributes": {
+                "https://w3id.org/valor/ns#basis": {
+                  "@id": "https://w3id.org/valor/ns#liber_valorum_value_only"
+                },
+                "https://w3id.org/valor/ns#reading": {
+                  "@id": "https://w3id.org/valor/ns#model+width"
+                }
+              },
+              "value": 4560,
+              "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+              "unit": "https://w3id.org/valor/unit/penny"
+            },
+            {
+              "@id": "https://w3id.org/valor/ret/inst/4.278.benyngton.rectory#tenth",
+              "property": "https://w3id.org/valor/prop/valor-1535-tenth",
+              "label": "tenth (Valor 1535)",
+              "sourceLabel": " / xxxviij / ",
+              "qualification": {
+                "certaintyNote": "Hand-checked reading (gold page).",
+                "transcriptionAccuracy": "https://w3id.org/plato#TranscriptionAccurate"
+              },
+              "attributes": {
+                "https://w3id.org/valor/ns#basis": {
+                  "@id": "https://w3id.org/valor/ns#liber_valorum_value_only"
+                },
+                "https://w3id.org/valor/ns#reading": {
+                  "@id": "https://w3id.org/valor/ns#gold"
+                }
+              },
+              "value": 456,
+              "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+              "unit": "https://w3id.org/valor/unit/penny"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. IV, p. 278"
+            }
+          ],
+          "notes": "1535 figures of this institution as read from the page (machine reading (Qwen3-VL-32B, whole page), ink-width selector applied, the tenth check passed and an independent second reading agrees; not checked by hand). Basis: liber_valorum_value_only (value and tenth only; editors' footnote, vol. IV p. 276: the original returns for the part of Hertfordshire in the diocese of Lincoln are lost and supplied from the Liber Valorum (confidence high)). Figures of different institutions are never summed.",
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/valor/unit/deanery/lincoln.baldock",
+      "label": "Baldock (deanery)",
+      "attestations": [
+        {
+          "@id": "https://w3id.org/valor/att/753a1cc70dac",
+          "names": [
+            {
+              "toponym": "Baldock",
+              "sourceLabel": "Baldock Decanatus de",
+              "language": "la",
+              "nameType": [
+                "toponym"
+              ]
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword",
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. IV, p. 278"
+            }
+          ],
+          "notes": "County printed: HERTFORD'",
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        },
+        {
+          "@id": "https://w3id.org/valor/att/dea58671de0b",
+          "types": [
+            {
+              "label": "deanery"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. IV, p. 278"
+            }
+          ],
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        },
+        {
+          "@id": "https://w3id.org/valor/att/ef80ba7a97eb",
+          "relations": [
+            {
+              "relationType": "https://w3id.org/valor/rel/member-of-diocese",
+              "relatesTo": "https://w3id.org/valor/unit/diocese/lincoln",
+              "relationLabel": "LINCOLN'"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. IV, p. 278"
+            }
+          ],
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/valor/unit/diocese/lincoln",
+      "label": "Lincoln (diocese)",
+      "attestations": [
+        {
+          "@id": "https://w3id.org/valor/att/76cdf304e70f",
+          "names": [
+            {
+              "toponym": "Lincoln",
+              "sourceLabel": "Lincoln'",
+              "language": "en",
+              "nameType": [
+                "toponym"
+              ]
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword",
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. VI, Index Dioecesium"
+            }
+          ],
+          "notes": "toponym is the English name (editorial gloss); sourceLabel is the printed form. A see of 1535. The printed edition sets part of its 1535 territory under Burgo Sanct' Petri EPISCOPATUS (the see of Peterborough, founded 1541). The printed edition sets part of its 1535 territory under Oxon' EPISCOPATUS (the see of Oxford, founded 1542).",
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        },
+        {
+          "@id": "https://w3id.org/valor/att/d7377956e4ef",
+          "types": [
+            {
+              "label": "diocese"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
+              "locator": "vol. VI, Index Dioecesium"
+            }
+          ],
+          "contributor": "https://orcid.org/0000-0003-3060-0181"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/valor/house/sarum.abbottsbery-monasterium",
       "label": "Abbottsbery Monasterium de",
       "attestations": [
         {
-          "@id": "https://w3id.org/valor/att/d37251b89944",
+          "@id": "https://w3id.org/valor/att/ab8e773798ca",
           "names": [
             {
               "toponym": "Abbottsbery",
@@ -482,7 +540,7 @@
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
-          "@id": "https://w3id.org/valor/att/a179f4b45b9b",
+          "@id": "https://w3id.org/valor/att/7fd39de401eb",
           "types": [
             {
               "label": "religious house"
@@ -497,24 +555,31 @@
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
-          "@id": "https://w3id.org/valor/att/45a3d5a0276d",
+          "@id": "https://w3id.org/valor/att/ea8914f45fb2",
           "relations": [
             {
               "relationType": "https://w3id.org/valor/rel/member-of-diocese",
-              "relatesTo": "https://w3id.org/valor/unit/diocese/bristol",
-              "relationLabel": "BRISTOLL'"
+              "relatesTo": "https://w3id.org/valor/unit/diocese/sarum"
             }
           ],
           "citations": [
             {
-              "source": "https://w3id.org/valor/source/valor-ecclesiasticus",
-              "locator": "vol. I, p. 227"
+              "source": {
+                "@id": "https://w3id.org/valor/source/dioceses-1535",
+                "authorityType": "source",
+                "title": "Valor Ecclesiasticus dataset: dioceses of 1535 (curated overlay)",
+                "citation": "data/index/dioceses_1535.csv in https://github.com/docuracy/valor: each unit's 1535 diocese and archdeaconry with its basis, sources (the Valor's own record headings; Fasti Ecclesiae Anglicanae 1541-1857; VCH; The National Archives) and confidence",
+                "licence": "https://creativecommons.org/licenses/by-nc/4.0/"
+              },
+              "locator": "Abbottsbery Monasterium de,"
             }
           ],
+          "notes": "In the printed edition this sits in the arrangement of 1541–2 under Bristol (see founded 1542); in 1535 it belonged to Salisbury, archdeaconry of Dorset. Basis: Valor I.227 record heading 'DIOC' SAR'. DORS' ARCHIDIACONAT'' and running head 'Dioc' Bristoll' antea Sarum'. Confidence high. The index prints the diocese as BRISTOLL'.",
+          "certaintyNote": "Confidence high (dioceses_1535.csv).",
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
-          "@id": "https://w3id.org/valor/poss/bristol.abbottsbery-monasterium/1.228.abbottsbery",
+          "@id": "https://w3id.org/valor/poss/sarum.abbottsbery-monasterium/1.228.abbottsbery",
           "relations": [
             {
               "relatedLabel": "ABBOTTSBERY",
@@ -531,7 +596,7 @@
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
-          "@id": "https://w3id.org/valor/poss/bristol.abbottsbery-monasterium/1.227.abbottsbery.rectoria-de",
+          "@id": "https://w3id.org/valor/poss/sarum.abbottsbery-monasterium/1.227.abbottsbery.rectoria-de",
           "relations": [
             {
               "relatedLabel": "ABBOTTSBERY",
@@ -549,7 +614,7 @@
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
-          "@id": "https://w3id.org/valor/poss/bristol.abbottsbery-monasterium/1.229.bell",
+          "@id": "https://w3id.org/valor/poss/sarum.abbottsbery-monasterium/1.229.bell",
           "relations": [
             {
               "relatedLabel": "BELL",
@@ -566,7 +631,7 @@
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
-          "@id": "https://w3id.org/valor/poss/bristol.abbottsbery-monasterium/1.230.bexington",
+          "@id": "https://w3id.org/valor/poss/sarum.abbottsbery-monasterium/1.230.bexington",
           "relations": [
             {
               "relatedLabel": "BEXINGTON",
@@ -583,7 +648,7 @@
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
-          "@id": "https://w3id.org/valor/poss/bristol.abbottsbery-monasterium/1.228.bexinton",
+          "@id": "https://w3id.org/valor/poss/sarum.abbottsbery-monasterium/1.228.bexinton",
           "relations": [
             {
               "relatedLabel": "BEXINTON",
@@ -602,16 +667,16 @@
       ]
     },
     {
-      "@id": "https://w3id.org/valor/unit/diocese/bristol",
-      "label": "Bristol (diocese)",
+      "@id": "https://w3id.org/valor/unit/diocese/sarum",
+      "label": "Salisbury (diocese)",
       "attestations": [
         {
-          "@id": "https://w3id.org/valor/att/95a35049377a",
+          "@id": "https://w3id.org/valor/att/fb0451e20f4b",
           "names": [
             {
-              "toponym": "Bristol",
-              "sourceLabel": "Bristol'",
-              "language": "la",
+              "toponym": "Salisbury",
+              "sourceLabel": "Sarum",
+              "language": "en",
               "nameType": [
                 "toponym"
               ]
@@ -624,11 +689,11 @@
               "locator": "vol. VI, Index Dioecesium"
             }
           ],
-          "notes": "toponym is the English name (editorial gloss); sourceLabel is the printed form. See founded 1541-2.",
+          "notes": "toponym is the English name (editorial gloss); sourceLabel is the printed form. A see of 1535. The printed edition sets part of its 1535 territory under Bristol' EPISCOPATUS (the see of Bristol, founded 1542).",
           "contributor": "https://orcid.org/0000-0003-3060-0181"
         },
         {
-          "@id": "https://w3id.org/valor/att/5a57758e4007",
+          "@id": "https://w3id.org/valor/att/1bdf7a5b89bd",
           "types": [
             {
               "label": "diocese"

@@ -250,12 +250,15 @@ examples that belong to a page of this guide are explained there.
 - [place-centric-valor.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-valor.json):
   a sample of the Valor Ecclesiasticus dataset (the 1535 survey of Church of
   England benefices, as printed in 1810-1834; CC BY-NC 4.0, credited in the
-  file): an index entry kept as printed beside its editorial head-name, a
-  place nested in a deanery and a diocese that skip an unprinted
-  archdeaconry, a link to a historical parish, a religious house with its
-  possessions, and the King's Books value and tenths that Ecton printed in
-  pounds, shillings and pence, with the printed figures as the source's
-  wording and the value in pence derived.
+  file): an index entry kept as printed beside its editorial head-name, an
+  institution in a deanery or jurisdiction and a diocese, a link to a
+  historical parish, a religious house moved to the diocese it belonged to in
+  1535 with the printed arrangement kept as provenance, its possessions,
+  the King's Books value and tenths that Ecton printed in pounds, shillings
+  and pence, and a 1535 clear value and tenth as read from the page, with
+  how each was read (a machine reading checked against the ink, and a
+  hand-checked one) recorded as attributes. The printed amount is the
+  source's wording, and the value in pence is derived.
 - [place-centric-antonine.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-antonine.json),
   [place-centric-king-john.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-king-john.json),
   [place-centric-river-idle.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-river-idle.json)

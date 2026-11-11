@@ -24,8 +24,11 @@ were made under the earlier policy.
 ### Examples
 
 - `place-centric-valor.json`: a sample of the Valor Ecclesiasticus dataset
-  (CC BY-NC 4.0, credited in the file), with the figures Ecton printed in
-  pounds, shillings and pence.
+  (CC BY-NC 4.0, credited in the file), refreshed from its build of 11
+  November 2026: the figures Ecton printed in pounds, shillings and pence,
+  and a checked 1535 clear value and tenth with their reading state kept as
+  attributes. Only the sample's "Scan damaged" remark on two index notes is
+  dropped, because the source database says no scan is damaged there.
 - `place-centric-statistics.json`: one figure now carries two values under
   one `attributes` key (`obsStatus`: estimated and provisional).
 
