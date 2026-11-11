@@ -28,7 +28,9 @@ were made under the earlier policy.
   November 2026: the figures Ecton printed in pounds, shillings and pence,
   and a checked 1535 clear value and tenth with their reading state kept as
   attributes. Only the sample's "Scan damaged" remark on two index notes is
-  dropped, because the source database says no scan is damaged there.
+  dropped, because the source database says no scan is damaged there. Its
+  1535 figures belong to a declared table, so that their attributes survive
+  conversion to RDF and back.
 - `place-centric-statistics.json`: one figure now carries two values under
   one `attributes` key (`obsStatus`: estimated and provisional).
 

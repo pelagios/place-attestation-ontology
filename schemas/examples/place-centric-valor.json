@@ -43,6 +43,31 @@
       "broaderRelation": "https://w3id.org/plato#ConnectedTo"
     }
   ],
+  "dataSets": [
+    {
+      "@id": "https://w3id.org/valor/table/valor-1535-returns",
+      "title": "Valor Ecclesiasticus 1535: returns of benefices (the figures published so far)",
+      "description": "The yearly values and tenths of benefices as the Valor prints them, in pounds, shillings and pence; each figure is one measure for one institution, given in pence with the printed amount as its source label.",
+      "isPartOf": "https://w3id.org/valor/source/valor-ecclesiasticus",
+      "structure": {
+        "@id": "https://w3id.org/valor/table/valor-1535-returns/structure",
+        "components": [
+          {
+            "measure": "https://w3id.org/valor/prop/valor-1535-clear"
+          },
+          {
+            "measure": "https://w3id.org/valor/prop/valor-1535-tenth"
+          },
+          {
+            "attribute": "https://w3id.org/valor/ns#basis"
+          },
+          {
+            "attribute": "https://w3id.org/valor/ns#reading"
+          }
+        ]
+      }
+    }
+  ],
   "spatialEntities": [
     {
       "@id": "https://w3id.org/valor/inst/1.451.hexton.vicarage",
@@ -375,7 +400,8 @@
               },
               "value": 4560,
               "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
-              "unit": "https://w3id.org/valor/unit/penny"
+              "unit": "https://w3id.org/valor/unit/penny",
+              "dataSet": "https://w3id.org/valor/table/valor-1535-returns"
             },
             {
               "@id": "https://w3id.org/valor/ret/inst/4.278.benyngton.rectory#tenth",
@@ -396,7 +422,8 @@
               },
               "value": 456,
               "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
-              "unit": "https://w3id.org/valor/unit/penny"
+              "unit": "https://w3id.org/valor/unit/penny",
+              "dataSet": "https://w3id.org/valor/table/valor-1535-returns"
             }
           ],
           "citations": [

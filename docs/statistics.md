@@ -24,7 +24,9 @@ things added:
 - `attributes`: facts about the figure itself, such as that the source
   printed a dash, or that an amount is approximate. A key may take a list of
   values, for a fact that holds in more than one way, such as two flags on
-  one figure;
+  one figure. Declare each attribute in the table's structure: converted to
+  RDF and back, a figure's attributes are recognised only through the table
+  that declares them;
 - `universe`: the figure it is a part or share of, where the source says so.
 
 ```json

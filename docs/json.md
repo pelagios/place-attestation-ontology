@@ -258,7 +258,10 @@ examples that belong to a page of this guide are explained there.
   and pence, and a 1535 clear value and tenth as read from the page, with
   how each was read (a machine reading checked against the ink, and a
   hand-checked one) recorded as attributes. The printed amount is the
-  source's wording, and the value in pence is derived.
+  source's wording, and the value in pence is derived. The figures are
+  declared as a small table (`dataSets`), because attributes are read back
+  as attributes, after conversion to RDF, only for a figure that belongs to
+  a table declaring them.
 - [place-centric-antonine.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-antonine.json),
   [place-centric-king-john.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-king-john.json),
   [place-centric-river-idle.json](https://github.com/pelagios/place-attestation-ontology/blob/main/schemas/examples/place-centric-river-idle.json)
