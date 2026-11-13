@@ -8,7 +8,9 @@ It runs in your browser: your files are never uploaded, unless you save a
 workflow's project to the World Historical Gazetteer yourself (see
 [keeping the project in WHG](#methodos-project-in-whg)). A dataset of a million
 places has been checked and converted there, within the storage the browser
-allows the page (see [large datasets](#large-datasets)). It also runs
+allows the page (see [large datasets](#large-datasets)). It is built and
+tested in Chrome and other Chromium browsers; Firefox is expected to work and
+has had less testing, and Safari has not yet been checked. It also runs
 [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line),
 for many files at a time, with the same checks and the same reports.
 

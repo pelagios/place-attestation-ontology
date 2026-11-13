@@ -78,8 +78,9 @@ gives you three things.
   first guided workflow in {ref}`Methodos <methodos>`: the regions your places lie in are matched
   level by level, then the places themselves, and each place is located from
   its match or drawn, including over a georeferenced historical map, before
-  the result is checked and written out in PLATO. Like the rest of PLATO
-  tools it is experimental, runs entirely in your browser without uploading
+  the result is checked and written out in PLATO. PLATO tools are
+  experimental and under development; one workflow, *Map your data*, is in
+  beta testing. It runs entirely in your browser without uploading
   anything to WHG, and can be used whether or not you contribute to WHG.
   :::
 

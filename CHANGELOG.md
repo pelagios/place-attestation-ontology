@@ -11,7 +11,12 @@ marked `owl:deprecated` with a pointer to its replacement, for at least one
 release before it is removed. The changes recorded under 0.5.0 and earlier
 were made under the earlier policy.
 
-## Unreleased
+## 0.9.0-alpha.3
+
+Released 2026-11-18. A figure's `attributes` may take a list of values, the
+Valor Ecclesiasticus example, and a guide that covers what alpha.1 and
+alpha.2 added and says which browsers the tools are tested in. The schema
+change is additive: a document that validated against alpha.2 still does.
 
 ### Schemas
 
@@ -36,6 +41,11 @@ were made under the earlier policy.
 
 ### Guide
 
+- The front page says what state PLATO tools are in: experimental and under
+  development, with one workflow, *Map your data*, in beta testing. The tools
+  page says which browsers they are built and tested in (Chrome and other
+  Chromium browsers; Firefox expected to work, less tested; Safari not yet
+  checked).
 - The JSON page says that the two dataset formats give the same attestations
   in RDF and differ only in where the place is written, and how to choose
   between them; it lists the Valor example.
@@ -78,10 +88,11 @@ were made under the earlier policy.
 
 ### Schemas
 
-- The context's `$comment` records its verification for 0.9.0-alpha.2: all
-  seventeen JSON examples expanded with pyld and parsed with rdflib, every
-  `plato:` term declared, every schema key a context term, no node inferred
-  into two unrelated classes. The mappings are unchanged.
+- The context's `$comment` records its verification for 0.9.0-alpha.3: all
+  eighteen JSON examples validated against their profiles, expanded with pyld
+  and parsed with rdflib, every `plato:` term declared. The mappings are
+  unchanged. (The alpha.2 verification, of seventeen examples, is recorded
+  there too.)
 
 ## 0.9.0-alpha.2
 
