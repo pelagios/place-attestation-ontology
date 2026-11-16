@@ -1,8 +1,23 @@
 name: Generate PLATO Documentation
 
-# This workflow generates Widoco documentation and deploys it to the gh-pages branch.
-# GitHub's automatic "pages-build-deployment" action will then publish the gh-pages
-# branch to GitHub Pages. This two-step process is normal and expected.
+# This workflow builds the site (Widoco's reference, the guide, the ontology's
+# files, the schemas, the releases) and publishes it to two branches:
+#
+# - `site`: the site itself. https://plato.pelagios.org/ is made from it, by
+#   the Pages workflow of pelagios/plato-tools, which copies this branch to
+#   its root every day and whenever it deploys. Nothing publishes `site`
+#   directly.
+# - `gh-pages`: the forwarding version, for the site's former address,
+#   https://pelagios.org/place-attestation-ontology/, which GitHub's own
+#   "pages-build-deployment" publishes from this branch. Every HTML page is a
+#   small page that sends the reader to the same path on plato.pelagios.org,
+#   query and fragment kept; every other file is a copy, so that software
+#   fetching ontology.ttl, a schema or a release from the former address
+#   still gets it (scripts/forwarding_site.py).
+#
+# Never point plato-tools at gh-pages, and never publish the forwarding
+# version to `site`: the pages would forward to themselves. plato-tools
+# refuses such a tree, by the mark scripts/forwarding_site.py puts in each.
 
 on:
   push:
@@ -18,6 +33,7 @@ on:
       - 'scripts/build_releases.py'
       - 'scripts/skos_view.py'
       - 'scripts/check_dl.py'
+      - 'scripts/forwarding_site.py'
     # A release tag must rebuild, so that releases/X.Y.Z/ appears. PLATO tags
     # after pushing the release commit to main, and that main push has
     # usually started (without the tag) before the tag exists. GitHub does
@@ -32,11 +48,11 @@ on:
         required: false
         default: 'Manual documentation refresh'
 
-# Required for peaceiris/actions-gh-pages to push to gh-pages branch
+# Required for peaceiris/actions-gh-pages to push to the site and gh-pages branches
 permissions:
   contents: write
 
-# Every run force-pushes a fresh gh-pages, so the last to finish wins. Queue
+# Every run force-pushes a fresh site and gh-pages, so the last to finish wins. Queue
 # runs rather than race them: otherwise the main push for a release, still
 # building without the tag, can finish after the tag's run and publish a site
 # with no releases/X.Y.Z/. A queued run replaces an older queued one, which is
@@ -259,9 +275,42 @@ jobs:
           # Set output for next step
           echo "PUBLISH_DIR=$PUBLISH_DIR" >> $GITHUB_ENV
 
-      - name: Deploy to GitHub Pages
+      # The forwarding version of the site just built, for its former address
+      # (the first comment of this file). Made before anything is published, so
+      # that a failure here publishes neither branch. The script checks its own
+      # output; the lines after it check the two things that must never happen:
+      # a forwarding page in the site itself, or a real page left at the former
+      # address beside the pages that forward.
+      - name: Forwarding version, for the former address
+        run: |
+          python3 scripts/forwarding_site.py "$PUBLISH_DIR" ./forwarding-site
+          if grep -rl --include='*.html' 'name="plato-forward"' "$PUBLISH_DIR"; then
+            echo "::error::The site itself has a forwarding page (above): it must not be published to the site branch."
+            exit 1
+          fi
+          grep -q 'name="plato-forward"' ./forwarding-site/index-en.html
+          grep -q 'name="plato-forward"' ./forwarding-site/guide/index.html
+          grep -q 'name="plato-forward"' ./forwarding-site/404.html
+          cmp "$PUBLISH_DIR/ontology.ttl" ./forwarding-site/ontology.ttl
+          cmp "$PUBLISH_DIR/schemas/plato.context.jsonld" ./forwarding-site/schemas/plato.context.jsonld
+
+      # The site itself, which https://plato.pelagios.org/ is made from. First:
+      # if the second deploy fails, the former address keeps forwarding as it
+      # did, to a site that is up to date.
+      - name: Deploy the site to the site branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: site
           publish_dir: ${{ env.PUBLISH_DIR }}
+          force_orphan: true
+
+      # The forwarding version, which GitHub Pages publishes at the former
+      # address, https://pelagios.org/place-attestation-ontology/.
+      - name: Deploy the forwarding version to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./forwarding-site
           force_orphan: true
