@@ -135,7 +135,7 @@ def write_workbook(meta, path):
         ["Write the date as your source gives it, or 'undated'. Put years in 'from' and 'to' with at least four digits: 0921, not 921."],
         ["Columns with a fixed list of values offer a drop-down; the values are case-sensitive."],
         [""],
-        ["Guide: https://pelagios.org/place-attestation-ontology/guide/"],
+        ["Guide: https://plato.pelagios.org/guide/"],
         ["Table definitions (CSVW): " + METADATA_URL],
     ]
     for r in rows:

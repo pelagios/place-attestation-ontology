@@ -32,7 +32,7 @@
       "scheme": "url"
     },
     {
-      "identifier": "https://pelagios.org/place-attestation-ontology/",
+      "identifier": "https://plato.pelagios.org/",
       "relation": "isDocumentedBy",
       "scheme": "url"
     }

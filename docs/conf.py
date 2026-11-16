@@ -1,5 +1,5 @@
 """Sphinx configuration for the PLATO guide, published at
-https://pelagios.org/place-attestation-ontology/guide/ beside the Widoco reference.
+https://plato.pelagios.org/guide/ beside the Widoco reference.
 
 Reference pages, the template workbook and the download zips are generated at
 build time from the normative files (ontology.ttl, schemas/tables/), by

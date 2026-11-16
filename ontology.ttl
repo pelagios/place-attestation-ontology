@@ -51,7 +51,7 @@
     dcterms:bibliographicCitation "Gadd, Stephen, and the Pelagios Network Place Working Group. PLATO — Place Attestation Ontology, version 0.9.0-alpha.3. Zenodo, 2026. https://doi.org/10.5281/zenodo.21688313" ;
     dcat:keyword "ontology"@en, "historical gazetteer"@en, "place"@en, "attestation"@en,
         "provenance"@en, "linked open data"@en, "digital humanities"@en ;
-    rdfs:seeAlso <https://pelagios.org/place-attestation-ontology/index-en.html> ;
+    rdfs:seeAlso <https://plato.pelagios.org/index-en.html> ;
     vann:preferredNamespacePrefix "plato" ;
     vann:preferredNamespaceUri "https://w3id.org/plato#" .
 

@@ -19,9 +19,9 @@ The central idea is that the fundamental unit of recorded knowledge is not a *pl
 
 ➤ **Check or convert a file: [PLATO tools](https://plato.pelagios.org/tools/)**, in your browser; nothing is uploaded. For batch checking, it also runs [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line).
 
-➤ **New to PLATO? [Start with the guide](https://pelagios.org/place-attestation-ontology/guide/)**: why PLATO, the ideas in plain language, and how to organise data about places in an ordinary spreadsheet so that tools implementing PLATO can use it.
+➤ **New to PLATO? [Start with the guide](https://plato.pelagios.org/guide/)**: why PLATO, the ideas in plain language, and how to organise data about places in an ordinary spreadsheet so that tools implementing PLATO can use it.
 
-➤ **[Read the full ontology documentation](https://pelagios.org/place-attestation-ontology/index-en.html)**, a generated reference for every class and property.
+➤ **[Read the full ontology documentation](https://plato.pelagios.org/index-en.html)**, a generated reference for every class and property.
 
 ## Why a new ontology?
 
@@ -94,7 +94,7 @@ The `examples/` directory contains worked examples in Turtle (RDF) format:
 - **[succession.ttl](examples/succession.ttl)** — Mergers, an absorption and a division of (invented) municipalities, as `MergedInto`, `AbsorbedBy` and `SplitInto` attestations about the earlier entity, dated by the day the change took effect, and two `TransferredTo` land transfers in which both parties carry on.
 - **[citations.ttl](examples/citations.ttl)** — Reified citations: one printed gazetteer cited at different pages, one claim resting on two sources with a locator in each, an attribution resolved editorially from an *ibidem* (`plato:Citation`, `plato:locator`, `plato:attribution_status`), and a name found only in an edition's commentary (`plato:form_status` `plato:Editorial`).
 - **[identity-judgements.ttl](examples/identity-judgements.ttl)** — Identity judgements: a cluster of matches accepted together, then withdrawn, corrected and denied, each with its own provenance, and the candidate set of software suggestions they answer through `promoted_from`.
-- **[antonine-routes.ttl](examples/antonine-routes.ttl)**, **[king-john-itinerary.ttl](examples/king-john-itinerary.ttl)**, **[river-idle-network.ttl](examples/river-idle-network.ttl)**, **[datini-network.ttl](examples/datini-network.ttl)** — Parts of the four worked examples of routes, a journey and networks, explained in the guide's [Routes, journeys and networks](https://pelagios.org/place-attestation-ontology/guide/routes/index.html); each whole example is in the JSON examples below and as spreadsheet tables in `schemas/tables/examples/`.
+- **[antonine-routes.ttl](examples/antonine-routes.ttl)**, **[king-john-itinerary.ttl](examples/king-john-itinerary.ttl)**, **[river-idle-network.ttl](examples/river-idle-network.ttl)**, **[datini-network.ttl](examples/datini-network.ttl)** — Parts of the four worked examples of routes, a journey and networks, explained in the guide's [Routes, journeys and networks](https://plato.pelagios.org/guide/routes/index.html); each whole example is in the JSON examples below and as spreadsheet tables in `schemas/tables/examples/`.
 - **[survey-attestations.ttl](examples/survey-attestations.ttl)** — Place-name survey data: a witness dated separately from the text it transmits (`plato:source_timespan`, `plato:derived_from`), a form found only inside a personal name (`plato:occurrence_context`, `plato:occurrence_count`), and an editorial headword and a derived search form distinguished from attested spellings (`plato:form_status`).
 
 The `schemas/examples/` directory contains corresponding examples in JSON format, following the JSON Schema profiles:
@@ -106,7 +106,7 @@ The `schemas/examples/` directory contains corresponding examples in JSON format
 - **[place-centric-judgements.json](schemas/examples/place-centric-judgements.json)** — Denials, a source's stance, alternative readings and transcription judgements, and a withdrawn import.
 - **[candidate-set-judgements.json](schemas/examples/candidate-set-judgements.json)** — The candidate set of the identity-judgements example, in the candidate set profile: two matches suggested by software, each with its minted `#c-` IRI.
 - **[attestation-centric-judgements.json](schemas/examples/attestation-centric-judgements.json)** — Two answers to that candidate set, a match and a denial, each pointing at its candidate with `promotedFrom`, from a dataset that lists the set in `candidateSets`.
-- **[place-centric-statistics.json](schemas/examples/place-centric-statistics.json)** — Figures from a statistical table, with their dimensions, as explained in the guide's [Statistical tables](https://pelagios.org/place-attestation-ontology/guide/statistics.html).
+- **[place-centric-statistics.json](schemas/examples/place-centric-statistics.json)** — Figures from a statistical table, with their dimensions, as explained in the guide's [Statistical tables](https://plato.pelagios.org/guide/statistics.html).
 - **[place-centric-succession.json](schemas/examples/place-centric-succession.json)** — The succession example in place-centric JSON.
 - **[place-centric-georeference.json](schemas/examples/place-centric-georeference.json)** — Geometries traced from a historical map, citing the map and the georeference they were placed through.
 - **[place-centric-trismegistos.json](schemas/examples/place-centric-trismegistos.json)** — Three places from Trismegistos Places (CC BY-SA 4.0, credited): an attestation window (`timespanRole` of `EvidenceSpan`), a position between two places, a containment known only by name (`relatedLabel` alone), a Demotic name known only in transliteration, and the land of a people (names typed both `toponym` and `ethnonym`).

@@ -46,6 +46,8 @@ change is additive: a document that validated against alpha.2 still does.
   link to the ontology specification (`index-en.html`), by a relative link,
   and the site's root now opens the guide rather than the specification; a
   link to the root with a term's fragment still reaches the specification.
+  Links to the guide, the specification and the published files name the
+  site's new address, <https://plato.pelagios.org/>.
 - The front page says what state PLATO tools are in: experimental and under
   development, with one workflow, *Map your data*, in beta testing. The tools
   page says which browsers they are built and tested in (Chrome and other

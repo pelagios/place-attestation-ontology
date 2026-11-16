@@ -34,7 +34,7 @@ other vocabulary:
 - the current version: `https://w3id.org/plato/schemas/plato.skos.ttl`
   (or `.jsonld`);
 - a fixed copy for each release, from 0.9.0-alpha.2 on:
-  `https://pelagios.org/place-attestation-ontology/releases/<version>/vocabularies.skos.ttl`.
+  `https://plato.pelagios.org/releases/<version>/vocabularies.skos.ttl`.
 
 PLATO's own lists of words (form status, source stance, relation types,
 certainty levels and the rest) are SKOS concept schemes in the ontology

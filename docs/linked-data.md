@@ -8,14 +8,14 @@ the JSON formats, is a way of producing RDF in it.
 | What | Permanent address |
 |---|---|
 | The ontology | <https://w3id.org/plato> (namespace `https://w3id.org/plato#`) |
-| Ontology reference documentation | <https://pelagios.org/place-attestation-ontology/index-en.html> |
+| Ontology reference documentation | <https://plato.pelagios.org/index-en.html> |
 | JSON Schemas | `https://w3id.org/plato/schemas/plato.schema.json`, `…/place-centric.schema.json`, `…/attestation-centric.schema.json`, `…/candidate-set.schema.json` |
 | JSON-LD context | <https://w3id.org/plato/schemas/plato.context.jsonld> |
 | Spreadsheet table definitions (CSVW) | <https://w3id.org/plato/schemas/tables/csv-metadata.json> |
 
 The ontology address answers with HTML in a browser and with RDF to a client
 that asks for it. The files themselves are published at
-`https://pelagios.org/place-attestation-ontology/ontology.ttl`, and as
+`https://plato.pelagios.org/ontology.ttl`, and as
 `.jsonld`, `.owl` (RDF/XML) and `.nt` (N-Triples). All four are the same
 graph: the Turtle is the source file, and the others are generated from it
 and checked against it on every release.

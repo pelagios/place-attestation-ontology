@@ -26,7 +26,7 @@ identifiers:
     value: 10.5281/zenodo.21688313
     description: "Concept DOI — always resolves to the latest version."
 repository-code: "https://github.com/pelagios/place-attestation-ontology"
-url: "https://pelagios.org/place-attestation-ontology/"
+url: "https://plato.pelagios.org/"
 keywords:
   - ontology
   - OWL
