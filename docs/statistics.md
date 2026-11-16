@@ -82,7 +82,7 @@ metadata, and link its rows to the places in your PLATO sheets by `place_id`.
 
 ## Checking, and standard Data Cube
 
-[PLATO tools](https://pelagios.org/plato-tools/) checks a document with
+[PLATO tools](https://plato.pelagios.org/tools/) checks a document with
 figures like any other. A PLATO document is not written as standard Data
 Cube, because nothing in it is written twice; the tools produce standard Data
 Cube from it, and check that:

@@ -19,7 +19,7 @@ authors:
     affiliation: "Institute for Spatial History Innovation (ISHI), University of Pittsburgh"
   - name: "Pelagios Network Place Working Group"
 version: 0.9.0-alpha.3
-date-released: 2026-11-18
+date-released: 2026-11-16
 license: CC-BY-4.0
 identifiers:
   - type: doi

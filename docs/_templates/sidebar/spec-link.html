@@ -1,0 +1,10 @@
+{#- A link to the formal ontology specification (Widoco's index-en.html, one level above the
+    guide), in the markup of Furo's navigation tree so that it reads as one more entry. A toctree
+    cannot hold it: a toctree takes only documents and absolute URLs, and the link must be
+    relative so that it works on whichever host serves the site. -#}
+<div class="sidebar-tree plato-spec-link">
+  <p class="caption" role="heading"><span class="caption-text">Formal specification</span></p>
+  <ul>
+    <li class="toctree-l1"><a class="reference external" href="{{ pathto('../index-en.html', 1) }}">Ontology specification</a></li>
+  </ul>
+</div>

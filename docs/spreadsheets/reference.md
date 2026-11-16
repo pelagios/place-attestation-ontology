@@ -10,7 +10,7 @@ and the rules that apply to all of them, and where to download the template.
 
 Spreadsheets are one of several formats that comply with PLATO. The same data
 can be written as [PLATO JSON](../json.md) or as [linked data](../linked-data.md)
-(RDF), and [PLATO tools](https://pelagios.org/plato-tools/) converts between
+(RDF), and [PLATO tools](https://plato.pelagios.org/tools/) converts between
 them, and to and from Linked Places Format.
 :::
 

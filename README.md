@@ -17,11 +17,11 @@ An OWL ontology for representing historical place knowledge as **attestations**:
 
 The central idea is that the fundamental unit of recorded knowledge is not a *place record* but an *attestation* — a claim that a particular entity had a particular name, geometry, or classification, during a particular period, according to a particular source. SpatialEntities are stable identities, the points on which attestations converge; everything we know about them is layered on through attestations from different people, sources, and periods. Many SpatialEntities are places in the everyday sense and some are not; PLATO defines no Place class and gives the word no prescribed meaning.
 
-➤ **Check or convert a file: [PLATO tools](https://pelagios.org/plato-tools/)**, in your browser; nothing is uploaded. For batch checking, it also runs [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line).
+➤ **Check or convert a file: [PLATO tools](https://plato.pelagios.org/tools/)**, in your browser; nothing is uploaded. For batch checking, it also runs [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line).
 
 ➤ **New to PLATO? [Start with the guide](https://pelagios.org/place-attestation-ontology/guide/)**: why PLATO, the ideas in plain language, and how to organise data about places in an ordinary spreadsheet so that tools implementing PLATO can use it.
 
-➤ **[Read the full ontology documentation](https://pelagios.org/place-attestation-ontology/)**, a generated reference for every class and property.
+➤ **[Read the full ontology documentation](https://pelagios.org/place-attestation-ontology/index-en.html)**, a generated reference for every class and property.
 
 ## Why a new ontology?
 

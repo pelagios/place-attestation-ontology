@@ -3,6 +3,14 @@
 A short introduction to PLATO and its tools, as slides:
 [PLATO and its tools](https://docs.google.com/presentation/d/18XcP0IFIDxzw3hmoXpSB-VHmktBNgkz2/edit?usp=sharing).
 
+:::{admonition} Looking for the specification?
+:class: seealso
+
+The formal definition of every PLATO class and property is in the
+**<a class="reference external" href="../index-en.html">PLATO ontology specification</a>**.
+This guide is the plain-language way in.
+:::
+
 ```{image} _static/plato-thinking.png
 :alt: A line drawing of the philosopher Plato, chin in hand, thinking about a network of linked data: Wikidata, GeoNames, the Getty AAT, PeriodO and linked open data.
 :class: plato-hero
@@ -73,7 +81,7 @@ gives you three things.
   places with established reference gazetteers such as Pleiades, GeoNames
   and Wikidata: it finds the record for the same place, so that you can take
   its coordinates where yours have none. With WHG's agreement, *Map your
-  Data* is moving out of WHG and into [PLATO tools](https://pelagios.org/plato-tools/),
+  Data* is moving out of WHG and into [PLATO tools](https://plato.pelagios.org/tools/),
   and the PLATO tools version is the one now being tested. There it is the
   first guided workflow in {ref}`Methodos <methodos>`: the regions your places lie in are matched
   level by level, then the places themselves, and each place is located from
@@ -111,7 +119,7 @@ PLATO is built to help, and here is how, principle by principle.
   address in the standard formats software asks for. Data in PLATO's shape
   is plain spreadsheet tables, JSON or linked data: open formats that anyone
   can read without special software, and that
-  [PLATO tools](https://pelagios.org/plato-tools/) checks and converts.
+  [PLATO tools](https://plato.pelagios.org/tools/) checks and converts.
 
 **Interoperable.**
 : PLATO is a formal standard (an OWL ontology) built on widely used
@@ -171,7 +179,7 @@ permanent addresses for your places.
   one row says which place became which, and when.
 
 **I want to check a file, or convert it to another format.**
-: Use [PLATO tools](https://pelagios.org/plato-tools/): drop the file on the page, and see
+: Use [PLATO tools](https://plato.pelagios.org/tools/): drop the file on the page, and see
   [checking, converting and comparing](tools.md) for what it tells you. It runs in your
   browser, so nothing is uploaded, and it works at any size. To check many
   files at once, it also runs [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line).
@@ -192,14 +200,14 @@ permanent addresses for your places.
 
 PLATO is developed by the Pelagios Network's Place Working Group and the World
 Historical Gazetteer. The formal definition of every term is in the
-[ontology reference](https://pelagios.org/place-attestation-ontology/); this
+<a class="reference external" href="../index-en.html">ontology specification</a>; this
 guide is the friendlier way in.
 
 ```{toctree}
 :hidden:
 
 Why PLATO <self>
-PLATO tools <https://pelagios.org/plato-tools/>
+PLATO tools <https://plato.pelagios.org/tools/>
 ```
 
 ```{toctree}

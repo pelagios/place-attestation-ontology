@@ -8,7 +8,7 @@ the JSON formats, is a way of producing RDF in it.
 | What | Permanent address |
 |---|---|
 | The ontology | <https://w3id.org/plato> (namespace `https://w3id.org/plato#`) |
-| Ontology reference documentation | <https://pelagios.org/place-attestation-ontology/> |
+| Ontology reference documentation | <https://pelagios.org/place-attestation-ontology/index-en.html> |
 | JSON Schemas | `https://w3id.org/plato/schemas/plato.schema.json`, `…/place-centric.schema.json`, `…/attestation-centric.schema.json`, `…/candidate-set.schema.json` |
 | JSON-LD context | <https://w3id.org/plato/schemas/plato.context.jsonld> |
 | Spreadsheet table definitions (CSVW) | <https://w3id.org/plato/schemas/tables/csv-metadata.json> |
@@ -65,7 +65,7 @@ document's `creator` does.
 
 ## Without installing anything
 
-[PLATO tools](https://pelagios.org/plato-tools/) converts between PLATO JSON, RDF (it reads N-Triples,
+[PLATO tools](https://plato.pelagios.org/tools/) converts between PLATO JSON, RDF (it reads N-Triples,
 N-Quads and Turtle, and writes N-Triples), the spreadsheet tables and Linked
 Places Format, in the browser, and checks RDF against the terms the ontology
 declares. The same conversions run [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line) for batch
@@ -94,7 +94,7 @@ three pieces for that.
   it. Every attestation carries its
   `created` time, so the state as of any date can be worked out from the
   data itself. Before publishing a new version, check that it keeps this
-  rule: [PLATO tools](https://pelagios.org/plato-tools/) compares it with the
+  rule: [PLATO tools](https://plato.pelagios.org/tools/) compares it with the
   earlier one and lists anything deleted or changed (see
   [comparing two versions](tools.md#comparing-two-versions)). From the
   command line: `npx github:pelagios/plato-tools compare earlier.jsonl later.jsonl`.

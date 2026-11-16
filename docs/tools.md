@@ -1,6 +1,6 @@
 # Checking, converting and comparing
 
-[PLATO tools](https://pelagios.org/plato-tools/) works on data in PLATO's
+[PLATO tools](https://plato.pelagios.org/tools/) works on data in PLATO's
 shape. It checks a file for mistakes, converts it to another format, and shows
 whether a new version of a published dataset has kept what the earlier one
 said, and it prepares a dataset for [publishing](#publishing-your-dataset).
@@ -700,7 +700,7 @@ page.
 
 **Chora**, in the middle of the PLATO tools page (its card among the tools,
 **Show on the map** in step 2, or
-[straight to it](https://pelagios.org/plato-tools/#chora)), shows a
+[straight to it](https://plato.pelagios.org/tools/#chora)), shows a
 dataset's places on a map, with everything their attestations say of each
 one over time, and lets you add a location you have worked out yourself: a
 point, a line or an area, drawn on the map, or traced from a historical map
@@ -1030,7 +1030,7 @@ new attestation records:
 
 A drawing traced from a historical map records where it came from as PLATO
 sets out for a geometry traced from a map (`plato:Geometry`, in the
-[ontology reference](https://pelagios.org/place-attestation-ontology/)). It
+<a class="reference external" href="../index-en.html#Geometry">ontology specification</a>). It
 cites the map as its evidence (`cito:citesAsEvidence`), with the canvas and
 the area traced as the locator, and the map's licence where it is known; and
 it cites the georeference as the method used (`cito:usesMethodIn`), as a
@@ -2129,7 +2129,7 @@ project file, and **Close** leaves it. If WHG cannot be reached, **Try
 again**. A reload then needs the link pasted again.
 
 From the command line,
-`npx github:pelagios/plato-tools project info 'https://pelagios.org/plato-tools/#whg-shared=…'`
+`npx github:pelagios/plato-tools project info 'https://plato.pelagios.org/tools/#whg-shared=…'`
 reads the project a share link opens, with no token, and checks it as it
 checks a file. It reminds you that the link is now in the shell's history.
 

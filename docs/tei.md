@@ -11,7 +11,7 @@ evidence in PLATO's shape. A place name such as
 says: *this edition, at this point, names this place, in these words*. That
 is an attestation.
 
-[PLATO tools](https://pelagios.org/plato-tools/) turns a TEI edition into a
+[PLATO tools](https://plato.pelagios.org/tools/) turns a TEI edition into a
 PLATO dataset, which you can then check, convert to the spreadsheet tables or
 to Linked Places Format, and add to. It reads TEI; it does not write it.
 
@@ -20,7 +20,7 @@ to Linked Places Format, and add to. It reads TEI; it does not write it.
 1. Save your edition as UTF-8, which is the usual encoding for TEI. A file
    that says it is in another encoding is refused, rather than read with its
    letters wrong.
-2. Open [PLATO tools](https://pelagios.org/plato-tools/), drop the file on
+2. Open [PLATO tools](https://plato.pelagios.org/tools/), drop the file on
    it, and choose **Convert**, with the format you want. It also runs
    [from the command line](https://github.com/pelagios/plato-tools#from-the-command-line),
    for many editions at a time.

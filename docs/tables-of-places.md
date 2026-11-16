@@ -6,7 +6,7 @@ for latitude, one for longitude and so on, or a GeoJSON file of features
 exported from a GIS. Such a table is not yet in PLATO's shape, but most of
 what it holds has a place there.
 
-[PLATO tools](https://pelagios.org/plato-tools/) reads such a table, works out
+[PLATO tools](https://plato.pelagios.org/tools/) reads such a table, works out
 which column holds what, lets you correct that, and turns each row into
 evidence in PLATO's shape, which you can then check, convert to the
 [spreadsheet tables](spreadsheets/index.md) or to Linked Places Format, and

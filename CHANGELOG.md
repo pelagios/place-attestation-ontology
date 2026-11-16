@@ -13,7 +13,7 @@ were made under the earlier policy.
 
 ## 0.9.0-alpha.3
 
-Released 2026-11-18. A figure's `attributes` may take a list of values, the
+Released 2026-11-16. A figure's `attributes` may take a list of values, the
 Valor Ecclesiasticus example, and a guide that covers what alpha.1 and
 alpha.2 added and says which browsers the tools are tested in. The schema
 change is additive: a document that validated against alpha.2 still does.
@@ -41,6 +41,11 @@ change is additive: a document that validated against alpha.2 still does.
 
 ### Guide
 
+- Links to PLATO tools go to their new address,
+  <https://plato.pelagios.org/tools/>. The guide's front page and its sidebar
+  link to the ontology specification (`index-en.html`), by a relative link,
+  and the site's root now opens the guide rather than the specification; a
+  link to the root with a term's fragment still reaches the specification.
 - The front page says what state PLATO tools are in: experimental and under
   development, with one workflow, *Map your data*, in beta testing. The tools
   page says which browsers they are built and tested in (Chrome and other

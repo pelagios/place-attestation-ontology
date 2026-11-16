@@ -144,15 +144,27 @@ jobs:
             exit 1
           fi
 
-          # Create a proper index.html that redirects to index-en.html
-          # (Widoco generates index-en.html, not index.html)
+          # The site root opens the guide (built into guide/ below), which is
+          # the landing page; Widoco's reference is index-en.html, which Widoco
+          # writes instead of an index.html. w3id.org/plato sends HTML requests
+          # straight to index-en.html, so term IRIs never pass through here.
+          # An older link to the root with a term's fragment (…/#Attestation)
+          # did reach the reference, though, and a fragment belongs to no page
+          # of the guide's root, so a request with one still goes to
+          # index-en.html, fragment kept. Without JavaScript: the guide.
           if [ -f "$PUBLISH_DIR/index-en.html" ] && [ ! -f "$PUBLISH_DIR/index.html" ]; then
             cat > "$PUBLISH_DIR/index.html" << 'EOF'
           <!DOCTYPE html>
-          <html><head>
-          <meta http-equiv="refresh" content="0; url=index-en.html">
+          <html lang="en"><head>
+          <meta charset="utf-8">
+          <title>PLATO</title>
+          <script>
+          location.replace(location.hash.length > 1 ? "index-en.html" + location.hash : "guide/");
+          </script>
+          <noscript><meta http-equiv="refresh" content="0; url=guide/"></noscript>
           </head><body>
-          <p>Redirecting to <a href="index-en.html">documentation</a>...</p>
+          <p>Go to the <a href="guide/">PLATO guide</a> or the
+          <a href="index-en.html">ontology specification</a>.</p>
           </body></html>
           EOF
           fi

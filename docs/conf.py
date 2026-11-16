@@ -36,6 +36,19 @@ html_theme_options = {
     "source_directory": "docs/",
 }
 html_show_sourcelink = False
+# Furo's default sidebar, with a link to the ontology specification after the navigation tree.
+html_sidebars = {
+    "**": [
+        "sidebar/brand.html",
+        "sidebar/search.html",
+        "sidebar/scroll-start.html",
+        "sidebar/navigation.html",
+        "sidebar/spec-link.html",
+        "sidebar/ethical-ads.html",
+        "sidebar/scroll-end.html",
+        "sidebar/variant-selector.html",
+    ]
+}
 
 # GitHub renders a README heading's anchor as "user-content-<slug>" and resolves "#<slug>" with a
 # script, so the link checker cannot find it (checked by hand: #from-the-command-line exists).

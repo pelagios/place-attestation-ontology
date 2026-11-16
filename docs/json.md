@@ -38,7 +38,7 @@ folder, and are listed under [Worked examples](#worked-examples) below.
 
 ## Checking and converting
 
-[PLATO tools](https://pelagios.org/plato-tools/) checks a JSON document against these schemas and
+[PLATO tools](https://plato.pelagios.org/tools/) checks a JSON document against these schemas and
 converts it to RDF, to the spreadsheet tables or to Linked Places Format, in
 the browser and at any size. It reads JSON Lines too: a header line, then one
 place per line, which is the easiest shape to write and to stream.

@@ -123,7 +123,7 @@ Each relations row names exactly one thing it relates the place to: a place in
 `related_place_id`, or an address in `related_uri`, never both. When the source
 only names the other thing, with nothing to point at ("in the Delta"), leave
 both empty and give the name in `related_label`. [PLATO
-tools](https://pelagios.org/plato-tools/) reports a row that fills in both.
+tools](https://plato.pelagios.org/tools/) reports a row that fills in both.
 
 ## Places that replace one another
 

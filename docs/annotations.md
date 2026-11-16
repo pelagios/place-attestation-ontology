@@ -7,7 +7,7 @@ mentions to a gazetteer, you have already done most of the work of organising
 that evidence in PLATO's shape. Each link says: *this passage, in this
 document, names this place*. That is an attestation.
 
-[PLATO tools](https://pelagios.org/plato-tools/) turns a Recogito download
+[PLATO tools](https://plato.pelagios.org/tools/) turns a Recogito download
 into a PLATO dataset, which you can then check, convert to the spreadsheet
 tables or to Linked Places Format, and add to.
 
@@ -15,7 +15,7 @@ tables or to Linked Places Format, and add to.
 
 1. In Recogito, download your document's annotations in the **W3C Web
    Annotation** format (a JSON-LD file).
-2. Open [PLATO tools](https://pelagios.org/plato-tools/), drop the file on
+2. Open [PLATO tools](https://plato.pelagios.org/tools/), drop the file on
    it, and choose **Convert**, with the format you want.
 3. Read the report. It lists everything that was not carried over, and why.
 

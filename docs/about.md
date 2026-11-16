@@ -27,7 +27,7 @@ Each release is archived on Zenodo with its own DOI (see
 [Citing PLATO](#citing-plato)), so data organised against one release can
 always name the exact version it follows.
 
-[PLATO tools](https://pelagios.org/plato-tools/), which checks and converts
+[PLATO tools](https://plato.pelagios.org/tools/), which checks and converts
 data in PLATO's shape, is developed separately and carries its own badge.
 
 ## PLATO and Linked Places Format
