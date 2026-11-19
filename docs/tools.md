@@ -447,7 +447,7 @@ in; the new item then comes back as an identity of the place. The panel for
 it, **Wikidata items for the places no gazetteer knows**, is under the
 review, in five parts, in order. In a workflow it is an optional step of
 its own, after the review (see [Map your data](#methodos-map-your-data),
-step 6). PLATO tools never writes to Wikidata: it writes a batch, which you
+step 5). PLATO tools never writes to Wikidata: it writes a batch, which you
 run with your own Wikidata account.
 
 Wikidata and PLATO keep different kinds of record. Wikidata holds one
@@ -1102,7 +1102,7 @@ keeping the place, the view and any drawings made since, so that what you
 draw next is added to it and a later save builds on it. In a
 [workflow](#methodos) at Chora's step, the save also does that step, if the
 dataset Chora had open is the one that went to the step (see
-[Map your data](#methodos-map-your-data), step 8), or, in
+[Map your data](#methodos-map-your-data), after step 7), or, in
 [Trace a historical map](#methodos-trace-a-historical-map), if the save adds
 places traced from a map. Saved from another
 dataset, the step stays open, and the tracker and the save say why.
@@ -1572,7 +1572,7 @@ kinds:
 - **Yours.** The tracker says what the step waits for (matching the columns,
   deciding on the candidates, drawing in Chora). When you have done it, press
   **This step is done**. Chora's step needs no button: saving there does it (see
-  [Map your data](#methodos-map-your-data), step 8, and
+  [Map your data](#methodos-map-your-data), after step 7, and
   [Trace a historical map](#methodos-trace-a-historical-map)).
 
 **Back a step** undoes the last step done, so that it is to do again.
@@ -1584,109 +1584,187 @@ in this browser. A workflow chosen but not yet begun can be let go with
 ### Map your data
 
 From a list of place names to places identified in the World Historical
-Gazetteer, located, checked and written out, and published if you say so.
+Gazetteer, located, checked, seen on a map and downloaded, and published if
+you say so.
+
+**In plain words.** This workflow names each step by what you do, with the
+name of the tool that does it small beside it. The list of tools on the left
+likewise names each tool by what it does, with its Greek name small beside
+that: *Guided steps* (Methodos), *Read my table* (Hermes), *Check*
+(Elenchos), *Convert* (Metaphrasis), *Count and compare* (Arithmos), *Find
+in gazetteers* (Krisis), *Map* (Chora), *Publish* (Agora) and *Compare
+versions* (Mneme). At each step the page shows the step's own action.
+Everything else the tools can do with the file is folded under **More
+options (for experts)**, and none of it is needed for the workflow.
 
 **What you need first.** The lookups in the World Historical Gazetteer need an
 account of your own with WHG, enrolled in WHG's beta, and a WHG token. That
-covers the regions in step 4, the places in step 5, and finding a record whose
-location you adopt in Chora. To get the token, sign in at
-[whgazetteer.org](https://whgazetteer.org/) with ORCiD, open your **Profile**
-and generate an **API Token**. You give the token in the lookup panel (see
-[the WHG token](#the-whg-token)). The rest of the workflow needs no account.
-A [Scope](#scope), set from the tracker, confines every lookup the workflow
-makes.
+covers the regions, where the table gives them, the places in step 4, and
+finding a record whose location you adopt on the map. To get the token, sign
+in at [whgazetteer.org](https://whgazetteer.org/) with ORCiD, open your
+**Profile** and generate an **API Token**. You give the token in the lookup
+panel (see [the WHG token](#the-whg-token)). The rest of the workflow needs
+no account. A [Scope](#scope), set from the tracker, confines every lookup
+the workflow makes.
 
 The questions under 3 are:
 
 - *Does the table say which region each place is in (a parish, a county)?*
-- *Will you draw or trace places that the gazetteer cannot locate?*
+- *Some places may not be found. Do you want to place them by hand on a map
+  afterwards?*
 - *Will you publish the result?* (asked only when you wanted places on a map)
 - *Will you create Wikidata items for the places no gazetteer knows (a batch
-  you run in QuickStatements yourself)?* Asked last, and no unless you
-  answer yes (see [Wikidata items](#wikidata-items)).
+  you run in QuickStatements yourself)?* Asked last (see
+  [Wikidata items](#wikidata-items)).
 - When the table gives regions, or you will publish, *Under what base address
-  will your places, and any regions, have web addresses of their own?* Where
-  the table gives regions it is needed, since the regions are given addresses
-  under it, so **Follow** waits for it; otherwise it is optional (see
+  will your places, and any regions, have web addresses of their own?* It is
+  optional: leave it empty if you have no web site for your places. They, and
+  any regions, then have working ids for now, under a temporary address, and
+  your own address is asked for when you publish (see
   [the base address](#methodos-base-address)).
 
-The steps, with the tool that does each:
+Each answer is no unless you say yes, so a list of names needs none of them:
+the steps and **Follow** are shown as soon as the first two questions are
+answered.
 
-1. **Hermes: Match the columns to PLATO.** Yours: match the table's columns
-   to PLATO's fields in the Columns panel (see
-   [your own table of places](tables-of-places.md)), then say the step is
-   done.
-2. **Elenchos: Check the table.** Run the [check](#checking).
-3. **Metaphrasis: Make a PLATO dataset of it.** Run the
-   [conversion](#converting) to PLATO JSON. Where the table gives regions,
-   the conversion uses the base address you gave (it is the one in
-   **Options**, *Web address for your identifiers*): the regions are made
-   from the table when it is converted, and need it to have addresses of
-   their own (see
-   [the base address](tables-of-places.md#place-ids-and-the-base-address)).
-4. **Krisis: Identify the regions, the widest first.** Only if the table gives
-   regions. Yours, in the region review (**Review the regions level by
-   level**): the regions are looked up level by level, from the widest, each
-   level within the match of the level above. The step is done only when
-   every region is settled. The detail of the region review is in
-   [reviewing regions, level by level](#region-review).
-5. **Krisis: Look the places up in the World Historical Gazetteer.** Where
-   the table gives regions, the places are looked up within their regions.
-   The workflow's [Scope](#scope), if one is set, applies too: its kinds of
-   place, years and sources to every place, and its Where to a place whose
-   regions say nothing of where to look. The lookup needs your WHG token and
-   your permission (see [reviewing matches](#match-review)).
-6. **Krisis: Decide which candidates are the same place.** Yours: review the
-   candidates, as in [reviewing matches](#match-review). If you said you
-   would create Wikidata items, **Krisis: Create Wikidata items for the
-   places no gazetteer knows** follows, an optional step of its own. Yours:
-   with the review open, use its panel *Wikidata items for the places no
-   gazetteer knows* (see [Wikidata items](#wikidata-items)), then press
-   **This step is done**. The step is done with the review as it stands,
-   whether or not an item was recorded, and the next step writes any Q-id
-   recorded into the dataset as an identity.
-7. Recording the decisions, by **Finish** in the review, as one of:
-   - **Krisis: Record the decisions in the dataset**, where the table gives
-     no regions;
-   - **Krisis: Record the decisions, with the region each place is in**,
-     where it does. Export the candidates first (**Export the suggestions as
-     a candidate set**), so that each identity records the candidate it
-     answers (`promotedFrom`). The places stay `ContainedIn` the regions made
-     from the table, and each region gets your identification of it with the
-     gazetteer's record, as described under
-     [what is written](#region-review). If the base address in **Options**
-     is no longer the one the review was saved with, **Finish** says so, and
-     still writes, for the review's own address: set **Options** back if
-     your places keep that address.
-8. **Chora: Draw or trace the places still without a location.** Only if you
-   said you would. Yours: **Open Chora**, in the tracker or under the step's
-   title, opens [Chora](#chora) on the step's dataset, with the workflow
-   still beside the map. Draw or trace the places there, or take a location
-   from a gazetteer's match (**Adopt**: see
+The steps, with the tool that does each. They are numbered here as they are
+when every answer is no. A step that only a yes brings is described where it
+comes, without a number of its own; in the tracker it is numbered with the
+rest, and the steps after it are one higher.
+
+1. **Check your columns** (Hermes). Yours: check that each column of the
+   table is read as what it holds, in the Columns panel (see
+   [your own table of places](tables-of-places.md)), change any that is not,
+   then say the step is done.
+2. **Check the table** (Elenchos). Run the [check](#checking).
+3. **Prepare your places** (Metaphrasis). Run the
+   [conversion](#converting): it makes a PLATO dataset of the table (PLATO
+   JSON), which the rest of the workflow works on. Where the table gives
+   regions, they are made from the table when it is converted, with
+   addresses of their own under the base address you gave (it is the one in
+   **Options**, *Web address for your identifiers*; see
+   [the base address](tables-of-places.md#place-ids-and-the-base-address)),
+   or, if you gave none, under a temporary one.
+
+   *Only if the table gives regions:* **Find the regions your places are in,
+   the widest first** (Krisis). Yours, in the region review (**Review the
+   regions level by level**): the regions are looked up level by level, from
+   the widest, each level within the match of the level above. The step is
+   done only when every region is settled. The detail of the region review
+   is in [reviewing regions, level by level](#region-review).
+4. **Find your places in WHG** (Krisis). Where the table gives regions, the
+   places are looked up within their regions. The workflow's
+   [Scope](#scope), if one is set, applies too: its kinds of place, years
+   and sources to every place, and its Where to a place whose regions say
+   nothing of where to look. The lookup needs your WHG token and your
+   permission (see [reviewing matches](#match-review)). Its other choices
+   (another service, each place's other names and spellings, the language of
+   the names, filters, and the first queries exactly as they would be sent)
+   are under **More options (for experts)**.
+5. **Decide which matches are right** (Krisis). Yours: decide on each
+   suggested match, as in [reviewing matches](#match-review).
+
+   *Only if you said you would create Wikidata items:* **Create Wikidata
+   items for the places no gazetteer knows** (Krisis). Yours: with the
+   review open, use its panel *Wikidata items for the places no gazetteer
+   knows* (see [Wikidata items](#wikidata-items)), then press **This step is
+   done**. The step is done with the review as it stands, whether or not an
+   item was recorded, and the next step writes any Q-id recorded into the
+   dataset as an identity.
+6. **Save your decisions** (Krisis). Press **Save your decisions**, below
+   the review. It offers two choices: *Add my decisions to my places (the
+   usual choice)*, whose result is compared with what you began with, to
+   show that nothing was lost or changed; and *Only my decisions, as a file
+   of their own, to add to a dataset later*. Keep the first for this
+   workflow. The workflow carries on with whichever file the step writes,
+   and the second holds your decisions without your places, so the steps
+   after it would have no places to locate, check or show on the map. What
+   happens to an answer you
+   change later, and the list of suggestions for publishing, are under
+   **More options (for experts)** there; neither is needed to save your
+   decisions.
+
+   Where the table gives regions, the step is **Save your decisions, with
+   the region each place is in**. Export the suggestions first (**Export the
+   suggestions as a candidate set**, which is not folded away at this step),
+   so that each identity records the candidate it answers (`promotedFrom`).
+   The places stay `ContainedIn` the regions made from the table, and each
+   region gets your identification of it with the gazetteer's record, as
+   described under [what is written](#region-review). If you gave a base
+   address, and the one in **Options** has since been changed to another,
+   pressing **Save your decisions** says so in the review, and still
+   writes, for the address the review was saved with: set **Options** back
+   to it if your places keep that address. (The message calls the button
+   *Finish*, its name outside this workflow.) Nothing is said if **Options**
+   has been emptied, or if you gave no base address and the regions have a
+   temporary one.
+7. **Use the locations of the matches** (Chora). Nothing is copied unasked.
+   The tracker first counts what it would do: how many of the matched places
+   have a location that can be used, and why each of the others has not
+   (already located, no location on record, a licence not stated, a source
+   that does not allow copying, or more than one location to choose from,
+   which is left for you to place by hand). Nothing is taken until you press
+   **Use the locations of** *n* **places**; **Go on without them** leaves
+   the dataset as it was. Each location is the one point the gazetteer gives
+   for the record, not its full shape, and is recorded with where it came
+   from, in your name. A record whose source does not allow copying is never
+   copied. One whose source has no licence stated is left out unless you
+   tick the box that says *use them anyway (recorded)*: that choice holds
+   for this batch only, and your name and the choice are written into the
+   note of each such location, where anyone reusing your data can read it.
+   While this is the last step done, **Undo: take those locations out
+   again** puts the workflow back at the step, with the dataset as it was.
+
+   *Only if you said you would place places by hand:* **Draw or trace the
+   places still without a location** (Chora). Yours: **Open the map**, in
+   the tracker or under the step's title, opens [the map](#chora) on the
+   step's dataset, with the workflow still beside it. Draw or trace the
+   places there, or take a location from a gazetteer's match (**Adopt**: see
    [adopting a location from a match](#adopting-a-location-from-a-match)),
    and save the dataset. Once the save passes its check, the step is done
    with the file it wrote, which is also chosen in *Choose your data*, and
-   Chora says so: **Leave the map** to carry on. A save made from a dataset
-   other than the one that went to the step does not do it, and the tracker
-   and the save say why. To use a dataset saved some other way, choose it in
-   *Choose your data* and press **This step is done**. **This step is done**
-   with the dataset that went to Chora, unchanged, is refused, since nothing
-   drawn there is in it; if there was nothing to draw, press **Nothing to
-   draw: go on with this dataset**.
-9. **Elenchos: Check the result.**
-10. **Mneme: Compare the result with the dataset made from the table**, as in
-    [comparing two versions](#comparing-two-versions).
-11. **Metaphrasis: Write it out**, in the format the workflow was given
-    (PLATO JSON). The dataset is PLATO JSON by now, and a file is not
-    converted into its own format: the step says **Ready to download**, with
-    a **Download** button for the file chosen in *Choose your data*, and is done once you
-    have downloaded it. A dataset in another format is converted, as any
-    step done by the tools.
-12. Only if you will publish, the four parts of
-    [publishing your dataset](#publishing-your-dataset), by **Agora**:
-    **Give every place and source a permanent address**, **Write the FAIR
-    report**, **Build the web site** and **Write the permanent-address
-    rules**.
+   the map says so: **Leave the map** to carry on. A save made from a
+   dataset other than the one that went to the step does not do it, and the
+   tracker and the save say why. To use a dataset saved some other way,
+   choose it in *Choose your data* and press **This step is done**. **This
+   step is done** with the dataset that went to the map, unchanged, is
+   refused, since nothing drawn there is in it; if there was nothing to
+   draw, press **Nothing to draw: go on with this dataset**.
+8. **Check the result** (Elenchos).
+9. **Compare the result with what you began with** (Mneme), as in
+   [comparing two versions](#comparing-two-versions): the result is compared
+   with the dataset made from the table.
+10. **See your places on a map** (Chora). Yours: **See your places on the
+    map** opens [the map](#chora) on the result, and the tracker says how
+    many locations are on record. Say when you have looked (**This step is
+    done**), and the step is done. A place you put there by hand is kept by saving on the map, and
+    the workflow then carries on with the file saved.
+11. **Download your results** (Metaphrasis). The list beside **Convert**
+    offers first *A spreadsheet: one row per place (CSV)*, then *A file for
+    the World Historical Gazetteer (Linked Places Format v2)*, then the
+    formats there were before them (PLATO JSON among them). The one the
+    workflow was begun for is chosen: the spreadsheet if you wanted places
+    on a map, PLATO JSON if you wanted a published dataset.
+    - The spreadsheet has one row for each place, with its match and its
+      location. It is a summary to read, not the whole dataset, and cannot
+      be read back in: keep the PLATO JSON as the dataset itself.
+    - The file for WHG comes with a plain verdict above its report: how
+      many of your places WHG would accept, and, for those it would refuse,
+      why, and what would put it right. Nothing in a place is changed or
+      made up to make it pass.
+    - Before a format is written that cannot hold everything in your
+      decisions, the step says what it leaves out.
+    - The dataset is PLATO JSON by now, and a file is not converted into
+      its own format: where the workflow was begun for PLATO JSON, the step
+      says **Ready to download**, with a **Download** button, and is done
+      once you have downloaded it.
+
+    *Only if you will publish:* the four parts of
+    [publishing your dataset](#publishing-your-dataset), by Agora: **Give
+    every place and source a permanent address**, **Write the FAIR report**,
+    **Build the web site** and **Write the permanent-address rules**. At
+    each, the workflow says which entry to choose in the list beside
+    **Prepare**, and what it does.
 
 (methodos-places-from-tei-or-recogito)=
 ### Places from an edition (TEI), and Places from Recogito
@@ -1697,18 +1775,32 @@ Historical Gazetteer, located, checked and written out, and published if you
 say so. Choose the edition, or the export (with the IIIF georeferences of its
 maps, and their manifests, if it has regions drawn on maps), in *Choose your
 data*. The questions under 3 are Map your data's, less the regions, since
-neither an edition nor an export says which region each place is in: *Will
-you draw or trace places that the gazetteer cannot locate?*, *Will you
-publish the result?* (asked only when you wanted places on a map), and, if
-you will publish, the base address, which is optional.
+neither an edition nor an export says which region each place is in, and
+less the Wikidata items: *Some places may not be found. Do you want to place
+them by hand on a map afterwards?*, *Will you publish the result?* (asked
+only when you wanted places on a map), and, if you will publish, the base
+address, which is optional.
 
-The steps are **Elenchos: Check the edition** (or *the annotations*),
-**Metaphrasis: Read its place names into a PLATO dataset** (or *Read the
-places they link into a PLATO dataset*), and then Map your data's from step
-5, as where the table gives no regions: the lookup, the review, **Record the
-decisions in the dataset**, Chora if you said so, the check, the comparison
-with the dataset made from the edition (or the annotations), writing it out,
-and Agora's four parts if you will publish.
+These two workflows name each step with its tool first. The steps are
+**Elenchos: Check the edition** (or *the annotations*) and **Metaphrasis:
+Read its place names into a PLATO dataset** (or *Read the places they link
+into a PLATO dataset*), and then what Map your data does from its step 4
+where the table gives no regions, under these titles:
+
+- **Krisis: Look the places up in the World Historical Gazetteer**.
+- **Krisis: Decide which candidates are the same place**.
+- **Krisis: Record the decisions in the dataset**.
+- **Chora: Use the locations of the places you matched**. As in Map your
+  data, the tracker counts first, and nothing is taken until you say so.
+- *Only if you said you would place places by hand:* **Chora: Draw or trace
+  the places still without a location**.
+- **Elenchos: Check the result**.
+- **Mneme: Compare the result with the dataset made from the edition** (or
+  *the annotations*).
+- **Chora: See your places on a map**, where **See your places on the map**
+  opens the map on the result.
+- **Metaphrasis: Write it out**.
+- *Only if you will publish:* Agora's four parts.
 
 A place's `ref` in the edition, or its link in Recogito, stays its own
 address: the lookup looks for it in WHG beside that address, never replaces
@@ -1756,7 +1848,7 @@ another of yours says so. **Open the review** reopens the match's review if
 it was put away. A review made with other files is not counted. If you
 said you would create Wikidata items, **Krisis: Create Wikidata items for
 the places no gazetteer knows** follows the review, as in
-[Map your data](#methodos-map-your-data), step 6.
+[Map your data](#methodos-map-your-data), step 5.
 
 The questions under 3 are:
 
@@ -1834,7 +1926,7 @@ traced** are Map your data's, as where the table gives no regions:
 **Krisis: Look the places up in the World Historical Gazetteer, within the
 map's outline**, **Krisis: Decide which candidates are the same place**,
 **Krisis: Create Wikidata items for the places no gazetteer knows** if you
-said you would (see [Map your data](#methodos-map-your-data), step 6),
+said you would (see [Map your data](#methodos-map-your-data), step 5),
 **Krisis: Record the decisions in the dataset**, **Elenchos: Check the
 result**, and **Mneme: Compare the result with the dataset traced**. The
 lookup needs a WHG token, as Map your data's does (see
@@ -1991,13 +2083,22 @@ Krisis's **Finish** withdraws the answer it changes (see
 ### The base address
 
 A workflow that gives places addresses of their own (Map your data when the
-table gives regions, Trace a historical map always, Make an open map from a
-list or a table, and every workflow when you will publish) asks under 3 for
-the base address they are given under. It is the same question, in the same
-field, in every workflow, and optional except where regions, places traced
-from a map, or the places of a list or a table to be mapped, need it. The field shows the base address already in **Options**
-(*Web address for your identifiers*), and what you type there is written to
-**Options** too: there is one base address, used by every tool on the page.
+table gives regions, Match two datasets from a table, Trace a historical map
+always, Make an open map from a list or a table, and every workflow when you
+will publish) asks under 3 for the base address they are given under. It is
+the same question, in the same field, in every workflow.
+
+It is needed in two cases only: for places traced from a map, each of which
+is given its address under it as you name it, and for the places of a list
+or a table to be made into an open map. Everywhere else it is optional, Map
+your data with regions included: leave it empty there and the places and the
+regions have working ids under a temporary address, and your own address is
+asked for when you publish. Nothing is ever published under a temporary
+address.
+
+The field shows the base address already in **Options** (*Web address for
+your identifiers*), and what you type there is written to **Options** too:
+there is one base address, used by every tool on the page.
 
 ### Saving and resuming
 
