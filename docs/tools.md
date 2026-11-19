@@ -1676,9 +1676,10 @@ rest, and the steps after it are one higher.
    usual choice)*, whose result is compared with what you began with, to
    show that nothing was lost or changed; and *Only my decisions, as a file
    of their own, to add to a dataset later*. Keep the first for this
-   workflow. The workflow carries on with whichever file the step writes,
-   and the second holds your decisions without your places, so the steps
-   after it would have no places to locate, check or show on the map. What
+   workflow. If you choose the second, the tool saves a file of only your
+   decisions, but it does not count that as this step: the steps after it
+   need your places, with the decisions added, to locate, check or show on
+   the map. It says so, and you choose the first and save again. What
    happens to an answer you
    change later, and the list of suggestions for publishing, are under
    **More options (for experts)** there; neither is needed to save your
