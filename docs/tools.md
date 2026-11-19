@@ -1675,7 +1675,11 @@ rest, and the steps after it are one higher.
    the review. It offers two choices: *Add my decisions to my places (the
    usual choice)*, whose result is compared with what you began with, to
    show that nothing was lost or changed; and *Only my decisions, as a file
-   of their own*, to add to a dataset later. What happens to an answer you
+   of their own, to add to a dataset later*. Keep the first for this
+   workflow. The workflow carries on with whichever file the step writes,
+   and the second holds your decisions without your places, so the steps
+   after it would have no places to locate, check or show on the map. What
+   happens to an answer you
    change later, and the list of suggestions for publishing, are under
    **More options (for experts)** there; neither is needed to save your
    decisions.
@@ -1686,10 +1690,14 @@ rest, and the steps after it are one higher.
    so that each identity records the candidate it answers (`promotedFrom`).
    The places stay `ContainedIn` the regions made from the table, and each
    region gets your identification of it with the gazetteer's record, as
-   described under [what is written](#region-review). If the base address in
-   **Options** is no longer the one the review was saved with, **Save your
-   decisions** says so, and still writes, for the review's own address: set
-   **Options** back if your places keep that address.
+   described under [what is written](#region-review). If you gave a base
+   address, and the one in **Options** has since been changed to another,
+   pressing **Save your decisions** says so in the review, and still
+   writes, for the address the review was saved with: set **Options** back
+   to it if your places keep that address. (The message calls the button
+   *Finish*, its name outside this workflow.) Nothing is said if **Options**
+   has been emptied, or if you gave no base address and the regions have a
+   temporary one.
 7. **Use the locations of the matches** (Chora). Nothing is copied unasked.
    The tracker first counts what it would do: how many of the matched places
    have a location that can be used, and why each of the others has not
@@ -1728,8 +1736,8 @@ rest, and the steps after it are one higher.
    with the dataset made from the table.
 10. **See your places on a map** (Chora). Yours: **See your places on the
     map** opens [the map](#chora) on the result, and the tracker says how
-    many locations are on record. Say when you have looked, and the step is
-    done. A place you put there by hand is kept by saving on the map, and
+    many locations are on record. Say when you have looked (**This step is
+    done**), and the step is done. A place you put there by hand is kept by saving on the map, and
     the workflow then carries on with the file saved.
 11. **Download your results** (Metaphrasis). The list beside **Convert**
     offers first *A spreadsheet: one row per place (CSV)*, then *A file for
@@ -1767,18 +1775,32 @@ Historical Gazetteer, located, checked and written out, and published if you
 say so. Choose the edition, or the export (with the IIIF georeferences of its
 maps, and their manifests, if it has regions drawn on maps), in *Choose your
 data*. The questions under 3 are Map your data's, less the regions, since
-neither an edition nor an export says which region each place is in: *Will
-you draw or trace places that the gazetteer cannot locate?*, *Will you
-publish the result?* (asked only when you wanted places on a map), and, if
-you will publish, the base address, which is optional.
+neither an edition nor an export says which region each place is in, and
+less the Wikidata items: *Some places may not be found. Do you want to place
+them by hand on a map afterwards?*, *Will you publish the result?* (asked
+only when you wanted places on a map), and, if you will publish, the base
+address, which is optional.
 
-The steps are **Elenchos: Check the edition** (or *the annotations*),
-**Metaphrasis: Read its place names into a PLATO dataset** (or *Read the
-places they link into a PLATO dataset*), and then Map your data's from step
-4, as where the table gives no regions: the lookup, the review, **Record the
-decisions in the dataset**, Chora if you said so, the check, the comparison
-with the dataset made from the edition (or the annotations), writing it out,
-and Agora's four parts if you will publish.
+These two workflows name each step with its tool first. The steps are
+**Elenchos: Check the edition** (or *the annotations*) and **Metaphrasis:
+Read its place names into a PLATO dataset** (or *Read the places they link
+into a PLATO dataset*), and then what Map your data does from its step 4
+where the table gives no regions, under these titles:
+
+- **Krisis: Look the places up in the World Historical Gazetteer**.
+- **Krisis: Decide which candidates are the same place**.
+- **Krisis: Record the decisions in the dataset**.
+- **Chora: Use the locations of the places you matched**. As in Map your
+  data, the tracker counts first, and nothing is taken until you say so.
+- *Only if you said you would place places by hand:* **Chora: Draw or trace
+  the places still without a location**.
+- **Elenchos: Check the result**.
+- **Mneme: Compare the result with the dataset made from the edition** (or
+  *the annotations*).
+- **Chora: See your places on a map**, where **See your places on the map**
+  opens the map on the result.
+- **Metaphrasis: Write it out**.
+- *Only if you will publish:* Agora's four parts.
 
 A place's `ref` in the edition, or its link in Recogito, stays its own
 address: the lookup looks for it in WHG beside that address, never replaces
@@ -2061,13 +2083,22 @@ Krisis's **Finish** withdraws the answer it changes (see
 ### The base address
 
 A workflow that gives places addresses of their own (Map your data when the
-table gives regions, Trace a historical map always, Make an open map from a
-list or a table, and every workflow when you will publish) asks under 3 for
-the base address they are given under. It is the same question, in the same
-field, in every workflow, and optional except where regions, places traced
-from a map, or the places of a list or a table to be mapped, need it. The field shows the base address already in **Options**
-(*Web address for your identifiers*), and what you type there is written to
-**Options** too: there is one base address, used by every tool on the page.
+table gives regions, Match two datasets from a table, Trace a historical map
+always, Make an open map from a list or a table, and every workflow when you
+will publish) asks under 3 for the base address they are given under. It is
+the same question, in the same field, in every workflow.
+
+It is needed in two cases only: for places traced from a map, each of which
+is given its address under it as you name it, and for the places of a list
+or a table to be made into an open map. Everywhere else it is optional, Map
+your data with regions included: leave it empty there and the places and the
+regions have working ids under a temporary address, and your own address is
+asked for when you publish. Nothing is ever published under a temporary
+address.
+
+The field shows the base address already in **Options** (*Web address for
+your identifiers*), and what you type there is written to **Options** too:
+there is one base address, used by every tool on the page.
 
 ### Saving and resuming
 
