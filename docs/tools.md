@@ -1607,6 +1607,16 @@ panel (see [the WHG token](#the-whg-token)). The rest of the workflow needs
 no account. A [Scope](#scope), set from the tracker, confines every lookup
 the workflow makes.
 
+Because the page can be allowed to reach another site only as it loads, a
+workflow with a lookup in WHG asks about it as you begin it, not at step 4,
+when work is already done. A card above step 1 asks **Allow the World
+Historical Gazetteer now?**, names the step that will use it, and says that
+nothing is sent by allowing it. **Allow, and load the page again** records
+the permission, as the **Permissions** panel does, and loads the page once
+more at once, with your workflow kept. **Decide later** allows nothing, and
+you are asked at the lookup, as before. A permission you have set to Never is
+not asked about again.
+
 The questions under 3 are:
 
 - *Does the table say which region each place is in (a parish, a county)?*
@@ -2116,6 +2126,15 @@ Where that file is not kept, the step asks for it to be chosen again in
 workflow recorded: a different file is refused, with what differs, and is
 not counted. A page closed while a step was running leaves that step failed,
 to run again.
+
+A match review you began outside a workflow and never saved has no file to
+open again, so when the page next opens, a card above step 1 offers it:
+**A review you did not save is kept in this browser**, with its name, when you
+left it and how far it had gone. **Open the review kept in this browser** puts
+it back as it was kept; **Not now** leaves it kept, to be offered at the next
+visit; **Discard it** clears it from the browser. Nothing is offered when
+**Keep my working data between visits** is off, since nothing is then kept
+between visits.
 
 If the workflow's recipe has changed since it was saved, the tracker says
 so. A change of words only carries on. Otherwise it stays at its last
