@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="Helvetica, Arial, sans-serif" font-size="15" role="img" aria-labelledby="t d">
+  <title id="t">One attestation</title>
+  <desc id="d">An attestation in the centre links the place Bristol to the name Bristowe, the dates 1480 to 1485, and the source TNA E 122/19/10.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <g stroke="#555" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <line x1="300" y1="165" x2="170" y2="70"/><line x1="460" y1="165" x2="590" y2="70"/>
+    <line x1="300" y1="190" x2="170" y2="265"/><line x1="460" y1="190" x2="590" y2="265"/>
+  </g>
+  <rect x="290" y="140" width="180" height="60" rx="30" fill="#f3c969" stroke="#8a6d1f"/>
+  <text x="380" y="167" text-anchor="middle" font-weight="bold">an attestation</text>
+  <text x="380" y="186" text-anchor="middle" font-size="13">one row of a sheet</text>
+  <rect x="40" y="30" width="170" height="56" rx="8" fill="#cfe3f7" stroke="#2f5d8a"/>
+  <text x="125" y="54" text-anchor="middle" font-weight="bold">place</text><text x="125" y="74" text-anchor="middle">Bristol</text>
+  <rect x="550" y="30" width="170" height="56" rx="8" fill="#d8efd3" stroke="#3b7a32"/>
+  <text x="635" y="54" text-anchor="middle" font-weight="bold">name</text><text x="635" y="74" text-anchor="middle">Bristowe</text>
+  <rect x="40" y="245" width="170" height="56" rx="8" fill="#e8dcf4" stroke="#62408a"/>
+  <text x="125" y="269" text-anchor="middle" font-weight="bold">date</text><text x="125" y="289" text-anchor="middle">1480–1485</text>
+  <rect x="550" y="245" width="170" height="56" rx="8" fill="#f6d6d3" stroke="#8a3a31"/>
+  <text x="635" y="269" text-anchor="middle" font-weight="bold">source</text><text x="635" y="289" text-anchor="middle">TNA E 122/19/10</text>
+  <text x="222" y="108" font-size="13" fill="#333">is about</text><text x="486" y="108" font-size="13" fill="#333">gives the name</text>
+  <text x="200" y="240" font-size="13" fill="#333">applies to</text><text x="496" y="240" font-size="13" fill="#333">according to</text>
+</svg>

@@ -1,0 +1,246 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/succession/",
+    "title": "Mergers, absorptions and divisions of municipalities",
+    "description": "A worked example of PLATO's succession relation types, with invented municipalities: two merge into a third, one is absorbed by it, one is divided, and two transfers of land leave both parties in being. Each change is an attestation about the earlier place that relates to the later one, dated by the day it took effect.",
+    "creator": [
+      {
+        "@id": "https://orcid.org/0000-0003-3060-0181"
+      }
+    ],
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "status": "draft",
+    "keywords": [
+      "municipalities",
+      "administrative history",
+      "succession"
+    ],
+    "temporal": {
+      "startDate": "1900-07-01",
+      "endDate": "1975-01-01"
+    },
+    "uriSpace": "https://whgazetteer.org/example/succession/"
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/example/succession/place/oostervliet",
+      "label": "Oostervliet",
+      "entityIdentifier": "oostervliet",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1 January 1950",
+              "startEarliest": "1950-01-01",
+              "startLatest": "1950-01-01"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/succession/source/register",
+                "title": "Register of municipal changes (hypothetical)",
+                "citation": "A hypothetical register of municipal changes, standing for a national one. Every place and date in this example is invented.",
+                "authorityType": "source",
+                "licence": "https://creativecommons.org/licenses/by/4.0/"
+              },
+              "locator": "entry 1",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/succession/place/vlietstad",
+              "relationType": "https://w3id.org/plato#MergedInto"
+            }
+          ],
+          "notes": "One of two parties to the merger, and not the survivor: Vlietstad is a new municipality."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/succession/place/westervliet",
+      "label": "Westervliet",
+      "entityIdentifier": "westervliet",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1 January 1950",
+              "startEarliest": "1950-01-01",
+              "startLatest": "1950-01-01"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/succession/source/register",
+              "locator": "entry 1",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/succession/place/vlietstad",
+              "relationType": "https://w3id.org/plato#MergedInto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/succession/place/vlietstad",
+      "label": "Vlietstad",
+      "entityIdentifier": "vlietstad",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1 January 1975",
+              "startEarliest": "1975-01-01",
+              "startLatest": "1975-01-01"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/succession/source/register",
+              "locator": "entry 12",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "Nieuwhaven was formed from part of Vlietstad, which carries on.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/succession/place/nieuwhaven",
+              "relationType": "https://w3id.org/plato#TransferredTo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/succession/place/kleindorp",
+      "label": "Kleindorp",
+      "entityIdentifier": "kleindorp",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1 January 1970",
+              "startEarliest": "1970-01-01",
+              "startLatest": "1970-01-01"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/succession/source/register",
+              "locator": "entry 7",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/succession/place/vlietstad",
+              "relationType": "https://w3id.org/plato#AbsorbedBy"
+            }
+          ],
+          "notes": "Vlietstad carries on, so it has no attestation of its own for this change."
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/succession/place/groot-nieuwland",
+      "label": "Groot-Nieuwland",
+      "entityIdentifier": "groot-nieuwland",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1 July 1900",
+              "startEarliest": "1900-07-01",
+              "startLatest": "1900-07-01"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/succession/source/register",
+              "locator": "entry 2",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/succession/place/noord-nieuwland",
+              "relationType": "https://w3id.org/plato#SplitInto"
+            }
+          ]
+        },
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1 July 1900",
+              "startEarliest": "1900-07-01",
+              "startLatest": "1900-07-01"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/succession/source/register",
+              "locator": "entry 2",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/succession/place/zuid-nieuwland",
+              "relationType": "https://w3id.org/plato#SplitInto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/succession/place/noord-nieuwland",
+      "label": "Noord-Nieuwland",
+      "entityIdentifier": "noord-nieuwland",
+      "attestations": [
+        {
+          "timespans": [
+            {
+              "sourceLabel": "1 January 1960",
+              "startEarliest": "1960-01-01",
+              "startLatest": "1960-01-01"
+            }
+          ],
+          "citations": [
+            {
+              "source": "https://whgazetteer.org/example/succession/source/register",
+              "locator": "entry 9",
+              "citationFunction": "http://purl.org/spar/cito/citesAsEvidence"
+            }
+          ],
+          "notes": "The hamlet of Zuidwijk passed to Vlietstad. Both municipalities carry on.",
+          "relations": [
+            {
+              "relatesTo": "https://whgazetteer.org/example/succession/place/vlietstad",
+              "relationType": "https://w3id.org/plato#TransferredTo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/succession/place/zuid-nieuwland",
+      "label": "Zuid-Nieuwland",
+      "entityIdentifier": "zuid-nieuwland",
+      "attestations": []
+    },
+    {
+      "@id": "https://whgazetteer.org/example/succession/place/nieuwhaven",
+      "label": "Nieuwhaven",
+      "entityIdentifier": "nieuwhaven",
+      "attestations": []
+    }
+  ]
+}

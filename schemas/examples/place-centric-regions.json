@@ -1,0 +1,162 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://whgazetteer.org/example/gazetteer/parish-regions",
+    "title": "A parish and the regions it lies in, matched to a gazetteer (illustrative)",
+    "description": "Two separate claims for each region. The parish list says that Rotherhithe is in Surrey, and Surrey in England: those containments point at regions made from the list itself, one for each chain of containers, so that a Surrey in another chain would be another region. The reviewer's decision that the list's Surrey is the gazetteer's Surrey is an identity match, answering the suggestion in candidate-set-regions.json, which holds the score.",
+    "candidateSets": [
+      "https://whgazetteer.org/example/candidates/regions-2026-10-03"
+    ],
+    "licence": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://whgazetteer.org/example/entity/rotherhithe",
+      "label": "Rotherhithe",
+      "attestations": [
+        {
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/parish-list",
+                "title": "A list of parishes, with the county and country of each (illustrative)"
+              },
+              "locator": "row 12"
+            }
+          ],
+          "@id": "https://whgazetteer.org/example/attestation/rotherhithe-name",
+          "names": [
+            {
+              "toponym": "Rotherhithe"
+            }
+          ]
+        },
+        {
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/parish-list",
+                "title": "A list of parishes, with the county and country of each (illustrative)"
+              },
+              "locator": "row 12"
+            }
+          ],
+          "@id": "https://whgazetteer.org/example/attestation/rotherhithe-in-surrey",
+          "relations": [
+            {
+              "relationType": "https://w3id.org/plato#ContainedIn",
+              "relatesTo": "https://whgazetteer.org/example/entity/region/england/surrey"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/region/england/surrey",
+      "label": "Surrey (England)",
+      "attestations": [
+        {
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/parish-list",
+                "title": "A list of parishes, with the county and country of each (illustrative)"
+              },
+              "locator": "row 12"
+            }
+          ],
+          "@id": "https://whgazetteer.org/example/attestation/surrey-name",
+          "names": [
+            {
+              "toponym": "Surrey"
+            }
+          ]
+        },
+        {
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/parish-list",
+                "title": "A list of parishes, with the county and country of each (illustrative)"
+              },
+              "locator": "row 12"
+            }
+          ],
+          "@id": "https://whgazetteer.org/example/attestation/surrey-in-england",
+          "relations": [
+            {
+              "relationType": "https://w3id.org/plato#ContainedIn",
+              "relatesTo": "https://whgazetteer.org/example/entity/region/england"
+            }
+          ]
+        },
+        {
+          "@id": "https://whgazetteer.org/example/attestation/surrey-matched",
+          "identities": [
+            {
+              "subject": "https://whgazetteer.org/example/entity/region/england/surrey",
+              "object": "https://whgazetteer.org/example/whg/place/surrey",
+              "identityType": "closeMatch",
+              "basis": "The only county of that name in the gazetteer within the match for England",
+              "promotedFrom": "https://whgazetteer.org/example/candidates/regions-2026-10-03#c-95321738"
+            }
+          ],
+          "certaintyLevel": "https://w3id.org/plato#Certain",
+          "sources": [
+            {
+              "@id": "https://whgazetteer.org/example/source/region-review-2026-10-03",
+              "title": "Review of the parish list's regions, 3 October 2026"
+            }
+          ],
+          "contributor": "https://whgazetteer.org/example/contributor/editor",
+          "created": "2026-10-03T11:00:00Z"
+        }
+      ]
+    },
+    {
+      "@id": "https://whgazetteer.org/example/entity/region/england",
+      "label": "England",
+      "attestations": [
+        {
+          "citations": [
+            {
+              "source": {
+                "@id": "https://whgazetteer.org/example/source/parish-list",
+                "title": "A list of parishes, with the county and country of each (illustrative)"
+              },
+              "locator": "row 12"
+            }
+          ],
+          "@id": "https://whgazetteer.org/example/attestation/england-name",
+          "names": [
+            {
+              "toponym": "England"
+            }
+          ]
+        },
+        {
+          "@id": "https://whgazetteer.org/example/attestation/england-matched",
+          "identities": [
+            {
+              "subject": "https://whgazetteer.org/example/entity/region/england",
+              "object": "https://whgazetteer.org/example/whg/place/england",
+              "identityType": "closeMatch",
+              "basis": "Exact name, country code GB",
+              "promotedFrom": "https://whgazetteer.org/example/candidates/regions-2026-10-03#c-f129572e"
+            }
+          ],
+          "certaintyLevel": "https://w3id.org/plato#Certain",
+          "sources": [
+            {
+              "@id": "https://whgazetteer.org/example/source/region-review-2026-10-03",
+              "title": "Review of the parish list's regions, 3 October 2026"
+            }
+          ],
+          "contributor": "https://whgazetteer.org/example/contributor/editor",
+          "created": "2026-10-03T11:00:00Z"
+        }
+      ]
+    }
+  ]
+}

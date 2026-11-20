@@ -1,0 +1,6 @@
+place_id,same_as,match_type,certainty,basis,source_id
+londinium,https://pleiades.stoa.org/places/79574,exactMatch,1,The name the Itinerary gives matches the Pleiades place,pleiades
+durobrivae,https://pleiades.stoa.org/places/79433,exactMatch,1,The name the Itinerary gives matches the Pleiades place,pleiades
+durovernum,https://pleiades.stoa.org/places/79439,exactMatch,1,The name the Itinerary gives matches the Pleiades place,pleiades
+dubris,https://pleiades.stoa.org/places/79646,exactMatch,1,The name the Itinerary gives matches the Pleiades place,pleiades
+lemanis,https://pleiades.stoa.org/places/79647,exactMatch,1,The name the Itinerary gives matches the Pleiades place,pleiades
