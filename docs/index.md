@@ -1,7 +1,7 @@
 # PLATO: a guide to organising data about places
 
 A short introduction to PLATO and its tools, as slides:
-[PLATO and its tools](https://docs.google.com/presentation/d/1VWSYVP8CG5skKFmgWWvTRC2N9FVgAkqr/edit?usp=sharing).
+[PLATO and its tools](https://docs.google.com/presentation/d/1fNcKk-SkVJ1c_jjNR_h6ePfflToZ-beW/edit?usp=sharing).
 
 :::{admonition} Looking for the specification?
 :class: seealso
