@@ -1,0 +1,515 @@
+{
+  "$schema": "https://w3id.org/plato/schemas/place-centric.schema.json",
+  "profile": "place-centric",
+  "gazetteer": {
+    "@id": "https://example.org/plato-examples/trismegistos",
+    "title": "Places from Trismegistos (illustrative)",
+    "description": "Three places from Trismegistos Places (https://www.trismegistos.org/, CC BY-SA 4.0), recorded in PLATO to show an attestation window, a position between two places, a containment known only by name, a Demotic name known only in transliteration, and the land of a people (issues #18 to #22). The data is Trismegistos's; the minted units are this example's.",
+    "licence": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "status": "draft"
+  },
+  "spatialEntities": [
+    {
+      "@id": "https://www.trismegistos.org/place/2105",
+      "label": "Setis",
+      "entityIdentifier": "2105",
+      "namespace": "trismegistos",
+      "ccodes": [
+        "EG"
+      ],
+      "attestations": [
+        {
+          "@id": "https://www.trismegistos.org/place/2105#headword",
+          "names": [
+            {
+              "toponym": "Setis"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword",
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 2105",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/2105#names",
+          "names": [
+            {
+              "toponym": "Σητις",
+              "language": "grc",
+              "script": "Grek"
+            },
+            {
+              "toponym": "Διονύσου Νῆσος",
+              "language": "grc",
+              "script": "Grek"
+            },
+            {
+              "toponym": "Κρόνου Ἐμπόριον",
+              "language": "grc",
+              "script": "Grek",
+              "sourceLabel": "Κρόνου Ἐμπόριον (?)",
+              "qualification": {
+                "certaintyLevel": "https://w3id.org/plato#LessCertain"
+              }
+            },
+            {
+              "toponym": "Sṯt",
+              "language": "egy-Latn-t-egy-egyd",
+              "script": "Latn",
+              "transliterationSystem": "Egyptological transliteration"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 2105",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/2105#window",
+          "timespans": [
+            {
+              "startEarliest": "-0144",
+              "endLatest": "0099",
+              "sourceLabel": "BC 144 - AD 99"
+            }
+          ],
+          "timespanRole": "https://w3id.org/plato#EvidenceSpan",
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 2105",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The span of the texts that mention the place, not the dates of the place itself."
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/2105#between",
+          "geometries": [
+            {
+              "sourceLabel": "between U01 Assuan (2207) and U01 Philai (1767)",
+              "qualification": {
+                "relativeQualifier": "https://w3id.org/plato#BetweenXAndY",
+                "relativeTo": [
+                  "https://www.trismegistos.org/place/2207",
+                  "https://www.trismegistos.org/place/1767"
+                ]
+              }
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 2105",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/2105#point",
+          "geometries": [
+            {
+              "geojson": {
+                "type": "Point",
+                "coordinates": [
+                  32.88393,
+                  24.098744
+                ]
+              },
+              "sourceLabel": "24.098744,32.88393"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 2105",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/2105#province",
+          "relations": [
+            {
+              "relationType": "https://w3id.org/plato#ContainedIn",
+              "relatesTo": "https://example.org/plato-examples/trismegistos/province/Aegyptus",
+              "relatedLabel": "Aegyptus"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 2105",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://www.trismegistos.org/place/60",
+      "label": "Agathos Daimon",
+      "entityIdentifier": "60",
+      "namespace": "trismegistos",
+      "ccodes": [
+        "EG"
+      ],
+      "attestations": [
+        {
+          "@id": "https://www.trismegistos.org/place/60#headword",
+          "names": [
+            {
+              "toponym": "Agathos Daimon"
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword",
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 60",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/60#type",
+          "types": [
+            {
+              "label": "river",
+              "sourceLabel": "river: potamos (Nile branch)"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 60",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/60#delta",
+          "relations": [
+            {
+              "relationType": "https://w3id.org/plato#ContainedIn",
+              "relatedLabel": "the Delta",
+              "relationLabel": "in the Delta"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 60",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Trismegistos names the Delta here with nothing to point at, and it is a one-off in this example, so the relation names it only."
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/60#window",
+          "timespans": [
+            {
+              "startEarliest": "0015",
+              "endLatest": "0540",
+              "sourceLabel": "AD 15 - AD 540"
+            }
+          ],
+          "timespanRole": "https://w3id.org/plato#EvidenceSpan",
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 60",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The span of the texts that mention the place, not the dates of the place itself."
+        }
+      ]
+    },
+    {
+      "@id": "https://www.trismegistos.org/place/70",
+      "label": "Agrianes",
+      "entityIdentifier": "70",
+      "namespace": "trismegistos",
+      "ccodes": [
+        "BG"
+      ],
+      "attestations": [
+        {
+          "@id": "https://www.trismegistos.org/place/70#headword",
+          "names": [
+            {
+              "toponym": "Agrianes",
+              "nameType": [
+                "toponym",
+                "ethnonym"
+              ]
+            }
+          ],
+          "formStatus": "https://w3id.org/plato#Headword",
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 70",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Trismegistos records a people, the Agrianes. A people is not a SpatialEntity; this record is the land Trismegistos places them in, named after them."
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/70#names",
+          "names": [
+            {
+              "toponym": "Agriani",
+              "language": "la",
+              "nameType": [
+                "toponym",
+                "ethnonym"
+              ]
+            },
+            {
+              "toponym": "Ἀγρίανες",
+              "language": "grc",
+              "script": "Grek",
+              "nameType": [
+                "toponym",
+                "ethnonym"
+              ]
+            },
+            {
+              "toponym": "Agrian",
+              "nameType": [
+                "demonym"
+              ]
+            },
+            {
+              "toponym": "Agrianus",
+              "nameType": [
+                "demonym"
+              ]
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 70",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/70#type",
+          "types": [
+            {
+              "label": "land of a people",
+              "sourceLabel": "people"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 70",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/70#valley",
+          "geometries": [
+            {
+              "sourceLabel": "in the upper valley of the river Strymon (Struma) (11828)",
+              "qualification": {
+                "relativeQualifier": "https://w3id.org/plato#Near",
+                "relativeTo": "https://www.trismegistos.org/place/11828"
+              }
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 70",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/70#province",
+          "relations": [
+            {
+              "relationType": "https://w3id.org/plato#ContainedIn",
+              "relatesTo": "https://example.org/plato-examples/trismegistos/province/Thracia",
+              "relatedLabel": "Thracia"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 70",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ]
+        },
+        {
+          "@id": "https://www.trismegistos.org/place/70#window",
+          "timespans": [
+            {
+              "startEarliest": "-0236",
+              "endLatest": "0075",
+              "sourceLabel": "BC 236 - AD 75"
+            }
+          ],
+          "timespanRole": "https://w3id.org/plato#EvidenceSpan",
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 70",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "The span of the texts that mention the place, not the dates of the place itself."
+        }
+      ]
+    },
+    {
+      "@id": "https://example.org/plato-examples/trismegistos/province/Aegyptus",
+      "label": "Aegyptus",
+      "attestations": [
+        {
+          "@id": "https://example.org/plato-examples/trismegistos/province/Aegyptus#name",
+          "names": [
+            {
+              "toponym": "Aegyptus"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 2105",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Trismegistos names this unit in its records without a record of its own here, so it is minted as a place of this dataset."
+        }
+      ]
+    },
+    {
+      "@id": "https://example.org/plato-examples/trismegistos/province/Thracia",
+      "label": "Thracia",
+      "attestations": [
+        {
+          "@id": "https://example.org/plato-examples/trismegistos/province/Thracia#name",
+          "names": [
+            {
+              "toponym": "Thracia"
+            }
+          ],
+          "citations": [
+            {
+              "source": {
+                "@id": "https://www.trismegistos.org/geo/",
+                "title": "Trismegistos Places",
+                "authorityType": "dataset",
+                "licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "locator": "geo 70",
+              "citationFunction": "http://purl.org/spar/cito/citesAsDataSource"
+            }
+          ],
+          "notes": "Trismegistos names this unit in its records without a record of its own here, so it is minted as a place of this dataset."
+        }
+      ]
+    }
+  ]
+}
